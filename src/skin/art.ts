@@ -61,5 +61,14 @@ export const ITEMS: Readonly<Record<string, string>> = {
 };
 
 export const OFFERS: Readonly<Record<string, string>> = {
-  // offer_coins_small: 'offers/coins-small.png',
+  // The six offers of configs/remote/iap.offers/ (GDD 16 mon.catalog): the pack art of the game
+  // (assets/ui/offers/offer-<key>-2x.png, 320x320 → 256x256 WebP: shown up to 128px in the shop and
+  // the defeat window). The free welcome gift has no pack art: the game's daily crate
+  // (assets/game/daily_crate-2x.png) — the same supply crate the daily reward shows.
+  starter_crate: 'offers/starter_crate.webp',
+  hull_pack: 'offers/hull_pack.webp',
+  field_kit: 'offers/field_kit.webp',
+  heavy_arsenal: 'offers/heavy_arsenal.webp',
+  commander_cache: 'offers/commander_cache.webp',
+  start_grant: 'offers/start_grant.webp',
 };
