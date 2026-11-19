@@ -148,7 +148,8 @@ const EXTRA_HUD = [
   { id: 'offer-flash', kind: 'money', icon: 'flame', label: 'Flash sale', offer: true },
 ];
 /** Gems open nothing (`open: false`): their counter shows no «+». */
-const EXTRA_BAR = [TOP_BAR[0], { kind: 'item', id: 'item_gems', label: 'Gems', icon: 'gems', open: false }, ...TOP_BAR.slice(1)];
+// A game may declare no counter at all (Iron Burrow: TOP_BAR is empty), then gems are the only one.
+const EXTRA_BAR = [...TOP_BAR.slice(0, 1), { kind: 'item', id: 'item_gems', label: 'Gems', icon: 'gems', open: false }, ...TOP_BAR.slice(1)];
 /** More tiles than a column of a landscape phone holds (844x390: four). */
 const FULL_HUD = [
   ...EXTRA_HUD,
