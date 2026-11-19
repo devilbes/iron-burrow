@@ -250,7 +250,7 @@ const ACTIONS = `${ROW}{flex-flow:row wrap;justify-content:center;align-items:ce
   + `${ROW}::before{content:'';order:1;flex:0 0 100%;height:8px}`
   + `${ROW}>button{order:0;flex:0 1 auto;width:auto;min-width:min(${v('game-button-min-primary')},100%);`
   + `max-width:min(${v('game-button-max')},100%);min-height:${v('game-button-h-primary')};`
-  + `padding-inline:${v('game-button-pad')};white-space:normal}`
+  + `padding-inline:${v('game-button-pad')}}`
   + `${ROW}>button${SECOND}{order:2;min-width:min(${v('game-button-min')},100%);min-height:48px;margin-bottom:8px}`
   // A low screen: the kit puts the row on one line, and so does the skin — main action first.
   + LOW(`${ROW}::before{display:none}${ROW}>button${SECOND}{margin-bottom:0}`
@@ -343,7 +343,7 @@ const CONFIRM = `.cf-item{${UNDERLAY}}.cf-tile{background:none;box-shadow:none;b
   // A landscape phone gives the kit's confirm window little height (even the stock subject runs under
   // its buttons there): the subject goes compact.
   + LOW(`.cf-item{padding-block:4px;min-height:0}.cf-tile,.cf-tile>*{width:40px;height:40px}`)
-  + `.cf-price{font-family:${v('mp-font-display')};font-weight:400;color:${v('mp-card-gold')}}`;
+  + `.cf-price{font-family:${v('mp-font-display')};font-weight:400;color:${v('game-button-buy')}}`;
 
 // ---- Player card (recolor): the card is one underlay, the avatar a cut plate like the leaderboard's.
 const PROFILE = `[data-part=player-card] .card{${UNDERLAY}}[data-part=player-card] .avatar{${AVATAR}}`;
