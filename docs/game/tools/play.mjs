@@ -303,7 +303,7 @@ for (const log of logs) {
   if (log.fatal) continue;
   console.log(`shots ${log.steps.length}, errors ${log.errors.length}`, log.boxes ? JSON.stringify(log.boxes) : '');
   for (const e of log.errors) console.log('  ', e);
-  for (const s of log.steps) if (s.scroll || s.offscreen.length) console.log('  layout', s.shot, s.scroll ? 'PAGE SCROLL' : '', s.offscreen.join('; '));
+  for (const s of log.steps) if (s.shot && (s.scroll || s.offscreen.length)) console.log('  layout', s.shot, s.scroll ? 'PAGE SCROLL' : '', s.offscreen.join('; '));
   for (const v of log.levels) console.log('  level end', v.phase, v.status, JSON.stringify(v.body).slice(0, 400));
 }
 server.close();
