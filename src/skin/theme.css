@@ -124,6 +124,8 @@
   --game-plate-pad:28px;             /* side room of the title text on the plate */
   --game-title-size:20px;            /* phones: 24px (map) broke LEADERBOARD mid-word in a 390px window */
   --game-title-size-wide:32px;
+  --game-title-word:7.5;             /* a title's longest word, in em (SOMETHING, LEADERBOARD): the title
+                                        shrinks below the size above when its window is too narrow */
   --game-button-face:4px;            /* id-button-face: lower face; pressed: 2px and sinks 2px */
   --game-button-face-pressed:2px;
   --game-close-size:40px;            /* id-close-plate */

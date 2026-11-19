@@ -130,10 +130,14 @@ function frame({ win, head, title, close }: Frame): string {
     + `clip-path:${WINDOW_PATH};box-shadow:${v('game-shadow-modal')}}`
     + `${win}:focus-visible{box-shadow:${v('game-shadow-modal')}}`
     // The head: as tall as the plate; plate and close cast one shadow (filter: their clip paths keep their shape).
-    + `${head}{min-height:${v('game-plate-h')};align-items:flex-start;filter:drop-shadow(${v('game-shadow-floating')})}`
+    // The head is a size container: the title is never larger than its window can hold — a long word
+    // of a narrow window (a desktop confirm) would break mid-word at the 32px of the viewport's size.
+    + `${head}{min-height:${v('game-plate-h')};align-items:flex-start;filter:drop-shadow(${v('game-shadow-floating')});`
+    + `container-type:inline-size}`
     + `${head}>${title}{box-sizing:border-box;display:flex;align-items:center;justify-content:center;`
     + `min-height:${v('game-plate-h')};margin:0;padding:4px ${v('game-plate-pad')} 6px;`
-    + `font-size:${v('kit-title-size')};line-height:1.1;${TITLE_TEXT};${layers(PLATE_LAYERS)};clip-path:${PLATE_PATH}}`
+    + `font-size:min(${v('kit-title-size')},calc((100cqi - 2 * ${v('game-close-zone')} - 2 * ${v('game-plate-pad')}) / ${v('game-title-word')}));`
+    + `line-height:1.1;${TITLE_TEXT};${layers(PLATE_LAYERS)};clip-path:${PLATE_PATH}}`
     + `${shut}{width:${v('game-close-size')};height:${v('game-close-size')};min-height:0;padding:0;`
     + `top:calc(${O} - ${v('game-close-size')} / 2);right:${v('game-cut')};margin:0;border:0;border-radius:0;color:${v('game-frost')};`
     + `${layers(CLOSE_LAYERS)};clip-path:polygon(${CC} 0,calc(100% - ${CC}) 0,100% ${CC},100% calc(100% - ${CC}),`
