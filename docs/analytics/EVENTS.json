@@ -1,0 +1,1122 @@
+{
+  "version": 1,
+  "game": "iron-burrow",
+  "sdkSchema": "core analytics.sendEvent(name: string, payload?: object) @manygamescorp/core 1.0.0-rc.30 (no telemetry module in sdk.modules.list rev 2; no event schema published)",
+  "transport": "sdk.analytics.sendEvent only; no-op until the platform registers a provider; no own network, no third-party SDK",
+  "baseSet": {
+    "source": "skill analytics-taxonomy N0 (fact analytics.baseSet not delivered to this run)",
+    "excluded": [
+      {
+        "name": "ad_shown",
+        "why": "no ads in this flow"
+      },
+      {
+        "name": "ad_reward",
+        "why": "no ads in this flow"
+      }
+    ]
+  },
+  "envelope": {
+    "name": "E25",
+    "fields": [
+      "appId",
+      "gid",
+      "sessionId",
+      "ts",
+      "platform",
+      "appVersion",
+      "abGroup",
+      "holdout"
+    ],
+    "filledBy": "platform provider; the game never sends or computes these"
+  },
+  "naming": "snake_case, <object>_<action>; name <= 40 chars [a-z0-9_]; <= 25 params; values string|integer|number|boolean only (no objects/arrays); string <= 100 chars",
+  "paramTypes": [
+    "string",
+    "integer",
+    "number",
+    "boolean"
+  ],
+  "pii": "none: no nickname, avatar, email, device ids or free text; identity only via the platform envelope (gid)",
+  "ads": "none — the flow has no ads",
+  "events": [
+    {
+      "name": "session_start",
+      "base": "N0",
+      "category": "session",
+      "params": [
+        {
+          "name": "entry",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "cold",
+            "resume"
+          ]
+        }
+      ],
+      "trigger": "boot after sdk:core:ready and Lobby S02 rendered (cold); page visible again after >=30 s hidden (resume)",
+      "funnels": [
+        "ftue"
+      ],
+      "feeds": [
+        "d1_retention",
+        "d7_retention"
+      ],
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "session_end",
+      "base": "N0",
+      "category": "session",
+      "params": [
+        {
+          "name": "duration_s",
+          "type": "number",
+          "required": true,
+          "min": 0
+        }
+      ],
+      "trigger": "pagehide / visibilitychange hidden",
+      "funnels": [],
+      "feeds": [
+        "session_length"
+      ],
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "tutorial_step",
+      "base": "N0",
+      "category": "ftue",
+      "params": [
+        {
+          "name": "step",
+          "type": "integer",
+          "required": true,
+          "min": 1,
+          "max": 6
+        },
+        {
+          "name": "step_id",
+          "type": "string",
+          "required": true,
+          "note": "tutorial step key t1..t6 (GDD 14 §2)"
+        }
+      ],
+      "trigger": "tutorial hint step shown in stage 1 (S05)",
+      "funnels": [
+        "ftue"
+      ],
+      "feeds": [
+        "tutorial_completion",
+        "tutorial_skip"
+      ],
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "level_start",
+      "base": "N0",
+      "category": "progression",
+      "params": [
+        {
+          "name": "level_set",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "campaign",
+            "siege"
+          ]
+        },
+        {
+          "name": "level_n",
+          "type": "integer",
+          "required": true,
+          "min": 1,
+          "max": 30,
+          "note": "stage number; 1 for siege"
+        },
+        {
+          "name": "attempt",
+          "type": "integer",
+          "required": true,
+          "min": 1
+        }
+      ],
+      "trigger": "progress.beginAttempt resolved and the stage/siege run starts",
+      "funnels": [
+        "ftue",
+        "core_loop"
+      ],
+      "feeds": [
+        "stage_reach"
+      ],
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "level_complete",
+      "base": "N0",
+      "category": "progression",
+      "params": [
+        {
+          "name": "level_set",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "campaign",
+            "siege"
+          ]
+        },
+        {
+          "name": "level_n",
+          "type": "integer",
+          "required": true,
+          "min": 1,
+          "max": 30,
+          "note": "stage number; 1 for siege"
+        },
+        {
+          "name": "score",
+          "type": "integer",
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "stars",
+          "type": "integer",
+          "required": true,
+          "min": 0,
+          "max": 3
+        },
+        {
+          "name": "duration_s",
+          "type": "number",
+          "required": true,
+          "min": 0
+        }
+      ],
+      "trigger": "progress.levelEnd ACK for a cleared campaign stage (stars and score from the server)",
+      "funnels": [
+        "ftue",
+        "campaign"
+      ],
+      "feeds": [
+        "stage_reach"
+      ],
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "level_fail",
+      "base": "N0",
+      "category": "progression",
+      "params": [
+        {
+          "name": "level_set",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "campaign",
+            "siege"
+          ]
+        },
+        {
+          "name": "level_n",
+          "type": "integer",
+          "required": true,
+          "min": 1,
+          "max": 30,
+          "note": "stage number; 1 for siege"
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "core",
+            "lives",
+            "quit"
+          ]
+        },
+        {
+          "name": "duration_s",
+          "type": "number",
+          "required": true,
+          "min": 0
+        }
+      ],
+      "trigger": "Defeat S08 shown (core destroyed / lives out), quit from pause, or siege run over (Core destroyed)",
+      "funnels": [
+        "core_loop"
+      ],
+      "feeds": [
+        "continue_rate"
+      ],
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "resource_shortage",
+      "base": "N0",
+      "category": "economy",
+      "params": [
+        {
+          "name": "item",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "bst_bubble",
+            "bst_shockwave",
+            "bst_fortify",
+            "bst_hull"
+          ]
+        },
+        {
+          "name": "context",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "prestage",
+            "defeat",
+            "stage"
+          ]
+        }
+      ],
+      "trigger": "player needs an item with balance 0: Spare Hull toggle empty in S04, Continue empty in S08, booster button empty in S05",
+      "funnels": [],
+      "feeds": [
+        "economy_balance"
+      ],
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "offer_shown",
+      "base": "N0",
+      "category": "shop",
+      "params": [
+        {
+          "name": "offer_id",
+          "type": "string",
+          "required": true,
+          "note": "iap-offer key from iap.offers (starter_crate|hull_pack|field_kit|heavy_arsenal|commander_cache|start_grant)"
+        },
+        {
+          "name": "placement",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "shop",
+            "defeat",
+            "prestage",
+            "starter_auto",
+            "lobby_grant"
+          ]
+        }
+      ],
+      "trigger": "offer card rendered (S10 shop list, S08 defeat card, S04 Get more, Starter Crate auto window, lobby grant)",
+      "funnels": [
+        "purchase"
+      ],
+      "feeds": [
+        "payer_conversion",
+        "offer_ctr"
+      ],
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "offer_click",
+      "base": "N0",
+      "category": "shop",
+      "params": [
+        {
+          "name": "offer_id",
+          "type": "string",
+          "required": true,
+          "note": "iap-offer key from iap.offers (starter_crate|hull_pack|field_kit|heavy_arsenal|commander_cache|start_grant)"
+        },
+        {
+          "name": "placement",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "shop",
+            "defeat",
+            "prestage",
+            "starter_auto",
+            "lobby_grant"
+          ]
+        }
+      ],
+      "trigger": "player taps the offer card price / Collect button",
+      "funnels": [
+        "purchase"
+      ],
+      "feeds": [
+        "offer_ctr"
+      ],
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "offer_purchase",
+      "base": "N0",
+      "category": "shop",
+      "params": [
+        {
+          "name": "offer_id",
+          "type": "string",
+          "required": true,
+          "note": "iap-offer key from iap.offers (starter_crate|hull_pack|field_kit|heavy_arsenal|commander_cache|start_grant)"
+        },
+        {
+          "name": "placement",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "shop",
+            "defeat",
+            "prestage",
+            "starter_auto",
+            "lobby_grant"
+          ]
+        },
+        {
+          "name": "product_id",
+          "type": "string",
+          "required": false,
+          "note": "iap-product key; absent for free start_grant"
+        }
+      ],
+      "trigger": "iap.waitOrder granted for an offer",
+      "funnels": [
+        "purchase"
+      ],
+      "feeds": [
+        "payer_conversion",
+        "starter_share",
+        "hull_pack_share"
+      ],
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "iap",
+      "base": "N0",
+      "category": "shop",
+      "params": [
+        {
+          "name": "product_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "price",
+          "type": "number",
+          "required": true,
+          "min": 0,
+          "note": "localized price value from iap.products"
+        },
+        {
+          "name": "currency_code",
+          "type": "string",
+          "required": true,
+          "note": "ISO 4217 from iap.products"
+        },
+        {
+          "name": "is_test",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "trigger": "iap.waitOrder granted for a paid product (not sent for free offers)",
+      "funnels": [
+        "purchase"
+      ],
+      "feeds": [
+        "payer_conversion",
+        "revenue"
+      ],
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "tutorial_done",
+      "base": false,
+      "category": "ftue",
+      "params": [
+        {
+          "name": "duration_s",
+          "type": "number",
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "skipped",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "trigger": "tutorial finished (last step) or Skip tapped",
+      "funnels": [
+        "ftue"
+      ],
+      "feeds": [
+        "tutorial_completion",
+        "tutorial_skip"
+      ],
+      "gdd": "32 an.tutorial_done",
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "stage_end",
+      "base": false,
+      "category": "progression",
+      "params": [
+        {
+          "name": "level_set",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "campaign",
+            "siege"
+          ]
+        },
+        {
+          "name": "level_n",
+          "type": "integer",
+          "required": true,
+          "min": 1,
+          "max": 30,
+          "note": "stage number; 1 for siege"
+        },
+        {
+          "name": "result",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "clear",
+            "defeat",
+            "quit"
+          ]
+        },
+        {
+          "name": "stars",
+          "type": "integer",
+          "required": true,
+          "min": 0,
+          "max": 3
+        },
+        {
+          "name": "score",
+          "type": "integer",
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "duration_s",
+          "type": "number",
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "lives_lost",
+          "type": "integer",
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "boosters_used",
+          "type": "integer",
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "waves",
+          "type": "integer",
+          "required": true,
+          "min": 0,
+          "note": "siege waves survived; 0 for campaign"
+        },
+        {
+          "name": "continues",
+          "type": "integer",
+          "required": true,
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "trigger": "attempt summary, once per attempt after levelEnd ACK (clear), final Defeat (no continue taken / used) or quit; emitted after level_complete / level_fail",
+      "funnels": [
+        "core_loop"
+      ],
+      "feeds": [
+        "d1_retention_proxy",
+        "difficulty_curve",
+        "siege_engagement"
+      ],
+      "gdd": "32 an.stage_end + an.siege_end",
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "continue_used",
+      "base": false,
+      "category": "progression",
+      "params": [
+        {
+          "name": "level_set",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "campaign",
+            "siege"
+          ]
+        },
+        {
+          "name": "level_n",
+          "type": "integer",
+          "required": true,
+          "min": 1,
+          "max": 30,
+          "note": "stage number; 1 for siege"
+        },
+        {
+          "name": "wave",
+          "type": "integer",
+          "required": true,
+          "min": 0,
+          "note": "0 for campaign"
+        }
+      ],
+      "trigger": "Continue in S08 confirmed: inventory.consume(bst_hull) ok",
+      "funnels": [
+        "core_loop"
+      ],
+      "feeds": [
+        "continue_rate"
+      ],
+      "gdd": "32 an.continue_used",
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "item_earned",
+      "base": false,
+      "category": "economy",
+      "params": [
+        {
+          "name": "item",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "bst_bubble",
+            "bst_shockwave",
+            "bst_fortify",
+            "bst_hull"
+          ]
+        },
+        {
+          "name": "amount",
+          "type": "integer",
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "source_id",
+          "type": "string",
+          "required": true,
+          "note": "source id from ECONOMY.json sources[] (e.g. start_grant_bst_hull, level_first_clear_bst_bubble, daily_bst_hull, iap_hull_pack_bst_hull)"
+        },
+        {
+          "name": "source_type",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "start_grant",
+            "first_clear",
+            "three_star",
+            "finale",
+            "daily",
+            "iap"
+          ]
+        }
+      ],
+      "trigger": "service confirmed a grant (levelEnd reward, daily claim, iap order, start_grant) — one event per item",
+      "funnels": [],
+      "feeds": [
+        "economy_balance"
+      ],
+      "gdd": "32 an.reward_granted",
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "item_spent",
+      "base": false,
+      "category": "economy",
+      "params": [
+        {
+          "name": "item",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "bst_bubble",
+            "bst_shockwave",
+            "bst_fortify",
+            "bst_hull"
+          ]
+        },
+        {
+          "name": "amount",
+          "type": "integer",
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "sink_id",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "use_bubble",
+            "use_shockwave",
+            "use_fortify",
+            "hull_prestage",
+            "hull_continue"
+          ]
+        },
+        {
+          "name": "level_set",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "campaign",
+            "siege"
+          ]
+        }
+      ],
+      "trigger": "inventory.consume confirmed by the service",
+      "funnels": [],
+      "feeds": [
+        "economy_balance"
+      ],
+      "gdd": "32 an.booster_use",
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "purchase_start",
+      "base": false,
+      "category": "shop",
+      "params": [
+        {
+          "name": "offer_id",
+          "type": "string",
+          "required": true,
+          "note": "iap-offer key from iap.offers (starter_crate|hull_pack|field_kit|heavy_arsenal|commander_cache|start_grant)"
+        },
+        {
+          "name": "placement",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "shop",
+            "defeat",
+            "prestage",
+            "starter_auto",
+            "lobby_grant"
+          ]
+        },
+        {
+          "name": "is_free",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "trigger": "iap.purchase called",
+      "funnels": [
+        "purchase"
+      ],
+      "feeds": [
+        "payer_conversion"
+      ],
+      "gdd": "32 an.purchase_start",
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "purchase_result",
+      "base": false,
+      "category": "shop",
+      "params": [
+        {
+          "name": "offer_id",
+          "type": "string",
+          "required": true,
+          "note": "iap-offer key from iap.offers (starter_crate|hull_pack|field_kit|heavy_arsenal|commander_cache|start_grant)"
+        },
+        {
+          "name": "placement",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "shop",
+            "defeat",
+            "prestage",
+            "starter_auto",
+            "lobby_grant"
+          ]
+        },
+        {
+          "name": "product_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "result",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "success",
+            "cancel",
+            "error",
+            "pending"
+          ]
+        },
+        {
+          "name": "is_test",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "trigger": "iap.purchase / iap.waitOrder settled (S11 status)",
+      "funnels": [
+        "purchase"
+      ],
+      "feeds": [
+        "payer_conversion",
+        "hull_pack_share",
+        "starter_share"
+      ],
+      "gdd": "32 an.purchase_result",
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "daily_claim",
+      "base": false,
+      "category": "retention",
+      "params": [
+        {
+          "name": "day",
+          "type": "integer",
+          "required": true,
+          "min": 1,
+          "max": 7
+        }
+      ],
+      "trigger": "daily Claim confirmed by progress.send (S12)",
+      "funnels": [],
+      "feeds": [
+        "daily_engagement"
+      ],
+      "gdd": "32 an.daily_claim",
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "siege_unlock",
+      "base": false,
+      "category": "progression",
+      "params": [],
+      "trigger": "first clear of stage 5 (Siege opens, from progress.init)",
+      "funnels": [],
+      "feeds": [
+        "siege_engagement"
+      ],
+      "gdd": "32 an.siege_unlock",
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "leaderboard_view",
+      "base": false,
+      "category": "social",
+      "params": [
+        {
+          "name": "board",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "siege_best",
+            "campaign_score"
+          ]
+        },
+        {
+          "name": "period",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "weekly",
+            "alltime"
+          ]
+        }
+      ],
+      "trigger": "S13 tab shown after leaderboards.get",
+      "funnels": [],
+      "feeds": [
+        "leaderboard_interest"
+      ],
+      "gdd": "32 an.leaderboard_view",
+      "pii": false,
+      "sampling": 1
+    },
+    {
+      "name": "client_error",
+      "base": false,
+      "category": "error",
+      "params": [
+        {
+          "name": "area",
+          "type": "string",
+          "required": true,
+          "note": "contract function id: progress|levels|inventory|purchases|offers|leaderboards|daily|profile|settings|configs|liveops"
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "required": true,
+          "note": "SDK error code only, no messages / stack"
+        }
+      ],
+      "trigger": "a contract SDK call failed after retries (game-level fallback shown); SDK module failures are not duplicated",
+      "funnels": [],
+      "feeds": [
+        "reliability"
+      ],
+      "gdd": "32 an.service_failed",
+      "pii": false,
+      "sampling": 1
+    }
+  ],
+  "funnels": [
+    {
+      "id": "ftue",
+      "title": "First session to first clear",
+      "steps": [
+        "session_start",
+        "tutorial_step",
+        "tutorial_done",
+        "level_start",
+        "level_complete"
+      ]
+    },
+    {
+      "id": "core_loop",
+      "title": "Attempt, defeat and continue",
+      "steps": [
+        "level_start",
+        "level_fail",
+        "continue_used",
+        "stage_end"
+      ]
+    },
+    {
+      "id": "purchase",
+      "title": "Offer to paid order",
+      "steps": [
+        "offer_shown",
+        "offer_click",
+        "purchase_start",
+        "purchase_result",
+        "offer_purchase",
+        {
+          "event": "iap",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "campaign",
+      "title": "Campaign depth",
+      "steps": [
+        "level_start",
+        "level_complete",
+        "stage_end"
+      ]
+    }
+  ],
+  "kpi": [
+    {
+      "id": "d1_retention",
+      "formula": "players with session_start on day 1 after first session_start / players with first session_start",
+      "events": [
+        "session_start"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "d7_retention",
+      "formula": "players with session_start on day 7 / players with first session_start",
+      "events": [
+        "session_start"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "session_length",
+      "formula": "median session_end.duration_s",
+      "events": [
+        "session_end"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "tutorial_completion",
+      "formula": "players with tutorial_done(skipped=false) / players with tutorial_step(step=1)",
+      "events": [
+        "tutorial_step",
+        "tutorial_done"
+      ],
+      "targetRef": "QUALITY_TARGETS.kpi.tutorial_completion"
+    },
+    {
+      "id": "tutorial_skip",
+      "formula": "players with tutorial_done(skipped=true) / players with tutorial_step(step=1)",
+      "events": [
+        "tutorial_step",
+        "tutorial_done"
+      ],
+      "targetRef": "QUALITY_TARGETS.kpi.tutorial_skip"
+    },
+    {
+      "id": "stage_reach",
+      "formula": "share of players with level_complete(level_set=campaign, level_n=5|10|30) among players with level_start",
+      "events": [
+        "level_start",
+        "level_complete"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "difficulty_curve",
+      "formula": "per level_n: stage_end(result=clear) / stage_end attempts; median attempts to first clear",
+      "events": [
+        "stage_end"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "continue_rate",
+      "formula": "continue_used / level_fail(level_set, reason!=quit)",
+      "events": [
+        "continue_used",
+        "level_fail"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "d1_retention_proxy",
+      "formula": "players with >=1 stage_end on day 1 after first session_start / players with first session_start (AB_PLAN guardrail)",
+      "events": [
+        "stage_end",
+        "session_start"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "payer_conversion",
+      "formula": "players with purchase_result(result=success, product_id present, is_test=false) / players with session_start",
+      "events": [
+        "purchase_result",
+        "session_start"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "starter_share",
+      "formula": "purchase_result(success, offer_id=starter_crate) / purchase_result(success, product_id present)",
+      "events": [
+        "purchase_result"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "hull_pack_share",
+      "formula": "purchase_result(success, offer_id=hull_pack) / purchase_result(success, product_id present)",
+      "events": [
+        "purchase_result"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "offer_ctr",
+      "formula": "offer_click / offer_shown per placement",
+      "events": [
+        "offer_shown",
+        "offer_click"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "revenue",
+      "formula": "sum iap.price by currency_code, is_test=false",
+      "events": [
+        "iap"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "economy_balance",
+      "formula": "per item: sum item_earned.amount by source_type vs sum item_spent.amount by sink_id; resource_shortage per 100 attempts",
+      "events": [
+        "item_earned",
+        "item_spent",
+        "resource_shortage"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "daily_engagement",
+      "formula": "players with daily_claim / players with session_start per day; distribution of day",
+      "events": [
+        "daily_claim",
+        "session_start"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "siege_engagement",
+      "formula": "players with level_start(level_set=siege) / players with siege_unlock; median stage_end.waves for siege",
+      "events": [
+        "siege_unlock",
+        "level_start",
+        "stage_end"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "leaderboard_interest",
+      "formula": "players with leaderboard_view / players with session_start",
+      "events": [
+        "leaderboard_view",
+        "session_start"
+      ],
+      "targetRef": null
+    },
+    {
+      "id": "reliability",
+      "formula": "client_error per 100 sessions by area and code",
+      "events": [
+        "client_error",
+        "session_start"
+      ],
+      "targetRef": null
+    }
+  ]
+}

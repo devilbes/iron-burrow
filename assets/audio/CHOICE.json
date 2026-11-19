@@ -1,0 +1,15 @@
+{
+  "preview": null,
+  "key": "gdd-23-brief",
+  "decisionId": "D-SND-05",
+  "mode": "decideMyself",
+  "reason": "Lite flow has no sound-previews/audio-choice steps and the owner is not asked: one direction taken straight from the GDD 23 brief (dark forge synths + metallic percussion + four-note Burrow motif).",
+  "music": [
+    "mus_lobby",
+    "mus_stage_clay",
+    "mus_stage_iron",
+    "mus_stage_magma",
+    "mus_siege"
+  ],
+  "date": "2026-11-19"
+}
