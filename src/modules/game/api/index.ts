@@ -22,7 +22,22 @@ const HAPTICS: Readonly<Record<Haptic, number | readonly number[]>> = {
 };
 /** Haptic cooldown (GDD 23): a repeat sooner is dropped, deaths always pass. */
 const HAPTIC_COOLDOWN_MS = 150;
-const VERSION = '1.0.0';
+/**
+ * The game's build version (docs/game/PUBLISH.md: release 1.0.1). The pause shows the newer of it
+ * and the app version of the module context (`http.appVersion` of src/boot/start.ts): the context
+ * still says 1.0.0 there, and a later boot bump wins without touching this file.
+ */
+const VERSION = '1.0.1';
+
+/** The newer of two X.Y.Z versions (a malformed one loses). */
+export function newerVersion(a: string | undefined, b: string): string {
+  const parts = (v: string | undefined): number[] | null => (v && /^\d+\.\d+\.\d+$/.test(v) ? v.split('.').map(Number) : null);
+  const x = parts(a); const y = parts(b);
+  if (!x) return b;
+  if (!y) return a as string;
+  for (let i = 0; i < 3; i++) if ((x[i] as number) !== (y[i] as number)) return (x[i] as number) > (y[i] as number) ? a as string : b;
+  return b;
+}
 
 export function gameError(code: GameErrorCode, message: string = code): GameError {
   return Object.assign(new Error(message), { code });
@@ -227,7 +242,7 @@ export function ironBurrow(api: IronBurrowApi): IronBurrow {
     currentLevel: () => ports.currentLevel(), level: (n) => ports.level(n), beginAttempt: (n) => ports.beginAttempt(n),
     endLevel: (n, won, stats) => ports.endLevel(n, won, stats), loadSave: () => ports.loadSave(), save: (s) => ports.save(s),
     track: (e, p) => ports.track(e, p),
-    get env() { return { qa: host.qa, haptics: api.canVibrate(), version: host.ctx?.appVersion ?? VERSION }; },
+    get env() { return { qa: host.qa, haptics: api.canVibrate(), version: newerVersion(host.ctx?.appVersion, VERSION) }; },
     ready: () => host.ready(), refresh: () => api.refresh(),
     campaign: () => api.campaign(), prestage: (mode, n) => api.prestage(mode, n),
     select: (setup) => api.select(setup), selected: () => api.selected(), start: () => api.start(),

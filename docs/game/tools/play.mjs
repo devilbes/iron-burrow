@@ -152,6 +152,9 @@ async function pass([w, h]) {
         if (await next.count()) { await next.first().click(); await page.waitForTimeout(1200); await shot(`tutorial-${k + 2}`, 'tutorial'); }
       }
       await page.waitForTimeout(6000); await shot('game-level1', 'game');
+      log.boxes = await page.evaluate(() => Object.fromEntries(['[data-slot=screen]', '[data-slot="topBar.left"]', '[data-slot="topBar.right"]', '[data-slot="topBar.center"]']
+        .map((sel) => { const r = document.querySelector(sel)?.getBoundingClientRect(); return [sel, r ? [r.x, r.y, r.width, r.height] : null]; })
+        .concat((() => { const out = []; const walk = (n) => { for (const el of n.children ?? []) { if (el.matches('.game,.field-box,canvas.field,[data-screen=game],[data-element=game]')) { const r = el.getBoundingClientRect(); out.push([el.className || el.tagName, [r.x, r.y, r.width, r.height, el.clientHeight]]); } walk(el); if (el.shadowRoot) walk(el.shadowRoot); } }; walk(document.body); return out; })())));
       await press(page.locator('[data-testid=qa-lose]')); await waitDialog(30000); await page.waitForTimeout(1200); await shot('defeat', 'defeat');
     });
     await finish(); return log;
@@ -288,7 +291,7 @@ const logs = await Promise.all(SIZES.map((s) => pass(s).catch((error) => ({ size
 for (const log of logs) {
   console.log(`== ${log.size}${log.fatal ? ` FATAL ${log.fatal}` : ''}`);
   if (log.fatal) continue;
-  console.log(`shots ${log.steps.length}, errors ${log.errors.length}`);
+  console.log(`shots ${log.steps.length}, errors ${log.errors.length}`, log.boxes ? JSON.stringify(log.boxes) : '');
   for (const e of log.errors) console.log('  ', e);
   for (const s of log.steps) if (s.scroll || s.offscreen.length) console.log('  layout', s.shot, s.scroll ? 'PAGE SCROLL' : '', s.offscreen.join('; '));
   for (const v of log.levels) console.log('  level end', v.phase, v.status, JSON.stringify(v.body).slice(0, 400));

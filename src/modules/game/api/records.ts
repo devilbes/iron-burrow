@@ -79,6 +79,22 @@ export function firstClearRewards(meta: MetaRecords, n: number): Reward[] {
   return BOOSTER_IDS.filter((id) => lines.has(id)).map((id) => ({ item: id, amount: lines.get(id) as number }));
 }
 
+/**
+ * Everything a verified clear of stage n grants, as the server does it: the first clear step of
+ * `progress_main` (`firstClearRewards`, the same numbers) and, the first time the stage reaches three
+ * stars, the step of `stars_main` (`three_star` of game.rewards mirrors its reward). Lines of one item
+ * are summed — what the reward window shows next.
+ */
+export function clearRewards(meta: MetaRecords, n: number, earned: { firstClear: boolean; threeStar: boolean }): Reward[] {
+  const lines = new Map<BoosterId, number>();
+  const add = (list: readonly Reward[]): void => {
+    for (const reward of list) lines.set(reward.item, (lines.get(reward.item) ?? 0) + reward.amount);
+  };
+  if (earned.firstClear) add(firstClearRewards(meta, n));
+  if (earned.threeStar) add(rewardsOf(meta.rewards.three_star as Record<string, number>));
+  return BOOSTER_IDS.filter((id) => lines.has(id)).map((id) => ({ item: id, amount: lines.get(id) as number }));
+}
+
 /** Items of a pack (offer) as reward lines; the start grant from its own bundle. */
 export function packItems(meta: MetaRecords, key: OfferKey): Reward[] {
   if (key === 'start_grant') return rewardsOf(meta.rewards.start_grant as Record<string, number>);

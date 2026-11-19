@@ -37,12 +37,17 @@ img{display:block;max-width:100%}
 .rows{display:grid;gap:.35em;margin:0;padding:0;list-style:none}
 .rows li{display:flex;justify-content:space-between;gap:1em}
 .rows b{font-family:var(--mp-font-ui);font-variant-numeric:tabular-nums}
-.toggle{display:flex;align-items:center;justify-content:space-between;gap:1em;width:100%;min-height:48px;
- padding:.25em .8em;border:1px solid var(--mp-line);border-radius:var(--mp-radius-button);
- background:var(--mp-card-surface);color:var(--mp-card-fg)}
-.toggle b{min-width:3.5em;padding:.15em .6em;border-radius:var(--mp-radius-button);
- background:var(--mp-card-muted);color:var(--mp-card-fg);text-align:center}
-.toggle[data-state=on] b{background:var(--mp-card-success);color:var(--mp-card-on-accent)}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:.75em;width:100%;min-height:48px;
+ padding:.3em .5em .3em .9em;border:0;border-radius:0;text-align:left;
+ background:linear-gradient(180deg,var(--mp-card-raised),var(--mp-card-surface) 45%,var(--mp-card-background));
+ box-shadow:inset 0 1px 0 var(--game-plate-light),inset 0 -1px 0 var(--game-plate-dark);color:var(--mp-card-fg);
+ clip-path:polygon(8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0 calc(100% - 8px),0 8px)}
+.toggle b{flex:none;min-width:3.5em;padding:.2em .6em;border-radius:0;text-align:center;
+ font-family:var(--mp-font-ui);font-weight:700;background:var(--mp-window-background);color:var(--mp-card-subtle);
+ box-shadow:inset 0 2px 3px var(--game-shade-strong),inset 0 0 0 1px var(--mp-card-raised);
+ clip-path:polygon(4px 0,calc(100% - 4px) 0,100% 4px,100% calc(100% - 4px),calc(100% - 4px) 100%,4px 100%,0 calc(100% - 4px),0 4px)}
+.toggle[data-state=on] b{background:var(--mp-card-success);color:var(--mp-card-on-accent);
+ box-shadow:inset 0 1px 0 var(--game-plate-shine),0 0 8px var(--game-slit-glow)}
 .rewards{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--mp-gap);margin:0;padding:0;list-style:none}
 .reward{position:relative;display:grid;justify-items:center;gap:.25em;width:var(--reward-size,96px)}
 .reward img,.reward .reward-art{width:var(--reward-size,96px);height:var(--reward-size,96px);object-fit:contain}

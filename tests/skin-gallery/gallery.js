@@ -7,7 +7,9 @@
 // the shell's own rules (src/shell/hud-plan.ts). `game-window` — the game screen with a window the
 // game opens through `ctx.window.open` (src/shell/windows/game.ts) with test content: rating stars,
 // score rows of its own, two buttons; `game-overlay` — a screen overlay (`ctx.overlay`); `buttons` —
-// every button kind (main, second, price, danger, disabled) content-wide and stretched. In every
+// every button kind (main, second, price, danger, disabled) content-wide and stretched;
+// `game-shop`, `game-offer`, `game-purchase-failed` — the game's shop, Starter Crate offer and failed
+// purchase windows (src/screens/shop.ts) with test offers built from the records. In every
 // view with a window or an overlay the dim must cover the viewport edge to edge, top bar included
 // (modal-layers.js). Bundled with the game's modules of src/ (imported as /app/<path>.js) and
 // served by tests/skin-gallery.mjs next to dist/:

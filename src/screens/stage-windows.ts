@@ -5,7 +5,7 @@ import { gameOf, type Match, type SiegeStanding, type StageResult } from '../mod
 import type { ScreenContext } from './index.js';
 import { rewardRow } from './rewards.js';
 import { settingsBody } from './settings.js';
-import { attempt, numberRow, sectionTitle, starsRow, WINDOW_CSS } from './stage-ui.js';
+import { attempt, bigStars, numberRow, sectionTitle, WINDOW_CSS } from './stage-ui.js';
 import { formatNumber, mountLive, mountView, view, type ViewNode } from './ui.js';
 
 export { openDefeat } from './win-defeat.js';
@@ -35,8 +35,14 @@ export async function openPause(ctx: ScreenContext, match: Match): Promise<'resu
   return 'resume';
 }
 
-/** S07: stars, score breakdown, «New Best!», the first clear reward; Next only when there is one. */
+/**
+ * S07: one row of the stage's stars, the score breakdown and «New Best!» beside everything the
+ * clear grants (first clear and the three-star reward: the same lines the reward window shows
+ * next); Next only when there is one. A level end the server did not verify grants nothing: the
+ * window says so («Not Counted») and offers Retry and Map instead of a silent «Stage Clear!».
+ */
 export async function openClear(ctx: ScreenContext, result: StageResult): Promise<'next' | 'replay' | 'map'> {
+  if (!result.verified) return openUnverified(ctx, result);
   const title = result.campaignDone ? ctx.t('screen.clear.campaign_done')
     : result.chapterDone ? ctx.t('screen.clear.chapter_done') : ctx.t('screen.clear.title');
   const actions = [
@@ -46,7 +52,6 @@ export async function openClear(ctx: ScreenContext, result: StageResult): Promis
   ];
   const ticket = ctx.window.open({
     title,
-    header: { stars: result.stars },
     body: (root) => mountView(root, 'stage-clear', () => renderClear(ctx, result), { styles: WINDOW_CSS }),
     actions,
     dismissible: false,
@@ -57,22 +62,39 @@ export async function openClear(ctx: ScreenContext, result: StageResult): Promis
   return 'map';
 }
 
+/** The won run the server did not count (`verified: false`): Retry (S04 of the same stage) or Map. */
+async function openUnverified(ctx: ScreenContext, result: StageResult): Promise<'replay' | 'map'> {
+  const ticket = ctx.window.open({
+    title: ctx.t('screen.clear.unverified_title'),
+    body: (root) => mountView(root, 'stage-unverified', () =>
+      view('div', { class: 'win', 'data-window': 'stage-clear', 'data-state': 'unverified', 'data-mode': result.mode },
+        view('p', { class: 'accent', 'data-testid': 'clear-unverified' }, ctx.t('screen.clear.unverified')),
+        view('p', { class: 'hint' }, ctx.t('screen.clear.unverified_hint'))), { styles: WINDOW_CSS }),
+    actions: [
+      { id: 'clear-replay', label: ctx.t('screen.clear.retry'), variant: 'primary' },
+      { id: 'clear-map', label: ctx.t('screen.clear.map'), variant: 'secondary' },
+    ],
+    dismissible: false,
+  });
+  return (await ticket.result) === 'clear-replay' ? 'replay' : 'map';
+}
+
 function renderClear(ctx: ScreenContext, result: StageResult): ViewNode {
   const b = result.breakdown;
-  const rows = view('ul', { class: 'rows plate' },
+  const rows = view('ul', { class: 'rows groove', 'data-testid': 'clear-rows' },
     numberRow(ctx.t('screen.clear.kills'), formatNumber(b.kills)),
     numberRow(ctx.t('screen.clear.pickups'), formatNumber(b.pickups)),
     numberRow(ctx.t('screen.clear.bonus'), formatNumber(b.clear)),
     numberRow(ctx.t('screen.clear.lives', { count: b.livesLeft }), formatNumber(b.lives)),
-    view('li', { class: 'accent' }, view('span', {}, ctx.t('screen.clear.total')),
+    view('li', { class: 'total' }, view('span', {}, ctx.t('screen.clear.total')),
       view('b', { 'data-testid': 'clear-score', 'data-dynamic': '', 'data-score': result.score }, formatNumber(result.score))));
   return view('div', { class: 'win', 'data-window': 'stage-clear', 'data-state': result.newBest ? 'best' : 'clear',
     'data-mode': result.mode },
-  starsRow(result.stars, 'clear-stars'),
+  bigStars(result.stars, 'clear-stars'),
   view('div', { class: 'cols' },
     view('div', { class: 'col' },
       rows,
-      result.newBest ? view('p', { class: 'accent', 'data-testid': 'clear-best' }, ctx.t('screen.clear.best')) : null),
+      result.newBest ? view('p', { class: 'accent gold', 'data-testid': 'clear-best' }, ctx.t('screen.clear.best')) : null),
     result.rewards.length > 0
       ? view('div', { class: 'col', 'data-testid': 'clear-rewards' },
         sectionTitle(ctx.t('screen.clear.rewards')), rewardRow(ctx, result.rewards))

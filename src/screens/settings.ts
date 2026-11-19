@@ -12,9 +12,12 @@ type SettingKey = keyof Settings;
 
 const DEFAULTS: Settings = { music: true, sfx: true, motion: false, haptics: true };
 
+// The switches fill the width of the window: two columns where two fit (landscape phone, desktop),
+// one in a portrait window; a label never wraps inside a switch.
 const SETTINGS_CSS = `
-.settings{display:grid;gap:.5em;min-width:0}
-.settings-version{margin:0;text-align:center;font-size:.85rem;color:var(--mp-text-2)}
+.settings{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:8px 12px;min-width:0}
+.settings .toggle>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.settings-version{grid-column:1/-1;margin:0;text-align:center;font-size:.85rem;color:var(--mp-text-2)}
 `;
 
 /** Opens the «Sound» window; resolves when it is closed. */

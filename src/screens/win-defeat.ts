@@ -62,12 +62,14 @@ export async function openDefeat(ctx: ScreenContext, match: Match, info: DefeatI
     title: ctx.t('screen.defeat.title'),
     body: (root) => {
       const live = mountLive(root, 'defeat', () => renderDefeat(ctx, match.mode, info, state,
-        { cont: () => { void onContinue(); }, buy: (key) => { void onBuy(key); } }), { styles: WINDOW_CSS });
+        { cont: () => { void onContinue(); }, buy: (key) => { void onBuy(key); } }), { styles: WINDOW_CSS + DEFEAT_CSS });
       refresh = () => live.refresh();
       return () => { refresh = () => undefined; live.off(); };
     },
+    // One orange action per window (UI_ART_BIBLE States): Continue in the body while it is
+    // available, then Retry and Map are steel; without a Continue, Retry is the main one.
     actions: [
-      { id: 'defeat-retry', label: ctx.t('screen.defeat.retry'), variant: 'primary' },
+      { id: 'defeat-retry', label: ctx.t('screen.defeat.retry'), variant: state.cont === 'available' ? 'secondary' : 'primary' },
       { id: 'defeat-map', label: match.mode === 'siege' ? ctx.t('screen.defeat.end_siege') : ctx.t('screen.defeat.map'),
         variant: 'secondary' },
     ],
@@ -87,15 +89,15 @@ function renderDefeat(ctx: ScreenContext, mode: Match['mode'], info: DefeatInfo,
   const reason = info.reason === 'core' ? ctx.t('screen.defeat.core') : ctx.t('screen.defeat.lives');
   const key = state.cont !== 'used' ? state.offers[0] ?? null : null;
   return view('div', { class: 'win', 'data-window': 'defeat', 'data-state': state.cont, 'data-mode': mode },
-    view('p', { class: 'plate window-text', 'data-testid': 'defeat-reason', 'data-reason': info.reason }, reason),
-    view('div', { class: 'cols' },
-      continueBlock(ctx, state, on.cont),
-      key !== null ? offerBlock(ctx, key, state, on.buy) : null));
+    view('p', { class: 'accent defeat-reason', 'data-testid': 'defeat-reason', 'data-reason': info.reason }, reason),
+    continueBlock(ctx, state, on.cont),
+    key !== null ? offerBlock(ctx, key, state, on.buy) : null);
 }
 
+/** Continue with its hint: the window's one orange action, the full width of the body. */
 function continueBlock(ctx: ScreenContext, state: DefeatState, onClick: () => void): ViewNode {
   const used = state.cont === 'used';
-  return view('div', { class: 'col' },
+  return view('div', { class: 'col continue' },
     button(ctx.t('screen.defeat.continue'), onClick, {
       testid: 'defeat-continue', primary: state.cont === 'available',
       disabled: state.cont !== 'available' || state.busy, attrs: { 'data-state': state.cont },
@@ -104,15 +106,27 @@ function continueBlock(ctx: ScreenContext, state: DefeatState, onClick: () => vo
       used ? ctx.t('screen.defeat.continue_used') : ctx.t('screen.defeat.continue_hint')));
 }
 
+/** The hull offer as one compact row: picture, title over the steel buy button. */
 function offerBlock(ctx: ScreenContext, key: OfferKey, state: DefeatState, onBuy: (key: OfferKey) => void): ViewNode {
   const offer = state.views.find((one) => one.key === key) ?? null;
   const first = offer?.items[0]?.item ?? null;
   const art = offerArt(key) ?? (first !== null ? itemArt(first) : null);
   const title = ctx.t(`offer.${key}.title`);
   const label = offer?.price ? ctx.t('screen.shop.buy', { price: offer.price }) : ctx.t('screen.booster.more');
-  return view('div', { class: 'offer', 'data-testid': 'defeat-offer', 'data-pack': key },
-    sectionTitle(ctx.t('screen.defeat.offer_title')),
-    art !== null ? picture(art, title, { class: 'offer-art' }) : null,
-    view('p', { class: 'accent' }, title),
-    button(label, () => onBuy(key), { testid: 'defeat-offer-buy', small: true, disabled: state.busy }));
+  return view('div', { class: 'defeat-offer groove', 'data-testid': 'defeat-offer', 'data-pack': key },
+    art !== null ? picture(art, title, { class: 'defeat-offer-art' }) : null,
+    view('div', { class: 'col' },
+      sectionTitle(ctx.t('screen.defeat.offer_title')),
+      view('p', { class: 'accent' }, title)),
+    button(label, () => onBuy(key), { testid: 'defeat-offer-buy', small: true, disabled: state.busy,
+      attrs: { class: 'mp-button mp-button--small mp-button--secondary' } }));
 }
+
+const DEFEAT_CSS = `
+.defeat-reason{font-size:1.125rem}
+.continue .mp-button{width:100%}
+.defeat-offer{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;padding:8px 12px}
+.defeat-offer .section-title,.defeat-offer .accent{text-align:left}
+.defeat-offer-art{width:56px;height:56px;object-fit:contain}
+.defeat-offer .mp-button{width:auto}
+`;

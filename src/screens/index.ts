@@ -199,10 +199,10 @@ export const HUD: readonly HudEntry[] = [
   // dot while a one-time offer (Starter Crate after its trigger, D-20-12) is in the shop.
   { id: 'store', kind: 'money', icon: 'shop', label: 'screen.hud.shop', open: SHOP,
     status: { on: ['inventory:state:changed'], read: (ctx) => storeStatus(ctx) } },
-  // The game's offer on the right (owner): the kit offer window of the trigger `hud-offer-starter`
+  // The game's offer on the right (owner): the kit offer window of the trigger `hud-starter-crate`
   // (ui.windows/main → iap.offer, placement `starter_auto`: Starter Crate); the tile is there only
   // while that placement has an available offer (bought — gone), with its OFFERS picture.
-  { id: 'offer-starter', kind: 'money', icon: 'gift', label: 'offer.starter_crate.title', offer: true },
+  { id: 'starter-crate', kind: 'money', icon: 'gift', label: 'offer.starter_crate.title', offer: true },
 ];
 
 /** Shop tile badge: a dot while the shop has a one-time offer; nothing when the shop is unavailable. */

@@ -97,7 +97,11 @@
         "save_title": "Save failed",
         "save_failed": "Couldn't save the result.",
         "retry_save": "Retry saving",
-        "leave": "Map"
+        "leave": "Map",
+        "unverified_title": "Not Counted",
+        "unverified": "Result not counted — try again.",
+        "unverified_hint": "The server could not confirm this run, so it gives no stars or rewards.",
+        "retry": "Retry"
       },
       "defeat": {
         "title": "Defeat",

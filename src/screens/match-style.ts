@@ -11,8 +11,8 @@ const STEEL = 'linear-gradient(180deg,var(--mp-card-raised),var(--mp-card-surfac
 
 export const MATCH_CSS = `
 :host{height:100%;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:none}
-.game{--cut:var(--game-cut,8px);--hint-h:76px;display:grid;height:100%;min-height:0;gap:8px;padding:8px;overflow:hidden;
- grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+.game{--cut:var(--game-cut,8px);--hint-h:84px;display:grid;height:100%;min-height:0;gap:8px;padding:4px 8px 8px;overflow:hidden;
+ grid-template-columns:minmax(0,1fr) auto;
  grid-template-rows:auto var(--hint-h) minmax(0,1fr) auto auto;
  grid-template-areas:"a b" "t t" "f f" "k k" "s r"}
 .game[data-layout=landscape],.game[data-layout=desktop]{
@@ -23,6 +23,14 @@ export const MATCH_CSS = `
 .game[data-layout=desktop]{padding:16px;gap:16px}
 .panel{display:flex;flex-wrap:wrap;align-items:center;gap:6px;min-width:0;align-content:flex-start}
 .pa{grid-area:a}.pb{grid-area:b;justify-content:flex-end}
+[data-layout=portrait] .pa{flex-wrap:nowrap;gap:5px}
+[data-layout=portrait] .chip{flex:1 1 0;justify-content:center;min-width:0;padding:2px 6px;gap:4px}
+[data-layout=portrait] .chip img{width:24px;height:24px}
+[data-layout=portrait] .boosters{align-items:center}
+[data-layout=portrait] .boosters>.chip{flex:none;min-height:48px}
+[data-layout=landscape] .zone-t{grid-area:x;align-content:center}
+[data-layout=landscape] .tut{grid-template-columns:auto minmax(0,1fr);padding:8px}
+[data-layout=landscape] .tut-actions{grid-row:auto;grid-column:1 / -1;justify-content:flex-end}
 [data-layout=landscape] .pa{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 [data-layout=desktop] .pa,[data-layout=desktop] .pb{flex-direction:column;align-items:stretch}
 .field-box{grid-area:f;position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0}
@@ -79,7 +87,7 @@ export const MATCH_CSS = `
 [data-layout=desktop] .booster .key{top:50%;transform:translateY(-50%)}
 .zone-s{grid-area:s;display:flex;align-items:flex-end;justify-content:flex-start;min-height:0}
 .zone-r{grid-area:r;display:flex;align-items:flex-end;justify-content:flex-end;min-height:0}
-.stick{position:relative;flex:none;width:clamp(112px,34vmin,168px);aspect-ratio:1;border-radius:50%;
+.stick{position:relative;flex:none;width:clamp(112px,32vmin,160px);aspect-ratio:1;border-radius:50%;
  background:var(--mp-card-surface);touch-action:none}
 [data-layout=landscape] .stick{width:clamp(104px,30vmin,140px)}
 .stick>img{width:100%;height:100%}

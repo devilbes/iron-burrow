@@ -37,7 +37,8 @@
   --mp-card-warning:#FFB23F;
   --mp-card-info:#CFE6E8;
   --mp-card-gold:#FFC845;            /* points, rewards */
-  --mp-card-overlay:rgba(10,17,24,.80); /* dim behind windows */
+  --mp-card-overlay:rgba(10,17,24,.90); /* dim behind windows: strong enough that the lobby logo
+                                        never competes with a window's nameplate (LOOK Н-71) */
   --game-shade:#0A1118;              /* shadows */
   --mp-gold-edge:#B5713F;            /* chests, wood, medals */
   --mp-wood:#5D6B75;
@@ -112,6 +113,7 @@
   --game-cut:8px;                    /* buttons, tiles, capsules, cards */
   --game-cut-close:6px;              /* close plate */
   --game-cut-badge:4px;              /* badges */
+  --game-cut-groove:6px;             /* sunk grooves in a window: tables, goal, reason (id-glow-inset) */
   --game-frame-outline:1px;          /* id-forged-frame: outer outline */
   --game-frame-bevel:2px;            /* bevel inside the outline */
   --game-slit-inset:6px;             /* the slit, from the outer edge */
@@ -121,12 +123,14 @@
   --game-plate-overhang:22px;        /* how far it rises over the top edge of the window */
   --game-plate-chamfer:12px;         /* 45° ends of the plate */
   --game-plate-line:2px;             /* glowing magma line under the title */
-  --game-plate-pad:28px;             /* side room of the title text on the plate */
-  --game-title-size:20px;            /* phones: 24px (map) broke LEADERBOARD mid-word in a 390px window */
+  --game-plate-pad:clamp(14px,3.5vw,28px); /* side room of the title text on the plate (phones: less,
+                                        so LEADERBOARDS fits one line in a 390px window) */
+  --game-title-size:18px;            /* phones: 24px (map) broke LEADERBOARD mid-word in a 390px window */
   --game-title-size-wide:32px;
   --game-button-face:4px;            /* id-button-face: lower face; pressed: 2px and sinks 2px */
   --game-button-face-pressed:2px;
   --game-close-size:40px;            /* id-close-plate */
+  --game-window-pad:24px;            /* air between the frame and the body / action row (bible: panel padding 24) */
   --game-close-bar:4px;
   --game-close-bar-len:18px;
   --game-shadow-room:16px;           /* room around the window where its shadow shows */
@@ -138,7 +142,7 @@
   --game-shadow-raised:0 2px 4px color-mix(in srgb,var(--game-shade) 24%,transparent);
   --game-shadow-floating:0 6px 12px color-mix(in srgb,var(--game-shade) 32%,transparent);
   --game-shadow-modal:0 12px 24px color-mix(in srgb,var(--game-shade) 40%,transparent);
-  --kit-title-size:clamp(var(--game-title-size),2.5vw,var(--game-title-size-wide)); /* 24px phone, 32px desktop */
+  --kit-title-size:clamp(var(--game-title-size),2.5vw,var(--game-title-size-wide)); /* 18px phone, 32px desktop */
   --kit-title-weight:400;
   --kit-title-depth:2px;             /* window titles (plate text, COMMON): the one restrained text
                                         shadow 0 2px 0 slate_abyss; color --kit-title-top */

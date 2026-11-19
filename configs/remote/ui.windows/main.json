@@ -5,7 +5,7 @@
       { "id": "reward-on-grant", "on": { "event": "inventory:items:granted" }, "priority": 20,
         "do": [{ "module": "ui.reward", "action": "main" }] },
       { "id": "hud-shop", "on": { "element": "hud:shop" }, "do": [{ "module": "iap", "action": "main" }] },
-      { "id": "hud-offer-starter", "on": { "element": "hud:offer-starter" },
+      { "id": "hud-starter-crate", "on": { "element": "hud:starter-crate" },
         "do": [{ "module": "iap", "action": "offer", "params": { "placement": "starter_auto" } }] },
       { "id": "hud-leaderboards", "on": { "element": "hud:leaderboards" }, "do": [{ "module": "leaderboards", "action": "main" }] },
       { "id": "hud-profile", "on": { "element": "hud:profile" }, "do": [{ "module": "profile-ui", "action": "main" }] },

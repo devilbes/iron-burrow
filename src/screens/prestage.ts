@@ -54,7 +54,7 @@ export async function openPrestage(ctx: ScreenContext, mode: Mode, n: number,
     title: mode === 'siege' ? ctx.t('screen.pre.title_siege') : ctx.t('screen.pre.title', { n }),
     body: (root) => {
       const live = mountLive(root, 'prestage', () => render(ctx, mode, state, offline, { flip, getMore }),
-        { styles: WINDOW_CSS });
+        { styles: WINDOW_CSS + PRESTAGE_CSS });
       refresh = () => live.refresh();
       const stop = game.onBalances(() => { void reread(); });
       return () => { stop(); refresh = () => undefined; live.off(); };
@@ -77,19 +77,30 @@ function render(ctx: ScreenContext, mode: Mode, state: PrestageState, offline: b
   const info = state.info;
   const goal = mode === 'siege' ? ctx.t('screen.pre.goal_siege')
     : info ? ctx.t('screen.pre.goal', { count: info.goal }) : null;
+  // Two columns where the window is wide (landscape phone, desktop): the goal, the record and Spare
+  // Hull on the left, the first clear reward on the right; one column in a portrait window.
   return view('div', { class: 'win', 'data-window': 'prestage', 'data-state': state.hull, 'data-mode': mode },
-    goal === null ? null : view('p', { class: 'plate window-text', 'data-testid': 'prestage-goal' }, goal),
-    info ? view('div', { class: 'col' },
-      view('p', { class: 'accent', 'data-testid': 'prestage-best', 'data-dynamic': '' },
-        ctx.t('screen.pre.best', { score: formatNumber(info.best) })),
-      starsRow(info.stars, 'prestage-stars')) : null,
-    info ? hullBlock(ctx, state, on) : null,
-    info && info.rewards.length > 0
-      ? view('div', { class: 'col', 'data-testid': 'prestage-rewards' },
-        sectionTitle(ctx.t('screen.pre.rewards')), rewardRow(ctx, info.rewards))
-      : null,
+    view('div', { class: 'cols' },
+      view('div', { class: 'col' },
+        goal === null ? null : view('p', { class: 'plate window-text', 'data-testid': 'prestage-goal' }, goal),
+        info ? view('div', { class: 'best' },
+          view('p', { class: 'accent', 'data-testid': 'prestage-best', 'data-dynamic': '' },
+            ctx.t('screen.pre.best', { score: formatNumber(info.best) })),
+          starsRow(info.stars, 'prestage-stars')) : null,
+        info ? hullBlock(ctx, state, on) : null),
+      info && info.rewards.length > 0
+        ? view('div', { class: 'col', 'data-testid': 'prestage-rewards' },
+          sectionTitle(ctx.t('screen.pre.rewards')), rewardRow(ctx, info.rewards))
+        : null),
     offline ? view('p', { class: 'plate window-text', 'data-testid': 'prestage-offline' }, ctx.t('screen.pre.offline')) : null);
 }
+
+const PRESTAGE_CSS = `
+.best{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 12px}
+.best .stars svg{width:24px;height:24px}
+.toggle .col{gap:0}
+.toggle .muted{font-size:.85rem}
+`;
 
 function hullBlock(ctx: ScreenContext, state: PrestageState,
   on: { flip: () => void; getMore: () => Promise<void> }): ViewNode {

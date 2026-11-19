@@ -1,7 +1,7 @@
 // S13 Leaderboards game window: two boards (Siege best of the week, campaign score of all time) as
-// tabs of the body, a period switch, the rows with medals for the top three, the player's own row
+// tabs of the body, the board's period as a label, the rows with medals for the top three, the player's own row
 // pinned under the list, the reset countdown, the guest hint (CONTRACT §4 S13, §6, D-GC-07).
-// Tabs and the period are buttons of the body (they keep the window open); the kit button closes.
+// Tabs are buttons of the body (they keep the window open); the kit button closes.
 import { gameOf, type Board, type BoardPage, type BoardRow, type IronBurrow, type Period } from '../modules/game/index.js';
 import { sound } from './audio.js';
 import type { ScreenContext } from './index.js';
@@ -25,17 +25,23 @@ interface BoardsState {
 }
 
 const BOARDS_CSS = `
-.tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5em}
-.tabs .mp-button[data-state=active]{background:var(--mp-violet-deep);color:var(--mp-on-accent);border-color:transparent}
-.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5em}
-.bar .mp-button{width:auto;flex:none}
+.tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.tabs .mp-button{border:0;border-radius:0;color:var(--mp-card-subtle);background:var(--mp-card-surface);
+ box-shadow:inset 0 2px 3px var(--game-shade-strong);
+ clip-path:polygon(8px 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%,0 8px)}
+.tabs .mp-button[data-state=active]{color:var(--mp-card-fg);
+ background:linear-gradient(180deg,color-mix(in srgb,var(--game-steel-teal) 78%,var(--mp-card-fg)),var(--game-steel-teal) 55%);
+ box-shadow:inset 0 -3px 0 var(--mp-card-accent)}
+.bar{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px}
+.period{margin:0;font-family:var(--mp-font-ui);font-weight:700;color:var(--mp-card-muted)}
 .reset{margin:0;font-size:.85rem;color:var(--mp-text-2)}
-.list{display:grid;gap:.25em;margin:0;padding:0;list-style:none;max-height:min(44vh,22rem);overflow-y:auto;
+.list{display:grid;gap:4px;margin:0;padding:0;list-style:none;max-height:min(44vh,22rem);overflow-y:auto;
  overscroll-behavior:contain}
 .row{display:grid;grid-template-columns:2.5em minmax(0,1fr) auto;align-items:center;gap:.5em;
- min-height:40px;padding:.2em .6em;border:1px solid var(--mp-line);border-radius:var(--mp-radius-field);
- background:var(--mp-night)}
-.row[data-self]{border-color:var(--mp-card-success)}
+ min-height:40px;padding:.2em .6em;border:0;border-radius:0;background:var(--mp-window-background);
+ box-shadow:inset 0 2px 3px var(--game-shade-strong);
+ clip-path:polygon(4px 0,calc(100% - 4px) 0,100% 4px,100% calc(100% - 4px),calc(100% - 4px) 100%,4px 100%,0 calc(100% - 4px),0 4px)}
+.row[data-self]{box-shadow:inset 0 0 0 1px var(--mp-card-success),inset 0 0 8px var(--game-slit-glow)}
 .rank{display:grid;place-items:center;width:2.25em;height:2.25em;
  font-family:var(--mp-font-ui);font-weight:700;font-variant-numeric:tabular-nums}
 .rank>*{grid-area:1/1}
@@ -73,16 +79,11 @@ export async function openBoards(ctx: ScreenContext, board?: Board): Promise<voi
     state.period = BOARDS.find((entry) => entry.id === next)?.period ?? state.period;
     void load();
   };
-  const flipPeriod = (): void => {
-    click(game);
-    state.period = state.period === 'weekly' ? 'alltime' : 'weekly';
-    void load();
-  };
 
   const ticket = ctx.window.open({
     title: ctx.t('screen.boards.title'),
     body: (root) => {
-      const live = mountLive(root, 'leaderboards', () => render(ctx, state, { pick, flipPeriod }),
+      const live = mountLive(root, 'leaderboards', () => render(ctx, state, { pick }),
         { styles: WINDOW_CSS + BOARDS_CSS + medalCss() });
       refresh = () => live.refresh();
       return () => { refresh = () => undefined; live.off(); };
@@ -114,7 +115,7 @@ function periodLabel(ctx: ScreenContext, period: Period): string {
 }
 
 function render(ctx: ScreenContext, state: BoardsState,
-  on: { pick: (board: Board) => void; flipPeriod: () => void }): ViewNode {
+  on: { pick: (board: Board) => void }): ViewNode {
   const page = state.status === 'ready' ? state.page : null;
   const tabs = view('div', { class: 'tabs', role: 'tablist' }, ...BOARDS.map((entry) => {
     const active = entry.id === state.board;
@@ -123,9 +124,11 @@ function render(ctx: ScreenContext, state: BoardsState,
       'data-state': active ? 'active' : 'idle', onClick: () => on.pick(entry.id) }, boardLabel(ctx, entry.id));
   }));
   const reset = page?.resetsAt ? resetText(ctx, page.resetsAt) : null;
+  // Each board has one period of its own definition (siege — the week, campaign — all time): it is
+  // a label of the board, not a switch with nothing to switch to.
   const bar = view('div', { class: 'bar' },
-    view('button', { type: 'button', class: 'mp-button mp-button--small', 'data-testid': 'boards-period',
-      'data-state': state.period, 'data-dynamic': '', onClick: () => on.flipPeriod() }, periodLabel(ctx, state.period)),
+    view('p', { class: 'period', 'data-testid': 'boards-period', 'data-state': state.period, 'data-dynamic': '' },
+      periodLabel(ctx, state.period)),
     reset === null ? null : view('p', { class: 'reset', 'data-testid': 'boards-reset', 'data-dynamic': '' }, reset));
   return view('div', { class: 'win', 'data-window': 'leaderboards', 'data-state': state.status,
     'data-board': state.board, 'data-period': state.period }, tabs, bar, ...content(ctx, state, page));

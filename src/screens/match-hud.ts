@@ -126,9 +126,10 @@ function boosterButton(ctx: ScreenContext, m: HudModel, a: HudActions, b: Booste
   m.coarse ? null : keyCap(ctx, key));
 }
 
-function boosters(ctx: ScreenContext, m: HudModel, a: HudActions): ViewNode {
+function boosters(ctx: ScreenContext, m: HudModel, a: HudActions, lead: ViewNode | null): ViewNode {
   const list = m.view?.hud.boosters ?? [];
   return view('div', { class: 'boosters', 'data-pulse': m.view?.tutorial?.target === 'boosters' ? 'true' : undefined },
+    lead,
     ...list.map((b, i) => boosterButton(ctx, m, a, b, i)),
     m.qa ? view('div', { class: 'qa' },
       button(ctx.t('screen.qa.win'), () => a.qaWin(), { testid: 'qa-win', small: true }),
@@ -177,20 +178,23 @@ export function phaseState(v: MatchView | null): string {
 /** The screen tree. `data-state` of the canvas and the numbers are kept current by match-live.ts. */
 export function renderMatch(ctx: ScreenContext, m: HudModel, a: HudActions): ViewNode {
   const wave = m.view !== null && m.view.hud.stage === null && m.view.hud.wave !== null;
+  const portrait = m.layout === 'portrait';
   return view('section', { class: 'game', 'data-window': 'game', 'data-layout': m.layout,
     'data-input': m.coarse ? 'touch' : 'keys', 'data-mode': m.mode ?? undefined },
   view('div', { class: 'panel pa' }, ...stats(ctx, m.view, wave)),
-  view('div', { class: 'panel pb' }, scoreChip(ctx, m.view), pauseButton(ctx, m, a)),
+  // Portrait: the stats and the pause share the top row, the score goes to the booster row.
+  view('div', { class: 'panel pb' }, portrait ? null : scoreChip(ctx, m.view), pauseButton(ctx, m, a)),
   view('div', { class: 'field-box' },
     view('canvas', { class: 'field', 'data-testid': 'game-field', 'data-grid': '13x13', 'data-state': phaseState(m.view),
       'aria-hidden': 'true' }),
     view('p', { class: 'toast', 'data-testid': 'hud-toast', 'data-state': m.toast ? 'shown' : 'idle', role: 'status',
       'aria-live': 'polite' }, m.toast ?? ''),
-    // Landscape and desktop: the hint banner lies over the top edge of the field (no room above it).
-    m.layout === 'portrait' ? null : hints(ctx, m, a)),
-  boosters(ctx, m, a),
-  // Portrait: the banner has its own fixed slot above the field, so the field keeps its size.
-  m.layout === 'portrait' ? hints(ctx, m, a) : null,
+    // Desktop: the hint banner lies over the top edge of the large field.
+    m.layout === 'desktop' ? hints(ctx, m, a) : null),
+  boosters(ctx, m, a, portrait ? scoreChip(ctx, m.view) : null),
+  // Portrait: the banner has its own fixed slot above the field (the field keeps its size);
+  // landscape: the free middle of the left panel, between the stats and the stick.
+  m.layout === 'desktop' ? null : hints(ctx, m, a),
   stickZone(ctx, m, a),
   fireZone(ctx, m, a));
 }
