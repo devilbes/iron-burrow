@@ -95,7 +95,7 @@ export class Shop {
       } catch { status = 'failed'; }
     }
     if (status === 'success') {
-      void this.host.inventory?.refresh().then(() => this.host.emitBalances(), () => undefined);
+      // The grant reaches the inventory by the server's push (realtime), never by a re-read here.
       this.host.ports.track('offer_purchase', { offer_id: key, placement, product_id: free ? '' : key });
       for (const line of items) this.host.ports.track('item_earned', { item: line.item, amount: line.amount, source_id: key, source_type: free ? 'grant' : 'purchase' });
     }
