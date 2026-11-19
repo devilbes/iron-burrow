@@ -100,3 +100,10 @@ LevelController:
 Стадии 11–15 при одинаковых числах главы заметно тяжелее 16–20 (при `fire_mult` главы 2 выше 1.4
 появляется нарушение `bal.sim.novice.monotonic_violations`): карты 11–15 стоит открыть, а 16–20 — закрыть,
 чтобы у главы 2 был запас по монотонности.
+
+## R6. Обвязка тестов (package.json, scripts/check.mjs — не шаг логики)
+
+Добавить `"tests/game/index.js"` (или `"tests/game/*.spec.mjs"`) в `test:unit` и в список `scripts/check.mjs`,
+чтобы `npm run check` гонял тесты правил и контроллера. Сейчас они идут командой `node --test tests/game/`
+и названы `*.spec.mjs`, потому что `tests/test-set.test.mjs` требует каждый `*.test.mjs` в globs `test:unit`.
+Симуляции баланса — `node tests/sim/<id>.mjs [seed…]` (минуты на первый прогон сида, потом из `.cache/sim/`).
