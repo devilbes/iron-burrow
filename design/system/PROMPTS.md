@@ -1,0 +1,11 @@
+# Style anchor generation
+
+Source: built-in Codex image_gen. One call, no regeneration. No pre-existing anchor; this call creates it from GDD 21 and the narrative. The image is a material reference, not production UI art.
+
+## Exact prompt
+
+Use case: stylized-concept. Create a single polished visual style anchor for Iron Burrow, a friendly fast underground drill-tank arcade game. Output square 1024x1024 PNG, authored as a 2x reference (512x512 display). This is an abstract tactile material study / art direction contact board, NOT a game screen, NOT a UI layout, NOT an icon sheet. Arrange a few large, beautifully rendered forged armor material samples on a deep slate background: dominant cold slate-blue steel (#121E29 #1E2E3D #2F4558), one substantial teal enamel steel sample (#2F7D86 #6FC2C4 #CFE6E8) with softly chipped edges, and a smaller bright hot orange enamel inset (#B8320C #FF6A1A #FFB23F) near a glowing amber mineral core material (#FFC845 #FFF4D6). Characteristic 45-degree clipped armor corners with gently rounded bevels, sparse chunky rivets, dark outer edge #0A1118 and pale inner bevel. Few tiny acid green mineral specks (#9BFF2E) confined to the far edge as a hostile-color accent, never on friendly teal. Top-down orthographic camera, one soft upper-left studio light, subtle down-right soft dark blue shadows. Premium hand-rendered 2D casual game volume, toy-like thick proportions, tactile satin metal, restrained scratches, broad calm surfaces, cold dark majority and a single warm focal area, readable grayscale hierarchy. No gritty realism, no paper, wood or parchment, no perspective, no characters, no tanks, no bugs, no standalone icons, no buttons, no windows, no screens, no UI controls. Material samples overlap naturally as one authored composition, generous breathing space, beautiful finish. NO TEXT, NO LETTERS, NO NUMBERS, NO LOGOS
+
+## Subsequent assets
+
+Attach STYLE_REF-2x.png and include exact role colors from palette.json. Use this prefix: “Iron Burrow: tactile toy-scale forged slate armor, teal enamel, clipped 45-degree corners, sparse chunky rivets, pale inner bevel, dark blue outline, soft upper-left light, warm orange action and amber Core highlights.” For rotating game objects replace directional light with a centered overhead dome. End prompts with: NO TEXT, NO LETTERS, NO NUMBERS, NO LOGOS.
