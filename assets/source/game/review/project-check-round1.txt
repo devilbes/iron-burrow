@@ -1,0 +1,1419 @@
+npm warn Unknown env config "store-dir". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "cache-dir". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm notice run manyplay-game@1.0.0 check
+npm notice run node scripts/check.mjs
+FAIL build (types, bundle, dist/) (0.2 s)
+FAIL pictures of assets/ (1x made from 2x) (0.5 s)
+FAIL records of configs/remote/ (0.8 s)
+FAIL tests (32.2 s) — 69 tests
+skip skin gallery — PLAYWRIGHT (path to the playwright package) is not set: no screenshots were taken
+
+──── FAIL build (types, bundle, dist/) ────
+node:internal/modules/package_json_reader:331
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/build.mjs
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+    at packageResolve (node:internal/modules/esm/resolve:784:25)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.21.0
+
+──── FAIL pictures of assets/ (1x made from 2x) ────
+folder            files  ok  problems
+assets/game          87   0        87
+assets/ui             1   0         1
+assets/ui/icons      29   0        29
+assets/ui/items       4   0         4
+assets/ui/offers      5   0         5
+total               126   0       126
+PROBLEM assets/game/app_icon-2x.webp: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/bullet_enemy-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/bullet_player-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/core-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/core_wall_brick-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/core_wall_steel-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/ctrl_fire-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/ctrl_stick_base-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/ctrl_stick_knob-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/daily_crate-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/enemy_brute-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/enemy_brute_damage-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/enemy_grunt-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/enemy_gunner-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/enemy_scout-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/fx_bubble-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/fx_explosion_big-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/fx_explosion_core-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/fx_explosion_small-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/fx_frost-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/fx_hit_spark-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/fx_shockwave-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/fx_spawn-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_back-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_bst_bubble-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_bst_fortify-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_bst_hull-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_bst_shockwave-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_daily-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_enemy_left-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_gun-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_haptics-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_info-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_leaderboard-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_life-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_music-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_pause-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_sfx-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_shop-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_siege-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_stage-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/icon_wave-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/logo_iron_burrow-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/medal_top3-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/node_finale-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/node_lock-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/node_stage-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/pack_commander_cache-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/pack_field_kit-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/pack_heavy_arsenal-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/pack_hull-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/pack_starter-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/player_hull-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/player_turret_l0-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/player_turret_l1-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/player_turret_l2-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/player_turret_l3-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/pu_bubble-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/pu_freeze-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/pu_hull-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/pu_quake-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/pu_rebar-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/pu_star-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/scene-2x.webp: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/scene-game-2x.webp: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/scene-map-2x.webp: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/star_big-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/star_small-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_clay_brick-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_clay_floor-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_clay_lava-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_clay_oil-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_clay_roots-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_clay_steel-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_iron_brick-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_iron_floor-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_iron_lava-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_iron_oil-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_iron_roots-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_iron_steel-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_magma_brick-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_magma_floor-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_magma_lava-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_magma_oil-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_magma_roots-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tile_magma_steel-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/game/tut_hand-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/game-icons-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/boost-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/brand-mark-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/calendar-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/check-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/clock-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/close-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/coins-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/flame-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/gems-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/gift-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/heart-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/hud-hud-item-view-1-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/hud-settings-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/lock-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/medal-1-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/medal-2-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/medal-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/medal-3-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/no-signal-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/play-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/quest-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/rating-star-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/retry-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/shop-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/sparkle-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/star-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/stopwatch-chip-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/trophy-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/icons/user-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/items/bst_bubble-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/items/bst_fortify-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/items/bst_hull-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/items/bst_shockwave-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/offers/offer-commander_cache-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/offers/offer-field_kit-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/offers/offer-heavy_arsenal-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/offers/offer-hull_pack-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+PROBLEM assets/ui/offers/offer-starter_crate-2x.png: cannot be read (assets: the sharp package is not installed (npm install): Cannot find package 'sharp' imported from /project/wt/6afedf853ab89bcf62ba1e0b/scripts/assets.mjs)
+
+assets --check FAILED in 0.3 s: 126 problems
+
+──── FAIL records of configs/remote/ ────
+schemas/levels.endless.json: the JSON Schema validator (ajv, devDependencies) is not installed: run `npm install`
+
+──── FAIL tests ────
+✖ failing tests:
+
+test at tests/build/bundle.test.mjs:10:1
+✖ bundles, minifies and maps the game code, CSS and page (985.25483ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-Q2iqRC/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/bundle.test.mjs:19:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/bundle.test.mjs:69:1
+✖ starter artifact has visible baseline styles and uses the public project name safely (910.110067ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-8ETgU6/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/bundle.test.mjs:72:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/bundle.test.mjs:96:4
+✖ built page: title and language from the project name, neutral first frame (801.684121ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-pTC44S/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/bundle.test.mjs:98:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/bundle.test.mjs:96:4
+✖ built page: title and language from the game title of the base locale without a project name, neutral first frame (1115.895862ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-c3rfDS/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/bundle.test.mjs:98:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/bundle.test.mjs:96:4
+✖ built page: title and language from a base locale other than English, neutral first frame (757.084325ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-OhLWNA/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/bundle.test.mjs:98:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/debug.test.mjs:10:1
+✖ prod artifact excludes nested debug sources and clears stale output (731.041474ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-QRKY0u/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/debug.test.mjs:16:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/debug.test.mjs:24:1
+✖ prod does not typecheck excluded debug roots (756.955182ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-8QOWXN/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/debug.test.mjs:26:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/debug.test.mjs:31:3
+✖ local/dev build retains debug sources (845.435042ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-09lVX7/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/debug.test.mjs:33:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/debug.test.mjs:31:3
+✖ local/test build retains debug sources (870.018258ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-a0mBlR/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/debug.test.mjs:33:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/debug.test.mjs:31:3
+✖ local/null build retains debug sources (911.914873ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-LSHQTR/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/debug.test.mjs:33:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/debug.test.mjs:31:3
+✖ local/undefined build retains debug sources (901.757088ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-rCdYbx/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/debug.test.mjs:33:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/debug.test.mjs:39:3
+✖ prod rejects imported debug source: import { debug } from "./debug/menu.js"; console.log(debug); (1158.863142ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Prod build imports src\/debug/. Input:
+  
+  'node:internal/modules/package_json_reader:331\n' +
+    '  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n' +
+    '        ^\n' +
+    '\n' +
+    "Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-Ahp3ib/scripts/build.mjs\n" +
+    '    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)\n' +
+    '    at packageResolve (node:internal/modules/esm/resolve:784:25)\n' +
+    '    at moduleResolve (node:internal/modules/esm/resolve:873:18)\n' +
+    '    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n' +
+    '    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n' +
+    '    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n' +
+    '    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n' +
+    '    at #resolve (node:internal/modules/esm/loader:687:17)\n' +
+    '    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n' +
+    '    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {\n' +
+    "  code: 'ERR_MODULE_NOT_FOUND'\n" +
+    '}\n' +
+    '\n' +
+    'Node.js v24.21.0\n'
+  
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/debug.test.mjs:46:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: "node:internal/modules/package_json_reader:331\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-Ahp3ib/scripts/build.mjs\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)\n    at packageResolve (node:internal/modules/esm/resolve:784:25)\n    at moduleResolve (node:internal/modules/esm/resolve:873:18)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v24.21.0\n",
+    expected: /Prod build imports src\/debug/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/build/debug.test.mjs:39:3
+✖ prod rejects imported debug source: void import("./debug/menu.js"); (954.375733ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Prod build imports src\/debug/. Input:
+  
+  'node:internal/modules/package_json_reader:331\n' +
+    '  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n' +
+    '        ^\n' +
+    '\n' +
+    "Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-1moZai/scripts/build.mjs\n" +
+    '    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)\n' +
+    '    at packageResolve (node:internal/modules/esm/resolve:784:25)\n' +
+    '    at moduleResolve (node:internal/modules/esm/resolve:873:18)\n' +
+    '    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n' +
+    '    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n' +
+    '    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n' +
+    '    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n' +
+    '    at #resolve (node:internal/modules/esm/loader:687:17)\n' +
+    '    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n' +
+    '    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {\n' +
+    "  code: 'ERR_MODULE_NOT_FOUND'\n" +
+    '}\n' +
+    '\n' +
+    'Node.js v24.21.0\n'
+  
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/debug.test.mjs:46:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: "node:internal/modules/package_json_reader:331\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-1moZai/scripts/build.mjs\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)\n    at packageResolve (node:internal/modules/esm/resolve:784:25)\n    at moduleResolve (node:internal/modules/esm/resolve:873:18)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v24.21.0\n",
+    expected: /Prod build imports src\/debug/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/build/files.test.mjs:11:1
+✖ new template builds from an archive without design/source artwork and keeps runtime inputs (883.53634ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-LzSo2a/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/files.test.mjs:37:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/files.test.mjs:48:3
+✖ dev build preserves every locked vendor file, including SDK README (774.503899ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-T5khV5/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/files.test.mjs:66:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/files.test.mjs:48:3
+✖ test build preserves every locked vendor file, including SDK README (773.232451ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-tZqdUk/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/files.test.mjs:66:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/files.test.mjs:48:3
+✖ prod build preserves every locked vendor file, including SDK README (828.462818ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-ue6cJ9/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/files.test.mjs:66:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/files.test.mjs:80:3
+✖ dev build preserves uploaded assets outside the generated/audio directories (694.306931ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-0oDxcN/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/files.test.mjs:88:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/files.test.mjs:80:3
+✖ test build preserves uploaded assets outside the generated/audio directories (711.311394ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-9QCJ5O/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/files.test.mjs:88:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/files.test.mjs:80:3
+✖ prod build preserves uploaded assets outside the generated/audio directories (799.891163ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-LMFePz/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/files.test.mjs:88:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/files.test.mjs:96:1
+✖ assetUrl points into dist/assets/, where the build copies assets/ (1115.19241ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-QiSHxk/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/files.test.mjs:100:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/startup.test.mjs:21:1
+✖ built startup hands platform.json to the boot and keeps startup states visible (841.463805ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-6PPGqW/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/startup.test.mjs:23:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/types.test.mjs:10:1
+✖ prod still reports type errors in game code (817.715988ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /TS2322/. Input:
+  
+  'node:internal/modules/package_json_reader:331\n' +
+    '  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n' +
+    '        ^\n' +
+    '\n' +
+    "Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-P1RCQU/scripts/build.mjs\n" +
+    '    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)\n' +
+    '    at packageResolve (node:internal/modules/esm/resolve:784:25)\n' +
+    '    at moduleResolve (node:internal/modules/esm/resolve:873:18)\n' +
+    '    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n' +
+    '    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n' +
+    '    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n' +
+    '    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n' +
+    '    at #resolve (node:internal/modules/esm/loader:687:17)\n' +
+    '    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n' +
+    '    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {\n' +
+    "  code: 'ERR_MODULE_NOT_FOUND'\n" +
+    '}\n' +
+    '\n' +
+    'Node.js v24.21.0\n'
+  
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/types.test.mjs:14:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: "node:internal/modules/package_json_reader:331\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-P1RCQU/scripts/build.mjs\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)\n    at packageResolve (node:internal/modules/esm/resolve:784:25)\n    at moduleResolve (node:internal/modules/esm/resolve:873:18)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v24.21.0\n",
+    expected: /TS2322/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/build/types.test.mjs:17:1
+✖ build preserves project tsconfig exclusions (1042.441915ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-uPVo40/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/types.test.mjs:25:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/types.test.mjs:33:4
+✖ configured SDK checks the entire graph without falling back (platform.json) (936.29031ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /shell\/type-error\.ts/. Input:
+  
+  'node:internal/modules/package_json_reader:331\n' +
+    '  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n' +
+    '        ^\n' +
+    '\n' +
+    "Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-bbYEr4/scripts/build.mjs\n" +
+    '    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)\n' +
+    '    at packageResolve (node:internal/modules/esm/resolve:784:25)\n' +
+    '    at moduleResolve (node:internal/modules/esm/resolve:873:18)\n' +
+    '    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n' +
+    '    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n' +
+    '    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n' +
+    '    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n' +
+    '    at #resolve (node:internal/modules/esm/loader:687:17)\n' +
+    '    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n' +
+    '    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {\n' +
+    "  code: 'ERR_MODULE_NOT_FOUND'\n" +
+    '}\n' +
+    '\n' +
+    'Node.js v24.21.0\n'
+  
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/types.test.mjs:40:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: "node:internal/modules/package_json_reader:331\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-bbYEr4/scripts/build.mjs\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)\n    at packageResolve (node:internal/modules/esm/resolve:784:25)\n    at moduleResolve (node:internal/modules/esm/resolve:873:18)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v24.21.0\n",
+    expected: /shell\/type-error\.ts/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/build/types.test.mjs:33:4
+✖ configured SDK checks the entire graph without falling back (package.json) (896.664027ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /shell\/type-error\.ts/. Input:
+  
+  'node:internal/modules/package_json_reader:331\n' +
+    '  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n' +
+    '        ^\n' +
+    '\n' +
+    "Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-T5LAWD/scripts/build.mjs\n" +
+    '    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)\n' +
+    '    at packageResolve (node:internal/modules/esm/resolve:784:25)\n' +
+    '    at moduleResolve (node:internal/modules/esm/resolve:873:18)\n' +
+    '    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n' +
+    '    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n' +
+    '    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n' +
+    '    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n' +
+    '    at #resolve (node:internal/modules/esm/loader:687:17)\n' +
+    '    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n' +
+    '    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {\n' +
+    "  code: 'ERR_MODULE_NOT_FOUND'\n" +
+    '}\n' +
+    '\n' +
+    'Node.js v24.21.0\n'
+  
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/types.test.mjs:40:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: "node:internal/modules/package_json_reader:331\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-T5LAWD/scripts/build.mjs\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)\n    at packageResolve (node:internal/modules/esm/resolve:784:25)\n    at moduleResolve (node:internal/modules/esm/resolve:873:18)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v24.21.0\n",
+    expected: /shell\/type-error\.ts/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/build/types.test.mjs:33:4
+✖ configured SDK checks the entire graph without falling back (vendor/@manygamescorp/importmap.json) (941.189638ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /shell\/type-error\.ts/. Input:
+  
+  'node:internal/modules/package_json_reader:331\n' +
+    '  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n' +
+    '        ^\n' +
+    '\n' +
+    "Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-u74hNG/scripts/build.mjs\n" +
+    '    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)\n' +
+    '    at packageResolve (node:internal/modules/esm/resolve:784:25)\n' +
+    '    at moduleResolve (node:internal/modules/esm/resolve:873:18)\n' +
+    '    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n' +
+    '    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n' +
+    '    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n' +
+    '    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n' +
+    '    at #resolve (node:internal/modules/esm/loader:687:17)\n' +
+    '    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n' +
+    '    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {\n' +
+    "  code: 'ERR_MODULE_NOT_FOUND'\n" +
+    '}\n' +
+    '\n' +
+    'Node.js v24.21.0\n'
+  
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/types.test.mjs:40:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: "node:internal/modules/package_json_reader:331\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-u74hNG/scripts/build.mjs\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)\n    at packageResolve (node:internal/modules/esm/resolve:784:25)\n    at moduleResolve (node:internal/modules/esm/resolve:873:18)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v24.21.0\n",
+    expected: /shell\/type-error\.ts/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/build/types.test.mjs:47:1
+✖ typecheck of a project with an SDK covers the screens (885.512176ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /typecheck: tsconfig\.sdk\.json/. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/types.test.mjs:52:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /typecheck: tsconfig\.sdk\.json/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/build/types.test.mjs:66:1
+✖ --no-typecheck bundles without the type check; the build without it and a prod build still check (744.961361ms)
+  AssertionError [ERR_ASSERTION]: 
+  
+  node:internal/modules/package_json_reader:331
+    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+          ^
+  
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'esbuild' imported from /tmp/projects-487-template-7Pbbt9/scripts/build.mjs
+      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+      at packageResolve (node:internal/modules/esm/resolve:784:25)
+      at moduleResolve (node:internal/modules/esm/resolve:873:18)
+      at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+      at #resolve (node:internal/modules/esm/loader:687:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+      at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+    code: 'ERR_MODULE_NOT_FOUND'
+  }
+  
+  Node.js v24.21.0
+  
+  
+  1 !== 0
+  
+      at passes (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/helpers/build-fixture.mjs:38:10)
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/types.test.mjs:69:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/build/types.test.mjs:79:1
+✖ typecheck is incremental and still reports an unchanged error on the next run (849.510071ms)
+  AssertionError [ERR_ASSERTION]: run 1
+      at TestContext.<anonymous> (file:///project/wt/6afedf853ab89bcf62ba1e0b/tests/build/types.test.mjs:85:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: "node:internal/modules/cjs/loader:1564\n  const err = new Error(message);\n              ^\n\nError: Cannot find module 'typescript/bin/tsc'\nRequire stack:\n- /tmp/projects-487-template-0PJipB/scripts/typecheck.mjs\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)\n    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)\n    at require.resolve (node:internal/modules/helpers:175:31)\n    at file:///tmp/projects-487-template-0PJipB/scripts/typecheck.mjs:16:44\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\n    at async node:internal/modules/esm/loader:647:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [ '/tmp/projects-487-template-0PJipB/scripts/typecheck.mjs' ]\n}\n\nNode.js v24.21.0\n",
+    expected: /screens\/type-error\.ts/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/game-ports.test.mjs:1:1
+✖ tests/game-ports.test.mjs (136.902043ms)
+  'test failed'
+
+test at tests/grants.test.mjs:1:1
+✖ tests/grants.test.mjs (107.320304ms)
+  'test failed'
+
+test at tests/hud.test.mjs:1:1
+✖ tests/hud.test.mjs (101.748185ms)
+  'test failed'
+
+test at tests/orientation.test.mjs:1:1
+✖ tests/orientation.test.mjs (75.745535ms)
+  'test failed'
+
+test at tests/records.test.mjs:1:1
+✖ tests/records.test.mjs (135.784172ms)
+  'test failed'
+
+test at tests/skin-button-tint.test.mjs:1:1
+✖ tests/skin-button-tint.test.mjs (87.708839ms)
+  'test failed'
+
+test at tests/skin-readiness.test.mjs:1:1
+✖ tests/skin-readiness.test.mjs (99.641186ms)
+  'test failed'
+
+test at tests/window-order.test.mjs:1:1
+✖ tests/window-order.test.mjs (80.889545ms)
+  'test failed'
+
+check FAILED in 32.5 s: build (types, bundle, dist/); pictures of assets/ (1x made from 2x); records of configs/remote/; tests
+Fix everything listed above, then run it once more.

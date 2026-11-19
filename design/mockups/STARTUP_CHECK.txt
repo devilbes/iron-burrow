@@ -1,0 +1,19 @@
+ok   boot screens 1440x900: neutral first paint, game loader in the skin, home
+ok   boot screens 844x390: neutral first paint, game loader in the skin, home
+ok   boot screens 390x844: neutral first paint, game loader in the skin, home
+ok   boot ready
+ok   network budget of boot + 10 s idle
+ok   home screen
+ok   no bottom bar on home, its row takes no room
+ok   game placeholder; Close asks in a game window (kit dialog, full-screen dim): Stay, then Leave home
+ok   window shop
+ok   window daily
+ok   window leaderboard
+ok   window profile
+ok   window settings
+ok   the «+» of the coins opens the shop
+ok   settings: «Sign in» opens the ManyPlay ID window
+ok   whole run: one progress read, no cloud save
+ok   no console errors
+ok   a Russian browser gets the game's one language everywhere (no ru published)
+PASS screenshots: /project/wt/6afed5ba3ab89bcf62ba1871/tmp/mockup-startup

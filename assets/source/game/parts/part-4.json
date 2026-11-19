@@ -1,0 +1,156 @@
+[
+  {
+    "id": "app_icon",
+    "file": "assets/game/app_icon.png",
+    "area": "branding",
+    "skin": "shared",
+    "role": "иконка игры (фон непрозрачный); states: —; display CSS px: 512 магазин / 192 PWA / 48 вкладка; source authoring is 2x, plan size is full-canvas 1x",
+    "size": {
+      "w": 512,
+      "h": 512
+    },
+    "transparent": false,
+    "prompt": "stubby teal drill-tank bursting out of a brick wall toward the viewer from above, orange sparks, slate-blue background, bold readable silhouette, no text. No text, letters, numerals, labels, captions, logos or watermarks. Opaque background. Front-on orthographic icon, soft upper-left light, consistent optical padding 12.5 percent. \n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",
+    "ref": "design/system/STYLE_REF.png"
+  },
+  {
+    "id": "node_finale",
+    "file": "assets/game/node_finale.png",
+    "area": "map-and-results",
+    "skin": "shared",
+    "role": "узел финала главы (10/20/30); states: locked / open / current / cleared; display CSS px: 64 / 80; source authoring is 2x, plan size is full-canvas 1x",
+    "size": {
+      "w": 320,
+      "h": 80
+    },
+    "transparent": true,
+    "prompt": "larger hexagonal forged hatch with horned beetle emblem, same four states. No text, letters, numerals, labels, captions, logos or watermarks. Transparent background. Front-on orthographic icon, soft upper-left light, consistent optical padding 12.5 percent. Exact horizontal sprite sheet: 4 equal frames in one row, fixed registration and scale, no gutters or frame borders. Frame order: locked / open / current / cleared. \n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",
+    "ref": "design/system/STYLE_REF.png"
+  },
+  {
+    "id": "star_big",
+    "file": "assets/game/star_big.png",
+    "area": "map-and-results",
+    "skin": "shared",
+    "role": "звёзды S07; states: earned / empty; display CSS px: 56 / 80; source authoring is 2x, plan size is full-canvas 1x",
+    "size": {
+      "w": 192,
+      "h": 96
+    },
+    "transparent": true,
+    "prompt": "chunky golden five-point star with amber glow and bevel; empty frame: dark iron star socket. No text, letters, numerals, labels, captions, logos or watermarks. Transparent background. Front-on orthographic icon, soft upper-left light, consistent optical padding 12.5 percent. Exact horizontal sprite sheet: 2 equal frames in one row, fixed registration and scale, no gutters or frame borders. Frame order: earned / empty. \n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",
+    "ref": "design/system/STYLE_REF.png"
+  },
+  {
+    "id": "node_stage",
+    "file": "assets/game/node_stage.png",
+    "area": "map-and-results",
+    "skin": "shared",
+    "role": "узел стадии S03 (номер — кодом); states: locked / open / current / cleared; display CSS px: 52 / 64; source authoring is 2x, plan size is full-canvas 1x",
+    "size": {
+      "w": 256,
+      "h": 64
+    },
+    "transparent": true,
+    "prompt": "round forged iron hatch disk; locked: dark cold; open: teal glow rim; current: pulsing orange rim; cleared: amber inner glow. No text, letters, numerals, labels, captions, logos or watermarks. Transparent background. Front-on orthographic icon, soft upper-left light, consistent optical padding 12.5 percent. Exact horizontal sprite sheet: 4 equal frames in one row, fixed registration and scale, no gutters or frame borders. Frame order: locked / open / current / cleared. \n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",
+    "ref": "design/system/STYLE_REF.png"
+  },
+  {
+    "id": "tile_clay_floor",
+    "file": "assets/game/tile_clay_floor.png",
+    "area": "gameplay",
+    "skin": "clay",
+    "role": "пол, гл. 1; states: var_a / var_b; display CSS px: 28 / 56; source authoring is 2x, plan size is full-canvas 1x",
+    "size": {
+      "w": 128,
+      "h": 64
+    },
+    "transparent": true,
+    "prompt": "packed cold blue-grey earth with small pebbles, very low contrast, seamless; two variations. No text, letters, numerals, labels, captions, logos or watermarks. Transparent background. Top-down orthographic seamless square cell material, full-bleed frame without padding; each frame tiles independently, never a scenery illustration. Exact horizontal sprite sheet: 2 equal frames in one row, fixed registration and scale, no gutters or frame borders. Frame order: var_a / var_b. \n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",
+    "ref": "design/system/STYLE_REF.png"
+  },
+  {
+    "id": "player_turret_l3",
+    "file": "assets/game/player_turret_l3.png",
+    "area": "gameplay",
+    "skin": "shared",
+    "role": "башня, L3 (ломает сталь); states: —; display CSS px: 28 / 56; source authoring is 2x, plan size is full-canvas 1x",
+    "size": {
+      "w": 64,
+      "h": 64
+    },
+    "transparent": true,
+    "prompt": "heavy iron turret with one thick barrel, glowing molten orange muzzle and heat vents, steel-breaker look. No text, letters, numerals, labels, captions, logos or watermarks. Transparent background. Strict top-down orthographic view, facing up, center pivot; rotating objects use centered overhead dome lighting, no baked directional cast shadow, no perspective. Turret only, centered on the same 64 by 64 1x frame as the hull; code composites them. \n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",
+    "ref": "design/system/STYLE_REF.png"
+  },
+  {
+    "id": "tile_iron_oil",
+    "file": "assets/game/tile_iron_oil.png",
+    "area": "gameplay",
+    "skin": "iron",
+    "role": "масло, гл. 2; states: —; display CSS px: 28 / 56; source authoring is 2x, plan size is full-canvas 1x",
+    "size": {
+      "w": 64,
+      "h": 64
+    },
+    "transparent": true,
+    "prompt": "machine oil spill with rainbow film on steel grate. No text, letters, numerals, labels, captions, logos or watermarks. Transparent background. Top-down orthographic seamless square cell material, full-bleed frame without padding; each frame tiles independently, never a scenery illustration. \n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",
+    "ref": "design/system/STYLE_REF.png"
+  },
+  {
+    "id": "pu_bubble",
+    "file": "assets/game/pu_bubble.png",
+    "area": "gameplay",
+    "skin": "shared",
+    "role": "power-up Bubble (неуязвимость 10 с); states: idle; display CSS px: 28 / 56; source authoring is 2x, plan size is full-canvas 1x",
+    "size": {
+      "w": 64,
+      "h": 64
+    },
+    "transparent": true,
+    "prompt": "hexagonal forged token with a translucent teal energy bubble icon. No text, letters, numerals, labels, captions, logos or watermarks. Transparent background. Strict top-down orthographic view, facing up, center pivot; rotating objects use centered overhead dome lighting, no baked directional cast shadow, no perspective. \n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",
+    "ref": "design/system/STYLE_REF.png"
+  },
+  {
+    "id": "icon_life",
+    "file": "assets/game/icon_life.png",
+    "area": "hud",
+    "skin": "shared",
+    "role": "HUD: жизни; states: —; display CSS px: 24 / 32; source authoring is 2x, plan size is full-canvas 1x",
+    "size": {
+      "w": 48,
+      "h": 48
+    },
+    "transparent": true,
+    "prompt": "tiny teal drill-tank hull icon, front view from above. No text, letters, numerals, labels, captions, logos or watermarks. Transparent background. Front-on orthographic icon, soft upper-left light, consistent optical padding 12.5 percent. \n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",
+    "ref": "design/system/STYLE_REF.png"
+  },
+  {
+    "id": "icon_leaderboard",
+    "file": "assets/game/icon_leaderboard.png",
+    "area": "hud",
+    "skin": "shared",
+    "role": "фича HUD: лидерборды; states: —; display CSS px: 32 / 40; source authoring is 2x, plan size is full-canvas 1x",
+    "size": {
+      "w": 48,
+      "h": 48
+    },
+    "transparent": true,
+    "prompt": "forged trophy cup with amber glow. No text, letters, numerals, labels, captions, logos or watermarks. Transparent background. Front-on orthographic icon, soft upper-left light, consistent optical padding 12.5 percent. \n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",
+    "ref": "design/system/STYLE_REF.png"
+  },
+  {
+    "id": "node_lock",
+    "file": "assets/game/node_lock.png",
+    "area": "map-and-results",
+    "skin": "shared",
+    "role": "замок на узле стадии и на Siege; states: —; display CSS px: 20 / 24; source authoring is 2x, plan size is full-canvas 1x",
+    "size": {
+      "w": 32,
+      "h": 32
+    },
+    "transparent": true,
+    "prompt": "heavy iron padlock with rivets, teal keyhole glint. No text, letters, numerals, labels, captions, logos or watermarks. Transparent background. Front-on orthographic icon, soft upper-left light, consistent optical padding 12.5 percent. \n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",
+    "ref": "design/system/STYLE_REF.png"
+  }
+]

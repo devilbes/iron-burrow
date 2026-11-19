@@ -1,0 +1,72 @@
+{
+  "reservedChromaKey": "#FF00FF",
+  "pngAssetsChecked": 83,
+  "problems": [
+    {
+      "id": "enemy_gunner",
+      "solid": 0,
+      "halo": 1
+    },
+    {
+      "id": "tile_iron_floor",
+      "solid": 0,
+      "halo": 1
+    },
+    {
+      "id": "core_wall_brick",
+      "solid": 0,
+      "halo": 1
+    },
+    {
+      "id": "icon_bst_bubble",
+      "solid": 0,
+      "halo": 1
+    },
+    {
+      "id": "fx_explosion_big",
+      "solid": 0,
+      "halo": 2
+    },
+    {
+      "id": "fx_spawn",
+      "solid": 0,
+      "halo": 1
+    },
+    {
+      "id": "fx_shockwave",
+      "solid": 0,
+      "halo": 1
+    },
+    {
+      "id": "fx_frost",
+      "solid": 0,
+      "halo": 1
+    },
+    {
+      "id": "icon_enemy_left",
+      "solid": 0,
+      "halo": 1
+    },
+    {
+      "id": "icon_shop",
+      "solid": 0,
+      "halo": 1
+    },
+    {
+      "id": "star_big",
+      "solid": 0,
+      "halo": 1
+    },
+    {
+      "id": "pack_hull",
+      "solid": 0,
+      "halo": 1
+    }
+  ],
+  "planned": 87,
+  "exportFiles": 340,
+  "newGenerationCalls": 0,
+  "preservedExistingExports": true,
+  "visualAcceptance": "FAIL: prior semantic defects remain",
+  "officialGate": "FAIL: missing gate facts; see asset-contract-round1.txt"
+}

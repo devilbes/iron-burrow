@@ -35,10 +35,10 @@
           "hudSide": "right",
           "badge": true,
           "autoOpen": true,
-          "track": "daily",
+          "track": "reward_daily",
           "window": "week",
           "cycleLength": 7,
-          "onMiss": true,
+          "onMiss": false,
           "icon": null
         },
         "package": "@manygamescorp/mod-daily-rewards"
@@ -139,7 +139,7 @@
         "package": "@manygamescorp/ui-kit"
       }
     ],
-    "modulesRevision": 2,
+    "modulesRevision": 3,
     "overrides": {
       "scope": "panel.sdk.overrides"
     }
