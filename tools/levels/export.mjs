@@ -75,7 +75,7 @@ for (const c of [1, 2, 3]) {
     data, {
       verifier: 'bounds/1',
       seed: { mode: 'perAttempt' },
-      win: { objectives: ['destroy_all'] },
+      // no win.objectives: the level port endLevel (src/boot/game-ports.ts) sends none -> win_mismatch (D-DATA-12)
       moves: { min: 0, max: 9 },
       durationMs: { min: L.durationMinMs(c) },
       score: { max: maxScore },
