@@ -7,7 +7,7 @@ import { icon, view, type ViewChild, type ViewNode } from './ui.js';
 
 export const WINDOW_CSS = `
 :host{height:auto}
-.win{display:grid;gap:var(--mp-gap);container-type:inline-size;min-width:0}
+.win{display:grid;gap:var(--mp-gap);container-type:inline-size;min-width:min(30rem,calc(100vw - 8rem))}
 .cols{display:grid;gap:var(--mp-gap);grid-template-columns:minmax(0,1fr);align-items:start}
 .col{display:grid;gap:var(--mp-gap);min-width:0}
 @container (min-width: 520px){.cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
