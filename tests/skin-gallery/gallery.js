@@ -140,7 +140,12 @@ const GAME_CSS = '.gw{display:flex;flex-direction:column;align-items:center;gap:
   + '.gw-tiles b{font:400 18px/1 var(--mp-font-display);color:var(--mp-text)}'
   + '.gw-line{display:flex;align-items:center;gap:12px;width:100%;padding:6px 14px;border-radius:var(--mp-radius-field);'
   + 'background:color-mix(in srgb,var(--mp-surface) 70%,transparent);text-align:left}'
-  + '.gw-line span{flex:1;color:var(--mp-text-2)}.gw-line b{color:var(--mp-text)}';
+  + '.gw-line span{flex:1;color:var(--mp-text-2)}.gw-line b{color:var(--mp-text)}'
+  // Landscape windows are low (the kit's dialog ≤ the viewport): the picture smaller, the rows in two
+  // columns, the best mark beside the total — the body stays inside the frame.
+  + '@media (orientation:landscape){.gw{gap:6px}.gw-art [data-part=icon]{width:64px;height:64px}'
+  + '.gw-rows{grid-template-columns:1fr 1fr;column-gap:20px;padding:6px 14px}.gw-rows li{padding:2px 0}'
+  + '.gw-total strong{font-size:24px}.gw-best{margin-top:-4px}}';
 const gameBody = (name, render) => (root) => mountView(root, name, () => view('div', { class: 'gw' }, ...render()),
   { styles: GAME_CSS });
 const prize = (id, count, size = 128) => view('div', { class: 'gw-prize' },
