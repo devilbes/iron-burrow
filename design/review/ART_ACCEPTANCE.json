@@ -1,0 +1,49 @@
+{
+  "step": "art-acceptance",
+  "date": "2026-11-19",
+  "verdict": "FAIL",
+  "score": 3,
+  "generatedImages": 0,
+  "viewed": [
+    "design/mockups/CONTACT_SHEET.png",
+    "design/mockups/GRAYSCALE.png",
+    "design/mockups/contact/*.png (15)",
+    "design/icons/CONTACT_SHEET.png",
+    "docs/skin/shots/base/shop-*.png",
+    "design/review/GAME_ASSETS_CONTACT.webp",
+    "design/review/GAME_ASSETS_GRAY.webp",
+    "design/review/DEFECTS_STYLE_CLONE.webp",
+    "design/review/DEFECTS_ENEMIES_FX.webp",
+    "design/review/SCENES.webp"
+  ],
+  "completeness": {
+    "gddIds": 92,
+    "files": 87,
+    "missing": ["bg_lobby_portrait", "bg_lobby_landscape", "bg_map_clay_portrait", "bg_map_clay_landscape", "bg_map_iron_portrait", "bg_map_iron_landscape", "bg_map_magma_portrait", "bg_map_magma_landscape", "icon_settings"],
+    "extra": ["scene", "scene-map", "scene-game", "icon_gun"],
+    "note": "swap per D-GC-13 in docs/game/CONTRACT.md, GDD 21 table not amended"
+  },
+  "orientations": {
+    "portrait 390x844": {"menu": "FAIL", "gameplay": "FAIL", "victory": "FAIL", "shop": "FAIL", "ready": false},
+    "landscape 844x390": {"menu": "FAIL", "gameplay": "FAIL", "victory": "FAIL", "shop": "FAIL", "ready": false},
+    "desktop 1440x900": {"menu": "FAIL", "gameplay": "FAIL", "victory": "FAIL", "shop": "FAIL", "ready": false}
+  },
+  "skinMapParts": {
+    "scene": "PASS",
+    "scene-game": "FAIL: STYLE_REF plate in corner competes with field",
+    "icons": "PASS with remarks (coins/gift/shop alike, medal-2 unclear)",
+    "items": "PASS",
+    "offers": "PASS (map paths differ from files)"
+  },
+  "styleCloneIds": ["core", "player_hull", "bullet_player", "bullet_enemy", "star_big", "star_small", "tut_hand", "tile_clay_floor", "tile_iron_floor", "tile_magma_floor", "tile_magma_brick", "tile_clay_brick", "tile_clay_lava", "tile_iron_lava", "tile_magma_lava", "tile_clay_oil", "tile_magma_steel", "tile_iron_steel", "enemy_brute_damage", "fx_hit_spark", "fx_frost", "fx_explosion_small", "fx_explosion_big", "fx_spawn", "node_stage", "node_finale", "pack_hull", "pack_starter", "scene-map", "scene-game"],
+  "bibleViolations": [
+    "Palette: enemy_scout/grunt/gunner/brute have teal bodies (enemies never teal)",
+    "Palette: orange crystal on nearly every sprite, Core no longer single focal",
+    "Palette: shop shows stock coins (no currency in v1)",
+    "Shape: mockups have no forged plates/frames/nameplates",
+    "Light and depth: no modal level on results; lit plate in scene-game",
+    "Air: desktop lobby half-screen void; landscape results buttons on bottom edge",
+    "Reward art leads its window: victory reward is a side card"
+  ],
+  "returnTo": ["assets", "design-screens", "design-icons"]
+}
