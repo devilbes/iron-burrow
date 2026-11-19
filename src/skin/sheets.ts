@@ -258,12 +258,20 @@ const DAILY = '@media (orientation:landscape){.dialog .daily-reward{display:flex
 // Reward received (Н-43, Н-80): four items in one row (2×2 in a portrait window), the button under
 // them; from three items on, the showcase above shows the leading picture (the kit draws at most
 // three there, so a fourth item was missing from it).
-const REWARD = '.reward-grid[data-count="4"]{grid-template-columns:repeat(4,minmax(0,1fr))}'
-  + '@media (orientation:portrait){.reward-grid[data-count="4"]{grid-template-columns:repeat(2,minmax(0,1fr))}}'
-  + '.reward-hero-icons[data-count="3"] .reward-hero-icon+.reward-hero-icon{display:none}'
-  + '.reward-hero-icons[data-count="3"] .reward-hero-icon img{width:96px;height:96px}';
-// Leaderboard (kit): the list keeps its own scroll port once the window is as high as its content.
-const LEADERBOARD = ':host([data-pop-kind]) .lbw-body{flex:1 1 auto}';
+// (`\34 ` / `\33 `: the counts 4 and 3 as CSS identifiers — quoted strings read as font names in the checks.)
+const REWARD = '.reward-grid[data-count=\\34 ]{grid-template-columns:repeat(4,minmax(0,1fr))}'
+  + '@media (orientation:portrait){.reward-grid[data-count=\\34 ]{grid-template-columns:repeat(2,minmax(0,1fr))}}'
+  + '.reward-hero-icons[data-count=\\33 ] .reward-hero-icon+.reward-hero-icon{display:none}'
+  + '.reward-hero-icons[data-count=\\33 ] .reward-hero-icon img{width:96px;height:96px}'
+  // Names break between words only («Shockwav / e» before); a landscape phone gives the tiles the
+  // room: a narrower showcase and the window down to the bottom air (the kit kept 56px for a menu).
+  + '.reward-grid .reward-grid-entry{overflow-wrap:normal;word-break:normal}'
+  + '@media (orientation:landscape){.reward-window{--reward-zone-bottom:16px}'
+  + '.reward-window .dialog{grid-template-columns:minmax(0,160px) minmax(0,1fr)}}';
+// Leaderboard (kit): on a landscape phone the kit lays the body out as a size container (podium
+// beside the table), which has no height of its own — there the window keeps the kit's height.
+const LEADERBOARD = '@media (orientation:landscape) and (min-aspect-ratio:2/1){'
+  + ':host([data-pop-kind]){--kit-window-content-height:inherit}}';
 // Top bar (Н-48): profile and settings plates are touch targets of 48×48 CSS px.
 // The row of the top bar grows to them (the shell clips it to one row of 40px; a second row stays hidden).
 const HUD = '.hud[data-slot=top]{max-height:48px;align-items:center}'

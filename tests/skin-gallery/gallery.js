@@ -147,7 +147,8 @@ const LAYERS = {
   'game-shop': ['home', galleryShop],
   'game-offer': ['home', (ctx) => ctx.window.open(offerWindowSpec(ctx, STARTER))],
   'game-purchase-failed': ['home', (ctx) => ctx.window.open(purchaseWindowSpec(ctx, 'hull_pack', () => 'failed'))],
-  'game-window': ['game', (ctx) => ctx.window.open({ ...RESULT, body: resultBody })],
+  // Over the lobby: the game route leaves for the map without a selected stage, closing its windows.
+  'game-window': ['home', (ctx) => ctx.window.open({ ...RESULT, body: resultBody })],
   'game-overlay': ['home', (ctx) => ctx.overlay({ draw: (root) => mountView(root, 'tip', () => view('section', { class: 'hero' },
     view('p', { class: 'hero-title' }, 'Tap a tile to start'))) })],
   buttons: ['home', (ctx) => ctx.overlay({ draw: buttonKinds })],
