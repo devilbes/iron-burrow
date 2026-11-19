@@ -221,6 +221,8 @@ async function pass([w, h]) {
     }
     await step(`level${stage}-play`, async () => { await page.waitForTimeout(2500); await shot(`game-level${stage}`, 'game'); });
     await step(`level${stage}-pause`, async () => {
+      // A reward of the previous stage may arrive late, over the battle: the player closes it.
+      if (await hasDialog()) { await shot(`late-reward-level${stage}`); await dismiss(); }
       await press(page.locator('[data-testid=hud-pause]'));
       await waitDialog();
       if (stage === 1) await shot('pause');
@@ -265,6 +267,7 @@ async function pass([w, h]) {
     await waitDialog(); await press(action('prestage-start'));
     await page.locator('[data-testid=game-field]').waitFor();
     await page.waitForTimeout(2000);
+    if (await hasDialog()) { await shot('late-window-defeat'); await dismiss(); }
     await press(page.locator('[data-testid=qa-lose]'));
     await waitDialog(30000); await page.waitForTimeout(1500);
     await shot('defeat', 'defeat');

@@ -268,7 +268,9 @@ const REWARD = '.reward-grid[data-count=\\34 ]{grid-template-columns:repeat(4,mi
   // room: a narrower showcase and the window down to the bottom air (the kit kept 56px for a menu).
   + '.reward-grid .reward-grid-entry{overflow-wrap:normal;word-break:normal}'
   + '@media (orientation:landscape){.reward-window{--reward-zone-bottom:16px}'
-  + '.reward-window .dialog{grid-template-columns:minmax(0,160px) minmax(0,1fr)}}';
+  + '.reward-window .dialog{grid-template-columns:minmax(0,160px) minmax(0,1fr)}}'
+  // The kit puts this window at the right edge of a landscape phone; every other window is centred.
+  + '@media (orientation:landscape) and (max-height:520px){:host([data-pop-kind]) .reward-window>.dialog-backdrop{justify-items:center}}';
 // Leaderboard (kit): on a landscape phone the kit lays the body out as a size container (podium
 // beside the table), which has no height of its own — there the window keeps the kit's height.
 const LEADERBOARD = '@media (orientation:landscape) and (min-aspect-ratio:2/1){'
