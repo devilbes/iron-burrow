@@ -1,0 +1,29 @@
+{
+  "id": "stage_07",
+  "index": 7,
+  "chapter": 1,
+  "theme": "clay",
+  "maxAlive": 4,
+  "spawnInterval": 3,
+  "grid": [
+    ".............",
+    "..B.B...B.B..",
+    "..B...B...B..",
+    "S....B.B....S",
+    "B....B.B....B",
+    "...B.....B...",
+    "B.B..RBR..B.B",
+    "B...B...B...B",
+    "S.BB.B.B.BB.S",
+    ".............",
+    ".B.B.BBB.B.B.",
+    ".B...BBB...B.",
+    ".....BCB....."
+  ],
+  "enemies": [
+    "grunt", "grunt", "scout", "grunt", "grunt",
+    "gunner", "grunt", "grunt", "grunt", "scout",
+    "grunt", "brute", "grunt", "grunt", "grunt",
+    "gunner", "grunt", "scout", "grunt", "grunt"
+  ]
+}

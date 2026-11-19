@@ -1,0 +1,56 @@
+{
+  "scope": "levels.main",
+  "key": "set",
+  "name": "levels.main/set",
+  "description": "Campaign set: 3 chapters × 10 stages, sequential unlock. Built by tools/levels/export.mjs.",
+  "visibility": 3,
+  "data": {
+    "kind": "set",
+    "first": 1,
+    "last": 30,
+    "afterLast": "end",
+    "unlock": {
+      "mode": "sequential"
+    },
+    "chapters": [
+      {
+        "id": "c01",
+        "title": "levels.chapter.c01.title",
+        "theme": "clay",
+        "first": 1,
+        "last": 10
+      },
+      {
+        "id": "c02",
+        "title": "levels.chapter.c02.title",
+        "theme": "iron",
+        "first": 11,
+        "last": 20
+      },
+      {
+        "id": "c03",
+        "title": "levels.chapter.c03.title",
+        "theme": "magma",
+        "first": 21,
+        "last": 30
+      }
+    ],
+    "index": [
+      {
+        "key": "r_0001_0010",
+        "first": 1,
+        "last": 10
+      },
+      {
+        "key": "r_0011_0020",
+        "first": 11,
+        "last": 20
+      },
+      {
+        "key": "r_0021_0030",
+        "first": 21,
+        "last": 30
+      }
+    ]
+  }
+}

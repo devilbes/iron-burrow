@@ -1,0 +1,57 @@
+{
+  "scope": "levels.endless",
+  "key": "r_0001_0001",
+  "name": "levels.endless/r_0001_0001",
+  "description": "Siege arena siege_pit (endless waves; wave composition from game.siege). Built by tools/levels/export.mjs.",
+  "visibility": 3,
+  "data": {
+    "kind": "range",
+    "first": 1,
+    "last": 1,
+    "entries": [
+      {
+        "id": "siege_pit",
+        "theme": "pit",
+        "grid": [
+          ".............",
+          "..B.......B..",
+          "..B.SS.SS.B..",
+          ".....OOO.....",
+          ".LL.B...B.LL.",
+          ".LL.B.R.B.LL.",
+          "....BRRRB....",
+          ".SS.......SS.",
+          "...BB.S.BB...",
+          ".B.........B.",
+          ".B.B.BBB.B.B.",
+          ".O.B.BBB.B.O.",
+          ".O...BCB...O."
+        ],
+        "quarters": []
+      }
+    ],
+    "server": {
+      "contentHash": "24c50b0a3b0333116083a43ffaae99a84362a963e4fdc91165cde5bbffeba112",
+      "verifier": "bounds/1",
+      "seed": {
+        "mode": "perAttempt"
+      },
+      "durationMs": {
+        "min": 1000
+      },
+      "score": {
+        "max": 3995000
+      },
+      "gen": {
+        "generator": "iron-burrow-authored",
+        "version": "1",
+        "curve": "siege-waves-v1"
+      },
+      "entries": [
+        {
+          "levelId": "siege_pit"
+        }
+      ]
+    }
+  }
+}

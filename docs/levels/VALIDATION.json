@@ -1,0 +1,879 @@
+{
+  "generatedBy": "node tools/levels/validate.mjs --write",
+  "genre": "arcade",
+  "deterministic": false,
+  "note": "Non-deterministic genre (enemy AI and power-up drops use seeded PRNG per attempt): no SOLVER.json; reachability by bot is BOT_REACH.json (core step). This file proves schema, GDD 12 §6 V1–V11 map rules, GDD 12 §2 enemy order, chapter params and curve bands.",
+  "status": "PASS",
+  "checks": [
+    "schema configs/schemas/levels.stage.json",
+    "V1 alphabet/size/Core",
+    "V2 Core wall",
+    "V3 spawn and player cells",
+    "V4 spawn→Core wall path",
+    "V5 spawn not walled in",
+    "V6 no pockets",
+    "V7 tile shares",
+    "V8 tile intro stages",
+    "V9 mirror symmetry ≥ 80 %",
+    "V10 enemies/params per chapter",
+    "V11 finals closed centre",
+    "tile intro light usage",
+    "rest openness",
+    "unique grids",
+    "TI in band",
+    "TI monotonic, step ≤ 8 % within chapter",
+    "counts per chapter = GDD"
+  ],
+  "counts": {
+    "1": 10,
+    "2": 10,
+    "3": 10,
+    "siege": 1
+  },
+  "gddCounts": {
+    "1": 10,
+    "2": 10,
+    "3": 10,
+    "siege": 1
+  },
+  "globalIssues": [],
+  "levels": [
+    {
+      "id": "stage_01",
+      "file": "configs/levels/campaign/stage_01.json",
+      "set": "main",
+      "n": 1,
+      "chapter": 1,
+      "band": "tutorial",
+      "difficulty": 20.6,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.645,
+          "B": 0.349,
+          "S": 0,
+          "L": 0,
+          "R": 0,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.645,
+        "centreSteel": 0
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_02",
+      "file": "configs/levels/campaign/stage_02.json",
+      "set": "main",
+      "n": 2,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 21.2,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.675,
+          "B": 0.32,
+          "S": 0,
+          "L": 0,
+          "R": 0,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.675,
+        "centreSteel": 0
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_03",
+      "file": "configs/levels/campaign/stage_03.json",
+      "set": "main",
+      "n": 3,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 21.2,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.686,
+          "B": 0.284,
+          "S": 0.024,
+          "L": 0,
+          "R": 0,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.675,
+        "centreSteel": 0
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_04",
+      "file": "configs/levels/campaign/stage_04.json",
+      "set": "main",
+      "n": 4,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 21.5,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.669,
+          "B": 0.325,
+          "S": 0,
+          "L": 0,
+          "R": 0,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.669,
+        "centreSteel": 0
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_05",
+      "file": "configs/levels/campaign/stage_05.json",
+      "set": "main",
+      "n": 5,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 22.1,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.615,
+          "B": 0.331,
+          "S": 0.012,
+          "L": 0,
+          "R": 0.036,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.627,
+        "centreSteel": 0
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_06",
+      "file": "configs/levels/campaign/stage_06.json",
+      "set": "main",
+      "n": 6,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 23.6,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.645,
+          "B": 0.308,
+          "S": 0.024,
+          "L": 0,
+          "R": 0.018,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.663,
+        "centreSteel": 0
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_07",
+      "file": "configs/levels/campaign/stage_07.json",
+      "set": "main",
+      "n": 7,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 23.6,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.698,
+          "B": 0.26,
+          "S": 0.024,
+          "L": 0,
+          "R": 0.012,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.71,
+        "centreSteel": 0
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_08",
+      "file": "configs/levels/campaign/stage_08.json",
+      "set": "main",
+      "n": 8,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 24.5,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.639,
+          "B": 0.296,
+          "S": 0.024,
+          "L": 0,
+          "R": 0.036,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.426,
+        "centreSteel": 2
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_09",
+      "file": "configs/levels/campaign/stage_09.json",
+      "set": "main",
+      "n": 9,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 24.5,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.657,
+          "B": 0.296,
+          "S": 0.018,
+          "L": 0,
+          "R": 0.024,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.68,
+        "centreSteel": 1
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_10",
+      "file": "configs/levels/campaign/stage_10.json",
+      "set": "main",
+      "n": 10,
+      "chapter": 1,
+      "band": "medium",
+      "difficulty": 26,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.651,
+          "B": 0.272,
+          "S": 0.047,
+          "L": 0,
+          "R": 0.024,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.669,
+        "centreSteel": 6
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_11",
+      "file": "configs/levels/campaign/stage_11.json",
+      "set": "main",
+      "n": 11,
+      "chapter": 2,
+      "band": "rest",
+      "difficulty": 45.9,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.604,
+          "B": 0.29,
+          "S": 0.071,
+          "L": 0,
+          "R": 0.03,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.627,
+        "centreSteel": 4
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_12",
+      "file": "configs/levels/campaign/stage_12.json",
+      "set": "main",
+      "n": 12,
+      "chapter": 2,
+      "band": "medium",
+      "difficulty": 46.4,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.609,
+          "B": 0.32,
+          "S": 0.024,
+          "L": 0,
+          "R": 0.041,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.651,
+        "centreSteel": 4
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_13",
+      "file": "configs/levels/campaign/stage_13.json",
+      "set": "main",
+      "n": 13,
+      "chapter": 2,
+      "band": "medium",
+      "difficulty": 46.4,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.604,
+          "B": 0.278,
+          "S": 0.047,
+          "L": 0,
+          "R": 0.041,
+          "O": 0.024,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.645,
+        "centreSteel": 2
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_14",
+      "file": "configs/levels/campaign/stage_14.json",
+      "set": "main",
+      "n": 14,
+      "chapter": 2,
+      "band": "medium",
+      "difficulty": 47.4,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.615,
+          "B": 0.29,
+          "S": 0.047,
+          "L": 0,
+          "R": 0.03,
+          "O": 0.012,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.657,
+        "centreSteel": 2
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_15",
+      "file": "configs/levels/campaign/stage_15.json",
+      "set": "main",
+      "n": 15,
+      "chapter": 2,
+      "band": "medium",
+      "difficulty": 47.4,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.598,
+          "B": 0.302,
+          "S": 0.059,
+          "L": 0,
+          "R": 0.024,
+          "O": 0.012,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.562,
+        "centreSteel": 2
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_16",
+      "file": "configs/levels/campaign/stage_16.json",
+      "set": "main",
+      "n": 16,
+      "chapter": 2,
+      "band": "hard",
+      "difficulty": 50.5,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.586,
+          "B": 0.314,
+          "S": 0.071,
+          "L": 0,
+          "R": 0.024,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.609,
+        "centreSteel": 2
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_17",
+      "file": "configs/levels/campaign/stage_17.json",
+      "set": "main",
+      "n": 17,
+      "chapter": 2,
+      "band": "hard",
+      "difficulty": 51.6,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.586,
+          "B": 0.325,
+          "S": 0.059,
+          "L": 0,
+          "R": 0.012,
+          "O": 0.012,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.55,
+        "centreSteel": 4
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_18",
+      "file": "configs/levels/campaign/stage_18.json",
+      "set": "main",
+      "n": 18,
+      "chapter": 2,
+      "band": "hard",
+      "difficulty": 51.6,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.568,
+          "B": 0.331,
+          "S": 0.071,
+          "L": 0,
+          "R": 0.018,
+          "O": 0.006,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.349,
+        "centreSteel": 4
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_19",
+      "file": "configs/levels/campaign/stage_19.json",
+      "set": "main",
+      "n": 19,
+      "chapter": 2,
+      "band": "hard",
+      "difficulty": 51.6,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.568,
+          "B": 0.314,
+          "S": 0.077,
+          "L": 0,
+          "R": 0.024,
+          "O": 0.012,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.426,
+        "centreSteel": 5
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_20",
+      "file": "configs/levels/campaign/stage_20.json",
+      "set": "main",
+      "n": 20,
+      "chapter": 2,
+      "band": "hard",
+      "difficulty": 54.7,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.556,
+          "B": 0.314,
+          "S": 0.089,
+          "L": 0,
+          "R": 0.024,
+          "O": 0.012,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.556,
+        "centreSteel": 7
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_21",
+      "file": "configs/levels/campaign/stage_21.json",
+      "set": "main",
+      "n": 21,
+      "chapter": 3,
+      "band": "rest",
+      "difficulty": 92.7,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.68,
+          "B": 0.26,
+          "S": 0,
+          "L": 0.024,
+          "R": 0.03,
+          "O": 0,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.71,
+        "centreSteel": 0
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_22",
+      "file": "configs/levels/campaign/stage_22.json",
+      "set": "main",
+      "n": 22,
+      "chapter": 3,
+      "band": "hard",
+      "difficulty": 92.7,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.651,
+          "B": 0.26,
+          "S": 0.012,
+          "L": 0.012,
+          "R": 0.036,
+          "O": 0.024,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.432,
+        "centreSteel": 2
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_23",
+      "file": "configs/levels/campaign/stage_23.json",
+      "set": "main",
+      "n": 23,
+      "chapter": 3,
+      "band": "hard",
+      "difficulty": 92.7,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.627,
+          "B": 0.278,
+          "S": 0.041,
+          "L": 0.024,
+          "R": 0,
+          "O": 0.024,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.651,
+        "centreSteel": 3
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_24",
+      "file": "configs/levels/campaign/stage_24.json",
+      "set": "main",
+      "n": 24,
+      "chapter": 3,
+      "band": "hard",
+      "difficulty": 92.7,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.657,
+          "B": 0.266,
+          "S": 0.036,
+          "L": 0.012,
+          "R": 0.012,
+          "O": 0.012,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.675,
+        "centreSteel": 4
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_25",
+      "file": "configs/levels/campaign/stage_25.json",
+      "set": "main",
+      "n": 25,
+      "chapter": 3,
+      "band": "hard",
+      "difficulty": 92.7,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.609,
+          "B": 0.29,
+          "S": 0.024,
+          "L": 0.012,
+          "R": 0.024,
+          "O": 0.036,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.657,
+        "centreSteel": 2
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_26",
+      "file": "configs/levels/campaign/stage_26.json",
+      "set": "main",
+      "n": 26,
+      "chapter": 3,
+      "band": "super-hard",
+      "difficulty": 97.1,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.627,
+          "B": 0.254,
+          "S": 0.036,
+          "L": 0.036,
+          "R": 0.018,
+          "O": 0.024,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.479,
+        "centreSteel": 4
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_27",
+      "file": "configs/levels/campaign/stage_27.json",
+      "set": "main",
+      "n": 27,
+      "chapter": 3,
+      "band": "super-hard",
+      "difficulty": 97.1,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.627,
+          "B": 0.272,
+          "S": 0.03,
+          "L": 0.036,
+          "R": 0,
+          "O": 0.03,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.657,
+        "centreSteel": 3
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_28",
+      "file": "configs/levels/campaign/stage_28.json",
+      "set": "main",
+      "n": 28,
+      "chapter": 3,
+      "band": "super-hard",
+      "difficulty": 97.1,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.615,
+          "B": 0.254,
+          "S": 0.047,
+          "L": 0.036,
+          "R": 0.012,
+          "O": 0.03,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.657,
+        "centreSteel": 4
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_29",
+      "file": "configs/levels/campaign/stage_29.json",
+      "set": "main",
+      "n": 29,
+      "chapter": 3,
+      "band": "super-hard",
+      "difficulty": 97.1,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.627,
+          "B": 0.266,
+          "S": 0.03,
+          "L": 0.047,
+          "R": 0,
+          "O": 0.024,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.651,
+        "centreSteel": 3
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "stage_30",
+      "file": "configs/levels/campaign/stage_30.json",
+      "set": "main",
+      "n": 30,
+      "chapter": 3,
+      "band": "super-hard",
+      "difficulty": 101.5,
+      "nearWin": true,
+      "stats": {
+        "share": {
+          ".": 0.615,
+          "B": 0.254,
+          "S": 0.059,
+          "L": 0.036,
+          "R": 0,
+          "O": 0.03,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.645,
+        "centreSteel": 8
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    },
+    {
+      "id": "siege_pit",
+      "file": "configs/levels/siege/siege_pit.json",
+      "set": "endless",
+      "n": 1,
+      "chapter": null,
+      "band": "medium",
+      "difficulty": 39.4,
+      "nearWin": false,
+      "stats": {
+        "share": {
+          ".": 0.651,
+          "B": 0.178,
+          "S": 0.053,
+          "L": 0.047,
+          "R": 0.024,
+          "O": 0.041,
+          "C": 0.006
+        },
+        "symmetry": 1,
+        "openness": 0.716,
+        "centreSteel": 5
+      },
+      "schema": true,
+      "rules": true,
+      "errors": []
+    }
+  ]
+}

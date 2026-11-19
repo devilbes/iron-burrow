@@ -1,0 +1,29 @@
+{
+  "id": "stage_24",
+  "index": 24,
+  "chapter": 3,
+  "theme": "magma",
+  "maxAlive": 6,
+  "spawnInterval": 2.0,
+  "grid": [
+    ".............",
+    ".B.B.B.B.B.B.",
+    ".B.B.B.B.B.B.",
+    "...R.....R...",
+    ".B...SSS...B.",
+    "...B.....B...",
+    "BB.B.L.L.B.BB",
+    "......B......",
+    ".BB.BB.BB.BB.",
+    "..S...S...S..",
+    ".B.B.BBB.B.B.",
+    ".O.B.BBB.B.O.",
+    ".....BCB....."
+  ],
+  "enemies": [
+    "scout", "grunt", "gunner", "scout", "gunner",
+    "brute", "scout", "grunt", "gunner", "brute",
+    "scout", "gunner", "scout", "brute", "scout",
+    "gunner", "grunt", "brute", "gunner", "scout"
+  ]
+}
