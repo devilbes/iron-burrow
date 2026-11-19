@@ -1,0 +1,561 @@
+{
+ "src": "gdd:15_economy_meta.md meta.rewards, meta.daily, meta.grant, meta.siege",
+ "startGrant": {
+  "id": "start_grant",
+  "separateReward": true,
+  "containsHardCurrency": false,
+  "items": {
+   "bst_bubble": 2,
+   "bst_shockwave": 2,
+   "bst_fortify": 2,
+   "bst_hull": 2,
+   "src": "gdd:15_economy_meta.md meta.grant"
+  },
+  "total": {
+   "value": 8,
+   "src": "gdd:15_economy_meta.md meta.grant"
+  },
+  "src": "gdd:15_economy_meta.md meta.grant D-15-01"
+ },
+ "levels": [
+  {
+   "stage": 1,
+   "chapter": 1,
+   "firstClear": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 2,
+   "chapter": 1,
+   "firstClear": {
+    "bst_shockwave": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 3,
+   "chapter": 1,
+   "firstClear": {
+    "bst_fortify": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 4,
+   "chapter": 1,
+   "firstClear": {
+    "bst_hull": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 5,
+   "chapter": 1,
+   "firstClear": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 6,
+   "chapter": 1,
+   "firstClear": {
+    "bst_shockwave": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 7,
+   "chapter": 1,
+   "firstClear": {
+    "bst_fortify": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 8,
+   "chapter": 1,
+   "firstClear": {
+    "bst_hull": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 9,
+   "chapter": 1,
+   "firstClear": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 10,
+   "chapter": 1,
+   "firstClear": {
+    "bst_shockwave": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level",
+   "chapterFinale": {
+    "bst_bubble": 1,
+    "bst_shockwave": 1,
+    "bst_fortify": 1,
+    "bst_hull": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.finale"
+   }
+  },
+  {
+   "stage": 11,
+   "chapter": 2,
+   "firstClear": {
+    "bst_fortify": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 12,
+   "chapter": 2,
+   "firstClear": {
+    "bst_hull": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 13,
+   "chapter": 2,
+   "firstClear": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 14,
+   "chapter": 2,
+   "firstClear": {
+    "bst_shockwave": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 15,
+   "chapter": 2,
+   "firstClear": {
+    "bst_fortify": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 16,
+   "chapter": 2,
+   "firstClear": {
+    "bst_hull": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 17,
+   "chapter": 2,
+   "firstClear": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 18,
+   "chapter": 2,
+   "firstClear": {
+    "bst_shockwave": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 19,
+   "chapter": 2,
+   "firstClear": {
+    "bst_fortify": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 20,
+   "chapter": 2,
+   "firstClear": {
+    "bst_hull": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level",
+   "chapterFinale": {
+    "bst_bubble": 1,
+    "bst_shockwave": 1,
+    "bst_fortify": 1,
+    "bst_hull": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.finale"
+   }
+  },
+  {
+   "stage": 21,
+   "chapter": 3,
+   "firstClear": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 22,
+   "chapter": 3,
+   "firstClear": {
+    "bst_shockwave": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 23,
+   "chapter": 3,
+   "firstClear": {
+    "bst_fortify": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 24,
+   "chapter": 3,
+   "firstClear": {
+    "bst_hull": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 25,
+   "chapter": 3,
+   "firstClear": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 26,
+   "chapter": 3,
+   "firstClear": {
+    "bst_shockwave": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 27,
+   "chapter": 3,
+   "firstClear": {
+    "bst_fortify": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 28,
+   "chapter": 3,
+   "firstClear": {
+    "bst_hull": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 29,
+   "chapter": 3,
+   "firstClear": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level"
+  },
+  {
+   "stage": 30,
+   "chapter": 3,
+   "firstClear": {
+    "bst_shockwave": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.level"
+   },
+   "threeStars": {
+    "bst_bubble": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.stars"
+   },
+   "src": "gdd:15_economy_meta.md meta.rewards.level",
+   "chapterFinale": {
+    "bst_bubble": 1,
+    "bst_shockwave": 1,
+    "bst_fortify": 1,
+    "bst_hull": 1,
+    "src": "gdd:15_economy_meta.md meta.rewards.finale"
+   }
+  }
+ ],
+ "daily": {
+  "cycleDays": {
+   "value": 7,
+   "src": "gdd:15_economy_meta.md meta.daily"
+  },
+  "missedDayResets": false,
+  "days": [
+   {
+    "day": 1,
+    "items": {
+     "bst_bubble": 1,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "total": {
+     "value": 1,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "src": "gdd:15_economy_meta.md meta.daily"
+   },
+   {
+    "day": 2,
+    "items": {
+     "bst_shockwave": 1,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "total": {
+     "value": 1,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "src": "gdd:15_economy_meta.md meta.daily"
+   },
+   {
+    "day": 3,
+    "items": {
+     "bst_fortify": 1,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "total": {
+     "value": 1,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "src": "gdd:15_economy_meta.md meta.daily"
+   },
+   {
+    "day": 4,
+    "items": {
+     "bst_hull": 1,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "total": {
+     "value": 1,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "src": "gdd:15_economy_meta.md meta.daily"
+   },
+   {
+    "day": 5,
+    "items": {
+     "bst_bubble": 2,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "total": {
+     "value": 2,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "src": "gdd:15_economy_meta.md meta.daily"
+   },
+   {
+    "day": 6,
+    "items": {
+     "bst_shockwave": 1,
+     "bst_fortify": 1,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "total": {
+     "value": 2,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "src": "gdd:15_economy_meta.md meta.daily"
+   },
+   {
+    "day": 7,
+    "items": {
+     "bst_hull": 2,
+     "bst_bubble": 2,
+     "bst_shockwave": 1,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "total": {
+     "value": 5,
+     "src": "gdd:15_economy_meta.md meta.daily"
+    },
+    "src": "gdd:15_economy_meta.md meta.daily"
+   }
+  ],
+  "cycleTotals": {
+   "bst_bubble": 5,
+   "bst_shockwave": 3,
+   "bst_fortify": 2,
+   "bst_hull": 3,
+   "src": "gdd:15_economy_meta.md meta.daily"
+  },
+  "src": "gdd:15_economy_meta.md meta.daily"
+ },
+ "siege": {
+  "itemRewards": false,
+  "leaderboard": "siege_best",
+  "src": "gdd:15_economy_meta.md meta.siege D-15-05"
+ },
+ "totals": {
+  "campaignMax": {
+   "bst_bubble": 46,
+   "bst_shockwave": 14,
+   "bst_fortify": 12,
+   "bst_hull": 13,
+   "all": 85,
+   "src": "decision:economy-design \u2014 sum of rewards in this file; cross-checked with gdd:15_economy_meta.md meta.forecast"
+  },
+  "campaignMaxWithStartGrant": {
+   "bst_bubble": 48,
+   "bst_shockwave": 16,
+   "bst_fortify": 14,
+   "bst_hull": 15,
+   "all": 93,
+   "src": "decision:economy-design \u2014 sum of rewards in this file; cross-checked with gdd:15_economy_meta.md meta.forecast"
+  },
+  "src": "decision:economy-design \u2014 sum of rewards in this file; cross-checked with gdd:15_economy_meta.md meta.forecast"
+ }
+}
