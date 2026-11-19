@@ -245,23 +245,24 @@ const DIVIDER = `content:'';display:block;flex:none;height:10px;margin:8px 0 10p
 const ROW = `.dialog :is(.std-actions,.window-actions)${OVER}`;
 const SECOND = ':is(.std-action--secondary,.mp-button--secondary,[data-variant=ghost])';
 // The kit pins the row to the bottom of a window that scrolls and fills it with the panel colour — a
-// hard dark band across the steel. Here it is the steel of the plate's lower part, fading in above
-// the buttons: what scrolls under the row fades out instead of being cut.
-const ACTIONS = `${ROW}{flex-flow:row wrap;justify-content:center;align-items:center;column-gap:8px;row-gap:0;`
-  + `padding-top:12px;margin-top:auto;background:linear-gradient(180deg,transparent,${v('mp-window-background')} 12px)}`
+// hard dark band across the steel (no fill matches a plate lit from above); the band goes.
+const ACTIONS = `${ROW}{flex-flow:row wrap;justify-content:center;align-items:center;column-gap:8px;row-gap:0;background:none}`
   + `${ROW}::before{content:'';order:1;flex:0 0 100%;height:8px}`
   + `${ROW}>button{order:0;flex:0 1 auto;width:auto;min-width:min(${v('game-button-min-primary')},100%);`
   + `max-width:min(${v('game-button-max')},100%);min-height:${v('game-button-h-primary')};`
   + `padding-inline:${v('game-button-pad')};white-space:normal}`
   + `${ROW}>button${SECOND}{order:2;min-width:min(${v('game-button-min')},100%);min-height:48px;margin-bottom:8px}`
   // A low screen: the kit puts the row on one line, and so does the skin — main action first.
-  + LOW(`${ROW}{padding-top:4px}${ROW}::before{display:none}`
+  + LOW(`${ROW}::before{display:none}${ROW}>button${SECOND}{margin-bottom:0}`
   + `${ROW}>button{flex:0 1 auto;min-width:min(${v('game-button-min-low')},100%);min-height:48px;margin-bottom:0;`
   + `padding-inline:${v('game-button-pad-tight')}}`)
   // The retry of an error alert, the same; the alert itself is a tinted underlay without an outline.
   + `.std-alert-retry${OVER}{align-self:center;width:auto;min-width:min(${v('game-button-min-primary')},100%);`
   + `max-width:min(${v('game-button-max')},100%);padding-inline:${v('game-button-pad')}}`
   + `.std-alert${OVER}{border:0;box-shadow:none}`
+  // The retry of the loading screen's error: the same.
+  + `.mp-preloader__copy>.mp-button${OVER}{width:fit-content;min-width:min(${v('game-button-min-primary')},100%);`
+  + `max-width:min(${v('game-button-max')},100%);margin-inline:auto;padding-inline:${v('game-button-pad')}}`
   // Price buttons of the shop: the same limits, centred under their pack.
   + `.dialog :is(.iap-row,.iap-slide)>.iap-buy${OVER}{align-self:center;width:auto;min-width:min(${v('game-button-min')},100%);`
   + `max-width:min(${v('game-button-max')},100%);padding-inline:${v('game-button-pad')}}`;
@@ -332,6 +333,9 @@ const CONFIRM = `.cf-item{${UNDERLAY}}.cf-tile{background:none;box-shadow:none;b
   + LOW(`.cf-item{padding-block:4px;min-height:0}.cf-tile,.cf-tile>*{width:40px;height:40px}`)
   + `.cf-price{font-family:${v('mp-font-display')};font-weight:400;color:${v('mp-card-gold')}}`;
 
+// ---- Player card (recolor): the card is one underlay, the avatar a cut plate like the leaderboard's.
+const PROFILE = `[data-part=player-card] .card{${UNDERLAY}}[data-part=player-card] .avatar{${AVATAR}}`;
+
 // ---- Reward received (recolor + the shared rules above): the list of what came is one underlay.
 const REWARD = `.reward-box{${UNDERLAY}}.reward-burst{border:0;background:none;box-shadow:none}`
   + `.reward-box .reward-grid .reward-art${OVER},.reward-box .reward-grid .reward-art${OVER}>*{${ART(v('game-art-reward'))}}`;
@@ -344,4 +348,5 @@ export const COMPONENTS: Readonly<Record<string, string>> = {
   leaderboardWindow: LEADERBOARD,
   rewardWindow: REWARD,
   confirm: CONFIRM,
+  profile: PROFILE,
 };

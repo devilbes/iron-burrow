@@ -146,7 +146,7 @@ const GAME_CSS = '.gw{display:flex;flex-direction:column;align-items:center;gap:
   + '@media (orientation:landscape) and (max-height:50em){.gw{gap:6px}.gw-art [data-part=icon]{width:96px;height:96px}'
   + '.gw-rows{grid-template-columns:1fr 1fr;column-gap:20px;padding:6px 14px}.gw-rows li{padding:2px 0}'
   + '.gw-total strong{font-size:24px}.gw-best{margin-top:-4px}}'
-  + '@media (orientation:landscape) and (max-height:32em){.gw-art [data-part=icon]{width:64px;height:64px}}';
+  + '@media (orientation:landscape) and (max-height:32em){.gw{gap:4px}.gw-art [data-part=icon]{width:56px;height:56px}}';
 const gameBody = (name, render) => (root) => mountView(root, name, () => view('div', { class: 'gw' }, ...render()),
   { styles: GAME_CSS });
 const prize = (id, count, size = 128) => view('div', { class: 'gw-prize' },
@@ -298,6 +298,8 @@ function mountShell(root, route, menu, declared, level) {
   shell.ctx = ctx;
   const contributes = Object.entries(WINDOWS).map(([id, [component, , kind]]) => ({ id: `gallery.${id}`,
     kind: kind === 'window' ? 'window' : 'popup', component,
+    // The player card has its title in the game (src/shell/windows/player.ts), not the gallery's id.
+    ...(id === 'profile' ? { title: 'shell.profile.title' } : {}),
     ...(kind === 'window' ? { slot: 'overlay', popupKind: 'content' } : kind === 'popup' ? {} : { slot: kind }) }));
   shell.add({ manifest: { id: 'gallery', ui: { contributes } },
     components: Object.fromEntries(Object.values(WINDOWS).map(([component, view]) => [component, view])),
