@@ -10,6 +10,7 @@ const { createGamePorts } = await load('boot/game-ports');
 const { createProgressStore } = await load('boot/progress-state');
 const { createGrantFollowUp } = await load('boot/grants');
 const { SDKError } = await load('sdk-stub');
+const { PROGRESS } = await load('boot/ids');
 
 const ENTRY = { id: 'level_1', title: 'levels.main.level_1.title', size: 4 };
 const step = (status) => ({ status, availableAt: null, conditions: {} });
@@ -87,7 +88,7 @@ test('the level end returns the answer at once; the next level comes from the on
   assert.equal(await ports.currentLevel(), 2);
   // One progress read for the session, no read after the level end, no cloud save.
   assert.deepEqual(server.calls.filter((call) => !call.startsWith('levels.')),
-    ['progress.init progress_main,reward_daily', 'beginAttempt', 'levelEnd']);
+    [`progress.init ${Object.values(PROGRESS).join(',')}`, 'beginAttempt', 'levelEnd']);
 });
 
 test('without realtime the expected grant is read once at the next screen, not waited for', async () => {
