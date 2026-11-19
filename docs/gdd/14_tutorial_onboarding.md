@@ -5,10 +5,10 @@
 ## 1. Первая сессия
 
 1. **S01 Boot**: `sdk.boot()` → чтение kv profile-pack. Если `onb.start_grant_done ≠ true` — запрос стартового гранта (2 × каждый бустер; id награды из configs `game.rewards`), при успехе флаг = true. Ошибка не блокирует: повтор при каждом открытии S02 (D-14-01).
-2. **Новый игрок** (`tut.stage1_done ≠ true` и стадия 1 не пройдена): Boot → сразу Stage 1, минуя S02/S03/S04 (Spare Hull в этом заходе не предлагается). D-14-02.
+2. **Новый игрок**: Boot → S02 Lobby с окном стартового набора (S02 `grant`: 4 крупные картинки бустеров ×2, кнопка `Collect`, 20 `ui.`) → `Play` → S03 (узел стадии 1) → S04 (без подсказки про Spare Hull) → Stage 1 с оверлеем S15. Путь совпадает с `qa/flows/first-session.json`. D-14-02: окно гранта показывает награду крупно по правилу окон наград; 3 нажатия до старта укладываются в `gt.tut.time_to_control`.
 3. Stage 1 с оверлеем S15 (§2). Бустеры в HUD уже есть (грант).
-4. После S07/S08 → S02 Lobby. Первый визит: тост `Start kit: 2 of each booster!` (флаг `onb.grant_toast_shown`). S12 Daily Rewards в первой сессии сам не открывается — только бейдж hud (D-14-03).
-5. Первое открытие S04 (со 2-й стадии): подсказка `Spare Hull: +1 life for this stage.` (флаг `tut.prestage_hint_shown`).
+4. После S07/S08 → S02 Lobby. S12 Daily Rewards в первой сессии сам не открывается — только бейдж hud (D-14-03).
+5. Первое открытие S04 начиная со стадии 2: подсказка `Spare Hull: +1 life for this stage.` (флаг `tut.prestage_hint_shown`).
 
 ## 2. Обучение на стадии 1
 
@@ -39,7 +39,6 @@
 | key | тип | когда пишется |
 |---|---|---|
 | `onb.start_grant_done` | bool | грант подтверждён сервером |
-| `onb.grant_toast_shown` | bool | показан тост в S02 |
 | `tut.stage1_step` | int 0–6 | после каждого шага |
 | `tut.stage1_done` | bool | T6 / первый исход стадии 1 / Skip |
 | `tut.booster_hint_shown` | bool | показ §3 |
@@ -66,9 +65,9 @@
 
 | key | target | unit | measured by | seeds |
 |---|---|---|---|---|
-| gt.tut.time_to_control | ≤ 10 (конец загрузки → `playing` стадии 1) | s | `e2e:first_session` | — |
-| gt.tut.t1_t4_duration | ≤ 35 (скриптовый ввод) | s | `e2e:first_session` | — |
-| gt.tut.first_kill_stage1 | ≤ 50 (от начала `playing`, туториал включён) | s | `e2e:first_session` | — |
-| gt.tut.stage1_clear_rate | ≥ 80 (novice) | % | `sim:stage_balance` | 1, 7, 42 |
-| gt.tut.completion_rate | ≥ 85 (T1→T6, живые игроки) | % | `analytics:tutorial_step` | — |
-| gt.tut.skip_rate | ≤ 25 | % | `analytics:tutorial_step` | — |
+| gt.tut.time_to_control | ≤ 10 | s от конца загрузки до `playing` стадии 1 | flow:first-session | — |
+| gt.tut.t1_t4_duration | ≤ 35 | s на шаги T1–T4 при скриптовом вводе | flow:first-session | — |
+| gt.tut.first_kill_stage1 | ≤ 50 | s от начала `playing` стадии 1 с туториалом | playtest:blind | — |
+| gt.tut.stage1_clear_rate | ≥ 80 | %, стадия 1, бот novice | sim:win_rate_stage1 | 1, 7, 42 |
+| gt.tut.completion_rate | ≥ 85 | % живых игроков T1→T6 (после релиза) | analytics:tutorial_step | — |
+| gt.tut.skip_rate | ≤ 25 | % живых игроков (после релиза) | analytics:tutorial_step | — |

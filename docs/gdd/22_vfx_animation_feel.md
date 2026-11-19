@@ -70,20 +70,20 @@
 - UI: окна — только fade 150 ms; `fx.reward_reveal` — все карточки сразу, fade 200 ms.
 - Геймплейная информация не теряется: таймеры бустеров, мигание носителей и истекающих power-up заменяются пульсом прозрачности 1 Гц.
 
-## `fx.genre_targets` — Genre targets
+## Genre targets
 
-| Цель | Порог | Measured by |
-|---|---|---|
-| input → first visual feedback (выстрел `fx.shot`, сдвиг танка) | ≤ 50 ms | `performance.now()` события ввода → кадр, где `game-field` получил `data-fx-ack="fx.shot#N"` (+ `performance.mark('fx:<id>#N')`) |
-| hit → эффект попадания (`fx.hit_*`, `fx.kill_*`) | тот же кадр, что и логическое попадание (0 кадров задержки) | тик симуляции попадания vs `data-fx-ack` |
-| UI tap → отклик кнопки (`fx.ui_button`) | ≤ 50 ms | pointerdown → смена transform |
-| frame time | p95 ≤ 16.7 ms desktop, ≤ 33 ms mobile 4×CPU throttle | трасса 120 с стадии |
-| боевая плотность | первый вражеский спавн ≤ 3 s от старта стадии, первый контакт (враг в поле зрения/выстрел) ≤ 10 s | лог событий симуляции |
-| длительность стадии | 90–180 s у бота-эталона на стадиях 1, 10, 20 | лог `stage_end` |
-| hitstop | 30–60 ms на убийствах, 120 ms на Ядре; не более 1 активного | лог fx |
-| частицы | никогда > лимита пула | счётчик пула, max за прогон |
+| key | target | unit | measured by | seeds |
+|---|---|---|---|---|
+| gt.fx.input_to_feedback_ms | ≤ 50 | ms от события ввода (выстрел, сдвиг танка) до кадра с новым `data-fx-ack` на `game-field` | flow:slice | — |
+| gt.fx.hit_feedback_frames | 0 | кадров между тиком попадания и `data-fx-ack` эффекта `fx.hit_*`/`fx.kill_*` | flow:slice | — |
+| gt.fx.ui_tap_ms | ≤ 50 | ms pointerdown → смена transform кнопки (`fx.ui_button`) | flow:first-session | — |
+| gt.fx.frame_p95_ms | ≤ 16.7 | ms p95 кадра на desktop (mobile 4×CPU throttle — ≤ 33), трасса 120 s стадии 30 | perf:trace | — |
+| gt.fx.first_spawn_s | ≤ 3 | s от старта `playing` до первого вражеского спавна (без туториала) | sim:first_spawn_s | 1, 7, 42 |
+| gt.fx.hitstop_kill_ms | 30–60 | ms хит-стопа на убийстве (на Core — 120, D-22-04; не более 1 активного) | flow:slice | — |
+| gt.fx.particles_over_limit | 0 | превышений лимита пула частиц за прогон | perf:trace | — |
 
-Seeds: `1`, `7`, `42` — RNG симуляции (спавны, дропы power-up по весам §5, ИИ) детерминирован от seed; seed задаётся только в тестовом окружении (D-22-02). Каждая цель меряется на всех трёх seed и трёх ориентациях; протокол прогона — `40_qa_acceptance.md` `qa.genre_targets`.
+Seeds `1`, `7`, `42` — RNG симуляции детерминирован от seed; seed задаётся только в тестовом окружении (D-22-02). Протокол прогона — `40_qa_acceptance.md` `qa.genre_targets`.
+
 
 ## Решения
 

@@ -42,6 +42,7 @@ D-13-01: TI(N) не убывает по N (плато разрешены); ро�
 ## 3. Симуляции (спецификация)
 
 - `sim:stage_balance` — `tests/sim/stage_balance.mjs`, экспорт `run(seed) → number`; `sim:siege_waves` — `tests/sim/siege_waves.mjs`, `run(seed) → number`.
+- Метрические симуляции (каждая — `tests/sim/<id>.mjs`, `run(seed) → number` = значение метрики, общий прогон-движок с двумя файлами выше): `first_kill_s`, `first_threat_s`, `stage_length_s`, `first_spawn_s` (медианы, s), `win_rate_early` (ст. 1–3), `win_rate_late` (ст. 26–30), `win_rate_stage1` (%, novice), `session_stages` (= floor(720 / (медиана длительности + 20))), `siege_run_min` (медиана, min). Строки целей — в `## Genre targets` разделов 10, 13, 14, 22, 40; gate `npm run gate:genre-targets` читает их по ключу.
 - **Возвращаемое число** = количество нарушенных целей `bal.sim.*` для этого seed (0 = pass). Значения метрик — по строке JSON на метрику в stdout (`{"key","value","target","ok"}`). D-13-03.
 - Seeds: 1, 7, 42. На seed: `bal.sim.runs_per_stage` = 10 прогонов на стадию на policy; Siege — `bal.sim.siege_runs` = 20 run на policy. `runSeed = (seed·1000003 + N·101 + k·7 + policyIdx) >>> 0`.
 - Headless тот же core (10), dt 1/60, без туториала, без бустеров, без Spare Hull и continue, каждая стадия с L0 (D-13-04).
@@ -99,8 +100,9 @@ D-13-05: при нарушении правим в порядке `bal.ai.fire_m
 
 | key | target | unit | measured by | seeds |
 |---|---|---|---|---|
-| gt.bal.stage_length | 90–180 (медиана clear, novice) | s | `sim:stage_balance` | 1, 7, 42 |
-| gt.bal.early_win_rate | 80–95 (ст. 1–3, novice) | % | `sim:stage_balance` | 1, 7, 42 |
-| gt.bal.late_win_rate | 30–50 (ст. 26–30, novice) | % | `sim:stage_balance` | 1, 7, 42 |
-| gt.bal.session_stages | 3–6 стадий за 6–15 мин (из медианы длительности) | stages | `sim:stage_balance` | 1, 7, 42 |
-| gt.bal.siege_run_length | 3–10 (novice, медиана) | min | `sim:siege_waves` | 1, 7, 42 |
+| gt.bal.sim_violations | 0 | число нарушенных целей `bal.sim.*` (§4) | sim:stage_balance | 1, 7, 42 |
+| gt.bal.siege_violations | 0 | число нарушенных целей `bal.sim.*.siege_*` (§4) | sim:siege_waves | 1, 7, 42 |
+| gt.bal.early_win_rate | 80–95 | %, стадии 1–3, бот novice | sim:win_rate_early | 1, 7, 42 |
+| gt.bal.late_win_rate | 30–50 | %, стадии 26–30, бот novice | sim:win_rate_late | 1, 7, 42 |
+| gt.bal.session_stages | 3–6 | стадий за 12-минутную сессию (720 s / медиана длительности стадии с экранами +20 s) | sim:session_stages | 1, 7, 42 |
+| gt.bal.siege_run_length | 3–10 | min, медиана забега Siege, бот novice | sim:siege_run_min | 1, 7, 42 |

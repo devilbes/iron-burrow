@@ -37,7 +37,7 @@
 | тюнинги | `configs/remote/game/{balance,enemies,powerups,boosters,siege,rewards}.json` + `configs/remote/iap/*.json` | сервис configs → `sdk.configs` (ключи `game.*`, `iap.*`, 31 `plat.configs`) |
 | схемы | `configs/schemas/game.*.schema.json`, `iap.*.schema.json`, `level.schema.json` | валидация при публикации и в meta-bridge; при невалидном ключе — встроенный дефолт |
 | уровни кампании | `configs/levels/campaign/stage_01.json … stage_30.json` | публикуются как level-set `campaign` модуля progress (services-publish); игра получает данные стадии через progress / configs (способ — уточняет интеграция) |
-| арена Siege | `configs/levels/siege/siege_pit.json` | публикуется в составе `game.siege.arena` (D-30-04) |
+| арена Siege | `configs/levels/siege/siege_pit.json` | публикуется как level-set `siege` (1 уровень) модуля progress, как и кампания (D-30-04) |
 | тексты | `localization/strings.json` (en) | `sdk.l10n.t`; ни одной строки UI в коде |
 | время | — | только `core.time.now()` (daily, кулдауны оффера); `sdk.time` — уточняет интеграция |
 | сохранения | inventory, progress, profile-pack kv / gamestate | 15 `meta.save`; никаких локальных хранилищ браузера |
@@ -70,7 +70,7 @@ Android-смартфон 2019 г. среднего класса (4 ГБ ОЗУ, 
 
 ## tech.verify — проверки шаблона
 
-- `npm run verify` шаблона v2 = части: `typecheck` (`tsc --noEmit`), `build` (`dist/index.html`), `test` (тесты `tests/`), статические проверки (запрещённые слова 00_MASTER, нет `localStorage`/`window.*`, нет импортов между модулями, нет строк UI вне `localization/strings.json`), бюджеты `tech.perf.*` по `dist/`.
+- `npm run verify` шаблона v2 = части: `typecheck` (`tsc --noEmit`), `build` (`dist/index.html`), `test` (тесты `tests/`), статические проверки (запретные слова из переменных запуска потока, нет `localStorage`/`window.*`, нет импортов между модулями, нет строк UI вне `localization/strings.json`), бюджеты `tech.perf.*` по `dist/`.
 - В текущем репозитории `manifest.json` = 1.0.0 и в `package.json` есть только `build` и `typecheck` → минимальная проверка `npm ci && npm run typecheck && npm run build`; остальные части добавляются скриптами проекта в `scripts/` без правки SDK (D-30-05).
 - Путь к QA — сервис builds (`ci/README.md`).
 
@@ -93,6 +93,6 @@ Android-смартфон 2019 г. среднего класса (4 ГБ ОЗУ, 
 | D-30-01 | 10 модулей игры; `game-core` — чистое ядро без DOM/SDK |
 | D-30-02 | `requestAnimationFrame` — единственный глобальный API цикла; время шага — `core.time.now()` |
 | D-30-03 | Пауза при скрытии вкладки, возобновление только через окно Pause |
-| D-30-04 | Арена `siege_pit` публикуется внутри `game.siege.arena`, а не в level-set кампании |
+| D-30-04 | Арена `siege_pit` — отдельный level-set `siege` модуля progress (уровни только через progress, не через конфиги `game.*`); счёт забега идёт в лидерборд, `levelEnd` по забегу — с результатом и счётом |
 | D-30-05 | До появления `verify` в шаблоне — `typecheck` + `build` + проектные скрипты проверок |
 | D-30-06 | Бюджеты `tech.perf.*` — значения таблицы выше |

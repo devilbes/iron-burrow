@@ -102,7 +102,15 @@
 | orientation-switch | P → L → D: `data-layout`, пауза при смене в стадии | AC-20-08, AC-20-10 |
 | slice | вертикальный срез start → action → feedback → win/lose → replay | AC-10-09, AC-22-04 |
 
-## `qa.genre_targets` — Genre targets (протокол)
+## Genre targets
+
+| key | target | unit | measured by | seeds |
+|---|---|---|---|---|
+| gt.qa.blind_goal_understood | ≥ 2 | игроков из 3 поняли цель «защити Ядро» без подсказок | playtest:blind | — |
+| gt.qa.blind_want_more | ≥ 4 | медиана оценки «хочу ещё» 1–5 | playtest:blind | — |
+| gt.qa.genre_gate_violations | 0 | нарушений в `npm run gate:genre-targets` по всем `sim:*` разделов 10/13/14/22 | sim:stage_balance | 1, 7, 42 |
+
+### `qa.genre_targets` — протокол
 
 1. Сборка env `test`; `npm run gate:genre-targets` (скрипт пишет WP-16).
 2. Скрипт гоняет бота-эталона на seeds `1`, `7`, `42` × ориентации P/L/D × стадии 1, 10, 20 и Siege до волны 5; собирает пороги из `22_vfx_animation_feel.md` `fx.genre_targets` (ввод → `data-fx-ack` ≤ 50 ms, hit в тот же кадр, p95 кадра, первый спавн/контакт, длительность стадии 90–180 s, hitstop, лимит частиц). Падение любого порога на любом seed → gate красный.

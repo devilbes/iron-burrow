@@ -24,7 +24,7 @@
 |---|---|---|---|---|
 | ui-kit | все окна, топ-бар, нижний бар, HUD-иконки, магазин, награды, лидерборды, профиль / ManyPlay ID, очередь окон | screens, hud-ui | обязателен | docs/gdd/services-matrix.md |
 | inventory | 4 бустера: балансы, списание | boosters | используется | docs/gdd/services-matrix.md |
-| progress | level-set `campaign` (30 стадий), проверенный конец уровня, награды уровней, звёзды / лучший счёт | meta-bridge | используется | docs/gdd/services-matrix.md |
+| progress | level-set `campaign` (30 стадий) и `siege` (арена), проверенный конец уровня, награды уровней, звёзды / лучший счёт | meta-bridge | используется | docs/gdd/services-matrix.md |
 | daily-rewards | календарь 7 дней | meta-bridge, screens | используется | docs/gdd/services-matrix.md |
 | iap | 5 паков, офферы, покупка | shop | используется | docs/gdd/services-matrix.md |
 | leaderboards | `siege_best`, `campaign_score` | meta-bridge, screens | используется | docs/gdd/services-matrix.md |
@@ -68,7 +68,7 @@
 | progress | нет сети перед стартом стадии | старт стадии недоступен: Pre-stage показывает «Connection needed» (сервер проверяет конец уровня, `clientAuthoritative: false`) (D-31-02) |
 | progress | `levelEnd` не прошёл | повтор с паузами 2 / 4 / 8 / 16 / 32 с; затем в S07 кнопка «Retry saving»; результат хранится только в памяти до успеха; награды показываются после ответа сервиса |
 | inventory | `balance` не получен | кнопки бустеров неактивны со счётчиком «—», стадия играется без бустеров |
-| inventory | `consume` не прошёл | эффект не применяется, кнопка коротко показывает ошибку; continue остаётся доступным для повтора |
+| inventory | `consume` не прошёл | бустер в бою: эффект уже применён (оптимистично, 15 D-15-02), до 3 повторов 1/2/4 s, затем кнопка бустера неактивна до конца стадии; `bst_hull` (pre-stage / continue): эффект не применяется, ошибка на кнопке, continue доступен для повтора |
 | daily-rewards | статус / получение не прошли | иконка без бейджа; в S12 — ошибка и Retry; награда не теряется (сервер) |
 | iap | см. 16 `mon.errors` | покупки неактивны офлайн; выдача только сервером |
 | leaderboards | `get` не прошёл | S13 «Leaderboards unavailable» + Retry |
@@ -117,7 +117,7 @@
 | `game.boosters.hull` | {prestage_max,continue_max,continue_lives,continue_rebuild_core} | {1,1,2,true} | 15 |
 | `game.boosters.siege_limit_mult` | int | 2 | 15 |
 | `game.siege.unlock_after_stage` | int | 5 | 15 |
-| `game.siege.arena` | object (карта) | `siege_pit` из `configs/levels/siege/siege_pit.json` | 12 |
+| `game.siege.level_set_id` | string | «—» (level-set `siege`, уровень `siege_pit`; создаёт services-publish) | 12 |
 | `game.siege.wave_size` | int | 10 | 13 |
 | `game.siege.max_alive` | {base,wave_div,cap} | {4,3,8} | 13 |
 | `game.siege.brute_share` | {per_wave,cap} | {0.1,0.5} | 13 |
@@ -145,7 +145,7 @@
 |---|---|---|
 | inventory | 4 предмета: `bst_bubble`, `bst_shockwave`, `bst_fortify`, `bst_hull` (расходуемые) | — |
 | inventory | награда «start grant»: по 2 каждого, 1 раз на игрока, отдельно | — |
-| progress | level-set `campaign`: 30 уровней из `configs/levels/campaign/` | — |
+| progress | level-set `campaign`: 30 уровней из `configs/levels/campaign/`; level-set `siege`: 1 уровень `siege_pit` из `configs/levels/siege/` | — |
 | progress | награды уровней: первое прохождение (30, ротация), ★★★ (30 × `bst_bubble` 1), финалы 10/20/30 (по 1 каждого) | — |
 | daily-rewards | календарь 7 дней (15 `meta.daily`), цикл с повтором | — |
 | iap | 5 офферов (16 `mon.catalog`), Starter Crate с лимитом 1 покупка; выдача в inventory | — |

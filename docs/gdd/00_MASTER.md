@@ -2,7 +2,7 @@
 
 Spec language: Russian (ТЗ), game base language: **en** (`defaultLocale: en`, languages: `[en]`; other locales — only the localization step).
 Flow frame: game-generation-lite — web only, **no ads at all**, monetisation = real-money IAP only, everything through ManyPlay SDK 1.0.0-rc.30 + UI Kit, "Решай сам" (no owner questions; decisions in `DECISIONS.md`).
-Forbidden words anywhere in the game (UI, art, store, code strings): Battle City, Tank 1990, Tank Force, Namco, Famicom, Dendy, NES. No foreign IP, no Playrix.
+Forbidden words: the list from the launch variables of the flow (field «Запретные слова»: the name of the reference game, its publisher and the console brands). They are never reproduced in docs, UI, art, store texts or code strings. No foreign IP, no Playrix.
 
 ## 1. Hook and pitch
 
@@ -38,7 +38,7 @@ Meta loop: 30 campaign stages in 3 chapters (stars, unlocks) · Siege endless mo
 
 - Field 13×13 **cells**; each cell is 2×2 **quarters** (destruction granularity). Logic units: 1 cell = 1.0; render cell size = floor(fieldPx/13).
 - Tiles: `brick` (destroyable by any shot, per quarter), `steel` (destroyable only by gun level 3, per quarter), `lava` (impassable for tanks, shots fly over), `roots` (tanks pass, hides tanks drawn under it, shots pass), `oil` (tanks slide 0.5 cell after stopping), `empty`.
-- **Burrow Core**: 1 cell at bottom center (col 6, row 12), surrounded by brick ring of 8 cells (the "Core wall"). One hit by any bullet (enemy or player) destroys the Core → defeat.
+- **Burrow Core**: 1 cell at bottom center (col 6, row 12), protected by the "Core wall" = the 3×3 block cols 5–7, rows 10–12 minus the Core itself = 8 brick cells (D-10-09; the Core sits on the bottom edge, so the wall is double-thick above it). One hit by any bullet (enemy or player) destroys the Core → defeat.
 - Player spawns at (col 4, row 12); enemies spawn at top: (0,0), (6,0), (12,0) in rotation.
 - Player: 3.0 cells/s, 3 lives per stage (+1 per Spare Hull), spawn shield 3 s. Bullet 9 cells/s.
 - Gun level 0→3 by **Star** pickup: L1 fast bullet (13.5 cells/s), L2 two bullets on screen, L3 bullets break steel. Dying resets to L0. Level persists between stages if not killed (campaign only).

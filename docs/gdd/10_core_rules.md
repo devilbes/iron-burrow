@@ -81,7 +81,7 @@ D-10-01: потеря фокуса/`visibilitychange=hidden` всегда ста
 | `bst_fortify` | 3 | 1 / 2 | эффект fortify/rebar не активен |
 | `bst_hull` | — | pre-stage 1 / 2; continue 1 / 1 | S04 / S08 |
 
-Общие правила: только в `playing`, inventory > 0, кулдаун `core.booster_cooldown_s`. Эффект применяется в тике команды; списание через `inventory.consume` (D-10-08: оптимистично, повтор при ошибке; команда пишется в лог для детерминизма). `shockwave`: активные враги убиты, засчитаны с очками, carrier роняет power-up. `fortify`/`rebar`: 8 клеток Core wall → steel целиком; quarters под танком дозаполняются, когда танк уйдёт; по окончании стена становится целым brick. Таймеры эффектов не суммируются: `max(остаток, новый)`.
+Общие правила: только в `playing`, inventory > 0, кулдаун `core.booster_cooldown_s`. Эффект применяется в тике команды; списание через `inventory.consume` (D-10-08: оптимистично для бустеров в бою, до 3 повторов, затем кнопка неактивна до конца стадии; `bst_hull` — только после подтверждения; см. 15 D-15-02; команда пишется в лог для детерминизма). `shockwave`: активные враги убиты, засчитаны с очками, carrier роняет power-up. `fortify`/`rebar`: 8 клеток Core wall → steel целиком; quarters под танком дозаполняются, когда танк уйдёт; по окончании стена становится целым brick. Таймеры эффектов не суммируются: `max(остаток, новый)`.
 
 Power-up (подбирает только игрок): `star` на L3 — только очки; `freeze` — враги (и новые после спавна) не двигаются, не решают и не стреляют, их пули летят; `quake` — активные враги убиты без очков и без дропа; `hull` в Siege тоже +1 life. D-10-10.
 
@@ -116,7 +116,7 @@ D-10-09 Core wall: блок 3×3 cols 5–7, rows 10–12 без Core = ровн
 
 | key | target | unit | measured by | seeds |
 |---|---|---|---|---|
-| gt.core.time_to_first_action | ≤ 2.0 (load → управление) | s | `test:core_state_machine` | — |
-| gt.core.time_to_first_kill | 8–30 (стадии 1–3, novice, без туториала) | s | `sim:stage_balance` | 1, 7, 42 |
-| gt.core.time_to_first_core_threat | 25–90 (ст. 1–3); 15–60 (ст. 26–30), novice | s | `sim:stage_balance` | 1, 7, 42 |
-| gt.core.stage_length | медиана 90–180 (clear, novice) | s | `sim:stage_balance` | 1, 7, 42 |
+| gt.core.time_to_first_action | ≤ 2 | s от конца загрузки до управления танком | flow:first-session | — |
+| gt.core.time_to_first_kill | 8–30 | s, медиана, стадии 1–3, бот novice, без туториала | sim:first_kill_s | 1, 7, 42 |
+| gt.core.time_to_first_core_threat | 25–90 | s, медиана, стадии 1–3, бот novice (`core.threat`) | sim:first_threat_s | 1, 7, 42 |
+| gt.core.stage_length | 90–180 | s, медиана clear, все 30 стадий, бот novice | sim:stage_length_s | 1, 7, 42 |
