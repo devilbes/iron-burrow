@@ -1,7 +1,59 @@
 {
   "schemaVersion": 1,
   "appId": 360,
-  "environment": null,
-  "environments": null,
-  "sdk": null
+  "environment": "test",
+  "gameType": "server",
+  "clientAuthoritative": false,
+  "endpoints": {
+    "api": "https://test.manyplay.fun",
+    "realtime": "https://test.manyplay.fun"
+  },
+  "cdn": "https://test.manyplay.fun/sdk/",
+  "assets": {
+    "cdnBase": "https://test.manyplay.fun/"
+  },
+  "store": "web",
+  "platform": "web",
+  "orientation": "any",
+  "sdk": {
+    "package": "@manygamescorp/core",
+    "version": "1.0.0-rc.30",
+    "adapter": {
+      "package": "@manygamescorp/platform-web",
+      "version": "1.0.0-rc.30"
+    },
+    "modules": [
+      {
+        "id": "ui-kit",
+        "version": "1.0.0-rc.30",
+        "source": "local",
+        "load": "eager",
+        "settings": {
+          "skin": "manyplay",
+          "topbarMain": true,
+          "topbarCore": true,
+          "hud": true,
+          "bottomMenu": true,
+          "windowQueue": true
+        },
+        "package": "@manygamescorp/ui-kit"
+      }
+    ],
+    "modulesRevision": 1,
+    "overrides": {
+      "scope": "panel.sdk.overrides"
+    }
+  },
+  "uiKit": {
+    "package": "@manygamescorp/ui-kit",
+    "version": "1.0.0-rc.30",
+    "skin": {
+      "package": "@manygamescorp/skin-manyplay",
+      "version": "1.0.0-rc.30"
+    }
+  },
+  "buildKit": {
+    "package": "@manygamescorp/build-kit-web",
+    "version": "1.0.0-rc.30"
+  }
 }
