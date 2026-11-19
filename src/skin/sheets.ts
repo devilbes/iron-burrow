@@ -131,8 +131,10 @@ function frame({ win, head, title, close }: Frame): string {
     + `${win}:focus-visible{box-shadow:${v('game-shadow-modal')}}`
     // The head: as tall as the plate; plate and close cast one shadow (filter: their clip paths keep their shape).
     + `${head}{min-height:${v('game-plate-h')};align-items:flex-start;filter:drop-shadow(${v('game-shadow-floating')})}`
+    // The title wraps between words only (never «LEADERBOARD / S»), lines balanced.
     + `${head}>${title}{box-sizing:border-box;display:flex;align-items:center;justify-content:center;`
-    + `min-height:${v('game-plate-h')};margin:0;padding:4px ${v('game-plate-pad')} 6px;`
+    + `min-height:${v('game-plate-h')};margin:0;padding:4px ${v('game-plate-pad')} 6px;text-align:center;`
+    + 'overflow-wrap:normal;word-break:normal;hyphens:manual;text-wrap:balance;'
     + `font-size:${v('kit-title-size')};line-height:1.1;${TITLE_TEXT};${layers(PLATE_LAYERS)};clip-path:${PLATE_PATH}}`
     + `${shut}{width:${v('game-close-size')};height:${v('game-close-size')};min-height:0;padding:0;`
     + `top:calc(${O} - ${v('game-close-size')} / 2);right:${v('game-cut')};margin:0;border:0;border-radius:0;color:${v('game-frost')};`
@@ -145,7 +147,20 @@ function frame({ win, head, title, close }: Frame): string {
     + `${shut}:focus-visible{outline:2px solid ${v('game-frost')};outline-offset:-4px}`;
 }
 
-const WINDOW = frame({ win: '.dialog-backdrop .dialog', head: '.dialog>.dialog-head', title: '[data-skin-slot=title]',
+// ---- Fit: every window is as high as its content and never higher than the viewport allows (the
+// kit's `max-height:100%` of the popup area). The kit gives content windows (shop, daily gift,
+// leaderboard, settings) a fixed 80 % of the work zone and info windows 50 %: half of them stood
+// empty. Inside, only the body scrolls; the head (title plate, close) and the action row stay in
+// sight — the kit's own rule for windows with the close out of the corner, here for every window.
+const FIXED_PARTS = '.dialog-head,.dialog-art,.std-art,.window-actions,.std-actions,.dr-actions,.window-footer,.std-footnote';
+const FIT = `:host{--kit-pop-h:auto;--kit-window-content-height:auto}`
+  + `.dialog-backdrop .dialog{padding:0 ${v('game-window-pad')} ${v('game-window-pad')}}`
+  + `.dialog-backdrop .dialog>:not(${FIXED_PARTS}){min-height:0;flex-shrink:1;overflow:auto;overscroll-behavior:contain}`
+  + `.dialog-backdrop .dialog>:is(${FIXED_PARTS}){flex-shrink:0}`
+  // No browser scrollbar anywhere: lists and bodies still scroll by touch, wheel and keys.
+  + '*{scrollbar-width:none}*::-webkit-scrollbar{display:none}';
+
+const WINDOW = FIT + frame({ win: '.dialog-backdrop .dialog', head: '.dialog>.dialog-head', title: '[data-skin-slot=title]',
   close: '.dialog-close' })
   // The title of the home screen (src/screens/ui.ts) is the same forged nameplate.
   + `.hero-title${OVER}{border:0;border-radius:0;padding:10px calc(${v('game-plate-pad')} + 4px) 14px;${TITLE_TEXT};`

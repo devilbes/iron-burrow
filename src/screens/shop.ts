@@ -42,7 +42,7 @@ export function shopWindowSpec(ctx: ScreenContext, state: ShopState, buy: (key: 
       const unbind = bind(() => live.refresh());
       return () => { stopLayout(); unbind(); live.off(); };
     },
-    actions: [{ id: 'shop-close', label: ctx.t('screen.common.close'), variant: 'secondary' }],
+    actions: [{ id: 'shop-close', label: ctx.t('screen.common.close'), variant: 'text' }],
   };
 }
 
