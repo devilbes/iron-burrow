@@ -138,7 +138,7 @@
   --game-shadow-raised:0 2px 4px color-mix(in srgb,var(--game-shade) 24%,transparent);
   --game-shadow-floating:0 6px 12px color-mix(in srgb,var(--game-shade) 32%,transparent);
   --game-shadow-modal:0 12px 24px color-mix(in srgb,var(--game-shade) 40%,transparent);
-  --kit-title-size:var(--game-title-size);
+  --kit-title-size:clamp(var(--game-title-size),2.5vw,var(--game-title-size-wide)); /* 24px phone, 32px desktop */
   --kit-title-weight:400;
   --kit-title-depth:2px;             /* window titles (plate text, COMMON): the one restrained text
                                         shadow 0 2px 0 slate_abyss; color --kit-title-top */

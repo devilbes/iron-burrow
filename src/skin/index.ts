@@ -26,7 +26,10 @@ export interface GameSkin {
 // The bundled code runs from dist/app/ (scripts/build.mjs), whatever module it came from: URLs from
 // import.meta.url are relative to that directory, where the build keeps src/'s CSS on its path.
 export const SKIN: GameSkin = { theme: new URL('./skin/theme.css', import.meta.url).href,
-  assets: ASSETS, items: ITEMS, offers: OFFERS, fonts: FONTS, common: COMMON, css: COMPONENTS };
+  assets: ASSETS, items: ITEMS, offers: OFFERS, fonts: FONTS, common: COMMON, css: COMPONENTS,
+  // The close plate stays in the head, right (docs/skin/map.json chrome); titles are text on the
+  // nameplate of COMMON, not the kit's display title.
+  closePosition: 'head-right' };
 
 /** Most bytes the skin may weigh: theme, sheets, art and fonts (tests/skin-readiness.test.mjs). */
 export const SKIN_WEIGHT_LIMIT = 2 * 1024 * 1024;
