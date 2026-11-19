@@ -32,8 +32,13 @@ export const LOBBY_CSS = `
  grid-template-areas:"brand" "info" "actions";grid-template-rows:minmax(0,1fr) auto auto;
  grid-template-columns:minmax(0,1fr)}
 .brand{grid-area:brand;display:grid;place-items:center;min-height:0;min-width:0;height:100%;
- padding-top:var(--hud-zone)}
-.logo{width:100%;max-width:520px;height:auto;max-height:100%;object-fit:contain}
+ padding-top:var(--hud-zone);container-type:size}
+.logo-wrap{position:relative;width:min(100cqw,520px,250cqh);aspect-ratio:5/2;container-type:inline-size}
+.logo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.logo-text{position:absolute;left:16%;right:16%;top:46%;bottom:32%;display:grid;place-items:center;margin:0;
+ font-family:var(--mp-font-display);font-weight:400;font-size:7.5cqw;line-height:1;letter-spacing:.04em;
+ text-transform:uppercase;white-space:nowrap;color:var(--mp-text);
+ text-shadow:0 .06em 0 var(--mp-night),0 0 .2em var(--mp-night)}
 .info{grid-area:info;display:flex;flex-direction:column;align-items:center;justify-content:center;
  gap:.5em;min-height:0;min-width:0}
 .actions{grid-area:actions;display:grid;gap:.75em;width:100%;max-width:420px;justify-self:center;min-width:0}
@@ -51,7 +56,7 @@ export const LOBBY_CSS = `
 [data-layout=landscape] .actions{align-self:center;gap:.5em}
 [data-layout=desktop].lobby{padding-inline:var(--hud-side);grid-template-rows:minmax(0,1fr) auto auto;
  align-content:center}
-[data-layout=desktop] .logo{max-width:640px}
+[data-layout=desktop] .logo-wrap{width:min(100cqw,640px,250cqh)}
 [data-layout=desktop] .info{justify-content:flex-start}
 .title-plate{max-width:100%}
 `;
@@ -60,8 +65,11 @@ function brand(ctx: ScreenContext, state: LobbyState, on: LobbyActions): ViewNod
   const title = ctx.t('shell.title');
   const content = state.logoFailed
     ? view('h1', { class: 'plate title-plate', 'data-testid': 'lobby-title' }, title)
-    : view('img', { class: 'logo', src: gameArt('logo_iron_burrow'), alt: title, decoding: 'async', draggable: 'false',
-      'data-testid': 'lobby-logo', onError: () => on.logoFailed() });
+    // The logo art is an empty plate: the title is set on its teal field (centered, under the drill tip).
+    : view('div', { class: 'logo-wrap', 'data-testid': 'lobby-logo' },
+      view('img', { class: 'logo', src: gameArt('logo_iron_burrow'), alt: '', decoding: 'async', draggable: 'false',
+        onError: () => on.logoFailed() }),
+      view('h1', { class: 'logo-text', 'data-testid': 'lobby-title' }, title));
   return view('div', { class: 'brand' }, content);
 }
 
