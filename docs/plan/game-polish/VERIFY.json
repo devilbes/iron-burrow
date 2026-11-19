@@ -1,0 +1,116 @@
+{
+  "node": "game-polish",
+  "verifier": "verifier-score",
+  "date": "2026-11-19",
+  "commit": "ea64e74",
+  "authorStep": "6aff3bb34b8d342701215336 (commits 732cc46..2bfda6c, base 31800ab)",
+  "acSource": "У узла нет отдельного acceptance (docs/plan/game-polish не было, FLOW_PLAN.md шаг не описывает). Критерии выведены из задачи шага: доводка по рабочему списку docs/game/LOOK.md (Н-01…Н-90, P0–P3), требования владельца из POLISH2.md §2 (окна в 844x390/390x844, без заглушек и прокрутки, ресурсы в топбаре слева, плитка оффера справа, справа только настройки), честная проходимость уровней 1–3 сервером, проверки сборки и запрет на правку SDK/UI Kit, плюс цели docs/plan/QUALITY_TARGETS.json (viewports, touchTargetsMinPx, consoleErrors). Решение D-VER-POL-01.",
+  "howChecked": "Проверяющий только читает код игры. Повторно запущены typecheck, build, test:unit, строгая проверка окон и готовность скина. Зависимости разработки (typescript, esbuild, sharp, ajv) временно подключены ссылками из соседней копии автора на том же коммите ea64e74; пакеты @manygamescorp не трогались, ссылки потом удалены. Живой проход заново не запускался: в копии нет браузера и playwright, а первичный след шага — журналы docs/game/shots/*-log.json и 147 снимков. Открыты 9 ключевых снимков и разобраны три журнала. Решение D-VER-POL-02.",
+  "checksRun": [
+    {"cmd": "npm run typecheck", "exit": 0, "out": "typecheck: tsconfig.sdk.json"},
+    {"cmd": "npm run build", "exit": 0},
+    {"cmd": "npm run test:unit", "exit": 0, "out": "tests 167 · pass 164 · fail 0 · skipped 3"},
+    {"cmd": "SCREENS_STRICT=1 node --test tests/screens-modals.test.mjs", "exit": 0, "out": "pass 2 · fail 0"},
+    {"cmd": "node --test tests/skin-readiness.test.mjs", "exit": 0, "out": "pass 14 · fail 0"},
+    {"cmd": "git diff --name-only 31800ab 2bfda6c | grep -E '^(sdk/|src/sdk/|node_modules/|platform.json|sdk-lock.json|ui-kit-lock.json|src/ui-kit/|tools/vendor-sdk.mjs|src/shell/)'", "exit": 1, "out": "пусто: 373 файла вне снимков + 150 снимков; затронуты assets/game, assets/skin, configs/remote (локализация, ui.windows), src/modules/game/api, src/screens, src/skin, tests/skin-gallery, docs"}
+  ],
+  "criteria": [
+    {
+      "id": "AC-POL-01",
+      "title": "Исправлены P0 из LOOK.md: Н-01 читаемое поле, Н-20 магазин, Н-40 окно стадии в 844, Н-41 Stage Clear в 844 (Н-21 — цена из стора)",
+      "mandatory": true, "status": "PASS", "score": 8,
+      "evidence": "844x390-17-game-level1, 390x844-17-game-level1, 1440x900-17-game-level1: пол, кирпич, ядро со свечением, враг в углу появления, кольцо у танка, стрелка и рамка на цель различимы. 1440x900-09-shop: сетка 2×2, одна карточка (картинка, название, состав ×N, цена справа), Best value — оранжевая кромка. 844x390-09-shop: список прокручивается внутри окна, Close видна. 844x390-13-level1-prestage и 844x390-20-win-level1: всё внутри окна, кнопки в один ряд, числа не обрезаны. Н-21: цена «—» по правилу владельца, причина — 409 POST iap/store/products (тестовый провайдер стора не включён), вопрос владельцу в POLISH2 §5.1",
+      "why": "Все четыре P0, которые шаг может исправить сам, закрыты, снимки это подтверждают. Н-21 упирается в денежное решение владельца и корректно ему передан."
+    },
+    {
+      "id": "AC-POL-02",
+      "title": "Пункты P1–P3 из LOOK.md исправлены, а не исправленные названы с причиной",
+      "mandatory": true, "status": "PASS", "score": 8,
+      "evidence": "POLISH2 §1: 40 строк «было → сделано → снимок». Выборочно подтверждено: Н-45 390x844-08-boards (LEADERBOARDS в одну строку), Н-43/Н-80 844x390-02-grant-reward (4 ячейки, окно по центру), Н-83 844x390-31-defeat (одна оранжевая Continue, Retry/Map бирюзовые), Н-81 844x390-20-win-level1 «×2» = награда +2, Н-62/Н-63 1440x900-17 (Gun level ★★★, подписи на десктопе, бейджи внутри плиты), Н-48 390x844-03-lobby (плиты 48 px). Код: Н-15 configs/remote/localization/strings/screens.json:101 «Not Counted» + src/screens/stage-windows.ts:42; Н-34b src/screens/index.ts:288 (Best score убран); §3 п.5 screens.json:35. Не исправлены с причиной (POLISH2 §5): Н-12 (325 из 366 px), Н-30 (тумблеры в окне настроек обвязки), Н-33 (Claim при claimMode auto), Н-84 (appVersion контекста)",
+      "why": "Почти весь список закрыт. Остаток лежит вне writeSet шага (обвязка src/shell, модуль из platform.json) и описан честно. Это MINOR-замечания, не провал критерия (D-VER-POL-03)."
+    },
+    {
+      "id": "AC-POL-03",
+      "title": "Требование владельца: окна в 844x390 и 390x844 целиком на экране, страница не прокручивается",
+      "mandatory": true, "status": "PASS", "score": 9,
+      "evidence": "docs/game/shots/{1440x900,844x390,390x844}-log.json: в 37 шагах каждого размера scroll=false; offscreen пусто, кроме 844x390-09/10-shop: кнопка цены нижней карточки внутри прокручиваемого списка окна, Close на экране. Строгая проверка окон: pass 2, fail 0",
+      "why": "Измерено сценарием в трёх размерах. Единственное исключение — содержимое прокручиваемого списка, а не элемент управления окна."
+    },
+    {
+      "id": "AC-POL-04",
+      "title": "Требования владельца к HUD: ресурсы в топбаре слева, справа только настройки, плитка оффера справа",
+      "mandatory": true, "status": "PASS", "score": 8,
+      "evidence": "390x844-03-lobby: слева профиль и счётчики бустеров с «+», справа только шестерёнка; 1440x900-17: 4 счётчика. Плитка оффера объявлена в src/screens/index.ts:205 (offer: true, kind money). На стенде её нет: журнал «[offer-tile] no offer tile on the HUD», кит показывает плитку только при доступном оффере стора, а стор отвечает 409 (D-POL-07)",
+      "why": "Раскладка выполнена. Плитка оффера сделана в коде, но появится, только когда владелец включит провайдер стора."
+    },
+    {
+      "id": "AC-POL-05",
+      "title": "Нет заглушек, сырых ключей и полос прокрутки",
+      "mandatory": true, "status": "PASS", "score": 8,
+      "evidence": "На 9 открытых снимках нет сырых ключей и пустых табличек. «Test purchase» — строка ГДД ui.shop.test (docs/gdd/20_ui_ux_screens_texts.md:244), покупки тестовые по ГДД 16. Цена «—» — правило владельца (D-POL-05). Полос прокрутки на снимках нет",
+      "why": "Видимые «заглушки» заданы ГДД и правилом владельца, а не оставлены по недосмотру."
+    },
+    {
+      "id": "AC-POL-06",
+      "title": "Уровни 1–3 засчитаны сервером в трёх размерах, награда совпадает с окном победы, поражение работает",
+      "mandatory": true, "status": "PASS", "score": 9,
+      "evidence": "verdicts в трёх *-log.json: level1/2/3-win — status 202, verified true, stars 3; defeat — verified false (out_of_bounds). Длительность 66.7–67.0 с ≥ 58 с. 844x390-20-win-level1 «Bubble Shield ×2» = награда +2. Победы засчитаны кнопкой QA: Win (D-POL-11, видна только в среде test)",
+      "why": "Сервер подтверждает цепочку «победа → награда → следующая стадия». То, что победы тестовые, отделено от честной проходимости (см. AC-POL-11)."
+    },
+    {
+      "id": "AC-POL-07",
+      "title": "Проверки сборки зелёные: typecheck, build, test:unit, строгая проверка окон, готовность скина",
+      "mandatory": true, "status": "PASS", "score": 10,
+      "evidence": "Повторено проверяющим на ea64e74: typecheck exit 0; build exit 0; test:unit 167/164 pass/0 fail/3 skipped; SCREENS_STRICT screens-modals 2/0; skin-readiness 14/0",
+      "why": "Числа совпадают с POLISH.md до последней цифры."
+    },
+    {
+      "id": "AC-POL-08",
+      "title": "SDK, UI Kit, тема manyplay, platform.json и обвязка не тронуты; арт не генерировался (воспроизводимая сборка спрайтов)",
+      "mandatory": true, "status": "PASS", "score": 10,
+      "evidence": "git diff 31800ab..2bfda6c: ни одного защищённого пути. Новые спрайты собраны скриптом docs/game/art/build_sprites.py, источники перечислены в docs/game/art/README.md, контакт-лист — CONTACT.png (D-POL-01). Изменены 220 файлов assets/game, добавлено 4",
+      "why": "Запрет владельца соблюдён, доработки сделаны в скине и модуле игры."
+    },
+    {
+      "id": "AC-POL-09",
+      "title": "Отчёт: по каждому пункту «было → сделано → снимок», сверка с макетами, решения в журнале",
+      "mandatory": true, "status": "PASS", "score": 9,
+      "evidence": "docs/game/POLISH.md (сводка, вывод команд), docs/game/POLISH2.md §1–§6 (таблица пунктов, требования владельца, экран — макет — снимок, ответы сервера, счётчик сети, что не сделано), docs/gdd/DECISIONS.md D-POL-01…11. Мелкая неточность: в §2 сказано «в портрете первые 2 счётчика», а в бою в портрете их 3 (390x844-17)",
+      "why": "Отчёт полный и проверяемый. Неточность одна и на суть не влияет."
+    },
+    {
+      "id": "AC-POL-10",
+      "title": "QUALITY_TARGETS web.consoleErrors = 0",
+      "mandatory": false, "status": "PARTIAL", "score": 6,
+      "evidence": "errors в трёх *-log.json: 409 на iap/store/products (при запуске и в магазине); остальное — пометка сценария [offer-tile]",
+      "why": "Ошибка одна, и её причина — выключенный провайдер стора (решение владельца, D-POL-05). Код игры тут ни при чём."
+    },
+    {
+      "id": "AC-POL-11",
+      "title": "Слепой плейтест / честная партия до победы",
+      "mandatory": false, "status": "NOT_RUN", "excluded": "matrix:playtest=HUMAN_REQUIRED",
+      "why": "Нужны живые игроки, а их нет. Бот и кнопка QA: Win их не заменяют. Пометка NOT_RUN стоит честно (POLISH2 §5.8)."
+    }
+  ],
+  "defects": [
+    {"id": "F-1", "severity": "MINOR", "mandatory": false, "path": "platform: iap provider fake_store", "detail": "409 POST /v1/iap/store/products. Из-за этого цены «—», плитки оффера в HUD нет, есть ошибка консоли. Нужно решение владельца: включить ли тестовый провайдер и какие цены поставить пяти наборам", "verify": "node docs/game/tools/play.mjs → errors в *-log.json"},
+    {"id": "F-2", "severity": "MINOR", "mandatory": false, "path": "src/shell/windows/standard.ts", "detail": "Н-30: окно настроек оболочки не получает значения Music/Sound/Vibration (withSettings). Тумблеры есть в окне Sound лобби и в паузе. Правится вне writeSet шага (обвязка шаблона)", "verify": "снимок */05-settings"},
+    {"id": "F-3", "severity": "MINOR", "mandatory": false, "path": "src/shell/windows/order.ts", "detail": "Поздняя награда за стадию может открыться поверх следующего боя (было в 844 в раннем проходе)", "verify": "node docs/game/tools/play.mjs 844x390, шаги 21/25"},
+    {"id": "F-4", "severity": "MINOR", "mandatory": false, "path": "src/shell", "detail": "Н-12: в 844x390 поле 325 px вместо 366 по макету: в бою остаётся строка топбара 57 px", "verify": "844x390-17-game-level1"},
+    {"id": "F-5", "severity": "MINOR", "mandatory": false, "path": "docs/game/shots", "detail": "Снимки весят около 43 МБ в репозитории (PNG трёх размеров и копии макетов)", "verify": "du -sh docs/game/shots"},
+    {"id": "F-6", "severity": "MINOR", "mandatory": false, "path": "docs/game/POLISH2.md", "detail": "§2: «в портрете первые 2 счётчика» верно для лобби, а в бою в портрете их 3", "verify": "390x844-03-lobby vs 390x844-17-game-level1"}
+  ],
+  "decisions": [
+    "D-VER-POL-01 — критерии выведены из задачи шага (LOOK.md, требования владельца, QUALITY_TARGETS): у узла нет acceptance",
+    "D-VER-POL-02 — проверки повторены с зависимостями разработки, подключёнными ссылками; живой проход заново не запускался",
+    "D-VER-POL-03 — пункты, заблокированные обвязкой, модулем platform.json или решением владельца о деньгах, — это MINOR, а не провал обязательного критерия"
+  ],
+  "ownerQuestions": [
+    "Включить ли тестовый провайдер стора (fake_store) и какие цены поставить пяти наборам? Без этого цены «—» и плитки оффера нет (POLISH2 §5.1)."
+  ],
+  "acceptanceScore": {
+    "score": 8,
+    "source": "game-polish",
+    "remarks": "Все обязательные критерии PASS; 6 MINOR (больше двух) → 8. Остатки вне writeSet: обвязка src/shell (тумблеры в настройках, порядок окон, строка топбара в бою) и решение владельца о провайдере стора."
+  }
+}
