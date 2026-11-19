@@ -29,8 +29,35 @@ const MAX_STARS = 3;
 /** Columns of the snake path by layout. */
 const COLUMNS: Readonly<Record<Layout, number>> = { portrait: 3, landscape: 5, desktop: 5 };
 
+/** Background position of frame `frame` of a horizontal sprite sheet of `frames` frames. */
+function framePos(frame: number, frames: number): string {
+  return `${(frame / (frames - 1)) * 100}% 0`;
+}
+
+/**
+ * Sprite pictures, frames and the columns of the path as rules (the view takes no inline styles):
+ * `data-frame` picks a frame; a row going back runs right to left.
+ */
+function spriteCss(): string {
+  const rules: string[] = [
+    `.node-art{background-image:url("${gameArt('node_stage')}")}`,
+    `.node[data-finale] .node-art{background-image:url("${gameArt('node_finale')}")}`,
+    `.node-star{background-image:url("${gameArt('star_small')}")}`,
+  ];
+  for (let frame = 0; frame < NODE_FRAMES.count; frame += 1) {
+    rules.push(`.node-art[data-frame="${frame}"]{background-position:${framePos(frame, NODE_FRAMES.count)}}`);
+  }
+  for (let frame = 0; frame < STAR_FRAMES.count; frame += 1) {
+    rules.push(`.node-star[data-frame="${frame}"]{background-position:${framePos(frame, STAR_FRAMES.count)}}`);
+  }
+  for (const [layout, cols] of Object.entries(COLUMNS)) {
+    rules.push(`[data-layout=${layout}] .node-row{grid-template-columns:repeat(${cols},minmax(0,1fr))}`);
+  }
+  return rules.join('\n');
+}
+
 /** Room of the HUD columns over the screen: a 64px tile (src/shell/skin.ts HUD_CSS) and a gap. */
-export const MAP_CSS = `
+export const mapCss = (): string => `
 .map{--hud-side:calc(64px + var(--mp-gap));--hud-zone:calc(2 * 64px + var(--mp-gap));--node:min(64px,7.5vh);
  display:grid;height:100%;min-height:0;overflow:hidden;gap:.75em;grid-template-columns:minmax(0,1fr);
  grid-template-areas:"head" "tabs" "nodes" "play";grid-template-rows:auto auto minmax(0,1fr) auto}
@@ -44,8 +71,11 @@ export const MAP_CSS = `
 .tab small{font-size:.75rem;font-weight:500;opacity:.85}
 .tab[aria-selected=true]{background:var(--mp-violet-deep);color:var(--mp-on-accent);border-color:transparent}
 .tab[data-state=locked]{opacity:.7}
-.nodes{grid-area:nodes;display:grid;gap:.25em;min-height:0;align-content:space-evenly;justify-content:space-evenly;
- margin:0;padding:0;list-style:none}
+.nodes{grid-area:nodes;display:flex;flex-direction:column;justify-content:space-evenly;gap:.25em;min-height:0;
+ min-width:0;margin:0;padding:0;list-style:none}
+.node-row{display:grid;justify-items:center;align-items:center;gap:.25em;margin:0;padding:0;list-style:none}
+.node-row[data-back]{direction:rtl}
+.node-row>li{direction:ltr}
 .node{display:grid;justify-items:center;gap:.1em;padding:0;border:0;background:none;color:var(--mp-text)}
 .node-art{display:grid;place-items:center;width:var(--node);height:var(--node);background-repeat:no-repeat;
  background-size:400% 100%;font-family:var(--mp-font-display);font-size:calc(var(--node) * .32);
@@ -68,11 +98,8 @@ export const MAP_CSS = `
 [data-layout=desktop] .head{flex-direction:row;justify-content:center;min-height:0}
 [data-layout=desktop] .tabs{width:100%;max-width:760px;justify-self:center}
 [data-layout=desktop] .tab{font-size:1rem}
+${spriteCss()}
 `;
-
-function sprite(id: string, frame: number, frames: number): string {
-  return `background-image:url("${gameArt(id)}");background-position:${(frame / (frames - 1)) * 100}% 0`;
-}
 
 function chapterTitle(ctx: ScreenContext, n: 1 | 2 | 3): string {
   return ctx.t(`levels.chapter.c0${n}.title`);
@@ -90,20 +117,20 @@ function tabs(ctx: ScreenContext, state: MapState, on: MapActions): ViewNode {
   }));
 }
 
-function nodeView(ctx: ScreenContext, stage: StageInfo, current: boolean, place: string, on: MapActions): ViewNode {
+function nodeView(ctx: ScreenContext, stage: StageInfo, current: boolean, on: MapActions): ViewNode {
   const frame = stage.state === 'locked' ? NODE_FRAMES.locked : stage.state === 'cleared' ? NODE_FRAMES.cleared
     : current ? NODE_FRAMES.current : NODE_FRAMES.open;
   const stars: ViewNode[] = [];
   for (let i = 0; i < MAX_STARS && stage.state !== 'locked'; i += 1) {
     stars.push(view('span', { class: 'node-star', 'aria-hidden': 'true',
-      style: sprite('star_small', i < stage.stars ? STAR_FRAMES.earned : STAR_FRAMES.empty, STAR_FRAMES.count) }));
+      'data-frame': i < stage.stars ? STAR_FRAMES.earned : STAR_FRAMES.empty }));
   }
-  return view('li', { style: place },
+  return view('li', {},
     view('button', { type: 'button', class: 'node', 'data-testid': 'stage-node', 'data-stage': stage.n,
       'data-state': stage.state, 'data-stars': stage.stars, 'data-finale': stage.finale ? '' : undefined,
       'data-current': current ? '' : undefined, 'aria-label': ctx.t('screen.hud.stage', { n: stage.n }),
       'aria-disabled': stage.state === 'locked' ? 'true' : undefined, onClick: () => on.node(stage) },
-    view('span', { class: 'node-art', style: sprite(stage.finale ? 'node_finale' : 'node_stage', frame, NODE_FRAMES.count) },
+    view('span', { class: 'node-art', 'data-frame': frame },
       view('b', {}, formatNumber(stage.n)),
       stage.state === 'locked' ? picture(gameArt('node_lock'), '', { class: 'node-lock', 'aria-hidden': 'true' }) : null),
     view('span', { class: 'node-stars', 'data-dynamic': '' }, ...stars)));
@@ -114,12 +141,13 @@ function nodes(ctx: ScreenContext, state: MapState, on: MapActions): ViewNode {
   const stages = (state.campaign?.stages ?? []).filter((stage) => stage.chapter === state.chapter);
   const cols = COLUMNS[state.layout];
   const next = state.campaign?.next ?? null;
-  return view('ol', { class: 'nodes', 'data-dynamic': '', style: `grid-template-columns:repeat(${cols},auto)` },
-    ...stages.map((stage, i) => {
-      const row = Math.floor(i / cols);
-      const col = row % 2 === 0 ? i % cols : cols - 1 - (i % cols);
-      return nodeView(ctx, stage, stage.n === next, `grid-row:${row + 1};grid-column:${col + 1}`, on);
-    }));
+  const rows: ViewNode[] = [];
+  for (let start = 0; start < stages.length; start += cols) {
+    const back = (start / cols) % 2 === 1;
+    rows.push(view('li', {}, view('ol', { class: 'node-row', 'data-back': back ? '' : undefined },
+      ...stages.slice(start, start + cols).map((stage) => nodeView(ctx, stage, stage.n === next, on)))));
+  }
+  return view('ol', { class: 'nodes', 'data-dynamic': '' }, ...rows);
 }
 
 export function renderMap(ctx: ScreenContext, state: MapState, on: MapActions): ViewNode {

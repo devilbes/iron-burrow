@@ -83,7 +83,7 @@ export async function openBoards(ctx: ScreenContext, board?: Board): Promise<voi
     title: ctx.t('screen.boards.title'),
     body: (root) => {
       const live = mountLive(root, 'leaderboards', () => render(ctx, state, { pick, flipPeriod }),
-        { styles: WINDOW_CSS + BOARDS_CSS });
+        { styles: WINDOW_CSS + BOARDS_CSS + medalCss() });
       refresh = () => live.refresh();
       return () => { refresh = () => undefined; live.off(); };
     },
@@ -92,6 +92,15 @@ export async function openBoards(ctx: ScreenContext, board?: Board): Promise<voi
   void load();
   await ticket.result.catch(() => 'close');
   asked += 1;
+}
+
+/** `medal_top3` frames for places 1–3 (the view takes no inline styles). */
+function medalCss(): string {
+  const rules = [`.medal{background-image:url("${gameArt('medal_top3')}")}`];
+  for (let rank = 1; rank <= MEDALS; rank += 1) {
+    rules.push(`.medal[data-medal="${rank}"]{background-position:${((rank - 1) / (MEDALS - 1)) * 100}% 0}`);
+  }
+  return rules.join('\n');
 }
 
 function click(game: IronBurrow): void {
@@ -143,8 +152,7 @@ function content(ctx: ScreenContext, state: BoardsState, page: BoardPage | null)
 
 function rowView(ctx: ScreenContext, row: BoardRow, testid: string): ViewNode {
   const medal = row.rank >= 1 && row.rank <= MEDALS
-    ? view('span', { class: 'medal', 'aria-hidden': 'true', style:
-      `background-image:url("${gameArt('medal_top3')}");background-position:${((row.rank - 1) / (MEDALS - 1)) * 100}% 0` })
+    ? view('span', { class: 'medal', 'aria-hidden': 'true', 'data-medal': row.rank })
     : null;
   return view('li', { class: 'row', 'data-testid': testid, 'data-rank': row.rank, 'data-self': row.self ? '' : undefined },
     view('span', { class: 'rank' }, medal, view('b', {}, formatNumber(row.rank))),

@@ -5,7 +5,7 @@
 import { gameOf, type CampaignInfo, type IronBurrow, type StageInfo } from '../modules/game/index.js';
 import { sound } from './audio.js';
 import type { ScreenMount } from './index.js';
-import { MAP_CSS, renderMap, type MapActions, type MapState } from './map-view.js';
+import { mapCss, renderMap, type MapActions, type MapState } from './map-view.js';
 import { openPrestage } from './prestage.js';
 import { attempt } from './stage-ui.js';
 import { currentLayout, mountLive, watchLayout } from './ui.js';
@@ -52,7 +52,7 @@ export const mount: ScreenMount = (root, ctx) => {
     },
   };
 
-  const live = mountLive(root, 'map', () => renderMap(ctx, state, actions), { styles: MAP_CSS });
+  const live = mountLive(root, 'map', () => renderMap(ctx, state, actions), { styles: mapCss() });
   refresh = () => { if (!gone) live.refresh(); };
 
   let stopAudio: () => void = () => undefined;
