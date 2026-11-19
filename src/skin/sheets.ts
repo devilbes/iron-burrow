@@ -200,7 +200,11 @@ const PROGRESS = `progress${OVER}{border:0;border-radius:${v('mp-radius-field')}
   + `progress${OVER}::-moz-progress-bar{border-radius:${v('mp-radius-field')};`
   + `background:linear-gradient(90deg,${v('mp-card-accent')},${v('mp-card-accent-hover')})}`;
 
-export const COMMON = WINDOW + TITLE + CLOSE + BUTTONS + PLATE + PROGRESS;
+// ---- Loading screen: the recolored atlas declares `icon-brand-mark`, so the shell shows the mark —
+// it is the ManyPlay "M". Hidden until the game's own icon sheet draws the Burrower (then drop this).
+const PRELOADER = `.mp-preloader__brand [data-icon=brand-mark]${OVER}{display:none}`;
+
+export const COMMON = WINDOW + TITLE + CLOSE + BUTTONS + PLATE + PROGRESS + PRELOADER;
 
 export const COMPONENTS: Readonly<Record<string, string>> = {
   // shopWindow: '[data-part=shop-buy]{font-family:var(--mp-font-display)}',
