@@ -57,8 +57,13 @@
 |---|---|---|
 | кампания, `cleared` | `ports.endLevel(n, true, {moves, score})` (набор `main`) | `moves` = потерянные жизни; звёзды и `verified` — ответ |
 | кампания, окончательное поражение (Retry / Map / второе поражение) | `endLevel(n, false, {moves, score})` | закрывает попытку; рекорда и награды нет (D-11-01) |
-| кампания, Quit из паузы | не шлётся | попытка брошена; аналитика `level_fail` `reason=quit` |
+| кампания, Quit или Restart из паузы | `end('quit')`: не шлётся | попытка брошена; аналитика `level_fail` `reason=quit`; Restart — новая попытка той же стадии |
+| Siege, Restart из паузы | `end('final')`: как конец забега | счёт забега отправляется, затем новый забег |
 | Siege, конец забега (поражение без continue, End Run, Quit) | levelEnd набора `endless`, уровень 1, `won: true` | `moves` = пройденные волны, `score` = `S_run`; источник доски `siege_best` |
+
+`end()` идемпотентен: после отказа сети повтор тем же eventId (попытка держится до успеха), после
+успеха — тот же результат. Не удалось после всех повторов → экран открывает окно `save-retry`
+(текст `screen.clear.save_failed`, действия `save-retry` → `end()` ещё раз, `save-leave` → карта).
 
 - **На сервере** (источник правды): прогресс стадий и звёзды (`progress_main`), лучший счёт стадий,
   баланс бустеров (inventory), покупки, доски, ежедневный трек.
@@ -75,14 +80,21 @@
 ### 3.1 Как экраны его получают
 `gameOf(ctx.game)` → `IronBurrow` (`src/modules/game/index.ts`). `ctx.game` — API модуля `game`: тот же
 объект реализует `GamePorts` (оболочка его так и типизирует) и всё остальное. Для простых портов
-(галерея скина, тесты) `gameOf` даёт отсоединённый API (без сервисов, данные уровня из записей) —
-экраны обязаны рисоваться и в нём.
+(галерея скина, тесты) `gameOf` даёт отсоединённый API — экраны обязаны рисоваться и в нём. Отсоединённый
+режим (реализует логика): `campaign()` — 30 стадий из записей, открыта текущая (`currentLevel`), ★ 0;
+`prestage()` — из записи уровня, Spare Hull `empty`; `start()` — локальный матч с сидом `beginAttempt`
+портов; `balances()` — нули; `offers()`, `board()` — пусто; `startGrant()` — `null`. Заглушка контракта
+до шага логики отвечает «не реализовано».
 
 ### 3.2 Как модуль игры получает сервисы
 Модуль `kind: 'game'` объявляет `manifest.sdk.uses` и получает `ModuleContext.sdk.<id>` (проверено по
 `core/dist/module-context.js`): `uses: ['progress', 'levels', 'inventory', 'iap', 'leaderboards', 'kv',
-'gamestate', 'daily-rewards', 'realtime']`, `permissions: ['analytics', 'device:haptics']`; ядро —
-`ctx.configs`, `ctx.time`, `ctx.environment` (`test` → `env.qa`), `ctx.analytics`. Вызываются **только**
+'gamestate', 'daily-rewards', 'realtime']`, `permissions: ['device:haptics']`; ядро — `ctx.configs`,
+`ctx.time`, `ctx.environment` (`test` → `env.qa`), `ctx.device`. `ctx.analytics` модулю игры не приходит
+(оболочка не передаёт `context`) — аналитика идёт через `GamePorts.track` (D-GC-16). Ядро вызывает
+`api(ctx)` на каждом старте: **один объект API** хранит последний ctx, трогает `ctx.sdk` только в
+`ready()` и позже (до boot `getModule` бросает `MODULE_NOT_ACTIVE`), сбрасывает кэши на
+`SDK_RELOAD_REQUIRED` / `AUTH_PLAYER_CHANGED` (как `game-ports.ts`). Вызываются **только**
 методы `SERVICES_CONTRACT.json` (функции progress, levels, best, inventory, purchases, offers,
 leaderboards, settings, configs, liveops, analytics, profile). Кампания идёт через `GamePorts` (набор
 `main`), Siege — свой `levels.open(SIEGE_SET)` той же схемой (`beginAttempt`/`levelEnd`). Идентификаторы
@@ -92,12 +104,13 @@ leaderboards, settings, configs, liveops, analytics, profile). Кампания 
 
 | метод | что делает | кто зовёт |
 |---|---|---|
-| `ready()` | конфиги, kv, gamestate, прогресс, инвентарь — один раз; офлайн тоже резолвится | home при монтировании |
+| `ready(): Promise<void>` | конфиги, kv, gamestate, прогресс, инвентарь — один раз за игрока; офлайн тоже резолвится | home при монтировании |
 | `env {qa, haptics, version}` | QA-хуки только при `test`; тумблер вибрации; `Version {version}` | game, settings-окно |
-| `campaign(): CampaignInfo` | стадии 1–30 (состояние, ★, лучший), главы, `next`, звёзды, открытие Siege | home, map |
-| `prestage(mode, n): PreStageInfo` | цель, лучший, Spare Hull (`on/off/empty`), подсказка, туториал, награда первого прохождения | окно S04 |
+| `campaign(): Promise<CampaignInfo>` | стадии 1–30 (состояние, ★, лучший), главы, `next`, звёзды, открытие Siege | home, map |
+| `prestage(mode, n): Promise<PreStageInfo>` | цель, лучший, Spare Hull (`on/off/empty`), подсказка, туториал, награда первого прохождения | окно S04 |
 | `select(setup)` / `selected()` | выбранная стадия для маршрута `game` (`from`: lobby/map/next/replay/retry) | S04 → `ctx.go('game')`, S07/S08 |
-| `start(): Match` | списывает Spare Hull (если взят), `beginAttempt`; `GameError{code:'offline'}` → «Connection needed» | game |
+| `start(): Promise<Match>` | списывает Spare Hull (если взят), `beginAttempt`; `GameError{code:'offline'}` → экран снова открывает S04 с `prestage-offline` («Connection needed») | game |
+| `refresh(): Promise<void>` | `configs.refresh` при возврате в лобби (не при первом монтировании) | home |
 | `balances()`, `onBalances(fn)` | серверные количества 4 бустеров | HUD поля, S04, S08, S16 |
 | `boosterLimits(id)` | лимит стадии/забега, длительность | S16 |
 | `startGrant()` / `claimStartGrant()` | состав гранта или `null`; бесплатный оффер `start_grant` (`iap.purchase`) | home (окно гранта) |
@@ -107,22 +120,28 @@ leaderboards, settings, configs, liveops, analytics, profile). Кампания 
 | `siegeStanding(score)` | `leaderboards.rank(siege_best)`: лучший недели, место, «New Best!» | S09, кнопка Siege |
 | `settings()`, `setSettings(p)`, `onSettings(fn)` | kv `settings` | окно настроек, звук, вибрация, эффекты |
 | `flag(name)`, `setFlag(name)` | флаги kv §2 | S04, S16, обучение |
-| `haptic(kind)` | `sdk.device.haptics` по таблице §7.4 | game |
+| `haptic(kind)` | `ctx.device.haptics` модуля по таблице §7.4 | game |
 | `notice()`, `online()` | объявление realtime для лобби, индикатор офлайна | home, game |
-| `event(name, params)` | аналитика с boolean (§10) | экраны для UI-событий |
+| `event(name, params)` | аналитика через `track`, boolean → 1/0 (§10) | экраны для UI-событий |
 | `Match.view()` / `advance(ms)` | состояние для отрисовки; фиксированные тики 1/60 s (≤ 5 за вызов), события тиков | game (rAF) |
 | `Match.setInput({move, fire})`, `setInputMode('keys'│'touch')` | удерживаемый ввод; режим подсказок | game |
 | `Match.useBooster(id)` | `applied`/`empty`/`limit`/`cooldown`/`blocked` | кнопки 1–3, клавиши 1/2/3 |
 | `Match.pause()` / `resume()` | заморозка всех таймеров | game, S06 |
 | `Match.tutorialNext()` / `tutorialSkip()` | шаги S15 | game |
 | `Match.defeat()` / `continueRun()` | что показывает S08; продолжение за Spare Hull | S08 |
-| `Match.end('final'│'quit'): StageResult` | levelEnd по §2, счёт, ★, рекорд, ожидаемая награда, `next`, `starterDue` | S07, S08, S09, S06 Quit |
+| `Match.end('final'│'quit'): Promise<StageResult>` | levelEnd по §2 (идемпотентно), счёт, ★, рекорд, ожидаемая награда, `next`, `starterDue` | S07, S08, S09, S06 Quit/Restart |
 | `Match.qa {win, lose}` | мгновенная победа / поражение (Ядро), только `env.qa` | кнопки `qa-win`/`qa-lose` |
 | `layoutOf(w, h)` | `portrait` при aspect < 0.8, иначе `landscape` при ширине < 1024, иначе `desktop` | все экраны (`data-layout`) |
 
 Цикл кадра — у экрана: `requestAnimationFrame` → `match.advance(dt)` → события → эффекты/звук → `view()`
 → Canvas. `ctx.onSuspend(true)` → `match.pause()` + S06; смена `layoutOf` на `game` → то же. Логика не
 трогает DOM, таймеры браузера и звук.
+
+**Переходы**: `ctx.go(route)` на текущий маршрут ничего не делает (оболочка кита) — поэтому на `game`
+Next / Replay / Retry / Restart / Play Again экран делает сам: окно S04 (кроме Restart) → `select()` →
+`start()` в том же экране; `ctx.go('game')` — только с `home` и `map`. Кнопка кита **всегда закрывает
+окно**: всё, что должно остаться в окне после нажатия (тумблеры, Continue, покупка в карточке,
+вкладки), — кнопки в `body` со своими `data-testid`; действие кита — только то, что окно закрывает.
 
 ## 4. Маршруты и экраны
 
@@ -131,30 +150,35 @@ leaderboards, settings, configs, liveops, analytics, profile). Кампания 
 1440×900 — равноправные раскладки каждого экрана по ГДД 20 (колонка «Раскладка»), `data-layout` на
 корне экрана. `LOCALES = ['en']`. `TOP_BAR = []`: слева только профиль, справа только настройки.
 `HUD`: слева `daily-rewards` (модуль), `boards` (своя плитка, `icon: 'trophy'`, открывает S13); справа
-`shop` (модуль). Иконки HUD без подписей. `PROFILE_STATS`: пройдено стадий, лучший счёт.
+`store` (своя плитка, `icon: 'shop'`, открывает S10). Иконки HUD без подписей. `PROFILE_STATS`: пройдено
+стадий, лучший счёт.
 
 | S | где живёт | `data-window` | открывается |
 |---|---|---|---|
 | S01 Boot | экран загрузки кита (оболочка), фон `scene` | — | старт |
 | S02 Lobby | маршрут `home` (логотип, Play, Siege, звёзды, кнопка «Sound») | `lobby` | старт, Map/Lobby |
-| S02 grant | окно игры на `home` (`data-state=grant`) | `lobby` | первый вход, `startGrant() ≠ null` |
+| S02 grant | окно игры на `home` | `grant` | первый вход, `startGrant() ≠ null` |
 | S03 Stage Map | маршрут `map` | `stage-map` | `lobby-play`, `clear-map`, `defeat-map` |
-| S04 Pre-stage | окно игры (на `map`, `home` для Siege, `game` после Next/Retry/Replay) | `prestage` | узел, `stagemap-play`, `lobby-siege`, `clear-next` |
+| S04 Pre-stage | окно игры (на `map`, `home` для Siege, `game` после Next/Retry/Replay/Play Again и после отказа `start()`) | `prestage` | узел, `stagemap-play`, `lobby-siege`, `clear-next`, `defeat-retry`, `siege-retry` |
 | S05 Gameplay | маршрут `game`: Canvas-поле + HUD поля + управление | `game` | `prestage-start` |
 | S06 Pause | окно игры на `game` (+ тумблеры звука в теле) | `pause` | `hud-pause`, Esc, suspend, смена раскладки |
 | S07 Stage Clear | окно игры | `stage-clear` | `cleared` |
 | S08 Defeat | окно игры | `defeat` | `defeated` |
 | S09 Siege Result | окно игры | `siege-result` | конец забега |
-| S10 Shop | окно кита (плитка HUD `shop`, плейсмент `placement_shop`) | кит | HUD |
-| S10′ оффер | окно игры с одной карточкой оффера (Starter Crate авто, Get more) | `offer` | `starterDue`, `prestage-shop`, `booster-info-shop` |
-| S11 Purchase result | окно игры после `buy()` (магазин кита показывает свой) | `purchase-result` | `buy()` |
+| S10 Shop | окно игры: карточки `offers('shop')` в порядке `shop_order`, Starter Crate — только после его триггера (D-20-12) и до покупки; P — список, L — лента 3 карточек, D — сетка 5 | `shop` | плитка `store` |
+| S10′ оффер | окно игры с одной карточкой (Starter Crate авто, Get more) | `offer` | `starterDue`, `prestage-shop`, `booster-info-shop` |
+| S11 Purchase result | окно игры: открывается при покупке с `data-state=pending`, затем `success│failed│cancelled` | `purchase-result` | `shop-buy`, `offer-buy`, `defeat-offer-buy` |
 | S12 Daily | окно кита (плитка HUD `daily-rewards`, автооткрытие модуля) | кит | HUD |
-| S13 Leaderboards | окно игры: вкладки `siege_best`/`campaign_score`, период | `leaderboards` | плитка `boards`, `siege-boards` |
+| S13 Leaderboards | окно игры: вкладки `siege_best`/`campaign_score`, период (кнопки в `body`) | `leaderboards` | плитка `boards`, `siege-boards` |
 | S14 Settings | (а) окно настроек кита из топбара: ManyPlay ID, язык; (б) окно игры «Sound»: музыка, звук, Reduce Motion, вибрация, версия | (б) `settings` | (а) топбар; (б) `lobby-sound`, тело S06 |
 | S15 Tutorial | плашка-подсказка **внутри экрана `game`** (не `ctx.overlay`: слой забирает нажатия, а стадия идёт) | `tutorial` | стадия 1 |
 | S16 Booster info | окно игры (стадия на паузе) | `booster-info` | бустер с 0, long-press 500 ms |
 
 Окна игры — только `ctx.window.open` (до 3 кнопок кита; остальное — в `body`), слои — `ctx.overlay`.
+**Авто-окно Starter Crate**: если `StageResult.starterDue`, экран `game` по любому действию S07/S08
+сначала открывает S10′ (`starter_crate`, плейсмент `starter_auto`, `starterShown()`), и только после его
+закрытия выполняет действие (S04, переход на `map`/`home`); окно награды кита встаёт в эту же очередь
+само (`windows/order.ts`).
 Награду всегда показывает окно награды кита (крупные картинки `ITEMS`), после закрытия окна игры.
 Фон: `scene` (лобби), `scene-map`, `scene-game` (`src/skin/art.ts`), от края до края под прозрачными
 панелями; экраны не рисуют свою карточку и не ставят текст на фон (только плашки и кнопки).
@@ -177,38 +201,41 @@ power-up (мигает последние 3 s), заморозка, лимиты
   → `screen.<a>.<b>`, английский текст ГДД 20 дословно, **кроме** чисел игры — они параметрами
   (`{stars}/{max}`, `Clear stage {n} to unlock`, `Destroy all {count}.`, `+{lives} lives`).
 - **Записи** — `strings/game.json` (пишет часть записей): `shell.title` = «Iron Burrow» (и убрать
-  «Game» из `strings/shell.json`), `item.<bst_*>.title` / `.description` (названия бустеров: Bubble Shield,
-  Shockwave, Steel Fortress, Spare Hull — `display.titleKey` каталога), `offer.<key>.title` / `.subtitle`
-  (Starter Crate, Hull Pack, Field Kit, Heavy Arsenal, Commander Cache, Welcome Kit), `levels.chapter.*`,
-  заголовки шагов `progress_main` и `reward_daily`. Описания предметов — без чисел.
+  «Game» из `strings/shell.json`), `item.<bst_*>.title` / `.description` (Bubble Shield, Shockwave, Steel
+  Fortress, Spare Hull — `display.titleKey` каталога), `offer.<key>.title` / `.subtitle` (Starter Crate,
+  Hull Pack, Field Kit, Heavy Arsenal, Commander Cache, Welcome Kit), заголовки шагов `progress_main` и
+  `reward_daily`; из `strings/services.json` убрать `item.coins*`, `offer.coins*` и `levels.main.*`.
+  Названия глав — `levels.chapter.c01│c02│c03.title` в `strings/levels.json` (уже есть; карта берёт их,
+  своих `screen.map.chapter_N` нет). Один ключ — один файл. Описания предметов — без чисел.
 - `strings.json` руками не правит никто — `npm run strings`.
 
 | экран | ключи `screen.*` |
 |---|---|
 | общие | `common.{close, back, ok, collect, count, offline}` |
 | S02 | `lobby.{play, play_sub, siege, siege_locked, stars, grant_title, grant_body, sound}`; `hud.boards` |
-| S03 | `map.{title, chapter, chapter_1, chapter_2, chapter_3, chapter_locked, play}` |
-| S04 | `pre.{title, title_siege, goal, goal_siege, best, hull, hull_owned, hull_none, hull_hint, shop, start, rewards, offline}` |
+| S03 | `map.{title, chapter, chapter_locked, play}` + `levels.chapter.cNN.title` |
+| S04 | `pre.{title, title_siege, goal, goal_siege, best, hull, hull_owned, hull_none, hull_hint, shop, start, close, rewards, offline}` |
 | S05 | `hud.{enemies, lives, stage, wave, score, gun, fire, pause, key, limit}`; `toast.{go, wave, wave_clear, star, star_max, bubble, rebar, quake, freeze, hull, fortify, shockwave}`; `qa.{win, lose}` |
 | S06 | `pause.{title, resume, restart, quit}` |
-| S07 | `clear.{title, chapter_done, campaign_done, kills, pickups, bonus, lives, total, best, rewards, next, replay, map, retry_save}` |
+| S07 | `clear.{title, chapter_done, campaign_done, kills, pickups, bonus, lives, total, best, rewards, next, replay, map, save_failed, retry_save, leave}` |
 | S08 | `defeat.{title, core, lives, continue, continue_hint, continue_used, offer_title, retry, map, end_siege}` |
 | S09 | `siege.{title, wave, score, best, new_best, rank, unranked, retry, boards, lobby}` |
-| S10′/S11 | `shop.{one_time, best_value, contents, buy, pending, test, unavailable}`; `purchase.{success, failed, failed_body, cancelled}` |
+| S10/S10′/S11 | `shop.{title, one_time, best_value, contents, buy, pending, test, unavailable}`; `purchase.{success, failed, failed_body, cancelled}`; `hud.shop` |
 | S13 | `boards.{title, siege, campaign, weekly, alltime, you, empty, reset, guest, unavailable}` |
 | S14 (б) | `settings.{title, music, sfx, motion, haptics, on, off, version}` |
 | S15 | `tut.{move_touch, move_keys, fire_touch, fire_keys, brick, core, core_selfhit, enemy, carrier, booster_hint, booster_keys, booster_touch, next, skip}` |
 | S16 | `booster.{owned, more, duration, limit, limit_siege}` (название и описание — `item.<id>.*`) |
 | профиль | `profile.{levels, best}` (есть) |
 
-Новые тексты (en): `lobby.sound` «Sound», `pre.hull_hint` «Spare Hull: +1 life for this stage.»,
+Новые тексты (en): `hud.shop` «Shop», `pre.close` «Close», `clear.save_failed` «Couldn't save the result.»,
+`clear.leave` «Map», `lobby.sound` «Sound», `pre.hull_hint` «Spare Hull: +1 life for this stage.»,
 `pre.rewards` «First clear reward», `pre.offline` «Connection needed», `hud.gun` «Gun level {n}»,
 `hud.boards` «Leaderboards», `clear.retry_save` «Retry saving», `siege.new_best` «New Best!»,
 `boards.unavailable` «Leaderboards unavailable», `tut.booster_hint` «Core in danger! Use a booster.»,
 `tut.booster_keys` «Press 1, 2 or 3», `tut.booster_touch` «Tap a booster button», `booster.duration`
 «Lasts {seconds} s», `booster.limit` «Up to {count} per stage», `booster.limit_siege` «Up to {count} per
 Siege run», `qa.win` «QA: Win», `qa.lose` «QA: Lose». Ключи `ui.topbar.*`, `ui.boot.*`, `ui.daily.*`,
-`ui.settings.{profile, signin, signed, guest}`, `ui.shop.title`, `ui.lobby.title`, `ui.pause.settings`,
+`ui.settings.{profile, signin, signed, guest}`, `ui.lobby.title`, `ui.pause.settings`, `ui.map.chapter_N`,
 `ui.tut.booster`, `ui.booster.bst_*`, `ui.pack.*` — не заводятся (их показывает кит или запись).
 
 ## 6. data-testid и хуки
@@ -221,23 +248,25 @@ Siege run», `qa.win` «QA: Win», `qa.lose` «QA: Lose». Ключи `ui.topbar
 |---|---|---|
 | корень экрана | `app-ready` (на `home`, когда отрисован), `data-layout`; `audio-state` (`data-state=locked│unlocked`, `data-music`, `data-sfx`) | экран |
 | S02 | `lobby-play` (`data-cta=primary`), `lobby-siege` (`locked│open`), `lobby-stars`, `lobby-sound`, `lobby-notice` | экран |
-| S02 grant | `reward-item`, `reward-item-count` (в `body`); действие `grant-collect` | окно игры |
-| HUD/топбар | бывшие `topbar-daily` → плитка `daily-rewards`; `topbar-leaderboards` → плитка `boards`; `topbar-shop` → плитка `shop`; `topbar-settings` → кнопка настроек топбара | оболочка |
+| S02 grant | корень `body` `data-window=grant`; `reward-item`, `reward-item-count` (в `body`); действие `grant-collect` | окно игры |
+| HUD/топбар | бывшие `topbar-daily` → плитка `daily-rewards`; `topbar-leaderboards` → плитка `boards`; `topbar-shop` → плитка `store`; `topbar-settings` → кнопка настроек топбара | оболочка |
 | S03 | `chapter-tab` (`locked│open`), `stage-node` (`locked│open│cleared`, `data-stars`, `data-stage`), `stagemap-play`, `stagemap-back` | экран |
-| S04 | `prestage-goal`, `prestage-best`, `prestage-hull` (`on│off│empty`), `prestage-shop`, `prestage-rewards`; действия `prestage-start`, `prestage-close` | окно игры |
-| S05 | `game-field` (canvas: `data-grid=13x13`, `data-cell`, `data-state=playing│paused│won│lost`, `data-fx-ack`), `hud-enemies`, `hud-lives`, `hud-stage`, `hud-score`, `hud-gun`, `hud-booster-bubble│shockwave│fortify` (`ready│active│limit│empty`), `hud-booster-count`, `hud-pause`, `stick`, `fire` (только `pointer: coarse`), `hud-toast`, `qa-win`, `qa-lose` (только `env.qa`) | экран |
+| S04 | `prestage-goal`, `prestage-best`, `prestage-hull` (`on│off│empty`, кнопка в `body`), `prestage-shop`, `prestage-rewards`, `prestage-offline`; действия `prestage-start`, `prestage-close` | окно игры |
+| S05 | `game-field` (canvas: `data-grid=13x13`, `data-cell`, `data-state=playing│paused│won│lost`, `data-fx-ack`), `hud-enemies`, `hud-lives`, `hud-stage`, `hud-score`, `hud-gun`, `hud-booster-bubble│shockwave│fortify` (`ready│active│limit│empty│cooldown│blocked`), `hud-booster-count`, `hud-pause`, `stick`, `fire` (только `pointer: coarse`), `hud-toast`, `qa-win`, `qa-lose` (только `env.qa`) | экран |
 | S15 | `tutorial-hint` (`data-step=1..6`), `tutorial-next`, `tutorial-skip` | экран `game` |
 | S06 | действия `pause-resume`, `pause-restart`, `pause-quit`; в `body` тумблеры `settings-music`, `settings-sfx`, `settings-motion`, `settings-haptics` | окно игры |
 | S07 | `clear-stars` (`data-stars`), `clear-score`, `clear-rewards`; действия `clear-next`, `clear-replay`, `clear-map` (`clear-collect` нет — D-GC-09) | окно игры |
 | S08 | `defeat-reason` (`data-reason=core│lives`), `defeat-continue` (`available│empty│used`, кнопка в `body`), `defeat-offer` (`data-pack`), `defeat-offer-buy`; действия `defeat-retry`, `defeat-map` (Siege: End Run) | окно игры |
 | S09 | `siege-score`, `siege-rank` (`ranked│unranked`); действия `siege-retry`, `siege-boards`, `siege-lobby` | окно игры |
-| S10′ | `offer-card` (`data-pack`, `available│owned│pending`); действия `offer-buy`, `offer-close` | окно игры |
-| S11 | `purchase-status` (`success│failed│cancelled`); действие `purchase-ok` | окно игры |
+| S10 | `shop-pack` (`data-pack`, `available│owned`), `shop-buy` (кнопка цены в карточке, `body`); действие `shop-close` | окно игры |
+| S10′ | `offer-card` (`data-pack`, `available│owned`); действия `offer-buy` (подпись — цена), `offer-close` | окно игры |
+| S11 | `purchase-status` (`pending│success│failed│cancelled`); действие `purchase-ok` | окно игры |
+| ошибка сохранения | `save-retry`, `save-leave` (действия), корень `data-window=save-retry` | окно игры |
 | S13 | `boards-tab` (`data-board`, `active│idle`), `boards-period` (`weekly│alltime`), `boards-row`, `boards-self`; действие `boards-close` | окно игры |
 | S14 (б) | `settings-music`, `settings-sfx`, `settings-motion`, `settings-haptics` (`on│off`, вибрация только тач + `env.haptics`), `settings-version`; действие `settings-close` | окно игры |
 | S14 (а) | `settings-profile` = строка аккаунта окна настроек кита | кит |
 | S16 | `booster-info-card` (`data-item`); действия `booster-info-ok`, `booster-info-shop` | окно игры |
-| S10, S12 | `shop-*`, `daily-*`, `purchase-*` магазина — хуки кита (`starter.window.shop…`, окна daily) | кит |
+| S12 | `daily-*` — хуки окна daily кита | кит |
 
 `data-dynamic` — на меняющихся числах и списках. Сценарии `docs/gdd/qa/flows/*.json` переписывает шаг
 QA по этой таблице (замены `topbar-*`, `clear-collect`, `pause-settings`, кнопки окон).
@@ -318,8 +347,8 @@ UI-детали экранов игры — `assets/ui/<id>-2x.png` по ГДД 
 ### 8.1 Уровни (D-LVL-01: свои имена наборов платформа не принимает)
 - **Кампания** = набор `main`: `levels.main/set` (`first 1`, `last 30`, `unlock sequential`, `chapters`
   c01–c03, `index`) и диапазоны `levels.main/r_0001_0010`, `r_0011_0020`, `r_0021_0030`.
-- **Siege** = набор `endless`: `levels.endless/r_0001_0001` (один уровень `siege_pit`; запись `set` —
-  если её требует `levels.open`, проверяется dry-run'ом).
+- **Siege** = набор `endless`: `levels.endless/set` (`first 1`, `last 1`) и `levels.endless/r_0001_0001`
+  (один уровень `siege_pit`).
 - Исходники — `configs/levels/{campaign,siege}/*.json` (ГДД 12 §1); запись собирает
   `tools/levels/export.mjs`, хеш — `node scripts/levels-hash.mjs`.
 - **Поля `entries[]`, которые читает игра**: `id` (`stage_NN` / `siege_pit`), `index` 1–30, `chapter` 1–3,
@@ -340,30 +369,33 @@ UI-детали экранов игры — `assets/ui/<id>-2x.png` по ГДД 
 | финалы 10/20/30 (первое прохождение) | + по 1 каждого бустера (в том же шаге) |
 | первые ★★★ стадии | +1 `bst_bubble` — трек `progress_stars` (шаги `stage_NN`, фильтр `stars: 3`), если сервис принимает условие; иначе следующий этап (D-MRG-06) |
 | стартовый грант | бесплатный оффер `start_grant`: по 2 каждого, лимит 1 |
-| ежедневно | `progress/reward_daily` (ключ `PROGRESS.daily` = функция `daily`): `day_1…day_7`, D1 bubble 1 · D2 shockwave 1 · D3 fortify 1 · D4 hull 1 · D5 bubble 2 · D6 shockwave 1 + fortify 1 · D7 hull 2 + bubble 2 + shockwave 1; `reset {period: day, onMiss: false}`; календарь — настройки модуля daily-rewards |
+| ежедневно | `progress/reward_daily` (ключ `PROGRESS.daily` = функция `daily`): `day_1…day_7`, D1 bubble 1 · D2 shockwave 1 · D3 fortify 1 · D4 hull 1 · D5 bubble 2 · D6 shockwave 1 + fortify 1 · D7 hull 2 + bubble 2 + shockwave 1; `reset {period: day, onMiss: false}`; календарь — настройки модуля daily-rewards (`sdk.modules.set` через MCP — часть записей: `onMiss: false`, `hudSide: left`) |
 | replay, Siege | нет |
 
 ### 8.3 Инвентарь и покупки
 - `inventory.catalog/<bst_bubble│bst_shockwave│bst_fortify│bst_hull>` (`itemType: item`, `isStackable`,
-  `clientConsumable: true`, `display.titleKey: item.<id>.title`); `item_coins` и `inventory.starter` удаляются.
+  `clientConsumable: true`, `display.titleKey: item.<id>.title`); `item_coins` и `inventory.starter/item_coins`
+  удаляются (стоковый магазин с капсулой монет не используется — S10 своё окно).
 - `iap.settings.products/<starter_crate│hull_pack│field_kit│heavy_arsenal│commander_cache>` (0.99 / 1.99 /
   4.99 / 9.99 / 19.99, consumable, выдача в inventory).
 - `iap.offers/<key>` — те же 5 + `start_grant` (бесплатный, лимит 1, по 2 каждого); `starter_crate` лимит 1.
-- `iap.placements/placement_shop` (5 паков, порядок `shop_order`), `placement_defeat` (hull_pack,
+- `iap.placements/placement_shop` (5 паков; Starter Crate игра показывает только после триггера), `placement_defeat` (hull_pack,
   starter_crate), `placement_prestage` (hull_pack), `placement_starter_auto` (starter_crate),
   `placement_start_grant` (start_grant).
 
 ### 8.4 Доски
 `leaderboards.definitions.put`: `siege_best` (неделя, сброс пн 00:00 UTC, лучший, источник `levelEnd`
 набора `endless`, `won: true`), `campaign_score` (всё время, сумма лучших счётов стадий, источник
-`levelEnd` набора `main`); `leaderboard_weekly` удаляется. `submitScore` — только при `canSubmit`.
+`levelEnd` набора `main`); `leaderboard_weekly` удаляется (стоковое окно доски не открывается), из
+`ui.windows/main` убираются триггеры `hud-shop` и `hud-leaderboards`. `submitScore` — только при `canSubmit`.
 
 ### 8.5 Конфиги игры (числа)
-Записи scope `game`: `balance`, `enemies`, `powerups`, `boosters`, `siege`, `rewards`, `packs`, `shop_order`,
-`placements` — поля таблицы ГДД 31 `plat.configs` + tunables ГДД 10–14 (`core.*`, `score.*`, `gen.*`,
-`tut.*`). Логические ключи контракта сервисов `iap.packs│shop_order│placements` хранятся в scope `game`
-(scope `iap.placements` — запись самого сервиса покупок, D-GC-11). Запасное значение при сбое —
-тот же файл записи, встроенный сборкой; литералов чисел в коде нет.
+Записи — ровно ключи контракта сервисов: `game.balance`, `game.enemies`, `game.powerups`, `game.boosters`,
+`game.siege`, `game.rewards`, `iap.packs`, `iap.shop_order`, `iap.placements`, `ui.hud` — поля таблицы
+ГДД 31 `plat.configs` + tunables ГДД 10–14 (`core.*`, `score.*`, `gen.*`, `tut.*`). Физические scope/key
+(например scope `game` key `balance`; не пересекаться с сервисным scope `iap.placements`) часть записей
+проверяет dry-run'ом и вписывает в CR-01 `GAME_CONFIG`. Запасное значение при сбое — тот же файл
+записи, встроенный сборкой; литералов чисел в коде нет.
 
 ## 9. Награды (что видит игрок)
 Награды — только бустеры, звёзды и место в досках; валюты нет. Каждая выдача — окно награды кита
@@ -372,7 +404,7 @@ UI-детали экранов игры — `assets/ui/<id>-2x.png` по ГДД 
 
 ## 10. Аналитика
 Каталог — `docs/analytics/EVENTS.json` (snake_case, плоские параметры, ≤ 25, без PII); отправляет модуль
-игры (`ctx.analytics` / `sendEvent`), серверные факты — только после ACK. **Л** — внутри API логики,
+игры через `GamePorts.track` (`sdk.analytics.sendEvent`; boolean → 1/0), серверные факты — только после ACK. **Л** — внутри API логики,
 **Э** — экран через `game.event`.
 
 | событие | параметры | кто |
@@ -383,7 +415,7 @@ UI-детали экранов игры — `assets/ui/<id>-2x.png` по ГДД 
 | `stage_end` | `result`, `stars`, `score`, `duration_s`, `lives_lost`, `boosters_used`, `waves`, `continues` | Л (`end`) |
 | `continue_used`, `resource_shortage`, `item_spent` | `level_set`, `level_n`, `wave` / `item`, `context` / `item`, `amount`, `sink_id` | Л |
 | `item_earned` | `item`, `amount`, `source_id`, `source_type` | Л (по выдаче) |
-| `offer_shown` / `offer_click` | `offer_id`, `placement` (shop│defeat│prestage│starter_auto│lobby_grant) | Э |
+| `offer_shown` / `offer_click` | `offer_id`, `placement` (shop│defeat│prestage│starter_auto│lobby_grant) | Э (S10, S10′, S08, S02 grant) |
 | `purchase_start` / `purchase_result` / `offer_purchase` / `iap` | `offer_id`, `placement`, `is_free` / `result`, `is_test` / `product_id` / `price`, `currency_code` | Л (`buy`, `claimStartGrant`) |
 | `daily_claim` | `day` | Л (по событию модуля daily) |
 | `siege_unlock` | — | Л |
@@ -415,7 +447,7 @@ UI-детали экранов игры — `assets/ui/<id>-2x.png` по ГДД 
 |---|---|---|
 | логика | `src/modules/game/**`, `tests/game/**`, `tests/sim/**` | экраны, записи |
 | экраны | `src/screens/**`, `strings/screens.json` | `src/modules/game/index.ts` (типы — только через заявку), записи |
-| записи | `configs/remote/**` (уровни `levels.main/**`, `levels.endless/**`, `progress/**`, inventory, iap, leaderboards, `ui.*`, game.*), `strings/game.json`, строка `shell.title` в `strings/shell.json`, `item.*`/`offer.*`/`levels.*` из `strings/services.json`, `strings/levels.json` | код |
+| записи | `configs/remote/**` (уровни `levels.main/**`, `levels.endless/**`, `progress/**`, inventory, iap, leaderboards, `ui.*`, game.*), `strings/game.json`, строка `shell.title` в `strings/shell.json`, чистка `strings/services.json`, `strings/levels.json`; настройки модуля daily-rewards (`sdk.modules.set`); квитанция публикации | код |
 | арт/звук | `assets/**`, `src/skin/**` (ITEMS, OFFERS, ASSETS, FONTS, theme.css, sheets) | код экранов |
 
 Обвязка (`src/main.ts`, `src/boot/**`, `src/shell/**`, `scripts/**`), SDK и UI Kit не меняются.
@@ -430,9 +462,12 @@ UI-детали экранов игры — `assets/ui/<id>-2x.png` по ГДД 
   startGrant:'placement_start_grant'}`; `BOARDS = {siege:'siege_best', campaign:'campaign_score'}`;
   `GAME_CONFIG = {scope:'game', keys: balance, enemies, powerups, boosters, siege, rewards, packs,
   shop_order, placements}`; `PROGRESS.stars = 'progress_stars'` (если трек опубликован); `MODULES.kv = 'kv'`.
-  До применения логика и экраны компилируются против этих имён — первым идёт CR-01.
+  Применяет оркестратор/интеграция **до старта** логики и экранов (одна аддитивная правка); значения
+  scope/key конфигов уточняет часть записей.
 - **CR-02 → интеграция/оболочка** (желательно): окно настроек кита получает `values` (music, sound,
   vibration) из kv `settings` и пишет их обратно — тогда кнопка `lobby-sound` убирается.
+- **CR-03 → интеграция/оболочка** (желательно): стоковый магазин без строки валюты, если у игры её нет
+  (`shell/windows/shop.ts` всегда рисует «Coins»); до этого S10 — своё окно игры.
 - Изменение подписей `src/modules/game/index.ts` — только заявкой в этот контракт.
 
 ## 13. Решения (D-GC)
@@ -450,11 +485,13 @@ UI-детали экранов игры — `assets/ui/<id>-2x.png` по ГДД 
 | D-GC-08 | S14 разделено: кит (аккаунт) + окно игры «Sound» (тумблеры), CR-02 |
 | D-GC-09 | Награду показывает окно награды кита после окна игры; `clear-collect`, ряды наград S11 — нет |
 | D-GC-10 | S15 — плашка в экране `game`, не `ctx.overlay` |
-| D-GC-11 | Конфиги игры — scope `game`, без литералов в коде |
+| D-GC-11 | Конфиги — ключи контракта сервисов, физический scope/key — dry-run записей; без литералов в коде |
 | D-GC-12 | Оффер в S08 — только при Spare Hull = 0 и неиспользованном продолжении (D-16-03) |
 | D-GC-13 | Фоны: 3 сцены вместо 8 `bg_*`; `icon_settings` → `icon_gun`; `daily_crate` → картинка `start_grant` |
 | D-GC-14 | Источник картинок — Codex image_gen; в другом окружении шаг ассетов останавливается с ASSET_SOURCE_UNAVAILABLE |
 | D-GC-15 | Siege `levelEnd` с `won: true`, `moves` = волны; поражение кампании шлёт `won: false`; Quit — ничего |
-| D-GC-16 | Аналитика с boolean — через модуль игры (`event`), не `GamePorts.track` |
+| D-GC-16 | Аналитика — через `GamePorts.track` (boolean → 1/0): `ctx.analytics` модулю игры не приходит |
 | D-GC-17 | Новые id записей — заявка CR-01 в `src/boot/ids.ts` |
 | D-GC-18 | Сюжетных экранов и журнала глав в v1 нет (story = false) |
+| D-GC-19 | S10 — своё окно игры (плитка `store`): без капсулы монет, Starter Crate после триггера |
+| D-GC-20 | На `game` повтор/следующая стадия — в том же экране (`ctx.go` на свой маршрут — no-op); кнопка кита закрывает окно — остающиеся элементы в `body` |
