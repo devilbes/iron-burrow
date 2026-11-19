@@ -15,7 +15,7 @@ export interface Paint {
   readonly lava: string; readonly roots: string; readonly oil: string; readonly core: string;
   readonly player: string; readonly shield: string; readonly bulletPlayer: string; readonly bulletEnemy: string;
   readonly power: string; readonly frost: string; readonly dark: string; readonly text: string;
-  readonly blast: string; readonly font: string; readonly enemy: Readonly<Record<EnemyKind, string>>;
+  readonly blast: string; readonly enemyMark: string; readonly font: string; readonly enemy: Readonly<Record<EnemyKind, string>>;
 }
 
 /** Fallback colors from the theme variables visible at `host` (the screen's shadow host). */
@@ -30,7 +30,7 @@ export function readPaint(host: Element): Paint {
     oil: read('--mp-window-background'), core: read('--mp-card-gold'), player: read('--mp-card-success'),
     shield: read('--mp-card-info'), bulletPlayer: read('--mp-card-fg'), bulletEnemy: read('--mp-card-error'),
     power: read('--mp-card-gold'), frost: read('--mp-card-info'), dark: read('--mp-window-background'),
-    text: read('--mp-card-fg'), blast: read('--mp-card-accent'), font: style?.getPropertyValue('--mp-font-ui').trim() || (style?.fontFamily ?? ''),
+    text: read('--mp-card-fg'), blast: read('--mp-card-accent'), enemyMark: read('--mp-game-5'), font: style?.getPropertyValue('--mp-font-ui').trim() || (style?.fontFamily ?? ''),
     enemy: { scout: read('--mp-game-2'), grunt: read('--mp-game-5'), gunner: read('--mp-game-1'), brute: read('--mp-game-4') },
   };
 }

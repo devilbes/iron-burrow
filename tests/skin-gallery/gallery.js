@@ -44,6 +44,10 @@ import { HUD, TOP_BAR, screens } from '/app/screens/index.js';
 import { mountView, view } from '/app/screens/ui.js';
 import { createGameWindows, createOverlays } from '/app/shell/windows/game.js';
 import { createWindowOrder } from '/app/shell/windows/order.js';
+import { offerWindowSpec, purchaseWindowSpec, shopState, shopWindowSpec } from '/app/screens/shop.js';
+import packsRecord from '../../configs/remote/game.iap_packs/main.json';
+import shopOrderRecord from '../../configs/remote/game.iap_shop_order/main.json';
+import fieldKitRecord from '../../configs/remote/iap.offers/field_kit.json';
 import './modal-layers.js';
 import { testPorts } from './test-ports.js';
 import { barCounters, gameTileSpec, hudLayout, hudOrder, isGameTile, moduleCounter } from '/app/shell/hud-plan.js';
@@ -116,8 +120,28 @@ const buttonKinds = (root) => mountView(root, 'buttons', () => view('section', {
   ...['narrow', 'wide'].map((width) => view('div', { class: 'kinds-column', 'data-width': width },
     ...BUTTONS.map(([kind, classes, label, disabled]) => view('button', { type: 'button', class: classes,
       'data-kind': kind, ...(disabled ? { disabled: true } : {}) }, label))))), { styles: BUTTONS_CSS });
+/**
+ * The game's shop windows (src/screens/shop.ts) with test offers built from the records: contents
+ * of game.iap_packs, order of game.iap_shop_order, «Best value» of iap.offers ui.highlight, one-time
+ * of the pack; prices as a test store gives them (from `price_usd`), the last pack without a price
+ * («—», the store has none); every card a test purchase (the QA label).
+ */
+const PACKS = packsRecord.data;
+const HIGHLIGHT = { field_kit: fieldKitRecord.data.ui.highlight === true };
+const galleryOffer = (key, price) => ({ key, placement: 'shop', price,
+  items: Object.entries(PACKS[key].items).map(([item, amount]) => ({ item, amount })),
+  badge: PACKS[key].one_time ? 'one_time' : HIGHLIGHT[key] ? 'best_value' : null, test: true });
+const SHOP_OFFERS = shopOrderRecord.data.order.map((key, i, all) =>
+  galleryOffer(key, i === all.length - 1 ? null : `$${PACKS[key].price_usd.toFixed(2)}`));
+const SHOP_TITLE = bootText('screen.shop.title');
+const STARTER = galleryOffer('starter_crate', `$${PACKS.starter_crate.price_usd.toFixed(2)}`);
+const galleryShop = (ctx) => ctx.window.open(shopWindowSpec(ctx, { ...shopState(), offers: SHOP_OFFERS }, () => undefined));
+
 /** Views of the game's own layers: [route, what is opened over it]. */
 const LAYERS = {
+  'game-shop': ['home', galleryShop],
+  'game-offer': ['home', (ctx) => ctx.window.open(offerWindowSpec(ctx, STARTER))],
+  'game-purchase-failed': ['home', (ctx) => ctx.window.open(purchaseWindowSpec(ctx, 'hull_pack', () => 'failed'))],
   'game-window': ['game', (ctx) => ctx.window.open({ ...RESULT, body: resultBody })],
   'game-overlay': ['home', (ctx) => ctx.overlay({ draw: (root) => mountView(root, 'tip', () => view('section', { class: 'hero' },
     view('p', { class: 'hero-title' }, 'Tap a tile to start'))) })],
@@ -443,6 +467,55 @@ function hudChecks(view) {
   return found;
 }
 
+/** The top game window and its buttons inside the viewport (nothing under the bottom edge). */
+function windowInView() {
+  const host = [...document.querySelectorAll('.mpg-shell [data-element^="game.window"]')].at(-1);
+  const dialog = host?.shadowRoot?.querySelector('.dialog');
+  if (!dialog) return [];
+  const found = [];
+  for (const el of [dialog, ...dialog.querySelectorAll('.std-actions button, .dialog-close')]) {
+    const r = rect(el);
+    if (r.top < -0.5 || r.left < -0.5 || r.bottom > innerHeight + 0.5 || r.right > innerWidth + 0.5) {
+      found.push(`${el.localName}.${[...el.classList].join('.')} out of the viewport (${Math.round(r.top)}…${Math.round(r.bottom)} of ${innerHeight})`);
+    }
+  }
+  return found;
+}
+
+/**
+ * The game's shop: the window in the viewport; cards side by side never over each other, a row of
+ * cards of one height; in a card the price button clear of the name, the contents and the test
+ * label; the kit button under the list, never over a card in sight; no visible scrollbar.
+ */
+function shopChecks() {
+  const found = windowInView();
+  const list = all('.packs')[0];
+  const cards = all('.pack');
+  if (!list || cards.length === 0) return [...found, 'shop: no cards'];
+  const clip = rect(list);
+  const shown = cards.map((card) => ({ card, part: within(rect(card), clip) })).filter((item) => item.part);
+  shown.forEach((a, i) => { for (const b of shown.slice(i + 1)) if (overlap(a.part, b.part)) found.push(`shop: ${a.card.dataset.pack} over ${b.card.dataset.pack}`); });
+  const rows = new Map();
+  for (const card of cards) { const r = rect(card); const key = Math.round(r.top); rows.set(key, [...(rows.get(key) ?? []), r.height]); }
+  for (const heights of rows.values()) if (Math.max(...heights) - Math.min(...heights) > 1) found.push(`shop: cards of one row of different heights (${heights.map(Math.round)})`);
+  for (const card of cards) {
+    const buy = card.querySelector('.pack-buy');
+    if (!buy) { found.push(`shop ${card.dataset.pack}: no price button`); continue; }
+    const b = rect(buy); const c = rect(card);
+    if (b.left < c.left - 0.5 || b.right > c.right + 0.5 || b.top < c.top - 0.5 || b.bottom > c.bottom + 0.5) found.push(`shop ${card.dataset.pack}: price button out of its card`);
+    if (b.width > b.height * 6 || b.height > 72) found.push(`shop ${card.dataset.pack}: price button ${Math.round(b.width)}x${Math.round(b.height)}`);
+    for (const part of card.querySelectorAll('.pack-name, .chip, .test, .badge, .pack-art')) {
+      if (overlap(rect(part), b)) found.push(`shop ${card.dataset.pack}: ${part.className} under the price button`);
+    }
+  }
+  const host = [...document.querySelectorAll('.mpg-shell [data-element^="game.window"]')].at(-1);
+  for (const action of host?.shadowRoot?.querySelectorAll('.std-actions button') ?? []) {
+    for (const { card, part } of shown) if (overlap(part, rect(action))) found.push(`shop: kit button over ${card.dataset.pack}`);
+  }
+  if (getComputedStyle(list).scrollbarWidth !== 'none' && list.offsetWidth - list.clientWidth > 0) found.push('shop: a visible scrollbar');
+  return found;
+}
+
 /** Problems of the shown view, as text; [] when it reads right. */
 function checks(view) {
   const found = [];
@@ -503,6 +576,9 @@ function checks(view) {
   found.push(...globalThis.modalLayers.problems());
   if ((WINDOWS[view] || LAYERS[view]) && !globalThis.modalLayers.measure().open) found.push('no window or overlay open');
   if (view === 'game-window') found.push(...globalThis.modalLayers.gameWindow(RESULT.title, { actions: RESULT.actions.length }));
+  if (view === 'game-shop') found.push(...globalThis.modalLayers.gameWindow(SHOP_TITLE, { actions: 1 }), ...shopChecks());
+  if (view === 'game-offer') found.push(...globalThis.modalLayers.gameWindow(bootText('offer.starter_crate.title'), { actions: 1 }), ...windowInView());
+  if (view === 'game-purchase-failed') found.push(...globalThis.modalLayers.gameWindow(bootText('offer.hull_pack.title'), { actions: 1 }), ...windowInView());
   if (view === 'profile') {
     const terms = all('[data-part=system-profile] dt');
     const values = all('[data-part=system-profile] dd');

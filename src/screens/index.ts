@@ -3,6 +3,7 @@
 // ScreenContext and mounts one screen at a time. The game API is `gameOf(ctx.game)`
 // (src/modules/game/index.ts). Windows S04, S06–S09, S11, S13, S14 (game part), S16 are game
 // windows (`ctx.window`), not routes; S10 shop and S12 daily are kit windows of the HUD tiles.
+import { BOOSTERS } from '../boot/ids.js';
 import { gameOf, type GamePorts } from '../modules/game/index.js';
 import { openBoards } from './boards.js';
 import { mount as game } from './game.js';
@@ -185,6 +186,9 @@ export interface HudEntry {
  * `{ id: 'offer-starter', kind: 'money', icon: 'gift', label: <key>, offer: true }`.
  * A module tile not listed here (inventory, profile, …) is not shown.
  */
+/** What the shop tile and the booster counters of the top bar open: the game's shop window (S10). */
+const SHOP: HudOpen = { run: (ctx) => { void openShop(ctx); } };
+
 export const HUD: readonly HudEntry[] = [
   { id: 'daily-rewards', kind: 'activity' },
   // S13: two boards (siege_best weekly, campaign_score all-time) in a game window — the stock
@@ -193,8 +197,12 @@ export const HUD: readonly HudEntry[] = [
   // S10: the game's shop window (offers of `placement_shop`, Starter Crate only after its trigger,
   // no currency line) — the stock shop window shows a coins capsule (CONTRACT D-GC-19). Badge: a
   // dot while a one-time offer (Starter Crate after its trigger, D-20-12) is in the shop.
-  { id: 'store', kind: 'money', icon: 'shop', label: 'screen.hud.shop', open: { run: (ctx) => { void openShop(ctx); } },
+  { id: 'store', kind: 'money', icon: 'shop', label: 'screen.hud.shop', open: SHOP,
     status: { on: ['inventory:state:changed'], read: (ctx) => storeStatus(ctx) } },
+  // The game's offer on the right (owner): the kit offer window of the trigger `hud-offer-starter`
+  // (ui.windows/main → iap.offer, placement `starter_auto`: Starter Crate); the tile is there only
+  // while that placement has an available offer (bought — gone), with its OFFERS picture.
+  { id: 'offer-starter', kind: 'money', icon: 'gift', label: 'offer.starter_crate.title', offer: true },
 ];
 
 /** Shop tile badge: a dot while the shop has a one-time offer; nothing when the shop is unavailable. */
@@ -224,10 +232,18 @@ export type BarResource =
   | { readonly kind: 'level'; readonly label?: string; readonly icon?: string };
 
 /** Counters of the top bar, in this order; nothing else is shown there (the right side is settings only). */
-export const TOP_BAR: readonly BarResource[] = [];
-// Iron Burrow: no currency (D-FP-02), inventory is not shown, the profile level is not a number of
-// this game — the top bar has the profile on the left and settings on the right only. Campaign
-// stars are shown on the Lobby (`lobby-stars`) from the same progress the map reads.
+export const TOP_BAR: readonly BarResource[] = [
+  // Iron Burrow: no currency (D-FP-02); the resources are the boosters of the inventory — the same
+  // quantities the match HUD, the stage window and the shop read. Spare Hull first (lives before a
+  // stage, the defeat continue), then the field boosters; a phone in portrait shows the first two.
+  // A press (and its «+») opens the game's shop window, as the `store` tile does.
+  { kind: 'item', id: BOOSTERS.hull, label: 'item.bst_hull.title', open: SHOP },
+  { kind: 'item', id: BOOSTERS.bubble, label: 'item.bst_bubble.title', open: SHOP },
+  { kind: 'item', id: BOOSTERS.shockwave, label: 'item.bst_shockwave.title', open: SHOP },
+  { kind: 'item', id: BOOSTERS.fortify, label: 'item.bst_fortify.title', open: SHOP },
+];
+// The profile level is not a number of this game (no `level` counter). Campaign stars are shown
+// on the Lobby (`lobby-stars`) from the same progress the map reads.
 
 /**
  * Languages of the game: the base one (`en`, the bundled branch of the strings record) and every other language the
@@ -269,7 +285,8 @@ export interface ProfileStat {
  * value is not shown. Keep it short and about the game: no ids, codes or technical values.
  */
 export const PROFILE_STATS: readonly ProfileStat[] = [
-  // Stages cleared (campaign progress) and the best stage score.
+  // Stages cleared (campaign progress). No «Best score»: the profile summary's `highestScore` /
+  // `totalScore` / `score` are the profile service's own counters, which this game never feeds — they
+  // read 0 while the leaderboards show the real scores (Н-34b); a board score is not a summary field.
   { label: 'screen.profile.levels', value: 'levelsCompleted' },
-  { label: 'screen.profile.best', value: 'highestScore' },
 ];

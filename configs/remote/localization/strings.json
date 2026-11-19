@@ -367,7 +367,8 @@
         "stars": "{stars}/{max}",
         "grant_title": "Welcome, Burrower!",
         "grant_body": "Your starter boosters",
-        "sound": "Sound"
+        "sound_on": "Sound: On",
+        "sound_off": "Sound: Off"
       },
       "hud": {
         "boards": "Leaderboards",
@@ -381,7 +382,7 @@
         "fire": "FIRE",
         "pause": "Pause",
         "key": "{key}",
-        "limit": "Limit reached"
+        "limit": "Booster limit for this stage reached"
       },
       "toast": {
         "go": "Stage {n}. Go!",

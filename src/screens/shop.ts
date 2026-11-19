@@ -2,14 +2,15 @@
 // offers come from the game API already filtered and in `iap.shop_order`; a purchase opens S11 at
 // once (`pending`) and turns it into success / failed / cancelled when the order settles. The
 // reward itself is the kit reward window's, after the game window closes (D-GC-09): S11 draws no
-// reward rows.
+// reward rows. The window specs are exported for the skin gallery (tests/skin-gallery/gallery.js),
+// which shows them with test offers.
 import { gameOf, type IronBurrow, type Layout, type OfferKey, type OfferView, type Placement,
   type PurchaseResult } from '../modules/game/index.js';
 import { sound } from './audio.js';
-import type { ScreenContext } from './index.js';
-import { offerBody, offerName, priceLabel, SHOP_CSS, shopBody } from './shop-view.js';
+import type { GameWindowSpec, ScreenContext } from './index.js';
+import { offerBody, offerName, priceLabel, purchaseBody, SHOP_CSS, shopBody } from './shop-view.js';
 import { attempt, WINDOW_CSS } from './stage-ui.js';
-import { currentLayout, mountLive, view, watchLayout, type ViewNode } from './ui.js';
+import { currentLayout, mountLive, watchLayout } from './ui.js';
 
 type Status = PurchaseResult['status'];
 
@@ -17,17 +18,38 @@ function sfx(game: IronBurrow, id: string): void {
   try { sound(game).sfx(id); } catch { /* sound is optional */ }
 }
 
-interface ShopState {
+export interface ShopState {
   offers: readonly OfferView[] | null;
   owned: Set<OfferKey>;
   busy: boolean;
   layout: Layout;
 }
 
+export const shopState = (): ShopState => ({ offers: null, owned: new Set(), busy: false, layout: currentLayout() });
+
+/**
+ * S10 window: the cards of `state`, drawn again on a layout change and on `refresh` (what `bind`
+ * gets when the body is mounted; it returns what to stop when the body goes). Closing is the kit's
+ * close button; the one kit button (`shop-close`) stands under the list, never over it.
+ */
+export function shopWindowSpec(ctx: ScreenContext, state: ShopState, buy: (key: OfferKey) => void,
+  bind: (refresh: () => void) => () => void = () => () => undefined): GameWindowSpec {
+  return {
+    title: ctx.t('screen.shop.title'),
+    body: (root) => {
+      const live = mountLive(root, 'shop', () => shopBody(ctx, state, buy), { styles: WINDOW_CSS + SHOP_CSS });
+      const stopLayout = watchLayout((layout) => { state.layout = layout; live.refresh(); });
+      const unbind = bind(() => live.refresh());
+      return () => { stopLayout(); unbind(); live.off(); };
+    },
+    actions: [{ id: 'shop-close', label: ctx.t('screen.common.close'), variant: 'secondary' }],
+  };
+}
+
 /** S10: offers of `shop` in `iap.shop_order`; resolves when closed. */
 export async function openShop(ctx: ScreenContext): Promise<void> {
   const game = gameOf(ctx.game);
-  const state: ShopState = { offers: null, owned: new Set(), busy: false, layout: currentLayout() };
+  const state = shopState();
   let refresh = (): void => undefined;
   const shown = new Set<OfferKey>();
 
@@ -53,21 +75,26 @@ export async function openShop(ctx: ScreenContext): Promise<void> {
     await load();
   };
 
-  const ticket = ctx.window.open({
-    title: ctx.t('screen.shop.title'),
-    body: (root) => {
-      const live = mountLive(root, 'shop', () => shopBody(ctx, state, (key) => { void buy(key); }),
-        { styles: WINDOW_CSS + SHOP_CSS });
-      refresh = () => live.refresh();
-      const stopLayout = watchLayout((layout) => { state.layout = layout; live.refresh(); });
-      let stopBalances: () => void = () => undefined;
-      try { stopBalances = game.onBalances(() => { if (!state.busy) void load(); }); } catch { /* stub */ }
-      return () => { stopLayout(); stopBalances(); refresh = () => undefined; live.off(); };
-    },
-    actions: [{ id: 'shop-close', label: ctx.t('screen.common.close'), variant: 'secondary' }],
-  });
+  const ticket = ctx.window.open(shopWindowSpec(ctx, state, (key) => { void buy(key); }, (again) => {
+    refresh = again;
+    let stopBalances: () => void = () => undefined;
+    try { stopBalances = game.onBalances(() => { if (!state.busy) void load(); }); } catch { /* stub */ }
+    return () => { stopBalances(); refresh = () => undefined; };
+  }));
   void load();
   await ticket.result.catch(() => 'close');
+}
+
+/**
+ * S10′ window: one card and one button — its price (`offer-buy`); closing is the kit's close
+ * button only (Н-23: no second «Close»).
+ */
+export function offerWindowSpec(ctx: ScreenContext, offer: OfferView): GameWindowSpec {
+  return {
+    title: offerName(ctx, offer.key),
+    body: (root) => mountLive(root, 'offer', () => offerBody(ctx, offer, false), { styles: WINDOW_CSS + SHOP_CSS }).off,
+    actions: [{ id: 'offer-buy', label: priceLabel(ctx, offer), variant: 'primary' }],
+  };
 }
 
 /** S10′: one card — the first offer of the placement (`starter_auto` also records `starterShown`). */
@@ -78,14 +105,7 @@ export async function openOffer(ctx: ScreenContext, placement: Placement): Promi
   if (!offer) return;
   game.event('offer_shown', { offer_id: offer.key, placement });
   if (placement === 'starter_auto') void attempt(() => game.starterShown(), undefined);
-  const ticket = ctx.window.open({
-    title: offerName(ctx, offer.key),
-    body: (root) => mountLive(root, 'offer', () => offerBody(ctx, offer, false), { styles: WINDOW_CSS + SHOP_CSS }).off,
-    actions: [
-      { id: 'offer-buy', label: priceLabel(ctx, offer) ?? ctx.t('screen.common.ok'), variant: 'primary' },
-      { id: 'offer-close', label: ctx.t('screen.common.close'), variant: 'secondary' },
-    ],
-  });
+  const ticket = ctx.window.open(offerWindowSpec(ctx, offer));
   const picked = await ticket.result.catch(() => 'close');
   if (picked !== 'offer-buy') return;
   sfx(game, 'sfx_ui_click');
@@ -93,20 +113,29 @@ export async function openOffer(ctx: ScreenContext, placement: Placement): Promi
   await buyOffer(ctx, offer.key, placement);
 }
 
+/** S11 window of the purchase of `key`: its state is `status()`, drawn again on `refresh`. */
+export function purchaseWindowSpec(ctx: ScreenContext, key: OfferKey, status: () => Status,
+  bind: (refresh: () => void) => () => void = () => () => undefined): GameWindowSpec {
+  return {
+    title: offerName(ctx, key),
+    body: (root) => {
+      const live = mountLive(root, 'purchase-result', () => purchaseBody(ctx, status()), { styles: WINDOW_CSS + SHOP_CSS });
+      const unbind = bind(() => live.refresh());
+      return () => { unbind(); live.off(); };
+    },
+    actions: [{ id: 'purchase-ok', label: ctx.t('screen.common.ok'), variant: 'primary' }],
+  };
+}
+
 /** Buy + S11 (pending → success|failed|cancelled); resolves after `purchase-ok`. */
 export async function buyOffer(ctx: ScreenContext, key: OfferKey, placement: Placement): Promise<PurchaseResult> {
   const game = gameOf(ctx.game);
   let status: Status = 'pending';
   let refresh = (): void => undefined;
-  const ticket = ctx.window.open({
-    title: offerName(ctx, key),
-    body: (root) => {
-      const live = mountLive(root, 'purchase-result', () => purchaseBody(ctx, status), { styles: WINDOW_CSS });
-      refresh = () => live.refresh();
-      return () => { refresh = () => undefined; live.off(); };
-    },
-    actions: [{ id: 'purchase-ok', label: ctx.t('screen.common.ok'), variant: 'primary' }],
-  });
+  const ticket = ctx.window.open(purchaseWindowSpec(ctx, key, () => status, (again) => {
+    refresh = again;
+    return () => { refresh = () => undefined; };
+  }));
   const failed: PurchaseResult = { status: 'failed', key, items: [] };
   const buying = attempt<PurchaseResult>(() => game.buy(key, placement), failed).then((result) => {
     status = result.status;
@@ -119,17 +148,4 @@ export async function buyOffer(ctx: ScreenContext, key: OfferKey, placement: Pla
   // Closed while the order is still open: the caller re-reads later (balances come by realtime).
   if (status === 'pending') return { status: 'pending', key, items: [] };
   return buying;
-}
-
-function purchaseBody(ctx: ScreenContext, status: Status): ViewNode {
-  let text: string;
-  let detail: string | null = null;
-  if (status === 'success') text = ctx.t('screen.purchase.success');
-  else if (status === 'cancelled') text = ctx.t('screen.purchase.cancelled');
-  else if (status === 'failed') { text = ctx.t('screen.purchase.failed'); detail = ctx.t('screen.purchase.failed_body'); }
-  else text = ctx.t('screen.shop.pending');
-  return view('div', { class: 'win', 'data-window': 'purchase-result', 'data-state': status },
-    view('p', { class: 'plate accent', 'data-testid': 'purchase-status', 'data-state': status, 'data-dynamic': '',
-      role: 'status', 'aria-live': 'polite' }, text),
-    detail === null ? null : view('p', { class: 'hint' }, detail));
 }

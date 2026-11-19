@@ -157,6 +157,19 @@ export class FieldRenderer {
     const c = this.cell;
     const at = { x: (index % GRID) * c, y: Math.floor(index / GRID) * c, size: c };
     const image = this.bank.get('core');
+    if (!this.coreDown) {
+      // The one warm heart of the field: an amber halo under the crystal.
+      const cx = at.x + c / 2;
+      const cy = at.y + c / 2;
+      const glow = g.createRadialGradient(cx, cy, c * 0.1, cx, cy, c * 0.95);
+      glow.addColorStop(0, this.paint.core);
+      glow.addColorStop(1, 'transparent');
+      g.save();
+      g.globalAlpha = 0.55;
+      g.fillStyle = glow;
+      g.fillRect(at.x - c, at.y - c, c * 3, c * 3);
+      g.restore();
+    }
     if (image) { sprite(g, image, this.coreDown ? 1 : 0, 2, at); return; }
     g.fillStyle = this.coreDown ? this.paint.dark : this.paint.core;
     g.beginPath();
@@ -173,6 +186,8 @@ export class FieldRenderer {
     const c = this.cell;
     for (const spawn of view.spawns) {
       const at = { x: spawn.col * c, y: spawn.row * c, size: c };
+      // Where Rustbugs come from: a hatch of enemy-coloured corner marks on every spawn cell.
+      this.spawnMark(g, at);
       if (view.spawnHeld) { g.globalAlpha = SHADE_ALPHA; block(g, at.x, at.y, c, c, this.paint.dark); g.globalAlpha = 1; }
       if (!spawn.next) continue;
       const sheet = this.bank.get(`enemy_${spawn.next}`);
@@ -180,6 +195,28 @@ export class FieldRenderer {
       else { g.globalAlpha = SILHOUETTE_ALPHA; block(g, at.x + c * 0.15, at.y + c * 0.15, c * 0.7, c * 0.7, this.paint.enemy[spawn.next], c * 0.1); g.globalAlpha = 1; }
       if (spawn.busy) drawSpawn(scene, at);
     }
+  }
+
+  private spawnMark(g: CanvasRenderingContext2D, at: { x: number; y: number; size: number }): void {
+    const c = at.size;
+    const arm = c * 0.26;
+    const inset = c * 0.08;
+    g.save();
+    g.strokeStyle = this.paint.enemyMark;
+    g.globalAlpha = 0.7;
+    g.lineWidth = Math.max(1.5, c * 0.06);
+    g.beginPath();
+    for (const [sx, sy] of [[0, 0], [1, 0], [0, 1], [1, 1]] as const) {
+      const x = at.x + (sx ? c - inset : inset);
+      const y = at.y + (sy ? c - inset : inset);
+      const dx = sx ? -arm : arm;
+      const dy = sy ? -arm : arm;
+      g.moveTo(x + dx, y);
+      g.lineTo(x, y);
+      g.lineTo(x, y + dy);
+    }
+    g.stroke();
+    g.restore();
   }
 
   private powerup(g: CanvasRenderingContext2D, view: MatchView, now: number): void {
@@ -210,18 +247,65 @@ export class FieldRenderer {
     });
   }
 
-  /** Pulsing frame around the tutorial target on the field (CONTRACT §11). */
+  /**
+   * The tutorial target on the field (CONTRACT §11, GDD 14 §2): a pulsing frame around it and a
+   * bobbing arrow that points at it from the open side — the core with its wall, the brick ahead of
+   * the tank, every spawn point of the Rustbugs, the power-up.
+   */
   private focus(g: CanvasRenderingContext2D, view: MatchView, target: Exclude<FocusTarget, null>, now: number): void {
-    const cell = this.focusCell(view, target);
-    if (!cell) return;
+    const cells = this.focusCells(view, target);
+    if (cells.length === 0) return;
     const c = this.cell;
-    const pulse = 0.5 + 0.5 * Math.sin(now / BLINK_MS);
-    g.strokeStyle = this.paint.power;
-    g.lineWidth = Math.max(2, c * 0.08);
-    g.globalAlpha = 0.5 + pulse * 0.5;
+    const pulse = this.fx.reduced ? 1 : 0.5 + 0.5 * Math.sin(now / BLINK_MS);
     const grow = target === 'core' ? c : 0;
-    g.strokeRect(cell[0] * c - grow, cell[1] * c - grow, c + grow * 2, c + grow * 2);
-    g.globalAlpha = 1;
+    for (const [col, row] of cells) {
+      g.save();
+      g.strokeStyle = this.paint.power;
+      g.lineWidth = Math.max(2, c * 0.1);
+      g.globalAlpha = 0.55 + pulse * 0.45;
+      g.shadowColor = this.paint.blast;
+      g.shadowBlur = c * 0.4;
+      g.strokeRect(col * c - grow, row * c - grow, c + grow * 2, c + grow * 2);
+      g.restore();
+      this.arrow(g, col, row, grow, now);
+    }
+  }
+
+  /** A chunky arrow outside the target's frame, pointing at it; above unless the target is on top. */
+  private arrow(g: CanvasRenderingContext2D, col: number, row: number, grow: number, now: number): void {
+    const c = this.cell;
+    const bob = this.fx.reduced ? 0 : Math.sin(now / 160) * c * 0.12;
+    const fromBelow = row * c - grow < c * 1.2;
+    const cx = col * c + c / 2;
+    const tip = fromBelow ? row * c + c + grow + c * 0.12 - bob : row * c - grow - c * 0.12 + bob;
+    const dir = fromBelow ? -1 : 1;
+    const len = c * 0.9;
+    const half = c * 0.42;
+    g.save();
+    g.beginPath();
+    g.moveTo(cx, tip);
+    g.lineTo(cx - half, tip - dir * half);
+    g.lineTo(cx - half * 0.42, tip - dir * half);
+    g.lineTo(cx - half * 0.42, tip - dir * len);
+    g.lineTo(cx + half * 0.42, tip - dir * len);
+    g.lineTo(cx + half * 0.42, tip - dir * half);
+    g.lineTo(cx + half, tip - dir * half);
+    g.closePath();
+    g.fillStyle = this.paint.blast;
+    g.strokeStyle = this.paint.dark;
+    g.lineWidth = Math.max(2, c * 0.07);
+    g.lineJoin = 'round';
+    g.stroke();
+    g.fill();
+    g.restore();
+  }
+
+  private focusCells(view: MatchView, target: Exclude<FocusTarget, null>): readonly (readonly [number, number])[] {
+    if (target === 'enemy') {
+      if (view.spawns.length > 0) return view.spawns.map((spawn) => [spawn.col, spawn.row] as const);
+    }
+    const one = this.focusCell(view, target);
+    return one ? [one] : [];
   }
 
   private focusCell(view: MatchView, target: Exclude<FocusTarget, null>): readonly [number, number] | null {
