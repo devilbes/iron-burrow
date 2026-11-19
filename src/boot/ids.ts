@@ -51,3 +51,45 @@ export const MODULES = Object.freeze({
 
 /** Module whose `main` window the published `hud:profile` trigger opens (presented by the game). */
 export const PROFILE_WINDOW_OWNER = 'profile-ui';
+
+// ---- Iron Burrow (docs/game/CONTRACT.md §12 CR-01): ids of the game's own records, additive only.
+
+/** Level set of the Siege arena (`levels.endless`, one level `siege_pit`). */
+export const SIEGE_SET = 'endless';
+
+/** Booster items of the inventory catalog. */
+export const BOOSTERS = Object.freeze({
+  bubble: 'bst_bubble', shockwave: 'bst_shockwave', fortify: 'bst_fortify', hull: 'bst_hull',
+} as const);
+
+/** IAP offers of the game (`iap.offers/<key>`). */
+export const OFFERS = Object.freeze({
+  startGrant: 'start_grant', starter: 'starter_crate', hull: 'hull_pack', field: 'field_kit',
+  heavy: 'heavy_arsenal', commander: 'commander_cache',
+} as const);
+
+/** IAP placements as published (`iap.placements/<name>`). */
+export const PLACEMENTS = Object.freeze({
+  shop: SHOP_PLACEMENT, defeat: 'defeat', prestage: 'prestage', starterAuto: 'starter_auto', startGrant: 'start_grant',
+} as const);
+
+/** Leaderboards of the game (S13 tabs, S09 standing). */
+export const BOARDS = Object.freeze({ siege: 'siege_best', campaign: 'campaign_score' } as const);
+
+/** Game number records (`<scope>/<key>`), read through `configs.get`. */
+export const GAME_CONFIG = Object.freeze({
+  balance: { scope: 'game.balance', key: 'main' }, enemies: { scope: 'game.enemies', key: 'main' },
+  powerups: { scope: 'game.powerups', key: 'main' }, boosters: { scope: 'game.boosters', key: 'main' },
+  siege: { scope: 'game.siege', key: 'main' }, rewards: { scope: 'game.rewards', key: 'main' },
+  packs: { scope: 'game.iap_packs', key: 'main' }, shopOrder: { scope: 'game.iap_shop_order', key: 'main' },
+  placements: { scope: 'game.iap_placements', key: 'main' },
+} as const);
+
+/**
+ * Progress track of the best stars per stage (`stars3_<n>` steps, condition value = best stars).
+ * Not in PROGRESS: the game module reads it once itself; the shell's read stays the same.
+ */
+export const STARS_TRACK = 'stars_main';
+
+/** Player key-value storage module (profile-pack `kv`). */
+export const KV_MODULE = 'kv';

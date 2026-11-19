@@ -43,12 +43,12 @@ test('the records of the project pass; every scope is validated or listed as not
 test('the SDK reads what it ships a reader for', { skip: !vendor && NO_SDK }, async (t) => {
   const root = project(t, {
     ...edited('ui.hud/layout', (json) => { json.data.sides = {}; }),
-    ...edited('iap.offers/offer_coins_small', (json) => { json.data.kind = 'gift'; }),
+    ...edited('iap.offers/hull_pack', (json) => { json.data.kind = 'gift'; }),
     ...edited('levels.main/set', (json) => { json.data.last = 6; }),
   });
   const { problems, validated } = await validateRecords(root);
   assert.deepEqual(problems.map((line) => line.split(': ').slice(0, 2).join(': ')).sort(), [
-    'configs/remote/iap.offers/offer_coins_small.json: data', 'configs/remote/levels.main/set.json: data',
+    'configs/remote/iap.offers/hull_pack.json: data', 'configs/remote/levels.main/set.json: data',
     'configs/remote/ui.hud/layout.json: data.sides']);
   assert.ok([...validated.keys()].every((source) => source.startsWith('SDK: ')));
 });
@@ -73,19 +73,19 @@ const firstRange = () => record('levels.main/set').data.index[0].key;
 test('rules and links between records', async (t) => {
   const root = project(t, {
     ...edited('progress/progress_main', (json) => { json.data.profileProjection = {}; json.data.steps[0].reward[0].id = 'item_gems'; }),
-    ...edited('iap.offers/offer_coins_small', (json) => { json.data.variants[0].productKey = 'product_none'; }),
+    ...edited('iap.offers/hull_pack', (json) => { json.data.variants[0].productKey = 'product_none'; }),
     ...edited('iap.placements/placement_shop', (json) => { json.data.offers.push('offer_none'); json.name = 'iap.placements/shop'; }),
-    ...edited('inventory.catalog/item_coins', (json) => { json.display.titleKey = 'item.gems.title'; }),
+    ...edited('inventory.catalog/bst_bubble', (json) => { json.display.titleKey = 'item.gems.title'; }),
     [`configs/remote/levels.main/${firstRange()}.json`]: null,
   });
   const { problems } = await validateRecords(root);
   for (const start of [
     'configs/remote/progress/progress_main.json: data.profileProjection: ',
     'configs/remote/progress/progress_main.json: data.steps[0].reward[0].id: no inventory entity',
-    'configs/remote/iap.offers/offer_coins_small.json: data.variants[0].productKey: no record',
-    'configs/remote/iap.placements/placement_shop.json: data.offers[3]: no record',
+    'configs/remote/iap.offers/hull_pack.json: data.variants[0].productKey: no record',
+    'configs/remote/iap.placements/placement_shop.json: data.offers[5]: no record',
     'configs/remote/iap.placements/placement_shop.json: name: ',
-    'configs/remote/inventory.catalog/item_coins.json: display.titleKey: no text',
+    'configs/remote/inventory.catalog/bst_bubble.json: display.titleKey: no text',
     'configs/remote/levels.main/set.json: data.index[0].key: no record',
   ]) assert.ok(problems.some((line) => line.startsWith(start)), `${start}\n${problems.join('\n')}`);
 });

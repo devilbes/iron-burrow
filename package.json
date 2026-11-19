@@ -13,7 +13,7 @@
     "check": "node scripts/check.mjs",
     "check:fast": "node scripts/check.mjs --fast",
     "shot": "node tests/screen-shot.mjs",
-    "test:unit": "node scripts/strings.mjs && node --test \"tests/*.test.mjs\" \"tests/build/*.test.mjs\"",
+    "test:unit": "node scripts/strings.mjs && node --test \"tests/*.test.mjs\" \"tests/build/*.test.mjs\" \"tests/game/*.spec.mjs\"",
     "test": "npm run test:unit"
   },
   "devDependencies": {
