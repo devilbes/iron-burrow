@@ -237,12 +237,17 @@ const DIVIDER = `content:'';display:block;flex:none;height:10px;margin:8px 0 10p
 // line break between the two (order 1); the main action is order 0, second actions order 2.
 const ROW = `.dialog :is(.std-actions,.window-actions)${OVER}`;
 const SECOND = ':is(.std-action--secondary,.mp-button--secondary,[data-variant=ghost])';
-const ACTIONS = `${ROW}{flex-flow:row wrap;justify-content:center;align-items:center;column-gap:8px;row-gap:0}`
+// The kit pins the row to the bottom of a window that scrolls and fills it with the panel colour — a
+// dark band across the steel; the band goes, the row stays pinned.
+const ACTIONS = `${ROW}{flex-flow:row wrap;justify-content:center;align-items:center;column-gap:8px;row-gap:0;background:none}`
   + `${ROW}::before{content:'';order:1;flex:0 0 100%;height:8px}`
   + `${ROW}>button{order:0;flex:0 1 auto;width:auto;min-width:min(${v('game-button-min-primary')},100%);`
   + `max-width:min(${v('game-button-max')},100%);min-height:${v('game-button-h-primary')};`
   + `padding-inline:${v('game-button-pad')};white-space:normal}`
   + `${ROW}>button${SECOND}{order:2;min-width:min(${v('game-button-min')},100%);min-height:48px;margin-bottom:8px}`
+  // Landscape windows are low: the kit puts the row on one line, and so does the skin — main action first.
+  + `[data-orientation=landscape] ${ROW}::before{display:none}`
+  + `[data-orientation=landscape] ${ROW}>button{min-height:48px;margin-bottom:0}`
   // Price buttons of the shop: the same limits, centred under their pack.
   + `.dialog :is(.iap-row,.iap-slide)>.iap-buy${OVER}{align-self:center;width:auto;min-width:min(${v('game-button-min')},100%);`
   + `max-width:min(${v('game-button-max')},100%);padding-inline:${v('game-button-pad')}}`;
@@ -260,6 +265,7 @@ const SHOP = `.iap-section>:is(.iap-slide,.iap-row){flex:none;${UNDERLAY};paddin
   + `.iap-row__title{font:400 17px/22px ${v('mp-font-display')}}`
   + `.iap-slide>[data-part=asset-image]{align-self:center;${ART(v('game-art-offer'))};object-fit:contain;`
   + `filter:drop-shadow(${v('game-shadow-floating')})}`
+  + `[data-orientation=landscape] .iap-slide>[data-part=asset-image]{${ART(v('game-art-offer-row'))}}`
   + `.iap-row__icon{${ART(v('game-art-offer-row'))};border:0;background:none;box-shadow:none}`
   + `.iap-row__icon>*{${ART(v('game-art-offer-row'))};object-fit:contain}`;
 
@@ -270,13 +276,14 @@ const DAY_GLOW: Layer[] = [
   [solid(v('mp-card-accent')), `center bottom|calc(100% - 2 * ${BC}) ${v('game-plate-line')}`],
   [`linear-gradient(180deg,color-mix(in srgb,${v('mp-card-accent')} 22%,${v('mp-card-surface')}),${v('mp-card-surface')})`, 'center|100% 100%'],
 ];
-const DAILY = `.dialog .daily-day{height:auto;min-height:${v('game-day-h')};border:0;border-radius:0;`
+const DAILY = `.dialog .daily-day{border:0;border-radius:0;`
   + `background:${v('game-underlay')};box-shadow:none;clip-path:${platePath(BC, '0px')}}`
+  + `[data-orientation=portrait] .dialog .daily-day{height:auto;min-height:${v('game-day-h')}}`
   + `.dialog .daily-day[data-state=available]{border:0;${layers(DAY_GLOW)}}`
   + `.daily-day .daily-art,.daily-day .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-day'))}}`
-  + `.dialog .daily-day[data-wide] .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-day'))}}`
+  + `.dialog .daily-day[data-wide] .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-tile'))}}`
   + `.daily-amount{font:400 16px/1.2 ${v('mp-font-display')}}`
-  + `.daily-day :is(.daily-check,.daily-lock){border:0;border-radius:0;clip-path:polygon(${v('game-cut-badge')} 0,100% 0,`
+  + `.daily-day :is(.daily-check,.daily-lock){top:4px;right:4px;border:0;border-radius:0;clip-path:polygon(${v('game-cut-badge')} 0,100% 0,`
   + `100% calc(100% - ${v('game-cut-badge')}),calc(100% - ${v('game-cut-badge')}) 100%,0 100%,0 ${v('game-cut-badge')})}`
   + `.daily-hint{${UNDERLAY}}`;
 
@@ -295,12 +302,18 @@ const LEADERBOARD = `.lbw-table{${UNDERLAY};padding:4px 0}`
   + `background:linear-gradient(180deg,color-mix(in srgb,var(--_medal) 85%,${v('mp-card-fg')}),var(--_medal) 40%,`
   + `color-mix(in srgb,var(--_medal) 70%,${v('game-shade')}));box-shadow:${v('game-shadow-raised')};`
   + `clip-path:polygon(${BC} 0,calc(100% - ${BC}) 0,100% ${BC},100% 100%,0 100%,0 ${BC})}`
+  // The lowest step (20px, rank 3 and every step in landscape): the number fits its height.
+  + `.lbw-step{display:grid;place-items:center;line-height:1}`
   + `.lbw-mine{${UNDERLAY};background:${v('game-self')}}`
   + `.lbw-mine .lbw-avatar{background:${v('game-steel-teal')};color:${v('mp-card-fg')}}`
   + `.lbw-mine .lbw-rank{color:${v('mp-card-success')}}`;
 
+// ---- Confirm (recolor): the subject is one underlay, its picture bare and big.
+const CONFIRM = `.cf-item{${UNDERLAY}}.cf-tile{background:none;box-shadow:none;border:0}`
+  + `.cf-price{font-family:${v('mp-font-display')};font-weight:400;color:${v('mp-card-gold')}}`;
+
 // ---- Reward received (recolor + the shared rules above): the list of what came is one underlay.
-const REWARD = `.reward-box{${UNDERLAY}}`
+const REWARD = `.reward-box{${UNDERLAY}}.reward-burst{border:0;background:none;box-shadow:none}`
   + `.reward-box .reward-grid .reward-art${OVER},.reward-box .reward-grid .reward-art${OVER}>*{${ART(v('game-art-reward'))}}`;
 
 export const COMPONENTS: Readonly<Record<string, string>> = {
@@ -310,4 +323,5 @@ export const COMPONENTS: Readonly<Record<string, string>> = {
   dailyReward: DAILY,
   leaderboardWindow: LEADERBOARD,
   rewardWindow: REWARD,
+  confirm: CONFIRM,
 };
