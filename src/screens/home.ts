@@ -27,7 +27,8 @@ function sfx(game: IronBurrow, id: string): void {
 
 export const mount: ScreenMount = (root, ctx) => {
   const game = gameOf(ctx.game);
-  const state: LobbyState = { ready: false, campaign: null, notice: null, layout: currentLayout(), logoFailed: false, busy: false };
+  const state: LobbyState = { ready: false, campaign: null, notice: null, layout: currentLayout(), logoFailed: false, busy: false,
+    soundOn: soundOn(game) };
   let gone = false;
   let refresh = (): void => undefined;
 
@@ -60,6 +61,13 @@ export const mount: ScreenMount = (root, ctx) => {
     audio.music('mus_lobby');
   } catch { /* sound is optional */ }
   const stopLayout = watchLayout((layout) => { state.layout = layout; refresh(); });
+  let stopSettings: () => void = () => undefined;
+  try {
+    stopSettings = game.onSettings(() => {
+      const on = soundOn(game);
+      if (on !== state.soundOn) { state.soundOn = on; refresh(); }
+    });
+  } catch { /* stub */ }
 
   void (async () => {
     const first = !mountedBefore;
@@ -75,8 +83,13 @@ export const mount: ScreenMount = (root, ctx) => {
     if (grant !== null && !gone) await showGrant(ctx, game, grant);
   })();
 
-  return () => { gone = true; stopLayout(); stopAudio(); live.off(); };
+  return () => { gone = true; stopLayout(); stopSettings(); stopAudio(); live.off(); };
 };
+
+/** The Sound button reads «on» while music or sound effects play. */
+function soundOn(game: IronBurrow): boolean {
+  try { const s = game.settings(); return s.music || s.sfx; } catch { return true; }
+}
 
 /** S02 grant: the starter boosters, «Collect» claims the free offer; the kit reward window shows the grant. */
 async function showGrant(ctx: ScreenContext, game: IronBurrow, grant: readonly Reward[]): Promise<void> {

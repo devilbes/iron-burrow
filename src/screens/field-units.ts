@@ -40,28 +40,56 @@ function tankShape(scene: UnitScene, at: { x: number; y: number; size: number },
   g.stroke();
 }
 
+/** A soft dark ellipse under a tank: units stand off the floor and the walls. */
+function groundShadow(scene: UnitScene, at: { x: number; y: number; size: number }): void {
+  const { g } = scene;
+  g.save();
+  g.globalAlpha = 0.45;
+  g.fillStyle = scene.paint.dark;
+  g.beginPath();
+  g.ellipse(at.x + at.size / 2, at.y + at.size * 0.56, at.size * 0.46, at.size * 0.42, 0, 0, Math.PI * 2);
+  g.fill();
+  g.restore();
+}
+
 export function drawPlayer(scene: UnitScene, player: PlayerView, view: MatchView): void {
   const at = box(scene, player, view.alpha);
   const { g, bank } = scene;
   if (player.spawning) { drawSpawn(scene, at); return; }
   const hull = bank.get('player_hull');
-  const turret = bank.get(`player_turret_l${player.gun}`);
   const frame = player.moving ? Math.floor(view.tick / TREAD_TICKS) % 2 : 0;
+  // The friendly teal ring under the player: the one tank on the field that is yours.
+  g.save();
+  g.strokeStyle = scene.paint.shield;
+  g.globalAlpha = 0.55;
+  g.lineWidth = Math.max(1.5, at.size * 0.05);
+  g.beginPath();
+  g.ellipse(at.x + at.size / 2, at.y + at.size / 2, at.size * 0.52, at.size * 0.52, 0, 0, Math.PI * 2);
+  g.stroke();
+  g.restore();
+  groundShadow(scene, at);
+  // The hull art is the whole tank (drill turret included); the gun level is the stars of the HUD.
   if (hull) sprite(g, hull, frame, 2, at, player.dir);
   else tankShape(scene, at, scene.paint.player, player.dir);
-  if (turret) sprite(g, turret, 0, 1, at, player.dir);
-  else if (!hull) gunMarks(scene, at, player.gun);
+  if (player.gun > 0) gunMarks(scene, at, player.gun);
   if (player.shieldMs > 0) drawShield(scene, at);
 }
 
-/** Without the turret art: one dot per gun level on the hull. */
+/** Gun level on the tank: one small gold star mark per level along its lower edge. */
 function gunMarks(scene: UnitScene, at: { x: number; y: number; size: number }, gun: number): void {
-  const r = at.size * 0.06;
+  const r = Math.max(1.5, at.size * 0.06);
+  const { g } = scene;
   for (let i = 0; i < gun; i += 1) {
-    scene.g.fillStyle = scene.paint.text;
-    scene.g.beginPath();
-    scene.g.arc(at.x + at.size * (0.3 + i * 0.2), at.y + at.size * 0.8, r, 0, Math.PI * 2);
-    scene.g.fill();
+    const cx = at.x + at.size * (0.5 + (i - (gun - 1) / 2) * 0.18);
+    const cy = at.y + at.size * 0.97;
+    g.fillStyle = scene.paint.dark;
+    g.beginPath();
+    g.arc(cx, cy, r + 1, 0, Math.PI * 2);
+    g.fill();
+    g.fillStyle = scene.paint.power;
+    g.beginPath();
+    g.arc(cx, cy, r, 0, Math.PI * 2);
+    g.fill();
   }
 }
 
@@ -99,6 +127,7 @@ export function drawEnemy(scene: UnitScene, enemy: EnemyView, view: MatchView): 
   const at = box(scene, enemy, view.alpha);
   if (enemy.spawning) { drawSpawn(scene, at); return; }
   const { g, bank, paint } = scene;
+  groundShadow(scene, at);
   const sheet = bank.get(`enemy_${enemy.kind}`);
   const step = Math.floor(view.tick / TREAD_TICKS) % 2;
   const flash = enemy.carrier && Math.floor(view.tick / (TREAD_TICKS * 2)) % 2 === 1;

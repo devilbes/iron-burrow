@@ -26,20 +26,23 @@ export interface MapActions {
 const NODE_FRAMES = { locked: 0, open: 1, current: 2, cleared: 3, count: 4 } as const;
 const STAR_FRAMES = { earned: 0, empty: 1, count: 2 } as const;
 const MAX_STARS = 3;
-/** Columns of the snake path by layout. */
-const COLUMNS: Readonly<Record<Layout, number>> = { portrait: 3, landscape: 5, desktop: 5 };
+/** Columns of the snake path by layout: two in portrait (the mockup), five on wide screens. */
+const COLUMNS: Readonly<Record<Layout, number>> = { portrait: 2, landscape: 5, desktop: 5 };
 
 /**
  * Frames of the sprite sheets and the columns of the path as rules (the view takes no inline
- * styles): the sheet is an `<img>` of all frames side by side in a clipping box, `data-frame` moves
- * it by whole frames; a row going back runs right to left.
+ * styles): a sheet is the background of its box, sized to all frames side by side; `data-frame`
+ * moves it by whole frames (position f / (n - 1) of the strip). A row going back runs right to left.
  */
 function spriteCss(): string {
   const rules: string[] = [];
-  for (const [cls, frames] of [['node-art', NODE_FRAMES.count], ['node-star', STAR_FRAMES.count]] as const) {
-    rules.push(`.${cls}>.sheet{width:${frames * 100}%;max-width:none;height:100%}`);
+  const sheets = [['.node-art', 'node_stage', NODE_FRAMES.count], ['.node[data-finale] .node-art', 'node_finale', NODE_FRAMES.count],
+    ['.node-star', 'star_small', STAR_FRAMES.count]] as const;
+  for (const [selector, id, frames] of sheets) {
+    rules.push(`${selector}{background-image:url("${gameArt(id)}");background-size:${frames * 100}% 100%;`
+      + 'background-repeat:no-repeat;background-position:0 0}');
     for (let frame = 1; frame < frames; frame += 1) {
-      rules.push(`.${cls}[data-frame="${frame}"]>.sheet{margin-left:-${frame * 100}%}`);
+      rules.push(`${selector}[data-frame="${frame}"]{background-position:${(frame / (frames - 1)) * 100}% 0}`);
     }
   }
   for (const [layout, cols] of Object.entries(COLUMNS)) {
@@ -48,49 +51,67 @@ function spriteCss(): string {
   return rules.join('\n');
 }
 
-/** Room of the HUD columns over the screen: a 64px tile (src/shell/skin.ts HUD_CSS) and a gap. */
+/**
+ * Room of the HUD columns over the screen: a 64px tile (src/shell/skin.ts HUD_CSS) and a gap. The
+ * head (Back · Campaign) stands between the HUD columns, the tabs under the HUD zone; every plate
+ * is the forged steel of the skin (`hero-title` is the nameplate of COMMON).
+ */
 export const mapCss = (): string => `
 .map{--hud-side:calc(64px + var(--mp-gap));--hud-zone:calc(2 * 64px + var(--mp-gap));--node:min(64px,7.5vh);
- display:grid;height:100%;min-height:0;overflow:hidden;gap:.75em;grid-template-columns:minmax(0,1fr);
- grid-template-areas:"head" "tabs" "nodes" "play";grid-template-rows:auto auto minmax(0,1fr) auto}
-.head{grid-area:head;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5em;
+ --cut:var(--game-cut,8px);display:grid;height:100%;min-height:0;overflow:hidden;gap:.75em;
+ grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "tabs" "nodes" "play";
+ grid-template-rows:auto auto minmax(0,1fr) auto;padding-bottom:var(--mp-gap)}
+.head{grid-area:head;display:flex;align-items:center;justify-content:center;gap:.5em;
  min-height:var(--hud-zone);padding-inline:var(--hud-side);min-width:0}
-.head .title-plate{font-size:clamp(1.25rem,3vw,2rem)}
-.back{width:auto}
+.head .hero-title{margin:0;font-size:clamp(1.1rem,2.6vw,1.75rem);line-height:1.1;white-space:nowrap;min-width:0}
+.back{flex:none;width:48px;min-width:48px;height:48px;min-height:48px;padding:0}
+.back>span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .btn-art{flex:none;width:var(--mp-icon-m);height:var(--mp-icon-m);object-fit:contain}
 .tabs{grid-area:tabs;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5em;min-width:0}
-.tab{display:grid;align-content:center;gap:.1em;min-height:44px;padding:.25em .5em;line-height:1.15;font-size:.85rem}
-.tab small{font-size:.75rem;font-weight:500;opacity:.85}
-.tab[aria-selected=true]{background:var(--mp-violet-deep);color:var(--mp-on-accent);border-color:transparent}
-.tab[data-state=locked]{opacity:.7}
+.tab{position:relative;display:flex;align-items:center;justify-content:center;gap:.35em;min-height:48px;
+ padding:.25em .5em;line-height:1.15;font-size:.85rem;white-space:nowrap;
+ background:linear-gradient(180deg,var(--mp-card-raised),var(--mp-card-surface) 45%,var(--mp-card-background));
+ color:var(--mp-card-fg);border:0;box-shadow:var(--game-shadow-raised);
+ clip-path:polygon(var(--cut) 0,calc(100% - var(--cut)) 0,100% var(--cut),100% calc(100% - var(--cut)),
+ calc(100% - var(--cut)) 100%,var(--cut) 100%,0 calc(100% - var(--cut)),0 var(--cut))}
+.tab .tab-text{display:grid;min-width:0}
+.tab .tab-text>span{overflow:hidden;text-overflow:ellipsis}
+.tab small{display:none;font-size:.75rem;font-weight:500;color:var(--mp-card-subtle)}
+.tab[aria-selected=true]{background:linear-gradient(180deg,color-mix(in srgb,var(--game-steel-teal) 78%,var(--mp-card-fg)),
+ var(--game-steel-teal) 55%,color-mix(in srgb,var(--game-steel-teal) 80%,var(--mp-window-background)));
+ box-shadow:inset 0 -3px 0 var(--mp-window-background)}
+.tab[aria-selected=true] small{color:var(--mp-card-muted)}
+.tab[data-state=locked]{color:var(--mp-card-subtle);background:var(--mp-card-background)}
+.tab-lock{flex:none;width:20px;height:20px}
 .nodes{grid-area:nodes;display:flex;flex-direction:column;justify-content:space-evenly;gap:.25em;min-height:0;
  min-width:0;margin:0;padding:0;list-style:none}
 .node-row{display:grid;justify-items:center;align-items:center;gap:.25em;margin:0;padding:0;list-style:none}
 .node-row[data-back]{direction:rtl}
 .node-row>li{direction:ltr}
-.node{display:grid;justify-items:center;gap:.1em;padding:0;border:0;background:none;color:var(--mp-text)}
-.node-art{display:grid;width:var(--node);height:var(--node);overflow:hidden;
- font-family:var(--mp-font-display);font-size:calc(var(--node) * .32);text-shadow:0 1px 2px var(--mp-night)}
-.node-art>*{grid-area:1/1}
-.node-art>b{place-self:center}
-.node[data-finale] .node-art{width:calc(var(--node) * 1.25);height:calc(var(--node) * 1.25)}
-.node-lock{width:calc(var(--node) * .4);height:calc(var(--node) * .4);align-self:end;justify-self:end}
-.node-stars{display:flex;gap:1px;height:calc(var(--node) * .25)}
-.node-star{display:block;width:calc(var(--node) * .25);height:calc(var(--node) * .25);overflow:hidden}
+.node{display:grid;justify-items:center;gap:.15em;padding:0;border:0;background:none;color:var(--mp-text)}
+.node-art{position:relative;display:grid;place-items:center;width:var(--node);height:var(--node);
+ font-family:var(--mp-font-display);font-size:calc(var(--node) * .34);line-height:1;color:var(--mp-card-fg);
+ text-shadow:0 2px 0 var(--mp-window-background),0 0 4px var(--mp-window-background)}
+.node[data-state=locked] .node-art{color:var(--mp-card-subtle)}
+.node[data-finale] .node-art{width:calc(var(--node) * 1.2);height:calc(var(--node) * 1.2)}
+.node-lock{position:absolute;right:4%;bottom:4%;width:34%;height:34%;object-fit:contain}
+.node-stars{display:flex;gap:2px;height:calc(var(--node) * .26)}
+.node-star{display:block;width:calc(var(--node) * .26);height:calc(var(--node) * .26)}
 .node[data-state=locked]{cursor:default}
 .play{grid-area:play;width:100%;max-width:420px;justify-self:center}
 [data-layout=landscape].map{--node:min(64px,15vh);padding-inline:var(--hud-side);gap:.5em;
- grid-template-columns:minmax(0,17rem) minmax(0,1fr);grid-template-areas:"head nodes" "tabs nodes" "play nodes";
+ grid-template-columns:minmax(0,15.5rem) minmax(0,1fr);grid-template-areas:"head nodes" "tabs nodes" "play nodes";
  grid-template-rows:auto minmax(0,1fr) auto}
-[data-layout=landscape] .head{flex-direction:row;min-height:0;padding-inline:0;justify-content:flex-start}
-[data-layout=landscape] .back,[data-layout=desktop] .back{order:-1}
-[data-layout=landscape] .head .title-plate{font-size:1.1rem;flex:1;min-width:0;overflow-wrap:normal}
-[data-layout=landscape] .tabs{grid-template-columns:minmax(0,1fr);align-content:center;gap:.35em}
-[data-layout=desktop].map{--node:min(112px,12vh);padding-inline:var(--hud-side)}
+[data-layout=landscape] .head{min-height:0;padding-inline:0;justify-content:flex-start}
+[data-layout=landscape] .head .hero-title{font-size:1.1rem;flex:1}
+[data-layout=landscape] .tabs{grid-template-columns:minmax(0,1fr);align-content:center;gap:.4em}
+[data-layout=landscape] .tab,[data-layout=desktop] .tab{justify-content:flex-start;padding-inline:.9em}
+[data-layout=landscape] .tab small,[data-layout=desktop] .tab small{display:block}
+[data-layout=desktop].map{--node:min(104px,11vh);padding-inline:var(--hud-side)}
 [data-layout=desktop] .nodes{width:100%;max-width:1000px;justify-self:center}
-[data-layout=desktop] .head{flex-direction:row;justify-content:center;min-height:0}
-[data-layout=desktop] .tabs{width:100%;max-width:760px;justify-self:center}
-[data-layout=desktop] .tab{font-size:1rem}
+[data-layout=desktop] .head{min-height:0}
+[data-layout=desktop] .tabs{width:100%;max-width:820px;justify-self:center}
+[data-layout=desktop] .tab{font-size:1rem;min-height:56px}
 ${spriteCss()}
 `;
 
@@ -103,10 +124,11 @@ function tabs(ctx: ScreenContext, state: MapState, on: MapActions): ViewNode {
   return view('div', { class: 'tabs', role: 'tablist' }, ...chapters.map((chapter) => {
     const sub = chapter.open ? ctx.t('screen.map.chapter', { n: chapter.n })
       : ctx.t('screen.map.chapter_locked', { n: chapter.first - 1 });
-    return view('button', { type: 'button', class: 'mp-button tab', role: 'tab', 'data-testid': 'chapter-tab',
-      'data-chapter': chapter.n, 'data-state': chapter.open ? 'open' : 'locked',
+    return view('button', { type: 'button', class: 'tab', role: 'tab', 'data-testid': 'chapter-tab',
+      'data-chapter': chapter.n, 'data-state': chapter.open ? 'open' : 'locked', title: sub,
       'aria-selected': chapter.n === state.chapter ? 'true' : 'false', onClick: () => on.chapter(chapter.n, chapter.open) },
-    view('span', {}, chapterTitle(ctx, chapter.n)), view('small', {}, sub));
+    chapter.open ? null : picture(gameArt('node_lock'), '', { class: 'tab-lock', 'aria-hidden': 'true' }),
+    view('span', { class: 'tab-text' }, view('span', {}, chapterTitle(ctx, chapter.n)), view('small', {}, sub)));
   }));
 }
 
@@ -125,7 +147,6 @@ function nodeView(ctx: ScreenContext, stage: StageInfo, current: boolean, on: Ma
       'data-current': current ? '' : undefined, 'aria-label': ctx.t('screen.hud.stage', { n: stage.n }),
       'aria-disabled': stage.state === 'locked' ? 'true' : undefined, onClick: () => on.node(stage) },
     view('span', { class: 'node-art', 'data-frame': frame },
-      picture(gameArt(stage.finale ? 'node_finale' : 'node_stage'), '', { class: 'sheet', 'aria-hidden': 'true' }),
       view('b', {}, formatNumber(stage.n)),
       stage.state === 'locked' ? picture(gameArt('node_lock'), '', { class: 'node-lock', 'aria-hidden': 'true' }) : null),
     view('span', { class: 'node-stars', 'data-dynamic': '' }, ...stars)));
@@ -150,11 +171,11 @@ export function renderMap(ctx: ScreenContext, state: MapState, on: MapActions): 
   return view('section', { class: 'map', 'data-window': 'stage-map', 'data-layout': state.layout,
     'data-chapter': state.chapter, 'aria-busy': state.campaign ? undefined : 'true' },
   view('div', { class: 'head' },
-    view('h1', { class: 'plate title-plate' }, ctx.t('screen.map.title')),
-    view('button', { type: 'button', class: 'mp-button mp-button--small back', 'data-testid': 'stagemap-back',
-      onClick: () => on.back() },
+    view('button', { type: 'button', class: 'mp-button mp-button--secondary back', 'data-testid': 'stagemap-back',
+      'aria-label': ctx.t('screen.common.back'), title: ctx.t('screen.common.back'), onClick: () => on.back() },
     picture(gameArt('icon_back'), '', { class: 'btn-art', 'aria-hidden': 'true' }),
-    view('span', {}, ctx.t('screen.common.back')))),
+    view('span', {}, ctx.t('screen.common.back'))),
+    view('h1', { class: 'hero-title' }, ctx.t('screen.map.title'))),
   tabs(ctx, state, on),
   nodes(ctx, state, on),
   view('button', { type: 'button', class: 'mp-button mp-button--primary play', 'data-testid': 'stagemap-play',

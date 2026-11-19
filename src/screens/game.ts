@@ -277,7 +277,7 @@ class GameScreen implements FlowHost {
     const tut = view.tutorial;
     const tutKey = tut ? `${tut.step}:${tut.text}:${tut.text2 ?? ''}:${tut.target}:${this.model.inputMode}` : '';
     const ids = view.hud.boosters.map((b) => b.id).join(',');
-    return `${this.model.layout}|${this.model.coarse}|${tutKey}|${ids}|${view.hud.stage}|${this.model.qa}|${this.model.offline}`;
+    return `${this.model.layout}|${this.model.coarse}|${tutKey}|${ids}|${view.hud.stage}|${view.hud.gun}|${this.model.qa}|${this.model.offline}`;
   }
 
   private online(): boolean {

@@ -77,6 +77,17 @@ function chip(testid: string, icon: string, text: StatText, pulse = false): View
     art(icon), view('span', { class: 'short' }, text.short), view('span', { class: 'long' }, text.long));
 }
 
+/** Gun level as stars: one per level up to the top (the number alone told a new player nothing). */
+export const GUN_PIPS = 3;
+
+function gunChip(text: StatText, gun: number): ViewNode {
+  const pips: ViewNode[] = [];
+  for (let i = 0; i < GUN_PIPS; i += 1) pips.push(view('span', { 'data-on': i < gun ? '' : undefined }, '\u2605'));
+  return view('div', { class: 'chip', 'data-testid': 'hud-gun', 'data-art': 'ok', title: text.long, 'aria-label': text.long,
+    'data-dynamic': '' },
+  art('icon_gun'), view('span', { class: 'long' }, text.long), view('span', { class: 'pips', 'aria-hidden': 'true' }, ...pips));
+}
+
 function stats(ctx: ScreenContext, v: MatchView | null, wave: boolean): ViewChild[] {
   if (!v) return [];
   const text = statTexts(ctx, v);
@@ -84,7 +95,7 @@ function stats(ctx: ScreenContext, v: MatchView | null, wave: boolean): ViewChil
     chip('hud-stage', wave ? 'icon_wave' : 'icon_stage', text.stage),
     chip('hud-enemies', 'icon_enemy_left', text.enemies, v.tutorial?.target === 'enemy'),
     chip('hud-lives', 'icon_life', text.lives),
-    chip('hud-gun', 'icon_gun', text.gun),
+    gunChip(text.gun, v.hud.gun),
   ];
 }
 
@@ -132,7 +143,7 @@ function stickZone(ctx: ScreenContext, m: HudModel, a: HudActions): ViewNode {
         art('ctrl_stick_base'), view('div', { class: 'knob', 'data-part': 'knob' }, art('ctrl_stick_knob'))));
   }
   return view('div', { class: 'zone-s' },
-    view('div', { class: 'plate captions', 'data-pulse': target === 'keys' ? 'true' : undefined },
+    view('div', { class: 'captions', 'data-pulse': target === 'keys' ? 'true' : undefined },
       view('div', { class: 'row' }, keyCap(ctx, 'W'), keyCap(ctx, 'A'), keyCap(ctx, 'S'), keyCap(ctx, 'D'), keyCap(ctx, '←↑↓→')),
       view('div', { class: 'row' }, view('span', {}, ctx.t('screen.hud.fire')), keyCap(ctx, 'Space'), keyCap(ctx, 'J'))));
 }
@@ -148,10 +159,10 @@ function fireZone(ctx: ScreenContext, m: HudModel, a: HudActions): ViewNode {
 
 function hints(ctx: ScreenContext, m: HudModel, a: HudActions): ViewNode {
   const tut = m.view?.tutorial ?? null;
-  return view('div', { class: 'zone-t' },
+  return view('div', { class: 'zone-t', 'data-layout': m.layout },
     tut ? tutorialPlate(ctx, tut, m.inputMode, m.view?.hud.enemiesLeft ?? 0, { next: a.next, skip: a.skip }) : null,
-    m.hint ? view('p', { class: 'plate hint', 'data-testid': 'booster-hint', role: 'status' }, m.hint) : null,
-    m.offline ? view('p', { class: 'plate hint muted', 'data-testid': 'hud-offline', role: 'status' }, ctx.t('screen.common.offline')) : null);
+    m.hint ? view('p', { class: 'hint', 'data-testid': 'booster-hint', role: 'status' }, m.hint) : null,
+    m.offline ? view('p', { class: 'hint muted', 'data-testid': 'hud-offline', role: 'status' }, ctx.t('screen.common.offline')) : null);
 }
 
 /** `data-state` of the field: playing|paused|won|lost from the match phase. */
@@ -173,10 +184,13 @@ export function renderMatch(ctx: ScreenContext, m: HudModel, a: HudActions): Vie
   view('div', { class: 'field-box' },
     view('canvas', { class: 'field', 'data-testid': 'game-field', 'data-grid': '13x13', 'data-state': phaseState(m.view),
       'aria-hidden': 'true' }),
-    view('p', { class: 'plate toast', 'data-testid': 'hud-toast', 'data-state': m.toast ? 'shown' : 'idle', role: 'status',
-      'aria-live': 'polite' }, m.toast ?? '')),
+    view('p', { class: 'toast', 'data-testid': 'hud-toast', 'data-state': m.toast ? 'shown' : 'idle', role: 'status',
+      'aria-live': 'polite' }, m.toast ?? ''),
+    // Landscape and desktop: the hint banner lies over the top edge of the field (no room above it).
+    m.layout === 'portrait' ? null : hints(ctx, m, a)),
   boosters(ctx, m, a),
-  hints(ctx, m, a),
+  // Portrait: the banner has its own fixed slot above the field, so the field keeps its size.
+  m.layout === 'portrait' ? hints(ctx, m, a) : null,
   stickZone(ctx, m, a),
   fireZone(ctx, m, a));
 }

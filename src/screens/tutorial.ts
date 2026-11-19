@@ -29,10 +29,13 @@ export function tutorialLines(ctx: ScreenContext, tut: TutorialView, mode: Input
 export function tutorialPlate(ctx: ScreenContext, tut: TutorialView, mode: InputMode, count: number,
   on: { next: () => void; skip: () => void }): ViewNode {
   const [text, text2] = tutorialLines(ctx, tut, mode, count);
-  return view('div', { class: 'plate tut', 'data-testid': 'tutorial-hint', 'data-window': 'tutorial',
+  return view('div', { class: 'tut', 'data-testid': 'tutorial-hint', 'data-window': 'tutorial',
     'data-step': tut.step, 'data-target': tut.target, role: 'status', 'aria-live': 'polite' },
-  view('p', { class: 'tut-text', 'data-dynamic': '' }, text),
-  text2 ? view('p', { class: 'tut-text muted' }, text2) : null,
+  // The arrow mark of the banner; the target itself pulses (controls) or is framed on the field.
+  view('span', { class: 'tut-arrow', 'aria-hidden': 'true' }, '!'),
+  view('div', { class: 'tut-copy' },
+    view('p', { class: 'tut-text', 'data-dynamic': '' }, text),
+    text2 ? view('p', { class: 'tut-text muted' }, text2) : null),
   view('div', { class: 'tut-actions' },
     button(ctx.t('screen.tut.next'), on.next, { testid: 'tutorial-next', small: true, primary: true }),
     button(ctx.t('screen.tut.skip'), on.skip, { testid: 'tutorial-skip', small: true })));

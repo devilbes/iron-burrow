@@ -16,6 +16,8 @@ export interface LobbyState {
   layout: Layout;
   logoFailed: boolean;
   busy: boolean;
+  /** Music or sound effects on (the settings of the game): the Sound button shows its state. */
+  soundOn: boolean;
 }
 
 export interface LobbyActions {
@@ -42,13 +44,19 @@ export const LOBBY_CSS = `
 .info{grid-area:info;display:flex;flex-direction:column;align-items:center;justify-content:center;
  gap:.5em;min-height:0;min-width:0}
 .actions{grid-area:actions;display:grid;gap:.75em;width:100%;max-width:420px;justify-self:center;min-width:0}
-.stars-plate{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mp-font-ui);font-weight:700;
- font-variant-numeric:tabular-nums}
+.stars-plate{display:inline-flex;align-items:center;gap:.4em;min-height:40px;padding:.3em 1em .3em .7em;border:0;
+ font-family:var(--mp-font-ui);font-weight:700;font-variant-numeric:tabular-nums;color:var(--mp-card-gold);
+ background:linear-gradient(180deg,var(--mp-card-raised),var(--mp-card-surface) 45%,var(--mp-card-background));
+ box-shadow:var(--game-shadow-raised);--cut:var(--game-cut,8px);
+ clip-path:polygon(var(--cut) 0,calc(100% - var(--cut)) 0,100% var(--cut),100% calc(100% - var(--cut)),
+ calc(100% - var(--cut)) 100%,var(--cut) 100%,0 calc(100% - var(--cut)),0 var(--cut))}
 .notice{max-width:420px;text-align:center;font-size:.9rem;overflow-wrap:anywhere}
 .cta{display:grid;justify-items:center;line-height:1.15}
 .cta small{font-size:.8rem;font-weight:500;opacity:.9}
 .btn-art{flex:none;width:var(--mp-icon-m);height:var(--mp-icon-m);object-fit:contain}
 .sound{justify-self:center;width:auto;min-width:50%}
+.siege[data-state=locked]{color:var(--mp-card-subtle);filter:saturate(.35) brightness(.8)}
+.siege[data-state=locked] .cta small{color:var(--mp-card-muted)}
 [data-layout=landscape].lobby{grid-template-areas:"brand actions" "info actions";
  grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;
  padding-inline:var(--hud-side);align-items:center}
@@ -96,15 +104,15 @@ function actions(ctx: ScreenContext, state: LobbyState, on: LobbyActions): ViewN
     view('button', { type: 'button', class: 'mp-button mp-button--primary', 'data-testid': 'lobby-play',
       'data-cta': 'primary', disabled: state.busy ? true : undefined, onClick: () => on.play() },
     ctaContent(ctx.t('screen.lobby.play'), playSub)),
-    view('button', { type: 'button', class: 'mp-button', 'data-testid': 'lobby-siege',
+    view('button', { type: 'button', class: 'mp-button mp-button--secondary siege', 'data-testid': 'lobby-siege',
       'data-state': siegeOpen ? 'open' : 'locked', 'aria-disabled': siegeOpen ? undefined : 'true',
       disabled: state.busy ? true : undefined, onClick: () => on.siege() },
     picture(gameArt(siegeOpen ? 'icon_siege' : 'node_lock'), '', { class: 'btn-art', 'aria-hidden': 'true' }),
     ctaContent(ctx.t('screen.lobby.siege'), siegeSub)),
-    view('button', { type: 'button', class: 'mp-button mp-button--small sound', 'data-testid': 'lobby-sound',
-      onClick: () => on.sound() },
-    picture(gameArt('icon_sfx'), '', { class: 'btn-art', 'aria-hidden': 'true' }),
-    view('span', {}, ctx.t('screen.lobby.sound'))));
+    view('button', { type: 'button', class: 'mp-button mp-button--secondary mp-button--small sound', 'data-testid': 'lobby-sound',
+      'data-state': state.soundOn ? 'on' : 'off', onClick: () => on.sound() },
+    picture(gameArt(state.soundOn ? 'icon_sfx' : 'icon_sfx_off'), '', { class: 'btn-art', 'aria-hidden': 'true' }),
+    view('span', {}, ctx.t(state.soundOn ? 'screen.lobby.sound_on' : 'screen.lobby.sound_off'))));
 }
 
 /** The whole Lobby; `app-ready` once the game API answered `ready()` (or failed). */
