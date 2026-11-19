@@ -1,0 +1,55 @@
+{
+ "gid": 32116,
+ "init": 200,
+ "login": {
+  "status": 202,
+  "json": {
+   "eventId": "login:32116:2026-11-19",
+   "status": "accepted",
+   "acceptedAt": "2026-11-19T11:35:31.323Z",
+   "duplicate": false
+  }
+ },
+ "after": [
+  {
+   "steps": {
+    "day_1": "completed",
+    "day_2": "locked"
+   },
+   "rewards": [
+    {
+     "operationId": "6afedf0329adc430e862f93b",
+     "attemptId": "ba56fb563c983a4259bfd7a0",
+     "targetKey": "day_1",
+     "claimMode": "auto",
+     "status": "issued",
+     "reward": [
+      {
+       "id": "bst_bubble",
+       "amount": 1
+      }
+     ],
+     "grantResult": {
+      "status": "granted",
+      "applied": [
+       {
+        "id": "bst_bubble",
+        "amount": 1
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "inventory": [
+  {
+   "collection": "main",
+   "itemId": "bst_bubble",
+   "stackId": "default",
+   "quantity": 1,
+   "stateVersion": 1,
+   "updatedAt": "2026-11-19T11:35:31.463Z"
+  }
+ ]
+}
