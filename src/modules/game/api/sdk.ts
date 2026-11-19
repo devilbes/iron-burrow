@@ -26,6 +26,7 @@ export interface IapPurchaseOutcome {
 }
 export interface IapApi {
   load(options?: { readonly force?: boolean }): Promise<unknown>;
+  state(): unknown;
   offers(input: { readonly placement: string }): readonly IapOffer[];
   offer(input: { readonly offerKey: string; readonly placement?: string }): IapOffer | undefined;
   products(options?: { readonly force?: boolean }): Promise<readonly { readonly productKey: string; readonly priceText: string }[]>;

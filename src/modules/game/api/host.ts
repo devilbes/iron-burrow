@@ -14,6 +14,8 @@ export const KV = Object.freeze({
   starterShows: 'offer.starter.auto_shows', firstDefeat: 'flag.first_defeat_seen', boosterInfo: 'booster_info.seen',
 } as const);
 const SETTINGS_VERSION = 1;
+/** kv key names allow `[A-Za-z0-9:_-]` only: the contract's dotted names are stored with `_`. */
+const kvKey = (name: string): string => name.replace(/[^A-Za-z0-9:_-]/g, '_');
 const DEFAULT_SETTINGS: Settings = { music: true, sfx: true, motion: false, haptics: true };
 const STAR_STEP = /^stars3_(\d+)$/;
 
@@ -94,13 +96,17 @@ export class Host {
     // same key set here is answered by the progress module from that read (no second request).
     const current = await quiet(() => this.ports.currentLevel());
     const [kv, , , tracks] = await Promise.all([
-      quiet(() => this.svc<KvApi>(KV_MODULE)?.query(Object.values(KV))),
-      quiet(() => this.inventory?.get()),
-      quiet(() => this.iap?.load()),
+      quiet(() => this.svc<KvApi>(KV_MODULE)?.query(Object.values(KV).map(kvKey))),
+      // The inventory is read by the shell at start; its changes come as `inventory:state:changed`.
+      Promise.resolve(undefined),
+      // The store: loaded once (the iap module may have loaded it already).
+      quiet(() => (this.iap?.state() ? Promise.resolve(undefined) : this.iap?.load())),
       quiet(() => this.svc<ProgressApi>(MODULES.progress)?.init(Object.values(PROGRESS))),
     ]);
     const stars = (tracks ?? []).filter((state) => state.key === STARS_TRACK);
-    this.kv = { ...(kv?.data ?? {}) };
+    this.kv = {};
+    const stored = kv?.data ?? {};
+    for (const name of Object.values(KV)) if (stored[kvKey(name)] !== undefined) this.kv[name] = stored[kvKey(name)] as Json;
     this.settingsValue = this.parseSettings(this.kv[KV.settings]);
     for (const state of stars ?? []) {
       for (const [key, step] of Object.entries(state.steps)) {
@@ -128,7 +134,7 @@ export class Host {
   async setKv(name: string, value: Json): Promise<void> {
     this.kv[name] = value;
     const kv = this.svc<KvApi>(KV_MODULE);
-    if (kv) await kv.set(name, value, { idempotencyKey: crypto.randomUUID() });
+    if (kv) await kv.set(kvKey(name), value, { idempotencyKey: crypto.randomUUID() });
   }
 
   settings(): Settings { return this.settingsValue; }
