@@ -1,0 +1,35 @@
+{
+ "function": "configs",
+ "stage": "core",
+ "steps": [
+  {
+   "action": "Open the game; game.* and iap.* are read after boot"
+  },
+  {
+   "action": "Start stage 1: enemy count 20, player lives 3, boosters limits from game.boosters"
+  },
+  {
+   "action": "Return to Lobby (configs refresh)"
+  }
+ ],
+ "expect": [
+  {
+   "call": "configs.getScope",
+   "status": "2xx"
+  },
+  {
+   "call": "configs.get",
+   "status": "2xx"
+  },
+  {
+   "call": "configs.refresh",
+   "status": "2xx"
+  }
+ ],
+ "afterReload": [
+  {
+   "what": "конфиги",
+   "equals": "values equal the published records (no request to project configs/ files)"
+  }
+ ]
+}

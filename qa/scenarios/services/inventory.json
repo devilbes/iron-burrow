@@ -1,0 +1,42 @@
+{
+ "function": "inventory",
+ "stage": "core",
+ "steps": [
+  {
+   "action": "Start stage 1 with bst_bubble >= 1 (start grant)"
+  },
+  {
+   "action": "Tap the Bubble Shield booster in HUD"
+  },
+  {
+   "action": "Wait for the effect, then pause and quit to Stage Map"
+  },
+  {
+   "action": "Reload the page"
+  }
+ ],
+ "expect": [
+  {
+   "call": "inventory.get",
+   "status": "2xx"
+  },
+  {
+   "call": "inventory.quantity",
+   "status": "2xx"
+  },
+  {
+   "call": "inventory.consume",
+   "status": "2xx"
+  },
+  {
+   "call": "inventory.refresh",
+   "status": "2xx"
+  }
+ ],
+ "afterReload": [
+  {
+   "what": "счётчик bst_bubble",
+   "equals": "one less than before the tap"
+  }
+ ]
+}

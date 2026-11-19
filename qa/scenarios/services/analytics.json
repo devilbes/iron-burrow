@@ -1,0 +1,21 @@
+{
+ "function": "analytics",
+ "stage": "qa",
+ "steps": [
+  {
+   "action": "Play first session: tutorial, stage 1 clear, daily claim, shop open, purchase"
+  }
+ ],
+ "expect": [
+  {
+   "call": "analytics.sendEvent",
+   "status": "no-http"
+  }
+ ],
+ "afterReload": [
+  {
+   "what": "аналитика",
+   "equals": "no own requests and no third-party trackers in the network log"
+  }
+ ]
+}

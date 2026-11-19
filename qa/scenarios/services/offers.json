@@ -1,0 +1,45 @@
+{
+ "function": "offers",
+ "stage": "screens",
+ "steps": [
+  {
+   "action": "First visit: S02 Lobby shows the start grant window (2x each booster) -> Collect"
+  },
+  {
+   "action": "Lose stage 1 with Spare Hull = 0 (test env: qa-lose hook)"
+  },
+  {
+   "action": "See S08 Defeat with Hull Pack and Starter Crate offers"
+  },
+  {
+   "action": "Buy Starter Crate (test purchase)"
+  },
+  {
+   "action": "Reload the page and open Shop"
+  }
+ ],
+ "expect": [
+  {
+   "call": "iap.offer",
+   "status": "2xx"
+  },
+  {
+   "call": "iap.purchase",
+   "status": "2xx"
+  },
+  {
+   "call": "iap.offers",
+   "status": "2xx"
+  }
+ ],
+ "afterReload": [
+  {
+   "what": "стартовый грант",
+   "equals": "not offered again; boosters +2 each are still in inventory"
+  },
+  {
+   "what": "Starter Crate",
+   "equals": "absent in Shop (limit 1 reached)"
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "function": "best",
+ "stage": "core",
+ "steps": [
+  {
+   "action": "Unlock Siege (stage 5 cleared) and start a Siege run"
+  },
+  {
+   "action": "Finish the run (test env: qa-lose hook) with score above the previous best"
+  },
+  {
+   "action": "See S09 Siege Result with Best and NEW BEST!"
+  },
+  {
+   "action": "Reload the page and open Siege from Lobby"
+  }
+ ],
+ "expect": [
+  {
+   "call": "progress.levelEnd",
+   "status": "2xx"
+  },
+  {
+   "call": "leaderboards.rank",
+   "status": "2xx"
+  }
+ ],
+ "afterReload": [
+  {
+   "what": "Best",
+   "equals": "equals the run score of the previous session (server value of siege_best)"
+  }
+ ]
+}

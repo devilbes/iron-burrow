@@ -1,0 +1,34 @@
+{
+ "function": "hud",
+ "stage": "screens",
+ "steps": [
+  {
+   "action": "Open Lobby: top bar icons Daily, Shop, Leaderboards, Settings"
+  },
+  {
+   "action": "Daily icon has a badge when the reward is claimable"
+  },
+  {
+   "action": "Tap each icon: its window opens"
+  },
+  {
+   "action": "Reload the page"
+  }
+ ],
+ "expect": [
+  {
+   "call": "hud.register",
+   "status": "no-http"
+  },
+  {
+   "call": "hud.open",
+   "status": "no-http"
+  }
+ ],
+ "afterReload": [
+  {
+   "what": "иконки HUD",
+   "equals": "same icons; Daily badge only if a reward is claimable"
+  }
+ ]
+}

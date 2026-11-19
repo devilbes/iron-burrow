@@ -1,0 +1,192 @@
+{
+ "sdkRevision": "1.0.0-rc.30 modulesRevision 2 lockHash 881abf2b5d1b3d3e4e2e0f20a7e18b7db813658c55851bd5be13501205b3c530",
+ "functions": [
+  {
+   "id": "progress",
+   "module": "progress",
+   "methods": ["progress.init", "gamestate.get", "gamestate.set"],
+   "platformData": [
+    {"kind": "level-set", "key": "campaign", "note": "same record as levels; progress.init reads cleared stages, best stars and best score per stage from it"}
+   ],
+   "trigger": "After sdk:core:ready and on every return to S03 Stage Map / S02 Lobby: progress.init reads the campaign state (cleared stages, stars, Siege unlock after stage 5). gamestate.get on boot, gamestate.set after every levelEnd ACK (campaign.gun_level carry, campaign.last_stage, campaign.selected_chapter, siege.best_local mirror).",
+   "player": "Stage Map shows unlocked nodes with 0-3 stars; Siege button unlocks after stage 5; after reload the same nodes and stars are shown and the gun level carries to the next stage."
+  },
+  {
+   "id": "levels",
+   "module": "progress",
+   "methods": ["levels.open", "progress.beginAttempt", "progress.levelEnd"],
+   "platformData": [
+    {"kind": "level-set", "key": "campaign", "count": 30, "source": "configs/levels/campaign/stage_01..stage_30.json", "rewards": "first clear: 1 booster by rotation (N-1) mod 4 of [bst_bubble, bst_shockwave, bst_fortify, bst_hull]; first 3 stars: +1 bst_bubble; finals 10/20/30: +1 of each booster"},
+    {"kind": "level-set", "key": "siege", "count": 1, "levels": ["siege_pit"], "source": "configs/levels/siege/siege_pit.json", "rewards": "none (score and siege_best only)"}
+   ],
+   "trigger": "S04 Pre-stage Start: levels.open(set) + handle.get(n), then progress.beginAttempt (server seed, start needs network). S07 Stage Clear / S08 Defeat / S09 Siege Result: progress.levelEnd({set, n, seed, score, won, durationMs, ...}, {eventId}) with retries 2/4/8/16/32 s on the same eventId.",
+   "player": "Stage layout comes from the Levels section; after a win S07 shows server-verified stars, score and the large booster reward picture; offline Start shows 'Connection needed'."
+  },
+  {
+   "id": "best",
+   "module": "leaderboards",
+   "methods": ["leaderboards.rank"],
+   "platformData": [
+    {"kind": "leaderboard-definition", "key": "siege_best", "note": "same board as leaderboards"}
+   ],
+   "trigger": "S09 Siege Result and Siege button in S02: leaderboards.rank(siege_best board) gives the player's best score of the week; 'NEW BEST!' when the run score is greater. Per-stage best score/stars come from progress.init (function progress).",
+   "player": "Siege Result shows 'Best' and 'NEW BEST!'; after reload Best equals the server value, not a local number."
+  },
+  {
+   "id": "currency",
+   "excluded": "No currency in the first version. Game design chose soft currency Scrap with permanent sinks (Garage upgrades, hull skin collection, bonus chapters), but the platform cannot yet publish exchange rules and a starting balance, so Scrap is a next-stage item (GDD 15 meta.next). Hard currency is not used at all. Consumable boosters live in the inventory function."
+  },
+  {
+   "id": "inventory",
+   "module": "inventory",
+   "methods": ["inventory.get", "inventory.quantity", "inventory.consume", "inventory.refresh"],
+   "platformData": [
+    {"kind": "inventory-entity", "key": "bst_bubble", "type": "item", "stackable": true, "clientConsumable": true, "name": "Bubble Shield"},
+    {"kind": "inventory-entity", "key": "bst_shockwave", "type": "item", "stackable": true, "clientConsumable": true, "name": "Shockwave"},
+    {"kind": "inventory-entity", "key": "bst_fortify", "type": "item", "stackable": true, "clientConsumable": true, "name": "Steel Fortress"},
+    {"kind": "inventory-entity", "key": "bst_hull", "type": "item", "stackable": true, "clientConsumable": true, "name": "Spare Hull"}
+   ],
+   "trigger": "Boot and after every grant (purchase, daily, level reward, start grant, inventory:state:changed): inventory.get / refresh, counters via inventory.quantity. Booster tap in S05: effect applied in the same tick, inventory.consume(item, 1, {reason, idempotencyKey}) in parallel (3 retries 1/2/4 s). Spare Hull in S04 and continue in S08: only after consume confirmation.",
+   "player": "Booster buttons in HUD and Pre-stage show server counts; a used booster decreases the count; after reload the counts equal the server balance."
+  },
+  {
+   "id": "upgrades",
+   "excluded": "Internal shop for currency (inventory.exchange) and the starting set are not used yet: the platform function is not finished. Garage upgrades for Scrap are described in GDD 15 meta.next as the next stage; no own currency shop is built."
+  },
+  {
+   "id": "purchases",
+   "module": "iap",
+   "methods": ["iap.load", "iap.products", "iap.purchase", "iap.waitOrder"],
+   "platformData": [
+    {"kind": "iap-product", "key": "starter_crate", "priceUsd": 0.99, "type": "consumable", "grants": {"bst_bubble": 3, "bst_shockwave": 3, "bst_fortify": 3, "bst_hull": 3}},
+    {"kind": "iap-product", "key": "hull_pack", "priceUsd": 1.99, "type": "consumable", "grants": {"bst_hull": 5}},
+    {"kind": "iap-product", "key": "field_kit", "priceUsd": 4.99, "type": "consumable", "grants": {"bst_bubble": 6, "bst_shockwave": 6, "bst_fortify": 6, "bst_hull": 6}},
+    {"kind": "iap-product", "key": "heavy_arsenal", "priceUsd": 9.99, "type": "consumable", "grants": {"bst_bubble": 15, "bst_shockwave": 15, "bst_fortify": 15, "bst_hull": 15}},
+    {"kind": "iap-product", "key": "commander_cache", "priceUsd": 19.99, "type": "consumable", "grants": {"bst_bubble": 35, "bst_shockwave": 35, "bst_fortify": 35, "bst_hull": 35}}
+   ],
+   "trigger": "Boot: iap.load. S10 Shop open: iap.products for localized prices. Buy tap in S10 / S08 / S04 / auto Starter Crate window: iap.purchase(offer) then iap.waitOrder until granted; grant goes to inventory on the server.",
+   "player": "Shop shows 5 packs with prices; after a test purchase S11 shows the large booster pictures with amounts and the counters grow; after reload the boosters are still there."
+  },
+  {
+   "id": "offers",
+   "module": "iap",
+   "methods": ["iap.offers", "iap.offer"],
+   "platformData": [
+    {"kind": "iap-offer", "key": "starter_crate", "product": "starter_crate", "limit": 1, "placements": ["shop", "defeat", "starter_auto"], "badge": null},
+    {"kind": "iap-offer", "key": "hull_pack", "product": "hull_pack", "placements": ["shop", "defeat", "prestage"]},
+    {"kind": "iap-offer", "key": "field_kit", "product": "field_kit", "placements": ["shop"], "badge": "Best value"},
+    {"kind": "iap-offer", "key": "heavy_arsenal", "product": "heavy_arsenal", "placements": ["shop"]},
+    {"kind": "iap-offer", "key": "commander_cache", "product": "commander_cache", "placements": ["shop"]},
+    {"kind": "iap-offer", "key": "start_grant", "product": null, "price": "free", "limit": 1, "placements": ["start_grant"], "grants": {"bst_bubble": 2, "bst_shockwave": 2, "bst_fortify": 2, "bst_hull": 2}, "note": "one-time free claim per player = GDD 15 meta.grant, claimed with iap.purchase; separate from daily and level rewards"}
+   ],
+   "trigger": "S10 Shop: iap.offers({placement:'shop'}) in iap.shop_order. S08 Defeat when continue is available and Spare Hull = 0: iap.offers({placement:'defeat'}). S04 Pre-stage when Spare Hull = 0: iap.offer hull_pack. Auto window Starter Crate (first defeat / first clear of stage 3, cooldown 24 h, at most 3 shows). First entry to S02: iap.offer start_grant -> Collect -> iap.purchase (free).",
+   "player": "Offers appear in Shop, Defeat and Pre-stage; Starter Crate disappears after it is bought; the first-visit window shows 2x each booster and Collect grants them once."
+  },
+  {
+   "id": "leaderboards",
+   "module": "leaderboards",
+   "methods": ["leaderboards.get", "leaderboards.around", "leaderboards.submitScore"],
+   "platformData": [
+    {"kind": "leaderboard-definition", "key": "siege_best", "period": "weekly", "reset": "Monday 00:00 UTC", "order": "desc", "aggregate": "best", "source": "progress levelEnd score of level-set siege"},
+    {"kind": "leaderboard-definition", "key": "campaign_score", "period": "all-time", "order": "desc", "aggregate": "sum of best score per campaign stage", "source": "progress levelEnd score of level-set campaign"}
+   ],
+   "trigger": "S13 Leaderboards open (HUD icon): leaderboards.get(board) + leaderboards.around(board). Scores are written by the server from the progress source (clientAuthoritative false); leaderboards.submitScore is called only when leaderboards.canSubmit is true (S09 run end, campaign sum grew after levelEnd, D-31-06).",
+   "player": "S13 shows both boards with the player's own row; after a Siege run the player's row and place update; after reload the row is the same."
+  },
+  {
+   "id": "daily",
+   "module": "daily-rewards",
+   "methods": ["daily-rewards.plan", "daily-rewards.open", "daily-rewards.setNextRewardAt", "progress.send"],
+   "platformData": [
+    {"kind": "daily-reward", "key": "daily", "track": "daily", "cycleLength": 7, "onMiss": false, "window": "week", "days": [
+     {"day": 1, "reward": [{"id": "bst_bubble", "amount": 1}]},
+     {"day": 2, "reward": [{"id": "bst_shockwave", "amount": 1}]},
+     {"day": 3, "reward": [{"id": "bst_fortify", "amount": 1}]},
+     {"day": 4, "reward": [{"id": "bst_hull", "amount": 1}]},
+     {"day": 5, "reward": [{"id": "bst_bubble", "amount": 2}]},
+     {"day": 6, "reward": [{"id": "bst_shockwave", "amount": 1}, {"id": "bst_fortify", "amount": 1}]},
+     {"day": 7, "reward": [{"id": "bst_hull", "amount": 2}, {"id": "bst_bubble", "amount": 2}, {"id": "bst_shockwave", "amount": 1}]}
+    ]}
+   ],
+   "trigger": "Boot: progress.init('daily') state -> daily-rewards.setNextRewardAt(endsAt) (badge on HUD icon, autoOpen when claimable). HUD icon / auto window: daily-rewards.open -> S12 calendar from daily-rewards.plan + server claimed count. Claim button: progress.send({eventId, type: claim action of the track, data: {operationId}}) (action type from mod-progress contracts, clarified by integration).",
+   "player": "Calendar of 7 days with large booster pictures; Claim grants today's boosters (counters grow), the badge disappears, the timer to the next reward shows; after reload today is claimed."
+  },
+  {
+   "id": "profile",
+   "module": "profile-pack",
+   "methods": ["profile.get", "portal.openId"],
+   "trigger": "S02 Lobby and S13 own row: profile.get (nickname, avatar). S14 Settings 'ManyPlay ID' button: portal.openId.",
+   "player": "Player name/avatar in Lobby and in leaderboards; ManyPlay ID opens from Settings; after reload the same name."
+  },
+  {
+   "id": "settings",
+   "module": "profile-pack",
+   "methods": ["kv.get", "kv.set"],
+   "trigger": "Boot: kv.get('settings') and onboarding/offer flags (onb.*, tut.*, offer.starter.last_auto_at, offer.starter.auto_shows, flag.first_defeat_seen, booster_info.seen). Toggle in S14 (Music, Sound, Reduce Motion, Vibration) and every flag event: kv.set right away.",
+   "player": "Settings toggles keep their state; tutorial and Starter Crate auto window are not shown twice; after reload the toggles and flags are the same."
+  },
+  {
+   "id": "configs",
+   "module": "progress",
+   "methods": ["configs.get", "configs.getScope", "configs.refresh"],
+   "platformData": [
+    {"kind": "config-record", "key": "game.balance", "note": "field, player, bullets, stage size, curve by chapter, score bonuses (GDD 31 plat.configs)"},
+    {"kind": "config-record", "key": "game.enemies", "note": "scout/grunt/gunner/brute speed, hp, points"},
+    {"kind": "config-record", "key": "game.powerups", "note": "lifetime, weights, durations"},
+    {"kind": "config-record", "key": "game.boosters", "note": "item ids, effects, per-stage limits, siege multiplier"},
+    {"kind": "config-record", "key": "game.siege", "note": "unlock stage, level-set id, waves, lives, scoring"},
+    {"kind": "config-record", "key": "game.rewards", "note": "display only: rotation, 3-star, finals, start grant, daily preview, level-set id, board keys"},
+    {"kind": "config-record", "key": "iap.packs", "note": "pack composition, price, offer_id"},
+    {"kind": "config-record", "key": "iap.shop_order", "note": "shop order"},
+    {"kind": "config-record", "key": "iap.placements", "note": "defeat, prestage, starter_crate auto window"},
+    {"kind": "config-record", "key": "ui.hud", "note": "HUD icon layout (daily, shop, leaderboards, settings)"}
+   ],
+   "trigger": "After boot: configs.getScope('game') / configs.get(key) validated against configs/schemas, built-in default on a broken key. configs:snapshot:updated and return to Lobby: configs.refresh. Configs is core (sdk.configs); field module = progress because platform.json sdk.modules does not declare core and mod-progress (levels.open) is the declared module that reads configs records.",
+   "player": "Balance, boosters, Siege waves and offers follow the published values; a changed value applies without a new build."
+  },
+  {
+   "id": "liveops",
+   "module": "realtime",
+   "methods": ["realtime.status", "realtime.notice"],
+   "trigger": "No events or seasons in MVP (liveops false). realtime delivers pushes the game reacts to: inventory balance changes and iap.order.granted (counters update without polling), configs reload, broadcast notice. realtime.notice on S02 open -> announcement/maintenance banner; realtime.status -> offline indicator.",
+   "player": "Counters update right after a purchase or reward; an announcement or maintenance banner appears in Lobby when the platform sends one."
+  },
+  {
+   "id": "analytics",
+   "module": "ui-kit",
+   "methods": ["analytics.sendEvent"],
+   "trigger": "Events of GDD 32 (an.app_ready, an.stage_start, an.stage_end, an.booster_use, an.reward_granted, an.daily_claim, an.offer_shown, an.purchase_result, ...) are sent with sdk.analytics.sendEvent. Core analytics; without a registered provider the call is a no-op (no own transport, no third-party SDK). Field module = ui-kit because core is not declared in platform.json sdk.modules.",
+   "player": "Nothing visible; the funnel is available as soon as the platform registers an analytics provider."
+  },
+  {
+   "id": "hud",
+   "module": "hud",
+   "methods": ["hud.register", "hud.open"],
+   "platformData": [
+    {"kind": "config-record", "key": "ui.hud", "note": "same record as configs"}
+   ],
+   "trigger": "After boot: hud.register for daily, shop, leaderboards, settings icons with badge handles (daily ready, Starter Crate available). Lobby buttons duplicate entries through hud.open.",
+   "player": "Lobby top bar icons with badges open Daily, Shop, Leaderboards and Settings."
+  }
+ ],
+ "localState": [
+  "runState",
+  "tickAccumulator",
+  "fieldGrid",
+  "playerTank",
+  "enemies",
+  "bullets",
+  "powerupsOnField",
+  "spawnQueue",
+  "attemptScore",
+  "livesLeft",
+  "boostersUsedThisStage",
+  "pendingConsumes",
+  "waveIndex",
+  "attemptSeed",
+  "attemptEventId",
+  "inputState",
+  "uiState",
+  "sessionFlags"
+ ]
+}

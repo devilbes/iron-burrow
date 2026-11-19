@@ -1,0 +1,38 @@
+{
+ "function": "settings",
+ "stage": "screens",
+ "steps": [
+  {
+   "action": "Open S14 Settings"
+  },
+  {
+   "action": "Turn Music off, Vibration off, Reduce Motion on"
+  },
+  {
+   "action": "Close Settings and reload the page"
+  },
+  {
+   "action": "Open S14 Settings again"
+  }
+ ],
+ "expect": [
+  {
+   "call": "kv.get",
+   "status": "2xx"
+  },
+  {
+   "call": "kv.set",
+   "status": "2xx"
+  }
+ ],
+ "afterReload": [
+  {
+   "what": "настройки",
+   "equals": "Music off, Sound on, Vibration off, Reduce Motion on"
+  },
+  {
+   "what": "флаг туториала",
+   "equals": "tutorial of stage 1 not shown again after it was completed"
+  }
+ ]
+}

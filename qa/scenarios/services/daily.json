@@ -1,0 +1,46 @@
+{
+ "function": "daily",
+ "stage": "screens",
+ "steps": [
+  {
+   "action": "Open the game on a day with a claimable reward: S12 Daily Rewards opens automatically (or via HUD icon with badge)"
+  },
+  {
+   "action": "Tap Claim on today (day 1)"
+  },
+  {
+   "action": "See the large bst_bubble x1 picture, the badge disappears, the timer to the next reward shows"
+  },
+  {
+   "action": "Reload the page"
+  }
+ ],
+ "expect": [
+  {
+   "call": "daily-rewards.setNextRewardAt",
+   "status": "2xx"
+  },
+  {
+   "call": "daily-rewards.open",
+   "status": "2xx"
+  },
+  {
+   "call": "daily-rewards.plan",
+   "status": "2xx"
+  },
+  {
+   "call": "progress.send",
+   "status": "2xx"
+  }
+ ],
+ "afterReload": [
+  {
+   "what": "ежедневная награда",
+   "equals": "day 1 claimed, no badge, Claim unavailable until next day"
+  },
+  {
+   "what": "счётчик bst_bubble",
+   "equals": "+1"
+  }
+ ]
+}
