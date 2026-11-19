@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-window="defeat">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Iron Burrow — Core Lost</title>
+  <link rel="stylesheet" href="../../shared.css">
+  <style>
+    .defeat-screen{width:min(1100px,100%);min-height:100svh;margin:auto;padding:32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,440px);gap:48px;align-items:center}
+    .defeat-art{width:100%;aspect-ratio:1;object-fit:contain;max-height:650px}
+    .defeat-copy{display:flex;flex-direction:column;gap:24px}
+    .defeat-copy h1{font-size:40px;line-height:1.1;margin:0}
+    .defeat-copy p{margin:0;line-height:1.4}
+    .defeat-kicker{color:#8FA3B0;font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+    .defeat-reason{color:#CFE6E8;font-size:20px}
+    .defeat-stats{display:flex;gap:40px;margin:0;padding:0}
+    .defeat-stats div{display:flex;flex-direction:column;gap:4px}
+    .defeat-stats dt,.defeat-note{color:#8FA3B0;font-size:14px}
+    .defeat-stats dd{font-size:32px;font-weight:700;margin:0;font-variant-numeric:tabular-nums}
+    .defeat-actions{display:flex;flex-direction:column;gap:12px}
+    .defeat-alternatives{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .defeat-actions>*,.defeat-alternatives>*{min-width:0;width:100%}
+    .defeat-note{text-align:center;margin-top:-4px!important}
+    .defeat-message{min-height:20px;color:#6FC2C4;font-size:14px}
+    @media(max-width:600px){.defeat-screen{padding:24px;display:flex;flex-direction:column;gap:12px;justify-content:center}.defeat-art{max-height:260px;width:260px;max-width:100%;align-self:center}.defeat-copy{width:100%;gap:20px}.defeat-copy h1{font-size:32px}.defeat-kicker{text-align:center}.defeat-heading{text-align:center}.defeat-stats{justify-content:center;gap:56px}.defeat-copy .defeat-reason{font-size:16px;margin-top:8px}.defeat-message{display:none}}
+    @media(min-width:601px) and (max-height:500px){.defeat-screen{padding:20px 32px;gap:24px;grid-template-columns:minmax(180px,.8fr) minmax(360px,1.2fr);min-height:100svh}.defeat-art{max-height:328px}.defeat-copy{gap:12px}.defeat-copy h1{font-size:32px}.defeat-reason{font-size:16px}.defeat-stats dd{font-size:24px}.defeat-actions{gap:8px}.defeat-message{display:none}.defeat-stats{gap:32px}.defeat-kicker{font-size:12px}.defeat-alternatives{gap:8px}}
+  </style>
+</head>
+<body>
+  <script type="module">
+    import {boot,button,t} from '../../shared.mjs';
+    const app=await boot('defeat');
+    app.root.innerHTML=`<main class="defeat-screen"><img class="defeat-art" src="../../../../assets/ui/screens/defeat.png" alt="A battered teal drill tank beside the fractured underground Core"><section class="defeat-copy" aria-labelledby="result-title"><p class="defeat-kicker">Run report · Stage 7</p><div class="defeat-heading"><h1 id="result-title">Core lost</h1><p class="defeat-reason">The Core was destroyed.</p></div><dl class="defeat-stats"><div><dt>Final score</dt><dd>1,840</dd></div><div><dt>Stage reached</dt><dd>7</dd></div></dl><p>Patch the hull. Protect the Core.<br>There’s another run in you.</p><div class="defeat-actions"><div id="continue-action"></div><p class="defeat-note">Uses 1 Spare Hull · 2 available</p><div class="defeat-alternatives" id="alternate-actions"></div><div id="spare-action"></div></div><p class="defeat-message" role="status" id="result-message"></p></section></main>`;
+    const message=(text)=>{app.root.querySelector('#result-message').textContent=text;};
+    button(app.root.querySelector('#continue-action'),'Continue',{primary:true,onclick:()=>message('Spare Hull ready. Resume Stage 7.')});
+    button(app.root.querySelector('#alternate-actions'),'Retry',{onclick:()=>{location.href='../../gameplay/level/index.html';}});
+    button(app.root.querySelector('#alternate-actions'),'Stage Map',{onclick:()=>{location.href='../../map/stages/index.html';}});
+    button(app.root.querySelector('#spare-action'),'Get Spare Hull',{onclick:()=>message('Spare Hull purchase opens through the game shop.')});
+    await app.finish();
+  </script>
+</body>
+</html>

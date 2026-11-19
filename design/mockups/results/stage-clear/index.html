@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" data-window="stage-clear">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Iron Burrow — Stage Clear</title>
+<link rel="stylesheet" href="../../shared.css">
+<style>
+.clear{width:min(1120px,100%);min-height:100dvh;margin:auto;padding:40px 48px;display:grid;grid-template-columns:.9fr 1.1fr;gap:24px 64px;align-content:center;align-items:center}
+.clear-heading{grid-column:1;align-self:end}.eyebrow{margin:0 0 8px;color:var(--muted,#8fa3b0);font-size:14px;letter-spacing:.12em;text-transform:uppercase}h1{margin:0;font-size:clamp(28px,3vw,40px);line-height:1.1}.stars{display:flex;gap:8px;margin:20px 0 0}.stars img{width:56px;height:56px;object-fit:contain}.stars img:nth-child(2){transform:translateY(-5px)}
+.breakdown{grid-column:1;grid-row:2;align-self:start}dl{margin:0;display:grid;gap:12px}.score-row{display:flex;justify-content:space-between;gap:16px}dt{color:var(--muted,#8fa3b0)}dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}.total{margin-top:8px;padding-top:16px;border-top:1px solid #2f4558;align-items:center}.total dt{color:inherit}.total dd{font-size:32px}.best{color:#ffc845;margin:4px 0 0;text-align:right;font-size:14px}
+.reward{grid-column:2;grid-row:1 / 3;margin:0;display:flex;flex-direction:column;align-items:center;gap:8px}.reward-picture{position:relative;width:min(100%,420px);aspect-ratio:1}.reward-picture>img{display:block;width:100%;height:100%;object-fit:cover}.count{position:absolute;bottom:16px;right:20px;font-size:32px;font-weight:700;text-shadow:0 2px 0 #0a1118}.reward figcaption{font-size:20px;font-weight:700}.reward-label{font-size:14px;color:var(--muted,#8fa3b0);margin:0}
+.actions{grid-column:2;display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:420px;justify-self:center}.actions>.next{grid-column:1 / 3}.actions>div{min-height:48px}.actions>div>*{width:100%}
+@media(max-width:600px) and (orientation:portrait){.clear{padding:24px 24px 20px;min-height:100dvh;grid-template-columns:1fr;gap:16px;align-content:center}.clear-heading{grid-column:1;grid-row:1;text-align:center}.eyebrow{font-size:12px}.stars{justify-content:center;margin-top:12px}.stars img{width:44px;height:44px}.reward{grid-column:1;grid-row:2;gap:4px}.reward-picture{width:min(64vw,240px)}.reward figcaption{font-size:16px}.reward-label{display:none}.breakdown{grid-column:1;grid-row:3}dl{gap:6px;font-size:14px}.total{margin-top:2px;padding-top:8px}.total dd{font-size:24px}.best{font-size:12px}.actions{grid-column:1;grid-row:4}.count{font-size:24px;bottom:10px;right:12px}}
+@media(max-height:500px) and (orientation:landscape){.clear{width:min(920px,100%);min-height:100dvh;padding:20px 40px;grid-template-columns:1fr 1fr;gap:12px 40px}.clear-heading{grid-row:1}.eyebrow{font-size:12px;margin-bottom:4px}h1{font-size:28px}.stars{margin-top:8px;gap:6px}.stars img{width:36px;height:36px}.breakdown{grid-row:2}dl{gap:6px;font-size:14px}.total{padding-top:8px;margin-top:2px}.total dd{font-size:24px}.best{font-size:12px}.reward{grid-row:1 / 3;gap:2px}.reward-picture{width:190px}.reward figcaption{font-size:16px}.reward-label{display:none}.count{font-size:24px;bottom:8px;right:12px}.actions{grid-column:2;grid-row:3;gap:8px;grid-template-columns:1fr 1fr 1fr;max-width:none}.actions>.next{grid-column:auto}}
+</style>
+</head>
+<body>
+<script type="module">
+import {boot,button,t} from '../../shared.mjs';
+const app=await boot('stage-clear');
+const tr=(key,params={})=>Object.entries(params).reduce((s,[k,v])=>s.replaceAll(`{${k}}`,String(v)),t(key));
+const main=document.createElement('main');main.className='clear';main.dataset.state='collected';main.setAttribute('aria-label',t('ui.clear.title'));
+main.innerHTML=`<header class="clear-heading"><p class="eyebrow">${tr('ui.pre.title',{n:3})} · ${t('ui.map.chapter_1')}</p><h1>${t('ui.clear.title')}</h1><div class="stars" data-part="clear-stars" data-stars="3" aria-label="3 / 3"><img src="/assets/ui/icons/rating-star.png" alt=""><img src="/assets/ui/icons/rating-star.png" alt=""><img src="/assets/ui/icons/rating-star.png" alt=""></div></header><section class="breakdown"><dl><div class="score-row"><dt>${t('ui.clear.kills')}</dt><dd>3,200</dd></div><div class="score-row"><dt>${t('ui.clear.pickups')}</dt><dd>1,500</dd></div><div class="score-row"><dt>${t('ui.clear.bonus')}</dt><dd>1,000</dd></div><div class="score-row"><dt>${tr('ui.clear.lives',{count:3})}</dt><dd>1,500</dd></div><div class="score-row total"><dt>${t('ui.clear.total')}</dt><dd data-part="clear-score" data-dynamic>7,200</dd></div></dl><p class="best">${t('ui.clear.best')}</p></section><figure class="reward" data-part="reward-item"><p class="reward-label">${t('ui.clear.rewards')}</p><div class="reward-picture"><img src="/assets/ui/screens/stage-clear.png" alt="${t('ui.booster.bst_bubble')}"><span class="count" data-part="reward-item-count">${tr('ui.common.count',{count:2})}</span></div><figcaption>${t('ui.booster.bst_bubble')}</figcaption></figure><nav class="actions"></nav>`;
+app.root.append(main);
+const actions=main.querySelector('.actions');
+for(const [key,part,route,primary] of [['ui.clear.next','clear-next','../../gameplay/level/',true],['ui.clear.replay','clear-replay','../../gameplay/level/',false],['ui.clear.map','clear-map','../../campaign/map/',false]]){const slot=document.createElement('div');slot.dataset.part=part;if(primary)slot.className='next';actions.append(slot);button(slot,t(key),{primary,onclick:()=>location.href=route});}
+await app.finish();
+</script>
+</body>
+</html>
