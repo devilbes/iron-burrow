@@ -152,7 +152,8 @@ function frame({ win, head, title, close }: Frame): string {
 // leaderboard, settings) a fixed 80 % of the work zone and info windows 50 %: half of them stood
 // empty. Inside, only the body scrolls; the head (title plate, close) and the action row stay in
 // sight — the kit's own rule for windows with the close out of the corner, here for every window.
-const FIXED_PARTS = '.dialog-head,.dialog-art,.std-art,.window-actions,.std-actions,.dr-actions,.window-footer,.std-footnote';
+// (`.reward-burst`: the showcase of the reward window, its sparkles stand out of its box.)
+const FIXED_PARTS = '.dialog-head,.dialog-art,.std-art,.reward-burst,.window-actions,.std-actions,.dr-actions,.window-footer,.std-footnote';
 const FIT = `:host{--kit-pop-h:auto;--kit-window-content-height:auto}`
   + `.dialog-backdrop .dialog{padding:0 ${v('game-window-pad')} ${v('game-window-pad')}}`
   + `.dialog-backdrop .dialog>:not(${FIXED_PARTS}){min-height:0;flex-shrink:1;overflow:auto;overscroll-behavior:contain}`
