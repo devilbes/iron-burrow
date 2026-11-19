@@ -1,0 +1,947 @@
+{
+ "size": "844x390",
+ "steps": [
+  {
+   "shot": "844x390-01-start-grant.png",
+   "phase": "grant",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Welcome, Burrower!",
+     "box": [
+      162,
+      69,
+      520,
+      251
+     ],
+     "scrollH": 251,
+     "clientH": 251
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-02-grant-reward.png",
+   "phase": "grant",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Reward received!",
+     "box": [
+      122,
+      64,
+      600,
+      310
+     ],
+     "scrollH": 310,
+     "clientH": 310
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "dismiss": [
+    "Close",
+    "+2Bubble Shield",
+    "+2Steel Fortress",
+    "+2Spare Hull",
+    "+2Shockwave",
+    "Great"
+   ]
+  },
+  {
+   "shot": "844x390-03-lobby.png",
+   "phase": "lobby",
+   "scroll": false,
+   "dialogs": [],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-04-profile.png",
+   "phase": "profile",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Profile",
+     "box": [
+      42,
+      82,
+      760,
+      226
+     ],
+     "scrollH": 226,
+     "clientH": 226
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-05-settings.png",
+   "phase": "settings",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Settings",
+     "box": [
+      162,
+      75,
+      520,
+      240
+     ],
+     "scrollH": 240,
+     "clientH": 240
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-06-login.png",
+   "phase": "settings",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "ManyPlay ID",
+     "box": [
+      0,
+      0,
+      844,
+      390
+     ],
+     "scrollH": 390,
+     "clientH": 390
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-07-daily.png",
+   "phase": "daily",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Daily gift",
+     "box": [
+      42,
+      45,
+      760,
+      292
+     ],
+     "scrollH": 292,
+     "clientH": 292
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-08-boards.png",
+   "phase": "boards",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Leaderboards",
+     "box": [
+      162,
+      65,
+      520,
+      260
+     ],
+     "scrollH": 260,
+     "clientH": 260
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-09-shop.png",
+   "phase": "shop",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Shop",
+     "box": [
+      162,
+      20,
+      520,
+      350
+     ],
+     "scrollH": 350,
+     "clientH": 350
+    }
+   ],
+   "offscreen": [
+    "button \"—\" [578,362 71x48]"
+   ]
+  },
+  {
+   "shot": "844x390-10-shop-buy.png",
+   "phase": "shop",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Shop",
+     "box": [
+      178,
+      31,
+      489,
+      329
+     ],
+     "scrollH": 350,
+     "clientH": 350
+    },
+    {
+     "label": "Hull Pack",
+     "box": [
+      162,
+      69,
+      520,
+      253
+     ],
+     "scrollH": 253,
+     "clientH": 253
+    }
+   ],
+   "offscreen": [
+    "button \"—\" [569,352 67x45]"
+   ]
+  },
+  {
+   "shot": "844x390-11-sound.png",
+   "phase": "sound",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Settings",
+     "box": [
+      162,
+      60,
+      520,
+      269
+     ],
+     "scrollH": 269,
+     "clientH": 269
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-12-stagemap.png",
+   "phase": "map",
+   "scroll": false,
+   "dialogs": [],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-13-level1-prestage.png",
+   "phase": "level1-start",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Stage 1",
+     "box": [
+      162,
+      46,
+      520,
+      298
+     ],
+     "scrollH": 298,
+     "clientH": 298
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-14-tutorial-1.png",
+   "phase": "tutorial",
+   "scroll": false,
+   "dialogs": [],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-15-tutorial-mid.png",
+   "phase": "tutorial",
+   "scroll": false,
+   "dialogs": [],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-16-tutorial-core.png",
+   "phase": "tutorial",
+   "scroll": false,
+   "dialogs": [],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-17-game-level1.png",
+   "phase": "level1-play",
+   "scroll": false,
+   "dialogs": [],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-18-pause.png",
+   "phase": "level1-pause",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Paused",
+     "box": [
+      162,
+      60,
+      520,
+      269
+     ],
+     "scrollH": 269,
+     "clientH": 269
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-19-after-resume.png",
+   "phase": "level1-pause",
+   "scroll": false,
+   "dialogs": [],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-20-win-level1.png",
+   "phase": "level1-win",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Stage Clear!",
+     "box": [
+      162,
+      35,
+      520,
+      320
+     ],
+     "scrollH": 320,
+     "clientH": 320
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-21-reward-after-level1.png",
+   "phase": "level1-next",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Reward received!",
+     "box": [
+      122,
+      64,
+      600,
+      310
+     ],
+     "scrollH": 310,
+     "clientH": 310
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "dismiss": [
+    "Close",
+    "+2Bubble Shield",
+    "Great"
+   ]
+  },
+  {
+   "shot": "844x390-22-level2-prestage.png",
+   "phase": "level2-start",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Stage 2",
+     "box": [
+      162,
+      33,
+      520,
+      325
+     ],
+     "scrollH": 325,
+     "clientH": 325
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-23-game-level2.png",
+   "phase": "level2-play",
+   "scroll": false,
+   "dialogs": [],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-24-win-level2.png",
+   "phase": "level2-win",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Stage Clear!",
+     "box": [
+      162,
+      35,
+      520,
+      320
+     ],
+     "scrollH": 320,
+     "clientH": 320
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-25-reward-after-level2.png",
+   "phase": "level2-next",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Reward received!",
+     "box": [
+      122,
+      64,
+      600,
+      310
+     ],
+     "scrollH": 310,
+     "clientH": 310
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "dismiss": [
+    "Close",
+    "+1Bubble Shield",
+    "+1Shockwave",
+    "Great"
+   ]
+  },
+  {
+   "shot": "844x390-26-level3-prestage.png",
+   "phase": "level3-start",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Stage 3",
+     "box": [
+      162,
+      46,
+      520,
+      298
+     ],
+     "scrollH": 298,
+     "clientH": 298
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-27-game-level3.png",
+   "phase": "level3-play",
+   "scroll": false,
+   "dialogs": [],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-28-win-level3.png",
+   "phase": "level3-win",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Stage Clear!",
+     "box": [
+      162,
+      35,
+      520,
+      320
+     ],
+     "scrollH": 320,
+     "clientH": 320
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-29-reward-after-level3.png",
+   "phase": "after-level3",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Reward received!",
+     "box": [
+      122,
+      64,
+      600,
+      310
+     ],
+     "scrollH": 310,
+     "clientH": 310
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-30-stagemap-after-3.png",
+   "phase": "after-level3",
+   "scroll": false,
+   "dialogs": [],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-31-defeat.png",
+   "phase": "defeat",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Defeat",
+     "box": [
+      162,
+      65,
+      520,
+      261
+     ],
+     "scrollH": 261,
+     "clientH": 261
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-32-offer-after-defeat.png",
+   "phase": "defeat",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Stage 4",
+     "box": [
+      162,
+      46,
+      520,
+      298
+     ],
+     "scrollH": 298,
+     "clientH": 298
+    }
+   ],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-33-lobby-final.png",
+   "phase": "quit",
+   "scroll": false,
+   "dialogs": [],
+   "offscreen": []
+  },
+  {
+   "shot": "844x390-34-profile-final.png",
+   "phase": "quit",
+   "scroll": false,
+   "dialogs": [
+    {
+     "label": "Profile",
+     "box": [
+      42,
+      82,
+      760,
+      226
+     ],
+     "scrollH": 226,
+     "clientH": 226
+    }
+   ],
+   "offscreen": []
+  }
+ ],
+ "errors": [
+  "[boot] Failed to load resource: the server responded with a status of 409 ()",
+  "[offer-tile] no offer tile on the HUD",
+  "[shop] Failed to load resource: the server responded with a status of 409 ()"
+ ],
+ "levels": [
+  {
+   "phase": "boot",
+   "status": 202,
+   "sent": {
+    "eventId": "login:35350:2026-11-19",
+    "type": "login",
+    "data": {}
+   },
+   "body": {
+    "eventId": "login:35350:2026-11-19",
+    "status": "accepted",
+    "acceptedAt": "2026-11-19T19:51:01.627Z",
+    "duplicate": false
+   }
+  },
+  {
+   "phase": "level1-win",
+   "status": 202,
+   "sent": {
+    "eventId": "9cc715ee-406e-465b-9e5e-fb2a445768cb",
+    "type": "levelEnd",
+    "data": {
+     "moves": 0,
+     "won": true,
+     "score": 2500,
+     "durationMs": 66863,
+     "seed": "wjqOuujwPFF0C53hce95TueKuT5LFa3qvp41K4zQtNs",
+     "set": "main",
+     "n": 1,
+     "key": "r_0001_0010",
+     "configVersion": 2,
+     "contentHash": "e9191faa75fd541095ee311bbea916953f2e8659c2d9000c9c3e2428d3e08b16",
+     "levelId": "stage_01"
+    }
+   },
+   "body": {
+    "eventId": "9cc715ee-406e-465b-9e5e-fb2a445768cb",
+    "status": "accepted",
+    "acceptedAt": "2026-11-19T19:52:49.433Z",
+    "duplicate": false,
+    "level": {
+     "verified": true,
+     "stars": 3
+    }
+   }
+  },
+  {
+   "phase": "level2-win",
+   "status": 202,
+   "sent": {
+    "eventId": "98960c5a-4a6d-4dd8-b4b7-d2aa9f16185e",
+    "type": "levelEnd",
+    "data": {
+     "moves": 0,
+     "won": true,
+     "score": 2500,
+     "durationMs": 65211,
+     "seed": "GCpelZVIz-CAzI9CnAi4kZVk42_dxQQrIXHaktEI5hM",
+     "set": "main",
+     "n": 2,
+     "key": "r_0001_0010",
+     "configVersion": 2,
+     "contentHash": "e9191faa75fd541095ee311bbea916953f2e8659c2d9000c9c3e2428d3e08b16",
+     "levelId": "stage_02"
+    }
+   },
+   "body": {
+    "eventId": "98960c5a-4a6d-4dd8-b4b7-d2aa9f16185e",
+    "status": "accepted",
+    "acceptedAt": "2026-11-19T19:54:06.798Z",
+    "duplicate": false,
+    "level": {
+     "verified": true,
+     "stars": 3
+    }
+   }
+  },
+  {
+   "phase": "level3-win",
+   "status": 202,
+   "sent": {
+    "eventId": "3dcc0f09-72c0-48ac-896c-6c794782ae80",
+    "type": "levelEnd",
+    "data": {
+     "moves": 0,
+     "won": true,
+     "score": 2500,
+     "durationMs": 65211,
+     "seed": "o1ArEe0hmBnVYlla4Vc6JDEV1DGWOSP5c-WGOBa4tcs",
+     "set": "main",
+     "n": 3,
+     "key": "r_0001_0010",
+     "configVersion": 2,
+     "contentHash": "e9191faa75fd541095ee311bbea916953f2e8659c2d9000c9c3e2428d3e08b16",
+     "levelId": "stage_03"
+    }
+   },
+   "body": {
+    "eventId": "3dcc0f09-72c0-48ac-896c-6c794782ae80",
+    "status": "accepted",
+    "acceptedAt": "2026-11-19T19:55:24.170Z",
+    "duplicate": false,
+    "level": {
+     "verified": true,
+     "stars": 3
+    }
+   }
+  },
+  {
+   "phase": "defeat",
+   "status": 202,
+   "sent": {
+    "eventId": "16a2dfcb-c79d-4e39-9d41-a2c8f0b42a7c",
+    "type": "levelEnd",
+    "data": {
+     "moves": 0,
+     "won": false,
+     "score": 0,
+     "durationMs": 7241,
+     "seed": "NIu2szaMS2h2KH4SplakLtvZeus3NNjVCzZb3upLDm8",
+     "set": "main",
+     "n": 4,
+     "key": "r_0001_0010",
+     "configVersion": 2,
+     "contentHash": "e9191faa75fd541095ee311bbea916953f2e8659c2d9000c9c3e2428d3e08b16",
+     "levelId": "stage_04"
+    }
+   },
+   "body": {
+    "eventId": "16a2dfcb-c79d-4e39-9d41-a2c8f0b42a7c",
+    "status": "accepted",
+    "acceptedAt": "2026-11-19T19:55:44.380Z",
+    "duplicate": false,
+    "level": {
+     "verified": false,
+     "stars": 0,
+     "reason": "out_of_bounds"
+    }
+   }
+  }
+ ],
+ "requests": [
+  {
+   "phase": "boot",
+   "call": "POST /v1/auth/init"
+  },
+  {
+   "phase": "boot",
+   "call": "POST /v1/configs/init"
+  },
+  {
+   "phase": "boot",
+   "call": "POST /v1/configs/fetch"
+  },
+  {
+   "phase": "boot",
+   "call": "POST /v1/configs/fetch"
+  },
+  {
+   "phase": "boot",
+   "call": "POST /v1/configs/fetch"
+  },
+  {
+   "phase": "boot",
+   "call": "POST /v1/iap/init"
+  },
+  {
+   "phase": "boot",
+   "call": "POST /v1/iap/store/products"
+  },
+  {
+   "phase": "boot",
+   "call": "GET /v1/inventory/me"
+  },
+  {
+   "phase": "boot",
+   "call": "GET /v1/inventory/entities"
+  },
+  {
+   "phase": "boot",
+   "call": "POST /v1/progress/me/init"
+  },
+  {
+   "phase": "boot",
+   "call": "POST /v1/progress/me/actions"
+  },
+  {
+   "phase": "boot",
+   "call": "POST /v1/player-data/me/query"
+  },
+  {
+   "phase": "boot",
+   "call": "POST /v1/iap/init"
+  },
+  {
+   "phase": "boot",
+   "call": "GET /v1/inventory/me"
+  },
+  {
+   "phase": "grant",
+   "call": "POST /v1/iap/orders"
+  },
+  {
+   "phase": "grant",
+   "call": "GET /v1/iap/orders/5d5af6bb-4808-4111-8299-2a5e42761708"
+  },
+  {
+   "phase": "grant",
+   "call": "GET /v1/iap/orders/5d5af6bb-4808-4111-8299-2a5e42761708"
+  },
+  {
+   "phase": "grant",
+   "call": "PUT /v1/player-data/me"
+  },
+  {
+   "phase": "grant",
+   "call": "GET /v1/inventory/me"
+  },
+  {
+   "phase": "profile",
+   "call": "GET /v1/profiles/me"
+  },
+  {
+   "phase": "settings",
+   "call": "GET /v1/auth/oauth/config"
+  },
+  {
+   "phase": "boards",
+   "call": "GET /v1/leaderboards/siege_best"
+  },
+  {
+   "phase": "boards",
+   "call": "GET /v1/leaderboards/siege_best/around/me"
+  },
+  {
+   "phase": "shop",
+   "call": "POST /v1/iap/orders"
+  },
+  {
+   "phase": "level1-start",
+   "call": "POST /v1/configs/fetch"
+  },
+  {
+   "phase": "level1-start",
+   "call": "POST /v1/configs/fetch"
+  },
+  {
+   "phase": "level1-start",
+   "call": "POST /v1/configs/fetch"
+  },
+  {
+   "phase": "level1-start",
+   "call": "POST /v1/progress/me/attempts/begin"
+  },
+  {
+   "phase": "tutorial",
+   "call": "PUT /v1/player-data/me"
+  },
+  {
+   "phase": "tutorial",
+   "call": "PUT /v1/player-data/me"
+  },
+  {
+   "phase": "tutorial",
+   "call": "PUT /v1/player-data/me"
+  },
+  {
+   "phase": "level1-win",
+   "call": "POST /v1/progress/me/actions"
+  },
+  {
+   "phase": "level1-win",
+   "call": "GET /v1/inventory/me"
+  },
+  {
+   "phase": "level1-next",
+   "call": "PUT /v1/player-data/me"
+  },
+  {
+   "phase": "level2-start",
+   "call": "POST /v1/progress/me/attempts/begin"
+  },
+  {
+   "phase": "level2-win",
+   "call": "POST /v1/progress/me/actions"
+  },
+  {
+   "phase": "level2-win",
+   "call": "GET /v1/inventory/me"
+  },
+  {
+   "phase": "level3-start",
+   "call": "POST /v1/progress/me/attempts/begin"
+  },
+  {
+   "phase": "level3-win",
+   "call": "POST /v1/progress/me/actions"
+  },
+  {
+   "phase": "level3-win",
+   "call": "GET /v1/inventory/me"
+  },
+  {
+   "phase": "after-level3",
+   "call": "PUT /v1/player-data/me"
+  },
+  {
+   "phase": "after-level3",
+   "call": "PUT /v1/player-data/me"
+  },
+  {
+   "phase": "defeat",
+   "call": "POST /v1/configs/fetch"
+  },
+  {
+   "phase": "defeat",
+   "call": "POST /v1/progress/me/attempts/begin"
+  },
+  {
+   "phase": "defeat",
+   "call": "POST /v1/progress/me/actions"
+  },
+  {
+   "phase": "defeat",
+   "call": "PUT /v1/player-data/me"
+  },
+  {
+   "phase": "quit",
+   "call": "POST /v1/configs/fetch"
+  },
+  {
+   "phase": "quit",
+   "call": "POST /v1/configs/fetch"
+  },
+  {
+   "phase": "quit",
+   "call": "GET /v1/profiles/me"
+  }
+ ],
+ "sockets": [
+  {
+   "phase": "boot",
+   "url": "wss://test.manyplay.fun/v1/realtime/ws"
+  }
+ ],
+ "verdicts": [
+  {
+   "phase": "boot",
+   "status": 202,
+   "kind": "login",
+   "verified": null,
+   "stars": null
+  },
+  {
+   "phase": "level1-win",
+   "status": 202,
+   "kind": "levelEnd",
+   "verified": true,
+   "stars": 3
+  },
+  {
+   "phase": "level2-win",
+   "status": 202,
+   "kind": "levelEnd",
+   "verified": true,
+   "stars": 3
+  },
+  {
+   "phase": "level3-win",
+   "status": 202,
+   "kind": "levelEnd",
+   "verified": true,
+   "stars": 3
+  },
+  {
+   "phase": "defeat",
+   "status": 202,
+   "kind": "levelEnd",
+   "verified": false,
+   "stars": 0
+  }
+ ]
+}
