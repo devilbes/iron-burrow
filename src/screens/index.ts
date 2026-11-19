@@ -194,7 +194,10 @@ export const HUD: readonly HudEntry[] = [
   // leaderboard window shows one board only (CONTRACT D-GC-07). TEMPORARY: the screens step
   // replaces `run` with the S13 window.
   { id: 'boards', kind: 'activity', icon: 'trophy', label: 'screen.hud.boards', open: { run: () => undefined } },
-  { id: 'shop', kind: 'money' },
+  // S10: the game's shop window (offers of `placement_shop`, Starter Crate only after its trigger,
+  // no currency line) — the stock shop window shows a coins capsule (CONTRACT D-GC-19).
+  // TEMPORARY: the screens step replaces `run` with the S10 window.
+  { id: 'store', kind: 'money', icon: 'shop', label: 'screen.hud.shop', open: { run: () => undefined } },
 ];
 
 /**

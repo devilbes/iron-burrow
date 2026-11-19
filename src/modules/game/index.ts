@@ -66,7 +66,8 @@ export type Dir = 'up' | 'down' | 'left' | 'right';
 /** GDD 10 §1; the field shows `data-state` playing|paused|won|lost from it. */
 export type Phase = 'intro' | 'playing' | 'paused' | 'cleared' | 'defeated' | 'continue';
 export type DefeatReason = 'core' | 'lives';
-export type BoosterState = 'ready' | 'active' | 'limit' | 'empty';
+/** `cooldown` — general booster cooldown; `blocked` — consume failed after retries, off till the stage ends. */
+export type BoosterState = 'ready' | 'active' | 'limit' | 'empty' | 'cooldown' | 'blocked';
 export type InputMode = 'keys' | 'touch';
 
 export interface Reward { readonly item: BoosterId; readonly amount: number }
@@ -247,8 +248,9 @@ export interface Match {
   /** S08 Continue: consumes one Spare Hull after the server confirms it (D-10-07). */
   continueRun(): Promise<'continued' | 'empty' | 'used' | 'failed'>;
   /**
-   * Ends the attempt: `final` after clear or the last defeat, `quit` from Pause. Sends the level
-   * end where the rules say (CONTRACT §2) and returns what S07/S08/S09 show.
+   * Ends the attempt: `final` after clear / the last defeat / Siege restart, `quit` from Pause
+   * (campaign Quit or Restart). Sends the level end per CONTRACT §2; a repeated call after a
+   * rejection retries with the same eventId, after success returns the same result.
    */
   end(how: 'final' | 'quit'): Promise<StageResult>;
   /** Test environment only (`qa-win`, `qa-lose`); null elsewhere. */
@@ -280,6 +282,8 @@ export interface IronBurrow extends GamePorts {
   readonly env: { readonly qa: boolean; readonly haptics: boolean; readonly version: string };
   /** Configs, kv flags, progress, inventory and the save read once; resolves even offline. */
   ready(): Promise<void>;
+  /** Lobby mount after the first: `configs.refresh` (services scenario `configs`). */
+  refresh(): Promise<void>;
   campaign(): Promise<CampaignInfo>;
   prestage(mode: Mode, n: number): Promise<PreStageInfo>;
   /** Keeps the setup for the game route; `start` begins it. */
@@ -306,11 +310,12 @@ export interface IronBurrow extends GamePorts {
   /** kv flags of CONTRACT §2 (`booster_info.seen`, …): read from memory, written at once. */
   flag(name: string): boolean;
   setFlag(name: string): Promise<void>;
+  /** `ModuleContext.device.haptics` (permission `device:haptics`), touch only, if `settings().haptics`. */
   haptic(kind: Haptic): void;
   /** Platform announcement for the Lobby banner (realtime notice), or null. */
   notice(): Promise<string | null>;
   online(): boolean;
-  /** Analytics with boolean params (CONTRACT §10); never throws. */
+  /** Analytics (CONTRACT §10) through `GamePorts.track`; booleans are sent as 1/0; never throws. */
   event(name: string, params?: Readonly<Record<string, string | number | boolean>>): void;
 }
 
@@ -343,7 +348,7 @@ function createIronBurrow(ports: GamePorts): IronBurrow {
     beginAttempt: (n) => ports.beginAttempt(n), endLevel: (n, won, stats) => ports.endLevel(n, won, stats),
     loadSave: () => ports.loadSave(), save: (state) => ports.save(state), track: (e, p) => ports.track(e, p),
     env: { qa: false, haptics: false, version: '0.0.0' },
-    ready: () => Promise.resolve(), campaign: later('campaign'), prestage: later('prestage'),
+    ready: () => Promise.resolve(), refresh: () => Promise.resolve(), campaign: later('campaign'), prestage: later('prestage'),
     select: fail('select'), selected: () => null, start: later('start'),
     balances: () => ({ bst_bubble: 0, bst_shockwave: 0, bst_fortify: 0, bst_hull: 0 }),
     onBalances: () => () => undefined, boosterLimits: fail('boosterLimits'),
@@ -380,7 +385,7 @@ export function createGameModule(makePorts: () => GamePorts) {
       version: '1.0.0',
       kind: 'game',
       engines: { core: '^1.0.0' },
-      // game-logic adds `sdk: { uses: [...] }` and permissions (CONTRACT §3.2).
+      // game-logic: `sdk: { uses: [...] }`, permissions; one API object keeping the latest ctx (CONTRACT §3.2).
       permissions: [],
       events: { emits: [], listens: [] },
       load: 'eager',
