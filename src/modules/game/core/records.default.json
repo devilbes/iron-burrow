@@ -78,7 +78,7 @@
     "gunner": { "wave_div": 2, "cap": 3 },
     "scout": { "base": 1, "wave_div": 3, "cap": 2 },
     "spawn_interval": { "start": 3.0, "step": 0.1, "min": 1.5 },
-    "fire_mult": { "step": 0.02, "cap": 1.5 },
+    "fire_mult": { "base": 1.0, "step": 0.02, "cap": 1.5 },
     "carrier_indices": [4, 9],
     "wave_break_s": 3.0,
     "lives": 3,

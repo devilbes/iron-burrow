@@ -124,5 +124,5 @@ export function siegeWave(w: number, runSeed: number, tun: Tunables): Wave {
   const s = tun.siege;
   const seconds = Math.max(s.interval.min, s.interval.start - s.interval.step * (w - 1));
   return { w, order, maxAlive: Math.min(s.maxAlive.base + Math.floor(w / s.maxAlive.div), s.maxAlive.cap),
-    interval: Math.round(seconds * tun.tps), fireMult: Math.min(1 + s.fireMult.step * (w - 1), s.fireMult.cap) };
+    interval: Math.round(seconds * tun.tps), fireMult: Math.min(s.fireMult.base + s.fireMult.step * (w - 1), s.fireMult.cap) };
 }

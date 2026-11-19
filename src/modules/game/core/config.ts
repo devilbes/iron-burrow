@@ -71,7 +71,7 @@ export interface Tunables {
     readonly gunner: { readonly div: number; readonly cap: number };
     readonly scout: { readonly base: number; readonly div: number; readonly cap: number };
     readonly interval: { readonly start: number; readonly step: number; readonly min: number };
-    readonly fireMult: { readonly step: number; readonly cap: number };
+    readonly fireMult: { readonly base: number; readonly step: number; readonly cap: number };
     readonly carriers: readonly number[]; readonly lives: number; readonly continueMax: number;
     readonly waveBonus: number;
     /** Kill multiplier step in tenths: kill × (10 + step·(w−1)) / 10, integer (D-11-02). */

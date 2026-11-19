@@ -5,7 +5,7 @@ import { runSeedOf } from '../core/rng.js';
 import { createRun } from '../core/state.js';
 import { available, consumeHull, REASON } from './boosters.js';
 import { readSave, takeCarry } from './carry.js';
-import { emit, levelPorts, runParams, setPhase, track, type Ctx } from './context.js';
+import { emit, EVENTS, levelPorts, runParams, setPhase, track, type Ctx } from './context.js';
 import type { Mode, StartOptions } from './ports.js';
 
 /** The level and its seed; null when a service failed (nothing else is called then). */
@@ -73,7 +73,7 @@ export async function start(ctx: Ctx, options: StartOptions, gun?: number): Prom
   const key = `${mode}:${level.n}`;
   const attempt = (ctx.attempts.get(key) ?? 0) + 1;
   ctx.attempts.set(key, attempt);
-  track(ctx, 'stage_start', { ...runParams(ctx), attempt, hull_prestage: hulls, gun_level: ctx.run.player.gun });
+  track(ctx, EVENTS.stageStart, { ...runParams(ctx), attempt, hull_prestage: hulls, gun_level: ctx.run.player.gun });
   setPhase(ctx, 'intro');
   return true;
 }

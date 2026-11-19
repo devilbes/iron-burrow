@@ -3,7 +3,7 @@
 // failure the kind is off until the end of the stage / run; Spare Hull only after confirmation.
 import { canUseBooster } from '../core/tick.js';
 import type { BattleBooster, BoosterKind } from '../core/config.js';
-import { emit, runParams, track, type Ctx } from './context.js';
+import { emit, EVENTS, runParams, stageOrWave, track, type Ctx } from './context.js';
 import { Cancelled, withRetry } from './retry.js';
 
 /** Consume reasons (logged by the inventory; not shown to the player). */
@@ -43,7 +43,7 @@ export function consumeBattle(ctx: Ctx, kind: BattleBooster): void {
   const task = (): Promise<void> => inventory.consume(kind, { reason: REASON.battle, idempotencyKey: key });
   withRetry(task, ctx.tun.consumeRetryMs, ctx.timers).then(() => {
     ctx.inflight.delete(kind);
-    track(ctx, 'booster_use', { ...runParams(ctx), item: kind });
+    track(ctx, EVENTS.boosterUse, { ...runParams(ctx), item: kind, stage_or_wave: stageOrWave(ctx) });
   }, (error: unknown) => {
     ctx.inflight.delete(kind);
     if (error instanceof Cancelled || ctx.disposed) return;

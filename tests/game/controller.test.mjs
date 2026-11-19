@@ -143,7 +143,7 @@ test('(a) win: one call of each, save once after the answer, server stars on the
   assert.deepEqual([n, won, stats.score], [1, true, result.outcome.score]);
   assert.ok(stats.moves > 0);
   assert.equal(f.clock.pending(), 0);
-  assert.deepEqual(f.tracks.map(([e]) => e), ['stage_start', 'stage_end']);
+  assert.deepEqual(f.tracks.map(([e]) => e), ['an.stage_start', 'an.stage_end']);
 });
 
 test('(a) win with an unchanged gun carry writes no save', async () => {

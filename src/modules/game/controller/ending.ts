@@ -4,7 +4,7 @@
 import { maxStageScore, stars } from '../core/tick.js';
 import { canContinue } from './boosters.js';
 import { writeCarry } from './carry.js';
-import { emit, levelOf, levelPorts, runParams, setPhase, track, type Ctx, type PendingEnd } from './context.js';
+import { emit, EVENTS, levelOf, levelPorts, runParams, setPhase, track, type Ctx, type PendingEnd } from './context.js';
 import { Cancelled, withRetry } from './retry.js';
 import type { Outcome } from './ports.js';
 
@@ -41,9 +41,13 @@ function complete(ctx: Ctx, part: Pick<Outcome, 'won' | 'verified' | 'stars' | '
   setPhase(ctx, 'result');
   emit(ctx, { t: 'result', outcome });
   const used = run ? run.boostersUsed.bubble + run.boostersUsed.shockwave + run.boostersUsed.fortify : 0;
-  track(ctx, 'stage_end', { ...runParams(ctx), result: part.won ? 'clear' : 'defeat', stars: part.stars, score: part.score,
-    duration_s: run ? Math.round(run.tick / ctx.tun.tps) : 0, lives_lost: run?.deaths ?? 0, boosters_used: used,
-    defeat_cause: run?.cause ?? '' });
+  const duration = run ? Math.round(run.tick / ctx.tun.tps) : 0;
+  if (outcome.mode === 'siege') {
+    track(ctx, EVENTS.siegeEnd, { waves: outcome.wave, score: part.score, duration_s: duration, boosters_used: used });
+    return;
+  }
+  track(ctx, EVENTS.stageEnd, { ...runParams(ctx), result: part.won ? 'clear' : 'defeat', stars: part.stars, score: part.score,
+    duration_s: duration, lives_lost: run?.deaths ?? 0, boosters_used: used, defeat_cause: run?.cause ?? '' });
 }
 
 /** Campaign stage cleared and its delay over: the verified level end, then the gun carry. */

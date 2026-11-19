@@ -4,7 +4,7 @@
 // (level end, then the one save of the gun carry); never from the ticks in between.
 import { applyContinue } from '../core/tick.js';
 import { canContinue, canUse, consumeHull, REASON, useBooster } from './boosters.js';
-import { createCtx, runParams, setPhase, track, type Ctx } from './context.js';
+import { createCtx, EVENTS, runParams, setPhase, stageOrWave, track, type Ctx } from './context.js';
 import { concede, retryEnd } from './ending.js';
 import { frame, pause, resume } from './loop.js';
 import { start } from './start.js';
@@ -21,7 +21,7 @@ async function continueWithHull(ctx: Ctx): Promise<boolean> {
   applyContinue(run);
   ctx.acc = 0;
   ctx.lastFrame = null;
-  track(ctx, 'continue_used', runParams(ctx));
+  track(ctx, EVENTS.continueUsed, { ...runParams(ctx), stage_or_wave: stageOrWave(ctx) });
   setPhase(ctx, 'intro');
   return true;
 }
@@ -35,7 +35,7 @@ async function settle(ctx: Ctx): Promise<void> {
 /** Leaving a stage in play: the analytics quit (no level end: the attempt is abandoned). */
 function quitIfPlaying(ctx: Ctx): void {
   const playing = ['intro', 'playing', 'paused', 'cleared'];
-  if (ctx.run && playing.includes(ctx.phase)) track(ctx, 'stage_end', { ...runParams(ctx), result: 'quit', score: ctx.run.score });
+  if (ctx.run && playing.includes(ctx.phase)) track(ctx, EVENTS.stageEnd, { ...runParams(ctx), result: 'quit', score: ctx.run.score });
 }
 
 async function startAfterSettle(ctx: Ctx, options: StartOptions, gun?: number): Promise<boolean> {

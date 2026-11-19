@@ -84,7 +84,13 @@ export function levelPorts(ctx: Ctx, mode: Mode): LevelSetPorts | null {
 export const levelOf = (ctx: Ctx): number => (ctx.mode === 'siege' ? 1 : ctx.stage);
 
 /** Analytics, fire-and-forget (GDD 32 names, flat params). */
-export function track(ctx: Ctx, event: string, params: Record<string, string | number>): void {
+/** Analytics event names of GDD 32 (`an.*`). */
+export const EVENTS = Object.freeze({
+  stageStart: 'an.stage_start', stageEnd: 'an.stage_end', boosterUse: 'an.booster_use',
+  continueUsed: 'an.continue_used', siegeEnd: 'an.siege_end',
+} as const);
+
+export function track(ctx: Ctx, event: (typeof EVENTS)[keyof typeof EVENTS], params: Record<string, string | number>): void {
   try { ctx.deps.campaign.track(event, params); } catch { /* analytics never blocks */ }
 }
 
@@ -92,4 +98,9 @@ export function track(ctx: Ctx, event: string, params: Record<string, string | n
 export function runParams(ctx: Ctx): Record<string, string | number> {
   const run = ctx.run;
   return { mode: ctx.mode ?? '', stage: ctx.stage, chapter: run?.stage.chapter ?? 0, wave: run?.wave ?? 0 };
+}
+
+/** `stage_or_wave` of the booster events: the campaign stage or the Siege wave. */
+export function stageOrWave(ctx: Ctx): number {
+  return ctx.mode === 'siege' ? ctx.run?.wave ?? 0 : ctx.stage;
 }
