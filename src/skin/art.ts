@@ -23,10 +23,13 @@ export const ASSETS: Readonly<Record<string, string>> = {
   // 'bar-track': 'bar-track.webp',    // progress bars, 9-slice by the kit (--kit-bar-slice/-edge in theme.css)
   // 'bar-fill': 'bar-fill.webp',
   // 'page-texture': 'texture.webp',   // page margins around the game (kit key)
-  // scene: 'scene.webp',              // the scene: one picture under the whole game, edge to edge,
-  //                                  // behind the bars and screens (src/shell/skin.ts); focal point:
-  //                                  // --game-scene-position in theme.css
-  // 'scene-game': 'scene-game.webp',  // the scene of one route (`scene-<route>`), e.g. gameplay
+  // The scene (docs/skin/map.json part «Фон сцены»): one picture of the game's art under the whole
+  // game, edge to edge, behind the transparent bars and screens (src/shell/skin.ts); focal point —
+  // --game-scene-position in theme.css. From assets/game/scene*-2x.webp (2560x1600), 1920x1200 WebP:
+  // a 1280x720 window covers it at 1280x800, so this is 1.5x of the largest display.
+  scene: 'scene.webp',              // S02 Lobby: the cave with steel scaffolds over the magma
+  'scene-map': 'scene-map.webp',    // S03 Stage Map: the tunnel to the Core
+  'scene-game': 'scene-game.webp',  // S05 In-level: the dark tunnel wall around the field
 };
 
 export const FONTS: readonly SkinFont[] = [
@@ -49,9 +52,12 @@ export const FONTS: readonly SkinFont[] = [
 // a currency) — never the game's; tests/skin-readiness.test.mjs lists such items (strict: fails).
 // The name under the picture is the catalog `display.titleKey` through localization.
 export const ITEMS: Readonly<Record<string, string>> = {
-  // Template placeholder of the catalog (item_coins): the recolored coin cut out of the atlas as a
-  // file until the item art step replaces the catalog and its pictures (docs/skin/BASE.md).
-  item_coins: 'items/item_coins.webp',
+  // The four boosters of Iron Burrow (GDD 15, CONTRACT §8.3), icon_bst_* of the game's art
+  // (assets/ui/items/*-2x.png, 320x320 → 256x256 WebP: shown up to 128px in the reward window).
+  bst_bubble: 'items/bst_bubble.webp',
+  bst_shockwave: 'items/bst_shockwave.webp',
+  bst_fortify: 'items/bst_fortify.webp',
+  bst_hull: 'items/bst_hull.webp',
 };
 
 export const OFFERS: Readonly<Record<string, string>> = {
