@@ -1,0 +1,13 @@
+{
+  "id": "campaign_end",
+  "lines": [
+    {
+      "lineKey": "story.campaign.end.body",
+      "char": "burrower"
+    },
+    {
+      "lineKey": "story.campaign.end.line",
+      "char": "burrower"
+    }
+  ]
+}

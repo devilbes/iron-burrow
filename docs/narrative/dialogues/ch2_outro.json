@@ -1,0 +1,13 @@
+{
+  "id": "ch2_outro",
+  "lines": [
+    {
+      "lineKey": "story.ch2.outro.body",
+      "char": "burrower"
+    },
+    {
+      "lineKey": "story.ch2.outro.line",
+      "char": "burrower"
+    }
+  ]
+}

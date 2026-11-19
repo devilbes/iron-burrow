@@ -1,0 +1,13 @@
+{
+  "id": "ch1_intro",
+  "lines": [
+    {
+      "lineKey": "story.ch1.intro.body",
+      "char": "burrower"
+    },
+    {
+      "lineKey": "story.ch1.intro.line",
+      "char": "burrower"
+    }
+  ]
+}
