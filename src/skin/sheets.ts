@@ -286,7 +286,8 @@ const DAY_GLOW: Layer[] = [
 ];
 const DAILY = `.dialog .daily-day{border:0;border-radius:0;`
   + `background:${v('game-underlay')};box-shadow:none;clip-path:${platePath(BC, '0px')}}`
-  + `[data-orientation=portrait] .dialog .daily-day{height:auto;min-height:${v('game-day-h')}}`
+  + `.dialog .daily-day{height:auto;min-height:${v('game-day-h')}}`
+  + LOW(`.dialog .daily-day{min-height:0}`)
   + `.dialog .daily-day[data-state=available]{border:0;${layers(DAY_GLOW)}}`
   + `.daily-day .daily-art,.daily-day .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-day'))}}`
   + `.dialog .daily-day[data-wide] .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-tile'))}}`
