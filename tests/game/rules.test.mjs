@@ -28,7 +28,7 @@ function scene(n = 1) {
 
 function enemy(run, type, x, y, extra = {}) {
   const e = { id: run.nextId++, type, slot: 1, wave: run.wave, x, y, dir: 2, moved: 0, hp: tun.enemies[type].hp, carrier: false,
-    spawning: 0, decisionTimer: 0, fireTimer: 0, wantDecision: false, stuck: 0, fire: false, ...extra };
+    spawning: 0, decisionTimer: 0, fireTimer: 0, wantDecision: false, stuck: 0, fire: false, fireDir: 2, ...extra };
   run.enemies.push(e);
   return e;
 }
@@ -291,4 +291,32 @@ test('continue (D-10-07): lives, Core back, enemies to the queue head, star cap'
   assert.deepEqual(run.queue[0], { type: 'gunner', slot: 7 });
   assert.equal(run.enemies.length, 0);
   assert.equal(run.phase, 'intro');
+});
+
+test('GDD 12 §3: an enemy blocked by brick shoots the brick even when it turns away in the same tick', () => {
+  const run = scene();
+  run.freeze = 0;
+  run.player.x = 0; run.player.y = 12 * U;
+  // Enemy at cell (6,4) facing left, a brick cell to its left at (5,4).
+  for (let k = 0; k < 4; k++) setMat(run, 10 + (k & 1), 8 + (k >> 1), 1);
+  const e = enemy(run, 'grunt', 6 * U, 4 * U, { dir: 3 });
+  run.rngAI = Object.assign(() => 0.99, { state: 0 }); // never keep the direction: it turns
+  core.step(run, IDLE);
+  const shot = run.bullets.find((b) => b.owner === e.id);
+  assert.ok(shot || events(run, 'tile').length, 'the enemy fired');
+  if (shot) assert.equal(shot.dir, 3);
+  else assert.ok(events(run, 'tile').some((t) => t.quarters.some(([qx]) => qx === 11)));
+});
+
+test('GDD 12 §3: an enemy blocked by the player (not by a tile) turns instead of shooting', () => {
+  const run = scene();
+  run.freeze = 0;
+  // Brick above the enemy's neighbour row is irrelevant: the player is the blocker below it.
+  const e = enemy(run, 'grunt', 6 * U, 4 * U, { dir: 2 });
+  run.player.x = 6 * U; run.player.y = 5 * U;
+  for (let k = 0; k < 4; k++) setMat(run, 12 + (k & 1), 12 + (k >> 1), 1);
+  run.rngAI = Object.assign(() => 0.99, { state: 0 });
+  core.step(run, IDLE);
+  assert.equal(run.bullets.filter((b) => b.owner === e.id).length, 0);
+  assert.equal(run.player.alive, true);
 });
