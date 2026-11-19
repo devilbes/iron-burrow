@@ -1,0 +1,46 @@
+{
+ "function": "purchases",
+ "stage": "screens",
+ "steps": [
+  {
+   "action": "Lobby -> Shop icon -> S10 Shop"
+  },
+  {
+   "action": "Tap Field Kit (4.99) and confirm the test purchase"
+  },
+  {
+   "action": "See S11 Purchase result with large booster pictures x6 each"
+  },
+  {
+   "action": "Reload the page"
+  }
+ ],
+ "expect": [
+  {
+   "call": "iap.load",
+   "status": "2xx"
+  },
+  {
+   "call": "iap.products",
+   "status": "2xx"
+  },
+  {
+   "call": "iap.purchase",
+   "status": "2xx"
+  },
+  {
+   "call": "iap.waitOrder",
+   "status": "2xx"
+  },
+  {
+   "call": "inventory.refresh",
+   "status": "2xx"
+  }
+ ],
+ "afterReload": [
+  {
+   "what": "счётчики бустеров",
+   "equals": "each +6 compared with before the purchase"
+  }
+ ]
+}

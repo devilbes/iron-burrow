@@ -1,0 +1,46 @@
+{
+ "function": "levels",
+ "stage": "core",
+ "steps": [
+  {
+   "action": "Lobby -> Play -> Stage Map -> stage 1 node -> Pre-stage -> Start"
+  },
+  {
+   "action": "Destroy all 20 Rustbugs (test env: qa-win hook)"
+  },
+  {
+   "action": "See S07 Stage Clear with stars, score and the first-clear booster reward"
+  },
+  {
+   "action": "Reload the page"
+  }
+ ],
+ "expect": [
+  {
+   "call": "levels.open",
+   "status": "2xx"
+  },
+  {
+   "call": "progress.beginAttempt",
+   "status": "2xx"
+  },
+  {
+   "call": "progress.levelEnd",
+   "status": "2xx"
+  }
+ ],
+ "afterReload": [
+  {
+   "what": "прогресс",
+   "equals": "stage 1 cleared, stage 2 unlocked"
+  },
+  {
+   "what": "звёзды стадии 1",
+   "equals": "server stars from levelEnd ACK"
+  },
+  {
+   "what": "награда первого прохождения",
+   "equals": "bst_bubble +1 in inventory, not granted again on replay"
+  }
+ ]
+}

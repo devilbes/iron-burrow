@@ -1,0 +1,68 @@
+{
+ "$comment": "Iron Burrow quality targets (flow-plan). Values only from the GDD (source gdd) or the platform rules of the flow (source platform). Record: {value, dir: max|min or value {min,max}, unit, source, stage, ref}. Bot metrics: tests/sim/<id>.mjs run(seed) on seeds 1, 7, 42.",
+ "web": {
+  "initialKB": {"value": 2500, "dir": "max", "unit": "KB first load", "source": "gdd", "stage": "build-check", "ref": "30 tech budgets first_load"},
+  "jsGzipKB": {"value": 200, "dir": "max", "unit": "KB JS gzip", "source": "gdd", "stage": "build-check", "ref": "30 tech budgets"},
+  "ttiMs": {"value": 3000, "dir": "max", "unit": "ms app_ready", "source": "gdd", "stage": "build-check", "ref": "30 tech budgets app_ready"},
+  "fpsMin": {"value": 55, "dir": "min", "unit": "fps", "source": "gdd", "stage": "build-check", "ref": "30 tech budgets fps_min"},
+  "frameP95Ms": {"value": 16.7, "dir": "max", "unit": "ms p95 frame, desktop, stage 30 trace 120 s (mobile 4x throttle: 33)", "source": "gdd", "stage": "build-check", "ref": "22 gt.fx.frame_p95_ms"},
+  "touchTargetsMinPx": {"value": 48, "dir": "min", "unit": "CSS px", "source": "gdd", "stage": "look-check", "ref": "20 touch targets"},
+  "consoleErrors": {"value": 0, "dir": "max", "unit": "errors in console", "source": "platform", "stage": "build-check"}
+ },
+ "bot": {
+  "first_kill_s": {"value": {"min": 8, "max": 30}, "unit": "s median, stages 1-3, novice bot", "source": "gdd", "stage": "game-logic", "ref": "10 gt.core.time_to_first_kill"},
+  "first_threat_s": {"value": {"min": 25, "max": 90}, "unit": "s median, stages 1-3, novice bot", "source": "gdd", "stage": "game-logic", "ref": "10 gt.core.time_to_first_core_threat"},
+  "stage_length_s": {"value": {"min": 90, "max": 180}, "unit": "s median clear, 30 stages, novice bot", "source": "gdd", "stage": "game-logic", "ref": "10 gt.core.stage_length"},
+  "stage_balance": {"value": 0, "dir": "max", "unit": "violated bal.sim.* targets", "source": "gdd", "stage": "game-logic", "ref": "13 gt.bal.sim_violations"},
+  "siege_waves": {"value": 0, "dir": "max", "unit": "violated siege bal.sim.* targets", "source": "gdd", "stage": "game-logic", "ref": "13 gt.bal.siege_violations"},
+  "win_rate_early": {"value": {"min": 80, "max": 95}, "unit": "% stages 1-3, novice bot", "source": "gdd", "stage": "game-logic", "ref": "13 gt.bal.early_win_rate"},
+  "win_rate_late": {"value": {"min": 30, "max": 50}, "unit": "% stages 26-30, novice bot", "source": "gdd", "stage": "game-logic", "ref": "13 gt.bal.late_win_rate"},
+  "session_stages": {"value": {"min": 3, "max": 6}, "unit": "stages per 12-min session", "source": "gdd", "stage": "game-logic", "ref": "13 gt.bal.session_stages"},
+  "siege_run_min": {"value": {"min": 3, "max": 10}, "unit": "min median Siege run, novice bot", "source": "gdd", "stage": "game-logic", "ref": "13 gt.bal.siege_run_length"},
+  "win_rate_stage1": {"value": 80, "dir": "min", "unit": "% stage 1, novice bot", "source": "gdd", "stage": "game-logic", "ref": "14 gt.tut.stage1_clear_rate"},
+  "first_spawn_s": {"value": 3, "dir": "max", "unit": "s from playing to first enemy spawn", "source": "gdd", "stage": "game-logic", "ref": "22 gt.fx.first_spawn_s"}
+ },
+ "flow": {
+  "time_to_first_action_s": {"value": 2, "dir": "max", "unit": "s load end -> tank control", "source": "gdd", "stage": "build-check", "ref": "10 gt.core.time_to_first_action"},
+  "time_to_control_s": {"value": 10, "dir": "max", "unit": "s load end -> playing stage 1", "source": "gdd", "stage": "build-check", "ref": "14 gt.tut.time_to_control"},
+  "tutorial_t1_t4_s": {"value": 35, "dir": "max", "unit": "s scripted input", "source": "gdd", "stage": "build-check", "ref": "14 gt.tut.t1_t4_duration"},
+  "input_to_feedback_ms": {"value": 50, "dir": "max", "unit": "ms input -> data-fx-ack", "source": "gdd", "stage": "build-check", "ref": "22 gt.fx.input_to_feedback_ms"},
+  "hit_feedback_frames": {"value": 0, "dir": "max", "unit": "frames hit tick -> fx ack", "source": "gdd", "stage": "build-check", "ref": "22 gt.fx.hit_feedback_frames"},
+  "ui_tap_ms": {"value": 50, "dir": "max", "unit": "ms pointerdown -> button transform", "source": "gdd", "stage": "build-check", "ref": "22 gt.fx.ui_tap_ms"},
+  "hitstop_kill_ms": {"value": {"min": 30, "max": 60}, "unit": "ms", "source": "gdd", "stage": "build-check", "ref": "22 gt.fx.hitstop_kill_ms"},
+  "particles_over_limit": {"value": 0, "dir": "max", "unit": "pool overflows per run", "source": "gdd", "stage": "build-check", "ref": "22 gt.fx.particles_over_limit"}
+ },
+ "sound": {
+  "musicLUFS": {"value": -20, "unit": "LUFS integrated, music loops", "source": "gdd", "stage": "sound", "ref": "23 aud.tech.09"},
+  "sfxLUFS": {"value": [-22, -11], "unit": "short-term LUFS range of the SFX table", "source": "gdd", "stage": "sound", "ref": "23 aud.sfx"},
+  "truePeak": {"value": -1, "dir": "max", "unit": "dBTP", "source": "gdd", "stage": "sound", "ref": "23 aud.tech.02"},
+  "sfxMaxSec": {"value": 6, "dir": "max", "unit": "s per SFX/jingle (longest jingle 5.0 s +20%)", "source": "gdd", "stage": "sound", "ref": "23 aud.music jingles, aud.tech acceptance ±20%"},
+  "musicMinSec": {"value": 57, "dir": "min", "unit": "s loop (shortest 72 s -20%)", "source": "gdd", "stage": "sound", "ref": "23 aud.music"},
+  "musicMaxSec": {"value": 116, "dir": "max", "unit": "s loop (longest 96 s +20%)", "source": "gdd", "stage": "sound", "ref": "23 aud.music"},
+  "sampleRates": {"value": [44100], "unit": "Hz", "source": "gdd", "stage": "sound", "ref": "23 aud.tech.01"},
+  "formats": {"value": ["mp3", "ogg"], "unit": "container", "source": "gdd", "stage": "sound", "ref": "23 aud.tech.01"},
+  "sfxMaxKB": {"value": 120, "dir": "max", "unit": "KB per SFX/jingle", "source": "gdd", "stage": "sound", "ref": "23 aud.tech.01"},
+  "musicMaxKB": {"value": 1200, "dir": "max", "unit": "KB per music track", "source": "gdd", "stage": "sound", "ref": "23 aud.tech.01"},
+  "totalMB": {"value": 7, "dir": "max", "unit": "MB all audio", "source": "gdd", "stage": "sound", "ref": "23 aud.tech.01"},
+  "lufsTolerance": {"value": 1.5, "unit": "LU", "source": "platform", "stage": "sound"}
+ },
+ "assets": {
+  "imageGenerations": {"value": 260, "dir": "max", "unit": "image generations for the whole run", "source": "gdd", "stage": "assets", "ref": "21 asset budget"},
+  "gameImages": {"value": 92, "unit": "rows assets/game", "source": "gdd", "stage": "assets", "ref": "21 asset table"},
+  "skinImages": {"value": 24, "unit": "rows assets/ui skin", "source": "gdd", "stage": "skin-join", "ref": "21 skin table"},
+  "musicFiles": {"value": 11, "unit": "files", "source": "gdd", "stage": "sound", "ref": "23"},
+  "sfxFiles": {"value": 50, "unit": "files", "source": "gdd", "stage": "sound", "ref": "23"}
+ },
+ "qa": {
+  "viewports": {"value": ["390x844", "844x390", "1440x900"], "unit": "portrait, landscape, desktop", "source": "gdd", "stage": "look-check", "ref": "BUILD_BRIEF orientations"},
+  "flows": {"value": 11, "unit": "machine scenarios docs/gdd/qa/flows", "source": "gdd", "stage": "build-check", "ref": "40"},
+  "acceptanceCriteria": {"value": 52, "unit": "AC in 40 index", "source": "gdd", "stage": "look-check", "ref": "40"},
+  "simSeeds": {"value": [1, 7, 42], "unit": "seeds", "source": "gdd", "stage": "game-logic", "ref": "13 §3"}
+ },
+ "kpi": {
+  "blind_goal_understood": {"value": 2, "dir": "min", "unit": "of 3 blind players", "source": "gdd", "stage": "look-check", "ref": "40 gt.qa.blind_goal_understood"},
+  "blind_want_more": {"value": 4, "dir": "min", "unit": "median 1-5", "source": "gdd", "stage": "look-check", "ref": "40 gt.qa.blind_want_more"},
+  "tutorial_completion": {"value": 85, "dir": "min", "unit": "% live players, after release", "source": "gdd", "stage": "post-release", "ref": "14 gt.tut.completion_rate"},
+  "tutorial_skip": {"value": 25, "dir": "max", "unit": "% live players, after release", "source": "gdd", "stage": "post-release", "ref": "14 gt.tut.skip_rate"}
+ }
+}

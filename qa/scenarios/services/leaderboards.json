@@ -1,0 +1,38 @@
+{
+ "function": "leaderboards",
+ "stage": "screens",
+ "steps": [
+  {
+   "action": "Lobby -> Leaderboards icon -> S13"
+  },
+  {
+   "action": "Switch between Siege (week) and Campaign (all time) tabs"
+  },
+  {
+   "action": "Finish a Siege run, open S13 again"
+  },
+  {
+   "action": "Reload the page and open S13"
+  }
+ ],
+ "expect": [
+  {
+   "call": "leaderboards.get",
+   "status": "2xx"
+  },
+  {
+   "call": "leaderboards.around",
+   "status": "2xx"
+  },
+  {
+   "call": "leaderboards.rank",
+   "status": "2xx"
+  }
+ ],
+ "afterReload": [
+  {
+   "what": "строка лидерборда siege_best",
+   "equals": "player row with the score of the finished run"
+  }
+ ]
+}

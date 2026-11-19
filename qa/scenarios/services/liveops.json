@@ -1,0 +1,31 @@
+{
+ "function": "liveops",
+ "stage": "qa",
+ "steps": [
+  {
+   "action": "Open Lobby with realtime connected"
+  },
+  {
+   "action": "Buy a pack in Shop: counters update by push without reopening"
+  },
+  {
+   "action": "If the platform sends a notice, the banner appears in Lobby"
+  }
+ ],
+ "expect": [
+  {
+   "call": "realtime.status",
+   "status": "no-http"
+  },
+  {
+   "call": "realtime.notice",
+   "status": "no-http"
+  }
+ ],
+ "afterReload": [
+  {
+   "what": "счётчики бустеров",
+   "equals": "server balance, no stale values"
+  }
+ ]
+}
