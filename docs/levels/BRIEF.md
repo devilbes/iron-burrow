@@ -90,7 +90,7 @@ V1–V10 — как в ГДД. Дополнения шага:
 | `levels.main/r_0001_0010`, `r_0011_0020`, `r_0021_0030` | по главе: `entries[]` (схема `levels.entry.json`) + `data.server` (bounds/1) |
 | `levels.endless/r_0001_0001` | арена Siege |
 
-`data.server` (клиенту не уходит): `verifier: bounds/1`, `seed: perAttempt` (ИИ и дроп — свой PRNG на попытку), `win.objectives: [destroy_all]`, `score.max` по стадии = `Σ kill(состав) + 3×500 + 1000 + 7×500` (ГДД 11 D-11-04), `durationMs.min` = физический минимум (`first_spawn 1 s + 19 × spawnInterval + spawn_anim 1 s − 1 s` → 58.0 / 48.5 / 39.0 s по главам), `moves {min 0, max 9}`, `stars`.
+`data.server` (клиенту не уходит): `verifier: bounds/1`, `seed: perAttempt` (ИИ и дроп — свой PRNG на попытку), `score.max` по стадии = `Σ kill(состав) + 3×500 + 1000 + 7×500` (ГДД 11 D-11-04), `durationMs.min` = физический минимум (`first_spawn 1 s + 19 × spawnInterval + spawn_anim 1 s − 1 s` → 58.0 / 48.5 / 39.0 s по главам), `moves {min 0, max 9}`, `stars`.
 
 Решения формата (D-LVL-01…05 в `docs/gdd/DECISIONS.md`):
 - **D-LVL-01** Набор кампании — `levels.main` (а не `campaign`), арена Siege — `levels.endless` с одним уровнем `r_0001_0001`: платформа не разрешает свои имена наборов (`levels.campaign`, `levels.siege`). В коде/конфигах игры «level-set campaign / siege» из ГДД 31 означает эти scope.
