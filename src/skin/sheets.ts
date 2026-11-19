@@ -210,6 +210,13 @@ const PROGRESS = `progress${OVER}{border:0;border-radius:${v('mp-radius-field')}
   + `progress${OVER}::-moz-progress-bar{border-radius:${v('mp-radius-field')};`
   + `background:linear-gradient(90deg,${v('mp-card-accent')},${v('mp-card-accent-hover')})}`;
 
+/**
+ * Rules for a low screen — a phone turned on its side, where the kit's windows have little height.
+ * Not by `[data-orientation=landscape]`: the kit marks a 1280x720 desktop window landscape as well,
+ * and there the room is ample. A height in em, not a pixel width (the recipe's rule is about widths).
+ */
+const LOW = (css: string): string => `@media (orientation:landscape) and (max-height:32em){${css}}`;
+
 // ---- Inside a window only the window has a frame: groups part by room and, where needed, one soft
 // underlay without an outline (`UNDERLAY`); item tiles are the picture and the count, no plate or
 // outline of their own; item pictures are the main thing of their tile (--game-art-*).
@@ -245,10 +252,10 @@ const ACTIONS = `${ROW}{flex-flow:row wrap;justify-content:center;align-items:ce
   + `max-width:min(${v('game-button-max')},100%);min-height:${v('game-button-h-primary')};`
   + `padding-inline:${v('game-button-pad')};white-space:normal}`
   + `${ROW}>button${SECOND}{order:2;min-width:min(${v('game-button-min')},100%);min-height:48px;margin-bottom:8px}`
-  // Landscape windows are low: the kit puts the row on one line, and so does the skin — main action first.
-  + `[data-orientation=landscape] ${ROW}::before{display:none}`
-  + `[data-orientation=landscape] ${ROW}>button{flex:0 1 auto;min-width:min(${v('game-button-min-low')},100%);min-height:48px;margin-bottom:0;`
-  + `padding-inline:${v('game-button-pad-tight')}}`
+  // A low screen: the kit puts the row on one line, and so does the skin — main action first.
+  + LOW(`${ROW}::before{display:none}`
+  + `${ROW}>button{flex:0 1 auto;min-width:min(${v('game-button-min-low')},100%);min-height:48px;margin-bottom:0;`
+  + `padding-inline:${v('game-button-pad-tight')}}`)
   // Price buttons of the shop: the same limits, centred under their pack.
   + `.dialog :is(.iap-row,.iap-slide)>.iap-buy${OVER}{align-self:center;width:auto;min-width:min(${v('game-button-min')},100%);`
   + `max-width:min(${v('game-button-max')},100%);padding-inline:${v('game-button-pad')}}`;
@@ -266,7 +273,7 @@ const SHOP = `.iap-section>:is(.iap-slide,.iap-row){flex:none;${UNDERLAY};paddin
   + `.iap-row__title{font:400 17px/22px ${v('mp-font-display')}}`
   + `.iap-slide>[data-part=asset-image]{align-self:center;${ART(v('game-art-offer'))};object-fit:contain;`
   + `filter:drop-shadow(${v('game-shadow-floating')})}`
-  + `[data-orientation=landscape] .iap-slide>[data-part=asset-image]{${ART(v('game-art-offer-row'))}}`
+  + LOW(`.iap-slide>[data-part=asset-image]{${ART(v('game-art-offer-row'))}}`)
   + `.iap-row__icon{${ART(v('game-art-offer-row'))};border:0;background:none;box-shadow:none}`
   + `.iap-row__icon>*{${ART(v('game-art-offer-row'))};object-fit:contain}`;
 
@@ -283,8 +290,8 @@ const DAILY = `.dialog .daily-day{border:0;border-radius:0;`
   + `.dialog .daily-day[data-state=available]{border:0;${layers(DAY_GLOW)}}`
   + `.daily-day .daily-art,.daily-day .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-day'))}}`
   + `.dialog .daily-day[data-wide] .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-tile'))}}`
-  + `[data-orientation=landscape] .daily-day:not([data-wide]) .daily-art,`
-  + `[data-orientation=landscape] .daily-day:not([data-wide]) .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-day-low'))}}`
+  + LOW(`.daily-day:not([data-wide]) .daily-art,`
+  + `.daily-day:not([data-wide]) .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-day-low'))}}`)
   + `.daily-amount{font:400 16px/1.2 ${v('mp-font-display')}}`
   + `.daily-day :is(.daily-check,.daily-lock){top:4px;right:4px;border:0;border-radius:0;clip-path:polygon(${v('game-cut-badge')} 0,100% 0,`
   + `100% calc(100% - ${v('game-cut-badge')}),calc(100% - ${v('game-cut-badge')}) 100%,0 100%,0 ${v('game-cut-badge')})}`
@@ -315,8 +322,7 @@ const LEADERBOARD = `.lbw-table{${UNDERLAY};padding:4px 0}`
 const CONFIRM = `.cf-item{${UNDERLAY}}.cf-tile{background:none;box-shadow:none;border:0}`
   // A landscape phone gives the kit's confirm window little height (even the stock subject runs under
   // its buttons there): the subject goes compact.
-  + `[data-orientation=landscape] .cf-item{padding-block:4px;min-height:0}`
-  + `[data-orientation=landscape] .cf-tile,[data-orientation=landscape] .cf-tile>*{width:40px;height:40px}`
+  + LOW(`.cf-item{padding-block:4px;min-height:0}.cf-tile,.cf-tile>*{width:40px;height:40px}`)
   + `.cf-price{font-family:${v('mp-font-display')};font-weight:400;color:${v('mp-card-gold')}}`;
 
 // ---- Reward received (recolor + the shared rules above): the list of what came is one underlay.
