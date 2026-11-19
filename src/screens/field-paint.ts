@@ -2,7 +2,6 @@
 // fallbacks (read from the theme's `--mp-*` variables — no colors of our own) and sprite helpers
 // (frame of a sheet in a row, rotation by direction: the art looks up, CONTRACT §7.1).
 import type { Dir, EnemyKind } from '../modules/game/index.js';
-import type { ImageBank } from './media.js';
 
 /** The field is 13 × 13 cells (CONTRACT §1, `data-grid=13x13`). */
 export const GRID = 13;
@@ -51,11 +50,6 @@ export function sprite(g: CanvasRenderingContext2D, image: HTMLImageElement, fra
   const dw = box.size * Math.min(1, w / h);
   g.drawImage(image, (frame % frames) * w, 0, w, h, -dw / 2, -dh / 2, dw, dh);
   g.restore();
-}
-
-/** An image of the bank or null — a short alias for the draw code. */
-export function art(bank: ImageBank, id: string): HTMLImageElement | null {
-  return bank.get(id);
 }
 
 /** Rounded box filled with `color` (the shape fallback of a missing picture). */
