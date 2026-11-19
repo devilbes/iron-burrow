@@ -67,13 +67,16 @@ test('a saved server schema goes first, by the scope name or its pattern', { ski
   assert.equal(schemaFile(root, 'levels.main'), 'schemas/levels.main.json');
 });
 
+// The first range the level set indexes (level data is written by the levels step, not the template).
+const firstRange = () => record('levels.main/set').data.index[0].key;
+
 test('rules and links between records', async (t) => {
   const root = project(t, {
     ...edited('progress/progress_main', (json) => { json.data.profileProjection = {}; json.data.steps[0].reward[0].id = 'item_gems'; }),
     ...edited('iap.offers/offer_coins_small', (json) => { json.data.variants[0].productKey = 'product_none'; }),
     ...edited('iap.placements/placement_shop', (json) => { json.data.offers.push('offer_none'); json.name = 'iap.placements/shop'; }),
     ...edited('inventory.catalog/item_coins', (json) => { json.display.titleKey = 'item.gems.title'; }),
-    'configs/remote/levels.main/r_0001_0005.json': null,
+    [`configs/remote/levels.main/${firstRange()}.json`]: null,
   });
   const { problems } = await validateRecords(root);
   for (const start of [

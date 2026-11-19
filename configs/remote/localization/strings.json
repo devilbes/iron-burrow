@@ -1,5 +1,36 @@
 {
   "en": {
+    "levels": {
+      "chapter": {
+        "c01": {
+          "title": "Clay Tunnels"
+        },
+        "c02": {
+          "title": "The Iron Works"
+        },
+        "c03": {
+          "title": "Magma Depths"
+        }
+      },
+      "main": {
+        "title": "Levels",
+        "level_1": {
+          "title": "Level 1"
+        },
+        "level_2": {
+          "title": "Level 2"
+        },
+        "level_3": {
+          "title": "Level 3"
+        },
+        "level_4": {
+          "title": "Level 4"
+        },
+        "level_5": {
+          "title": "Level 5"
+        }
+      }
+    },
     "screen": {
       "home": {
         "play": "Play"
@@ -43,26 +74,6 @@
     "placement": {
       "shop": {
         "title": "Shop"
-      }
-    },
-    "levels": {
-      "main": {
-        "title": "Levels",
-        "level_1": {
-          "title": "Level 1"
-        },
-        "level_2": {
-          "title": "Level 2"
-        },
-        "level_3": {
-          "title": "Level 3"
-        },
-        "level_4": {
-          "title": "Level 4"
-        },
-        "level_5": {
-          "title": "Level 5"
-        }
       }
     },
     "reward": {

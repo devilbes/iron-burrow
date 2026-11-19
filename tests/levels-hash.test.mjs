@@ -9,7 +9,9 @@ import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import { canonicalJson, levelsHash } from '../scripts/levels-hash.mjs';
 
-const SAMPLE = fileURLToPath(new URL('../configs/remote/levels.main/r_0001_0005.json', import.meta.url));
+// The first range the level set indexes (level data is written by the levels step, not the template).
+const SET = JSON.parse(readFileSync(fileURLToPath(new URL('../configs/remote/levels.main/set.json', import.meta.url)), 'utf8'));
+const SAMPLE = fileURLToPath(new URL(`../configs/remote/levels.main/${SET.data.index[0].key}.json`, import.meta.url));
 const SCRIPT = fileURLToPath(new URL('../scripts/levels-hash.mjs', import.meta.url));
 const sample = JSON.parse(readFileSync(SAMPLE, 'utf8'));
 

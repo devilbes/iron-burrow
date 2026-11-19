@@ -1,0 +1,11 @@
+{
+  "en": {
+    "levels": {
+      "chapter": {
+        "c01": { "title": "Clay Tunnels" },
+        "c02": { "title": "The Iron Works" },
+        "c03": { "title": "Magma Depths" }
+      }
+    }
+  }
+}
