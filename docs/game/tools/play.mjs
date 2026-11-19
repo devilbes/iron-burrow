@@ -106,8 +106,8 @@ async function pass([w, h]) {
     phase = name;
     try { await fn(); } catch (error) { log.errors.push(`[${name}] STEP FAILED: ${String(error.message ?? error).split('\n')[0]}`); }
   };
-  const dialog = () => page.locator('[role=dialog]').last();
-  const hasDialog = async () => (await page.locator('[role=dialog]').count()) > 0;
+  const dialog = () => page.locator('[role=dialog]:visible').last();
+  const hasDialog = async () => (await page.locator('[role=dialog]:visible').count()) > 0;
   const action = (id) => page.locator(`[data-testid$=".action.${id}"]`).last();
   const press = async (locator) => { await locator.waitFor({ state: 'visible', timeout: 20000 }); await locator.click(); };
   /** Closes every open window: its close button, else its last button, else Escape. */
@@ -134,7 +134,7 @@ async function pass([w, h]) {
     const main = d.getByRole('button', { name: /^(great|collect|ok|continue|claim|got it)$/i });
     try { await main.last().click({ timeout: 5000 }); await page.waitForTimeout(800); return; } catch { /* next way */ }
     try { await d.locator('.dialog-close').first().click({ timeout: 5000 }); await page.waitForTimeout(800); return; } catch { /* next way */ }
-    await page.keyboard.press('Escape'); await page.waitForTimeout(800);
+    log.errors.push('[dismiss] no button closed the window');
   };
   const waitDialog = async (timeout = 20000) => { await page.locator('[role=dialog]').first().waitFor({ state: 'visible', timeout }); await page.waitForTimeout(800); };
 
