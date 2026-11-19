@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.cache/
+*.log
+.env*
+!.env.example
+*.local
+.DS_Store
+*.key
+*.pem
+.mcp.local.json

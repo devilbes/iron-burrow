@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "manyplay": {
+      "type": "http",
+      "url": "${MANYPLAY_MCP_URL}",
+      "headers": {
+        "Authorization": "Bearer ${MANYPLAY_MCP_KEY}"
+      }
+    }
+  }
+}

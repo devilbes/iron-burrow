@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "appId": null,
+  "appCode": null,
+  "name": null,
+  "environments": {
+    "stage": { "appEnv": null, "hosts": null, "mcpUrl": null },
+    "prod": { "appEnv": "prod", "hosts": null, "mcpUrl": null }
+  },
+  "bundleIds": { "android": null, "ios": null },
+  "sdk": null,
+  "links": { "panel": null, "repository": null },
+  "sources": {},
+  "metadataRevision": null
+}
