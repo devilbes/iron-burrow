@@ -1,0 +1,91 @@
+{
+  "imageGenerationCalls": 1,
+  "source": "built-in Codex image_gen",
+  "requestedSize": [
+    1024,
+    1024
+  ],
+  "actual2x": [
+    1254,
+    1254
+  ],
+  "display1x": [
+    627,
+    627
+  ],
+  "mechanicalFallback": "Pillow LANCZOS resize and WebP quality 90; one batch; project has no assets script. PNG anchor retained per task.",
+  "bytesBefore": 1857961,
+  "bytesAfterWebP2x": 110526,
+  "totalDeliverableImageBytes": 2971011,
+  "files": [
+    {
+      "file": "STYLE_REF-2x.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1857961,
+      "sha256": "a4df216054f33f19fc7ea5acdf02477eb34518c11f7d2e99f57a4c33f9c51400"
+    },
+    {
+      "file": "STYLE_REF.png",
+      "size": [
+        627,
+        627
+      ],
+      "bytes": 477523,
+      "sha256": "1296e9c09faf668e64981f31eb778a264d382c3c9a2a09ff9af7e36c5f421a09"
+    },
+    {
+      "file": "STYLE_REF-2x.webp",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 110526,
+      "sha256": "31cd6facd1632af69912336943544c082f79fda61b102597f970a2de99af6813"
+    },
+    {
+      "file": "STYLE_REF.webp",
+      "size": [
+        627,
+        627
+      ],
+      "bytes": 43266,
+      "sha256": "cfa74e0967aa1738531a169cffa6a18041a96a6d61d613cd72dc3375356eb3a8"
+    },
+    {
+      "file": "CONTACT_SHEET.png",
+      "size": [
+        1024,
+        564
+      ],
+      "bytes": 481735,
+      "sha256": "b23bf22fb137092e79565a6e7a1f593aef0fb1a7f9dda312f4a7c95de7849c4d"
+    }
+  ],
+  "checks": {
+    "decode": "PASS",
+    "nonempty": "PASS",
+    "even2x": "PASS",
+    "pairDimensions": "PASS",
+    "paletteEntries": 22,
+    "npmAssetsCheck": "FAIL: npm error Missing script: assets (pipeline unavailable)",
+    "npmCi": "FAIL: EUSAGE, package-lock.json absent",
+    "typecheck": "NOT_RUN: npm ci failed",
+    "build": "NOT_RUN: npm ci failed",
+    "browser": "NOT_REQUIRED: material anchor only",
+    "independentScreenJudges": "NOT_APPLICABLE: no screens authored",
+    "dfPalette": "NOT_RUN: QUALITY_TARGETS.art.paletteDeltaEMax absent"
+  },
+  "visualReview": {
+    "contactSheet": "CONTACT_SHEET.png",
+    "reviewer": "author",
+    "materialAndLight": "PASS: cold steel, teal enamel, clipped corners, sparse rivets, upper-left light",
+    "valueHierarchy": "PASS: amber core remains brightest in grayscale",
+    "limitations": [
+      "Material reference only: does not establish gameplay silhouette readability at 24px or production UI contrast.",
+      "No independent screen review; no screens produced."
+    ]
+  }
+}
