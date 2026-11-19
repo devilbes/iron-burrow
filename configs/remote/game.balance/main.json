@@ -52,7 +52,18 @@
     ],
     "score_clear_bonus": 1000,
     "score_life_bonus": 500,
-    "score_powerup": 500
+    "score_powerup": 500,
+    "tut": {
+      "step_min_show_s": 1.5,
+      "step_gap_s": 0.5,
+      "move_done_cells": 1,
+      "idle_pulse_s": 6,
+      "brick_timeout_s": 10,
+      "core_show_s": 4,
+      "enemy_timeout_s": 10,
+      "spawn_hold_max_s": 25,
+      "booster_pulse_s": 5
+    }
   },
   "visibility": 3,
   "enabled": true

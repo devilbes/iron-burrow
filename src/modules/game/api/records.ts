@@ -1,12 +1,13 @@
 // The game's number records (CONTRACT §8.5): the rules' records (game.balance … game.siege) for the
 // logic and the meta records (rewards, packs, shop order, offer placements) for the API. Each key
 // is the published record when it has the right shape, else the copy built into the game.
-import { GAME_CONFIG } from '../../../boot/ids.js';
-import { createTunables, mergeShape, type GameRecords, type Tunables } from '../core/config.js';
+import { GAME_CONFIG, LEVEL_SET_RECORD } from '../../../boot/ids.js';
+import { createTunables, mergeShape, readRecords, type GameRecords, type Tunables } from '../core/config.js';
 import REWARDS from '../../../../configs/remote/game.rewards/main.json' with { type: 'json' };
 import PACKS from '../../../../configs/remote/game.iap_packs/main.json' with { type: 'json' };
 import SHOP_ORDER from '../../../../configs/remote/game.iap_shop_order/main.json' with { type: 'json' };
 import PLACEMENTS from '../../../../configs/remote/game.iap_placements/main.json' with { type: 'json' };
+import LEVEL_SET from '../../../../configs/remote/levels.main/set.json' with { type: 'json' };
 import type { BoosterId, OfferKey, Reward } from '../index.js';
 import type { ConfigsApi } from './sdk.js';
 
@@ -22,10 +23,15 @@ export interface MetaRecords {
   readonly placements: PlacementsRecord;
 }
 
+/** Tutorial pace of stage 1 (`game.balance.tut`, GDD 14 `tut.*`). */
+export type TutorialTunables = ReturnType<typeof readRecords>['game.balance']['tut'];
+
 export interface Records {
   readonly game: GameRecords;
-  readonly tun: Tunables;
+  readonly tun: Tunables & { readonly tutorial: TutorialTunables };
   readonly meta: MetaRecords;
+  /** Last stage of the campaign set. */
+  readonly lastStage: number;
 }
 
 const BOOSTER_IDS: readonly BoosterId[] = ['bst_bubble', 'bst_shockwave', 'bst_fortify', 'bst_hull'];
@@ -47,7 +53,9 @@ export function readGameRecords(configs: ConfigsApi | null): Records {
     shopOrder: mergeShape(SHOP_ORDER.data, read(configs, GAME_CONFIG.shopOrder)),
     placements: mergeShape(PLACEMENTS.data, read(configs, GAME_CONFIG.placements)),
   };
-  return { game, tun: createTunables(game), meta };
+  const set = read(configs, LEVEL_SET_RECORD) as { last?: unknown } | undefined;
+  const lastStage = typeof set?.last === 'number' && set.last > 0 ? set.last : LEVEL_SET.data.last;
+  return { game, tun: { ...createTunables(game), tutorial: readRecords(game)['game.balance'].tut }, meta, lastStage };
 }
 
 /** `{ bst_x: n }` as reward lines in the booster order. */

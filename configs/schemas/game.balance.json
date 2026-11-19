@@ -26,7 +26,8 @@
     "spawn_interval_s_by_chapter",
     "score_clear_bonus",
     "score_life_bonus",
-    "score_powerup"
+    "score_powerup",
+    "tut"
   ],
   "properties": {
     "field_cells": {
@@ -268,6 +269,60 @@
       },
       "type": "integer",
       "minimum": 0
+    },
+    "tut": {
+      "type": "object",
+      "description": "Tutorial pace of stage 1 (GDD 14 tut.*): seconds, cells.",
+      "additionalProperties": false,
+      "required": [
+        "step_min_show_s",
+        "step_gap_s",
+        "move_done_cells",
+        "idle_pulse_s",
+        "brick_timeout_s",
+        "core_show_s",
+        "enemy_timeout_s",
+        "spawn_hold_max_s",
+        "booster_pulse_s"
+      ],
+      "properties": {
+        "step_min_show_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "step_gap_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "move_done_cells": {
+          "type": "number",
+          "minimum": 0
+        },
+        "idle_pulse_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "brick_timeout_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "core_show_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "enemy_timeout_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "spawn_hold_max_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "booster_pulse_s": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
     }
   }
 }
