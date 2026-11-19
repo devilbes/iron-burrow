@@ -60,7 +60,7 @@ class GameScreen implements FlowHost {
     this.sound = sound(this.game);
     const win = root.ownerDocument.defaultView ?? window;
     this.model = { layout: currentLayout(win), coarse: coarsePointer(win), inputMode: coarsePointer(win) ? 'touch' : 'keys',
-      view: null, mode: null, qa: false, hint: null, toast: null };
+      view: null, mode: null, qa: false, hint: null, toast: null, offline: false };
     this.controls = new Controls(root.ownerDocument, {
       active: () => !this.busy && this.match !== null && !this.ending,
       input: (move, fire) => { try { this.match?.setInput({ move, fire }); } catch { /* ended */ } },
@@ -261,6 +261,7 @@ class GameScreen implements FlowHost {
       react({ ctx: this.ctx, game: this.game, sound: this.sound, field: fieldNow, live: this.hud, now, before,
         hint: () => this.setHint(boosterHintText(this.ctx, this.model.inputMode)), tutorial: () => this.refresh() }, events);
     }
+    this.model.offline = !this.online();
     const shape = this.shapeOf(view);
     if (shape !== this.shape) { this.shape = shape; this.refresh(); }
     this.hud.update(view);
@@ -275,7 +276,11 @@ class GameScreen implements FlowHost {
     const tut = view.tutorial;
     const tutKey = tut ? `${tut.step}:${tut.text}:${tut.text2 ?? ''}:${tut.target}:${this.model.inputMode}` : '';
     const ids = view.hud.boosters.map((b) => b.id).join(',');
-    return `${this.model.layout}|${this.model.coarse}|${tutKey}|${ids}|${view.hud.stage}|${this.model.qa}`;
+    return `${this.model.layout}|${this.model.coarse}|${tutKey}|${ids}|${view.hud.stage}|${this.model.qa}|${this.model.offline}`;
+  }
+
+  private online(): boolean {
+    try { return this.game.online(); } catch { return true; }
   }
 
   /** Clear / defeat windows once the logic's delay is over. */

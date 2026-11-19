@@ -29,11 +29,11 @@ export interface LobbyActions {
 export const LOBBY_CSS = `
 .lobby{--hud-side:calc(64px + var(--mp-gap));--hud-zone:calc(2 * 64px + var(--mp-gap));
  display:grid;height:100%;min-height:0;overflow:hidden;gap:var(--mp-gap);
- grid-template-areas:"brand" "info" "actions";grid-template-rows:auto minmax(0,1fr) auto;
+ grid-template-areas:"brand" "info" "actions";grid-template-rows:minmax(0,1fr) auto auto;
  grid-template-columns:minmax(0,1fr)}
-.brand{grid-area:brand;display:grid;place-items:center;min-height:var(--hud-zone);min-width:0;
- padding-inline:var(--hud-side)}
-.logo{width:100%;max-width:520px;height:auto;max-height:var(--hud-zone);object-fit:contain}
+.brand{grid-area:brand;display:grid;place-items:center;min-height:0;min-width:0;height:100%;
+ padding-top:var(--hud-zone)}
+.logo{width:100%;max-width:520px;height:auto;max-height:100%;object-fit:contain}
 .info{grid-area:info;display:flex;flex-direction:column;align-items:center;justify-content:center;
  gap:.5em;min-height:0;min-width:0}
 .actions{grid-area:actions;display:grid;gap:.75em;width:100%;max-width:420px;justify-self:center;min-width:0}
@@ -47,13 +47,11 @@ export const LOBBY_CSS = `
 [data-layout=landscape].lobby{grid-template-areas:"brand actions" "info actions";
  grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;
  padding-inline:var(--hud-side);align-items:center}
-[data-layout=landscape] .brand{padding-inline:0;min-height:0;height:100%}
-[data-layout=landscape] .logo{max-height:100%}
+[data-layout=landscape] .brand,[data-layout=desktop] .brand{padding-top:0}
 [data-layout=landscape] .actions{align-self:center;gap:.5em}
 [data-layout=desktop].lobby{padding-inline:var(--hud-side);grid-template-rows:minmax(0,1fr) auto auto;
  align-content:center}
-[data-layout=desktop] .brand{padding-inline:0;min-height:0;height:100%}
-[data-layout=desktop] .logo{max-width:640px;max-height:100%}
+[data-layout=desktop] .logo{max-width:640px}
 [data-layout=desktop] .info{justify-content:flex-start}
 .title-plate{max-width:100%}
 `;

@@ -22,6 +22,8 @@ export interface HudModel {
   hint: string | null;
   /** Text of `hud-toast` now, or null (idle). */
   toast: string | null;
+  /** The connection is down (`game.online()`): a plate says it is reconnecting. */
+  offline: boolean;
 }
 
 export interface HudActions {
@@ -148,7 +150,8 @@ function hints(ctx: ScreenContext, m: HudModel, a: HudActions): ViewNode {
   const tut = m.view?.tutorial ?? null;
   return view('div', { class: 'zone-t' },
     tut ? tutorialPlate(ctx, tut, m.inputMode, m.view?.hud.enemiesLeft ?? 0, { next: a.next, skip: a.skip }) : null,
-    m.hint ? view('p', { class: 'plate hint', 'data-testid': 'booster-hint', role: 'status' }, m.hint) : null);
+    m.hint ? view('p', { class: 'plate hint', 'data-testid': 'booster-hint', role: 'status' }, m.hint) : null,
+    m.offline ? view('p', { class: 'plate hint muted', 'data-testid': 'hud-offline', role: 'status' }, ctx.t('screen.common.offline')) : null);
 }
 
 /** `data-state` of the field: playing|paused|won|lost from the match phase. */

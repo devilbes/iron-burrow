@@ -88,11 +88,11 @@ export const mapCss = (): string => `
 .node[data-state=locked]{cursor:default}
 .play{grid-area:play;width:100%;max-width:420px;justify-self:center}
 [data-layout=landscape].map{--node:min(64px,15vh);padding-inline:var(--hud-side);gap:.5em;
- grid-template-columns:minmax(0,14rem) minmax(0,1fr);grid-template-areas:"head nodes" "tabs nodes" "play nodes";
+ grid-template-columns:minmax(0,17rem) minmax(0,1fr);grid-template-areas:"head nodes" "tabs nodes" "play nodes";
  grid-template-rows:auto minmax(0,1fr) auto}
 [data-layout=landscape] .head{flex-direction:row;min-height:0;padding-inline:0;justify-content:flex-start}
 [data-layout=landscape] .back,[data-layout=desktop] .back{order:-1}
-[data-layout=landscape] .head .title-plate{font-size:1.1rem;flex:1;min-width:0}
+[data-layout=landscape] .head .title-plate{font-size:1.1rem;flex:1;min-width:0;overflow-wrap:normal}
 [data-layout=landscape] .tabs{grid-template-columns:minmax(0,1fr);align-content:center;gap:.35em}
 [data-layout=desktop].map{--node:min(96px,10vh);padding-inline:var(--hud-side)}
 [data-layout=desktop] .head{flex-direction:row;justify-content:center;min-height:0}
