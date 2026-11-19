@@ -33,7 +33,7 @@ const runSeed = (seed, n, k, policyIdx) => (seed * 1000003 + n * 101 + k * 7 + p
 /** One run to its end; times in seconds of play (from `playing`). */
 export function playRun(stage, seed, policy) {
   const state = core.createRun({ stage, tun, seed });
-  const bot = createBot(policy, seed, PARAMS);
+  const bot = createBot(policy, seed, PARAMS, core);
   const tps = tun.tps;
   const timeout = PARAMS.timeout_s * tps;
   const idleLimit = PARAMS.softlock_idle_s * tps;
@@ -80,6 +80,7 @@ function sourceHash() {
   };
   for (const dir of ['src/modules/game/core', 'tests/sim/lib', 'configs/levels']) add(join(ROOT, dir));
   if (existsSync(join(ROOT, 'configs/remote/game'))) add(join(ROOT, 'configs/remote/game'));
+  if (process.env.SIM_RECORDS) hash.update(readFileSync(process.env.SIM_RECORDS));
   return hash.digest('hex').slice(0, 16);
 }
 

@@ -113,7 +113,7 @@ function coreAhead(state, dir) {
 }
 
 /** An active enemy on one of the player's axes (±half cell) with no steel between: the direction to it. */
-function aimAt(state, maxOff) {
+function aimAt(state, maxOff, clearOnly = null) {
   const { unit } = state.tun;
   const p = state.player;
   const px = p.x + unit / 2;
@@ -129,7 +129,8 @@ function aimAt(state, maxOff) {
     else if (Math.abs(ey - py) <= maxOff) { dir = ex < px ? 3 : 1; dist = Math.abs(ex - px); }
     if (dir === null) continue;
     const steel = p.gun >= 3 ? 99 : MAT_STEEL;
-    if (blockedLine(state.field, px, py, ex, ey, dir === 0 || dir === 2, steel)) continue;
+    const stopAt = clearOnly && !clearOnly(e) ? MAT_BRICK : steel;
+    if (blockedLine(state.field, px, py, ex, ey, dir === 0 || dir === 2, stopAt)) continue;
     if (!best || dist < best.dist) best = { dir, dist };
   }
   return best;
@@ -186,11 +187,64 @@ function incoming(state, range) {
     const off = vertical ? Math.abs(bx - px) : Math.abs(by - py);
     const gap = vertical ? (b.dir === 2 ? py - by : by - py) : b.dir === 1 ? px - bx : bx - px;
     if (off >= unit * 0.6 || gap <= 0 || gap >= range) continue;
-    if (p.dir === (b.dir + 2) % 4) return { facing: true, dir: p.dir };
+    if (p.dir === (b.dir + 2) % 4) return { facing: true, dir: p.dir, offset: off };
     const sides = vertical ? [bx <= px ? 1 : 3, bx <= px ? 3 : 1] : [by <= py ? 2 : 0, by <= py ? 0 : 2];
     return { facing: false, dir: sides[0] };
   }
   return null;
+}
+
+/** How far a bullet flies along its direction before a solid quarter or the edge (units). */
+function bulletReach(state, b, bs) {
+  const f = state.field;
+  const q = f.q;
+  const max = f.cells * state.tun.unit;
+  let reach = 0;
+  const limit = b.speed * 40;
+  while (reach < limit) {
+    reach += q / 2;
+    const x = b.x + DX[b.dir] * reach;
+    const y = b.y + DY[b.dir] * reach;
+    if (x < 0 || y < 0 || x + bs > max || y + bs > max) return reach;
+    for (let qy = Math.floor(y / q); qy <= Math.floor((y + bs - 1) / q); qy++) {
+      for (let qx = Math.floor(x / q); qx <= Math.floor((x + bs - 1) / q); qx++) if (f.mat[qy * f.qs + qx] > 0) return reach;
+    }
+  }
+  return reach;
+}
+
+/** Driving in `dir` (null = stand) for the next `horizon` ticks is clear of every enemy bullet. */
+function safeMove(state, rules, dir, horizon) {
+  const { unit } = state.tun;
+  const bs = unit / 4;
+  const p = state.player;
+  const travel = dir === null ? 0 : rules.sweep(state.field, p.x, p.y, unit, dir, state.tun.playerSpeed * horizon);
+  for (const b of state.bullets) {
+    if (b.owner === 0) continue;
+    const reach = bulletReach(state, b, bs);
+    for (let t = 1; t <= horizon; t++) {
+      const fly = Math.min(b.speed * t, reach);
+      const bx = b.x + DX[b.dir] * fly;
+      const by = b.y + DY[b.dir] * fly;
+      const go = dir === null ? 0 : Math.min(state.tun.playerSpeed * t, travel);
+      const px = p.x + (dir === null ? 0 : DX[dir] * go);
+      const py = p.y + (dir === null ? 0 : DY[dir] * go);
+      if (bx < px + unit && px < bx + bs && by < py + unit && py < by + bs) return false;
+      if (fly >= reach) break;
+    }
+  }
+  return true;
+}
+
+/** The desired move if it is safe, else the first safe alternative (stand, sideways, back). */
+function safest(state, rules, dir, horizon) {
+  if (safeMove(state, rules, dir, horizon)) return { dir, safe: true };
+  const base = dir ?? state.player.dir;
+  for (const alt of [null, (base + 1) % 4, (base + 3) % 4, (base + 2) % 4, base]) {
+    if (alt === dir) continue;
+    if (safeMove(state, rules, alt, horizon)) return { dir: alt, safe: false };
+  }
+  return { dir, safe: false };
 }
 
 function nearestPowerup(state, maxCells) {
@@ -203,12 +257,12 @@ function nearestPowerup(state, maxCells) {
 /** Bot policies: `create(seed, params)` → `(state) => command`. */
 export const POLICIES = ['random', 'novice', 'expert'];
 
-export function createBot(policy, seed, params) {
+export function createBot(policy, seed, params, rules) {
   const rng = mulberry32(seed ^ 0xb07b07);
   const mem = { timer: 0, dir: null, fire: false, path: null, wander: false };
   if (policy === 'random') return (state) => randomBot(state, rng, mem, params);
   const tuning = policy === 'expert' ? params.expert : params.novice;
-  return (state) => smartBot(state, rng, mem, tuning, policy === 'expert');
+  return (state) => smartBot(state, rng, mem, tuning, policy === 'expert' ? rules : null);
 }
 
 function randomBot(state, rng, mem, params) {
@@ -247,24 +301,46 @@ function plan(state, rng, mem, tuning, expert) {
   mem.path = findPath(f, from, goals, tuning.brick_cost, expert && p.gun >= 3 ? tuning.brick_cost : null);
 }
 
-function smartBot(state, rng, mem, tuning, expert) {
+function smartBot(state, rng, mem, tuning, rules) {
+  const expert = rules !== null;
   const p = state.player;
   if (!p.alive) return { dir: null, fire: false };
   if (mem.timer-- <= 0) {
     mem.timer = Math.round(tuning.reaction_s * state.tun.tps) - 1;
     plan(state, rng, mem, tuning, expert);
   }
-  if (expert) {
-    const threat = incoming(state, tuning.dodge_cells * state.tun.unit);
-    if (threat) return threat.facing ? { dir: null, fire: !coreAhead(state, threat.dir) } : { dir: threat.dir, fire: false };
-    const aim = aimAt(state, state.tun.unit / 2);
-    if (aim) return p.dir !== aim.dir ? { dir: aim.dir, fire: false } : { dir: null, fire: !coreAhead(state, aim.dir) };
-  }
+  if (expert) return expertMove(state, rules, mem, tuning);
+  // The novice looks at the field once per reaction cycle: it holds fire for the cycle when it
+  // saw an enemy on its axis ahead or a brick in its way, and never shoots its own Core.
   const step = follow(state, mem);
   const facing = step.dir ?? p.dir;
-  const aim = aimAt(state, state.tun.unit / 2);
-  const shoot = (aim && aim.dir === facing) || (p.dir === facing && brickAhead(state, facing));
-  return { dir: step.dir, fire: Boolean(shoot) && !coreAhead(state, facing) };
+  if (mem.timer === Math.round(tuning.reaction_s * state.tun.tps) - 1) {
+    const aim = aimAt(state, state.tun.unit / 2);
+    mem.fire = Boolean((aim && aim.dir === facing) || brickAhead(state, facing));
+  }
+  return { dir: step.dir, fire: mem.fire && !coreAhead(state, facing) };
+}
+
+/** Expert: shoot down head-on bullets, keep out of bullet paths, turn to aligned enemies, follow the plan. */
+function expertMove(state, rules, mem, tuning) {
+  const p = state.player;
+  const unit = state.tun.unit;
+  const horizon = Math.round(tuning.dodge_cells * unit / state.tun.bulletSpeed) + 2;
+  const own = state.bullets.some((b) => b.owner === 0);
+  const threat = incoming(state, tuning.dodge_cells * unit);
+  if (threat && threat.facing && !own && threat.offset < unit / 4) return { dir: null, fire: !coreAhead(state, threat.dir) };
+  const [cc, cr] = state.field.core;
+  const nearCore = (e) => Math.hypot(e.x / unit - cc, e.y / unit - cr) < tuning.core_guard_cells;
+  const aim = aimAt(state, unit / 2, nearCore);
+  if (aim) {
+    if (p.dir !== aim.dir) return { dir: aim.dir, fire: false };
+    if (safeMove(state, rules, null, horizon)) return { dir: null, fire: !coreAhead(state, aim.dir) };
+  }
+  const step = follow(state, mem);
+  const choice = safest(state, rules, step.dir, horizon);
+  const facing = choice.dir ?? p.dir;
+  const shoot = p.dir === facing && brickAhead(state, facing);
+  return { dir: choice.dir, fire: shoot && !coreAhead(state, facing) };
 }
 
 /** The move of the tick along the planned path (or the wander direction of a mistake cycle). */
