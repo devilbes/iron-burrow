@@ -5314,5 +5314,7 @@
         }
       ]
     }
-  ]
+  ],
+  "chromaKey": "#FF00FF",
+  "transparencyNote": "Native source alpha; chromaKey is the reserved AC-03 rejection color, not historical generation metadata."
 }
