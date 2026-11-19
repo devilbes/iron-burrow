@@ -1,0 +1,301 @@
+{
+  "version": 1,
+  "status": "pending-platform",
+  "note": "Game events (beyond N0) to register in platform analytics once the analytics registry exists; there is no MCP tool for it in this run.",
+  "events": [
+    {
+      "name": "tutorial_done",
+      "category": "ftue",
+      "params": [
+        {
+          "name": "duration_s",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "skipped",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "feeds": [
+        "tutorial_completion",
+        "tutorial_skip"
+      ],
+      "owner": "game"
+    },
+    {
+      "name": "stage_end",
+      "category": "progression",
+      "params": [
+        {
+          "name": "level_set",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "level_n",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "result",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "stars",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "score",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "duration_s",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "lives_lost",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "boosters_used",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "waves",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "continues",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "feeds": [
+        "d1_retention_proxy",
+        "difficulty_curve",
+        "siege_engagement"
+      ],
+      "owner": "game"
+    },
+    {
+      "name": "continue_used",
+      "category": "progression",
+      "params": [
+        {
+          "name": "level_set",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "level_n",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "wave",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "feeds": [
+        "continue_rate"
+      ],
+      "owner": "game"
+    },
+    {
+      "name": "item_earned",
+      "category": "economy",
+      "params": [
+        {
+          "name": "item",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "source_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "source_type",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "feeds": [
+        "economy_balance"
+      ],
+      "owner": "game"
+    },
+    {
+      "name": "item_spent",
+      "category": "economy",
+      "params": [
+        {
+          "name": "item",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "sink_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "level_set",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "feeds": [
+        "economy_balance"
+      ],
+      "owner": "game"
+    },
+    {
+      "name": "purchase_start",
+      "category": "shop",
+      "params": [
+        {
+          "name": "offer_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "placement",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "is_free",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "feeds": [
+        "payer_conversion"
+      ],
+      "owner": "game"
+    },
+    {
+      "name": "purchase_result",
+      "category": "shop",
+      "params": [
+        {
+          "name": "offer_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "placement",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "product_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "result",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "is_test",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "feeds": [
+        "payer_conversion",
+        "hull_pack_share",
+        "starter_share"
+      ],
+      "owner": "game"
+    },
+    {
+      "name": "daily_claim",
+      "category": "retention",
+      "params": [
+        {
+          "name": "day",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "feeds": [
+        "daily_engagement"
+      ],
+      "owner": "game"
+    },
+    {
+      "name": "siege_unlock",
+      "category": "progression",
+      "params": [],
+      "feeds": [
+        "siege_engagement"
+      ],
+      "owner": "game"
+    },
+    {
+      "name": "leaderboard_view",
+      "category": "social",
+      "params": [
+        {
+          "name": "board",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "period",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "feeds": [
+        "leaderboard_interest"
+      ],
+      "owner": "game"
+    },
+    {
+      "name": "client_error",
+      "category": "error",
+      "params": [
+        {
+          "name": "area",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "feeds": [
+        "reliability"
+      ],
+      "owner": "game"
+    }
+  ]
+}
