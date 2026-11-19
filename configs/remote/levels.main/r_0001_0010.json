@@ -1,0 +1,580 @@
+{
+  "scope": "levels.main",
+  "key": "r_0001_0010",
+  "name": "levels.main/r_0001_0010",
+  "description": "Campaign chapter 1 \"Clay Tunnels\", stages 1–10. Built by tools/levels/export.mjs from configs/levels/campaign; do not edit by hand.",
+  "visibility": 3,
+  "data": {
+    "kind": "range",
+    "first": 1,
+    "last": 10,
+    "entries": [
+      {
+        "id": "stage_01",
+        "index": 1,
+        "chapter": 1,
+        "theme": "clay",
+        "maxAlive": 4,
+        "spawnInterval": 3,
+        "grid": [
+          ".............",
+          ".B.B.B.B.B.B.",
+          ".B.B.B.B.B.B.",
+          ".B.B.B.B.B.B.",
+          ".B.B.....B.B.",
+          ".....B.B.....",
+          "BB.BB...BB.BB",
+          ".....B.B.....",
+          ".B.B.BBB.B.B.",
+          ".B.B.....B.B.",
+          ".B.B.BBB.B.B.",
+          ".B...BBB...B.",
+          ".....BCB....."
+        ],
+        "quarters": [],
+        "enemies": [
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt"
+        ]
+      },
+      {
+        "id": "stage_02",
+        "index": 2,
+        "chapter": 1,
+        "theme": "clay",
+        "maxAlive": 4,
+        "spawnInterval": 3,
+        "grid": [
+          ".............",
+          ".BB.BB.BB.BB.",
+          ".BB.BB.BB.BB.",
+          ".............",
+          "B..B.....B..B",
+          "B..B.B.B.B..B",
+          "....B...B....",
+          ".BB.......BB.",
+          ".BB.BB.BB.BB.",
+          ".............",
+          ".B.B.BBB.B.B.",
+          ".B...BBB...B.",
+          ".....BCB....."
+        ],
+        "quarters": [],
+        "enemies": [
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "gunner",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt"
+        ]
+      },
+      {
+        "id": "stage_03",
+        "index": 3,
+        "chapter": 1,
+        "theme": "clay",
+        "maxAlive": 4,
+        "spawnInterval": 3,
+        "grid": [
+          ".............",
+          ".B.B.B.B.B.B.",
+          ".B.B.B.B.B.B.",
+          ".B.........B.",
+          "...BB...BB...",
+          ".S...B.B...S.",
+          "B.B.......B.B",
+          ".B..BB.BB..B.",
+          ".B.S.....S.B.",
+          "...B.....B...",
+          ".B.B.BBB.B.B.",
+          ".B...BBB...B.",
+          ".....BCB....."
+        ],
+        "quarters": [],
+        "enemies": [
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "gunner",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt"
+        ]
+      },
+      {
+        "id": "stage_04",
+        "index": 4,
+        "chapter": 1,
+        "theme": "clay",
+        "maxAlive": 4,
+        "spawnInterval": 3,
+        "grid": [
+          ".............",
+          ".BBB.B.B.BBB.",
+          ".B...B.B...B.",
+          ".B.B.....B.B.",
+          "...B.B.B.B...",
+          "B.....B.....B",
+          "B.BB.....BB.B",
+          "..B..B.B..B..",
+          "B.B.BB.BB.B.B",
+          ".............",
+          ".B.B.BBB.B.B.",
+          ".B...BBB...B.",
+          ".....BCB....."
+        ],
+        "quarters": [],
+        "enemies": [
+          "grunt",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "scout",
+          "gunner",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "grunt"
+        ]
+      },
+      {
+        "id": "stage_05",
+        "index": 5,
+        "chapter": 1,
+        "theme": "clay",
+        "maxAlive": 4,
+        "spawnInterval": 3,
+        "grid": [
+          ".............",
+          ".B..B...B..B.",
+          "BB.RB.B.BR.BB",
+          "B....B.B....B",
+          "BB..R...R..BB",
+          "B...BR.RB...B",
+          "S.B.B...B.B.S",
+          "BB..B.B.B..BB",
+          ".B...B.B...B.",
+          "B..B.B.B.B..B",
+          ".B...BBB...B.",
+          ".B...BBB...B.",
+          ".....BCB....."
+        ],
+        "quarters": [],
+        "enemies": [
+          "grunt",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "gunner",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "grunt",
+          "grunt",
+          "gunner",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt"
+        ]
+      },
+      {
+        "id": "stage_06",
+        "index": 6,
+        "chapter": 1,
+        "theme": "clay",
+        "maxAlive": 4,
+        "spawnInterval": 3,
+        "grid": [
+          ".............",
+          ".BB.B...B.BB.",
+          ".B..B.B.B..B.",
+          "....B...B....",
+          "S.BB..R..BB.S",
+          "..B..B.B..B..",
+          "B...B...B...B",
+          "B.S...B...S.B",
+          "..BB.R.R.BB..",
+          ".B...B.B...B.",
+          ".B.B.BBB.B.B.",
+          "...B.BBB.B...",
+          ".B...BCB...B."
+        ],
+        "quarters": [],
+        "enemies": [
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "gunner",
+          "grunt",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "brute",
+          "grunt",
+          "grunt",
+          "grunt",
+          "gunner",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt"
+        ]
+      },
+      {
+        "id": "stage_07",
+        "index": 7,
+        "chapter": 1,
+        "theme": "clay",
+        "maxAlive": 4,
+        "spawnInterval": 3,
+        "grid": [
+          ".............",
+          "..B.B...B.B..",
+          "..B...B...B..",
+          "S....B.B....S",
+          "B....B.B....B",
+          "...B.....B...",
+          "B.B..RBR..B.B",
+          "B...B...B...B",
+          "S.BB.B.B.BB.S",
+          ".............",
+          ".B.B.BBB.B.B.",
+          ".B...BBB...B.",
+          ".....BCB....."
+        ],
+        "quarters": [],
+        "enemies": [
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "gunner",
+          "grunt",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "brute",
+          "grunt",
+          "grunt",
+          "grunt",
+          "gunner",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt"
+        ]
+      },
+      {
+        "id": "stage_08",
+        "index": 8,
+        "chapter": 1,
+        "theme": "clay",
+        "maxAlive": 4,
+        "spawnInterval": 3,
+        "grid": [
+          ".............",
+          ".B.BB...BB.B.",
+          ".B..B...B..B.",
+          "S.B...B...B.S",
+          "B..R.R.R.R..B",
+          "..BB.....BB..",
+          ".B..BS.SB..B.",
+          "...B..B..B...",
+          "B.BR.....RB.B",
+          ".B...B.B...B.",
+          ".B.B.BBB.B.B.",
+          "...B.BBB.B...",
+          "B....BCB....B"
+        ],
+        "quarters": [],
+        "enemies": [
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "gunner",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "gunner",
+          "brute",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "grunt",
+          "gunner",
+          "scout",
+          "grunt"
+        ]
+      },
+      {
+        "id": "stage_09",
+        "index": 9,
+        "chapter": 1,
+        "theme": "clay",
+        "maxAlive": 4,
+        "spawnInterval": 3,
+        "grid": [
+          ".............",
+          ".B..B...B..B.",
+          "B....B.B....B",
+          "S.B.R...R.B.S",
+          "B.B.BB.BB.B.B",
+          "...B..B..B...",
+          "B.R.......R.B",
+          "B..BB.S.BB..B",
+          "..B...B...B..",
+          ".B..B...B..B.",
+          "...B.BBB.B...",
+          ".B.B.BBB.B.B.",
+          ".....BCB....."
+        ],
+        "quarters": [],
+        "enemies": [
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "gunner",
+          "grunt",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "gunner",
+          "brute",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "grunt",
+          "gunner",
+          "scout",
+          "grunt"
+        ]
+      },
+      {
+        "id": "stage_10",
+        "index": 10,
+        "chapter": 1,
+        "theme": "clay",
+        "maxAlive": 4,
+        "spawnInterval": 3,
+        "grid": [
+          ".............",
+          ".BB.B...B.BB.",
+          ".B..S.B.S..B.",
+          ".B...R.R...B.",
+          "...B.B.B.B...",
+          "B.S.B...B.S.B",
+          "B...RSBSR...B",
+          "..B.B.B.B.B..",
+          ".B....B....B.",
+          "....SB.BS....",
+          ".B.B.BBB.B.B.",
+          ".B...BBB...B.",
+          ".....BCB....."
+        ],
+        "quarters": [],
+        "enemies": [
+          "grunt",
+          "scout",
+          "grunt",
+          "gunner",
+          "grunt",
+          "grunt",
+          "scout",
+          "brute",
+          "grunt",
+          "grunt",
+          "gunner",
+          "grunt",
+          "scout",
+          "grunt",
+          "grunt",
+          "brute",
+          "grunt",
+          "gunner",
+          "scout",
+          "grunt"
+        ]
+      }
+    ],
+    "server": {
+      "contentHash": "e9191faa75fd541095ee311bbea916953f2e8659c2d9000c9c3e2428d3e08b16",
+      "verifier": "bounds/1",
+      "seed": {
+        "mode": "perAttempt"
+      },
+      "win": {
+        "objectives": [
+          "destroy_all"
+        ]
+      },
+      "moves": {
+        "min": 0,
+        "max": 9
+      },
+      "durationMs": {
+        "min": 58000
+      },
+      "score": {
+        "max": 9600
+      },
+      "stars": [
+        {
+          "moves": {
+            "max": 9
+          }
+        },
+        {
+          "moves": {
+            "max": 1
+          }
+        },
+        {
+          "moves": {
+            "max": 0
+          }
+        }
+      ],
+      "gen": {
+        "generator": "iron-burrow-authored",
+        "version": "1",
+        "curve": "ti-v1"
+      },
+      "entries": [
+        {
+          "levelId": "stage_01",
+          "score": {
+            "max": 8200
+          }
+        },
+        {
+          "levelId": "stage_02",
+          "score": {
+            "max": 8400
+          }
+        },
+        {
+          "levelId": "stage_03",
+          "score": {
+            "max": 8400
+          }
+        },
+        {
+          "levelId": "stage_04",
+          "score": {
+            "max": 8500
+          }
+        },
+        {
+          "levelId": "stage_05",
+          "score": {
+            "max": 8700
+          }
+        },
+        {
+          "levelId": "stage_06",
+          "score": {
+            "max": 9000
+          }
+        },
+        {
+          "levelId": "stage_07",
+          "score": {
+            "max": 9000
+          }
+        },
+        {
+          "levelId": "stage_08",
+          "score": {
+            "max": 9300
+          }
+        },
+        {
+          "levelId": "stage_09",
+          "score": {
+            "max": 9300
+          }
+        },
+        {
+          "levelId": "stage_10",
+          "score": {
+            "max": 9600
+          }
+        }
+      ]
+    }
+  }
+}

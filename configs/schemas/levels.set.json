@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Игровые поля набора уровней",
+  "description": "Игровые поля записи levels.main/set: главы, правило открытия и поведение после последней стадии. Оболочку kind/first/last/index добавляет платформа и экспорт.",
+  "type": "object",
+  "x-ui": { "label": "Набор уровней" },
+  "additionalProperties": false,
+  "required": ["chapters", "unlock", "afterLast"],
+  "properties": {
+    "afterLast": { "type": "string", "enum": ["end"], "title": "После последнего уровня", "description": "end — кампания завершена, новые стадии добавляются дописыванием диапазонов" },
+    "unlock": {
+      "type": "object", "additionalProperties": false, "required": ["mode"], "title": "Открытие стадий", "description": "Правило открытия следующей стадии",
+      "properties": { "mode": { "type": "string", "enum": ["sequential"], "title": "Режим", "description": "sequential — стадия N+1 открывается прохождением N (любые звёзды)" } }
+    },
+    "chapters": {
+      "type": "array", "minItems": 1, "maxItems": 20, "title": "Главы", "description": "Главы кампании по порядку",
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["id", "title", "theme", "first", "last"], "title": "Глава", "description": "Диапазон стадий главы и её оформление",
+        "properties": {
+          "id": { "type": "string", "maxLength": 8, "title": "Идентификатор", "description": "c01, c02, c03…" },
+          "title": { "type": "string", "maxLength": 64, "title": "Ключ названия", "description": "Ключ localization с названием главы, например levels.chapter.c01.title" },
+          "theme": { "type": "string", "enum": ["clay", "iron", "magma"], "title": "Тема", "description": "Тема оформления стадий главы" },
+          "first": { "type": "integer", "minimum": 1, "maximum": 999, "title": "Первая стадия", "description": "Номер первой стадии главы" },
+          "last": { "type": "integer", "minimum": 1, "maximum": 999, "title": "Последняя стадия", "description": "Номер последней стадии главы (финал)" }
+        }
+      }
+    }
+  }
+}

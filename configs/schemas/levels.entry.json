@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Уровень набора",
+  "description": "Один элемент data.entries[] записей levels.main (стадии кампании) и levels.endless (арена Siege). Строит levels:export из configs/levels/**.",
+  "type": "object",
+  "x-ui": { "label": "Уровень", "summaryFields": ["id", "chapter", "theme"] },
+  "additionalProperties": false,
+  "required": ["id", "theme", "grid", "quarters"],
+  "properties": {
+    "id": { "type": "string", "maxLength": 16, "title": "Идентификатор", "description": "stage_01…stage_30 или siege_pit" },
+    "index": { "type": "integer", "minimum": 1, "maximum": 30, "title": "Номер стадии", "description": "Сквозной номер стадии кампании; у арены Siege нет" },
+    "chapter": { "type": "integer", "minimum": 1, "maximum": 3, "title": "Глава", "description": "Номер главы кампании 1–3; у арены Siege нет" },
+    "theme": { "type": "string", "enum": ["clay", "iron", "magma", "pit"], "title": "Тема оформления", "description": "Набор тайлов и фона: clay, iron, magma или pit" },
+    "maxAlive": { "type": "integer", "minimum": 1, "maximum": 8, "title": "Врагов одновременно", "description": "Максимум живых врагов на поле; у Siege задаётся формулой волны" },
+    "spawnInterval": { "type": "number", "minimum": 1.5, "maximum": 3.0, "title": "Интервал спавна, с", "description": "Интервал появления врагов в секундах; у Siege задаётся формулой волны" },
+    "grid": {
+      "type": "array", "minItems": 13, "maxItems": 13, "title": "Карта 13×13", "description": "13 строк по 13 символов, строка 0 сверху; алфавит . B S L R O C",
+      "items": { "type": "string", "minLength": 13, "maxLength": 13, "title": "Строка карты", "description": "13 кодов тайлов слева направо" }
+    },
+    "quarters": {
+      "type": "array", "maxItems": 169, "title": "Маски четвертей", "description": "Клетки B/S с частично разрушенными четвертями; пустой массив — все клетки целые",
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["col", "row", "mask"], "title": "Клетка с маской", "description": "Координаты клетки и оставшиеся четверти",
+        "properties": {
+          "col": { "type": "integer", "minimum": 0, "maximum": 12, "title": "Столбец", "description": "Столбец клетки 0–12" },
+          "row": { "type": "integer", "minimum": 0, "maximum": 12, "title": "Строка", "description": "Строка клетки 0–12, 0 сверху" },
+          "mask": { "type": "integer", "minimum": 1, "maximum": 14, "title": "Маска", "description": "Оставшиеся четверти: 1=TL, 2=TR, 4=BL, 8=BR" }
+        }
+      }
+    },
+    "enemies": {
+      "type": "array", "minItems": 20, "maxItems": 20, "title": "Порядок врагов", "description": "20 врагов в порядке появления (ГДД 12 §2); у арены Siege нет",
+      "items": { "type": "string", "enum": ["scout", "grunt", "gunner", "brute"], "title": "Тип врага", "description": "scout, grunt, gunner или brute" }
+    }
+  }
+}

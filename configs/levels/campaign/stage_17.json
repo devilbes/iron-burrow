@@ -1,0 +1,29 @@
+{
+  "id": "stage_17",
+  "index": 17,
+  "chapter": 2,
+  "theme": "iron",
+  "maxAlive": 5,
+  "spawnInterval": 2.5,
+  "grid": [
+    ".............",
+    ".B.BB...BB.B.",
+    "B..B..S..B..B",
+    "..B.OR.RO.B..",
+    "SB..B...B..BS",
+    "....B.S.B....",
+    "BB.B.....B.BB",
+    ".B..S.B.S..B.",
+    ".B.B.B.B.B.B.",
+    "...S.B.B.S...",
+    "BB.BBBBBBB.BB",
+    "B..S.BBB.S..B",
+    "...B.BCB.B..."
+  ],
+  "enemies": [
+    "scout", "grunt", "gunner", "scout", "grunt",
+    "brute", "gunner", "scout", "gunner", "grunt",
+    "scout", "brute", "gunner", "grunt", "scout",
+    "gunner", "grunt", "brute", "gunner", "scout"
+  ]
+}

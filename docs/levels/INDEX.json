@@ -1,0 +1,696 @@
+{
+  "version": 1,
+  "metric": "TI (docs/levels/CURVE.json)",
+  "sets": {
+    "main": {
+      "scope": "levels.main",
+      "records": [
+        "set",
+        "r_0001_0010",
+        "r_0011_0020",
+        "r_0021_0030"
+      ]
+    },
+    "endless": {
+      "scope": "levels.endless",
+      "records": [
+        "r_0001_0001"
+      ]
+    }
+  },
+  "chapters": [
+    {
+      "id": "c01",
+      "chapter": 1,
+      "name": "Clay Tunnels",
+      "titleKey": "levels.chapter.c01.title",
+      "theme": "clay",
+      "first": 1,
+      "last": 10,
+      "record": "r_0001_0010"
+    },
+    {
+      "id": "c02",
+      "chapter": 2,
+      "name": "Iron Works",
+      "titleKey": "levels.chapter.c02.title",
+      "theme": "iron",
+      "first": 11,
+      "last": 20,
+      "record": "r_0011_0020"
+    },
+    {
+      "id": "c03",
+      "chapter": 3,
+      "name": "Magma Depths",
+      "titleKey": "levels.chapter.c03.title",
+      "theme": "magma",
+      "first": 21,
+      "last": 30,
+      "record": "r_0021_0030"
+    },
+    {
+      "id": "siege",
+      "chapter": null,
+      "name": "Siege",
+      "titleKey": "levels.siege.title",
+      "theme": "pit",
+      "first": 1,
+      "last": 1,
+      "record": "r_0001_0001"
+    }
+  ],
+  "levels": [
+    {
+      "id": "stage_01",
+      "file": "configs/levels/campaign/stage_01.json",
+      "set": "main",
+      "n": 1,
+      "chapter": 1,
+      "band": "tutorial",
+      "difficulty": 20.6,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "enemy:scout",
+        "enemy:grunt"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_02",
+      "file": "configs/levels/campaign/stage_02.json",
+      "set": "main",
+      "n": 2,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 21.2,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_03",
+      "file": "configs/levels/campaign/stage_03.json",
+      "set": "main",
+      "n": 3,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 21.2,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "steel",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_04",
+      "file": "configs/levels/campaign/stage_04.json",
+      "set": "main",
+      "n": 4,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 21.5,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_05",
+      "file": "configs/levels/campaign/stage_05.json",
+      "set": "main",
+      "n": 5,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 22.1,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_06",
+      "file": "configs/levels/campaign/stage_06.json",
+      "set": "main",
+      "n": 6,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 23.6,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_07",
+      "file": "configs/levels/campaign/stage_07.json",
+      "set": "main",
+      "n": 7,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 23.6,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_08",
+      "file": "configs/levels/campaign/stage_08.json",
+      "set": "main",
+      "n": 8,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 24.5,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_09",
+      "file": "configs/levels/campaign/stage_09.json",
+      "set": "main",
+      "n": 9,
+      "chapter": 1,
+      "band": "easy",
+      "difficulty": 24.5,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_10",
+      "file": "configs/levels/campaign/stage_10.json",
+      "set": "main",
+      "n": 10,
+      "chapter": 1,
+      "band": "medium",
+      "difficulty": 26,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_11",
+      "file": "configs/levels/campaign/stage_11.json",
+      "set": "main",
+      "n": 11,
+      "chapter": 2,
+      "band": "rest",
+      "difficulty": 45.9,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_12",
+      "file": "configs/levels/campaign/stage_12.json",
+      "set": "main",
+      "n": 12,
+      "chapter": 2,
+      "band": "medium",
+      "difficulty": 46.4,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_13",
+      "file": "configs/levels/campaign/stage_13.json",
+      "set": "main",
+      "n": 13,
+      "chapter": 2,
+      "band": "medium",
+      "difficulty": 46.4,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "oil",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_14",
+      "file": "configs/levels/campaign/stage_14.json",
+      "set": "main",
+      "n": 14,
+      "chapter": 2,
+      "band": "medium",
+      "difficulty": 47.4,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "oil",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_15",
+      "file": "configs/levels/campaign/stage_15.json",
+      "set": "main",
+      "n": 15,
+      "chapter": 2,
+      "band": "medium",
+      "difficulty": 47.4,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "oil",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_16",
+      "file": "configs/levels/campaign/stage_16.json",
+      "set": "main",
+      "n": 16,
+      "chapter": 2,
+      "band": "hard",
+      "difficulty": 50.5,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_17",
+      "file": "configs/levels/campaign/stage_17.json",
+      "set": "main",
+      "n": 17,
+      "chapter": 2,
+      "band": "hard",
+      "difficulty": 51.6,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "oil",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_18",
+      "file": "configs/levels/campaign/stage_18.json",
+      "set": "main",
+      "n": 18,
+      "chapter": 2,
+      "band": "hard",
+      "difficulty": 51.6,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "oil",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_19",
+      "file": "configs/levels/campaign/stage_19.json",
+      "set": "main",
+      "n": 19,
+      "chapter": 2,
+      "band": "hard",
+      "difficulty": 51.6,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "oil",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_20",
+      "file": "configs/levels/campaign/stage_20.json",
+      "set": "main",
+      "n": 20,
+      "chapter": 2,
+      "band": "hard",
+      "difficulty": 54.7,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "oil",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_21",
+      "file": "configs/levels/campaign/stage_21.json",
+      "set": "main",
+      "n": 21,
+      "chapter": 3,
+      "band": "rest",
+      "difficulty": 92.7,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "roots",
+        "lava",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_22",
+      "file": "configs/levels/campaign/stage_22.json",
+      "set": "main",
+      "n": 22,
+      "chapter": 3,
+      "band": "hard",
+      "difficulty": 92.7,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "oil",
+        "lava",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_23",
+      "file": "configs/levels/campaign/stage_23.json",
+      "set": "main",
+      "n": 23,
+      "chapter": 3,
+      "band": "hard",
+      "difficulty": 92.7,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "oil",
+        "lava",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_24",
+      "file": "configs/levels/campaign/stage_24.json",
+      "set": "main",
+      "n": 24,
+      "chapter": 3,
+      "band": "hard",
+      "difficulty": 92.7,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "oil",
+        "lava",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_25",
+      "file": "configs/levels/campaign/stage_25.json",
+      "set": "main",
+      "n": 25,
+      "chapter": 3,
+      "band": "hard",
+      "difficulty": 92.7,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "oil",
+        "lava",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_26",
+      "file": "configs/levels/campaign/stage_26.json",
+      "set": "main",
+      "n": 26,
+      "chapter": 3,
+      "band": "super-hard",
+      "difficulty": 97.1,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "oil",
+        "lava",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_27",
+      "file": "configs/levels/campaign/stage_27.json",
+      "set": "main",
+      "n": 27,
+      "chapter": 3,
+      "band": "super-hard",
+      "difficulty": 97.1,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "oil",
+        "lava",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_28",
+      "file": "configs/levels/campaign/stage_28.json",
+      "set": "main",
+      "n": 28,
+      "chapter": 3,
+      "band": "super-hard",
+      "difficulty": 97.1,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "oil",
+        "lava",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_29",
+      "file": "configs/levels/campaign/stage_29.json",
+      "set": "main",
+      "n": 29,
+      "chapter": 3,
+      "band": "super-hard",
+      "difficulty": 97.1,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "oil",
+        "lava",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "stage_30",
+      "file": "configs/levels/campaign/stage_30.json",
+      "set": "main",
+      "n": 30,
+      "chapter": 3,
+      "band": "super-hard",
+      "difficulty": 101.5,
+      "nearWin": true,
+      "mechanics": [
+        "brick",
+        "steel",
+        "oil",
+        "lava",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "siege_pit",
+      "file": "configs/levels/siege/siege_pit.json",
+      "set": "endless",
+      "n": 1,
+      "chapter": null,
+      "band": "medium",
+      "difficulty": 39.4,
+      "nearWin": false,
+      "mechanics": [
+        "brick",
+        "steel",
+        "roots",
+        "oil",
+        "lava",
+        "enemy:scout",
+        "enemy:grunt",
+        "enemy:gunner",
+        "enemy:brute",
+        "waves"
+      ],
+      "status": "valid"
+    }
+  ]
+}

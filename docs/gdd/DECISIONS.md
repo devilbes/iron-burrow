@@ -27,6 +27,11 @@
 | D-00-21 | Сведение: арена Siege — level-set `siege` модуля progress | Уровни только через progress, не через конфиги `game.*` |
 | D-00-22 | Сведение: по отдельному `sim:<id>` на метрику Genre targets | Гейт читает одно число на seed из `run(seed)` |
 | D-00-23 | В магазине у Field Kit бейдж Best value (D-16-08) | Ресёрч: Hull Pack дороже за штуку — показываем выгодный пак |
+| D-LVL-01 | Шаг уровней: кампания — scope `levels.main` (set + `r_0001_0010`/`r_0011_0020`/`r_0021_0030` по главам), арена Siege — `levels.endless/r_0001_0001`; «level-set campaign/siege» из 30/31 = эти scope | Платформа не разрешает свои имена наборов (`levels.campaign`/`levels.siege`); endless — штатный набор бесконечного режима (docs/levels/BRIEF.md §7) |
+| D-LVL-02 | Исходники — файл на стадию в формате ГДД 12 §1; в записи configs `quarters` — массив `[{col,row,mask}]` | Ключи словарей configs не допускают запятую «col,row»; формат ГДД для авторов сохранён, перевод делает `tools/levels/export.mjs` |
+| D-LVL-03 | Звёзды считает сервер (bounds/1): `levelEnd.moves` = потерянные жизни; ★ ≤ 9, ★★ ≤ 1, ★★★ = 0 | Правило звёзд 00_MASTER выражено порогами bounds/1; клиент звёзды не считает; continue автоматически даёт ★ (D-10-07) |
+| D-LVL-04 | `seed: perAttempt`, `score.max` по ГДД 11 D-11-04, `durationMs.min` = 1 + 19·spawnInterval + 1 − 1 s (58.0/48.5/39.0 s) | Случайность ИИ/дропа — PRNG попытки; границы — из правил ГДД, не «из головы» |
+| D-LVL-05 | Жанр недетерминирован → `docs/levels/VALIDATION.json` вместо SOLVER.json; полосы сложности по TI заданы брифом (`docs/levels/CURVE.json`), rest — стадии 11 и 21 | В QUALITY_TARGETS полос нет; TI фиксирован формулой состава ГДД, темп регулирует открытость карты |
 
 ## Сервисы платформы (шаг «Сервисы платформы», 19.11.2026)
 
