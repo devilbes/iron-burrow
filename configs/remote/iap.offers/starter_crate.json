@@ -27,6 +27,9 @@
       },
       "highlight": false,
       "order": 1
+    },
+    "purchaseLimit": {
+      "count": 1
     }
   },
   "visibility": 3,

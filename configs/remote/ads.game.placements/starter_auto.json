@@ -1,0 +1,13 @@
+{
+  "scope": "ads.game.placements",
+  "key": "starter_auto",
+  "name": "ads.game.placements/starter_auto",
+  "data": {
+    "name": "Starter Crate auto window",
+    "domains": [
+      "iap"
+    ]
+  },
+  "visibility": 3,
+  "enabled": true
+}

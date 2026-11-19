@@ -1,0 +1,300 @@
+{
+  "en": {
+    "shell": {
+      "title": "Iron Burrow"
+    },
+    "item": {
+      "bst_bubble": {
+        "title": "Bubble Shield",
+        "description": "Your tank is invulnerable for 10 seconds."
+      },
+      "bst_shockwave": {
+        "title": "Shockwave",
+        "description": "Destroys every enemy on the field. Kills still score."
+      },
+      "bst_fortify": {
+        "title": "Steel Fortress",
+        "description": "The Core wall turns to steel for 20 seconds and broken quarters are rebuilt."
+      },
+      "bst_hull": {
+        "title": "Spare Hull",
+        "description": "+1 life before a stage, or continue after defeat with 2 lives and a rebuilt Core."
+      }
+    },
+    "offer": {
+      "starter_crate": {
+        "title": "Starter Crate",
+        "subtitle": "3 of each booster · one time only"
+      },
+      "hull_pack": {
+        "title": "Hull Pack",
+        "subtitle": "5 Spare Hulls"
+      },
+      "field_kit": {
+        "title": "Field Kit",
+        "subtitle": "6 of each booster",
+        "badge": "Best value"
+      },
+      "heavy_arsenal": {
+        "title": "Heavy Arsenal",
+        "subtitle": "15 of each booster"
+      },
+      "commander_cache": {
+        "title": "Commander Cache",
+        "subtitle": "35 of each booster"
+      },
+      "start_grant": {
+        "title": "Welcome, Commander!",
+        "subtitle": "2 of each booster, free",
+        "cta": "Collect"
+      },
+      "cta": {
+        "buy": "Buy"
+      }
+    },
+    "placement": {
+      "defeat": {
+        "title": "Get back in the fight"
+      },
+      "prestage": {
+        "title": "Spare Hull"
+      },
+      "starter_auto": {
+        "title": "Starter Crate"
+      },
+      "start_grant": {
+        "title": "Welcome gift"
+      }
+    },
+    "levels": {
+      "main": {
+        "title": "Campaign",
+        "level_1": {
+          "title": "Stage 1"
+        },
+        "level_2": {
+          "title": "Stage 2"
+        },
+        "level_3": {
+          "title": "Stage 3"
+        },
+        "level_4": {
+          "title": "Stage 4"
+        },
+        "level_5": {
+          "title": "Stage 5"
+        },
+        "level_6": {
+          "title": "Stage 6"
+        },
+        "level_7": {
+          "title": "Stage 7"
+        },
+        "level_8": {
+          "title": "Stage 8"
+        },
+        "level_9": {
+          "title": "Stage 9"
+        },
+        "level_10": {
+          "title": "Stage 10"
+        },
+        "level_11": {
+          "title": "Stage 11"
+        },
+        "level_12": {
+          "title": "Stage 12"
+        },
+        "level_13": {
+          "title": "Stage 13"
+        },
+        "level_14": {
+          "title": "Stage 14"
+        },
+        "level_15": {
+          "title": "Stage 15"
+        },
+        "level_16": {
+          "title": "Stage 16"
+        },
+        "level_17": {
+          "title": "Stage 17"
+        },
+        "level_18": {
+          "title": "Stage 18"
+        },
+        "level_19": {
+          "title": "Stage 19"
+        },
+        "level_20": {
+          "title": "Stage 20"
+        },
+        "level_21": {
+          "title": "Stage 21"
+        },
+        "level_22": {
+          "title": "Stage 22"
+        },
+        "level_23": {
+          "title": "Stage 23"
+        },
+        "level_24": {
+          "title": "Stage 24"
+        },
+        "level_25": {
+          "title": "Stage 25"
+        },
+        "level_26": {
+          "title": "Stage 26"
+        },
+        "level_27": {
+          "title": "Stage 27"
+        },
+        "level_28": {
+          "title": "Stage 28"
+        },
+        "level_29": {
+          "title": "Stage 29"
+        },
+        "level_30": {
+          "title": "Stage 30"
+        }
+      },
+      "endless": {
+        "title": "Siege",
+        "siege_pit": {
+          "title": "The Pit"
+        }
+      }
+    },
+    "progress": {
+      "stars_main": {
+        "title": "Three-star stages",
+        "stars3_1": {
+          "title": "Stage 1: three stars"
+        },
+        "stars3_2": {
+          "title": "Stage 2: three stars"
+        },
+        "stars3_3": {
+          "title": "Stage 3: three stars"
+        },
+        "stars3_4": {
+          "title": "Stage 4: three stars"
+        },
+        "stars3_5": {
+          "title": "Stage 5: three stars"
+        },
+        "stars3_6": {
+          "title": "Stage 6: three stars"
+        },
+        "stars3_7": {
+          "title": "Stage 7: three stars"
+        },
+        "stars3_8": {
+          "title": "Stage 8: three stars"
+        },
+        "stars3_9": {
+          "title": "Stage 9: three stars"
+        },
+        "stars3_10": {
+          "title": "Stage 10: three stars"
+        },
+        "stars3_11": {
+          "title": "Stage 11: three stars"
+        },
+        "stars3_12": {
+          "title": "Stage 12: three stars"
+        },
+        "stars3_13": {
+          "title": "Stage 13: three stars"
+        },
+        "stars3_14": {
+          "title": "Stage 14: three stars"
+        },
+        "stars3_15": {
+          "title": "Stage 15: three stars"
+        },
+        "stars3_16": {
+          "title": "Stage 16: three stars"
+        },
+        "stars3_17": {
+          "title": "Stage 17: three stars"
+        },
+        "stars3_18": {
+          "title": "Stage 18: three stars"
+        },
+        "stars3_19": {
+          "title": "Stage 19: three stars"
+        },
+        "stars3_20": {
+          "title": "Stage 20: three stars"
+        },
+        "stars3_21": {
+          "title": "Stage 21: three stars"
+        },
+        "stars3_22": {
+          "title": "Stage 22: three stars"
+        },
+        "stars3_23": {
+          "title": "Stage 23: three stars"
+        },
+        "stars3_24": {
+          "title": "Stage 24: three stars"
+        },
+        "stars3_25": {
+          "title": "Stage 25: three stars"
+        },
+        "stars3_26": {
+          "title": "Stage 26: three stars"
+        },
+        "stars3_27": {
+          "title": "Stage 27: three stars"
+        },
+        "stars3_28": {
+          "title": "Stage 28: three stars"
+        },
+        "stars3_29": {
+          "title": "Stage 29: three stars"
+        },
+        "stars3_30": {
+          "title": "Stage 30: three stars"
+        }
+      }
+    },
+    "reward": {
+      "daily": {
+        "title": "Daily supply drop",
+        "day_1": {
+          "title": "Day 1"
+        },
+        "day_2": {
+          "title": "Day 2"
+        },
+        "day_3": {
+          "title": "Day 3"
+        },
+        "day_4": {
+          "title": "Day 4"
+        },
+        "day_5": {
+          "title": "Day 5"
+        },
+        "day_6": {
+          "title": "Day 6"
+        },
+        "day_7": {
+          "title": "Day 7"
+        }
+      }
+    },
+    "leaderboard": {
+      "siege_best": {
+        "title": "Siege — best run"
+      },
+      "campaign_score": {
+        "title": "Campaign score"
+      }
+    }
+  }
+}
