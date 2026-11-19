@@ -23,8 +23,9 @@ export const ASSETS: Readonly<Record<string, string>> = {
   // 'bar-track': 'bar-track.webp',    // progress bars, 9-slice by the kit (--kit-bar-slice/-edge in theme.css)
   // 'bar-fill': 'bar-fill.webp',
   // 'page-texture': 'texture.webp',   // page margins around the game (kit key)
-  // The scene (docs/skin/map.json part «Фон сцены»): one picture of the game's art under the whole
-  // game, edge to edge, behind the transparent bars and screens (src/shell/skin.ts); focal point —
+  // The scene (docs/skin/map.json part «Фон сцены»; Iron Burrow CONTRACT §7.3, D-GC-13): the scenes
+  // of the art step, wired where they are drawn — Lobby, Stage Map, the tunnel wall around the field;
+  // one layer edge to edge, behind the transparent bars and screens (src/shell/skin.ts); focal point —
   // --game-scene-position in theme.css. From assets/game/scene*-2x.webp (2560x1600), 1920x1200 WebP:
   // a 1280x720 window covers it at 1280x800, so this is 1.5x of the largest display.
   scene: 'scene.webp',              // S02 Lobby: the cave with steel scaffolds over the magma
@@ -52,7 +53,7 @@ export const FONTS: readonly SkinFont[] = [
 // a currency) — never the game's; tests/skin-readiness.test.mjs lists such items (strict: fails).
 // The name under the picture is the catalog `display.titleKey` through localization.
 export const ITEMS: Readonly<Record<string, string>> = {
-  // The four boosters of Iron Burrow (GDD 15, CONTRACT §8.3), icon_bst_* of the game's art
+  // The four boosters of the catalog (GDD 15, CONTRACT §8.3), icon_bst_* of the art step
   // (assets/ui/items/*-2x.png, 320x320 → 256x256 WebP: shown up to 128px in the reward window).
   bst_bubble: 'items/bst_bubble.webp',
   bst_shockwave: 'items/bst_shockwave.webp',
@@ -61,10 +62,10 @@ export const ITEMS: Readonly<Record<string, string>> = {
 };
 
 export const OFFERS: Readonly<Record<string, string>> = {
-  // The six offers of configs/remote/iap.offers/ (GDD 16 mon.catalog): the pack art of the game
+  // The six offers of configs/remote/iap.offers/ (GDD 16 mon.catalog): pack_* of the art step
   // (assets/ui/offers/offer-<key>-2x.png, 320x320 → 256x256 WebP: shown up to 128px in the shop and
   // the defeat window). The free welcome gift has no pack art: the game's daily crate
-  // (assets/game/daily_crate-2x.png) — the same supply crate the daily reward shows.
+  // (assets/game/daily_crate-2x.png, D-GC-13) — the same supply crate the daily reward shows.
   starter_crate: 'offers/starter_crate.webp',
   hull_pack: 'offers/hull_pack.webp',
   field_kit: 'offers/field_kit.webp',
