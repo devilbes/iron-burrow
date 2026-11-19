@@ -49,7 +49,9 @@ export const FONTS: readonly SkinFont[] = [
 // a currency) — never the game's; tests/skin-readiness.test.mjs lists such items (strict: fails).
 // The name under the picture is the catalog `display.titleKey` through localization.
 export const ITEMS: Readonly<Record<string, string>> = {
-  item_coins: 'icon:coins',
+  // Template placeholder of the catalog (item_coins): the recolored coin cut out of the atlas as a
+  // file until the item art step replaces the catalog and its pictures (docs/skin/BASE.md).
+  item_coins: 'items/item_coins.webp',
 };
 
 export const OFFERS: Readonly<Record<string, string>> = {
