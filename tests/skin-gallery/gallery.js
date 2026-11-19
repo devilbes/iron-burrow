@@ -140,7 +140,7 @@ const GAME_CSS = '.gw{display:flex;flex-direction:column;align-items:center;gap:
   + '.gw-tiles b{font:400 18px/1 var(--mp-font-display);color:var(--mp-text)}'
   + '.gw-line{display:flex;align-items:center;gap:12px;width:100%;padding:6px 14px;border-radius:var(--mp-radius-field);'
   + 'background:color-mix(in srgb,var(--mp-surface) 70%,transparent);text-align:left}'
-  + '.gw-line span{flex:1;color:var(--mp-text-2)}.gw-line b{color:var(--mp-text)}'
+  + '.gw-line span{flex:1;color:var(--mp-text-2)}.gw-line b{color:var(--mp-text)}.gw-line b.gw-price{color:var(--mp-gold)}'
   // Landscape windows are low (the kit's dialog ≤ the viewport; 1280x720 too): the picture smaller, the
   // rows in two columns — the body stays inside the frame.
   + '@media (orientation:landscape) and (max-height:50em){.gw{gap:6px}.gw-art [data-part=icon]{width:96px;height:96px}'
@@ -167,7 +167,10 @@ const GAME_WINDOWS = {
     body: gameBody('defeat', () => [view('p', { class: 'gw-eyebrow' }, 'Run report · Stage 7'),
       view('p', { class: 'gw-text' }, 'The Core was destroyed.'),
       view('div', { class: 'gw-stats' }, stat('Final score', '1,840'), stat('Stage reached', '7')),
-      view('div', { class: 'gw-line' }, icon('bst_hull', 56), view('span', {}, 'Continue uses 1 Spare Hull'), view('b', {}, '2 left'))]),
+      view('div', { class: 'gw-line' }, icon('bst_hull', 56), view('span', {}, 'Continue uses 1 Spare Hull'), view('b', {}, '2 left')),
+      // GDD 16 mon.defeat: the offer under Continue — the pack picture of OFFERS (src/skin/art.ts).
+      view('div', { class: 'gw-line' }, icon('offer-hull_pack', 56), view('span', {}, 'Hull Pack · 5 Spare Hulls'),
+        view('b', { class: 'gw-price' }, '$1.99'))]),
     actions: [{ id: 'continue', label: 'Continue' }, { id: 'retry', label: 'Retry' }, { id: 'map', label: 'Stage Map' }] }],
   pause: ['game', { title: 'Paused', text: 'Stage 7 · Clay Tunnels. The Core waits for you.',
     actions: [{ id: 'resume', label: 'Resume' }, { id: 'restart', label: 'Restart' }, { id: 'quit', label: 'Quit' }] }],
