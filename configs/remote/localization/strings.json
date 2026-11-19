@@ -58,6 +58,22 @@
       "coins": {
         "title": "Coins",
         "description": "Soft currency. Earn it in levels and daily rewards."
+      },
+      "bst_bubble": {
+        "title": "Bubble Shield",
+        "description": "You can't be hurt for 10 s. Up to 2 per stage."
+      },
+      "bst_shockwave": {
+        "title": "Shockwave",
+        "description": "Destroys every Rustbug on the field. 1 per stage."
+      },
+      "bst_fortify": {
+        "title": "Steel Fortress",
+        "description": "Turns the Core wall to steel for 20 s and rebuilds it. 1 per stage."
+      },
+      "bst_hull": {
+        "title": "Spare Hull",
+        "description": "+1 life before a stage, or continue after defeat."
       }
     },
     "offer": {

@@ -1,0 +1,20 @@
+{
+  "itemId": "bst_bubble",
+  "itemType": "item",
+  "isStackable": true,
+  "maxBalance": null,
+  "attrsSchema": null,
+  "offlineAllowed": false,
+  "revocable": false,
+  "expiresAt": null,
+  "clientConsumable": true,
+  "display": {
+    "name": "Bubble Shield",
+    "titleKey": "item.bst_bubble.title",
+    "descriptionKey": "item.bst_bubble.description",
+    "images": {
+      "iconSmall": null,
+      "iconLarge": null
+    }
+  }
+}

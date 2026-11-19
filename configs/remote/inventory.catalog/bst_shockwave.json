@@ -1,0 +1,20 @@
+{
+  "itemId": "bst_shockwave",
+  "itemType": "item",
+  "isStackable": true,
+  "maxBalance": null,
+  "attrsSchema": null,
+  "offlineAllowed": false,
+  "revocable": false,
+  "expiresAt": null,
+  "clientConsumable": true,
+  "display": {
+    "name": "Shockwave",
+    "titleKey": "item.bst_shockwave.title",
+    "descriptionKey": "item.bst_shockwave.description",
+    "images": {
+      "iconSmall": null,
+      "iconLarge": null
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "itemId": "bst_hull",
+  "itemType": "item",
+  "isStackable": true,
+  "maxBalance": null,
+  "attrsSchema": null,
+  "offlineAllowed": false,
+  "revocable": false,
+  "expiresAt": null,
+  "clientConsumable": true,
+  "display": {
+    "name": "Spare Hull",
+    "titleKey": "item.bst_hull.title",
+    "descriptionKey": "item.bst_hull.description",
+    "images": {
+      "iconSmall": null,
+      "iconLarge": null
+    }
+  }
+}

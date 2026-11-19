@@ -1,0 +1,20 @@
+{
+  "itemId": "bst_fortify",
+  "itemType": "item",
+  "isStackable": true,
+  "maxBalance": null,
+  "attrsSchema": null,
+  "offlineAllowed": false,
+  "revocable": false,
+  "expiresAt": null,
+  "clientConsumable": true,
+  "display": {
+    "name": "Steel Fortress",
+    "titleKey": "item.bst_fortify.title",
+    "descriptionKey": "item.bst_fortify.description",
+    "images": {
+      "iconSmall": null,
+      "iconLarge": null
+    }
+  }
+}
