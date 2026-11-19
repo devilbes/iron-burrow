@@ -5,7 +5,7 @@
 import { applyContinue } from '../core/tick.js';
 import { canContinue, canUse, consumeHull, REASON, useBooster } from './boosters.js';
 import { createCtx, EVENTS, runParams, setPhase, stageOrWave, track, type Ctx } from './context.js';
-import { concede, retryEnd } from './ending.js';
+import { concede, forfeit, retryEnd } from './ending.js';
 import { frame, pause, resume } from './loop.js';
 import { start } from './start.js';
 import type { ControllerDeps, LevelController, StartOptions } from './ports.js';
@@ -53,7 +53,7 @@ export function createLevelController(deps: ControllerDeps): LevelController {
     get mode() { return ctx.mode; },
     get stage() { return ctx.stage; },
     get outcome() { return ctx.outcome; },
-    start: (options) => startAfterSettle(ctx, options),
+    start: (options) => startAfterSettle(ctx, options, options.mode === 'campaign' && options.fresh ? 0 : undefined),
     frame: (nowMs) => frame(ctx, nowMs),
     setInput(dir, fire) { ctx.input = { dir, fire }; },
     useBooster: (kind) => useBooster(ctx, kind),
@@ -62,6 +62,7 @@ export function createLevelController(deps: ControllerDeps): LevelController {
     resume: () => resume(ctx),
     continueWithHull: () => continueWithHull(ctx),
     concede: () => concede(ctx),
+    forfeit: () => forfeit(ctx),
     retryEnd: () => retryEnd(ctx),
     async next() {
       const o = ctx.outcome;

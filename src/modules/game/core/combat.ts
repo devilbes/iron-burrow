@@ -113,10 +113,10 @@ function tankHit(state: RunState, b: Bullet): boolean {
   candidates.sort((a, c) => along(b, a, unit) - along(b, c, unit) || a.id - c.id);
   const target = candidates[0] as Tank;
   if (target === p) {
-    if (p.shield > 0) state.events.push({ t: 'shield_block' });
+    if (p.shield > 0) state.events.push({ t: 'shield_block', x: b.x, y: b.y });
     else killPlayer(state);
   } else if (b.owner === 0) hitEnemy(state, target as Enemy);
-  else state.events.push({ t: 'bullet_block', owner: b.owner });
+  else state.events.push({ t: 'bullet_block', owner: b.owner, x: b.x, y: b.y, on: 'tank' });
   return true;
 }
 
@@ -142,7 +142,7 @@ function tileHit(state: RunState, b: Bullet): boolean {
   if (broken.length) {
     state.events.push({ t: 'tile', quarters: broken, steel: b.steel });
     if (b.owner !== 0 && broken.some(([qx, qy]) => isWall(state, qx, qy))) markThreat(state);
-  } else state.events.push({ t: 'bullet_block', owner: b.owner });
+  } else state.events.push({ t: 'bullet_block', owner: b.owner, x: b.x, y: b.y, on: 'tile' });
   return true;
 }
 
@@ -170,7 +170,7 @@ export function bulletsTick(state: RunState): void {
     for (const e of state.bullets) {
       if (e.owner === 0 || dead.has(e.id) || !boxOverlap(a.x, a.y, bs, e.x, e.y, bs)) continue;
       dead.add(a.id); dead.add(e.id);
-      state.events.push({ t: 'clash' });
+      state.events.push({ t: 'clash', x: a.x, y: a.y });
       break;
     }
   }

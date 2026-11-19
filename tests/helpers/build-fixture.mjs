@@ -17,7 +17,7 @@ export const SKIP = 'SDK packages are not installed (vendor/ is placed by the pl
 export function fixture(t, environment, files = {}) {
   const root = mkdtempSync(join(tmpdir(), 'projects-487-template-'));
   t.after(() => rmSync(root, { recursive: true, force: true }));
-  for (const path of ['scripts', 'src', 'configs/remote/localization', 'tsconfig.json', 'tsconfig.sdk.json', 'index.html', 'package.json']) {
+  for (const path of ['scripts', 'src', 'configs/remote', 'tsconfig.json', 'tsconfig.sdk.json', 'index.html', 'package.json']) {
     cpSync(join(template, path), join(root, path), { recursive: true });
   }
   symlinkSync(join(template, 'node_modules'), join(root, 'node_modules'), 'dir');

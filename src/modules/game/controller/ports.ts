@@ -35,6 +35,8 @@ export interface ControllerDeps {
   readonly records?: GameRecords;
   readonly clock: Clock;
   readonly uuid: () => string;
+  /** `moves` of a campaign level end from the lives lost and whether the stage was continued. */
+  readonly moves?: (stage: number, livesLost: number, continued: boolean) => number;
 }
 
 export type Mode = 'campaign' | 'siege';
@@ -42,8 +44,9 @@ export type Mode = 'campaign' | 'siege';
 export type ControllerPhase = 'idle' | 'loading' | 'intro' | 'playing' | 'paused' | 'cleared' | 'defeated' | 'ending'
   | 'result' | 'end_failed' | 'error';
 
+/** `fresh`: the stage starts with gun L0 (the carry goes only with «Next», D-10-06). */
 export type StartOptions =
-  | { readonly mode: 'campaign'; readonly stage?: number; readonly hull?: number }
+  | { readonly mode: 'campaign'; readonly stage?: number; readonly hull?: number; readonly fresh?: boolean }
   | { readonly mode: 'siege'; readonly hull?: number };
 
 /** The end of a stage or a Siege run as the result screen shows it. */
@@ -92,6 +95,8 @@ export interface LevelController {
   resume(): void;
   continueWithHull(): Promise<boolean>;
   concede(): Promise<void>;
+  /** Siege only: ends the run in play as lost and sends its level end (End Run from the pause). */
+  forfeit(): Promise<void>;
   retryEnd(): Promise<boolean>;
   next(): Promise<boolean>;
   retry(): Promise<boolean>;

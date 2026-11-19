@@ -39,12 +39,18 @@ export function takeCarry(ctx: Ctx, stage: number): number {
   return gun;
 }
 
-/** Writes the carry after a verified win of stage `n` when it differs from the save. */
-export function writeCarry(ctx: Ctx, n: number, gun: number): void {
+/**
+ * Writes the carry and the stage's best score (`campaign.best[n]`, the Best of S04 after a reload)
+ * after a verified win of stage `n` when they differ from the save.
+ */
+export function writeCarry(ctx: Ctx, n: number, gun: number, score = 0): void {
   if (!ctx.save.ok) return;
   const loaded: Json = { ...(ctx.save.loaded ?? {}) };
   const campaign: Json = isRecord(loaded.campaign) ? loaded.campaign : {};
-  if (campaign.gun_level === gun && campaign.last_stage === n) return;
-  const next: GameState = { ...loaded, campaign: { ...campaign, gun_level: gun, last_stage: n } };
+  const best: Json = isRecord(campaign.best) ? campaign.best : {};
+  const before = typeof best[n] === 'number' ? best[n] as number : 0;
+  if (campaign.gun_level === gun && campaign.last_stage === n && score <= before) return;
+  const next: GameState = { ...loaded, campaign: { ...campaign, gun_level: gun, last_stage: n,
+    best: { ...best, [n]: Math.max(before, score) } } };
   ctx.deps.campaign.save(next).then(() => { ctx.save.loaded = next; }, () => { /* written again at the next win */ });
 }

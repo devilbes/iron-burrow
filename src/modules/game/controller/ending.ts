@@ -50,6 +50,21 @@ function complete(ctx: Ctx, part: Pick<Outcome, 'won' | 'verified' | 'stars' | '
     duration_s: duration, lives_lost: run?.deaths ?? 0, boosters_used: used, defeat_cause: run?.cause ?? '' });
 }
 
+/**
+ * `moves` of a campaign level end (D-LVL-03): the lives lost; the server gives the stars by them.
+ * A stage played on after a continue gives no more than ★ (D-10-07): `deps.moves` maps the count to
+ * the level record's bounds (the API reads them); without it the count goes as it is.
+ */
+function livesLost(ctx: Ctx, run: NonNullable<Ctx['run']>): number {
+  const map = ctx.deps.moves;
+  return map ? map(ctx.stage, run.deaths, run.continues > 0) : run.deaths;
+}
+
+/** Siege `moves`: the waves the run cleared (CONTRACT §2). */
+function wavesCleared(run: NonNullable<Ctx['run']>): number {
+  return Math.max(0, run.wave - (run.waveBreak > 0 ? 0 : 1));
+}
+
 /** Campaign stage cleared and its delay over: the verified level end, then the gun carry. */
 export function finishWin(ctx: Ctx): void {
   const run = ctx.run;
@@ -64,10 +79,10 @@ export function finishWin(ctx: Ctx): void {
     complete(ctx, { won: true, verified: false, stars: 0, score, localStars });
     return;
   }
-  void sendEnd(ctx, { won: true, stats: { moves: run.tick, score }, onAnswer: (answer) => {
+  void sendEnd(ctx, { won: true, stats: { moves: livesLost(ctx, run), score }, onAnswer: (answer) => {
     if (answer.verified) ctx.carry = { stage: n + 1, gun };
     complete(ctx, { won: true, verified: answer.verified, stars: answer.stars, score, localStars });
-    if (answer.verified) writeCarry(ctx, n, gun);
+    if (answer.verified) writeCarry(ctx, n, gun, score);
   } }, false);
 }
 
@@ -92,10 +107,26 @@ export function concede(ctx: Ctx): Promise<void> {
   if (ctx.phase !== 'defeated' || ctx.continuing || !run) return Promise.resolve();
   const score = run.score;
   const siege = ctx.mode === 'siege';
-  const stats = { moves: run.tick, score: siege ? score : 0 };
+  const stats = { moves: siege ? wavesCleared(run) : livesLost(ctx, run), score: siege ? score : 0 };
   return sendEnd(ctx, { won: siege, stats, onAnswer: (answer) => {
     complete(ctx, { won: false, verified: answer.verified, stars: siege ? 0 : answer.stars, score, localStars: 0 });
   } }, false);
+}
+
+/**
+ * Ends a Siege run in play (Pause → End Run / Restart): the run is lost by the player's choice and
+ * its score goes to the level end like any run end. The campaign never forfeits (Quit sends nothing).
+ */
+export function forfeit(ctx: Ctx): Promise<void> {
+  const run = ctx.run;
+  const live: readonly string[] = ['intro', 'playing', 'paused', 'cleared'];
+  if (!run || ctx.mode !== 'siege' || !live.includes(ctx.phase)) return concede(ctx);
+  run.phase = 'defeated';
+  run.phaseTicks = 0;
+  run.cause = run.cause ?? 'lives';
+  ctx.pausedFrom = null;
+  setPhase(ctx, 'defeated');
+  return concede(ctx);
 }
 
 /** After the automatic retries failed: one more call on the player's demand. */

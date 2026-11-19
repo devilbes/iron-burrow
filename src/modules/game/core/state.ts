@@ -68,9 +68,9 @@ export type GameEvent =
   | { readonly t: 'pickup'; readonly type: PowerupType; readonly points: number }
   | { readonly t: 'powerup_expired' }
   | { readonly t: 'tile'; readonly quarters: readonly (readonly [number, number])[]; readonly steel: boolean }
-  | { readonly t: 'bullet_block'; readonly owner: number }
-  | { readonly t: 'clash' }
-  | { readonly t: 'shield_block' }
+  | { readonly t: 'bullet_block'; readonly owner: number; readonly x?: number; readonly y?: number; readonly on?: 'tile' | 'tank' }
+  | { readonly t: 'clash'; readonly x?: number; readonly y?: number }
+  | { readonly t: 'shield_block'; readonly x?: number; readonly y?: number }
   | { readonly t: 'player_death'; readonly lives: number }
   | { readonly t: 'threat' }
   | { readonly t: 'core_destroyed'; readonly owner: number }
