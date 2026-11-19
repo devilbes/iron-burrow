@@ -168,7 +168,7 @@
   --kit-title-tracking:.04em;
 
   /* 4. Scene */
-  --game-scene-position:50% 50%;     /* the point of the art kept in view in every size */
+  --game-scene-position:50% 40%;     /* the point of the art kept in view in every size (map: lobby 50% 40%) */
 
   /* 5. Raster buttons (art.ts `button-base`) */
   --game-button-slice:24;            /* edges of the picture that never stretch, in its pixels */
