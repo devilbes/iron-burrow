@@ -1,0 +1,92 @@
+{
+  "story": {
+    "ch1": {
+      "intro": {
+        "title": "Clay Tunnels",
+        "body": "The Rustbugs broke through the clay last night, and they want the Core. Dig in, hold the line, and show them whose burrow this is.",
+        "line": "Burrower crew, engines warm. We dig. We hold."
+      },
+      "outro": {
+        "title": "Tunnels Held",
+        "body": "The clay breach is sealed and the Core still glows. The scrap tracks lead down to the old Iron Works.",
+        "line": "Good digging, crew. Tighten your bolts, we head deeper next."
+      }
+    },
+    "ch2": {
+      "intro": {
+        "title": "The Iron Works",
+        "body": "Below the clay sit the old Iron Works, where the Rustbugs rebuild themselves from scrap. Expect more Gunners and Brutes, and faster waves.",
+        "line": "Every bug we break here is one less they can bolt back together."
+      },
+      "outro": {
+        "title": "Works Shut Down",
+        "body": "The assembly line is scrap, and the Rustbugs can't rebuild up here anymore. The heat keeps rising from below, so we drill on to the Magma Depths.",
+        "line": "Iron Works, quiet at last. Next stop: somewhere much hotter."
+      }
+    },
+    "ch3": {
+      "intro": {
+        "title": "Magma Depths",
+        "body": "At the bottom of the world, the swarm draws its heat from the magma. Seal the deep breach and the Rustbugs lose their spark.",
+        "line": "Hot hull, steady hands. Let's go."
+      },
+      "outro": {
+        "title": "Breach Sealed",
+        "body": "The deep breach is sealed and the swarm's fire is going out. The Core glows steady, and for once the tunnels are quiet.",
+        "line": "Not every tunnel is on our map yet. Whatever is down there, we'll be ready."
+      }
+    },
+    "campaign": {
+      "end": {
+        "title": "The Burrow Holds",
+        "body": "Thirty stages, three chapters, one Core still glowing. Rumor says more tunnels branch off far below, and the drill is ready.",
+        "line": "The Pit is still open if you miss the noise. See you down there, Burrower."
+      }
+    },
+    "siege": {
+      "unlock": {
+        "title": "The Pit Is Open",
+        "body": "Under the tunnels lies the Pit, where the swarm never stops coming. Try Siege from the Lobby and see how long you can hold.",
+        "line": "No end in sight. Just us, the Core and the swarm."
+      },
+      "intro_line": "The Pit never runs dry. How long can you hold?"
+    },
+    "meta": {
+      "grant_line": "Crew crate unpacked: two of each booster. Save them for when the swarm gets thick.",
+      "daily_line": "Supply drop from the surface. Grab it and get back to digging.",
+      "first_defeat": "The swarm got through this time. Patch the hull, crew, and we go again."
+    },
+    "stage": {
+      "s01_log": "Log 1: First Rustbugs in the clay. Fire straight and keep them off the Core wall.",
+      "s02_log": "Log 2: One of them carries a long gun. Gunners shoot fast, so stay out of their line.",
+      "s03_log": "Log 3: Brick chips away a quarter at a time. Cut your own lanes, but leave the Core wall whole.",
+      "s04_log": "Log 4: Watch for flashing Rustbugs. Hit one and it drops a power-up for us.",
+      "s05_log": "Log 5: The Scouts keep getting quicker. Hold this tunnel and a new chamber opens below.",
+      "s06_log": "Log 6: Heavy shell on the scanner. That's a Brute, and it takes four good hits.",
+      "s07_log": "Log 7: The tunnels shake every night. Something is pushing the swarm up from below.",
+      "s08_log": "Log 8: Steel plates in the clay now. Grab enough Gun Up and we punch right through.",
+      "s09_log": "Log 9: They come four at a time. Pick them off one by one and keep the Core behind you.",
+      "s10_log": "Log 10: The clay breach is right ahead. Close it and these tunnels are ours again.",
+      "s11_log": "Log 11: Furnaces still warm. Down here the swarm patches itself together from old parts.",
+      "s12_log": "Log 12: Five on the field at once now. Keep moving, a still drill is an easy target.",
+      "s13_log": "Log 13: Oil on the floor. Brake early or we slide right into their sights.",
+      "s14_log": "Log 14: More Gunners on the walkways. Use the steel as cover and fire around corners.",
+      "s15_log": "Log 15: Saw one Rustbug bolt a new horn onto another. They are building Brutes now.",
+      "s16_log": "Log 16: Steel everywhere in this hall. A maxed gun turns it into open road.",
+      "s17_log": "Log 17: The scrap piles are shrinking. Good, fewer parts for them to rebuild with.",
+      "s18_log": "Log 18: The whole works is grinding at us. Shield up when the Brutes line up.",
+      "s19_log": "Log 19: The heat comes from under the furnaces. Their real source is deeper still.",
+      "s20_log": "Log 20: The main assembly line. Break it and they stop coming back for spare parts.",
+      "s21_log": "Log 21: Lava on the map. We can't drive over it, but our shots fly right across.",
+      "s22_log": "Log 22: The bugs glow brighter near the magma. Same armor, more fight.",
+      "s23_log": "Log 23: Six on the field at once. Pick a lane and own it.",
+      "s24_log": "Log 24: Roots grow over the paths down here. A Rustbug could be hiding under them.",
+      "s25_log": "Log 25: Halfway down. The heat haze makes everything shimmer, so trust the scanner.",
+      "s26_log": "Log 26: Five Brutes in this chamber. Keep a Shockwave ready for when the line breaks.",
+      "s27_log": "Log 27: The hull is warm to the touch. Keep the Core wall patched and hold.",
+      "s28_log": "Log 28: We can hear the breach now, a long low roar under the rock.",
+      "s29_log": "Log 29: One chamber left before the breach. Everything we learned, we use now.",
+      "s30_log": "Log 30: The deep breach. Hold here, seal it, and the swarm goes cold."
+    }
+  }
+}

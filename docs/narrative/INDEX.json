@@ -1,0 +1,1898 @@
+{
+  "version": 1,
+  "baseLocale": "en",
+  "story": "light",
+  "localization": {
+    "defaultLocale": "en",
+    "locales": [
+      {
+        "tag": "en",
+        "name": "English",
+        "status": "published"
+      }
+    ],
+    "configFiles": {
+      "ui": "configs/remote/localization/strings.json",
+      "story": "configs/remote/localization/strings/narrative.json"
+    }
+  },
+  "world": {
+    "id": "world",
+    "file": "world.md",
+    "status": "draft",
+    "version": 1
+  },
+  "style": {
+    "id": "style",
+    "file": "STYLE.md",
+    "status": "draft",
+    "version": 1
+  },
+  "glossary": {
+    "id": "glossary",
+    "file": "GLOSSARY.json",
+    "status": "draft",
+    "version": 1
+  },
+  "beats": {
+    "id": "beats",
+    "file": "beats.json",
+    "status": "draft",
+    "version": 1
+  },
+  "characters": [
+    {
+      "id": "burrower",
+      "file": "characters/burrower.md",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "scout",
+      "file": "characters/scout.md",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "grunt",
+      "file": "characters/grunt.md",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "gunner",
+      "file": "characters/gunner.md",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "brute",
+      "file": "characters/brute.md",
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "chapters": [
+    {
+      "id": "ch1_clay_tunnels",
+      "file": "chapters/ch1_clay_tunnels.md",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "ch2_iron_works",
+      "file": "chapters/ch2_iron_works.md",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "ch3_magma_depths",
+      "file": "chapters/ch3_magma_depths.md",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "siege_pit",
+      "file": "chapters/siege_pit.md",
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "events": [],
+  "dialogues": [
+    {
+      "id": "campaign_end",
+      "file": "dialogues/campaign_end.json",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "ch1_intro",
+      "file": "dialogues/ch1_intro.json",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "ch1_outro",
+      "file": "dialogues/ch1_outro.json",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "ch2_intro",
+      "file": "dialogues/ch2_intro.json",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "ch2_outro",
+      "file": "dialogues/ch2_outro.json",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "ch3_intro",
+      "file": "dialogues/ch3_intro.json",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "ch3_outro",
+      "file": "dialogues/ch3_outro.json",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "siege_unlock",
+      "file": "dialogues/siege_unlock.json",
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "texts": [
+    {
+      "key": "ui.common.close",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.common.back",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.common.ok",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.common.collect",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.common.count",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.common.offline",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.boot.loading",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.boot.error",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.boot.retry",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.lobby.title",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.lobby.play",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.lobby.play_sub",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.lobby.siege",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.lobby.siege_locked",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.lobby.stars",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.lobby.grant_title",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.lobby.grant_body",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.topbar.daily",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.topbar.shop",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.topbar.leaderboards",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.topbar.settings",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.map.title",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.map.chapter",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.map.chapter_1",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.map.chapter_2",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.map.chapter_3",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.map.chapter_locked",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.map.play",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pre.title",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pre.title_siege",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pre.goal",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pre.goal_siege",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pre.best",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pre.hull",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pre.hull_owned",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pre.hull_none",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pre.shop",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pre.start",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.hud.enemies",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.hud.lives",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.hud.stage",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.hud.wave",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.hud.score",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.hud.fire",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.hud.pause",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.hud.key",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.hud.limit",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.toast.go",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.toast.wave",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.toast.wave_clear",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.toast.star",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.toast.star_max",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.toast.bubble",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.toast.rebar",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.toast.quake",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.toast.freeze",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.toast.hull",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.toast.fortify",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.toast.shockwave",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pause.title",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pause.resume",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pause.restart",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pause.settings",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pause.quit",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.clear.title",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.clear.chapter_done",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.clear.campaign_done",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.clear.kills",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.clear.pickups",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.clear.bonus",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.clear.lives",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.clear.total",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.clear.best",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.clear.rewards",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.clear.next",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.clear.replay",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.clear.map",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.defeat.title",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.defeat.core",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.defeat.lives",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.defeat.continue",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.defeat.continue_hint",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.defeat.continue_used",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.defeat.offer_title",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.defeat.retry",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.defeat.map",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.defeat.end_siege",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.siege.title",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.siege.wave",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.siege.score",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.siege.best",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.siege.rank",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.siege.unranked",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.siege.retry",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.siege.boards",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.siege.lobby",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.shop.title",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.shop.one_time",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.shop.best_value",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.shop.contents",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.shop.buy",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.shop.pending",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.shop.owned",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.shop.test",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.shop.unavailable",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pack.starter",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pack.hull",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pack.field",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pack.heavy",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.pack.commander",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.purchase.success",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.purchase.failed",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.purchase.failed_body",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.purchase.cancelled",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.daily.title",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.daily.day",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.daily.claim",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.daily.claimed",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.daily.next",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.boards.title",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.boards.siege",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.boards.campaign",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.boards.weekly",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.boards.alltime",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.boards.you",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.boards.empty",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.boards.reset",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.boards.guest",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.settings.title",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.settings.music",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.settings.sfx",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.settings.motion",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.settings.haptics",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.settings.on",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.settings.off",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.settings.profile",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.settings.signin",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.settings.signed",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.settings.guest",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.settings.version",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.tut.move_touch",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.tut.move_keys",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.tut.fire_touch",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.tut.fire_keys",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.tut.brick",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.tut.core",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.tut.carrier",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.tut.booster",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.tut.next",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.tut.skip",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.booster.bst_bubble",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.booster.bst_bubble_desc",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.booster.bst_shockwave",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.booster.bst_shockwave_desc",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.booster.bst_fortify",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.booster.bst_fortify_desc",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.booster.bst_hull",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.booster.bst_hull_desc",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.booster.owned",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "ui.booster.more",
+      "ns": "ui",
+      "file": "texts/en/ui.json",
+      "status": "approved",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch1.intro.title",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch1.intro.body",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch1.intro.line",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch1.outro.title",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch1.outro.body",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch1.outro.line",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch2.intro.title",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch2.intro.body",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch2.intro.line",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch2.outro.title",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch2.outro.body",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch2.outro.line",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch3.intro.title",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch3.intro.body",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch3.intro.line",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch3.outro.title",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch3.outro.body",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.ch3.outro.line",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.campaign.end.title",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.campaign.end.body",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.campaign.end.line",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.siege.unlock.title",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.siege.unlock.body",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.siege.unlock.line",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.siege.intro_line",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.meta.grant_line",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.meta.daily_line",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.meta.first_defeat",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s01_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s02_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s03_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s04_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s05_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s06_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s07_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s08_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s09_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s10_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s11_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s12_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s13_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s14_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s15_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s16_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s17_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s18_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s19_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s20_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s21_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s22_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s23_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s24_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s25_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s26_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s27_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s28_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s29_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    },
+    {
+      "key": "story.stage.s30_log",
+      "ns": "story",
+      "file": "texts/en/story.json",
+      "status": "draft",
+      "version": 1,
+      "deprecated": false
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "ui": {
+    "common": {
+      "close": "Close",
+      "back": "Back",
+      "ok": "OK",
+      "collect": "Collect",
+      "count": "×{count}",
+      "offline": "No connection. Reconnecting..."
+    },
+    "boot": {
+      "loading": "Digging in...",
+      "error": "Can't reach the server.",
+      "retry": "Retry"
+    },
+    "lobby": {
+      "title": "Iron Burrow",
+      "play": "Play",
+      "play_sub": "Stage {n}",
+      "siege": "Siege",
+      "siege_locked": "Clear stage 5 to unlock",
+      "stars": "{stars}/90",
+      "grant_title": "Welcome, Burrower!",
+      "grant_body": "Your starter boosters"
+    },
+    "topbar": {
+      "daily": "Daily",
+      "shop": "Shop",
+      "leaderboards": "Ranks",
+      "settings": "Settings"
+    },
+    "map": {
+      "title": "Campaign",
+      "chapter": "Chapter {n}",
+      "chapter_1": "Clay Tunnels",
+      "chapter_2": "Iron Works",
+      "chapter_3": "Magma Depths",
+      "chapter_locked": "Clear stage {n} to open",
+      "play": "Play Stage {n}"
+    },
+    "pre": {
+      "title": "Stage {n}",
+      "title_siege": "Siege",
+      "goal": "Destroy {count} Rustbugs. Protect the Core!",
+      "goal_siege": "Survive the waves. Protect the Core!",
+      "best": "Best: {score}",
+      "hull": "Take a Spare Hull (+1 life)",
+      "hull_owned": "You have {count}",
+      "hull_none": "No Spare Hulls left",
+      "shop": "Get more",
+      "start": "Start"
+    },
+    "hud": {
+      "enemies": "Rustbugs left: {count}",
+      "lives": "Lives: {count}",
+      "stage": "Stage {n}",
+      "wave": "Wave {n}",
+      "score": "Score",
+      "fire": "FIRE",
+      "pause": "Pause",
+      "key": "{key}",
+      "limit": "Limit reached"
+    },
+    "toast": {
+      "go": "Stage {n}. Go!",
+      "wave": "Wave {n}",
+      "wave_clear": "Wave {n} cleared! +{bonus}",
+      "star": "Gun Up!",
+      "star_max": "Gun Maxed!",
+      "bubble": "Shield On!",
+      "rebar": "Rebar Wall!",
+      "quake": "Quake!",
+      "freeze": "Freeze!",
+      "hull": "+1 Life!",
+      "fortify": "Steel Fortress!",
+      "shockwave": "Shockwave!"
+    },
+    "pause": {
+      "title": "Paused",
+      "resume": "Resume",
+      "restart": "Restart Stage",
+      "settings": "Settings",
+      "quit": "Quit"
+    },
+    "clear": {
+      "title": "Stage Clear!",
+      "chapter_done": "Chapter Complete!",
+      "campaign_done": "Campaign Complete!",
+      "kills": "Rustbugs",
+      "pickups": "Power-ups",
+      "bonus": "Clear bonus",
+      "lives": "Lives left ×{count}",
+      "total": "Score",
+      "best": "New Best!",
+      "rewards": "Rewards",
+      "next": "Next Stage",
+      "replay": "Replay",
+      "map": "Map"
+    },
+    "defeat": {
+      "title": "Defeat",
+      "core": "The Core was destroyed!",
+      "lives": "Out of lives!",
+      "continue": "Continue",
+      "continue_hint": "Use 1 Spare Hull: +2 lives, Core rebuilt",
+      "continue_used": "Continue already used",
+      "offer_title": "Need more hulls?",
+      "retry": "Retry",
+      "map": "Map",
+      "end_siege": "End Run"
+    },
+    "siege": {
+      "title": "Siege Over",
+      "wave": "Reached wave {n}",
+      "score": "Score: {score}",
+      "best": "Best this week: {score}",
+      "rank": "Rank #{rank}",
+      "unranked": "Unranked",
+      "retry": "Play Again",
+      "boards": "Leaderboards",
+      "lobby": "Lobby"
+    },
+    "shop": {
+      "title": "Shop",
+      "one_time": "One-time offer",
+      "best_value": "Best value",
+      "contents": "{count} boosters",
+      "buy": "{price}",
+      "pending": "Processing...",
+      "owned": "Purchased",
+      "test": "Test purchase",
+      "unavailable": "Shop is unavailable. Try again later."
+    },
+    "pack": {
+      "starter": "Starter Crate",
+      "hull": "Hull Pack",
+      "field": "Field Kit",
+      "heavy": "Heavy Arsenal",
+      "commander": "Commander Cache"
+    },
+    "purchase": {
+      "success": "Purchase Complete",
+      "failed": "Purchase Failed",
+      "failed_body": "No charge was made. Please try again.",
+      "cancelled": "Purchase Cancelled"
+    },
+    "daily": {
+      "title": "Daily Supplies",
+      "day": "Day {n}",
+      "claim": "Claim",
+      "claimed": "Claimed",
+      "next": "Next in {time}"
+    },
+    "boards": {
+      "title": "Leaderboards",
+      "siege": "Siege",
+      "campaign": "Campaign",
+      "weekly": "This Week",
+      "alltime": "All Time",
+      "you": "You",
+      "empty": "No scores yet. Be the first!",
+      "reset": "Resets in {time}",
+      "guest": "Sign in to keep your rank"
+    },
+    "settings": {
+      "title": "Settings",
+      "music": "Music",
+      "sfx": "Sound",
+      "motion": "Reduce Motion",
+      "haptics": "Vibration",
+      "on": "On",
+      "off": "Off",
+      "profile": "ManyPlay ID",
+      "signin": "Sign In",
+      "signed": "Signed in as {name}",
+      "guest": "Playing as guest",
+      "version": "Version {version}"
+    },
+    "tut": {
+      "move_touch": "Drag the stick to drive",
+      "move_keys": "Use WASD or arrows to drive",
+      "fire_touch": "Tap FIRE to shoot",
+      "fire_keys": "Press Space to shoot",
+      "brick": "Shots chew through brick. Steel needs a stronger gun.",
+      "core": "Protect the Core! One hit and it's over.",
+      "carrier": "Hit flashing Rustbugs to drop power-ups",
+      "booster": "In trouble? Tap a booster.",
+      "next": "Got it",
+      "skip": "Skip"
+    },
+    "booster": {
+      "bst_bubble": "Bubble Shield",
+      "bst_bubble_desc": "You can't be hurt for 10 s. Up to 2 per stage.",
+      "bst_shockwave": "Shockwave",
+      "bst_shockwave_desc": "Destroys every Rustbug on the field. 1 per stage.",
+      "bst_fortify": "Steel Fortress",
+      "bst_fortify_desc": "Turns the Core wall to steel for 20 s and rebuilds it. 1 per stage.",
+      "bst_hull": "Spare Hull",
+      "bst_hull_desc": "+1 life before a stage, or continue after defeat.",
+      "owned": "You have {count}",
+      "more": "Get more"
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "settings": {
+    "schemaVersion": 1,
+    "fields": [
+      {
+        "ref": "availability"
+      }
+    ]
+  },
+  "ui": {
+    "slots": [
+      {
+        "id": "entry",
+        "zone": "hud",
+        "contexts": [
+          "main"
+        ],
+        "order": 40,
+        "fallback": [],
+        "features": [
+          "badge",
+          "timer",
+          "value"
+        ],
+        "does": {
+          "ru": "Рейтинг",
+          "en": "Leaderboard"
+        }
+      }
+    ]
+  },
+  "id": "leaderboards",
+  "version": "1.0.0-rc.30",
+  "kind": "service",
+  "engines": {
+    "core": "^1.0.0"
+  },
+  "targets": [
+    "web",
+    "cordova"
+  ],
+  "optional": {
+    "ui-kit": "^1.0.0",
+    "profile": "^1.0.0",
+    "hud-ui": "^1.0.0"
+  },
+  "consumes": [
+    "ui.slots@1",
+    "hud.registry@1"
+  ],
+  "permissions": [
+    "http:leaderboards",
+    "windows"
+  ],
+  "load": "eager",
+  "entry": "sdk-runtime/leaderboards.js",
+  "events": {
+    "emits": [
+      "leaderboards:board:fetched",
+      "leaderboards:rank:changed",
+      "leaderboards:window:open",
+      "leaderboards:window:close"
+    ],
+    "listens": [
+      "leaderboards:window:closed"
+    ]
+  },
+  "title": {
+    "ru": "Лидерборды",
+    "en": "Leaderboards"
+  },
+  "description": {
+    "ru": "Лидерборды для игры на ManyPlay.",
+    "en": "ManyPlay client leaderboards module."
+  },
+  "llmDescription": "ManyPlay client leaderboards module. Select mod-leaderboards when the game needs this SDK capability. Read the linked module documentation for methods and events.",
+  "selection": "optional",
+  "status": "ready",
+  "preview": {
+    "icon": "catalog/icon.png",
+    "media": [],
+    "mock": {
+      "badge": {
+        "kind": "dot"
+      },
+      "value": 1
+    }
+  },
+  "docs": [
+    {
+      "title": {
+        "ru": "Документация",
+        "en": "Documentation"
+      },
+      "uri": "https://github.com/manygamescorp/client-sdk/tree/main/packages/mod-leaderboards"
+    }
+  ],
+  "group": "social",
+  "tags": [
+    "leaderboard",
+    "ranking"
+  ],
+  "package": "@manygamescorp/mod-leaderboards",
+  "files": {
+    "scripts": [
+      "client.js",
+      "leaderboards.js",
+      "sdk-runtime/leaderboards.js",
+      "version.js"
+    ],
+    "styles": [],
+    "assets": [
+      "catalog/icon.png",
+      "sdk-runtime/leaderboards.json",
+      "ui.json"
+    ]
+  }
+}

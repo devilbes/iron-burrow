@@ -1,0 +1,13 @@
+{
+  "id": "siege_unlock",
+  "lines": [
+    {
+      "lineKey": "story.siege.unlock.body",
+      "char": "burrower"
+    },
+    {
+      "lineKey": "story.siege.unlock.line",
+      "char": "burrower"
+    }
+  ]
+}

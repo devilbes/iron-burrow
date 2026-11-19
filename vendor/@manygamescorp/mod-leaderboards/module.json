@@ -1,0 +1,89 @@
+{
+  "id": "leaderboards",
+  "version": "1.0.0-rc.30",
+  "entry": "dist/sdk-runtime/leaderboards.js",
+  "targets": [
+    "cordova",
+    "web"
+  ],
+  "title": {
+    "ru": "Лидерборды",
+    "en": "Leaderboards"
+  },
+  "description": {
+    "ru": "Лидерборды для игры на ManyPlay.",
+    "en": "ManyPlay client leaderboards module."
+  },
+  "llmDescription": "ManyPlay client leaderboards module. Select mod-leaderboards when the game needs this SDK capability. Read the linked module documentation for methods and events.",
+  "selection": "optional",
+  "status": "ready",
+  "preview": {
+    "icon": "dist/catalog/icon.png",
+    "media": [],
+    "mock": {
+      "badge": {
+        "kind": "dot"
+      },
+      "value": 1
+    }
+  },
+  "docs": [
+    {
+      "title": {
+        "ru": "Документация",
+        "en": "Documentation"
+      },
+      "uri": "https://github.com/manygamescorp/client-sdk/tree/main/packages/mod-leaderboards"
+    }
+  ],
+  "settings": {
+    "schemaVersion": 1,
+    "fields": [
+      {
+        "ref": "availability"
+      }
+    ]
+  },
+  "group": "social",
+  "tags": [
+    "leaderboard",
+    "ranking"
+  ],
+  "load": "eager",
+  "ui": {
+    "slots": [
+      {
+        "id": "entry",
+        "zone": "hud",
+        "contexts": [
+          "main"
+        ],
+        "order": 40,
+        "fallback": [],
+        "features": [
+          "badge",
+          "timer",
+          "value"
+        ],
+        "does": {
+          "ru": "Рейтинг",
+          "en": "Leaderboard"
+        }
+      }
+    ]
+  },
+  "files": {
+    "scripts": [
+      "dist/client.js",
+      "dist/leaderboards.js",
+      "dist/sdk-runtime/leaderboards.js",
+      "dist/version.js"
+    ],
+    "styles": [],
+    "assets": [
+      "dist/catalog/icon.png",
+      "dist/sdk-runtime/leaderboards.json",
+      "dist/ui.json"
+    ]
+  }
+}

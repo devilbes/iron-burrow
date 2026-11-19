@@ -1,0 +1,94 @@
+{
+  "settings": {
+    "schemaVersion": 1,
+    "fields": [
+      {
+        "ref": "availability"
+      }
+    ]
+  },
+  "id": "realtime",
+  "version": "1.0.0-rc.30",
+  "kind": "service",
+  "engines": {
+    "core": "^1.0.0"
+  },
+  "targets": [
+    "web",
+    "cordova"
+  ],
+  "permissions": [
+    "http:realtime",
+    "storage",
+    "platform",
+    "device:info"
+  ],
+  "load": "eager",
+  "entry": "sdk-runtime/realtime.js",
+  "provides": [
+    "realtime.handlers@1"
+  ],
+  "consumes": [
+    "session.transport@1",
+    "realtime.delivery@1"
+  ],
+  "events": {
+    "emits": [
+      "realtime:connection:connected",
+      "realtime:connection:disconnected",
+      "realtime:connection:transport",
+      "realtime:connection:resync"
+    ],
+    "listens": [
+      "realtime:configs.reload",
+      "realtime:app.reload",
+      "realtime:panel.announcement",
+      "realtime:app.maintenance",
+      "realtime:app.update.required"
+    ]
+  },
+  "title": {
+    "ru": "Обновления в реальном времени",
+    "en": "Realtime"
+  },
+  "description": {
+    "ru": "Обновления в реальном времени для игры на ManyPlay.",
+    "en": "ManyPlay realtime message bus (E102)."
+  },
+  "llmDescription": "ManyPlay realtime message bus (E102). Select mod-realtime when the game needs this SDK capability. Read the linked module documentation for methods and events.",
+  "selection": "optional",
+  "status": "ready",
+  "preview": {
+    "icon": "catalog/icon.png",
+    "media": []
+  },
+  "docs": [
+    {
+      "title": {
+        "ru": "Документация",
+        "en": "Documentation"
+      },
+      "uri": "https://github.com/manygamescorp/client-sdk/tree/main/packages/mod-realtime"
+    }
+  ],
+  "group": "social",
+  "tags": [
+    "realtime",
+    "push"
+  ],
+  "package": "@manygamescorp/mod-realtime",
+  "files": {
+    "scripts": [
+      "broadcast.js",
+      "realtime-io.js",
+      "realtime.js",
+      "sdk-runtime/realtime.js",
+      "version.js"
+    ],
+    "styles": [],
+    "assets": [
+      "catalog/icon.png",
+      "sdk-runtime/realtime.json"
+    ]
+  }
+}

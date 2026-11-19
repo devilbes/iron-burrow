@@ -1,0 +1,159 @@
+{
+  "settings": {
+    "schemaVersion": 1,
+    "fields": [
+      {
+        "ref": "availability"
+      }
+    ]
+  },
+  "ui": {
+    "slots": [
+      {
+        "id": "entry",
+        "zone": "hud",
+        "contexts": [
+          "main"
+        ],
+        "order": 50,
+        "fallback": [],
+        "features": [
+          "badge",
+          "timer",
+          "value"
+        ],
+        "does": {
+          "ru": "Магазин",
+          "en": "Shop"
+        }
+      }
+    ]
+  },
+  "id": "iap",
+  "version": "1.0.0-rc.30",
+  "kind": "service",
+  "engines": {
+    "core": "^1.0.0"
+  },
+  "targets": [
+    "web",
+    "cordova"
+  ],
+  "permissions": [
+    "http:iap",
+    "storage",
+    "modules",
+    "platform",
+    "windows"
+  ],
+  "provides": [
+    "iap.store@1"
+  ],
+  "load": "eager",
+  "entry": "sdk-runtime/iap.js",
+  "consumes": [
+    "ui.slots@1",
+    "hud.registry@1"
+  ],
+  "optional": {
+    "ui-kit": "^1.0.0",
+    "hud-ui": "^1.0.0"
+  },
+  "events": {
+    "emits": [
+      "iap:offers:updated",
+      "iap:order:created",
+      "iap:store:purchase-started",
+      "iap:store:purchase-cancelled",
+      "iap:store:purchase-failed",
+      "iap:order:validated",
+      "iap:order:granted",
+      "iap:order:pending",
+      "iap:order:failed",
+      "iap:restore:completed",
+      "iap:entitlement:changed",
+      "iap:window:open",
+      "iap:window:close"
+    ],
+    "listens": [
+      "iap:window:closed",
+      "configs:snapshot:updated",
+      "realtime:connection:resync",
+      "realtime:iap.order.paid",
+      "realtime:iap.order.granted",
+      "realtime:iap.order.failed",
+      "realtime:iap.order.refunded",
+      "realtime:iap.order.revoked"
+    ]
+  },
+  "realtime": {
+    "handles": [
+      "iap.order.paid",
+      "iap.order.granted",
+      "iap.order.failed",
+      "iap.order.refunded",
+      "iap.order.revoked"
+    ]
+  },
+  "title": {
+    "ru": "Покупки",
+    "en": "Iap"
+  },
+  "description": {
+    "ru": "Покупки для игры на ManyPlay.",
+    "en": "ManyPlay in-app purchases: offers from configs iap.*, orders of the iap service, StoreAdapter port and the fake store of test/dev builds."
+  },
+  "llmDescription": "ManyPlay in-app purchases: offers from configs iap.*, orders of the iap service, StoreAdapter port and the fake store of test/dev builds. Select mod-iap when the game needs this SDK capability. Read the linked module documentation for methods and events.",
+  "selection": "optional",
+  "status": "ready",
+  "preview": {
+    "icon": "catalog/icon.png",
+    "media": [],
+    "mock": {
+      "badge": {
+        "kind": "dot"
+      },
+      "value": 1
+    }
+  },
+  "docs": [
+    {
+      "title": {
+        "ru": "Документация",
+        "en": "Documentation"
+      },
+      "uri": "https://github.com/manygamescorp/client-sdk/tree/main/packages/mod-iap"
+    }
+  ],
+  "group": "monetization",
+  "tags": [
+    "purchases",
+    "shop"
+  ],
+  "package": "@manygamescorp/mod-iap",
+  "files": {
+    "scripts": [
+      "catalog.js",
+      "contract.js",
+      "fake-module.js",
+      "fake-store.js",
+      "iap.js",
+      "public-iap.js",
+      "redirect-store.js",
+      "sdk-runtime/iap.js",
+      "sdk-runtime/store-fake.js",
+      "store-loader.js",
+      "store-prices.js",
+      "store-registration.js",
+      "store.js",
+      "version.js"
+    ],
+    "styles": [],
+    "assets": [
+      "catalog/icon.png",
+      "sdk-runtime/iap.json",
+      "sdk-runtime/store-fake.json",
+      "ui.json"
+    ]
+  }
+}

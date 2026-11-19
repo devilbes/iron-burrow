@@ -1,0 +1,533 @@
+{
+  "version": 1,
+  "beats": [
+    {
+      "id": "ch1_intro",
+      "chapter": "ch1",
+      "trigger": {
+        "screen": "S03",
+        "when": "first S03 open (chapter 1 tab shown), no other story card shown this open"
+      },
+      "textKeys": [
+        "story.ch1.intro.title",
+        "story.ch1.intro.body",
+        "story.ch1.intro.line"
+      ],
+      "dialogue": "ch1_intro",
+      "once": true
+    },
+    {
+      "id": "ch1_outro",
+      "chapter": "ch1",
+      "trigger": {
+        "screen": "S07",
+        "when": "first clear of stage 10, after rewards are collected (S07 state collected)"
+      },
+      "textKeys": [
+        "story.ch1.outro.title",
+        "story.ch1.outro.body",
+        "story.ch1.outro.line"
+      ],
+      "dialogue": "ch1_outro",
+      "once": true
+    },
+    {
+      "id": "ch2_intro",
+      "chapter": "ch2",
+      "trigger": {
+        "screen": "S03",
+        "when": "first S03 open with chapter 2 unlocked (stage 10 cleared)"
+      },
+      "textKeys": [
+        "story.ch2.intro.title",
+        "story.ch2.intro.body",
+        "story.ch2.intro.line"
+      ],
+      "dialogue": "ch2_intro",
+      "once": true
+    },
+    {
+      "id": "ch2_outro",
+      "chapter": "ch2",
+      "trigger": {
+        "screen": "S07",
+        "when": "first clear of stage 20, after rewards are collected (S07 state collected)"
+      },
+      "textKeys": [
+        "story.ch2.outro.title",
+        "story.ch2.outro.body",
+        "story.ch2.outro.line"
+      ],
+      "dialogue": "ch2_outro",
+      "once": true
+    },
+    {
+      "id": "ch3_intro",
+      "chapter": "ch3",
+      "trigger": {
+        "screen": "S03",
+        "when": "first S03 open with chapter 3 unlocked (stage 20 cleared)"
+      },
+      "textKeys": [
+        "story.ch3.intro.title",
+        "story.ch3.intro.body",
+        "story.ch3.intro.line"
+      ],
+      "dialogue": "ch3_intro",
+      "once": true
+    },
+    {
+      "id": "ch3_outro",
+      "chapter": "ch3",
+      "trigger": {
+        "screen": "S07",
+        "when": "first clear of stage 30, after rewards are collected (S07 state collected)"
+      },
+      "textKeys": [
+        "story.ch3.outro.title",
+        "story.ch3.outro.body",
+        "story.ch3.outro.line"
+      ],
+      "dialogue": "ch3_outro",
+      "once": true
+    },
+    {
+      "id": "campaign_end",
+      "chapter": "campaign",
+      "trigger": {
+        "screen": "S02",
+        "when": "first S02 open after first clear of stage 30 (clear-next from stage 30 leads to S02), after grant/daily windows"
+      },
+      "textKeys": [
+        "story.campaign.end.title",
+        "story.campaign.end.body",
+        "story.campaign.end.line"
+      ],
+      "dialogue": "campaign_end",
+      "once": true
+    },
+    {
+      "id": "siege_unlock",
+      "chapter": "siege",
+      "trigger": {
+        "screen": "S07",
+        "when": "first clear of stage 5, after rewards are collected (Siege unlocked, game.siege.unlock_after_stage)"
+      },
+      "textKeys": [
+        "story.siege.unlock.title",
+        "story.siege.unlock.body",
+        "story.siege.unlock.line"
+      ],
+      "dialogue": "siege_unlock",
+      "once": true
+    },
+    {
+      "id": "siege_intro",
+      "chapter": "siege",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode siege (line under ui.pre.goal_siege)"
+      },
+      "textKeys": [
+        "story.siege.intro_line"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s01_log",
+      "chapter": "ch1",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 1 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s01_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s02_log",
+      "chapter": "ch1",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 2 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s02_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s03_log",
+      "chapter": "ch1",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 3 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s03_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s04_log",
+      "chapter": "ch1",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 4 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s04_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s05_log",
+      "chapter": "ch1",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 5 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s05_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s06_log",
+      "chapter": "ch1",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 6 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s06_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s07_log",
+      "chapter": "ch1",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 7 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s07_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s08_log",
+      "chapter": "ch1",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 8 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s08_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s09_log",
+      "chapter": "ch1",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 9 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s09_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s10_log",
+      "chapter": "ch1",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 10 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s10_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s11_log",
+      "chapter": "ch2",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 11 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s11_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s12_log",
+      "chapter": "ch2",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 12 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s12_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s13_log",
+      "chapter": "ch2",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 13 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s13_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s14_log",
+      "chapter": "ch2",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 14 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s14_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s15_log",
+      "chapter": "ch2",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 15 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s15_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s16_log",
+      "chapter": "ch2",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 16 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s16_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s17_log",
+      "chapter": "ch2",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 17 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s17_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s18_log",
+      "chapter": "ch2",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 18 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s18_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s19_log",
+      "chapter": "ch2",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 19 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s19_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s20_log",
+      "chapter": "ch2",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 20 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s20_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s21_log",
+      "chapter": "ch3",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 21 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s21_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s22_log",
+      "chapter": "ch3",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 22 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s22_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s23_log",
+      "chapter": "ch3",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 23 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s23_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s24_log",
+      "chapter": "ch3",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 24 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s24_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s25_log",
+      "chapter": "ch3",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 25 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s25_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s26_log",
+      "chapter": "ch3",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 26 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s26_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s27_log",
+      "chapter": "ch3",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 27 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s27_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s28_log",
+      "chapter": "ch3",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 28 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s28_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s29_log",
+      "chapter": "ch3",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 29 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s29_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "stage_s30_log",
+      "chapter": "ch3",
+      "trigger": {
+        "screen": "S04",
+        "when": "every S04 open in mode campaign for stage 30 (crew-log line under ui.pre.goal)"
+      },
+      "textKeys": [
+        "story.stage.s30_log"
+      ],
+      "once": false
+    },
+    {
+      "id": "meta_grant",
+      "chapter": "meta",
+      "trigger": {
+        "screen": "S02",
+        "when": "S02 state grant (start grant window, first entry), line under ui.lobby.grant_body"
+      },
+      "textKeys": [
+        "story.meta.grant_line"
+      ],
+      "once": true
+    },
+    {
+      "id": "meta_daily",
+      "chapter": "meta",
+      "trigger": {
+        "screen": "S12",
+        "when": "every S12 open while today's reward is claimable, line under ui.daily.title"
+      },
+      "textKeys": [
+        "story.meta.daily_line"
+      ],
+      "once": false
+    },
+    {
+      "id": "meta_first_defeat",
+      "chapter": "meta",
+      "trigger": {
+        "screen": "S08",
+        "when": "first S08 open ever (profile kv flag.first_defeat_seen = false), line under the defeat reason"
+      },
+      "textKeys": [
+        "story.meta.first_defeat"
+      ],
+      "once": true
+    }
+  ]
+}

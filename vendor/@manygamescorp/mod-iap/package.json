@@ -1,0 +1,55 @@
+{
+  "name": "@manygamescorp/mod-iap",
+  "version": "1.0.0-rc.30",
+  "description": "ManyPlay in-app purchases: offers from configs iap.*, orders of the iap service, StoreAdapter port and the fake store of test/dev builds.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./iap": {
+      "types": "./dist/iap.d.ts",
+      "default": "./dist/iap.js"
+    },
+    "./catalog": {
+      "types": "./dist/catalog.d.ts",
+      "default": "./dist/catalog.js"
+    },
+    "./store": {
+      "types": "./dist/store.d.ts",
+      "default": "./dist/store.js"
+    },
+    "./fake-store": {
+      "types": "./dist/fake-store.d.ts",
+      "default": "./dist/fake-store.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "default": "./dist/version.js"
+    },
+    "./package.json": "./package.json",
+    "./fake-module": {
+      "types": "./dist/fake-module.d.ts",
+      "default": "./dist/fake-module.js"
+    },
+    "./store-loader": {
+      "types": "./dist/store-loader.d.ts",
+      "default": "./dist/store-loader.js"
+    },
+    "./store-registration": {
+      "types": "./dist/store-registration.d.ts",
+      "default": "./dist/store-registration.js"
+    },
+    "./redirect-store": {
+      "types": "./dist/redirect-store.d.ts",
+      "default": "./dist/redirect-store.js"
+    }
+  },
+  "peerDependencies": {
+    "cordova-plugin-purchase": "13.19.1"
+  },
+  "peerDependenciesMeta": {
+    "cordova-plugin-purchase": {
+      "optional": true
+    }
+  }
+}

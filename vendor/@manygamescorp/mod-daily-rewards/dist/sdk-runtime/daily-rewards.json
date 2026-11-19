@@ -1,0 +1,316 @@
+{
+  "ui": {
+    "slots": [
+      {
+        "id": "entry",
+        "zone": {
+          "fromSetting": "entry"
+        },
+        "contexts": [
+          "main"
+        ],
+        "order": 40,
+        "fallback": [
+          "bottomMenu",
+          "hud"
+        ],
+        "features": [
+          "badge",
+          "timer",
+          "value"
+        ],
+        "does": {
+          "ru": "Ежедневная награда",
+          "en": "Daily reward"
+        }
+      },
+      {
+        "id": "calendar",
+        "zone": "window",
+        "autoOpen": {
+          "fromSetting": "autoOpen"
+        },
+        "does": {
+          "ru": "Ежедневная награда",
+          "en": "Daily reward"
+        }
+      }
+    ]
+  },
+  "id": "daily-rewards",
+  "version": "1.0.0-rc.30",
+  "kind": "service",
+  "engines": {
+    "core": "^1.0.0"
+  },
+  "targets": [
+    "web",
+    "cordova"
+  ],
+  "permissions": [
+    "windows"
+  ],
+  "entry": "sdk-runtime/daily-rewards.js",
+  "load": "eager",
+  "requires": {
+    "progress": "^1.0.0"
+  },
+  "optional": {
+    "ui-kit": "^1.0.0",
+    "hud-ui": "^1.0.0",
+    "bottommenu": "^1.0.0"
+  },
+  "consumes": [
+    "ui.slots@1",
+    "hud.registry@1",
+    "bottommenu.registry@1"
+  ],
+  "events": {
+    "emits": [
+      "daily-rewards:calendar:open",
+      "daily-rewards:board:open",
+      "daily-rewards:month:open",
+      "daily-rewards:gift:open",
+      "daily-rewards:reward:open",
+      "daily-rewards:window:close"
+    ],
+    "listens": [
+      "realtime:progress.daily_reward.ready",
+      "daily-rewards:window:closed"
+    ]
+  },
+  "realtime": {
+    "handles": [
+      "progress.daily_reward.ready"
+    ]
+  },
+  "settings": {
+    "schemaVersion": 1,
+    "fields": [
+      {
+        "ref": "availability"
+      },
+      {
+        "key": "entry",
+        "type": "enum",
+        "label": {
+          "ru": "Вход",
+          "en": "Entry"
+        },
+        "options": [
+          {
+            "value": "bottomMenu",
+            "label": {
+              "ru": "Нижнее меню",
+              "en": "Bottom menu"
+            }
+          },
+          {
+            "value": "hud",
+            "label": {
+              "ru": "HUD",
+              "en": "HUD"
+            }
+          }
+        ],
+        "default": "hud"
+      },
+      {
+        "key": "hudSide",
+        "type": "enum",
+        "label": {
+          "ru": "Сторона HUD",
+          "en": "HUD side"
+        },
+        "options": [
+          {
+            "value": "left",
+            "label": {
+              "ru": "Слева",
+              "en": "Left"
+            }
+          },
+          {
+            "value": "right",
+            "label": {
+              "ru": "Справа",
+              "en": "Right"
+            }
+          }
+        ],
+        "default": "right",
+        "visibleIf": {
+          "entry": "hud"
+        }
+      },
+      {
+        "key": "icon",
+        "type": "image",
+        "label": {
+          "ru": "Иконка",
+          "en": "Icon"
+        },
+        "accept": [
+          "image/png",
+          "image/webp"
+        ],
+        "maxBytes": 262144,
+        "size": {
+          "min": 96,
+          "max": 512,
+          "square": true
+        },
+        "overridable": false
+      },
+      {
+        "key": "badge",
+        "type": "boolean",
+        "label": {
+          "ru": "Бейдж",
+          "en": "Badge"
+        },
+        "default": true
+      },
+      {
+        "key": "autoOpen",
+        "type": "boolean",
+        "label": {
+          "ru": "Показывать окно при входе в игру",
+          "en": "Open on start"
+        },
+        "default": true
+      },
+      {
+        "key": "track",
+        "type": "string",
+        "label": {
+          "ru": "Запись progress",
+          "en": "Progress record"
+        },
+        "help": {
+          "ru": "Ключ записи progress (цепочка входов, reset day). Состояние и выдачу ведёт сервер; награды, цикл и пропуск записываются в неё из этой карточки",
+          "en": "Key of the progress record (login chain, reset day). The server owns state and grants; rewards, cycle and miss rule are published into it from this card"
+        },
+        "maxLength": 64,
+        "pattern": "^[a-z0-9_]{1,64}$",
+        "default": "daily",
+        "overridable": false
+      },
+      {
+        "key": "window",
+        "type": "enum",
+        "label": {
+          "ru": "Вариант окна",
+          "en": "Window variant"
+        },
+        "options": [
+          {
+            "value": "week",
+            "label": {
+              "ru": "Неделя",
+              "en": "Week"
+            }
+          },
+          {
+            "value": "board",
+            "label": {
+              "ru": "Доска",
+              "en": "Board"
+            }
+          },
+          {
+            "value": "calendar",
+            "label": {
+              "ru": "Календарь",
+              "en": "Calendar"
+            }
+          },
+          {
+            "value": "gift",
+            "label": {
+              "ru": "Подарок",
+              "en": "Gift"
+            }
+          }
+        ],
+        "default": "week"
+      },
+      {
+        "key": "cycleLength",
+        "type": "integer",
+        "label": {
+          "ru": "Длина цикла (дней)",
+          "en": "Cycle length (days)"
+        },
+        "min": 1,
+        "max": 31,
+        "default": 7
+      },
+      {
+        "key": "onMiss",
+        "type": "boolean",
+        "label": {
+          "ru": "Сбрасывать цикл при пропуске дня",
+          "en": "Reset the cycle on a missed day"
+        },
+        "help": {
+          "ru": "reset.onMiss записи progress: включено — после пропуска цикл начинается заново, выключено — прогресс сохраняется",
+          "en": "reset.onMiss of the progress record: on — a missed day restarts the cycle, off — progress is kept"
+        },
+        "default": true
+      }
+    ]
+  },
+  "title": {
+    "ru": "Ежедневные награды",
+    "en": "Daily Rewards"
+  },
+  "description": {
+    "ru": "Календарь ежедневных наград",
+    "en": "Daily reward calendar entry and ready badge backed by progress."
+  },
+  "llmDescription": "Daily reward calendar entry and ready badge backed by progress.",
+  "selection": "optional",
+  "status": "ready",
+  "preview": {
+    "icon": "catalog/icon.png",
+    "media": [],
+    "mock": {
+      "badge": {
+        "kind": "dot"
+      },
+      "value": 1
+    }
+  },
+  "docs": [
+    {
+      "title": {
+        "ru": "Документация",
+        "en": "Documentation"
+      },
+      "uri": "https://github.com/manygamescorp/client-sdk/tree/main/packages/mod-daily-rewards"
+    }
+  ],
+  "group": "progression",
+  "tags": [
+    "calendar",
+    "streak",
+    "rewards"
+  ],
+  "package": "@manygamescorp/mod-daily-rewards",
+  "files": {
+    "scripts": [
+      "daily-rewards.js",
+      "sdk-runtime/daily-rewards.js",
+      "settings-text.js",
+      "settings.js",
+      "version.js"
+    ],
+    "styles": [],
+    "assets": [
+      "catalog/icon.png",
+      "sdk-runtime/daily-rewards.json",
+      "ui.json"
+    ]
+  }
+}

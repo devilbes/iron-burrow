@@ -1,0 +1,112 @@
+{
+  "id": "profile-pack",
+  "version": "1.0.0-rc.30",
+  "entry": "dist/sdk-runtime/kv.js",
+  "targets": [
+    "cordova",
+    "web"
+  ],
+  "title": {
+    "ru": "Данные игрока и профиль UI",
+    "en": "Player data and profile UI"
+  },
+  "description": {
+    "ru": "Пакет profile-pack: KV, сохранения и UI профиля; headless-профиль встроен в core.",
+    "en": "Select package profile-pack for player KV, game state and profile UI; headless profile belongs to core."
+  },
+  "llmDescription": "Select package profile-pack for player KV, game state and profile UI. Headless profile belongs to core and works without declaring it: never add profile to sdk.modules. The profile-pack package includes kv, gamestate and profile-ui runtimes; Studio selects and configures the package id profile-pack.",
+  "selection": "optional",
+  "status": "ready",
+  "preview": {
+    "icon": "dist/catalog/icon.png",
+    "media": [],
+    "mock": {
+      "badge": {
+        "kind": "dot"
+      },
+      "value": 1
+    }
+  },
+  "docs": [
+    {
+      "title": {
+        "ru": "Документация",
+        "en": "Documentation"
+      },
+      "uri": "https://github.com/manygamescorp/client-sdk/tree/main/packages/mod-profile-pack"
+    }
+  ],
+  "settings": {
+    "schemaVersion": 1,
+    "fields": [
+      {
+        "ref": "availability"
+      }
+    ]
+  },
+  "group": "foundation",
+  "tags": [
+    "profile",
+    "account"
+  ],
+  "load": "eager",
+  "ui": {
+    "slots": [
+      {
+        "id": "entry",
+        "zone": "hud",
+        "contexts": [
+          "main"
+        ],
+        "order": 10,
+        "fallback": [],
+        "features": [
+          "badge",
+          "timer",
+          "value"
+        ],
+        "does": {
+          "ru": "Профиль",
+          "en": "Profile"
+        }
+      },
+      {
+        "id": "counters",
+        "zone": "topbar",
+        "contexts": [
+          "main"
+        ],
+        "order": 10,
+        "features": [
+          "value"
+        ],
+        "does": {
+          "ru": "Счётчики",
+          "en": "Counters"
+        }
+      }
+    ]
+  },
+  "files": {
+    "scripts": [
+      "dist/data-client.js",
+      "dist/data-module.js",
+      "dist/kv.js",
+      "dist/presentation.js",
+      "dist/sdk-runtime/gamestate.js",
+      "dist/sdk-runtime/kv.js",
+      "dist/sdk-runtime/profile-ui.js",
+      "dist/state.js",
+      "dist/ui.js",
+      "dist/version.js"
+    ],
+    "styles": [],
+    "assets": [
+      "dist/catalog/icon.png",
+      "dist/sdk-runtime/gamestate.json",
+      "dist/sdk-runtime/kv.json",
+      "dist/sdk-runtime/profile-ui.json",
+      "dist/ui.json"
+    ]
+  }
+}
