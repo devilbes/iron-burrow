@@ -61,14 +61,14 @@ function mountSettings(root: HTMLElement, ctx: ScreenContext, windowName: string
     });
   };
 
-  const view$ = mountLive(root, 'settings', () => render(ctx, game, current, windowName, flip),
+  const shown = mountLive(root, 'settings', () => render(ctx, game, current, windowName, flip),
     { styles: WINDOW_CSS + SETTINGS_CSS });
-  live = view$;
+  live = shown;
   let stop: () => void = () => undefined;
   try {
-    stop = game.onSettings((next) => { current = { ...DEFAULTS, ...next }; view$.refresh(); });
+    stop = game.onSettings((next) => { current = { ...DEFAULTS, ...next }; shown.refresh(); });
   } catch { /* the stub API has no listeners */ }
-  return () => { stop(); view$.off(); };
+  return () => { stop(); shown.off(); };
 }
 
 function render(ctx: ScreenContext, game: IronBurrow, current: Settings, windowName: string | null,

@@ -29,26 +29,18 @@ const MAX_STARS = 3;
 /** Columns of the snake path by layout. */
 const COLUMNS: Readonly<Record<Layout, number>> = { portrait: 3, landscape: 5, desktop: 5 };
 
-/** Background position of frame `frame` of a horizontal sprite sheet of `frames` frames. */
-function framePos(frame: number, frames: number): string {
-  return `${(frame / (frames - 1)) * 100}% 0`;
-}
-
 /**
- * Sprite pictures, frames and the columns of the path as rules (the view takes no inline styles):
- * `data-frame` picks a frame; a row going back runs right to left.
+ * Frames of the sprite sheets and the columns of the path as rules (the view takes no inline
+ * styles): the sheet is an `<img>` of all frames side by side in a clipping box, `data-frame` moves
+ * it by whole frames; a row going back runs right to left.
  */
 function spriteCss(): string {
-  const rules: string[] = [
-    `.node-art{background-image:url("${gameArt('node_stage')}")}`,
-    `.node[data-finale] .node-art{background-image:url("${gameArt('node_finale')}")}`,
-    `.node-star{background-image:url("${gameArt('star_small')}")}`,
-  ];
-  for (let frame = 0; frame < NODE_FRAMES.count; frame += 1) {
-    rules.push(`.node-art[data-frame="${frame}"]{background-position:${framePos(frame, NODE_FRAMES.count)}}`);
-  }
-  for (let frame = 0; frame < STAR_FRAMES.count; frame += 1) {
-    rules.push(`.node-star[data-frame="${frame}"]{background-position:${framePos(frame, STAR_FRAMES.count)}}`);
+  const rules: string[] = [];
+  for (const [cls, frames] of [['node-art', NODE_FRAMES.count], ['node-star', STAR_FRAMES.count]] as const) {
+    rules.push(`.${cls}>.sheet{width:${frames * 100}%;max-width:none;height:100%}`);
+    for (let frame = 1; frame < frames; frame += 1) {
+      rules.push(`.${cls}[data-frame="${frame}"]>.sheet{margin-left:-${frame * 100}%}`);
+    }
   }
   for (const [layout, cols] of Object.entries(COLUMNS)) {
     rules.push(`[data-layout=${layout}] .node-row{grid-template-columns:repeat(${cols},minmax(0,1fr))}`);
@@ -77,14 +69,14 @@ export const mapCss = (): string => `
 .node-row[data-back]{direction:rtl}
 .node-row>li{direction:ltr}
 .node{display:grid;justify-items:center;gap:.1em;padding:0;border:0;background:none;color:var(--mp-text)}
-.node-art{display:grid;place-items:center;width:var(--node);height:var(--node);background-repeat:no-repeat;
- background-size:400% 100%;font-family:var(--mp-font-display);font-size:calc(var(--node) * .32);
- text-shadow:0 1px 2px var(--mp-night)}
+.node-art{display:grid;width:var(--node);height:var(--node);overflow:hidden;
+ font-family:var(--mp-font-display);font-size:calc(var(--node) * .32);text-shadow:0 1px 2px var(--mp-night)}
 .node-art>*{grid-area:1/1}
+.node-art>b{place-self:center}
 .node[data-finale] .node-art{width:calc(var(--node) * 1.25);height:calc(var(--node) * 1.25)}
 .node-lock{width:calc(var(--node) * .4);height:calc(var(--node) * .4);align-self:end;justify-self:end}
 .node-stars{display:flex;gap:1px;height:calc(var(--node) * .25)}
-.node-star{width:calc(var(--node) * .25);height:calc(var(--node) * .25);background-repeat:no-repeat;background-size:200% 100%}
+.node-star{display:block;width:calc(var(--node) * .25);height:calc(var(--node) * .25);overflow:hidden}
 .node[data-state=locked]{cursor:default}
 .play{grid-area:play;width:100%;max-width:420px;justify-self:center}
 [data-layout=landscape].map{--node:min(64px,15vh);padding-inline:var(--hud-side);gap:.5em;
@@ -94,7 +86,8 @@ export const mapCss = (): string => `
 [data-layout=landscape] .back,[data-layout=desktop] .back{order:-1}
 [data-layout=landscape] .head .title-plate{font-size:1.1rem;flex:1;min-width:0;overflow-wrap:normal}
 [data-layout=landscape] .tabs{grid-template-columns:minmax(0,1fr);align-content:center;gap:.35em}
-[data-layout=desktop].map{--node:min(96px,10vh);padding-inline:var(--hud-side)}
+[data-layout=desktop].map{--node:min(112px,12vh);padding-inline:var(--hud-side)}
+[data-layout=desktop] .nodes{width:100%;max-width:1000px;justify-self:center}
 [data-layout=desktop] .head{flex-direction:row;justify-content:center;min-height:0}
 [data-layout=desktop] .tabs{width:100%;max-width:760px;justify-self:center}
 [data-layout=desktop] .tab{font-size:1rem}
@@ -123,7 +116,8 @@ function nodeView(ctx: ScreenContext, stage: StageInfo, current: boolean, on: Ma
   const stars: ViewNode[] = [];
   for (let i = 0; i < MAX_STARS && stage.state !== 'locked'; i += 1) {
     stars.push(view('span', { class: 'node-star', 'aria-hidden': 'true',
-      'data-frame': i < stage.stars ? STAR_FRAMES.earned : STAR_FRAMES.empty }));
+      'data-frame': i < stage.stars ? STAR_FRAMES.earned : STAR_FRAMES.empty },
+    picture(gameArt('star_small'), '', { class: 'sheet' })));
   }
   return view('li', {},
     view('button', { type: 'button', class: 'node', 'data-testid': 'stage-node', 'data-stage': stage.n,
@@ -131,6 +125,7 @@ function nodeView(ctx: ScreenContext, stage: StageInfo, current: boolean, on: Ma
       'data-current': current ? '' : undefined, 'aria-label': ctx.t('screen.hud.stage', { n: stage.n }),
       'aria-disabled': stage.state === 'locked' ? 'true' : undefined, onClick: () => on.node(stage) },
     view('span', { class: 'node-art', 'data-frame': frame },
+      picture(gameArt(stage.finale ? 'node_finale' : 'node_stage'), '', { class: 'sheet', 'aria-hidden': 'true' }),
       view('b', {}, formatNumber(stage.n)),
       stage.state === 'locked' ? picture(gameArt('node_lock'), '', { class: 'node-lock', 'aria-hidden': 'true' }) : null),
     view('span', { class: 'node-stars', 'data-dynamic': '' }, ...stars)));

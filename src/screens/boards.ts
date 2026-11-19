@@ -5,7 +5,7 @@
 import { gameOf, type Board, type BoardPage, type BoardRow, type IronBurrow, type Period } from '../modules/game/index.js';
 import { sound } from './audio.js';
 import type { ScreenContext } from './index.js';
-import { gameArt } from './media.js';
+import { gameArt, picture } from './media.js';
 import { attempt, WINDOW_CSS } from './stage-ui.js';
 import { formatNumber, mountLive, view, type ViewNode } from './ui.js';
 
@@ -39,7 +39,7 @@ const BOARDS_CSS = `
 .rank{display:grid;place-items:center;width:2.25em;height:2.25em;
  font-family:var(--mp-font-ui);font-weight:700;font-variant-numeric:tabular-nums}
 .rank>*{grid-area:1/1}
-.medal{width:100%;height:100%;background-repeat:no-repeat;background-size:300% 100%}
+.medal{display:block;width:100%;height:100%;overflow:hidden}
 .name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .score{font-family:var(--mp-font-ui);font-weight:700;font-variant-numeric:tabular-nums}
 .self-label{font-size:.75rem;color:var(--mp-text-2)}
@@ -94,12 +94,10 @@ export async function openBoards(ctx: ScreenContext, board?: Board): Promise<voi
   asked += 1;
 }
 
-/** `medal_top3` frames for places 1–3 (the view takes no inline styles). */
+/** `medal_top3` frames for places 1–3: the sheet in a clipping box (the view takes no inline styles). */
 function medalCss(): string {
-  const rules = [`.medal{background-image:url("${gameArt('medal_top3')}")}`];
-  for (let rank = 1; rank <= MEDALS; rank += 1) {
-    rules.push(`.medal[data-medal="${rank}"]{background-position:${((rank - 1) / (MEDALS - 1)) * 100}% 0}`);
-  }
+  const rules = [`.medal>.sheet{width:${MEDALS * 100}%;max-width:none;height:100%}`];
+  for (let rank = 2; rank <= MEDALS; rank += 1) rules.push(`.medal[data-medal="${rank}"]>.sheet{margin-left:-${(rank - 1) * 100}%}`);
   return rules.join('\n');
 }
 
@@ -152,7 +150,8 @@ function content(ctx: ScreenContext, state: BoardsState, page: BoardPage | null)
 
 function rowView(ctx: ScreenContext, row: BoardRow, testid: string): ViewNode {
   const medal = row.rank >= 1 && row.rank <= MEDALS
-    ? view('span', { class: 'medal', 'aria-hidden': 'true', 'data-medal': row.rank })
+    ? view('span', { class: 'medal', 'aria-hidden': 'true', 'data-medal': row.rank },
+      picture(gameArt('medal_top3'), '', { class: 'sheet' }))
     : null;
   return view('li', { class: 'row', 'data-testid': testid, 'data-rank': row.rank, 'data-self': row.self ? '' : undefined },
     view('span', { class: 'rank' }, medal, view('b', {}, formatNumber(row.rank))),

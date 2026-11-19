@@ -443,6 +443,7 @@
         "next": "Next Stage",
         "replay": "Replay",
         "map": "Map",
+        "save_title": "Save failed",
         "save_failed": "Couldn't save the result.",
         "retry_save": "Retry saving",
         "leave": "Map"
