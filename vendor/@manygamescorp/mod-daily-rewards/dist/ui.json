@@ -1,0 +1,38 @@
+{
+    "slots": [
+        {
+            "id": "entry",
+            "zone": {
+                "fromSetting": "entry"
+            },
+            "contexts": [
+                "main"
+            ],
+            "order": 40,
+            "fallback": [
+                "bottomMenu",
+                "hud"
+            ],
+            "features": [
+                "badge",
+                "timer",
+                "value"
+            ],
+            "does": {
+                "ru": "Ежедневная награда",
+                "en": "Daily reward"
+            }
+        },
+        {
+            "id": "calendar",
+            "zone": "window",
+            "autoOpen": {
+                "fromSetting": "autoOpen"
+            },
+            "does": {
+                "ru": "Ежедневная награда",
+                "en": "Daily reward"
+            }
+        }
+    ]
+}

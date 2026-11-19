@@ -1,0 +1,78 @@
+{
+  "id": "hud",
+  "version": "1.0.0-rc.30",
+  "kind": "service",
+  "engines": {
+    "core": "^1.0.0"
+  },
+  "settings": {
+    "schemaVersion": 1,
+    "fields": [
+      {
+        "ref": "availability"
+      }
+    ]
+  },
+  "targets": [
+    "web",
+    "cordova"
+  ],
+  "permissions": [],
+  "entry": "sdk-runtime/hud.js",
+  "load": "eager",
+  "consumes": [
+    "ui.slots@1",
+    "hud.registry@1"
+  ],
+  "requires": {
+    "ui-kit": "^1.0.0"
+  },
+  "events": {
+    "emits": [
+      "hud:items:changed",
+      "hud:item:opened"
+    ],
+    "listens": []
+  },
+  "title": {
+    "ru": "Входы в функции",
+    "en": "Hud"
+  },
+  "description": {
+    "ru": "Входы в функции для игры на ManyPlay.",
+    "en": "ManyPlay HUD registry: feature icons with badges, layout from configs scope ui.hud."
+  },
+  "llmDescription": "ManyPlay HUD registry: feature icons with badges, layout from configs scope ui.hud. Select mod-hud when the game needs this SDK capability. Read the linked module documentation for methods and events.",
+  "selection": "optional",
+  "status": "ready",
+  "preview": {
+    "icon": "catalog/icon.png",
+    "media": []
+  },
+  "docs": [
+    {
+      "title": {
+        "ru": "Документация",
+        "en": "Documentation"
+      },
+      "uri": "https://github.com/manygamescorp/client-sdk/tree/main/packages/mod-hud"
+    }
+  ],
+  "group": "foundation",
+  "tags": [
+    "hud"
+  ],
+  "package": "@manygamescorp/mod-hud",
+  "files": {
+    "scripts": [
+      "hud.js",
+      "sdk-runtime/hud.js",
+      "version.js"
+    ],
+    "styles": [],
+    "assets": [
+      "catalog/icon.png",
+      "sdk-runtime/hud.json"
+    ]
+  }
+}

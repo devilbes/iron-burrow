@@ -1,0 +1,23 @@
+{
+  "name": "@manygamescorp/mod-leaderboards",
+  "version": "1.0.0-rc.30",
+  "description": "ManyPlay client leaderboards module.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./leaderboards": {
+      "types": "./dist/leaderboards.d.ts",
+      "default": "./dist/leaderboards.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "default": "./dist/version.js"
+    },
+    "./package.json": "./package.json",
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./dist/client.js"
+    }
+  }
+}

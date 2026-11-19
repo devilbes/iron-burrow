@@ -1,0 +1,139 @@
+{
+  "id": "progress",
+  "version": "1.0.0-rc.30",
+  "entry": "dist/sdk-runtime/progress.js",
+  "targets": [
+    "cordova",
+    "web"
+  ],
+  "title": {
+    "ru": "Прогресс и награды",
+    "en": "Progress"
+  },
+  "description": {
+    "ru": "Прогресс и награды для игры на ManyPlay.",
+    "en": "ManyPlay client progress actions and verified level results."
+  },
+  "llmDescription": "ManyPlay client progress actions and verified level results. Select mod-progress when the game needs this SDK capability. Read the linked module documentation for methods and events.",
+  "selection": "optional",
+  "status": "ready",
+  "preview": {
+    "icon": "dist/catalog/icon.png",
+    "media": [],
+    "mock": {
+      "badge": {
+        "kind": "dot"
+      },
+      "value": 1
+    }
+  },
+  "docs": [
+    {
+      "title": {
+        "ru": "Документация",
+        "en": "Documentation"
+      },
+      "uri": "https://github.com/manygamescorp/client-sdk/tree/main/packages/mod-progress"
+    }
+  ],
+  "settings": {
+    "schemaVersion": 1,
+    "fields": [
+      {
+        "ref": "availability"
+      },
+      {
+        "key": "chunkSize",
+        "type": "integer",
+        "min": 1,
+        "max": 200,
+        "default": 10,
+        "label": {
+          "ru": "Размер порции уровней",
+          "en": "Level chunk size"
+        }
+      },
+      {
+        "key": "cacheMaxBytes",
+        "type": "integer",
+        "min": 81920,
+        "max": 16777216,
+        "default": 2097152,
+        "label": {
+          "ru": "Лимит кэша уровней (байты)",
+          "en": "Level cache byte limit"
+        }
+      },
+      {
+        "key": "prefetchDepth",
+        "type": "integer",
+        "min": 0,
+        "max": 4,
+        "default": 1,
+        "label": {
+          "ru": "Глубина префетча",
+          "en": "Prefetch depth"
+        }
+      }
+    ]
+  },
+  "group": "progression",
+  "tags": [
+    "levels",
+    "progress"
+  ],
+  "load": "eager",
+  "ui": {
+    "slots": [
+      {
+        "id": "entry",
+        "zone": "hud",
+        "contexts": [
+          "main"
+        ],
+        "order": 20,
+        "fallback": [],
+        "features": [
+          "badge",
+          "timer",
+          "value"
+        ],
+        "does": {
+          "ru": "Прогресс",
+          "en": "Progress"
+        }
+      }
+    ]
+  },
+  "files": {
+    "scripts": [
+      "dist/client.js",
+      "dist/levels-cache.js",
+      "dist/levels-settings.js",
+      "dist/levels-validation.js",
+      "dist/levels.js",
+      "dist/mechanic-attempts.js",
+      "dist/mechanic-curve.js",
+      "dist/mechanic-outcome.js",
+      "dist/mechanic-settings.js",
+      "dist/mechanic-types.js",
+      "dist/mechanic-validation.js",
+      "dist/mechanic.js",
+      "dist/progress-state.js",
+      "dist/progress-types.js",
+      "dist/progress.js",
+      "dist/sdk-runtime/levels.js",
+      "dist/sdk-runtime/progress.js",
+      "dist/settings-text.js",
+      "dist/version.js",
+      "dist/windows.js"
+    ],
+    "styles": [],
+    "assets": [
+      "dist/catalog/icon.png",
+      "dist/sdk-runtime/levels.json",
+      "dist/sdk-runtime/progress.json",
+      "dist/ui.json"
+    ]
+  }
+}
