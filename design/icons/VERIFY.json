@@ -1,0 +1,22 @@
+{
+  "icons": 39,
+  "shellIcons": 29,
+  "items": 4,
+  "offers": 5,
+  "appIcons": 1,
+  "pairsIncludingAtlas": 40,
+  "files": 160,
+  "nonempty": true,
+  "problems": [],
+  "assetsCheck": "PASS: 160 files, 0 problems",
+  "contactSheetReviewed": true,
+  "colorReviewed": true,
+  "grayscaleReviewed": true,
+  "preview24pxReviewed": true,
+  "regenerations": 0,
+  "officialAssetContract": "CONFIGURATION_FAIL",
+  "officialPalette": "CONFIGURATION_FAIL",
+  "fullProjectCheck": "NOT_RUN: asset assembly only; no browser per task",
+  "originalBytes": 45708002,
+  "productionBytesAllFormats": 5408935
+}
