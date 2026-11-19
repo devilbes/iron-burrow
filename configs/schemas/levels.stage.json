@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Исходник стадии или арены",
+  "description": "Авторский файл уровня configs/levels/campaign/stage_NN.json или configs/levels/siege/siege_pit.json в формате ГДД 12 §1. Из него levels:export строит записи levels.main и levels.endless.",
+  "type": "object",
+  "x-ui": { "label": "Уровень (исходник)", "summaryFields": ["id", "chapter", "theme"] },
+  "additionalProperties": false,
+  "required": ["id", "theme", "grid"],
+  "properties": {
+    "id": { "type": "string", "maxLength": 16, "title": "Идентификатор", "description": "stage_01…stage_30 или siege_pit; не переиспользуется и не перенумеровывается" },
+    "index": { "type": "integer", "minimum": 1, "maximum": 30, "title": "Номер стадии", "description": "Сквозной номер стадии кампании 1–30; у арены Siege поля нет" },
+    "chapter": { "type": "integer", "minimum": 1, "maximum": 3, "title": "Глава", "description": "1: стадии 1–10, 2: 11–20, 3: 21–30; у арены Siege поля нет" },
+    "theme": { "type": "string", "enum": ["clay", "iron", "magma", "pit"], "title": "Тема оформления", "description": "clay/iron/magma по главе, pit — арена Siege" },
+    "maxAlive": { "type": "integer", "minimum": 1, "maximum": 8, "title": "Врагов одновременно", "description": "Максимум живых врагов на поле: 4/5/6 по главе" },
+    "spawnInterval": { "type": "number", "minimum": 1.5, "maximum": 3.0, "title": "Интервал спавна, с", "description": "Интервал появления врагов: 3.0/2.5/2.0 по главе" },
+    "grid": {
+      "type": "array", "minItems": 13, "maxItems": 13, "title": "Карта 13×13", "description": "13 строк по 13 символов, строка 0 сверху; алфавит . B S L R O C (пусто, кирпич, сталь, лава, корни, масло, ядро)",
+      "items": { "type": "string", "minLength": 13, "maxLength": 13, "title": "Строка карты", "description": "13 кодов тайлов слева направо" }
+    },
+    "quarters": {
+      "type": "object", "title": "Маски четвертей", "description": "Ключ «col,row» — оставшиеся четверти клетки B/S шестнадцатеричной маской 1–E (1=TL, 2=TR, 4=BL, 8=BR); нет ключа — клетка целая",
+      "propertyNames": { "type": "string", "maxLength": 5, "title": "Клетка", "description": "Координаты клетки «col,row»" },
+      "additionalProperties": { "type": "string", "maxLength": 1, "title": "Маска", "description": "Шестнадцатеричная цифра 1–E" }
+    },
+    "enemies": {
+      "type": "array", "minItems": 20, "maxItems": 20, "title": "Порядок врагов", "description": "20 врагов в порядке появления по формуле ГДД 12 §2; у арены Siege поля нет",
+      "items": { "type": "string", "enum": ["scout", "grunt", "gunner", "brute"], "title": "Тип врага", "description": "scout, grunt, gunner или brute" }
+    }
+  }
+}
