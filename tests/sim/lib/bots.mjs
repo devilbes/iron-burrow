@@ -96,7 +96,7 @@ function blockedLine(f, ax, ay, bx, by, vertical, stopAt) {
   return false;
 }
 
-/** Firing in `dir` would hit the own Core with nothing in between. */
+/** Firing in `dir` would hit the own Core (sooner or later: bricks between do not count). */
 function coreAhead(state, dir) {
   const { unit } = state.tun;
   const p = state.player;
@@ -106,10 +106,12 @@ function coreAhead(state, dir) {
   const cy = (state.field.core[1] + 0.5) * unit;
   const vertical = dir === 0 || dir === 2;
   const off = vertical ? Math.abs(cx - px) : Math.abs(cy - py);
-  if (off >= unit) return false;
+  // The bullet (1/4 cell) hits the Core cell while the axes are less than 5/8 cell apart.
+  if (off >= unit * 0.625) return false;
   const ahead = vertical ? (dir === 0 ? py - cy : cy - py) : dir === 3 ? px - cx : cx - px;
   if (ahead <= 0) return false;
-  return !blockedLine(state.field, px, py, cx, cy, vertical, MAT_BRICK);
+  // Bricks are no cover: the shot would chew through the own Core wall. Steel stops it below L3.
+  return p.gun >= 3 || !blockedLine(state.field, px, py, cx, cy, vertical, MAT_STEEL);
 }
 
 /** An active enemy on one of the player's axes (±half cell) with no steel between: the direction to it. */

@@ -202,8 +202,10 @@ export function enemyTick(state: RunState, e: Enemy, hasBullet: boolean): void {
   const moved = move(state, e, dist);
   if (decideAfter && moved === dist) { decide(state, e, null); e.decisionTimer = 0; e.wantDecision = false; }
   if (moved === 0) {
+    // Blocked by a tile with brick in it: shoot the way open. Blocked by a tank: turn.
+    const byTile = sweep(state.field, e.x, e.y, state.tun.unit, e.dir, 1) === 0;
     const ahead = aheadKinds(state, e, e.dir);
-    if (ahead.brick && !hasBullet) {
+    if (byTile && ahead.brick && !hasBullet) {
       e.fire = true;
       if (state.rngAI() >= state.tun.ai.brickKeepP) decide(state, e, e.dir);
     } else decide(state, e, e.dir);
