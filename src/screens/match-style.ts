@@ -24,8 +24,9 @@ export const MATCH_CSS = `
 .panel{display:flex;flex-wrap:wrap;align-items:center;gap:6px;min-width:0;align-content:flex-start}
 .pa{grid-area:a}.pb{grid-area:b;justify-content:flex-end}
 [data-layout=portrait] .pa{flex-wrap:nowrap;gap:5px}
-[data-layout=portrait] .chip{flex:1 1 0;justify-content:center;min-width:0;padding:2px 6px;gap:4px}
-[data-layout=portrait] .chip img{width:24px;height:24px}
+[data-layout=portrait] .chip{flex:1 1 auto;justify-content:center;min-width:0;padding:2px 6px;gap:3px}
+[data-layout=portrait] .chip img{width:22px;height:22px}
+[data-layout=portrait] .pips{font-size:.8rem;gap:1px}
 [data-layout=portrait] .boosters{align-items:center}
 [data-layout=portrait] .boosters>.chip{flex:none;min-height:48px}
 [data-layout=landscape] .zone-t{grid-area:x;align-content:center}

@@ -51,7 +51,7 @@ import packsRecord from '../../configs/remote/game.iap_packs/main.json';
 import shopOrderRecord from '../../configs/remote/game.iap_shop_order/main.json';
 import fieldKitRecord from '../../configs/remote/iap.offers/field_kit.json';
 import './modal-layers.js';
-import { GAME_WINDOWS, fits } from './game-windows.js';
+import { GAME_KIT_WINDOWS, GAME_WINDOWS, fits } from './game-windows.js';
 import { testPorts } from './test-ports.js';
 import { barCounters, gameTileSpec, hudLayout, hudOrder, isGameTile, moduleCounter } from '/app/shell/hud-plan.js';
 
@@ -93,6 +93,7 @@ const WINDOWS = {
     price: '$5.50', icon: 'coins' }],
   error: ['error', error, 'system', { code: 'NETWORK_ERROR', retry: true }],
   reward: ['rewardWindow', rewardWindow, 'reward', { items: [granted(SAMPLE_ITEM, 'soft_currency', 550, 'Coins')] }],
+  ...GAME_KIT_WINDOWS,
 };
 /** A level result as a game shows it through `ctx.window.open`: the kit window, the game's rows. */
 const RESULT = { title: 'Level 7 complete', header: { stars: 2 },
@@ -556,7 +557,7 @@ function checks(view) {
     if (Math.abs((t.left + t.right) / 2 - (frame.left + frame.right) / 2) > 2) found.push(`title off center: ${title.textContent}`);
     if (close && visible(close) && overlap(text, rect(close))) found.push(`title under the close button: ${title.textContent}`);
   }
-  if (view === 'reward') {
+  if (view === 'reward' || view === 'reward-grant') {
     const tiles = all('.reward-grid-item');
     if (!tiles.length) found.push('reward: no item tile');
     for (const tile of tiles) {

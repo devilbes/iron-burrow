@@ -157,6 +157,9 @@ const FIT = `:host{--kit-pop-h:auto;--kit-window-content-height:auto}`
   + `.dialog-backdrop .dialog{padding:0 ${v('game-window-pad')} ${v('game-window-pad')}}`
   + `.dialog-backdrop .dialog>:not(${FIXED_PARTS}){min-height:0;flex-shrink:1;overflow:auto;overscroll-behavior:contain}`
   + `.dialog-backdrop .dialog>:is(${FIXED_PARTS}){flex-shrink:0}`
+  // A game window's body (ctx.window.open) takes the whole width of the window: it is laid out by
+  // that width (container queries of src/screens/stage-ui.ts), not by its own content.
+  + '.dialog-backdrop[data-popup-variant=game] .dialog>.std-content{align-self:stretch}'
   // No browser scrollbar anywhere: lists and bodies still scroll by touch, wheel and keys.
   + '*{scrollbar-width:none}*::-webkit-scrollbar{display:none}';
 

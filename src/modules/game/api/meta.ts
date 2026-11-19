@@ -1,6 +1,6 @@
 // Lobby, map, pre-stage and result data (CONTRACT §3.3, §9): stages open in order up to the first
 // not won (progress read once), best stars per stage (the stars track), best score per stage (the
-// cloud save), the first clear reward (display only, `game.rewards`), Siege after stage 5.
+// cloud save), the first clear and three-star rewards (display only, `game.rewards`), Siege after stage 5.
 import LEVEL_SET from '../../../../configs/remote/levels.main/set.json' with { type: 'json' };
 import { LEVEL_SET_RECORD } from '../../../boot/ids.js';
 import type { Outcome } from '../controller/index.js';
@@ -9,7 +9,7 @@ import type { RunState } from '../core/index.js';
 import type { CampaignInfo, Mode, PreStageInfo, StageInfo, StageResult } from '../index.js';
 import { KV, type Host } from './host.js';
 import type { MatchImpl } from './match.js';
-import { firstClearRewards } from './records.js';
+import { clearRewards, firstClearRewards } from './records.js';
 
 type Chapter = CampaignInfo['chapters'][number];
 type ChapterN = 1 | 2 | 3;
@@ -82,6 +82,7 @@ export function stageResult(host: Host, match: MatchImpl, outcome: Outcome, run:
   const verified = outcome.verified;
   const firstClear = won && verified && !cleared(host, n);
   const previous = host.best.get(n) ?? 0;
+  const starsBefore = host.stars.get(n) ?? 0;
   if (won && verified) {
     host.stars.set(n, Math.max(host.stars.get(n) ?? 0, outcome.stars));
     host.rememberBest(n, outcome.score);
@@ -97,7 +98,9 @@ export function stageResult(host: Host, match: MatchImpl, outcome: Outcome, run:
     breakdown: breakdown(host, run, won, outcome.score),
     stars: (won && verified ? Math.min(MAX_STARS, outcome.stars) : 0) as StageResult['stars'], verified,
     best: Math.max(previous, won && verified ? outcome.score : 0), newBest: won && verified && previous > 0 && outcome.score > previous,
-    rewards: firstClear ? firstClearRewards(host.records().meta, n) : [],
+    // What the server grants for this end (progress_main first clear, stars_main three stars).
+    rewards: won && verified ? clearRewards(host.records().meta, n,
+      { firstClear, threeStar: outcome.stars >= MAX_STARS && starsBefore < MAX_STARS }) : [],
     chapterDone: firstClear && list.some((c) => c.last === n), campaignDone: firstClear && n === last,
     wave: campaign ? null : outcome.wave, next: won && verified && n < last ? n + 1 : null,
   };

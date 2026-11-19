@@ -103,7 +103,8 @@ function continueBlock(ctx: ScreenContext, state: DefeatState, onClick: () => vo
       disabled: state.cont !== 'available' || state.busy, attrs: { 'data-state': state.cont },
     }),
     view('p', { class: 'hint', 'data-dynamic': '' },
-      used ? ctx.t('screen.defeat.continue_used') : ctx.t('screen.defeat.continue_hint')));
+      used ? ctx.t('screen.defeat.continue_used')
+        : state.cont === 'empty' ? ctx.t('screen.pre.hull_none') : ctx.t('screen.defeat.continue_hint')));
 }
 
 /** The hull offer as one compact row: picture, title over the steel buy button. */

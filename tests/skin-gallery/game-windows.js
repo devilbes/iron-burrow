@@ -6,6 +6,11 @@
 // Shown over the lobby: the game route leaves to the map without a selected stage, and a screen
 // change closes the windows of the screen. `fits()` — the window inside the viewport, its title and
 // every kit button in sight without scrolling (tests/skin-gallery.mjs fails on it in every mode).
+import { dailyReward } from '@manygamescorp/ui-kit/services/progress';
+import { rewardWindow } from '@manygamescorp/ui-kit/services/reward-window';
+import { createItemCatalog } from '/app/shell/item-catalog.js';
+import { bootText } from '/app/boot/strings.js';
+import rewardsRecord from '../../configs/remote/game.rewards/main.json';
 import { openBoards } from '/app/screens/boards.js';
 import { openPrestage } from '/app/screens/prestage.js';
 import { openClear, openDefeat, openPause } from '/app/screens/stage-windows.js';
@@ -51,6 +56,26 @@ export const GAME_WINDOWS = {
   pause: ['home', own((ctx) => openPause(ctx, { mode: 'campaign' }))],
   boards: ['home', own((ctx) => openBoards(ctx))],
   'boards-rows': ['home', own((ctx) => openBoards(ctx), { rows: 10 })],
+};
+
+// ---- Kit windows with the game's data (gallery.js `WINDOWS`): the daily gift as the shell fills it
+// (src/shell/windows/daily.ts: seven days of game.rewards daily_preview, day 1 claimed automatically,
+// a wide day 7) and the reward window after the start grant (four boosters of game.rewards).
+const items = createItemCatalog(() => { throw new Error('no SDK in the gallery'); });
+const REWARDS_DATA = rewardsRecord.data;
+const firstLine = (bundle) => Object.entries(bundle)[0] ?? ['bst_bubble', 1];
+const dailyDays = REWARDS_DATA.daily_preview.map((bundle, i, all) => {
+  const [item, amount] = firstLine(bundle);
+  return { key: `day_${i + 1}`, title: `Day ${i + 1}`, amount, icon: items.icon(item) ?? 'gift',
+    status: i === 0 ? 'claimed' : 'locked', wide: all.length === 7 && i === 6 };
+});
+const startGrant = Object.entries(REWARDS_DATA.start_grant).map(([id, quantity]) => ({ id, kind: 'item', quantity,
+  name: bootText(`item.${id}.title`), ...(items.icon(id) ? { icon: items.icon(id) } : {}) }));
+
+/** View → [component name, export, kind, props], as gallery.js `WINDOWS`. */
+export const GAME_KIT_WINDOWS = {
+  'daily-game': ['dailyReward', dailyReward, 'window', { trackKey: 'reward_daily', days: dailyDays }],
+  'reward-grant': ['rewardWindow', rewardWindow, 'reward', { items: startGrant }],
 };
 
 /**

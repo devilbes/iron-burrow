@@ -49,7 +49,11 @@ export class Shop {
     const items = packItems(meta, offer.key);
     const fromStore = (offer.product?.entities ?? offer.variant.entities).map((e) => ({ item: e.id, amount: e.amount }))
       .filter((line): line is Reward => line.item.startsWith('bst_'));
-    return { key: offer.key, placement, price: offer.kind === 'free' ? null : offer.product?.priceText ?? null,
+    // The store price: the module's game offer carries it on the product; the catalog form keeps it
+    // under `store`. An empty text (no store answer) is no price: the button reads «—».
+    const product = offer.product as (IapOffer['product'] & { readonly store?: { readonly priceText?: string } }) | undefined;
+    const priceText = product?.priceText || product?.store?.priceText || null;
+    return { key: offer.key, placement, price: offer.kind === 'free' ? null : priceText,
       items: fromStore.length > 0 ? fromStore : items,
       badge: once ? 'one_time' : ui.ui?.highlight === true && offer.kind === 'paid' ? 'best_value' : null,
       test: this.host.qa };

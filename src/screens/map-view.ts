@@ -83,6 +83,8 @@ export const mapCss = (): string => `
 .tab[aria-selected=true] small{color:var(--mp-card-muted)}
 .tab[data-state=locked]{color:var(--mp-card-subtle);background:var(--mp-card-background)}
 .tab-lock{flex:none;width:20px;height:20px}
+[data-layout=portrait] .tab{padding-inline:.35em;font-size:.8rem}
+[data-layout=portrait] .tab-lock{position:absolute;top:3px;right:5px;width:16px;height:16px}
 .nodes{grid-area:nodes;display:flex;flex-direction:column;justify-content:space-evenly;gap:.25em;min-height:0;
  min-width:0;margin:0;padding:0;list-style:none}
 .node-row{display:grid;justify-items:center;align-items:center;gap:.25em;margin:0;padding:0;list-style:none}

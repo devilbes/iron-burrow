@@ -14,6 +14,9 @@ export const ASSETS: Readonly<Record<string, string>> = {
   // recolored to theme.css and/or the game's own sheet; a single file per icon goes below and
   // wins, e.g. 'icon-coins': 'coins.png'. The gallery lists the stock icons the player still sees.
   ...ICONS,
+  // The daily gift tile: the sheet's `gift` is a chest like `shop` and `coins` (the art review's
+  // remark) — the daily gift shows the calendar with the gift instead, so the two HUD tiles differ.
+  'icon-gift': 'game-icons.png#sprite=192,0,96,96,576,480',
   // frame: 'frame.webp',              // window frame, 9-slice: COMMON in sheets.ts
   // 'icon-close': 'close.webp',       // close button art (position: index.ts closePosition); the kit
   //                                  // key `close` is a fallback the stock icon-close always beats

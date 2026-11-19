@@ -46,7 +46,8 @@ const BOARDS_CSS = `
  font-family:var(--mp-font-ui);font-weight:700;font-variant-numeric:tabular-nums}
 .rank>*{grid-area:1/1}
 .medal{display:block;width:100%;height:100%;overflow:hidden}
-.name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left}
+.score{text-align:right}
 .score{font-family:var(--mp-font-ui);font-weight:700;font-variant-numeric:tabular-nums}
 .self-label{font-size:.75rem;color:var(--mp-text-2)}
 @media (max-height: 480px){.list{max-height:34vh}}
