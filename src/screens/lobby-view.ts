@@ -35,8 +35,8 @@ export const LOBBY_CSS = `
  grid-template-columns:minmax(0,1fr)}
 .brand{grid-area:brand;display:grid;place-items:center;min-height:0;min-width:0;height:100%;
  padding-top:var(--hud-zone);container-type:size}
-.logo-wrap{position:relative;width:min(100cqw,520px,250cqh);aspect-ratio:5/2;container-type:inline-size}
-.logo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.logo-wrap{position:relative;display:grid;width:min(100cqw,520px,250cqh);aspect-ratio:5/2;container-type:inline-size}
+.logo{grid-area:1/1;width:100%;height:100%;object-fit:contain}
 .logo-text{position:absolute;left:16%;right:16%;top:46%;bottom:32%;display:grid;place-items:center;margin:0;
  font-family:var(--mp-font-display);font-weight:400;font-size:7.5cqw;line-height:1;letter-spacing:.04em;
  text-transform:uppercase;white-space:nowrap;color:var(--mp-text);

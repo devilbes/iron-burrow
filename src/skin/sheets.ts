@@ -276,13 +276,22 @@ const LEADERBOARD = '@media (orientation:landscape) and (min-aspect-ratio:2/1){'
 // Top bar (Н-48): profile and settings plates are touch targets of 48×48 CSS px.
 // The row of the top bar grows to them (the shell clips it to one row of 40px; a second row stays hidden).
 const HUD = '.hud[data-slot=top]{max-height:48px;align-items:center}'
-  + '.hud[data-slot=top]>.hud-item:not([data-capsule]){min-width:48px;min-height:48px}';
+  + '.hud[data-slot=top]>.hud-item:not([data-capsule]){min-width:48px;min-height:48px}'
+  // The «+» of a counter: the kit draws it with the icon key `hud-hud-item-view-1`, which the game's
+  // sheet fills with a gear — the plus is two dark bars on a magma plate instead (no picture).
+  + `.hud .hud-add${OVER}>span{visibility:hidden}`
+  + `.hud .hud-add${OVER}{background:${solid(v('mp-window-background'))} center/12px 3px no-repeat padding-box,`
+  + `${solid(v('mp-window-background'))} center/3px 12px no-repeat padding-box,`
+  + `linear-gradient(180deg,${v('mp-card-accent-hover')},${v('mp-card-accent')}) padding-box}`;
 
 export const COMPONENTS: Readonly<Record<string, string>> = {
   // Not a sheet of its own: the common window of COMMON, for the one frame the shell draws itself;
   // its popup host as high as its content (the shell's frame reads --kit-pop-h) and no scrollbars.
   shell: SHELL_WINDOW + '.mpg-shell [data-part=popup][data-popup]:not([data-pop-kind=fullscreen]){--kit-pop-h:auto}'
-    + '.mpg-shell,.mpg-shell *{scrollbar-width:none}.mpg-shell ::-webkit-scrollbar{display:none}',
+    + '.mpg-shell,.mpg-shell *{scrollbar-width:none}.mpg-shell ::-webkit-scrollbar{display:none}'
+    // The battle (route `game`): the field gets the whole screen slot — the slot's 16px frame is
+    // the game screen's own margin there (GDD 20 S05: the field as tall as the screen allows).
+    + '.mpg-shell [data-slot=screen]>[data-element=game]{margin:-16px;height:calc(100% + 32px)}',
   settings: SETTINGS,
   profile: PROFILE,
   dailyReward: DAILY,
