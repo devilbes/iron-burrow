@@ -1,553 +1,1821 @@
 {
-  "assets": [
-    {
-      "id": "elevenlabs-sound_effect-20261119T100448-9504ef",
-      "path": "assets/audio/raw/ui/sfx_ui_click.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "crisp small metal switch click, single short UI tap, dry, no reverb",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100622-4f092d",
-      "path": "assets/audio/raw/powerups/sfx_powerup_drop.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "bright magical pop with rising chime, sparkly pickup appears, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100623-65eb6a",
-      "path": "assets/audio/raw/combat/sfx_shot_player.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "punchy short mechanical cannon pop with a metallic click, compact and dry, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100623-2010af",
-      "path": "assets/audio/raw/ui/sfx_wave_start.mp3",
-      "type": "sfx",
-      "bytes": 20105,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "war horn-like synth swell with a heavy metal hit, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-music-20261119T100624-9c6d3c",
-      "path": "assets/audio/raw/jingles/jgl_stage_start.mp3",
-      "type": "music",
-      "bytes": 48945,
-      "tool": "elevenlabs:music",
-      "prompt": "short arcade ready stinger, starts immediately on the first beat, no silence at start: sharp metallic hit then quick four-note synth motif rising, punchy and energetic, clean short ending, instrumental, about 2 seconds",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100624-6960c0",
-      "path": "assets/audio/raw/powerups/sfx_powerup_vanish.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "soft descending fizzle, magic sparkle dissipating, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100624-74509f",
-      "path": "assets/audio/raw/combat/sfx_shot_player_heavy.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "heavier cannon thump with a hot sizzling tail, deeper body, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100624-c5511d",
-      "path": "assets/audio/raw/ui/sfx_wave_clear.mp3",
-      "type": "sfx",
-      "bytes": 15089,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "short bright confirmation chime with anvil ring, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100626-7e02fd",
-      "path": "assets/audio/raw/powerups/sfx_pu_star.mp3",
-      "type": "sfx",
-      "bytes": 12163,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "rising metallic power-up chime with a mechanical lock-in clunk, weapon upgrade, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100626-244b6c",
-      "path": "assets/audio/raw/combat/sfx_shot_enemy.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "small wet plasma spit with a buzzy acid tone, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100627-d6c7ef",
-      "path": "assets/audio/raw/powerups/sfx_pu_bubble.mp3",
-      "type": "sfx",
-      "bytes": 12163,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "shimmering energy bubble inflating, airy whoosh, force field shield forming, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100628-335264",
-      "path": "assets/audio/raw/ui/sfx_ui_toggle.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "short mechanical latch flick, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-music-20261119T100628-c87b28",
-      "path": "assets/audio/raw/jingles/jgl_stage_clear.mp3",
-      "type": "music",
-      "bytes": 64409,
-      "tool": "elevenlabs:music",
-      "prompt": "triumphant short victory jingle, starts immediately on the first beat, no silence at start: bright synth brass, metallic chimes, four-note motif resolving to a major chord, clean short ending, instrumental, 3.5 seconds",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100629-705e28",
-      "path": "assets/audio/raw/combat/sfx_hit_steel.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "sharp metallic ricochet ping, short, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100629-f45dd7",
-      "path": "assets/audio/raw/powerups/sfx_pu_rebar.mp3",
-      "type": "sfx",
-      "bytes": 13835,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "quick series of heavy steel plates slamming into place, metallic clanks, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100629-784481",
-      "path": "assets/audio/raw/ui/sfx_ui_popup.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "metallic panel slide-in whoosh, quick, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-music-20261119T100630-9e5612",
-      "path": "assets/audio/raw/music/mus_lobby.mp3",
-      "type": "music",
-      "bytes": 1121010,
-      "tool": "elevenlabs:music",
-      "prompt": "instrumental underground workshop ambience, dark analog synth pads, soft metallic percussion, slow pulsing bass, distant anvil hits, mysterious but warm, recurring four-note low Burrow motif (descending D-A-F-D figure on deep synth bass), no vocals, seamless loop. 92 BPM, D minor. steady groove from first to last bar, no intro fade-in, no ending, no outro, no fade-out, ends mid-phrase so it can loop back to the start",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100630-f875c5",
-      "path": "assets/audio/raw/combat/sfx_break_steel.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "heavy metal plate tearing crunch with a clang, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-music-20261119T100632-b22e5f",
-      "path": "assets/audio/raw/jingles/jgl_chapter_clear.mp3",
-      "type": "music",
-      "bytes": 88233,
-      "tool": "elevenlabs:music",
-      "prompt": "grand victory fanfare, starts immediately on the first beat, no silence at start: synth brass and anvil hits, glowing pads swell, ending on a big sustained major chord, clean short ending, instrumental, 5 seconds",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-music-20261119T100743-c391a4",
-      "path": "assets/audio/raw/jingles/jgl_defeat.mp3",
-      "type": "music",
-      "bytes": 56468,
-      "tool": "elevenlabs:music",
-      "prompt": "short defeat jingle, starts immediately on the first beat, no silence at start: descending four-note motif on detuned synth, cooling metal hiss, low thud at the end, clean short ending, instrumental, 3 seconds",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-music-20261119T100744-4c5de6",
-      "path": "assets/audio/raw/music/mus_stage_clay.mp3",
-      "type": "music",
-      "bytes": 1313689,
-      "tool": "elevenlabs:music",
-      "prompt": "upbeat arcade action track, punchy synth bass, clicky metallic drums, earthy wooden-and-iron percussion, energetic but light and springy, recurring four-note low Burrow motif (D-A-F-D figure on deep synth bass) as the hook, no vocals, seamless loop. 120 BPM, D minor. steady groove from first to last bar, no intro fade-in, no ending, no outro, no fade-out, ends mid-phrase so it can loop back to the start",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100749-a83c5c",
-      "path": "assets/audio/raw/ui/sfx_ui_pause.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "soft low mechanical clunk, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100750-bd2cc7",
-      "path": "assets/audio/raw/ui/sfx_star.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "bright metallic star ding with sparkle, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100752-4b8088",
-      "path": "assets/audio/raw/ui/sfx_score_tick.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "tiny soft counter tick, one very short click, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-music-20261119T100753-7bd1a9",
-      "path": "assets/audio/raw/jingles/jgl_siege_record.mp3",
-      "type": "music",
-      "bytes": 97428,
-      "tool": "elevenlabs:music",
-      "prompt": "short new record fanfare, starts immediately on the first beat, no silence at start: rising bright synth arpeggio, sparkling chimes, big final hit, clean short ending, instrumental, 4 seconds",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-music-20261119T100754-504921",
-      "path": "assets/audio/raw/music/mus_stage_iron.mp3",
-      "type": "music",
-      "bytes": 1311181,
-      "tool": "elevenlabs:music",
-      "prompt": "driving industrial arcade track, mechanical machine-press rhythm, hammering steel percussion, gritty synth bass, steam hiss accents, denser texture, same recurring four-note low Burrow motif (E-B-G-E figure on deep synth bass), no vocals, seamless loop. 128 BPM, E minor. steady groove from first to last bar, no intro fade-in, no ending, no outro, no fade-out, ends mid-phrase so it can loop back to the start",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100754-ff32bb",
-      "path": "assets/audio/raw/ui/sfx_ui_back.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "audible soft low metal button click, clear lower-pitched tap, single short UI sound, starts instantly, dry, no reverb, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100754-30b667",
-      "path": "assets/audio/raw/powerups/sfx_pu_quake.mp3",
-      "type": "sfx",
-      "bytes": 20105,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "deep ground rumble swelling into a big shockwave boom, earthquake explosion, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100756-53c64d",
-      "path": "assets/audio/raw/powerups/sfx_pu_freeze.mp3",
-      "type": "sfx",
-      "bytes": 13835,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "crystalline ice crackle spreading, cold glassy chime, freezing frost, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100758-4ff9df",
-      "path": "assets/audio/raw/combat/sfx_bullet_clash.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "tiny crisp zap with spark crackle, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100759-b63a08",
-      "path": "assets/audio/raw/powerups/sfx_pu_hull.mp3",
-      "type": "sfx",
-      "bytes": 13835,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "warm rising extra-life chime with a tank engine rev, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100800-2716c5",
-      "path": "assets/audio/raw/combat/sfx_enemy_explode.mp3",
-      "type": "sfx",
-      "bytes": 10492,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "compact scrap-metal explosion, crunchy boom with rattling debris, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100800-ad3e24",
-      "path": "assets/audio/raw/powerups/sfx_freeze_end.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "ice cracking and shattering, short glassy break, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100802-fb041c",
-      "path": "assets/audio/raw/powerups/sfx_shield_down.mp3",
-      "type": "sfx",
-      "bytes": 10492,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "flickering electric energy shield hum fading out, sputtering power down, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100804-4eb251",
-      "path": "assets/audio/raw/combat/sfx_brute_explode.mp3",
-      "type": "sfx",
-      "bytes": 15089,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "big heavy explosion with deep boom and falling armor plates, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100902-bb9cf0",
-      "path": "assets/audio/raw/ui/sfx_reward.mp3",
-      "type": "sfx",
-      "bytes": 15089,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "rewarding item pop with warm chime and wooden crate thud, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100903-7544e7",
-      "path": "assets/audio/raw/ui/sfx_daily_claim.mp3",
-      "type": "sfx",
-      "bytes": 20105,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "crate lid opening with golden shimmer and chime, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100905-adad42",
-      "path": "assets/audio/raw/ui/sfx_purchase_ok.mp3",
-      "type": "sfx",
-      "bytes": 20105,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "satisfying heavy crate unlock followed by a bright chime cascade, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100907-ee19d4",
-      "path": "assets/audio/raw/ui/sfx_purchase_fail.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "soft low negative double tone, two descending muted beeps, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100908-4c1b74",
-      "path": "assets/audio/raw/powerups/sfx_shield_block.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "soft energy shield deflect thump, short bullet absorbed by force field, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100908-c6bac0",
-      "path": "assets/audio/raw/ui/sfx_tut_step.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "gentle soft ping, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100910-36fad2",
-      "path": "assets/audio/raw/powerups/sfx_wall_revert.mp3",
-      "type": "sfx",
-      "bytes": 10492,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "metal plates retracting with a clunk, mechanical slide back, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100912-858ce8",
-      "path": "assets/audio/raw/powerups/sfx_bst_bubble.mp3",
-      "type": "sfx",
-      "bytes": 13835,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "powerful energy dome deploy, bright electric hum burst, force field shield activating, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100913-c67954",
-      "path": "assets/audio/raw/powerups/sfx_bst_shockwave.mp3",
-      "type": "sfx",
-      "bytes": 23030,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "massive charge-up whine into a huge concussive blast, explosive shockwave boom, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100915-ce9782",
-      "path": "assets/audio/raw/powerups/sfx_bst_fortify.mp3",
-      "type": "sfx",
-      "bytes": 17179,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "heavy fortress lockdown, big steel slams and hydraulic hiss, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100916-e44946",
-      "path": "assets/audio/raw/combat/sfx_player_explode.mp3",
-      "type": "sfx",
-      "bytes": 17179,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "big punchy tank explosion, metal shrapnel, short low rumble tail, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100917-ad6049",
-      "path": "assets/audio/raw/ui/sfx_ui_locked.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "loud clear metal padlock shake and rattle, locked door denial clack, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100917-9c9032",
-      "path": "assets/audio/raw/combat/sfx_player_spawn.mp3",
-      "type": "sfx",
-      "bytes": 13835,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "ground drill burrowing up, engine kick, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100919-5602d4",
-      "path": "assets/audio/raw/combat/sfx_engine_loop.mp3",
-      "type": "sfx",
-      "bytes": 25120,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "low steady tank engine idle-to-move rumble with tread clatter, seamless loop, single sound, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100921-c5b17a",
-      "path": "assets/audio/raw/combat/sfx_oil_slide.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "slick wet skid squeal, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100923-75e9b5",
-      "path": "assets/audio/raw/combat/sfx_core_alarm.mp3",
-      "type": "sfx",
-      "bytes": 13835,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "urgent two-tone metallic alarm beep, short, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-music-20261119T100938-16970e",
-      "path": "assets/audio/raw/music/mus_stage_magma.mp3",
-      "type": "music",
-      "bytes": 1313689,
-      "tool": "elevenlabs:music",
-      "prompt": "intense hot arcade battle track, heavy distorted synth bass, fast metallic drums, rumbling low drone layer, fiery bright synth stabs and burning pads, tense, same recurring four-note low Burrow motif (F-C-Ab-F figure on deep synth bass), no vocals, seamless loop. 136 BPM, F minor. steady groove from first to last bar, no intro fade-in, no ending, no outro, no fade-out, ends mid-phrase so it can loop back to the start",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-music-20261119T100945-bc4836",
-      "path": "assets/audio/raw/jingles/jgl_siege_result.mp3",
-      "type": "music",
-      "bytes": 56468,
-      "tool": "elevenlabs:music",
-      "prompt": "very short neutral result stinger, starts immediately on the first beat, no silence at start: one steady proud synth chord with a metallic shimmer, calm and confident, quick clean ending, instrumental, 3 seconds total",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-music-20261119T100950-9efd4d",
-      "path": "assets/audio/raw/music/mus_siege.mp3",
-      "type": "music",
-      "bytes": 1440749,
-      "tool": "elevenlabs:music",
-      "prompt": "relentless siege arcade track, maximum energy, pounding war drums mixed with metal clangs, aggressive synth arpeggio, continuously rising tension, recurring four-note low Burrow motif (F-C-Ab-F figure) played in brass-like synth over deep bass, no vocals, seamless loop. 144 BPM, F minor. steady groove from first to last bar, no intro fade-in, no ending, no outro, no fade-out, ends mid-phrase so it can loop back to the start",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T101021-f3535a",
-      "path": "assets/audio/raw/powerups/sfx_bst_hull.mp3",
-      "type": "sfx",
-      "bytes": 17179,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "heavy metal tank hull dropping onto ground with a thud, then diesel engine start roar, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T101023-0ad314",
-      "path": "assets/audio/raw/powerups/sfx_bst_denied.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "short dull double buzz, error denied UI sound, single sound, starts instantly, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T101031-865bb4",
-      "path": "assets/audio/raw/combat/sfx_core_destroyed.mp3",
-      "type": "sfx",
-      "bytes": 33061,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "huge crystal energy implosion and shatter, deep boom, power-down whine, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T101033-23f775",
-      "path": "assets/audio/raw/combat/sfx_enemy_spawn.mp3",
-      "type": "sfx",
-      "bytes": 10492,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "ground cracking open with a buzzy acid-green energy swirl, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T101035-12fb0e",
-      "path": "assets/audio/raw/combat/sfx_last_enemy.mp3",
-      "type": "sfx",
-      "bytes": 13835,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "heavy final impact boom with ringing metal, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T101037-27ad61",
-      "path": "assets/audio/raw/combat/sfx_hit_brick.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "loud crumbling brick wall chunk breaking apart, sharp crack of masonry with short gritty rubble debris falling, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T101047-003f73",
-      "path": "assets/audio/raw/combat/sfx_brute_hit.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "loud heavy armor plate clank, bullet striking thick steel armor with a dull metallic thud and a plate rattle, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    }
-  ]
+ "$comment": "Iron Burrow audio manifest (step sound). id/key = cue id of docs/sound/BRIEF.json and GDD 23. Browser picks ogg (Vorbis) or m4a (AAC) by canPlayType. Loops are baked seamless: AudioBufferSourceNode.loop with loopStart/loopEnd.",
+ "version": 1,
+ "generated": "2026-11-19",
+ "formats": [
+  "ogg",
+  "m4a"
+ ],
+ "sampleRate": 44100,
+ "totals": {
+  "files": 122,
+  "bytes": 6450306,
+  "musicBytesMaxPerFile": 618366,
+  "sfxBytesMaxPerFile": 45253
+ },
+ "music": [
+  {
+   "id": "mus_lobby",
+   "key": "mus_lobby",
+   "kind": "music",
+   "group": "music",
+   "event": "S02 Lobby, S03 Stage Map, S10, S12, S13, S14",
+   "files": {
+    "ogg": "assets/audio/music/mus_lobby.ogg",
+    "m4a": "assets/audio/music/mus_lobby.m4a"
+   },
+   "bytes": {
+    "ogg": 316161,
+    "m4a": 463480
+   },
+   "durationSec": 64,
+   "channels": 2,
+   "sampleRate": 44100,
+   "targetLUFS": -20,
+   "lufs": -20,
+   "truePeak": -8.6,
+   "loudnessNote": "ebur128 integrated",
+   "loop": true,
+   "loopStart": 0,
+   "loopEnd": 64,
+   "crossfadeSec": 4,
+   "seam": {
+    "wrapJump": 0.0003,
+    "p999Jump": 0.0901,
+    "clickFree": true,
+    "seamDb": 1.38
+   },
+   "priority": 3,
+   "tool": "mcp__elevenlabs__music",
+   "prompt": "instrumental underground workshop ambience, dark analog synth pads, soft metallic percussion, slow pulsing bass, distant anvil hits, mysterious but warm, recurring four-note low Burrow motif (descending D-A-F-D figure on deep synth bass), no vocals, seamless loop. 92 BPM, D minor. steady groove from first to last bar, no intro fade-in, no ending, no outro, no fade-out, ends mid-phrase so it can loop back to the start",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "mus_stage_clay",
+   "key": "mus_stage_clay",
+   "kind": "music",
+   "group": "music",
+   "event": "S05, главы 1",
+   "files": {
+    "ogg": "assets/audio/music/mus_stage_clay.ogg",
+    "m4a": "assets/audio/music/mus_stage_clay.m4a"
+   },
+   "bytes": {
+    "ogg": 533129,
+    "m4a": 557425
+   },
+   "durationSec": 76,
+   "channels": 2,
+   "sampleRate": 44100,
+   "targetLUFS": -20,
+   "lufs": -20,
+   "truePeak": -5.7,
+   "loudnessNote": "ebur128 integrated",
+   "loop": true,
+   "loopStart": 0,
+   "loopEnd": 76,
+   "crossfadeSec": 4,
+   "seam": {
+    "wrapJump": 0.0104,
+    "p999Jump": 0.1576,
+    "clickFree": true,
+    "seamDb": 4.67
+   },
+   "priority": 3,
+   "tool": "mcp__elevenlabs__music",
+   "prompt": "upbeat arcade action track, punchy synth bass, clicky metallic drums, earthy wooden-and-iron percussion, energetic but light and springy, recurring four-note low Burrow motif (D-A-F-D figure on deep synth bass) as the hook, no vocals, seamless loop. 120 BPM, D minor. steady groove from first to last bar, no intro fade-in, no ending, no outro, no fade-out, ends mid-phrase so it can loop back to the start",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "mus_stage_iron",
+   "key": "mus_stage_iron",
+   "kind": "music",
+   "group": "music",
+   "event": "S05, глава 2",
+   "files": {
+    "ogg": "assets/audio/music/mus_stage_iron.ogg",
+    "m4a": "assets/audio/music/mus_stage_iron.m4a"
+   },
+   "bytes": {
+    "ogg": 578801,
+    "m4a": 555029
+   },
+   "durationSec": 76,
+   "channels": 2,
+   "sampleRate": 44100,
+   "targetLUFS": -20,
+   "lufs": -19.8,
+   "truePeak": -6.6,
+   "loudnessNote": "ebur128 integrated",
+   "loop": true,
+   "loopStart": 0,
+   "loopEnd": 76,
+   "crossfadeSec": 4,
+   "seam": {
+    "wrapJump": 0.0205,
+    "p999Jump": 0.1412,
+    "clickFree": true,
+    "seamDb": 5.33
+   },
+   "priority": 3,
+   "tool": "mcp__elevenlabs__music",
+   "prompt": "driving industrial arcade track, mechanical machine-press rhythm, hammering steel percussion, gritty synth bass, steam hiss accents, denser texture, same recurring four-note low Burrow motif (E-B-G-E figure on deep synth bass), no vocals, seamless loop. 128 BPM, E minor. steady groove from first to last bar, no intro fade-in, no ending, no outro, no fade-out, ends mid-phrase so it can loop back to the start",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "mus_stage_magma",
+   "key": "mus_stage_magma",
+   "kind": "music",
+   "group": "music",
+   "event": "S05, глава 3",
+   "files": {
+    "ogg": "assets/audio/music/mus_stage_magma.ogg",
+    "m4a": "assets/audio/music/mus_stage_magma.m4a"
+   },
+   "bytes": {
+    "ogg": 550771,
+    "m4a": 550700
+   },
+   "durationSec": 76,
+   "channels": 2,
+   "sampleRate": 44100,
+   "targetLUFS": -20,
+   "lufs": -20,
+   "truePeak": -7.4,
+   "loudnessNote": "ebur128 integrated",
+   "loop": true,
+   "loopStart": 0,
+   "loopEnd": 76,
+   "crossfadeSec": 4,
+   "seam": {
+    "wrapJump": 0.0134,
+    "p999Jump": 0.1125,
+    "clickFree": true,
+    "seamDb": 1.6
+   },
+   "priority": 3,
+   "tool": "mcp__elevenlabs__music",
+   "prompt": "intense hot arcade battle track, heavy distorted synth bass, fast metallic drums, rumbling low drone layer, fiery bright synth stabs and burning pads, tense, same recurring four-note low Burrow motif (F-C-Ab-F figure on deep synth bass), no vocals, seamless loop. 136 BPM, F minor. steady groove from first to last bar, no intro fade-in, no ending, no outro, no fade-out, ends mid-phrase so it can loop back to the start",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "mus_siege",
+   "key": "mus_siege",
+   "kind": "music",
+   "group": "music",
+   "event": "S05 в режиме Siege",
+   "files": {
+    "ogg": "assets/audio/music/mus_siege.ogg",
+    "m4a": "assets/audio/music/mus_siege.m4a"
+   },
+   "bytes": {
+    "ogg": 618366,
+    "m4a": 607672
+   },
+   "durationSec": 84,
+   "channels": 2,
+   "sampleRate": 44100,
+   "targetLUFS": -20,
+   "lufs": -20,
+   "truePeak": -5.9,
+   "loudnessNote": "ebur128 integrated",
+   "loop": true,
+   "loopStart": 0,
+   "loopEnd": 84,
+   "crossfadeSec": 4,
+   "seam": {
+    "wrapJump": 0.0104,
+    "p999Jump": 0.1181,
+    "clickFree": true,
+    "seamDb": 3.51
+   },
+   "priority": 3,
+   "tool": "mcp__elevenlabs__music",
+   "prompt": "relentless siege arcade track, maximum energy, pounding war drums mixed with metal clangs, aggressive synth arpeggio, continuously rising tension, recurring four-note low Burrow motif (F-C-Ab-F figure) played in brass-like synth over deep bass, no vocals, seamless loop. 144 BPM, F minor. steady groove from first to last bar, no intro fade-in, no ending, no outro, no fade-out, ends mid-phrase so it can loop back to the start",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  }
+ ],
+ "sfx": [
+  {
+   "id": "jgl_stage_start",
+   "key": "jgl_stage_start",
+   "kind": "jingle",
+   "group": "jingles",
+   "event": "старт стадии (после S04 / перезапуска)",
+   "files": {
+    "ogg": "assets/audio/sfx/jgl_stage_start.ogg",
+    "m4a": "assets/audio/sfx/jgl_stage_start.m4a"
+   },
+   "bytes": {
+    "ogg": 20287,
+    "m4a": 23043
+   },
+   "durationSec": 2.148,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -18,
+   "lufs": -18,
+   "truePeak": -2.8,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "priority": 1,
+   "tool": "mcp__elevenlabs__music",
+   "prompt": "short arcade ready stinger, starts immediately on the first beat, no silence at start: sharp metallic hit then quick four-note synth motif rising, punchy and energetic, clean short ending, instrumental, about 2 seconds",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "jgl_stage_clear",
+   "key": "jgl_stage_clear",
+   "kind": "jingle",
+   "group": "jingles",
+   "event": "S07 Stage Clear",
+   "files": {
+    "ogg": "assets/audio/sfx/jgl_stage_clear.ogg",
+    "m4a": "assets/audio/sfx/jgl_stage_clear.m4a"
+   },
+   "bytes": {
+    "ogg": 23087,
+    "m4a": 25850
+   },
+   "durationSec": 2.434,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -16,
+   "lufs": -16.1,
+   "truePeak": -4.6,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "priority": 1,
+   "tool": "mcp__elevenlabs__music",
+   "prompt": "triumphant short victory jingle, starts immediately on the first beat, no silence at start: bright synth brass, metallic chimes, four-note motif resolving to a major chord, clean short ending, instrumental, 3.5 seconds",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "jgl_chapter_clear",
+   "key": "jgl_chapter_clear",
+   "kind": "jingle",
+   "group": "jingles",
+   "event": "S07 после стадий 10, 20, 30",
+   "files": {
+    "ogg": "assets/audio/sfx/jgl_chapter_clear.ogg",
+    "m4a": "assets/audio/sfx/jgl_chapter_clear.m4a"
+   },
+   "bytes": {
+    "ogg": 33331,
+    "m4a": 43653
+   },
+   "durationSec": 4.174,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -16,
+   "lufs": -16.1,
+   "truePeak": -3.7,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "priority": 1,
+   "tool": "mcp__elevenlabs__music",
+   "prompt": "grand victory fanfare, starts immediately on the first beat, no silence at start: synth brass and anvil hits, glowing pads swell, ending on a big sustained major chord, clean short ending, instrumental, 5 seconds",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "jgl_defeat",
+   "key": "jgl_defeat",
+   "kind": "jingle",
+   "group": "jingles",
+   "event": "S08 Defeat",
+   "files": {
+    "ogg": "assets/audio/sfx/jgl_defeat.ogg",
+    "m4a": "assets/audio/sfx/jgl_defeat.m4a"
+   },
+   "bytes": {
+    "ogg": 19690,
+    "m4a": 27152
+   },
+   "durationSec": 2.539,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -17,
+   "lufs": -18,
+   "truePeak": -2.6,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "priority": 1,
+   "tool": "mcp__elevenlabs__music",
+   "prompt": "short defeat jingle, starts immediately on the first beat, no silence at start: descending four-note motif on detuned synth, cooling metal hiss, low thud at the end, clean short ending, instrumental, 3 seconds",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "jgl_siege_result",
+   "key": "jgl_siege_result",
+   "kind": "jingle",
+   "group": "jingles",
+   "event": "S09 Siege Result (без рекорда)",
+   "files": {
+    "ogg": "assets/audio/sfx/jgl_siege_result.ogg",
+    "m4a": "assets/audio/sfx/jgl_siege_result.m4a"
+   },
+   "bytes": {
+    "ogg": 23717,
+    "m4a": 30267
+   },
+   "durationSec": 2.858,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -17,
+   "lufs": -17.1,
+   "truePeak": -2.6,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "priority": 1,
+   "tool": "mcp__elevenlabs__music",
+   "prompt": "very short neutral result stinger, starts immediately on the first beat, no silence at start: one steady proud synth chord with a metallic shimmer, calm and confident, quick clean ending, instrumental, 3 seconds total",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "jgl_siege_record",
+   "key": "jgl_siege_record",
+   "kind": "jingle",
+   "group": "jingles",
+   "event": "S09 при новом личном рекорде",
+   "files": {
+    "ogg": "assets/audio/sfx/jgl_siege_record.ogg",
+    "m4a": "assets/audio/sfx/jgl_siege_record.m4a"
+   },
+   "bytes": {
+    "ogg": 43288,
+    "m4a": 45253
+   },
+   "durationSec": 4.325,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -16,
+   "lufs": -16,
+   "truePeak": -2.3,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "priority": 1,
+   "tool": "mcp__elevenlabs__music",
+   "prompt": "short new record fanfare, starts immediately on the first beat, no silence at start: rising bright synth arpeggio, sparkling chimes, big final hit, clean short ending, instrumental, 4 seconds",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_shot_player",
+   "key": "sfx_shot_player",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "выстрел игрока, оружие L0–L2",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_shot_player.ogg",
+    "m4a": "assets/audio/sfx/sfx_shot_player.m4a"
+   },
+   "bytes": {
+    "ogg": 5091,
+    "m4a": 3066
+   },
+   "durationSec": 0.18,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -14,
+   "lufs": "—",
+   "truePeak": -2.1,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 3,
+   "cooldownLimit": "60 мс / 2",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "punchy short mechanical cannon pop with a metallic click, compact and dry, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_shot_player_heavy",
+   "key": "sfx_shot_player_heavy",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "выстрел игрока, оружие L3",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_shot_player_heavy.ogg",
+    "m4a": "assets/audio/sfx/sfx_shot_player_heavy.m4a"
+   },
+   "bytes": {
+    "ogg": 6091,
+    "m4a": 4226
+   },
+   "durationSec": 0.3,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -14,
+   "lufs": "—",
+   "truePeak": -1.9,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 3,
+   "cooldownLimit": "60 мс / 2",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "heavier cannon thump with a hot sizzling tail, deeper body, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_shot_enemy",
+   "key": "sfx_shot_enemy",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "выстрел врага",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_shot_enemy.ogg",
+    "m4a": "assets/audio/sfx/sfx_shot_enemy.m4a"
+   },
+   "bytes": {
+    "ogg": 5222,
+    "m4a": 3091
+   },
+   "durationSec": 0.18,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -16,
+   "lufs": "—",
+   "truePeak": -1.8,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-4",
+   "priority": 5,
+   "cooldownLimit": "80 мс / 3",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "small wet plasma spit with a buzzy acid tone, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_hit_brick",
+   "key": "sfx_hit_brick",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "пуля попала в кирпич (снята четверть)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_hit_brick.ogg",
+    "m4a": "assets/audio/sfx/sfx_hit_brick.m4a"
+   },
+   "bytes": {
+    "ogg": 6275,
+    "m4a": 3737
+   },
+   "durationSec": 0.24,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -16,
+   "lufs": "—",
+   "truePeak": -3.3,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-2",
+   "priority": 4,
+   "cooldownLimit": "40 мс / 3",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "loud crumbling brick wall chunk breaking apart, sharp crack of masonry with short gritty rubble debris falling, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_hit_steel",
+   "key": "sfx_hit_steel",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "пуля попала в сталь без пробития / в край поля",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_hit_steel.ogg",
+    "m4a": "assets/audio/sfx/sfx_hit_steel.m4a"
+   },
+   "bytes": {
+    "ogg": 5453,
+    "m4a": 3756
+   },
+   "durationSec": 0.24,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -16,
+   "lufs": "—",
+   "truePeak": -3.5,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-3 (край поля -6)",
+   "priority": 5,
+   "cooldownLimit": "50 мс / 2",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "sharp metallic ricochet ping, short, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_break_steel",
+   "key": "sfx_break_steel",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "пуля L3 сломала четверть стали",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_break_steel.ogg",
+    "m4a": "assets/audio/sfx/sfx_break_steel.m4a"
+   },
+   "bytes": {
+    "ogg": 7111,
+    "m4a": 5275
+   },
+   "durationSec": 0.38,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -15,
+   "lufs": "—",
+   "truePeak": -1.9,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 3,
+   "cooldownLimit": "60 мс / 2",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "heavy metal plate tearing crunch with a clang, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_bullet_clash",
+   "key": "sfx_bullet_clash",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "пуля столкнулась с пулей",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_bullet_clash.ogg",
+    "m4a": "assets/audio/sfx/sfx_bullet_clash.m4a"
+   },
+   "bytes": {
+    "ogg": 5772,
+    "m4a": 2995
+   },
+   "durationSec": 0.18,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -17,
+   "lufs": "—",
+   "truePeak": -2.2,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-3",
+   "priority": 5,
+   "cooldownLimit": "50 мс / 2",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "tiny crisp zap with spark crackle, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_enemy_explode",
+   "key": "sfx_enemy_explode",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "взрыв врага (scout, grunt, gunner)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_enemy_explode.ogg",
+    "m4a": "assets/audio/sfx/sfx_enemy_explode.m4a"
+   },
+   "bytes": {
+    "ogg": 8219,
+    "m4a": 7373
+   },
+   "durationSec": 0.6,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -14,
+   "lufs": -17.4,
+   "truePeak": -1.9,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 2,
+   "cooldownLimit": "50 мс / 3",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "compact scrap-metal explosion, crunchy boom with rattling debris, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_brute_hit",
+   "key": "sfx_brute_hit",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "попадание по brute без гибели",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_brute_hit.ogg",
+    "m4a": "assets/audio/sfx/sfx_brute_hit.m4a"
+   },
+   "bytes": {
+    "ogg": 6132,
+    "m4a": 4886
+   },
+   "durationSec": 0.36,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -15,
+   "lufs": "—",
+   "truePeak": -1.9,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 3,
+   "cooldownLimit": "60 мс / 2",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "loud heavy armor plate clank, bullet striking thick steel armor with a dull metallic thud and a plate rattle, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_brute_explode",
+   "key": "sfx_brute_explode",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "гибель brute",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_brute_explode.ogg",
+    "m4a": "assets/audio/sfx/sfx_brute_explode.m4a"
+   },
+   "bytes": {
+    "ogg": 9412,
+    "m4a": 8883
+   },
+   "durationSec": 0.763,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -13,
+   "lufs": -19.1,
+   "truePeak": -2.3,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 2,
+   "cooldownLimit": "100 мс / 2",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "big heavy explosion with deep boom and falling armor plates, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_powerup_drop",
+   "key": "sfx_powerup_drop",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "первое попадание по мигающему носителю (выпал power-up)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_powerup_drop.ogg",
+    "m4a": "assets/audio/sfx/sfx_powerup_drop.m4a"
+   },
+   "bytes": {
+    "ogg": 7513,
+    "m4a": 6115
+   },
+   "durationSec": 0.48,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -15,
+   "lufs": -16.5,
+   "truePeak": -2.6,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 2,
+   "cooldownLimit": "200 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "bright magical pop with rising chime, sparkly pickup appears, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_powerup_vanish",
+   "key": "sfx_powerup_vanish",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "power-up исчезает (истекли 12 с)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_powerup_vanish.ogg",
+    "m4a": "assets/audio/sfx/sfx_powerup_vanish.m4a"
+   },
+   "bytes": {
+    "ogg": 7171,
+    "m4a": 5637
+   },
+   "durationSec": 0.427,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -20,
+   "lufs": -20.3,
+   "truePeak": -7.7,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "-3",
+   "priority": 5,
+   "cooldownLimit": "200 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "soft descending fizzle, magic sparkle dissipating, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_pu_star",
+   "key": "sfx_pu_star",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "подбор Star (оружие +1)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_pu_star.ogg",
+    "m4a": "assets/audio/sfx/sfx_pu_star.m4a"
+   },
+   "bytes": {
+    "ogg": 9455,
+    "m4a": 8237
+   },
+   "durationSec": 0.68,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -14,
+   "lufs": -15.3,
+   "truePeak": -2.3,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "150 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "rising metallic power-up chime with a mechanical lock-in clunk, weapon upgrade, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_pu_bubble",
+   "key": "sfx_pu_bubble",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "подбор Bubble",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_pu_bubble.ogg",
+    "m4a": "assets/audio/sfx/sfx_pu_bubble.m4a"
+   },
+   "bytes": {
+    "ogg": 7929,
+    "m4a": 7747
+   },
+   "durationSec": 0.648,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -14,
+   "lufs": -15.3,
+   "truePeak": -2.2,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "150 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "shimmering energy bubble inflating, airy whoosh, force field shield forming, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_pu_rebar",
+   "key": "sfx_pu_rebar",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "подбор Rebar",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_pu_rebar.ogg",
+    "m4a": "assets/audio/sfx/sfx_pu_rebar.m4a"
+   },
+   "bytes": {
+    "ogg": 9231,
+    "m4a": 9436
+   },
+   "durationSec": 0.8,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -14,
+   "lufs": -21.1,
+   "truePeak": -1.8,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "150 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "quick series of heavy steel plates slamming into place, metallic clanks, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_pu_quake",
+   "key": "sfx_pu_quake",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "подбор Quake",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_pu_quake.ogg",
+    "m4a": "assets/audio/sfx/sfx_pu_quake.m4a"
+   },
+   "bytes": {
+    "ogg": 10457,
+    "m4a": 13431
+   },
+   "durationSec": 1.2,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -13,
+   "lufs": -17.4,
+   "truePeak": -2.5,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "150 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "deep ground rumble swelling into a big shockwave boom, earthquake explosion, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_pu_freeze",
+   "key": "sfx_pu_freeze",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "подбор Freeze",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_pu_freeze.ogg",
+    "m4a": "assets/audio/sfx/sfx_pu_freeze.m4a"
+   },
+   "bytes": {
+    "ogg": 11450,
+    "m4a": 8609
+   },
+   "durationSec": 0.723,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -14,
+   "lufs": -18.1,
+   "truePeak": -2.3,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "150 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "crystalline ice crackle spreading, cold glassy chime, freezing frost, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_pu_hull",
+   "key": "sfx_pu_hull",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "подбор Hull (+1 жизнь)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_pu_hull.ogg",
+    "m4a": "assets/audio/sfx/sfx_pu_hull.m4a"
+   },
+   "bytes": {
+    "ogg": 7906,
+    "m4a": 9336
+   },
+   "durationSec": 0.8,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -14,
+   "lufs": -15.1,
+   "truePeak": -2.6,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "150 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "warm rising extra-life chime with a tank engine rev, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_freeze_end",
+   "key": "sfx_freeze_end",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "Freeze закончился",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_freeze_end.ogg",
+    "m4a": "assets/audio/sfx/sfx_freeze_end.m4a"
+   },
+   "bytes": {
+    "ogg": 6218,
+    "m4a": 4450
+   },
+   "durationSec": 0.316,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -17,
+   "lufs": "—",
+   "truePeak": -1.9,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-2",
+   "priority": 4,
+   "cooldownLimit": "300 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "ice cracking and shattering, short glassy break, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_shield_down",
+   "key": "sfx_shield_down",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "Bubble / щит спавна гаснет (за 1.5 с до конца)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_shield_down.ogg",
+    "m4a": "assets/audio/sfx/sfx_shield_down.m4a"
+   },
+   "bytes": {
+    "ogg": 8166,
+    "m4a": 7365
+   },
+   "durationSec": 0.6,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -18,
+   "lufs": -18.1,
+   "truePeak": -3.1,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "-2",
+   "priority": 4,
+   "cooldownLimit": "300 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "flickering electric energy shield hum fading out, sputtering power down, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_shield_block",
+   "key": "sfx_shield_block",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "пуля поглощена щитом",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_shield_block.ogg",
+    "m4a": "assets/audio/sfx/sfx_shield_block.m4a"
+   },
+   "bytes": {
+    "ogg": 5375,
+    "m4a": 4197
+   },
+   "durationSec": 0.3,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -17,
+   "lufs": "—",
+   "truePeak": -2.7,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-2",
+   "priority": 4,
+   "cooldownLimit": "80 мс / 2",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "soft energy shield deflect thump, short bullet absorbed by force field, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_wall_revert",
+   "key": "sfx_wall_revert",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "стена ядра возвращается в кирпич (конец Rebar / Steel Fortress)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_wall_revert.ogg",
+    "m4a": "assets/audio/sfx/sfx_wall_revert.m4a"
+   },
+   "bytes": {
+    "ogg": 7293,
+    "m4a": 6411
+   },
+   "durationSec": 0.53,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -17,
+   "lufs": -19.3,
+   "truePeak": -1.8,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "-2",
+   "priority": 4,
+   "cooldownLimit": "300 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "metal plates retracting with a clunk, mechanical slide back, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_bst_bubble",
+   "key": "sfx_bst_bubble",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "бустер Bubble Shield",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_bst_bubble.ogg",
+    "m4a": "assets/audio/sfx/sfx_bst_bubble.m4a"
+   },
+   "bytes": {
+    "ogg": 7203,
+    "m4a": 6656
+   },
+   "durationSec": 0.538,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -13,
+   "lufs": -14.4,
+   "truePeak": -2.7,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "300 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "powerful energy dome deploy, bright electric hum burst, force field shield activating, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_bst_shockwave",
+   "key": "sfx_bst_shockwave",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "бустер Shockwave",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_bst_shockwave.ogg",
+    "m4a": "assets/audio/sfx/sfx_bst_shockwave.m4a"
+   },
+   "bytes": {
+    "ogg": 13997,
+    "m4a": 15160
+   },
+   "durationSec": 1.36,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -12,
+   "lufs": -13.2,
+   "truePeak": -1.8,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "300 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "massive charge-up whine into a huge concussive blast, explosive shockwave boom, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_bst_fortify",
+   "key": "sfx_bst_fortify",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "бустер Steel Fortress",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_bst_fortify.ogg",
+    "m4a": "assets/audio/sfx/sfx_bst_fortify.m4a"
+   },
+   "bytes": {
+    "ogg": 11166,
+    "m4a": 11440
+   },
+   "durationSec": 1,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -13,
+   "lufs": -16.3,
+   "truePeak": -1.8,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "300 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "heavy fortress lockdown, big steel slams and hydraulic hiss, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_bst_hull",
+   "key": "sfx_bst_hull",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "Spare Hull: включён в S04 / Continue в S08",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_bst_hull.ogg",
+    "m4a": "assets/audio/sfx/sfx_bst_hull.m4a"
+   },
+   "bytes": {
+    "ogg": 10414,
+    "m4a": 11370
+   },
+   "durationSec": 1,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -14,
+   "lufs": -16.8,
+   "truePeak": -2.1,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "300 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "heavy metal tank hull dropping onto ground with a thud, then diesel engine start roar, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_bst_denied",
+   "key": "sfx_bst_denied",
+   "kind": "sfx",
+   "group": "powerups",
+   "event": "бустер недоступен (0 шт. или лимит на стадию)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_bst_denied.ogg",
+    "m4a": "assets/audio/sfx/sfx_bst_denied.m4a"
+   },
+   "bytes": {
+    "ogg": 5442,
+    "m4a": 4193
+   },
+   "durationSec": 0.3,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -18,
+   "lufs": "—",
+   "truePeak": -5.3,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-2",
+   "priority": 3,
+   "cooldownLimit": "250 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "short dull double buzz, error denied UI sound, single sound, starts instantly, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_player_explode",
+   "key": "sfx_player_explode",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "гибель игрока",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_player_explode.ogg",
+    "m4a": "assets/audio/sfx/sfx_player_explode.m4a"
+   },
+   "bytes": {
+    "ogg": 11455,
+    "m4a": 11403
+   },
+   "durationSec": 1,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -12,
+   "lufs": -14.7,
+   "truePeak": -1.9,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "0 / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "big punchy tank explosion, metal shrapnel, short low rumble tail, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_player_spawn",
+   "key": "sfx_player_spawn",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "респаун игрока",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_player_spawn.ogg",
+    "m4a": "assets/audio/sfx/sfx_player_spawn.m4a"
+   },
+   "bytes": {
+    "ogg": 9488,
+    "m4a": 8113
+   },
+   "durationSec": 0.678,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -16,
+   "lufs": -16.7,
+   "truePeak": -6.6,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "-1",
+   "priority": 2,
+   "cooldownLimit": "0 / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "ground drill burrowing up, engine kick, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_engine_loop",
+   "key": "sfx_engine_loop",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "движение игрока (луп, пока зажато направление)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_engine_loop.ogg",
+    "m4a": "assets/audio/sfx/sfx_engine_loop.m4a"
+   },
+   "bytes": {
+    "ogg": 12204,
+    "m4a": 11412
+   },
+   "durationSec": 1,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -22,
+   "lufs": -22.1,
+   "truePeak": -8.4,
+   "loudnessNote": "ebur128 integrated",
+   "loop": true,
+   "loopStart": 0,
+   "loopEnd": 1,
+   "crossfadeSec": 0.15,
+   "seam": {
+    "wrapJump": 0.0081,
+    "p999Jump": 0.0348,
+    "clickFree": true,
+    "seamDb": 1.2
+   },
+   "mixDb": "-6",
+   "priority": 5,
+   "cooldownLimit": "— / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "low steady tank engine idle-to-move rumble with tread clatter, seamless loop, single sound, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_oil_slide",
+   "key": "sfx_oil_slide",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "скольжение по маслу",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_oil_slide.ogg",
+    "m4a": "assets/audio/sfx/sfx_oil_slide.m4a"
+   },
+   "bytes": {
+    "ogg": 7739,
+    "m4a": 6124
+   },
+   "durationSec": 0.48,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -18,
+   "lufs": -18.1,
+   "truePeak": -6.3,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "-3",
+   "priority": 4,
+   "cooldownLimit": "400 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "slick wet skid squeal, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_core_alarm",
+   "key": "sfx_core_alarm",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "разрушена первая четверть кольца ядра за стадию",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_core_alarm.ogg",
+    "m4a": "assets/audio/sfx/sfx_core_alarm.m4a"
+   },
+   "bytes": {
+    "ogg": 10516,
+    "m4a": 9354
+   },
+   "durationSec": 0.8,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -14,
+   "lufs": -13.7,
+   "truePeak": -2.9,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "5000 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "urgent two-tone metallic alarm beep, short, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_core_destroyed",
+   "key": "sfx_core_destroyed",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "ядро уничтожено",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_core_destroyed.ogg",
+    "m4a": "assets/audio/sfx/sfx_core_destroyed.m4a"
+   },
+   "bytes": {
+    "ogg": 15716,
+    "m4a": 21503
+   },
+   "durationSec": 2,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -11,
+   "lufs": -15.9,
+   "truePeak": -2.4,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "0 / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "huge crystal energy implosion and shatter, deep boom, power-down whine, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_enemy_spawn",
+   "key": "sfx_enemy_spawn",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "появление врага",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_enemy_spawn.ogg",
+    "m4a": "assets/audio/sfx/sfx_enemy_spawn.m4a"
+   },
+   "bytes": {
+    "ogg": 6407,
+    "m4a": 3847
+   },
+   "durationSec": 0.257,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -18,
+   "lufs": "—",
+   "truePeak": -1.8,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-3",
+   "priority": 4,
+   "cooldownLimit": "300 мс / 2",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "ground cracking open with a buzzy acid-green energy swirl, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_last_enemy",
+   "key": "sfx_last_enemy",
+   "kind": "sfx",
+   "group": "combat",
+   "event": "стадия: осталось 0 врагов (последний убит)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_last_enemy.ogg",
+    "m4a": "assets/audio/sfx/sfx_last_enemy.m4a"
+   },
+   "bytes": {
+    "ogg": 8887,
+    "m4a": 9405
+   },
+   "durationSec": 0.8,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -13,
+   "lufs": -16.1,
+   "truePeak": -2.5,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "0 / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "heavy final impact boom with ringing metal, single sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_wave_start",
+   "key": "sfx_wave_start",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "Siege: начало волны",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_wave_start.ogg",
+    "m4a": "assets/audio/sfx/sfx_wave_start.m4a"
+   },
+   "bytes": {
+    "ogg": 8293,
+    "m4a": 8518
+   },
+   "durationSec": 0.738,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -15,
+   "lufs": -16.8,
+   "truePeak": -2.5,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 2,
+   "cooldownLimit": "1000 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "war horn-like synth swell with a heavy metal hit, single short UI sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_wave_clear",
+   "key": "sfx_wave_clear",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "Siege: волна зачищена",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_wave_clear.ogg",
+    "m4a": "assets/audio/sfx/sfx_wave_clear.m4a"
+   },
+   "bytes": {
+    "ogg": 9450,
+    "m4a": 10169
+   },
+   "durationSec": 0.88,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -15,
+   "lufs": -15.2,
+   "truePeak": -2.5,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 2,
+   "cooldownLimit": "1000 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "short bright confirmation chime with anvil ring, single short UI sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_ui_click",
+   "key": "sfx_ui_click",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "UI: нажатие кнопки / узла стадии",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_ui_click.ogg",
+    "m4a": "assets/audio/sfx/sfx_ui_click.m4a"
+   },
+   "bytes": {
+    "ogg": 4368,
+    "m4a": 2093
+   },
+   "durationSec": 0.078,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -18,
+   "lufs": "—",
+   "truePeak": -2.6,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-2",
+   "priority": 3,
+   "cooldownLimit": "50 мс / 2",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "crisp small metal switch click, single short UI tap, dry, no reverb",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_ui_back",
+   "key": "sfx_ui_back",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "UI: назад / закрыть попап",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_ui_back.ogg",
+    "m4a": "assets/audio/sfx/sfx_ui_back.m4a"
+   },
+   "bytes": {
+    "ogg": 4714,
+    "m4a": 2403
+   },
+   "durationSec": 0.113,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -19,
+   "lufs": "—",
+   "truePeak": -2.9,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-2",
+   "priority": 3,
+   "cooldownLimit": "50 мс / 2",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "audible soft low metal button click, clear lower-pitched tap, single short UI sound, starts instantly, dry, no reverb, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_ui_toggle",
+   "key": "sfx_ui_toggle",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "UI: переключение таба / тумблера",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_ui_toggle.ogg",
+    "m4a": "assets/audio/sfx/sfx_ui_toggle.m4a"
+   },
+   "bytes": {
+    "ogg": 4665,
+    "m4a": 2594
+   },
+   "durationSec": 0.12,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -19,
+   "lufs": "—",
+   "truePeak": -2.3,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-2",
+   "priority": 3,
+   "cooldownLimit": "50 мс / 2",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "short mechanical latch flick, single short UI sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_ui_popup",
+   "key": "sfx_ui_popup",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "UI: открытие попапа",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_ui_popup.ogg",
+    "m4a": "assets/audio/sfx/sfx_ui_popup.m4a"
+   },
+   "bytes": {
+    "ogg": 5729,
+    "m4a": 3827
+   },
+   "durationSec": 0.253,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -19,
+   "lufs": "—",
+   "truePeak": -1.6,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-3",
+   "priority": 4,
+   "cooldownLimit": "150 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "metallic panel slide-in whoosh, quick, single short UI sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_ui_locked",
+   "key": "sfx_ui_locked",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "UI: тап по закрытому узлу / Siege на замке",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_ui_locked.ogg",
+    "m4a": "assets/audio/sfx/sfx_ui_locked.m4a"
+   },
+   "bytes": {
+    "ogg": 7017,
+    "m4a": 4245
+   },
+   "durationSec": 0.3,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -18,
+   "lufs": "—",
+   "truePeak": -2.6,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-2",
+   "priority": 3,
+   "cooldownLimit": "200 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "loud clear metal padlock shake and rattle, locked door denial clack, single short UI sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_ui_pause",
+   "key": "sfx_ui_pause",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "пауза вкл/выкл (S06)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_ui_pause.ogg",
+    "m4a": "assets/audio/sfx/sfx_ui_pause.m4a"
+   },
+   "bytes": {
+    "ogg": 4800,
+    "m4a": 2960
+   },
+   "durationSec": 0.18,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -18,
+   "lufs": "—",
+   "truePeak": -2.6,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-2",
+   "priority": 3,
+   "cooldownLimit": "150 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "soft low mechanical clunk, single short UI sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_star",
+   "key": "sfx_star",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "S07: начислена звезда (1, 2, 3 — pitch +0/+2/+4 полутона кодом)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_star.ogg",
+    "m4a": "assets/audio/sfx/sfx_star.m4a"
+   },
+   "bytes": {
+    "ogg": 6178,
+    "m4a": 4509
+   },
+   "durationSec": 0.327,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -14,
+   "lufs": "—",
+   "truePeak": -2,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 2,
+   "cooldownLimit": "250 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "bright metallic star ding with sparkle, single short UI sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_score_tick",
+   "key": "sfx_score_tick",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "S07/S09: пересчёт счёта (тик)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_score_tick.ogg",
+    "m4a": "assets/audio/sfx/sfx_score_tick.m4a"
+   },
+   "bytes": {
+    "ogg": 4548,
+    "m4a": 2531
+   },
+   "durationSec": 0.12,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -22,
+   "lufs": "—",
+   "truePeak": -2.1,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-4",
+   "priority": 5,
+   "cooldownLimit": "40 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "tiny soft counter tick, one very short click, single short UI sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_reward",
+   "key": "sfx_reward",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "награда: выдан бустер (S07, финал главы, стартовый грант)",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_reward.ogg",
+    "m4a": "assets/audio/sfx/sfx_reward.m4a"
+   },
+   "bytes": {
+    "ogg": 8980,
+    "m4a": 10129
+   },
+   "durationSec": 0.88,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -14,
+   "lufs": -22.5,
+   "truePeak": -2.7,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 2,
+   "cooldownLimit": "200 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "rewarding item pop with warm chime and wooden crate thud, single short UI sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_daily_claim",
+   "key": "sfx_daily_claim",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "S12: получение ежедневной награды",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_daily_claim.ogg",
+    "m4a": "assets/audio/sfx/sfx_daily_claim.m4a"
+   },
+   "bytes": {
+    "ogg": 13623,
+    "m4a": 13437
+   },
+   "durationSec": 1.2,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -14,
+   "lufs": -17,
+   "truePeak": -2.1,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 2,
+   "cooldownLimit": "300 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "crate lid opening with golden shimmer and chime, single short UI sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_purchase_ok",
+   "key": "sfx_purchase_ok",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "S11: покупка успешна",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_purchase_ok.ogg",
+    "m4a": "assets/audio/sfx/sfx_purchase_ok.m4a"
+   },
+   "bytes": {
+    "ogg": 13337,
+    "m4a": 13513
+   },
+   "durationSec": 1.2,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -13,
+   "lufs": -13.9,
+   "truePeak": -1.4,
+   "loudnessNote": "ebur128 integrated",
+   "loop": false,
+   "mixDb": "0",
+   "priority": 1,
+   "cooldownLimit": "500 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "satisfying heavy crate unlock followed by a bright chime cascade, single short UI sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_purchase_fail",
+   "key": "sfx_purchase_fail",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "S11: покупка не прошла / отменена",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_purchase_fail.ogg",
+    "m4a": "assets/audio/sfx/sfx_purchase_fail.m4a"
+   },
+   "bytes": {
+    "ogg": 5809,
+    "m4a": 4854
+   },
+   "durationSec": 0.371,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -18,
+   "lufs": "—",
+   "truePeak": -2.7,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-2",
+   "priority": 2,
+   "cooldownLimit": "500 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "soft low negative double tone, two descending muted beeps, single short UI sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  },
+  {
+   "id": "sfx_tut_step",
+   "key": "sfx_tut_step",
+   "kind": "sfx",
+   "group": "ui",
+   "event": "S15: шаг туториала",
+   "files": {
+    "ogg": "assets/audio/sfx/sfx_tut_step.ogg",
+    "m4a": "assets/audio/sfx/sfx_tut_step.m4a"
+   },
+   "bytes": {
+    "ogg": 6273,
+    "m4a": 4773
+   },
+   "durationSec": 0.36,
+   "channels": 1,
+   "sampleRate": 44100,
+   "targetLUFS": -19,
+   "lufs": "—",
+   "truePeak": -8.5,
+   "loudnessNote": "unmeasured: clip shorter than 0.4 s (EBU gating); normalised on a 0.4 s padded measurement",
+   "loop": false,
+   "mixDb": "-3",
+   "priority": 3,
+   "cooldownLimit": "300 мс / 1",
+   "tool": "mcp__elevenlabs__sound_effect",
+   "prompt": "gentle soft ping, single short UI sound, starts instantly, dry, no music",
+   "license": "ElevenLabs generated content via platform connector (platform key)"
+  }
+ ]
 }
