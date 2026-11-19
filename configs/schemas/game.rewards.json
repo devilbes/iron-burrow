@@ -1,0 +1,336 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rewards (display only)",
+  "description": "Iron Burrow — Rewards (display only): numbers read by the game through sdk.configs.get('game.rewards', 'main'). Values from GDD 31 plat.configs; item, offer, level-set and board ids match the published service records.",
+  "x-ui": {
+    "label": "Rewards (display only)"
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "first_clear_rotation",
+    "first_clear_qty",
+    "three_star",
+    "finale_stages",
+    "finale_bundle",
+    "start_grant",
+    "daily_preview",
+    "level_set_id",
+    "progress",
+    "start_grant_offer_id",
+    "boards"
+  ],
+  "properties": {
+    "first_clear_rotation": {
+      "title": "first_clear_rotation",
+      "description": "Iron Burrow tunable `first_clear_rotation` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "first_clear_rotation"
+      },
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "title": "first_clear_rotation[]",
+        "description": "Iron Burrow tunable `first_clear_rotation[]` (GDD 31 plat.configs).",
+        "x-ui": {
+          "label": "first_clear_rotation[]"
+        },
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 64
+      }
+    },
+    "first_clear_qty": {
+      "title": "first_clear_qty",
+      "description": "Iron Burrow tunable `first_clear_qty` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "first_clear_qty"
+      },
+      "type": "integer",
+      "minimum": 0
+    },
+    "three_star": {
+      "title": "three_star",
+      "description": "Iron Burrow tunable `three_star` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "three_star"
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bst_bubble"
+      ],
+      "properties": {
+        "bst_bubble": {
+          "title": "bst_bubble",
+          "description": "Iron Burrow tunable `bst_bubble` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "bst_bubble"
+          },
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "finale_stages": {
+      "title": "finale_stages",
+      "description": "Iron Burrow tunable `finale_stages` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "finale_stages"
+      },
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "title": "finale_stages[]",
+        "description": "Iron Burrow tunable `finale_stages[]` (GDD 31 plat.configs).",
+        "x-ui": {
+          "label": "finale_stages[]"
+        },
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "finale_bundle": {
+      "title": "finale_bundle",
+      "description": "Iron Burrow tunable `finale_bundle` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "finale_bundle"
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bst_bubble",
+        "bst_shockwave",
+        "bst_fortify",
+        "bst_hull"
+      ],
+      "properties": {
+        "bst_bubble": {
+          "title": "bst_bubble",
+          "description": "Iron Burrow tunable `bst_bubble` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "bst_bubble"
+          },
+          "type": "integer",
+          "minimum": 0
+        },
+        "bst_shockwave": {
+          "title": "bst_shockwave",
+          "description": "Iron Burrow tunable `bst_shockwave` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "bst_shockwave"
+          },
+          "type": "integer",
+          "minimum": 0
+        },
+        "bst_fortify": {
+          "title": "bst_fortify",
+          "description": "Iron Burrow tunable `bst_fortify` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "bst_fortify"
+          },
+          "type": "integer",
+          "minimum": 0
+        },
+        "bst_hull": {
+          "title": "bst_hull",
+          "description": "Iron Burrow tunable `bst_hull` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "bst_hull"
+          },
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "start_grant": {
+      "title": "start_grant",
+      "description": "Iron Burrow tunable `start_grant` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "start_grant"
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bst_bubble",
+        "bst_shockwave",
+        "bst_fortify",
+        "bst_hull"
+      ],
+      "properties": {
+        "bst_bubble": {
+          "title": "bst_bubble",
+          "description": "Iron Burrow tunable `bst_bubble` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "bst_bubble"
+          },
+          "type": "integer",
+          "minimum": 0
+        },
+        "bst_shockwave": {
+          "title": "bst_shockwave",
+          "description": "Iron Burrow tunable `bst_shockwave` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "bst_shockwave"
+          },
+          "type": "integer",
+          "minimum": 0
+        },
+        "bst_fortify": {
+          "title": "bst_fortify",
+          "description": "Iron Burrow tunable `bst_fortify` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "bst_fortify"
+          },
+          "type": "integer",
+          "minimum": 0
+        },
+        "bst_hull": {
+          "title": "bst_hull",
+          "description": "Iron Burrow tunable `bst_hull` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "bst_hull"
+          },
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "daily_preview": {
+      "title": "daily_preview",
+      "description": "Iron Burrow tunable `daily_preview` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "daily_preview"
+      },
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "title": "daily_preview[]",
+        "description": "Iron Burrow tunable `daily_preview[]` (GDD 31 plat.configs).",
+        "x-ui": {
+          "label": "daily_preview[]"
+        },
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "bst_bubble"
+        ],
+        "properties": {
+          "bst_bubble": {
+            "title": "bst_bubble",
+            "description": "Iron Burrow tunable `bst_bubble` (GDD 31 plat.configs).",
+            "x-ui": {
+              "label": "bst_bubble"
+            },
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "level_set_id": {
+      "title": "level_set_id",
+      "description": "Iron Burrow tunable `level_set_id` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "level_set_id"
+      },
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "progress": {
+      "title": "progress",
+      "description": "Iron Burrow tunable `progress` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "progress"
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "levels",
+        "three_star",
+        "daily"
+      ],
+      "properties": {
+        "levels": {
+          "title": "levels",
+          "description": "Iron Burrow tunable `levels` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "levels"
+          },
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "three_star": {
+          "title": "three_star",
+          "description": "Iron Burrow tunable `three_star` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "three_star"
+          },
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "daily": {
+          "title": "daily",
+          "description": "Iron Burrow tunable `daily` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "daily"
+          },
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        }
+      }
+    },
+    "start_grant_offer_id": {
+      "title": "start_grant_offer_id",
+      "description": "Iron Burrow tunable `start_grant_offer_id` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "start_grant_offer_id"
+      },
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "boards": {
+      "title": "boards",
+      "description": "Iron Burrow tunable `boards` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "boards"
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "siege_best",
+        "campaign_score"
+      ],
+      "properties": {
+        "siege_best": {
+          "title": "siege_best",
+          "description": "Iron Burrow tunable `siege_best` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "siege_best"
+          },
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "campaign_score": {
+          "title": "campaign_score",
+          "description": "Iron Burrow tunable `campaign_score` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "campaign_score"
+          },
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Enemies",
+  "description": "Iron Burrow — Enemies: numbers read by the game through sdk.configs.get('game.enemies', 'main'). Values from GDD 31 plat.configs; item, offer, level-set and board ids match the published service records.",
+  "x-ui": {
+    "label": "Enemies"
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scout",
+    "grunt",
+    "gunner",
+    "brute"
+  ],
+  "properties": {
+    "scout": {
+      "title": "scout",
+      "description": "Iron Burrow tunable `scout` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "scout"
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "speed",
+        "hp",
+        "points"
+      ],
+      "properties": {
+        "speed": {
+          "title": "speed",
+          "description": "Iron Burrow tunable `speed` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "speed"
+          },
+          "type": "number",
+          "minimum": 0
+        },
+        "hp": {
+          "title": "hp",
+          "description": "Iron Burrow tunable `hp` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "hp"
+          },
+          "type": "integer",
+          "minimum": 0
+        },
+        "points": {
+          "title": "points",
+          "description": "Iron Burrow tunable `points` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "points"
+          },
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "grunt": {
+      "title": "grunt",
+      "description": "Iron Burrow tunable `grunt` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "grunt"
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "speed",
+        "hp",
+        "points"
+      ],
+      "properties": {
+        "speed": {
+          "title": "speed",
+          "description": "Iron Burrow tunable `speed` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "speed"
+          },
+          "type": "number",
+          "minimum": 0
+        },
+        "hp": {
+          "title": "hp",
+          "description": "Iron Burrow tunable `hp` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "hp"
+          },
+          "type": "integer",
+          "minimum": 0
+        },
+        "points": {
+          "title": "points",
+          "description": "Iron Burrow tunable `points` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "points"
+          },
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "gunner": {
+      "title": "gunner",
+      "description": "Iron Burrow tunable `gunner` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "gunner"
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "speed",
+        "hp",
+        "points",
+        "fast_bullet"
+      ],
+      "properties": {
+        "speed": {
+          "title": "speed",
+          "description": "Iron Burrow tunable `speed` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "speed"
+          },
+          "type": "number",
+          "minimum": 0
+        },
+        "hp": {
+          "title": "hp",
+          "description": "Iron Burrow tunable `hp` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "hp"
+          },
+          "type": "integer",
+          "minimum": 0
+        },
+        "points": {
+          "title": "points",
+          "description": "Iron Burrow tunable `points` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "points"
+          },
+          "type": "integer",
+          "minimum": 0
+        },
+        "fast_bullet": {
+          "title": "fast_bullet",
+          "description": "Iron Burrow tunable `fast_bullet` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "fast_bullet"
+          },
+          "type": "boolean"
+        }
+      }
+    },
+    "brute": {
+      "title": "brute",
+      "description": "Iron Burrow tunable `brute` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "brute"
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "speed",
+        "hp",
+        "points"
+      ],
+      "properties": {
+        "speed": {
+          "title": "speed",
+          "description": "Iron Burrow tunable `speed` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "speed"
+          },
+          "type": "number",
+          "minimum": 0
+        },
+        "hp": {
+          "title": "hp",
+          "description": "Iron Burrow tunable `hp` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "hp"
+          },
+          "type": "integer",
+          "minimum": 0
+        },
+        "points": {
+          "title": "points",
+          "description": "Iron Burrow tunable `points` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "points"
+          },
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}
