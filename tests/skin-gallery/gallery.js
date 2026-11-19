@@ -146,7 +146,8 @@ const GAME_CSS = '.gw{display:flex;flex-direction:column;align-items:center;gap:
   + '@media (orientation:landscape) and (max-height:50em){.gw{gap:6px}.gw-art [data-part=icon]{width:96px;height:96px}'
   + '.gw-rows{grid-template-columns:1fr 1fr;column-gap:20px;padding:6px 14px}.gw-rows li{padding:2px 0}'
   + '.gw-total strong{font-size:24px}.gw-best{margin-top:-4px}}'
-  + '@media (orientation:landscape) and (max-height:32em){.gw{gap:4px}.gw-art [data-part=icon]{width:56px;height:56px}}';
+  + '@media (orientation:landscape) and (max-height:32em){.gw{gap:4px}.gw-art [data-part=icon]{width:56px;height:56px}'
+  + '.gw-line{padding:2px 14px}.gw-line [data-part=icon]{width:40px;height:40px}.gw-stat strong{font-size:24px}}';
 const gameBody = (name, render) => (root) => mountView(root, name, () => view('div', { class: 'gw' }, ...render()),
   { styles: GAME_CSS });
 const prize = (id, count, size = 128) => view('div', { class: 'gw-prize' },
