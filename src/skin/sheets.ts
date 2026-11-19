@@ -97,14 +97,6 @@ const WINDOW_LAYERS: Layer[] = [
   [solid(v('mp-window-background')), `left 0 top ${O}|100% calc(100% - ${O})`],
 ];
 
-const DIALOG = '.dialog-backdrop .dialog';
-const HEAD = '.dialog>.dialog-head';
-const WINDOW = `${DIALOG}{border:0;border-radius:0;padding-top:0;${layers(WINDOW_LAYERS)};`
-  + `clip-path:${WINDOW_PATH};box-shadow:${v('game-shadow-modal')}}`
-  + `${DIALOG}:focus-visible{box-shadow:${v('game-shadow-modal')}}`
-  // The head: as tall as the plate; plate and close cast one raised shadow (filter: their own clip paths keep their shape).
-  + `${HEAD}{min-height:${v('game-plate-h')};align-items:flex-start;filter:drop-shadow(${v('game-shadow-floating')})}`;
-
 // ---- Nameplate (id-nameplate): slate_mid plate, 45° ends, a glowing magma line under the text.
 const CH = v('game-plate-chamfer');
 const PLATE_LAYERS: Layer[] = [
@@ -118,12 +110,6 @@ const TITLE_TEXT = `font-family:${v('mp-font-display')};font-weight:${v('kit-tit
   + `text-shadow:0 ${v('kit-title-depth')} 0 ${v('mp-window-background')}`;
 const PLATE_PATH = `polygon(${CH} 0,calc(100% - ${CH}) 0,100% ${CH},100% calc(100% - ${CH}),`
   + `calc(100% - ${CH}) 100%,${CH} 100%,0 calc(100% - ${CH}),0 ${CH})`;
-const TITLE = `${HEAD}>[data-skin-slot=title]{box-sizing:border-box;display:flex;align-items:center;justify-content:center;`
-  + `min-height:${v('game-plate-h')};margin:0;padding:4px ${v('game-plate-pad')} 6px;`
-  + `font-size:${v('kit-title-size')};line-height:1.1;${TITLE_TEXT};${layers(PLATE_LAYERS)};clip-path:${PLATE_PATH}}`
-  // The title of the home screen (src/screens/ui.ts) is the same forged nameplate.
-  + `.hero-title${OVER}{border:0;border-radius:0;padding:10px calc(${v('game-plate-pad')} + 4px) 14px;${TITLE_TEXT};`
-  + `${layers(PLATE_LAYERS)};clip-path:${PLATE_PATH};filter:drop-shadow(${v('game-shadow-floating')})}`;
 
 // ---- Close (id-close-plate): a square steel plate with cut corners, a cross of two frost bars.
 const BAR = (angle: string): string => `linear-gradient(${angle},transparent calc(50% - ${v('game-close-bar')} / 2),`
@@ -134,16 +120,40 @@ const CLOSE_LAYERS: Layer[] = [
   [BAR('135deg'), `center|${v('game-close-bar-len')} ${v('game-close-bar-len')}`],
   [`linear-gradient(180deg,${v('mp-card-line-strong')},${v('mp-card-raised')} 45%,${v('mp-card-surface')})`, 'center|100% 100%'],
 ];
-const CLOSE_SEL = `${HEAD}>.dialog-close${OVER}`;
-const CLOSE = `${CLOSE_SEL}{width:${v('game-close-size')};height:${v('game-close-size')};min-height:0;`
-  + `top:calc(${O} - ${v('game-close-size')} / 2);right:${v('game-cut')};margin:0;border:0;border-radius:0;color:${v('game-frost')};`
-  + `${layers(CLOSE_LAYERS)};clip-path:polygon(${CC} 0,calc(100% - ${CC}) 0,100% ${CC},100% calc(100% - ${CC}),`
-  + `calc(100% - ${CC}) 100%,${CC} 100%,0 calc(100% - ${CC}),0 ${CC});`
-  + `box-shadow:inset 0 ${BEVEL} 0 ${LIGHT},inset 0 calc(0px - ${BEVEL}) 0 ${DARK}}`
-  + `${HEAD}>.dialog-close[data-close=head-left]${OVER}{left:${v('game-cut')};right:auto}`
-  + `${CLOSE_SEL}>*{visibility:hidden}`
-  + `${CLOSE_SEL}:hover{box-shadow:inset 0 0 0 1px ${v('mp-card-accent')},inset 0 0 8px ${v('game-magma-glow')}}`
-  + `${CLOSE_SEL}:focus-visible{outline:2px solid ${v('game-frost')};outline-offset:-4px}`;
+
+/** Hooks of one kind of window: the kit's dialog (every kit window) or the shell's own frame (player card). */
+interface Frame { readonly win: string; readonly head: string; readonly title: string; readonly close: string }
+/** Plate, frame, nameplate and close of a window: one look, written once for both kinds of window. */
+function frame({ win, head, title, close }: Frame): string {
+  const shut = `${head}>${close}${OVER}`;
+  return `${win}{border:0;border-radius:0;padding-top:0;${layers(WINDOW_LAYERS)};`
+    + `clip-path:${WINDOW_PATH};box-shadow:${v('game-shadow-modal')}}`
+    + `${win}:focus-visible{box-shadow:${v('game-shadow-modal')}}`
+    // The head: as tall as the plate; plate and close cast one shadow (filter: their clip paths keep their shape).
+    + `${head}{min-height:${v('game-plate-h')};align-items:flex-start;filter:drop-shadow(${v('game-shadow-floating')})}`
+    + `${head}>${title}{box-sizing:border-box;display:flex;align-items:center;justify-content:center;`
+    + `min-height:${v('game-plate-h')};margin:0;padding:4px ${v('game-plate-pad')} 6px;`
+    + `font-size:${v('kit-title-size')};line-height:1.1;${TITLE_TEXT};${layers(PLATE_LAYERS)};clip-path:${PLATE_PATH}}`
+    + `${shut}{width:${v('game-close-size')};height:${v('game-close-size')};min-height:0;padding:0;`
+    + `top:calc(${O} - ${v('game-close-size')} / 2);right:${v('game-cut')};margin:0;border:0;border-radius:0;color:${v('game-frost')};`
+    + `${layers(CLOSE_LAYERS)};clip-path:polygon(${CC} 0,calc(100% - ${CC}) 0,100% ${CC},100% calc(100% - ${CC}),`
+    + `calc(100% - ${CC}) 100%,${CC} 100%,0 calc(100% - ${CC}),0 ${CC});`
+    + `box-shadow:inset 0 ${BEVEL} 0 ${LIGHT},inset 0 calc(0px - ${BEVEL}) 0 ${DARK}}`
+    + `${head}>${close}[data-close=head-left]${OVER}{left:${v('game-cut')};right:auto}`
+    + `${shut}>*{visibility:hidden}`
+    + `${shut}:hover{box-shadow:inset 0 0 0 1px ${v('mp-card-accent')},inset 0 0 8px ${v('game-magma-glow')}}`
+    + `${shut}:focus-visible{outline:2px solid ${v('game-frost')};outline-offset:-4px}`;
+}
+
+const WINDOW = frame({ win: '.dialog-backdrop .dialog', head: '.dialog>.dialog-head', title: '[data-skin-slot=title]',
+  close: '.dialog-close' })
+  // The title of the home screen (src/screens/ui.ts) is the same forged nameplate.
+  + `.hero-title${OVER}{border:0;border-radius:0;padding:10px calc(${v('game-plate-pad')} + 4px) 14px;${TITLE_TEXT};`
+  + `${layers(PLATE_LAYERS)};clip-path:${PLATE_PATH};filter:drop-shadow(${v('game-shadow-floating')})}`;
+/** The shell's own window frame (the player card): the page, not a kit component — the `shell` sheet. */
+const SHELL_WINDOW = frame({ win: '.mpg-shell [data-part=window]:not([data-fullscreen])',
+  head: '.mpg-shell [data-part=window]>[data-part=window-head]', title: '[data-part=window-title]',
+  close: '[data-part=window-close]' });
 
 // ---- Buttons (id-button-face): a cast plate with cut corners, the face lit from above, a 1px
 // highlight on the top edge, the lower face in the kind's dark tone; pressed — it sinks and the
@@ -204,8 +214,9 @@ const PROGRESS = `progress${OVER}{border:0;border-radius:${v('mp-radius-field')}
 // it is the ManyPlay "M". Hidden until the game's own icon sheet draws the Burrower (then drop this).
 const PRELOADER = `.mp-preloader__brand [data-icon=brand-mark]${OVER}{display:none}`;
 
-export const COMMON = WINDOW + TITLE + CLOSE + BUTTONS + PLATE + PROGRESS + PRELOADER;
+export const COMMON = WINDOW + BUTTONS + PLATE + PROGRESS + PRELOADER;
 
 export const COMPONENTS: Readonly<Record<string, string>> = {
-  // shopWindow: '[data-part=shop-buy]{font-family:var(--mp-font-display)}',
+  // Not a sheet of its own: the common window of COMMON, for the one frame the shell draws itself.
+  shell: SHELL_WINDOW,
 };

@@ -122,7 +122,7 @@
   --game-plate-chamfer:12px;         /* 45° ends of the plate */
   --game-plate-line:2px;             /* glowing magma line under the title */
   --game-plate-pad:28px;             /* side room of the title text on the plate */
-  --game-title-size:24px;
+  --game-title-size:20px;            /* phones: 24px (map) broke LEADERBOARD mid-word in a 390px window */
   --game-title-size-wide:32px;
   --game-button-face:4px;            /* id-button-face: lower face; pressed: 2px and sinks 2px */
   --game-button-face-pressed:2px;
