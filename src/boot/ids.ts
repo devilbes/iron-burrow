@@ -17,8 +17,8 @@ export const LEVEL_SET = 'main';
 /** Level set record with the range of levels (`{ first, last }`). */
 export const LEVEL_SET_RECORD = Object.freeze({ scope: `levels.${LEVEL_SET}`, key: 'set' } as const);
 
-/** Progress keys: level progression (with the coin reward per level) and the daily track. */
-export const PROGRESS = Object.freeze({ levels: 'progress_main', daily: 'reward_daily' } as const);
+/** Progress keys: level progression (with the first clear reward), the daily track, best stars per stage. */
+export const PROGRESS = Object.freeze({ levels: 'progress_main', daily: 'reward_daily', stars: 'stars_main' } as const);
 
 /** The only currency of the game (inventory catalog entity). */
 export const CURRENCY = 'item_coins';
@@ -86,10 +86,10 @@ export const GAME_CONFIG = Object.freeze({
 } as const);
 
 /**
- * Progress track of the best stars per stage (`stars3_<n>` steps, condition value = best stars).
- * Not in PROGRESS: the game module reads it once itself; the shell's read stays the same.
+ * Progress track of the best stars per stage (`stars3_<n>` steps, condition value = best stars),
+ * read in the one `progress.init` of all PROGRESS tracks.
  */
-export const STARS_TRACK = 'stars_main';
+export const STARS_TRACK = PROGRESS.stars;
 
 /** Player key-value storage module (profile-pack `kv`). */
 export const KV_MODULE = 'kv';

@@ -45,11 +45,15 @@ export function translate(event: string, p: Readonly<Record<string, string | num
   }
 }
 
-/** Ports for the level controller: its `an.*` events go out as catalog events. */
+/**
+ * Ports for the level controller: its `an.*` events go out as catalog events, and the cloud save
+ * is off — the game state is not saved (network.md: a save only to continue a level after a
+ * reload, which Iron Burrow does not do); the gun carry lives for the session (D-INT-03).
+ */
 export function trackingPorts(ports: GamePorts): GamePorts {
   return {
     currentLevel: () => ports.currentLevel(), level: (n) => ports.level(n), beginAttempt: (n) => ports.beginAttempt(n),
-    endLevel: (n, won, stats) => ports.endLevel(n, won, stats), loadSave: () => ports.loadSave(), save: (s) => ports.save(s),
+    endLevel: (n, won, stats) => ports.endLevel(n, won, stats), loadSave: () => Promise.resolve(null), save: () => Promise.resolve(),
     track(event, params) {
       for (const [name, values] of translate(event, params ?? {})) {
         try { ports.track(name, values); } catch { /* analytics never blocks */ }
