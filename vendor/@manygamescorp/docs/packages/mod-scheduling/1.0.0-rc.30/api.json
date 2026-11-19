@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "package": "@manygamescorp/mod-scheduling",
+  "version": "1.0.0-rc.30",
+  "requires": {
+    "@manygamescorp/core": "1.0.0-rc.30"
+  },
+  "modules": [
+    {
+      "name": "scheduling",
+      "package": "@manygamescorp/mod-scheduling",
+      "description": "Planned E135 public calendar and safe player inbox/ack. Owner OpenAPI/readback and a corrected server clock are required before activation.",
+      "methods": [
+        {
+          "name": "calendar",
+          "description": "Read-only, opt-in app-wide calendar. No registration or eligibility decisions.",
+          "kind": "property",
+          "params": {
+            "type": "object",
+            "properties": {}
+          },
+          "returns": {
+            "description": "Read-only, opt-in app-wide calendar. No registration or eligibility decisions.",
+            "type": "object",
+            "properties": {
+              "list": {
+                "description": "Lists intersections with [from,to), at most 31 elapsed days; ISO dates require an offset.",
+                "x-function": "(from: string, to: string, cursor?: string | undefined, limit?: number | undefined) => Promise<SchedulingPage<CalendarOccurrence>>"
+              }
+            },
+            "required": [
+              "list"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [],
+          "example": "const page = await sdk.scheduling.calendar.list(\n  '2026-12-01T00:00:00Z', '2026-12-02T00:00:00Z');\nconsole.log(page.items);"
+        },
+        {
+          "name": "dispose",
+          "description": "Cancels in-flight work and drops all cursor, dedup and cached occurrence state.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "type": "null"
+          },
+          "errors": [],
+          "example": "sdk.scheduling.dispose();"
+        },
+        {
+          "name": "events",
+          "description": "Delivered events for the JWT's current player; acknowledgement is naturally idempotent.",
+          "kind": "property",
+          "params": {
+            "type": "object",
+            "properties": {}
+          },
+          "returns": {
+            "description": "Delivered events for the JWT's current player; acknowledgement is naturally idempotent.",
+            "type": "object",
+            "properties": {
+              "list": {
+                "description": "Lists the inbox; optional limit 1..100, server default, cursor at most 128 bytes.",
+                "x-function": "(cursor?: string | undefined, limit?: number | undefined) => Promise<SchedulingPage<InboxEvent>>"
+              },
+              "ack": {
+                "description": "Confirms handling using the returned eventId, without tasks, payload or a request body.",
+                "x-function": "(eventId: string) => Promise<InboxEvent>"
+              }
+            },
+            "required": [
+              "list",
+              "ack"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [],
+          "example": "const page = await sdk.scheduling.events.list();\n// Ack only after the game has successfully handled the event.\nif (page.items[0]) await sdk.scheduling.events.ack(page.items[0].eventId);"
+        },
+        {
+          "name": "readiness",
+          "description": "Contract status, independent of an integrator's opt-in to exercise the owner API.",
+          "kind": "property",
+          "params": {
+            "type": "object",
+            "properties": {}
+          },
+          "returns": {
+            "description": "Contract status, independent of an integrator's opt-in to exercise the owner API.",
+            "const": "planned"
+          },
+          "errors": [],
+          "example": "console.log(sdk.scheduling.readiness); // planned"
+        },
+        {
+          "name": "remainingMs",
+          "description": "Milliseconds until end using the supplied corrected server clock; instant always returns 0.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "event": {
+                "description": "Immutable scheduled start/end and instant marker from the owner.",
+                "type": "object",
+                "properties": {
+                  "start": {
+                    "description": "Immutable UTC scheduled start, ISO 8601 with milliseconds.",
+                    "type": "string"
+                  },
+                  "end": {
+                    "description": "Immutable UTC end; equal to start for instant occurrences.",
+                    "type": "string"
+                  },
+                  "instant": {
+                    "description": "True exactly when end equals start.",
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "start",
+                  "end",
+                  "instant"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "returns": {
+            "description": "Nonnegative elapsed milliseconds; this does not grant participation or a reward.",
+            "type": "number"
+          },
+          "errors": [],
+          "example": "const ms = sdk.scheduling.remainingMs({ start: '2026-12-01T00:00:00Z',\n  end: '2026-12-02T00:00:00Z', instant: false });\nconsole.log(ms);"
+        }
+      ],
+      "events": []
+    }
+  ],
+  "libraries": []
+}

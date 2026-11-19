@@ -1,0 +1,1173 @@
+{
+  "schemaVersion": 1,
+  "package": "@manygamescorp/mod-leaderboards",
+  "version": "1.0.0-rc.30",
+  "requires": {
+    "@manygamescorp/core": "1.0.0-rc.30"
+  },
+  "modules": [
+    {
+      "name": "leaderboards",
+      "package": "@manygamescorp/mod-leaderboards",
+      "description": "Leaderboards: read ranked boards, ranks and neighbouring entries, and submit scores when client submission is enabled.",
+      "methods": [
+        {
+          "name": "around",
+          "description": "Fetches the entries around the current player on a board.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "leaderboardKey": {
+                "description": "Leaderboard key from the application configuration.",
+                "type": "string"
+              },
+              "options": {
+                "description": "Window size: `radius`, or `above`/`below` (0-50 entries each; not both forms).",
+                "type": "object",
+                "properties": {
+                  "above": {
+                    "description": "Entries to include above the player, 0-50; cannot be combined with `radius`.",
+                    "type": "number"
+                  },
+                  "below": {
+                    "description": "Entries to include below the player, 0-50; cannot be combined with `radius`.",
+                    "type": "number"
+                  },
+                  "radius": {
+                    "description": "Entries on each side of the player, 0-50; use instead of `above`/`below`.",
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "leaderboardKey"
+            ]
+          },
+          "returns": {
+            "description": "The player's rank and score plus the surrounding entries.",
+            "type": "object",
+            "properties": {
+              "entries": {
+                "description": "Entries surrounding the player, ordered by rank.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "gid": {
+                      "description": "Global player ID.",
+                      "type": "number"
+                    },
+                    "rank": {
+                      "description": "1-based position on the board.",
+                      "type": "number"
+                    },
+                    "score": {
+                      "description": "Player score on the board.",
+                      "type": "number"
+                    },
+                    "profile": {
+                      "description": "Public profile of the player; present when the profile module is available.",
+                      "type": "object",
+                      "properties": {
+                        "gid": {
+                          "description": "Global player ID.",
+                          "type": "number"
+                        },
+                        "name": {
+                          "description": "Player display name.",
+                          "type": "string"
+                        },
+                        "avatar": {
+                          "description": "Avatar identifier, or `null` when none is set.",
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "level": {
+                          "description": "Player level.",
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "gid",
+                        "name",
+                        "avatar",
+                        "level"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "gid",
+                    "rank",
+                    "score"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "boardId": {
+                "description": "Board identifier (UUID string).",
+                "type": "string"
+              },
+              "gid": {
+                "description": "Global player ID the rank belongs to.",
+                "type": "number"
+              },
+              "rank": {
+                "description": "1-based rank, or `null` when the player has no entry.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              "score": {
+                "description": "Score, or `null` when the player has no entry.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "entries",
+              "boardId",
+              "gid",
+              "rank",
+              "score"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "leaderboardKey or window options are invalid."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped."
+            }
+          ],
+          "example": "const near = await sdk.leaderboards.around('ranked', { radius: 3 });\nconsole.log(near.rank, near.entries.length);"
+        },
+        {
+          "name": "aroundOf",
+          "description": "Fetches the entries around another player on a board.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "leaderboardKey": {
+                "description": "Leaderboard key from the application configuration.",
+                "type": "string"
+              },
+              "gid": {
+                "description": "Global player ID (positive integer) of the player to center on.",
+                "type": "number"
+              },
+              "options": {
+                "description": "Window size: `radius`, or `above`/`below` (0-50 entries each; not both forms).",
+                "type": "object",
+                "properties": {
+                  "above": {
+                    "description": "Entries to include above the player, 0-50; cannot be combined with `radius`.",
+                    "type": "number"
+                  },
+                  "below": {
+                    "description": "Entries to include below the player, 0-50; cannot be combined with `radius`.",
+                    "type": "number"
+                  },
+                  "radius": {
+                    "description": "Entries on each side of the player, 0-50; use instead of `above`/`below`.",
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "leaderboardKey",
+              "gid"
+            ]
+          },
+          "returns": {
+            "description": "That player's rank and score plus the surrounding entries.",
+            "type": "object",
+            "properties": {
+              "entries": {
+                "description": "Entries surrounding the player, ordered by rank.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "gid": {
+                      "description": "Global player ID.",
+                      "type": "number"
+                    },
+                    "rank": {
+                      "description": "1-based position on the board.",
+                      "type": "number"
+                    },
+                    "score": {
+                      "description": "Player score on the board.",
+                      "type": "number"
+                    },
+                    "profile": {
+                      "description": "Public profile of the player; present when the profile module is available.",
+                      "type": "object",
+                      "properties": {
+                        "gid": {
+                          "description": "Global player ID.",
+                          "type": "number"
+                        },
+                        "name": {
+                          "description": "Player display name.",
+                          "type": "string"
+                        },
+                        "avatar": {
+                          "description": "Avatar identifier, or `null` when none is set.",
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "level": {
+                          "description": "Player level.",
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "gid",
+                        "name",
+                        "avatar",
+                        "level"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "gid",
+                    "rank",
+                    "score"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "boardId": {
+                "description": "Board identifier (UUID string).",
+                "type": "string"
+              },
+              "gid": {
+                "description": "Global player ID the rank belongs to.",
+                "type": "number"
+              },
+              "rank": {
+                "description": "1-based rank, or `null` when the player has no entry.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              "score": {
+                "description": "Score, or `null` when the player has no entry.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "entries",
+              "boardId",
+              "gid",
+              "rank",
+              "score"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "leaderboardKey, gid or window options are invalid."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped."
+            }
+          ],
+          "example": "const near = await sdk.leaderboards.aroundOf('ranked', 12345, { above: 2, below: 2 });"
+        },
+        {
+          "name": "canSubmit",
+          "description": "Whether client score submission is enabled for this active session.",
+          "kind": "property",
+          "params": {
+            "type": "object",
+            "properties": {}
+          },
+          "returns": {
+            "description": "Whether client score submission is enabled for this active session.",
+            "type": "boolean"
+          },
+          "errors": [],
+          "example": "if (sdk.leaderboards.canSubmit) { await sdk.leaderboards.submit('weekly', input); }"
+        },
+        {
+          "name": "dispose",
+          "description": "Stops the module and cancels in-flight requests; called by the SDK, not by game code.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "type": "null"
+          },
+          "errors": [],
+          "example": "sdk.leaderboards.dispose();"
+        },
+        {
+          "name": "get",
+          "description": "Fetches one page of a leaderboard, with public profiles attached to entries when available.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "leaderboardKey": {
+                "description": "Leaderboard key from the application configuration.",
+                "type": "string"
+              },
+              "options": {
+                "description": "Page size (1-100), opaque `cursor` from a previous page, and sort `order`.",
+                "type": "object",
+                "properties": {
+                  "limit": {
+                    "description": "Page size, 1-100.",
+                    "type": "number"
+                  },
+                  "cursor": {
+                    "description": "Opaque cursor from a previous page's `nextCursor`.",
+                    "type": "string"
+                  },
+                  "order": {
+                    "description": "Sort order: `desc` (highest first) or `asc` (lowest first).",
+                    "type": "string",
+                    "enum": [
+                      "desc",
+                      "asc"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "leaderboardKey"
+            ]
+          },
+          "returns": {
+            "description": "The board page: ranked entries, total count, your own rank/score and `nextCursor`.",
+            "type": "object",
+            "properties": {
+              "boardId": {
+                "description": "Board identifier (UUID string).",
+                "type": "string"
+              },
+              "leaderboardKey": {
+                "description": "Leaderboard key the board belongs to.",
+                "type": "string"
+              },
+              "scope": {
+                "description": "Board scope: `regional` or `clan`.",
+                "type": "string",
+                "enum": [
+                  "regional",
+                  "clan"
+                ]
+              },
+              "value": {
+                "description": "Scope value, for example a region code or clan ID.",
+                "type": "string"
+              },
+              "expiresAt": {
+                "description": "ISO 8601 UTC time when the leaderboard ends, or `null` if it does not expire.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "total": {
+                "description": "Total number of entries on the board.",
+                "type": "number"
+              },
+              "order": {
+                "description": "Sort order: `desc` (highest score first) or `asc` (lowest first).",
+                "type": "string",
+                "enum": [
+                  "desc",
+                  "asc"
+                ]
+              },
+              "items": {
+                "description": "Ranked entries of this page.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "gid": {
+                      "description": "Global player ID.",
+                      "type": "number"
+                    },
+                    "rank": {
+                      "description": "1-based position on the board.",
+                      "type": "number"
+                    },
+                    "score": {
+                      "description": "Player score on the board.",
+                      "type": "number"
+                    },
+                    "profile": {
+                      "description": "Public profile of the player; present when the profile module is available.",
+                      "type": "object",
+                      "properties": {
+                        "gid": {
+                          "description": "Global player ID.",
+                          "type": "number"
+                        },
+                        "name": {
+                          "description": "Player display name.",
+                          "type": "string"
+                        },
+                        "avatar": {
+                          "description": "Avatar identifier, or `null` when none is set.",
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "level": {
+                          "description": "Player level.",
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "gid",
+                        "name",
+                        "avatar",
+                        "level"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "gid",
+                    "rank",
+                    "score"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "nextCursor": {
+                "description": "Opaque cursor for the next page, or `null` on the last page.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "me": {
+                "description": "Current player's rank and score on this board.",
+                "type": "object",
+                "properties": {
+                  "rank": {
+                    "description": "1-based rank, or `null` when the player has no entry.",
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "score": {
+                    "description": "Score, or `null` when the player has no entry.",
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "rank",
+                  "score"
+                ],
+                "additionalProperties": false
+              },
+              "serverTime": {
+                "description": "Server time as ISO 8601 UTC at response generation.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "boardId",
+              "leaderboardKey",
+              "scope",
+              "value",
+              "expiresAt",
+              "total",
+              "order",
+              "items",
+              "nextCursor",
+              "me",
+              "serverTime"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "leaderboardKey, limit, cursor or order is invalid."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped (for example after the player changed)."
+            }
+          ],
+          "example": "const page = await sdk.leaderboards.get('ranked', { limit: 20 });\nconsole.log(page.items.map((e) => `${e.rank}. ${e.gid}: ${e.score}`));"
+        },
+        {
+          "name": "rank",
+          "description": "Fetches the current player's rank and score on a board.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "leaderboardKey": {
+                "description": "Leaderboard key from the application configuration.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "leaderboardKey"
+            ]
+          },
+          "returns": {
+            "description": "Rank (1-based) and score; both are `null` when the player has no entry.",
+            "type": "object",
+            "properties": {
+              "boardId": {
+                "description": "Board identifier (UUID string).",
+                "type": "string"
+              },
+              "gid": {
+                "description": "Global player ID the rank belongs to.",
+                "type": "number"
+              },
+              "rank": {
+                "description": "1-based rank, or `null` when the player has no entry.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              "score": {
+                "description": "Score, or `null` when the player has no entry.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "boardId",
+              "gid",
+              "rank",
+              "score"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "leaderboardKey is invalid."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped."
+            }
+          ],
+          "example": "const { rank, score } = await sdk.leaderboards.rank('ranked');"
+        },
+        {
+          "name": "rankOf",
+          "description": "Fetches another player's rank and score on a board.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "leaderboardKey": {
+                "description": "Leaderboard key from the application configuration.",
+                "type": "string"
+              },
+              "gid": {
+                "description": "Global player ID (positive integer).",
+                "type": "number"
+              }
+            },
+            "required": [
+              "leaderboardKey",
+              "gid"
+            ]
+          },
+          "returns": {
+            "description": "Rank (1-based) and score; both are `null` when that player has no entry.",
+            "type": "object",
+            "properties": {
+              "boardId": {
+                "description": "Board identifier (UUID string).",
+                "type": "string"
+              },
+              "gid": {
+                "description": "Global player ID the rank belongs to.",
+                "type": "number"
+              },
+              "rank": {
+                "description": "1-based rank, or `null` when the player has no entry.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              "score": {
+                "description": "Score, or `null` when the player has no entry.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "boardId",
+              "gid",
+              "rank",
+              "score"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "leaderboardKey or gid is invalid."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped."
+            }
+          ],
+          "example": "const { rank } = await sdk.leaderboards.rankOf('ranked', 12345);"
+        },
+        {
+          "name": "submit",
+          "description": "Submits a score for the current player; available only when client submission is enabled (see `canSubmit`).",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "leaderboardKey": {
+                "description": "Leaderboard key (lowercase letters, digits, `_` or `-`, up to 64 chars).",
+                "type": "string"
+              },
+              "input": {
+                "description": "Either `scoreDelta` or `scoreValue` (exactly one), `eventId`, ISO 8601 UTC `occurredAt` and a UUID `idempotencyKey` reused across retries.",
+                "type": "object",
+                "properties": {
+                  "scoreDelta": {
+                    "description": "Score increment added to the current score; set exactly one of delta or value.",
+                    "type": "number"
+                  },
+                  "scoreValue": {
+                    "description": "Absolute score to set; set exactly one of delta or value.",
+                    "type": "number"
+                  },
+                  "eventId": {
+                    "description": "Caller-defined event ID (printable ASCII, up to 128 chars) used for deduplication.",
+                    "type": "string"
+                  },
+                  "occurredAt": {
+                    "description": "When the score event happened, ISO 8601 UTC (for example `2026-01-31T12:00:00Z`).",
+                    "type": "string"
+                  },
+                  "idempotencyKey": {
+                    "description": "Explicit UUID v4/v7. Reuse this and the entire input across retries.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "eventId",
+                  "occurredAt",
+                  "idempotencyKey"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "leaderboardKey",
+              "input"
+            ]
+          },
+          "returns": {
+            "description": "Per-board outcome: whether each board was updated or deduplicated, plus new score and rank.",
+            "type": "object",
+            "properties": {
+              "leaderboardKey": {
+                "description": "Leaderboard key the score was submitted to.",
+                "type": "string"
+              },
+              "gid": {
+                "description": "Global player ID the score belongs to.",
+                "type": "number"
+              },
+              "boards": {
+                "description": "Outcome per board of this leaderboard.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "boardId": {
+                      "description": "Board identifier (UUID string).",
+                      "type": "string"
+                    },
+                    "scope": {
+                      "description": "Board scope: `regional` or `clan`.",
+                      "type": "string",
+                      "enum": [
+                        "regional",
+                        "clan"
+                      ]
+                    },
+                    "value": {
+                      "description": "Scope value, for example a region code or clan ID.",
+                      "type": "string"
+                    },
+                    "updated": {
+                      "description": "Whether the board score changed.",
+                      "type": "boolean"
+                    },
+                    "deduplicated": {
+                      "description": "Whether the event was already applied earlier and ignored.",
+                      "type": "boolean"
+                    },
+                    "score": {
+                      "description": "Score on the board after the submission.",
+                      "type": "number"
+                    },
+                    "rank": {
+                      "description": "1-based rank after the submission, or `null` when unranked.",
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "error": {
+                      "description": "Per-board failure; absent on success.",
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "description": "Machine-readable error code.",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "boardId",
+                    "scope",
+                    "value",
+                    "updated",
+                    "deduplicated"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "leaderboardKey",
+              "gid",
+              "boards"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "SDK_LEADERBOARD_CLIENT_SUBMIT_DISABLED",
+              "hint": "Client submission is not enabled for this application."
+            },
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "leaderboardKey or input is invalid."
+            },
+            {
+              "code": "LEADERBOARD_NOT_STARTED",
+              "hint": "The leaderboard starts later (409); terminal rejection."
+            },
+            {
+              "code": "LEADERBOARDS_BOARD_EXPIRED",
+              "hint": "The leaderboard has ended (410); terminal rejection."
+            },
+            {
+              "code": "INVALID_LEADERBOARD_KEY",
+              "hint": "The service rejected the leaderboard key."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped."
+            }
+          ],
+          "example": "const result = await sdk.leaderboards.submit('weekly', {\n  scoreDelta: 150,\n  eventId: 'level-12-run-7',\n  occurredAt: new Date(sdk.time.now()).toISOString(),\n  idempotencyKey: crypto.randomUUID(),\n});"
+        },
+        {
+          "name": "submitScore",
+          "description": "Submits a score with the same contract as `submit`.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "leaderboardKey": {
+                "description": "Leaderboard key (lowercase letters, digits, `_` or `-`, up to 64 chars).",
+                "type": "string"
+              },
+              "input": {
+                "description": "Either `scoreDelta` or `scoreValue` (exactly one), `eventId`, ISO 8601 UTC `occurredAt` and a UUID `idempotencyKey` reused across retries.",
+                "type": "object",
+                "properties": {
+                  "scoreDelta": {
+                    "description": "Score increment added to the current score; set exactly one of delta or value.",
+                    "type": "number"
+                  },
+                  "scoreValue": {
+                    "description": "Absolute score to set; set exactly one of delta or value.",
+                    "type": "number"
+                  },
+                  "eventId": {
+                    "description": "Caller-defined event ID (printable ASCII, up to 128 chars) used for deduplication.",
+                    "type": "string"
+                  },
+                  "occurredAt": {
+                    "description": "When the score event happened, ISO 8601 UTC (for example `2026-01-31T12:00:00Z`).",
+                    "type": "string"
+                  },
+                  "idempotencyKey": {
+                    "description": "Explicit UUID v4/v7. Reuse this and the entire input across retries.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "eventId",
+                  "occurredAt",
+                  "idempotencyKey"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "leaderboardKey",
+              "input"
+            ]
+          },
+          "returns": {
+            "description": "Per-board outcome: whether each board was updated or deduplicated, plus new score and rank.",
+            "type": "object",
+            "properties": {
+              "leaderboardKey": {
+                "description": "Leaderboard key the score was submitted to.",
+                "type": "string"
+              },
+              "gid": {
+                "description": "Global player ID the score belongs to.",
+                "type": "number"
+              },
+              "boards": {
+                "description": "Outcome per board of this leaderboard.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "boardId": {
+                      "description": "Board identifier (UUID string).",
+                      "type": "string"
+                    },
+                    "scope": {
+                      "description": "Board scope: `regional` or `clan`.",
+                      "type": "string",
+                      "enum": [
+                        "regional",
+                        "clan"
+                      ]
+                    },
+                    "value": {
+                      "description": "Scope value, for example a region code or clan ID.",
+                      "type": "string"
+                    },
+                    "updated": {
+                      "description": "Whether the board score changed.",
+                      "type": "boolean"
+                    },
+                    "deduplicated": {
+                      "description": "Whether the event was already applied earlier and ignored.",
+                      "type": "boolean"
+                    },
+                    "score": {
+                      "description": "Score on the board after the submission.",
+                      "type": "number"
+                    },
+                    "rank": {
+                      "description": "1-based rank after the submission, or `null` when unranked.",
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "error": {
+                      "description": "Per-board failure; absent on success.",
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "description": "Machine-readable error code.",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "boardId",
+                    "scope",
+                    "value",
+                    "updated",
+                    "deduplicated"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "leaderboardKey",
+              "gid",
+              "boards"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "SDK_LEADERBOARD_CLIENT_SUBMIT_DISABLED",
+              "hint": "Client submission is not enabled for this application."
+            },
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "leaderboardKey or input is invalid."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped."
+            }
+          ],
+          "example": "await sdk.leaderboards.submitScore('weekly', {\n  scoreValue: 4200,\n  eventId: 'season-1-final',\n  occurredAt: new Date(sdk.time.now()).toISOString(),\n  idempotencyKey: crypto.randomUUID(),\n});"
+        }
+      ],
+      "events": [
+        {
+          "name": "leaderboards:board:fetched",
+          "description": "A leaderboard page was fetched. Payload: boardId (UUID string) and leaderboardKey.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "boardId": {
+                "description": "Board identifier (UUID string).",
+                "type": "string"
+              },
+              "leaderboardKey": {
+                "description": "Leaderboard key the board belongs to.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "boardId",
+              "leaderboardKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "leaderboards:rank:changed",
+          "description": "The current player's rank on a board changed between fetches. Payload: boardId, rank and previousRank (1-based, null when unranked).",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "boardId": {
+                "description": "Board identifier (UUID string).",
+                "type": "string"
+              },
+              "rank": {
+                "description": "New 1-based rank, or `null` when the player has no entry.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              "previousRank": {
+                "description": "Previous 1-based rank, or `null` when the player had no entry.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "boardId",
+              "rank",
+              "previousRank"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "leaderboards:window:close",
+          "description": "Requests the host to close the named window once. The host reports leaderboards:window:closed with the same view only after unmount, or when presentation was skipped.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "view": {
+                "description": "Window to present: the named window `main`.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "view"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "leaderboards:window:open",
+          "description": "The named leaderboards window (main) was opened through sdk.ui.show('leaderboards'). Payload: view and tab (levels, weekly, alltime, or null for the host's default). The host presents the matching UI Kit window.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "view": {
+                "description": "Window to present: the named window `main`.",
+                "type": "string"
+              },
+              "tab": {
+                "description": "Tab to open on (a configured `leaderboardKey`), `null` — the host's default (the first).",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "view",
+              "tab"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    }
+  ],
+  "libraries": []
+}

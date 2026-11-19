@@ -1,0 +1,286 @@
+{
+  "name": "@manygamescorp/core",
+  "version": "1.0.0-rc.30",
+  "description": "ManyPlay headless core runtime, auth, configs and player profile.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./analytics": {
+      "types": "./dist/analytics.d.ts",
+      "default": "./dist/analytics.js"
+    },
+    "./poller": {
+      "types": "./dist/poller.d.ts",
+      "default": "./dist/poller.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "default": "./dist/version.js"
+    },
+    "./platform": {
+      "types": "./dist/platform.d.ts",
+      "default": "./dist/platform.js"
+    },
+    "./bus": {
+      "types": "./dist/bus.d.ts",
+      "default": "./dist/bus.js"
+    },
+    "./errors": {
+      "types": "./dist/errors.d.ts",
+      "default": "./dist/errors.js"
+    },
+    "./error": {
+      "types": "./dist/error.d.ts",
+      "default": "./dist/error.js"
+    },
+    "./module": {
+      "types": "./dist/module.d.ts",
+      "default": "./dist/module.js"
+    },
+    "./registry": {
+      "types": "./dist/registry.d.ts",
+      "default": "./dist/registry.js"
+    },
+    "./l10n": {
+      "types": "./dist/l10n.d.ts",
+      "default": "./dist/l10n.js"
+    },
+    "./l10n-static": {
+      "types": "./dist/l10n-static.d.ts",
+      "default": "./dist/l10n-static.js"
+    },
+    "./testing": {
+      "types": "./dist/testing.d.ts",
+      "default": "./dist/testing.js"
+    },
+    "./storage/scoped": {
+      "types": "./dist/storage/scoped.d.ts",
+      "default": "./dist/storage/scoped.js"
+    },
+    "./storage/secure-store": {
+      "types": "./dist/storage/secure-store.d.ts",
+      "default": "./dist/storage/secure-store.js"
+    },
+    "./storage/web-secure-store": {
+      "types": "./dist/storage/web-secure-store.d.ts",
+      "default": "./dist/storage/web-secure-store.js"
+    },
+    "./testing/secure-store": {
+      "types": "./dist/testing/secure-store.d.ts",
+      "default": "./dist/testing/secure-store.js"
+    },
+    "./package.json": "./package.json",
+    "./l10n-configs": {
+      "types": "./dist/l10n-configs.d.ts",
+      "default": "./dist/l10n-configs.js"
+    },
+    "./l10n-cache": {
+      "types": "./dist/l10n-cache.d.ts",
+      "default": "./dist/l10n-cache.js"
+    },
+    "./storage/blob-store": {
+      "types": "./dist/storage/blob-store.d.ts",
+      "default": "./dist/storage/blob-store.js"
+    },
+    "./storage/web-blob-store": {
+      "types": "./dist/storage/web-blob-store.d.ts",
+      "default": "./dist/storage/web-blob-store.js"
+    },
+    "./context": {
+      "types": "./dist/context.d.ts",
+      "default": "./dist/context.js"
+    },
+    "./transport": {
+      "types": "./dist/transport.d.ts",
+      "default": "./dist/transport.js"
+    },
+    "./time": {
+      "types": "./dist/time.d.ts",
+      "default": "./dist/time.js"
+    },
+    "./assets": {
+      "types": "./dist/assets.d.ts",
+      "default": "./dist/assets.js"
+    },
+    "./hud": {
+      "types": "./dist/hud.d.ts",
+      "default": "./dist/hud.js"
+    },
+    "./topbar": {
+      "types": "./dist/topbar.d.ts",
+      "default": "./dist/topbar.js"
+    },
+    "./logger": {
+      "types": "./dist/logger.d.ts",
+      "default": "./dist/logger.js"
+    },
+    "./redact": {
+      "types": "./dist/redact.d.ts",
+      "default": "./dist/redact.js"
+    },
+    "./l10n/configs": {
+      "types": "./dist/l10n/configs.d.ts",
+      "default": "./dist/l10n/configs.js"
+    },
+    "./storage/content-blob-cache": {
+      "types": "./dist/storage/content-blob-cache.d.ts",
+      "default": "./dist/storage/content-blob-cache.js"
+    },
+    "./storage/blob-cache": {
+      "types": "./dist/storage/blob-cache.d.ts",
+      "default": "./dist/storage/blob-cache.js"
+    },
+    "./l10n/locales/en.json": "./dist/locales/en.json",
+    "./l10n/locales/ru.json": "./dist/locales/ru.json",
+    "./container": {
+      "types": "./dist/container.d.ts",
+      "default": "./dist/container.js"
+    },
+    "./lifecycle": {
+      "types": "./dist/lifecycle.d.ts",
+      "default": "./dist/lifecycle.js"
+    },
+    "./filters": {
+      "types": "./dist/filters.d.ts",
+      "default": "./dist/filters.js"
+    },
+    "./facts": {
+      "types": "./dist/facts.d.ts",
+      "default": "./dist/facts.js"
+    },
+    "./filter-context": {
+      "types": "./dist/filter-context.d.ts",
+      "default": "./dist/filter-context.js"
+    },
+    "./ui-state": {
+      "types": "./dist/ui-state.d.ts",
+      "default": "./dist/ui-state.js"
+    },
+    "./triggers": {
+      "types": "./dist/triggers.d.ts",
+      "default": "./dist/triggers.js"
+    },
+    "./window-triggers": {
+      "types": "./dist/window-triggers.d.ts",
+      "default": "./dist/window-triggers.js"
+    },
+    "./kernel": {
+      "types": "./dist/kernel.d.ts",
+      "default": "./dist/kernel.js"
+    },
+    "./endpoints": {
+      "types": "./dist/endpoints.d.ts",
+      "default": "./dist/endpoints.js"
+    },
+    "./scoped-http": {
+      "types": "./dist/scoped-http.d.ts",
+      "default": "./dist/scoped-http.js"
+    },
+    "./web-platform": {
+      "types": "./dist/web-platform.d.ts",
+      "default": "./dist/web-platform.js"
+    },
+    "./testing/platform": {
+      "types": "./dist/testing/platform.d.ts",
+      "default": "./dist/testing/platform.js"
+    },
+    "./auth": {
+      "types": "./dist/auth.d.ts",
+      "default": "./dist/auth.js"
+    },
+    "./module-context": {
+      "types": "./dist/module-context.d.ts",
+      "default": "./dist/module-context.js"
+    },
+    "./configs": {
+      "types": "./dist/configs.d.ts",
+      "default": "./dist/configs.js"
+    },
+    "./device": {
+      "types": "./dist/device.d.ts",
+      "default": "./dist/device.js"
+    },
+    "./device-types": {
+      "types": "./dist/device-types.d.ts",
+      "default": "./dist/device-types.js"
+    },
+    "./services": {
+      "types": "./dist/services.d.ts",
+      "default": "./dist/services.js"
+    },
+    "./loader": {
+      "types": "./dist/loader.d.ts",
+      "default": "./dist/loader.js"
+    },
+    "./auth-flow": {
+      "types": "./dist/auth-flow.d.ts",
+      "default": "./dist/auth-flow.js"
+    },
+    "./testing/fake-id": {
+      "types": "./dist/testing/fake-id.d.ts",
+      "default": "./dist/testing/fake-id.js"
+    },
+    "./realtime-port": {
+      "types": "./dist/realtime-port.d.ts",
+      "default": "./dist/realtime-port.js"
+    },
+    "./adapter-modules": {
+      "types": "./dist/adapter-modules.d.ts",
+      "default": "./dist/adapter-modules.js"
+    },
+    "./storage/account-history": {
+      "types": "./dist/storage/account-history.d.ts",
+      "default": "./dist/storage/account-history.js"
+    },
+    "./bottommenu": {
+      "types": "./dist/bottommenu.d.ts",
+      "default": "./dist/bottommenu.js"
+    },
+    "./random": {
+      "types": "./dist/random.d.ts",
+      "default": "./dist/random.js"
+    },
+    "./random.vectors.json": "./dist/random.vectors.json",
+    "./diagnostics": {
+      "types": "./dist/diagnostics.d.ts",
+      "default": "./dist/diagnostics.js"
+    },
+    "./portal-bus": {
+      "types": "./dist/portal-bus.d.ts",
+      "default": "./dist/portal-bus.js"
+    },
+    "./portal-protocol": {
+      "types": "./dist/portal-protocol.d.ts",
+      "default": "./dist/portal-protocol.js"
+    },
+    "./portal-domains": {
+      "types": "./dist/portal-domains.d.ts",
+      "default": "./dist/portal-domains.js"
+    },
+    "./ui-slot": {
+      "types": "./dist/ui-slot.d.ts",
+      "default": "./dist/ui-slot.js"
+    },
+    "./asset-ref": {
+      "types": "./dist/asset-ref.d.ts",
+      "default": "./dist/asset-ref.js"
+    },
+    "./profile": {
+      "types": "./dist/profile.d.ts",
+      "default": "./dist/profile.js"
+    },
+    "./data-client": {
+      "types": "./dist/data-client.d.ts",
+      "default": "./dist/data-client.js"
+    },
+    "./data-validation": {
+      "types": "./dist/data-validation.d.ts",
+      "default": "./dist/data-validation.js"
+    },
+    "./session-transport": {
+      "types": "./dist/session-transport.d.ts",
+      "default": "./dist/session-transport.js"
+    }
+  }
+}

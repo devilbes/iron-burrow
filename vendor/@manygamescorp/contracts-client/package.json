@@ -1,0 +1,144 @@
+{
+  "name": "@manygamescorp/contracts-client",
+  "version": "1.0.0-rc.30",
+  "description": "ManyPlay client SDK: клиентские контракты (типы OpenAPI, коды ошибок, схемы). Без рантайм-зависимостей.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "default": "./dist/version.js"
+    },
+    "./asset-ref": {
+      "types": "./dist/asset-ref.d.ts",
+      "default": "./dist/asset-ref.js"
+    },
+    "./asset-ref.schema.json": "./dist/asset-ref.schema.json",
+    "./errors.json": "./errors/errors.json",
+    "./facts": {
+      "types": "./dist/facts.d.ts",
+      "default": "./dist/facts.js"
+    },
+    "./filter-vectors": {
+      "types": "./dist/filter-vectors.d.ts",
+      "default": "./dist/filter-vectors.js"
+    },
+    "./filters": {
+      "types": "./dist/filters.d.ts",
+      "default": "./dist/filters.js"
+    },
+    "./resolve": {
+      "types": "./dist/resolve.d.ts",
+      "default": "./dist/resolve.js"
+    },
+    "./resolve-vectors": {
+      "types": "./dist/resolve-vectors.d.ts",
+      "default": "./dist/resolve-vectors.js"
+    },
+    "./facts.json": "./dist/facts.json",
+    "./filters.vectors.json": "./dist/filters.vectors.json",
+    "./filters.canonical.vectors.json": "./dist/filters.canonical.vectors.json",
+    "./resolve.vectors.json": "./dist/resolve.vectors.json",
+    "./platform-config": {
+      "types": "./dist/platform-config.d.ts",
+      "default": "./dist/platform-config.js"
+    },
+    "./module-targets": {
+      "types": "./dist/module-targets.d.ts",
+      "default": "./dist/module-targets.js"
+    },
+    "./module-composition": {
+      "types": "./dist/module-composition.d.ts",
+      "default": "./dist/module-composition.js"
+    },
+    "./module-composition.schema.json": "./dist/module-composition.schema.json",
+    "./platform.schema.json": "./dist/platform.schema.json",
+    "./events": {
+      "types": "./dist/events.d.ts",
+      "default": "./dist/events.js"
+    },
+    "./events.json": "./events/events.json",
+    "./core-events.json": "./dist/core-events.json",
+    "./realtime": {
+      "types": "./dist/realtime.d.ts",
+      "default": "./dist/realtime.js"
+    },
+    "./broadcast": {
+      "types": "./dist/broadcast.d.ts",
+      "default": "./dist/broadcast.js"
+    },
+    "./module-settings": {
+      "types": "./dist/module-settings.d.ts",
+      "default": "./dist/module-settings.js"
+    },
+    "./module-mechanic": {
+      "types": "./dist/module-mechanic.d.ts",
+      "default": "./dist/module-mechanic.js"
+    },
+    "./module-mechanic.schema.json": "./dist/module-mechanic.schema.json",
+    "./module-catalog": {
+      "types": "./dist/module-catalog.d.ts",
+      "default": "./dist/module-catalog.js"
+    },
+    "./vendor-artifact": {
+      "types": "./dist/vendor-artifact.d.ts",
+      "default": "./dist/vendor-artifact.js"
+    },
+    "./vendor-artifact.schema.json": "./dist/vendor-artifact.schema.json",
+    "./module-settings.vectors.json": "./dist/module-settings.vectors.json",
+    "./actions": {
+      "types": "./dist/actions.d.ts",
+      "default": "./dist/actions.js"
+    },
+    "./actions.schema.json": "./dist/actions.schema.json",
+    "./random": {
+      "types": "./dist/random.d.ts",
+      "default": "./dist/random.js"
+    },
+    "./random-conformance": {
+      "types": "./dist/random-conformance.d.ts",
+      "default": "./dist/random-conformance.js"
+    },
+    "./random.vectors.json": "./dist/random.vectors.json",
+    "./ui-slots": {
+      "types": "./dist/ui-slots.d.ts",
+      "default": "./dist/ui-slots.js"
+    },
+    "./ui-slots.vectors.json": "./dist/ui-slots.vectors.json",
+    "./sdk-resolution.vectors.json": "./dist/sdk-resolution.vectors.json",
+    "./profile-presentation": {
+      "types": "./dist/profile-presentation.d.ts",
+      "default": "./dist/profile-presentation.js"
+    },
+    "./localization": {
+      "types": "./dist/localization.d.ts",
+      "default": "./dist/localization.js"
+    },
+    "./errors": {
+      "types": "./dist/gen/errors.d.ts",
+      "default": "./dist/gen/errors.js"
+    },
+    "./configs": {
+      "types": "./dist/gen/configs.d.ts",
+      "default": "./dist/gen/configs.js"
+    },
+    "./id": {
+      "types": "./dist/gen/id.d.ts",
+      "default": "./dist/gen/id.js"
+    },
+    "./leaderboards": {
+      "types": "./dist/gen/leaderboards.d.ts",
+      "default": "./dist/gen/leaderboards.js"
+    },
+    "./profile": {
+      "types": "./dist/gen/profile.d.ts",
+      "default": "./dist/gen/profile.js"
+    },
+    "./progress": {
+      "types": "./dist/gen/progress.d.ts",
+      "default": "./dist/gen/progress.js"
+    },
+    "./package.json": "./package.json"
+  }
+}

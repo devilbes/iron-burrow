@@ -1,0 +1,2008 @@
+{
+    "canonical": [
+        {
+            "name": "implicit and and singleton eq",
+            "filter": {
+                "$and": [
+                    {
+                        "f": {
+                            "$eq": 3
+                        }
+                    },
+                    {
+                        "g": 4
+                    }
+                ]
+            },
+            "canonical": {
+                "f": 3,
+                "g": 4
+            },
+            "facts": {
+                "custom": {
+                    "f": 3,
+                    "g": 4
+                }
+            }
+        },
+        {
+            "name": "merge range operators",
+            "filter": {
+                "$and": [
+                    {
+                        "f": {
+                            "$gte": 2
+                        }
+                    },
+                    {
+                        "f": {
+                            "$lt": 5
+                        }
+                    }
+                ]
+            },
+            "canonical": {
+                "f": {
+                    "$gte": 2,
+                    "$lt": 5
+                }
+            },
+            "facts": {
+                "custom": {
+                    "f": 3,
+                    "g": 4
+                }
+            }
+        },
+        {
+            "name": "conflicting operator remains conjunction",
+            "filter": {
+                "g": 4,
+                "$and": [
+                    {
+                        "f": 3
+                    },
+                    {
+                        "f": 5
+                    }
+                ]
+            },
+            "canonical": {
+                "g": 4,
+                "$and": [
+                    {
+                        "f": 3
+                    },
+                    {
+                        "f": 5
+                    }
+                ]
+            },
+            "facts": {
+                "custom": {
+                    "f": 3,
+                    "g": 4
+                }
+            }
+        },
+        {
+            "name": "nested groups and deduplication",
+            "filter": {
+                "$or": [
+                    {
+                        "$or": [
+                            {
+                                "f": 3
+                            },
+                            {
+                                "f": 4
+                            }
+                        ]
+                    },
+                    {
+                        "f": 3
+                    }
+                ]
+            },
+            "canonical": {
+                "$or": [
+                    {
+                        "f": 3
+                    },
+                    {
+                        "f": 4
+                    }
+                ]
+            },
+            "facts": {
+                "custom": {
+                    "f": 3,
+                    "g": 4
+                }
+            }
+        },
+        {
+            "name": "singleton group and membership",
+            "filter": {
+                "$or": [
+                    {
+                        "f": {
+                            "$in": [
+                                3,
+                                3
+                            ]
+                        }
+                    }
+                ]
+            },
+            "canonical": {
+                "f": 3
+            },
+            "facts": {
+                "custom": {
+                    "f": 3,
+                    "g": 4
+                }
+            }
+        },
+        {
+            "name": "singleton negative membership",
+            "filter": {
+                "f": {
+                    "$nin": [
+                        2
+                    ]
+                }
+            },
+            "canonical": {
+                "f": {
+                    "$ne": 2
+                }
+            },
+            "facts": {
+                "custom": {
+                    "f": 3,
+                    "g": 4
+                }
+            }
+        },
+        {
+            "name": "default case sensitivity omitted",
+            "filter": {
+                "f": {
+                    "$startsWith": "Hi",
+                    "caseInsensitive": false
+                }
+            },
+            "canonical": {
+                "f": {
+                    "$startsWith": "Hi"
+                }
+            },
+            "facts": {
+                "custom": {
+                    "f": "Hi world"
+                }
+            }
+        },
+        {
+            "name": "duplicate operator conjunction",
+            "filter": {
+                "$and": [
+                    {
+                        "f": {
+                            "$eq": 3
+                        }
+                    },
+                    {
+                        "f": 3
+                    },
+                    {
+                        "g": 4
+                    }
+                ]
+            },
+            "canonical": {
+                "f": 3,
+                "g": 4
+            },
+            "facts": {
+                "custom": {
+                    "f": 3,
+                    "g": 4
+                }
+            }
+        },
+        {
+            "name": "preserve conflicting membership and equality",
+            "filter": {
+                "f": {
+                    "$eq": 3,
+                    "$in": [
+                        4
+                    ]
+                }
+            },
+            "canonical": {
+                "$and": [
+                    {
+                        "f": 4
+                    },
+                    {
+                        "f": 3
+                    }
+                ]
+            },
+            "facts": {
+                "custom": {
+                    "f": 3,
+                    "g": 4
+                }
+            }
+        },
+        {
+            "name": "preserve representation",
+            "filter": {
+                "$v": {
+                    "$eq": "v1"
+                },
+                "$account.registeredAt": 1790000000
+            },
+            "canonical": {
+                "$v": "v1",
+                "$account.registeredAt": 1790000000
+            },
+            "facts": {
+                "v": "1.0.0",
+                "account": {
+                    "registeredAt": 1790000000000
+                }
+            }
+        },
+        {
+            "name": "explicit allowEmpty",
+            "filter": {
+                "f": {
+                    "$eq": ""
+                }
+            },
+            "canonical": {
+                "f": ""
+            },
+            "facts": {
+                "custom": {
+                    "f": ""
+                }
+            },
+            "params": {
+                "f": {
+                    "type": "string",
+                    "allowEmpty": true
+                }
+            }
+        },
+        {
+            "name": "nested conflicting conjunctions retain every predicate",
+            "filter": {
+                "$and": [
+                    {
+                        "$and": [
+                            {
+                                "x": 1
+                            },
+                            {
+                                "x": 2
+                            }
+                        ]
+                    },
+                    {
+                        "y": 1
+                    },
+                    {
+                        "y": 2
+                    }
+                ]
+            },
+            "canonical": {
+                "$and": [
+                    {
+                        "x": 1
+                    },
+                    {
+                        "x": 2
+                    },
+                    {
+                        "y": 1
+                    },
+                    {
+                        "y": 2
+                    }
+                ]
+            },
+            "facts": {
+                "custom.x": 1,
+                "custom.y": 1
+            }
+        },
+        {
+            "name": "case sensitivity cannot spill into a sibling condition",
+            "filter": {
+                "$and": [
+                    {
+                        "label": {
+                            "$startsWith": "A",
+                            "caseInsensitive": true
+                        }
+                    },
+                    {
+                        "label": {
+                            "$endsWith": "B"
+                        }
+                    }
+                ]
+            },
+            "canonical": {
+                "$and": [
+                    {
+                        "label": {
+                            "$startsWith": "A",
+                            "caseInsensitive": true
+                        }
+                    },
+                    {
+                        "label": {
+                            "$endsWith": "B"
+                        }
+                    }
+                ]
+            },
+            "facts": {
+                "custom.label": "ab"
+            }
+        },
+        {
+            "name": "missing $v singleton nin preserves match",
+            "filter": {
+                "$v": {
+                    "$nin": [
+                        "1.0.0"
+                    ]
+                }
+            },
+            "canonical": {
+                "$v": {
+                    "$ne": "1.0.0"
+                }
+            },
+            "facts": {}
+        },
+        {
+            "name": "missing project.version singleton nin preserves match",
+            "filter": {
+                "project.version": {
+                    "$nin": [
+                        "1.0.0"
+                    ]
+                }
+            },
+            "canonical": {
+                "project.version": {
+                    "$ne": "1.0.0"
+                }
+            },
+            "facts": {},
+            "params": {
+                "project.version": {
+                    "type": "version"
+                }
+            }
+        },
+        {
+            "name": "$v exists false is canonical",
+            "filter": {
+                "$v": {
+                    "$exists": false
+                }
+            },
+            "canonical": {
+                "$v": {
+                    "$exists": false
+                }
+            },
+            "facts": {}
+        },
+        {
+            "name": "$account.lastLoginAt exists false is canonical",
+            "filter": {
+                "$account.lastLoginAt": {
+                    "$exists": false
+                }
+            },
+            "canonical": {
+                "$account.lastLoginAt": {
+                    "$exists": false
+                }
+            },
+            "facts": {}
+        }
+    ],
+    "match": [
+        {
+            "name": "version numeric",
+            "filter": {
+                "$v": {
+                    "$gt": "1.9.3"
+                }
+            },
+            "facts": {
+                "v": "1.10.0"
+            },
+            "expected": true
+        },
+        {
+            "name": "version short",
+            "filter": {
+                "$v": {
+                    "$eq": "1.2.0"
+                }
+            },
+            "facts": {
+                "v": "1.2"
+            },
+            "expected": true
+        },
+        {
+            "name": "version prefix",
+            "filter": {
+                "$v": {
+                    "$eq": "1.0"
+                }
+            },
+            "facts": {
+                "v": "V1"
+            },
+            "expected": true
+        },
+        {
+            "name": "version short bound",
+            "filter": {
+                "$v": {
+                    "$gt": "1.0"
+                }
+            },
+            "facts": {
+                "v": "v1.1"
+            },
+            "expected": true
+        },
+        {
+            "name": "version pre below release",
+            "filter": {
+                "$v": {
+                    "$lt": "1.0.0"
+                }
+            },
+            "facts": {
+                "v": "1.0.0-alpha.3"
+            },
+            "expected": true
+        },
+        {
+            "name": "version numeric prerelease",
+            "filter": {
+                "$v": {
+                    "$lt": "1.0.0-alpha.10"
+                }
+            },
+            "facts": {
+                "v": "1.0.0-alpha.2"
+            },
+            "expected": true
+        },
+        {
+            "name": "version build ignored",
+            "filter": {
+                "$v": {
+                    "$eq": "1.0.0+b5"
+                }
+            },
+            "facts": {
+                "v": "1.0.0"
+            },
+            "expected": true
+        },
+        {
+            "name": "version four parts",
+            "filter": {
+                "$v": {
+                    "$gt": "1.2.3"
+                }
+            },
+            "facts": {
+                "v": "1.2.3.4"
+            },
+            "expected": true
+        },
+        {
+            "name": "version invalid player version",
+            "filter": {
+                "$v": {
+                    "$ne": "1"
+                }
+            },
+            "facts": {
+                "v": "oops"
+            },
+            "expected": false
+        },
+        {
+            "name": "version invalid player negative membership",
+            "filter": {
+                "$v": {
+                    "$nin": [
+                        "1"
+                    ]
+                }
+            },
+            "facts": {
+                "v": "oops"
+            },
+            "expected": false
+        },
+        {
+            "name": "version invalid condition",
+            "filter": {
+                "$v": {
+                    "$nin": [
+                        "oops"
+                    ]
+                }
+            },
+            "facts": {
+                "v": "1"
+            },
+            "expected": false
+        },
+        {
+            "name": "project version $eq",
+            "filter": {
+                "build": {
+                    "$eq": "1.2"
+                }
+            },
+            "facts": {
+                "custom.build": "V1.2.0"
+            },
+            "expected": true,
+            "params": {
+                "build": {
+                    "type": "version"
+                }
+            }
+        },
+        {
+            "name": "project version $ne",
+            "filter": {
+                "build": {
+                    "$ne": "1.2"
+                }
+            },
+            "facts": {
+                "custom.build": "V1.2.0"
+            },
+            "expected": false,
+            "params": {
+                "build": {
+                    "type": "version"
+                }
+            }
+        },
+        {
+            "name": "project version $gt",
+            "filter": {
+                "build": {
+                    "$gt": "1.2"
+                }
+            },
+            "facts": {
+                "custom.build": "V1.2.0"
+            },
+            "expected": false,
+            "params": {
+                "build": {
+                    "type": "version"
+                }
+            }
+        },
+        {
+            "name": "project version $gte",
+            "filter": {
+                "build": {
+                    "$gte": "1.2"
+                }
+            },
+            "facts": {
+                "custom.build": "V1.2.0"
+            },
+            "expected": true,
+            "params": {
+                "build": {
+                    "type": "version"
+                }
+            }
+        },
+        {
+            "name": "project version $lt",
+            "filter": {
+                "build": {
+                    "$lt": "1.2"
+                }
+            },
+            "facts": {
+                "custom.build": "V1.2.0"
+            },
+            "expected": false,
+            "params": {
+                "build": {
+                    "type": "version"
+                }
+            }
+        },
+        {
+            "name": "project version $lte",
+            "filter": {
+                "build": {
+                    "$lte": "1.2"
+                }
+            },
+            "facts": {
+                "custom.build": "V1.2.0"
+            },
+            "expected": true,
+            "params": {
+                "build": {
+                    "type": "version"
+                }
+            }
+        },
+        {
+            "name": "project version $in",
+            "filter": {
+                "build": {
+                    "$in": [
+                        "1.2"
+                    ]
+                }
+            },
+            "facts": {
+                "custom.build": "V1.2.0"
+            },
+            "expected": true,
+            "params": {
+                "build": {
+                    "type": "version"
+                }
+            }
+        },
+        {
+            "name": "project version $nin",
+            "filter": {
+                "build": {
+                    "$nin": [
+                        "1.2"
+                    ]
+                }
+            },
+            "facts": {
+                "custom.build": "V1.2.0"
+            },
+            "expected": false,
+            "params": {
+                "build": {
+                    "type": "version"
+                }
+            }
+        },
+        {
+            "name": "date unix seconds vs millis",
+            "filter": {
+                "$account.registeredAt": {
+                    "$eq": 1790000000
+                }
+            },
+            "facts": {
+                "account.registeredAt": 1790000000000
+            },
+            "expected": true
+        },
+        {
+            "name": "date date UTC midnight",
+            "filter": {
+                "$account.registeredAt": {
+                    "$eq": "2026-10-03"
+                }
+            },
+            "facts": {
+                "account.registeredAt": 1790985600000
+            },
+            "expected": true
+        },
+        {
+            "name": "date offset",
+            "filter": {
+                "$account.registeredAt": {
+                    "$eq": "2026-10-03T03:00:00+03:00"
+                }
+            },
+            "facts": {
+                "account.registeredAt": "2026-10-03T00:00:00Z"
+            },
+            "expected": true
+        },
+        {
+            "name": "date implicit UTC",
+            "filter": {
+                "$account.registeredAt": {
+                    "$eq": "2026-10-03T00:00:00"
+                }
+            },
+            "facts": {
+                "account.registeredAt": "2026-10-03"
+            },
+            "expected": true
+        },
+        {
+            "name": "date unix vs ISO",
+            "filter": {
+                "$account.registeredAt": {
+                    "$eq": 1790985600
+                }
+            },
+            "facts": {
+                "account.registeredAt": "2026-10-03"
+            },
+            "expected": true
+        },
+        {
+            "name": "date future",
+            "filter": {
+                "$account.registeredAt": {
+                    "$gt": "2027-01-02"
+                }
+            },
+            "facts": {
+                "account.registeredAt": "2027-01-03"
+            },
+            "expected": true
+        },
+        {
+            "name": "invalid player date",
+            "filter": {
+                "$account.lastLoginAt": {
+                    "$ne": "2026-10-03"
+                }
+            },
+            "facts": {
+                "account.lastLoginAt": "2026-02-31"
+            },
+            "expected": false
+        },
+        {
+            "name": "invalid date list operator",
+            "filter": {
+                "$account.lastLoginAt": {
+                    "$in": [
+                        "2026-10-03"
+                    ]
+                }
+            },
+            "facts": {
+                "account.lastLoginAt": "2026-10-03"
+            },
+            "expected": false
+        },
+        {
+            "name": "closed enum",
+            "filter": {
+                "color": {
+                    "$eq": "red"
+                }
+            },
+            "facts": {
+                "custom.color": "red"
+            },
+            "expected": true,
+            "params": {
+                "color": {
+                    "type": "enum",
+                    "values": [
+                        "red"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "unknown enum condition",
+            "filter": {
+                "color": {
+                    "$eq": "blue"
+                }
+            },
+            "facts": {
+                "custom.color": "blue"
+            },
+            "expected": false,
+            "params": {
+                "color": {
+                    "type": "enum",
+                    "values": [
+                        "red"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "open enum",
+            "filter": {
+                "color": {
+                    "$eq": "blue"
+                }
+            },
+            "facts": {
+                "custom.color": "blue"
+            },
+            "expected": true,
+            "params": {
+                "color": {
+                    "type": "enum",
+                    "values": [
+                        "red"
+                    ],
+                    "open": true
+                }
+            }
+        },
+        {
+            "name": "open enum does not permit empty player values",
+            "filter": {
+                "color": {
+                    "$ne": "red"
+                }
+            },
+            "facts": {
+                "custom.color": ""
+            },
+            "params": {
+                "color": {
+                    "type": "enum",
+                    "open": true
+                }
+            },
+            "expected": false
+        },
+        {
+            "name": "missing $country {\"$ne\":\"US\"}",
+            "filter": {
+                "$country": {
+                    "$ne": "US"
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $country {\"$exists\":false}",
+            "filter": {
+                "$country": {
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $country {\"$exists\":true}",
+            "filter": {
+                "$country": {
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "missing $country {\"$nin\":[\"US\"]}",
+            "filter": {
+                "$country": {
+                    "$nin": [
+                        "US"
+                    ]
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $os {\"$ne\":\"web\"}",
+            "filter": {
+                "$os": {
+                    "$ne": "web"
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $os {\"$exists\":false}",
+            "filter": {
+                "$os": {
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $os {\"$exists\":true}",
+            "filter": {
+                "$os": {
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "missing $os {\"$nin\":[\"web\"]}",
+            "filter": {
+                "$os": {
+                    "$nin": [
+                        "web"
+                    ]
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $device.os {\"$ne\":\"web\"}",
+            "filter": {
+                "$device.os": {
+                    "$ne": "web"
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $device.os {\"$exists\":false}",
+            "filter": {
+                "$device.os": {
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $device.os {\"$exists\":true}",
+            "filter": {
+                "$device.os": {
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "missing $device.os {\"$nin\":[\"web\"]}",
+            "filter": {
+                "$device.os": {
+                    "$nin": [
+                        "web"
+                    ]
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $v {\"$ne\":\"1.0.0\"}",
+            "filter": {
+                "$v": {
+                    "$ne": "1.0.0"
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $v {\"$exists\":false}",
+            "filter": {
+                "$v": {
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $v {\"$exists\":true}",
+            "filter": {
+                "$v": {
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "missing $v {\"$nin\":[\"1.0.0\"]}",
+            "filter": {
+                "$v": {
+                    "$nin": [
+                        "1.0.0"
+                    ]
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $app.version {\"$ne\":\"1.0.0\"}",
+            "filter": {
+                "$app.version": {
+                    "$ne": "1.0.0"
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $app.version {\"$exists\":false}",
+            "filter": {
+                "$app.version": {
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $app.version {\"$exists\":true}",
+            "filter": {
+                "$app.version": {
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "missing $app.version {\"$nin\":[\"1.0.0\"]}",
+            "filter": {
+                "$app.version": {
+                    "$nin": [
+                        "1.0.0"
+                    ]
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $account.registeredAt {\"$ne\":\"2026-10-03\"}",
+            "filter": {
+                "$account.registeredAt": {
+                    "$ne": "2026-10-03"
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $account.registeredAt {\"$exists\":false}",
+            "filter": {
+                "$account.registeredAt": {
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $account.registeredAt {\"$exists\":true}",
+            "filter": {
+                "$account.registeredAt": {
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "missing $account.lastLoginAt {\"$ne\":\"2026-10-03\"}",
+            "filter": {
+                "$account.lastLoginAt": {
+                    "$ne": "2026-10-03"
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $account.lastLoginAt {\"$exists\":false}",
+            "filter": {
+                "$account.lastLoginAt": {
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing $account.lastLoginAt {\"$exists\":true}",
+            "filter": {
+                "$account.lastLoginAt": {
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "missing project.string {\"$ne\":\"hello\"}",
+            "filter": {
+                "project.string": {
+                    "$ne": "hello"
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.string": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "name": "missing project.string {\"$exists\":false}",
+            "filter": {
+                "project.string": {
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.string": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "name": "missing project.string {\"$exists\":true}",
+            "filter": {
+                "project.string": {
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false,
+            "params": {
+                "project.string": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "name": "missing project.string {\"$nin\":[\"hello\"]}",
+            "filter": {
+                "project.string": {
+                    "$nin": [
+                        "hello"
+                    ]
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.string": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "name": "missing project.number {\"$ne\":3}",
+            "filter": {
+                "project.number": {
+                    "$ne": 3
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.number": {
+                    "type": "number"
+                }
+            }
+        },
+        {
+            "name": "missing project.number {\"$exists\":false}",
+            "filter": {
+                "project.number": {
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.number": {
+                    "type": "number"
+                }
+            }
+        },
+        {
+            "name": "missing project.number {\"$exists\":true}",
+            "filter": {
+                "project.number": {
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false,
+            "params": {
+                "project.number": {
+                    "type": "number"
+                }
+            }
+        },
+        {
+            "name": "missing project.number {\"$nin\":[3]}",
+            "filter": {
+                "project.number": {
+                    "$nin": [
+                        3
+                    ]
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.number": {
+                    "type": "number"
+                }
+            }
+        },
+        {
+            "name": "missing project.boolean {\"$ne\":true}",
+            "filter": {
+                "project.boolean": {
+                    "$ne": true
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.boolean": {
+                    "type": "boolean"
+                }
+            }
+        },
+        {
+            "name": "missing project.boolean {\"$exists\":false}",
+            "filter": {
+                "project.boolean": {
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.boolean": {
+                    "type": "boolean"
+                }
+            }
+        },
+        {
+            "name": "missing project.boolean {\"$exists\":true}",
+            "filter": {
+                "project.boolean": {
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false,
+            "params": {
+                "project.boolean": {
+                    "type": "boolean"
+                }
+            }
+        },
+        {
+            "name": "missing project.boolean {\"$nin\":[true]}",
+            "filter": {
+                "project.boolean": {
+                    "$nin": [
+                        true
+                    ]
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.boolean": {
+                    "type": "boolean"
+                }
+            }
+        },
+        {
+            "name": "missing project.enum {\"$ne\":\"red\"}",
+            "filter": {
+                "project.enum": {
+                    "$ne": "red"
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.enum": {
+                    "type": "enum",
+                    "values": [
+                        "red",
+                        "blue"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "missing project.enum {\"$exists\":false}",
+            "filter": {
+                "project.enum": {
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.enum": {
+                    "type": "enum",
+                    "values": [
+                        "red",
+                        "blue"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "missing project.enum {\"$exists\":true}",
+            "filter": {
+                "project.enum": {
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false,
+            "params": {
+                "project.enum": {
+                    "type": "enum",
+                    "values": [
+                        "red",
+                        "blue"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "missing project.enum {\"$nin\":[\"red\"]}",
+            "filter": {
+                "project.enum": {
+                    "$nin": [
+                        "red"
+                    ]
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.enum": {
+                    "type": "enum",
+                    "values": [
+                        "red",
+                        "blue"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "missing project.version {\"$ne\":\"1.0.0\"}",
+            "filter": {
+                "project.version": {
+                    "$ne": "1.0.0"
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.version": {
+                    "type": "version"
+                }
+            }
+        },
+        {
+            "name": "missing project.version {\"$exists\":false}",
+            "filter": {
+                "project.version": {
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.version": {
+                    "type": "version"
+                }
+            }
+        },
+        {
+            "name": "missing project.version {\"$exists\":true}",
+            "filter": {
+                "project.version": {
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false,
+            "params": {
+                "project.version": {
+                    "type": "version"
+                }
+            }
+        },
+        {
+            "name": "missing project.version {\"$nin\":[\"1.0.0\"]}",
+            "filter": {
+                "project.version": {
+                    "$nin": [
+                        "1.0.0"
+                    ]
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.version": {
+                    "type": "version"
+                }
+            }
+        },
+        {
+            "name": "missing project.date {\"$ne\":\"2026-10-03\"}",
+            "filter": {
+                "project.date": {
+                    "$ne": "2026-10-03"
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.date": {
+                    "type": "date"
+                }
+            }
+        },
+        {
+            "name": "missing project.date {\"$exists\":false}",
+            "filter": {
+                "project.date": {
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true,
+            "params": {
+                "project.date": {
+                    "type": "date"
+                }
+            }
+        },
+        {
+            "name": "missing project.date {\"$exists\":true}",
+            "filter": {
+                "project.date": {
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false,
+            "params": {
+                "project.date": {
+                    "type": "date"
+                }
+            }
+        },
+        {
+            "name": "missing or malformed remains false $country {\"$ne\":\"invalid\"}",
+            "filter": {
+                "$country": {
+                    "$ne": "invalid"
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "missing or malformed remains false $v {\"$nin\":[\"invalid\"]}",
+            "filter": {
+                "$v": {
+                    "$nin": [
+                        "invalid"
+                    ]
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "missing or malformed remains false $account.lastLoginAt {\"$nin\":[\"2026-10-03\"]}",
+            "filter": {
+                "$account.lastLoginAt": {
+                    "$nin": [
+                        "2026-10-03"
+                    ]
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "missing or malformed remains false $country {\"$ne\":\"US\"}",
+            "filter": {
+                "$country": {
+                    "$ne": "US"
+                }
+            },
+            "facts": {
+                "country": null
+            },
+            "expected": false
+        },
+        {
+            "name": "missing or malformed remains false $os {\"$nin\":[\"web\"]}",
+            "filter": {
+                "$os": {
+                    "$nin": [
+                        "web"
+                    ]
+                }
+            },
+            "facts": {
+                "os": "unknown"
+            },
+            "expected": false
+        },
+        {
+            "name": "missing or malformed remains false $v {\"$nin\":[\"1.0.0\"]}",
+            "filter": {
+                "$v": {
+                    "$nin": [
+                        "1.0.0"
+                    ]
+                }
+            },
+            "facts": {
+                "v": "invalid"
+            },
+            "expected": false
+        },
+        {
+            "name": "missing or malformed remains false project.number {\"$ne\":3}",
+            "filter": {
+                "project.number": {
+                    "$ne": 3
+                }
+            },
+            "facts": {
+                "custom.project.number": "3"
+            },
+            "expected": false,
+            "params": {
+                "project.number": {
+                    "type": "number"
+                }
+            }
+        },
+        {
+            "name": "missing or malformed remains false $v {\"$gt\":\"1.0.0\"}",
+            "filter": {
+                "$v": {
+                    "$gt": "1.0.0"
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "missing or malformed remains false $account.registeredAt {\"$lte\":\"2026-10-03\"}",
+            "filter": {
+                "$account.registeredAt": {
+                    "$lte": "2026-10-03"
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "missing or malformed remains false project.string {\"$contains\":\"hi\",\"caseInsensitive\":true}",
+            "filter": {
+                "project.string": {
+                    "$contains": "hi",
+                    "caseInsensitive": true
+                }
+            },
+            "facts": {},
+            "expected": false,
+            "params": {
+                "project.string": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "name": "missing or malformed remains false project.number {\"$mod\":[2,0]}",
+            "filter": {
+                "project.number": {
+                    "$mod": [
+                        2,
+                        0
+                    ]
+                }
+            },
+            "facts": {},
+            "expected": false,
+            "params": {
+                "project.number": {
+                    "type": "number"
+                }
+            }
+        },
+        {
+            "name": "missing or malformed remains false project.number {\"$not\":{\"$eq\":3}}",
+            "filter": {
+                "project.number": {
+                    "$not": {
+                        "$eq": 3
+                    }
+                }
+            },
+            "facts": {},
+            "expected": false,
+            "params": {
+                "project.number": {
+                    "type": "number"
+                }
+            }
+        },
+        {
+            "name": "missing version compound {'$ne': '1.0.0', '$exists': False}",
+            "filter": {
+                "$v": {
+                    "$ne": "1.0.0",
+                    "$exists": false
+                }
+            },
+            "facts": {},
+            "expected": true
+        },
+        {
+            "name": "missing version compound {'$ne': '1.0.0', '$exists': True}",
+            "filter": {
+                "$v": {
+                    "$ne": "1.0.0",
+                    "$exists": true
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "missing version compound {'$ne': '1.0.0', '$gt': '0.1'}",
+            "filter": {
+                "$v": {
+                    "$ne": "1.0.0",
+                    "$gt": "0.1"
+                }
+            },
+            "facts": {},
+            "expected": false
+        },
+        {
+            "name": "web launch on hardware macOS",
+            "filter": {
+                "$os": "web",
+                "$device.os": "macOS"
+            },
+            "facts": {
+                "os": "web",
+                "device.os": "macOS"
+            },
+            "expected": true
+        },
+        {
+            "name": "web launch on hardware Windows",
+            "filter": {
+                "$os": "web",
+                "$device.os": "Windows"
+            },
+            "facts": {
+                "os": "web",
+                "device.os": "Windows"
+            },
+            "expected": true
+        },
+        {
+            "name": "web launch on hardware Linux",
+            "filter": {
+                "$os": "web",
+                "$device.os": "Linux"
+            },
+            "facts": {
+                "os": "web",
+                "device.os": "Linux"
+            },
+            "expected": true
+        },
+        {
+            "name": "web launch on hardware iOS",
+            "filter": {
+                "$os": "web",
+                "$device.os": "iOS"
+            },
+            "facts": {
+                "os": "web",
+                "device.os": "iOS"
+            },
+            "expected": true
+        },
+        {
+            "name": "web launch on hardware Android",
+            "filter": {
+                "$os": "web",
+                "$device.os": "Android"
+            },
+            "facts": {
+                "os": "web",
+                "device.os": "Android"
+            },
+            "expected": true
+        },
+        {
+            "name": "hardware OS does not redefine launch category",
+            "filter": {
+                "$os": "ios"
+            },
+            "facts": {
+                "os": "web",
+                "device.os": "iOS"
+            },
+            "expected": false
+        }
+    ],
+    "invalid": [
+        {
+            "name": "empty string",
+            "filter": {
+                "f": ""
+            },
+            "kind": "invalid"
+        },
+        {
+            "name": "null",
+            "filter": {
+                "f": null
+            },
+            "kind": "invalid"
+        },
+        {
+            "name": "empty list",
+            "filter": {
+                "f": []
+            },
+            "kind": "invalid"
+        },
+        {
+            "name": "empty equality",
+            "filter": {
+                "f": {
+                    "$eq": ""
+                }
+            },
+            "kind": "invalid"
+        },
+        {
+            "name": "empty membership",
+            "filter": {
+                "f": {
+                    "$in": []
+                }
+            },
+            "kind": "invalid"
+        },
+        {
+            "name": "null membership",
+            "filter": {
+                "f": {
+                    "$in": [
+                        null
+                    ]
+                }
+            },
+            "kind": "invalid"
+        },
+        {
+            "name": "empty $and",
+            "filter": {
+                "$and": []
+            },
+            "kind": "invalid"
+        },
+        {
+            "name": "empty child $and",
+            "filter": {
+                "$and": [
+                    {}
+                ]
+            },
+            "kind": "invalid"
+        },
+        {
+            "name": "empty $or",
+            "filter": {
+                "$or": []
+            },
+            "kind": "invalid"
+        },
+        {
+            "name": "empty child $or",
+            "filter": {
+                "$or": [
+                    {}
+                ]
+            },
+            "kind": "invalid"
+        },
+        {
+            "name": "empty $nor",
+            "filter": {
+                "$nor": []
+            },
+            "kind": "invalid"
+        },
+        {
+            "name": "empty child $nor",
+            "filter": {
+                "$nor": [
+                    {}
+                ]
+            },
+            "kind": "invalid"
+        },
+        {
+            "name": "empty negation",
+            "filter": {
+                "$not": {}
+            },
+            "kind": "invalid"
+        },
+        {
+            "name": "invalid version 1..2",
+            "filter": {
+                "$v": "1..2"
+            },
+            "kind": "type"
+        },
+        {
+            "name": "invalid version 1.02",
+            "filter": {
+                "$v": "1.02"
+            },
+            "kind": "type"
+        },
+        {
+            "name": "invalid version 1.0.0-01",
+            "filter": {
+                "$v": "1.0.0-01"
+            },
+            "kind": "type"
+        },
+        {
+            "name": "invalid version 1.0.0+",
+            "filter": {
+                "$v": "1.0.0+"
+            },
+            "kind": "type"
+        },
+        {
+            "name": "invalid version vv1",
+            "filter": {
+                "$v": "vv1"
+            },
+            "kind": "type"
+        },
+        {
+            "name": "invalid date 2026-02-31",
+            "filter": {
+                "$account.registeredAt": "2026-02-31"
+            },
+            "kind": "type"
+        },
+        {
+            "name": "invalid date 2026-13-01",
+            "filter": {
+                "$account.registeredAt": "2026-13-01"
+            },
+            "kind": "type"
+        },
+        {
+            "name": "invalid date 2026-10-03T25:00:00Z",
+            "filter": {
+                "$account.registeredAt": "2026-10-03T25:00:00Z"
+            },
+            "kind": "type"
+        },
+        {
+            "name": "invalid date 2026-10-03T00:00:00+24:00",
+            "filter": {
+                "$account.registeredAt": "2026-10-03T00:00:00+24:00"
+            },
+            "kind": "type"
+        },
+        {
+            "name": "invalid date now-7d",
+            "filter": {
+                "$account.registeredAt": "now-7d"
+            },
+            "kind": "type"
+        },
+        {
+            "name": "date membership",
+            "filter": {
+                "$account.registeredAt": {
+                    "$in": [
+                        "2026-10-03"
+                    ]
+                }
+            },
+            "kind": "type"
+        },
+        {
+            "name": "closed enum",
+            "filter": {
+                "color": "blue"
+            },
+            "kind": "type",
+            "params": {
+                "color": {
+                    "type": "enum",
+                    "values": [
+                        "red"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "country outside ISO",
+            "filter": {
+                "$country": "ZZ"
+            },
+            "kind": "type"
+        },
+        {
+            "name": "launch OS remains a closed category",
+            "filter": {
+                "$os": "macOS"
+            },
+            "kind": "type"
+        }
+    ]
+}

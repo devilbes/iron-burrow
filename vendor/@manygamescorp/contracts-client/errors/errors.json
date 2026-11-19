@@ -1,0 +1,1534 @@
+{
+  "$comment": "Error codes the SDK can receive (server) or produce (sdk). source: doc under manygamescorp/architecture docs/architecture. errorsMd:false: server code missing in platform/errors.md (question ОВ-10). Edit, then npm run contracts:gen.",
+  "pattern": "^[A-Z][A-Z0-9]*(_[A-Z0-9]+){2,}$",
+  "shortCodes": [
+    "APP_DISABLED",
+    "ENDPOINT_REMOVED",
+    "FORBIDDEN",
+    "INTERNAL",
+    "NETWORK_ERROR",
+    "NOT_FOUND",
+    "OFFLINE",
+    "RATE_LIMITED",
+    "TIMEOUT",
+    "UNAUTHORIZED",
+    "UPSTREAM_UNAVAILABLE",
+    "VALIDATION_FAILED"
+  ],
+  "codes": [
+    {
+      "code": "ACCOUNT_NICKNAME_LIMIT",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "id",
+      "source": "services/id/manyplay-account.md"
+    },
+    {
+      "code": "ACCOUNT_NICKNAME_TAKEN",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "id",
+      "source": "services/id/manyplay-account.md"
+    },
+    {
+      "code": "ADS_CONNECTION_CONFLICT",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Read the current connection, then retry the key change against the latest state."
+    },
+    {
+      "code": "ADS_KEY_INVALID",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Check details.key and replace the rejected Management or Report Key through panel with a valid AppLovin MAX key."
+    },
+    {
+      "code": "ADS_MAX_APP_ALREADY_LINKED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Read the platform binding, unlink its current package through panel, then link the intended package."
+    },
+    {
+      "code": "ADS_MAX_APP_NOT_LINKED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Link the platform to its registered package, then retry."
+    },
+    {
+      "code": "ADS_MUTATIONS_DISABLED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 403,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Use local manual ad units or ask the operator to enable MAX mutations in an environment where they are permitted."
+    },
+    {
+      "code": "ADS_NOT_CONNECTED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Set valid AppLovin MAX keys through panel and verify the connection before retrying the operation."
+    },
+    {
+      "code": "ADS_PACKAGE_ALREADY_LINKED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Unlink the package from the other application through an authorized panel session, or select a different registered package."
+    },
+    {
+      "code": "ADS_PACKAGE_MISMATCH",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Use the Android package name or iOS bundle ID registered for this application in panel."
+    },
+    {
+      "code": "ADS_REPORT_RANGE_TOO_LARGE",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Reduce the report range to its endpoint limit; for backfill use at most 31 days within the past 45 days and no future dates."
+    },
+    {
+      "code": "ADS_UNIT_DRIFTED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Read the unit drift and accept the MAX state for critical drift; revert only a supported name change."
+    },
+    {
+      "code": "ADS_UNIT_FORMAT_EXISTS",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Import or reuse the existing MAX ad unit for this application, platform and format instead of creating another."
+    },
+    {
+      "code": "ADS_UNIT_FORMAT_UNSUPPORTED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "For MAX creation choose rewarded, interstitial or banner; import existing MAX units of other formats instead."
+    },
+    {
+      "code": "ADS_UNIT_KEY_TAKEN",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Check details.field: choose an unused unitKey or name, or use the same format for that unitKey across platforms."
+    },
+    {
+      "code": "ADS_UNIT_REVISION_CONFLICT",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Read the unit again, review the changes and retry with its current revision in If-Match."
+    },
+    {
+      "code": "ADS_UPSTREAM_RATE_LIMITED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 429,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Wait for the Retry-After seconds before retrying; do not immediately repeat the MAX request."
+    },
+    {
+      "code": "ADS_UPSTREAM_REJECTED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "ads",
+      "source": "services/ads/api-panel.md",
+      "hint": "Check details.upstreamStatus and optional details.upstreamCode, correct the unit parameters or MAX account permissions, then retry."
+    },
+    {
+      "code": "APP_DISABLED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 403,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "APP_ID_MISMATCH",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 403,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "APP_SCOPE_MISMATCH",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 403,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "AUTH_APP_UNAVAILABLE",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 403,
+      "service": "id",
+      "source": "services/id/api-client.md"
+    },
+    {
+      "code": "AUTH_CODE_ATTEMPTS_EXCEEDED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "id",
+      "source": "services/id/api-client.md"
+    },
+    {
+      "code": "AUTH_CODE_EXPIRED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "id",
+      "source": "services/id/api-client.md"
+    },
+    {
+      "code": "AUTH_CODE_INVALID",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "id",
+      "source": "services/id/api-client.md"
+    },
+    {
+      "code": "AUTH_CONTACT_CONFLICT",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "id",
+      "source": "services/id/api-client.md"
+    },
+    {
+      "code": "AUTH_DELIVERY_UNAVAILABLE",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 503,
+      "service": "id",
+      "source": "services/id/api-client.md"
+    },
+    {
+      "code": "AUTH_LAST_SIGNIN_METHOD",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "id",
+      "source": "services/id/api-client.md"
+    },
+    {
+      "code": "AUTH_LINK_CONFLICT",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "id",
+      "source": "services/id/api-client.md"
+    },
+    {
+      "code": "AUTH_LINK_TICKET_EXPIRED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "id",
+      "source": "services/id/api-client.md"
+    },
+    {
+      "code": "AUTH_LINK_TICKET_INVALID",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "id",
+      "source": "services/id/api-client.md"
+    },
+    {
+      "code": "AUTH_PHONE_DISABLED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "id",
+      "source": "services/id/api-client.md"
+    },
+    {
+      "code": "AUTH_PROVIDER_TOKEN_INVALID",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 401,
+      "service": "id",
+      "source": "services/id/api-client.md"
+    },
+    {
+      "code": "AUTH_PROVIDER_UNAVAILABLE",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 503,
+      "service": "id",
+      "source": "services/id/api-client.md"
+    },
+    {
+      "code": "CONFIGS_VERSION_REQUIRED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "configs",
+      "source": "services/configs/api-client.md"
+    },
+    {
+      "code": "ENDPOINT_REMOVED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 410,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "FORBIDDEN",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 403,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "GAME_STATE_VERSION_CONFLICT",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "profile",
+      "source": "services/profile/api-client.md"
+    },
+    {
+      "code": "IAP_AD_ADVANCE_EXHAUSTED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Завершите или дождитесь истечения текущего рекламного заказа; не создавайте параллельные авансовые заказы."
+    },
+    {
+      "code": "IAP_ENVIRONMENT_MISMATCH",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Используйте покупку из окружения, разрешённого подключением стора приложения; тестовую покупку проверяйте только при разрешённом sandbox."
+    },
+    {
+      "code": "IAP_LIMIT_REACHED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Обновите офферы и дождитесь следующего окна лимита; не повторяйте покупку в исчерпанном окне."
+    },
+    {
+      "code": "IAP_OFFER_COOLDOWN",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Обновите оффер и повторите покупку после окончания его cooldown."
+    },
+    {
+      "code": "IAP_OFFER_NOT_FOUND",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 404,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Обновите каталог и выберите доступный offerKey для текущего приложения и игрока."
+    },
+    {
+      "code": "IAP_ORDER_ALREADY_PROCESSED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Прочитайте текущее состояние заказа и используйте его результат; не повторяйте несовместимую команду для завершённого заказа."
+    },
+    {
+      "code": "IAP_ORDER_NOT_FOUND",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 404,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Используйте orderId, возвращённый для текущего игрока и приложения; обновите список заказов."
+    },
+    {
+      "code": "IAP_PROVIDER_UNAVAILABLE",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Проверьте включённого провайдера подтверждения и подключение стора приложения; обновите доступность офферов перед новой попыткой."
+    },
+    {
+      "code": "IAP_PURCHASE_ACCOUNT_MISMATCH",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 403,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Восстановите покупку под профилем, к которому она привязана; не переносите подтверждение покупки между игроками."
+    },
+    {
+      "code": "IAP_RECEIPT_ALREADY_USED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Прочитайте или восстановите исходный заказ покупки; не используйте одно подтверждение для разных заказов."
+    },
+    {
+      "code": "IAP_RECEIPT_PRODUCT_MISMATCH",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Проверьте соответствие продукта стора, productRef и заказа; отправляйте подтверждение только для купленного продукта."
+    },
+    {
+      "code": "IAP_SALES_CLOSED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Обновите каталог и выберите доступный пак; продажа сезонного пака закрыта перед концом сезона."
+    },
+    {
+      "code": "IAP_STORE_NOT_SUPPORTED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Выберите продукт с привязкой к поддерживаемому стору текущей сборки."
+    },
+    {
+      "code": "IAP_STORE_VALIDATION_FAILED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Проверьте соответствие подтверждения покупке и заказу; прочитайте состояние заказа перед дальнейшим действием, не выдавайте награду локально."
+    },
+    {
+      "code": "IAP_VARIANT_NOT_FOUND",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "iap",
+      "source": "services/iap/api-client.md",
+      "hint": "Обновите оффер и выберите variantKey из его текущего списка вариантов."
+    },
+    {
+      "code": "IDEMPOTENCY_IN_PROGRESS",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "IDEMPOTENCY_KEY_CONFLICT",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "IDEMPOTENCY_KEY_REQUIRED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "INTERNAL",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 500,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "INVALID_LEADERBOARD_KEY",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "leaderboards",
+      "source": "services/leaderboards/api-client.md"
+    },
+    {
+      "code": "INVENTORY_CONSUME_NOT_ALLOWED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "inventory",
+      "source": "services/inventory/api-client.md"
+    },
+    {
+      "code": "INVENTORY_EXCHANGE_LIMIT_REACHED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "inventory",
+      "source": "services/inventory/api-client.md"
+    },
+    {
+      "code": "INVENTORY_EXCHANGE_RULE_NOT_FOUND",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "inventory",
+      "source": "services/inventory/api-client.md"
+    },
+    {
+      "code": "INVENTORY_INSUFFICIENT_FUNDS",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "inventory",
+      "source": "services/inventory/api-client.md"
+    },
+    {
+      "code": "INVENTORY_INSUFFICIENT_ITEMS",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "inventory",
+      "source": "services/inventory/api-client.md"
+    },
+    {
+      "code": "INVENTORY_ITEM_UNKNOWN",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "inventory",
+      "source": "services/inventory/api-client.md"
+    },
+    {
+      "code": "LEADERBOARDS_BOARD_EXPIRED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 410,
+      "service": "leaderboards",
+      "source": "services/leaderboards/api-client.md"
+    },
+    {
+      "code": "LEADERBOARD_NOT_STARTED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "leaderboards",
+      "source": "services/leaderboards/api-client.md",
+      "hint": "Лидерборд ещё не начался. Не повторяйте запрос автоматически и не сохраняйте его в офлайн-очередь."
+    },
+    {
+      "code": "LEADERBOARD_POLICY_VIOLATION",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "leaderboards",
+      "source": "services/leaderboards/api-client.md",
+      "hint": "Проверьте допустимость результата по настройкам типа и occurredAt. Не повторяйте отклонённый результат без исправления; для нового результата используйте новые eventId и idempotencyKey."
+    },
+    {
+      "code": "LEVELS_NOT_LOADED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "services/progress/levels-contract.md"
+    },
+    {
+      "code": "LEVELS_OFFLINE_MISSING",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "services/progress/levels-contract.md"
+    },
+    {
+      "code": "MECHANIC_ATTEMPT_ACTIVE",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_ATTEMPT_CONFLICT",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_ATTEMPT_COOLDOWN",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_ATTEMPT_NOT_FOUND",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_ATTEMPT_RESULT_MISMATCH",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_ATTEMPT_STATE_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_CURVE_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_DEPENDENCY_MISSING",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_LEVEL_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_MODE_MISMATCH",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_MODE_UNSUPPORTED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_NOT_READY",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_SETTINGS_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_SETTINGS_MISSING",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_STEP_LOCKED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MECHANIC_STEP_UNAVAILABLE",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "MODULE_DEPENDENCY_FAILED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "MODULE_NOT_ACTIVE",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "MODULE_NOT_READY",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/module-catalog.md"
+    },
+    {
+      "code": "MODULE_REMOTE_FORBIDDEN",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/module-catalog.md"
+    },
+    {
+      "code": "MODULE_TARGET_UNAVAILABLE",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/module-catalog.md"
+    },
+    {
+      "code": "NETWORK_ERROR",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/architecture.md"
+    },
+    {
+      "code": "NOT_FOUND",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 404,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "OFFLINE",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/architecture.md"
+    },
+    {
+      "code": "PAYLOAD_TOO_LARGE",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 413,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "PROFILE_FIELD_READ_ONLY",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 403,
+      "service": "profile",
+      "source": "services/profile/api-client.md"
+    },
+    {
+      "code": "PROFILE_GAME_STATE_LIMIT_EXCEEDED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "profile",
+      "source": "services/profile/api-client.md"
+    },
+    {
+      "code": "PROFILE_GAME_STATE_VERSION_REQUIRED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "profile",
+      "source": "services/profile/api-client.md"
+    },
+    {
+      "code": "PROFILE_LIMIT_EXCEEDED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "profile",
+      "source": "services/profile/api-client.md"
+    },
+    {
+      "code": "PROFILE_PATH_INVALID",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "profile",
+      "source": "services/profile/api-client.md"
+    },
+    {
+      "code": "PROFILE_PLAYER_DATA_KEY_INVALID",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "profile",
+      "source": "services/profile/api-client.md"
+    },
+    {
+      "code": "PROFILE_PLAYER_DATA_KEY_NOT_FOUND",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 404,
+      "service": "profile",
+      "source": "services/profile/api-client.md"
+    },
+    {
+      "code": "PROFILE_PLAYER_DATA_LIMIT_EXCEEDED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "profile",
+      "source": "services/profile/api-client.md"
+    },
+    {
+      "code": "PROFILE_PLAYER_DATA_VALUE_INVALID",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "profile",
+      "source": "services/profile/api-client.md"
+    },
+    {
+      "code": "PROFILE_SCHEMA_VIOLATION",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "profile",
+      "source": "services/profile/api-client.md"
+    },
+    {
+      "code": "PROFILE_VERSION_CONFLICT",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "profile",
+      "source": "services/profile/api-client.md"
+    },
+    {
+      "code": "PROFILE_VERSION_REQUIRED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "profile",
+      "source": "services/profile/api-client.md"
+    },
+    {
+      "code": "PROGRESS_EVENT_ID_CONFLICT",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "progress",
+      "source": "services/progress/api-client.md"
+    },
+    {
+      "code": "RANDOM_RANGE_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "RANDOM_SEED_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "RANDOM_STATE_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "RATE_LIMITED",
+      "emittedBy": [
+        "server",
+        "sdk"
+      ],
+      "httpStatus": 429,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "SDK_ACTION_NOT_CALLABLE",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/mechanics.md"
+    },
+    {
+      "code": "SDK_AUTH_EMAIL_REQUIRED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/modules/auth.md"
+    },
+    {
+      "code": "SDK_AUTH_INPUT_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/modules/auth.md"
+    },
+    {
+      "code": "SDK_AUTH_NO_PENDING",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/modules/auth.md"
+    },
+    {
+      "code": "SDK_AUTH_RESEND_TOO_EARLY",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/modules/auth.md"
+    },
+    {
+      "code": "SDK_AUTH_RESPONSE_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/auth.md"
+    },
+    {
+      "code": "SDK_BOOT_STATE_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/kernel.md"
+    },
+    {
+      "code": "SDK_CONFIG_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/demo-session.md"
+    },
+    {
+      "code": "SDK_EVENT_NAME_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_IAP_ALREADY_OWNED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "service": "iap",
+      "source": "client-sdk/modules/iap.md",
+      "hint": "Обновите entitlements или восстановите покупки; не покупайте повторно уже принадлежащий игроку продукт."
+    },
+    {
+      "code": "SDK_IAP_CANCELED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "service": "iap",
+      "source": "client-sdk/modules/iap.md",
+      "hint": "Оставьте покупку отменённой; новую покупку запускайте только по явному действию игрока."
+    },
+    {
+      "code": "SDK_IAP_FAILED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "service": "iap",
+      "source": "client-sdk/modules/iap.md",
+      "hint": "Прочитайте состояние заказа и результат выдачи; обновите инвентарь, не считайте оплату доказательством получения награды."
+    },
+    {
+      "code": "SDK_IAP_NETWORK_ERROR",
+      "emittedBy": [
+        "sdk"
+      ],
+      "service": "iap",
+      "source": "client-sdk/modules/iap.md",
+      "hint": "Восстановите соединение и прочитайте состояние существующего заказа; продолжите подтверждение или восстановление без новой покупки."
+    },
+    {
+      "code": "SDK_IAP_NOT_AVAILABLE",
+      "emittedBy": [
+        "sdk"
+      ],
+      "service": "iap",
+      "source": "client-sdk/modules/iap.md",
+      "hint": "Обновите офферы и доступность стора; предложите игроку доступный продукт после проверки подключения приложения."
+    },
+    {
+      "code": "SDK_IAP_PENDING",
+      "emittedBy": [
+        "sdk"
+      ],
+      "service": "iap",
+      "source": "client-sdk/modules/iap.md",
+      "hint": "Продолжайте отслеживать существующий orderId до подтверждения сервером; не создавайте повторную покупку и не выдавайте награду локально."
+    },
+    {
+      "code": "SDK_IAP_STORE_ERROR",
+      "emittedBy": [
+        "sdk"
+      ],
+      "service": "iap",
+      "source": "client-sdk/modules/iap.md",
+      "hint": "Обновите состояние заказа и подключение стора; восстановите покупки перед новой попыткой, не показывайте сообщения поставщика игроку."
+    },
+    {
+      "code": "SDK_IAP_VALIDATION_FAILED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "service": "iap",
+      "source": "client-sdk/modules/iap.md",
+      "hint": "Проверьте продукт, привязку покупки к профилю и состояние заказа; не выдавайте награду без серверного подтверждения."
+    },
+    {
+      "code": "SDK_L10N_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/modules/l10n.md"
+    },
+    {
+      "code": "SDK_LEADERBOARD_CLIENT_SUBMIT_DISABLED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/modules/leaderboards.md"
+    },
+    {
+      "code": "SDK_MODULE_CANCELLED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_MODULE_DUPLICATE",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/architecture.md"
+    },
+    {
+      "code": "SDK_MODULE_INCOMPATIBLE",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_MODULE_LOAD_FAILED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_MODULE_MANIFEST_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/architecture.md"
+    },
+    {
+      "code": "SDK_MODULE_NOT_DECLARED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_MODULE_NOT_INSTALLED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_MODULE_SETTINGS_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/module-catalog.md"
+    },
+    {
+      "code": "SDK_MODULE_STATE_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_MODULE_STEP_FAILED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_MODULE_TIMEOUT",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_NOT_IMPLEMENTED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_NOT_INITIALIZED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/architecture.md"
+    },
+    {
+      "code": "SDK_NO_HANDLER",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_PERMISSION_DENIED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_PLATFORM_APP_ID_REQUIRED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/transport.md",
+      "hint": "Add the numeric application appId to platform.json."
+    },
+    {
+      "code": "SDK_PLATFORM_CONFIG_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/transport.md"
+    },
+    {
+      "code": "SDK_PLATFORM_NOT_READY",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_PLATFORM_UNSUPPORTED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_REQUEST_TIMEOUT",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_RESOLVE_FAILED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/module-catalog.md"
+    },
+    {
+      "code": "SDK_SCHEDULING_BUSY",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/modules/scheduling.md",
+      "hint": "Bounded scheduling reads are full or another page of this stream is pending."
+    },
+    {
+      "code": "SDK_SCHEDULING_CLOCK_NOT_READY",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/modules/scheduling.md",
+      "hint": "No finite corrected server time is available for the countdown."
+    },
+    {
+      "code": "SDK_SCHEDULING_NOT_READY",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/modules/scheduling.md",
+      "hint": "Owner public API has not passed the scheduling readiness gate."
+    },
+    {
+      "code": "SDK_SCHEDULING_RESPONSE_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/modules/scheduling.md",
+      "hint": "Owner response does not match the safe E135 read projection."
+    },
+    {
+      "code": "SDK_SECURE_STORE_FAILED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_STORAGE_KEY_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_STORAGE_VALUE_INVALID",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_STORAGE_WRITE_FAILED",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SDK_TRANSPORT_CIRCUIT_OPEN",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/implementation-plan.md"
+    },
+    {
+      "code": "SECURE_STORE_UNAVAILABLE",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/modules/core.md"
+    },
+    {
+      "code": "STALE_STATE_VERSION",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "TIMEOUT",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/architecture.md"
+    },
+    {
+      "code": "TRANSPORT_RESPONSE_TOO_LARGE",
+      "emittedBy": [
+        "sdk"
+      ],
+      "source": "client-sdk/architecture.md"
+    },
+    {
+      "code": "UNAUTHORIZED",
+      "emittedBy": [
+        "server",
+        "sdk"
+      ],
+      "httpStatus": 401,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "UPSTREAM_UNAVAILABLE",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 503,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "VALIDATION_FAILED",
+      "emittedBy": [
+        "server",
+        "sdk"
+      ],
+      "httpStatus": 400,
+      "source": "platform/errors.md"
+    },
+    {
+      "code": "WEBHOOKS_CONNECTION_EXISTS",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "webhooks",
+      "source": "services/webhooks/api-panel.md",
+      "hint": "Подключение для этого провайдера и канала в приложении уже есть: измените существующее вместо создания нового."
+    },
+    {
+      "code": "WEBHOOKS_CONNECTION_REVISION_CONFLICT",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "webhooks",
+      "source": "services/webhooks/api-panel.md",
+      "hint": "Подключение изменено после чтения: перечитайте его, получите актуальную ревизию и повторите изменение с новым If-Match."
+    },
+    {
+      "code": "WEBHOOKS_CONNECTION_STATUS_CONFLICT",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "webhooks",
+      "source": "services/webhooks/api-panel.md",
+      "hint": "Переход статуса недопустим из текущего состояния: перечитайте подключение и выполните допустимый переход."
+    },
+    {
+      "code": "WEBHOOKS_EVENT_STALE",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 401,
+      "service": "webhooks",
+      "source": "services/webhooks/api-ingress.md",
+      "hint": "Событие старше допустимого окна свежести: проверьте часы источника и отправьте новое событие, старое повторять бессмысленно."
+    },
+    {
+      "code": "WEBHOOKS_IDENTITY_MISMATCH",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 403,
+      "service": "webhooks",
+      "source": "services/webhooks/api-ingress.md",
+      "hint": "Подпись верна, но идентичность (bundle id / package / проект) не совпадает с подключением: проверьте идентификатор в подключении и у провайдера."
+    },
+    {
+      "code": "WEBHOOKS_IDENTITY_TAKEN",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "webhooks",
+      "source": "services/webhooks/api-panel.md",
+      "hint": "Этот идентификатор (bundle id / package) уже подключён в другом приложении; проверьте значение, сведения о владельце не раскрываются."
+    },
+    {
+      "code": "WEBHOOKS_PAYLOAD_INVALID",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 400,
+      "service": "webhooks",
+      "source": "services/webhooks/api-ingress.md",
+      "hint": "Проверьте обязательные параметры, уберите лишние и повторённые параметры и убедитесь, что тело разбирается по формату провайдера."
+    },
+    {
+      "code": "WEBHOOKS_REPLAY_NOT_ALLOWED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "webhooks",
+      "source": "services/webhooks/api-panel.md",
+      "hint": "Для этой доставки replay не разрешён (например, тип unrecognized, details.reason = type_unsupported): проверьте тип и статус доставки."
+    },
+    {
+      "code": "WEBHOOKS_REPLAY_TOO_LARGE",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 422,
+      "service": "webhooks",
+      "source": "services/webhooks/api-panel.md",
+      "hint": "Объём replay превышает details.limit: сузьте выборку доставок и повторите частями."
+    },
+    {
+      "code": "WEBHOOKS_REPLAY_WINDOW_EXCEEDED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "webhooks",
+      "source": "services/webhooks/api-panel.md",
+      "hint": "Доставка старше окна replay: повтор невозможен, дождитесь нового события от провайдера."
+    },
+    {
+      "code": "WEBHOOKS_SECRET_NOT_APPLICABLE",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "webhooks",
+      "source": "services/webhooks/api-panel.md",
+      "hint": "Для этого провайдера секрет не применяется: не выпускайте и не передавайте секрет для такого подключения."
+    },
+    {
+      "code": "WEBHOOKS_SECRET_REQUIRED",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 409,
+      "service": "webhooks",
+      "source": "services/webhooks/api-panel.md",
+      "hint": "Для активации нужны выпущенный адрес и секрет: выпустите их в подключении (нужно право connections.secrets) и повторите активацию."
+    },
+    {
+      "code": "WEBHOOKS_SIGNATURE_INVALID",
+      "emittedBy": [
+        "server"
+      ],
+      "httpStatus": 401,
+      "service": "webhooks",
+      "source": "services/webhooks/api-ingress.md",
+      "hint": "Проверьте подпись, токен или секрет провайдера в подключении и совпадение с настроенным у провайдера; при ротации обновите обе стороны."
+    }
+  ]
+}

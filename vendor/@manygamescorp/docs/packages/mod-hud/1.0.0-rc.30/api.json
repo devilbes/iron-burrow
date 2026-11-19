@@ -1,0 +1,540 @@
+{
+  "schemaVersion": 1,
+  "package": "@manygamescorp/mod-hud",
+  "version": "1.0.0-rc.30",
+  "requires": {
+    "@manygamescorp/contracts-client": "1.0.0-rc.30",
+    "@manygamescorp/core": "1.0.0-rc.30",
+    "@manygamescorp/ui-kit": "1.0.0-rc.30"
+  },
+  "modules": [
+    {
+      "name": "hud",
+      "package": "@manygamescorp/mod-hud",
+      "description": "Game facade of the UI Kit HUD: side feature icons in the left and right slots. register returns a handle (active, setValue, setBadge with a dot, a count or null, setTimer with a server epoch deadline or null, setProgress 0..1 or null, setState active or locked, dispose); the notification badge and the countdown timer are independent. SDK modules register through the hud.registry@1 capability with the same handle. Slot, order and visibility come from the configs layout ui.hud/layout; the UI Kit provider hud-ui re-applies it on configs:snapshot:updated.",
+      "methods": [
+        {
+          "name": "items",
+          "description": "Read the active context with layout applied.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "description": "Registered items, including hidden items.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "Unique item id.",
+                  "type": "string"
+                },
+                "icon": {
+                  "description": "Icon name of the theme.",
+                  "type": "string"
+                },
+                "label": {
+                  "description": "`sdk.l10n` key of the label (also the accessible name).",
+                  "type": "string"
+                },
+                "labels": {
+                  "description": "Inline label per locale from the layout (`label.values`); wins over the l10n key.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "slot": {
+                  "description": "Slot the item is shown in: `left` or `right`.",
+                  "type": "string",
+                  "enum": [
+                    "left",
+                    "right"
+                  ]
+                },
+                "order": {
+                  "description": "Position in the slot after the layout is applied (smaller first, then by id).",
+                  "type": "number"
+                },
+                "visible": {
+                  "description": "False: hidden by the layout (visibility or filters of the player's segments).",
+                  "type": "boolean"
+                },
+                "owner": {
+                  "description": "Module id that registered the item, `game` for `sdk.hud.register`.",
+                  "type": "string"
+                },
+                "badge": {
+                  "description": "Current notification badge, independently of the countdown.",
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "description": "Marker or bounded counter; a count of zero clears it.",
+                      "type": "string",
+                      "enum": [
+                        "dot",
+                        "count"
+                      ]
+                    },
+                    "value": {
+                      "description": "Integer 0…999999 for a count badge.",
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "kind"
+                  ],
+                  "additionalProperties": false
+                },
+                "value": {
+                  "description": "Value rendered next to the icon.",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                },
+                "timer": {
+                  "description": "Countdown independent of the notification badge.",
+                  "type": "object",
+                  "properties": {
+                    "endsAt": {
+                      "description": "Countdown deadline in server epoch milliseconds.",
+                      "type": "number"
+                    },
+                    "remainingMs": {
+                      "description": "Remaining milliseconds measured with core.time.now().",
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "endsAt",
+                    "remainingMs"
+                  ],
+                  "additionalProperties": false
+                },
+                "progress": {
+                  "description": "Progress 0…1; absent when the item has none.",
+                  "type": "number"
+                },
+                "state": {
+                  "description": "`active` or `locked`.",
+                  "type": "string",
+                  "enum": [
+                    "active",
+                    "locked"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "icon",
+                "label",
+                "slot",
+                "order",
+                "visible",
+                "owner",
+                "state"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "errors": [],
+          "example": "const items = sdk.hud.items();"
+        },
+        {
+          "name": "open",
+          "description": "Dispatch the registered click callback and hud:item:opened.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "id": {
+                "description": "Item in the active context.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "returns": {
+            "type": "null"
+          },
+          "errors": [],
+          "example": "sdk.hud.open('daily');"
+        },
+        {
+          "name": "register",
+          "description": "Register an icon and retain its handle for event-driven updates.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "spec": {
+                "description": "Item definition, l10n label and optional initial values.",
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "Unique in the registry: `a-z0-9_.-`, up to 64 characters (`shop`, `daily`).",
+                    "type": "string"
+                  },
+                  "icon": {
+                    "description": "Icon name of the theme (`shop`, `bag`, `gift`…).",
+                    "type": "string"
+                  },
+                  "label": {
+                    "description": "`sdk.l10n` key of the label (also the accessible name).",
+                    "type": "string"
+                  },
+                  "slot": {
+                    "description": "Default slot; configs layout wins.",
+                    "type": "string",
+                    "enum": [
+                      "left",
+                      "right"
+                    ]
+                  },
+                  "order": {
+                    "description": "Default order in the slot (smaller first, then by id); configs layout wins.",
+                    "type": "number"
+                  },
+                  "onClick": {
+                    "description": "Called by `hud.open(id)`; module items leave it out and the host answers `hud:item:opened`.",
+                    "x-function": "() => void"
+                  },
+                  "value": {
+                    "description": "Initial short value (up to 32 characters) or finite safe number.",
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "timer": {
+                    "description": "Initial countdown deadline in server epoch milliseconds.",
+                    "type": "number"
+                  },
+                  "contexts": {
+                    "description": "Contexts in which this item appears; default main.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "badge": {
+                    "description": "Initial badge of the item.",
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "description": "Marker or bounded counter; a count of zero clears it.",
+                        "type": "string",
+                        "enum": [
+                          "dot",
+                          "count"
+                        ]
+                      },
+                      "value": {
+                        "description": "Integer 0…999999 for a count badge.",
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "kind"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "clearOnOpen": {
+                    "description": "Opening the item (the player saw it) clears its badge.",
+                    "type": "boolean"
+                  },
+                  "progress": {
+                    "description": "Initial progress ring, 0…1 (daily streak, quest).",
+                    "type": "number"
+                  },
+                  "state": {
+                    "description": "Initial state; `locked` is drawn dimmed, opening still emits `hud:item:opened`.",
+                    "type": "string",
+                    "enum": [
+                      "active",
+                      "locked"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "icon",
+                  "label"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "spec"
+            ]
+          },
+          "returns": {
+            "description": "Handle, inactive when UI Kit or HUD is disabled.",
+            "type": "object",
+            "properties": {
+              "active": {
+                "description": "Whether registration succeeded; false after disposal.",
+                "type": "boolean"
+              },
+              "setValue": {
+                "description": "Update the finite safe number or short text.",
+                "x-function": "(value: HudValue) => void"
+              },
+              "setBadge": {
+                "description": "Replace the notification; null clears it.",
+                "x-function": "(badge: HudBadgeInput | null) => void"
+              },
+              "setTimer": {
+                "description": "Set a server epoch deadline; null clears it.",
+                "x-function": "(endsAt: number | null) => void"
+              },
+              "setProgress": {
+                "description": "Set a fraction 0…1; null clears it.",
+                "x-function": "(progress: number | null) => void"
+              },
+              "setState": {
+                "description": "Update the interaction state.",
+                "x-function": "(state: \"active\" | \"locked\") => void"
+              },
+              "dispose": {
+                "description": "Remove this registration; repeated calls are harmless.",
+                "x-function": "() => void"
+              }
+            },
+            "required": [
+              "active",
+              "setValue",
+              "setBadge",
+              "setTimer",
+              "setProgress",
+              "setState",
+              "dispose"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [],
+          "example": "const item = sdk.hud.register({ id: 'daily', icon: 'gift', label: 'sdk.hud.daily-rewards' });\nitem.setTimer(sdk.time.now() + 60000);\nitem.setBadge({ kind: 'dot' });\nitem.dispose();"
+        },
+        {
+          "name": "slot",
+          "description": "Read visible icons in a side column.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "slot": {
+                "description": "Left or right side of the screen.",
+                "type": "string",
+                "enum": [
+                  "left",
+                  "right"
+                ]
+              }
+            },
+            "required": [
+              "slot"
+            ]
+          },
+          "returns": {
+            "description": "Visible items in display order.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "Unique item id.",
+                  "type": "string"
+                },
+                "icon": {
+                  "description": "Icon name of the theme.",
+                  "type": "string"
+                },
+                "label": {
+                  "description": "`sdk.l10n` key of the label (also the accessible name).",
+                  "type": "string"
+                },
+                "labels": {
+                  "description": "Inline label per locale from the layout (`label.values`); wins over the l10n key.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "slot": {
+                  "description": "Slot the item is shown in: `left` or `right`.",
+                  "type": "string",
+                  "enum": [
+                    "left",
+                    "right"
+                  ]
+                },
+                "order": {
+                  "description": "Position in the slot after the layout is applied (smaller first, then by id).",
+                  "type": "number"
+                },
+                "visible": {
+                  "description": "False: hidden by the layout (visibility or filters of the player's segments).",
+                  "type": "boolean"
+                },
+                "owner": {
+                  "description": "Module id that registered the item, `game` for `sdk.hud.register`.",
+                  "type": "string"
+                },
+                "badge": {
+                  "description": "Current notification badge, independently of the countdown.",
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "description": "Marker or bounded counter; a count of zero clears it.",
+                      "type": "string",
+                      "enum": [
+                        "dot",
+                        "count"
+                      ]
+                    },
+                    "value": {
+                      "description": "Integer 0…999999 for a count badge.",
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "kind"
+                  ],
+                  "additionalProperties": false
+                },
+                "value": {
+                  "description": "Value rendered next to the icon.",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                },
+                "timer": {
+                  "description": "Countdown independent of the notification badge.",
+                  "type": "object",
+                  "properties": {
+                    "endsAt": {
+                      "description": "Countdown deadline in server epoch milliseconds.",
+                      "type": "number"
+                    },
+                    "remainingMs": {
+                      "description": "Remaining milliseconds measured with core.time.now().",
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "endsAt",
+                    "remainingMs"
+                  ],
+                  "additionalProperties": false
+                },
+                "progress": {
+                  "description": "Progress 0…1; absent when the item has none.",
+                  "type": "number"
+                },
+                "state": {
+                  "description": "`active` or `locked`.",
+                  "type": "string",
+                  "enum": [
+                    "active",
+                    "locked"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "icon",
+                "label",
+                "slot",
+                "order",
+                "visible",
+                "owner",
+                "state"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "errors": [],
+          "example": "for (const item of sdk.hud.slot('right')) draw(item);"
+        }
+      ],
+      "events": [
+        {
+          "name": "hud:item:opened",
+          "description": "A HUD item was opened by the player or by hud.open.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "ID of the icon opened by the player.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "hud:items:changed",
+          "description": "HUD items changed (registration, value, badge, timer, progress, state, layout, clock tick or reset); re-read items or slot to redraw.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "ids": {
+                "description": "IDs of affected icons, bounded by the registry limit.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reason": {
+                "description": "Registration, value, badge, timer, state, layout, clock tick or reset.",
+                "type": "string",
+                "enum": [
+                  "register",
+                  "unregister",
+                  "badge",
+                  "state",
+                  "layout",
+                  "tick",
+                  "reset",
+                  "value",
+                  "timer"
+                ]
+              }
+            },
+            "required": [
+              "ids",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    }
+  ],
+  "libraries": []
+}

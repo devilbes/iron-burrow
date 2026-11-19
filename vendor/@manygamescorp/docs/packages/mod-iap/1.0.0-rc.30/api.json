@@ -1,0 +1,2480 @@
+{
+  "schemaVersion": 1,
+  "package": "@manygamescorp/mod-iap",
+  "version": "1.0.0-rc.30",
+  "requires": {
+    "@manygamescorp/contracts-client": "1.0.0-rc.30",
+    "@manygamescorp/core": "1.0.0-rc.30"
+  },
+  "modules": [
+    {
+      "name": "iap",
+      "package": "@manygamescorp/mod-iap",
+      "description": "In-app purchases and offers: lists offers per placement with localized prices, buys paid and free offers, handles rewarded-ad orders, tracks orders and entitlements (owned products and subscriptions), and restores purchases. Delivery is confirmed by the server, never by the store payment alone. Opens Google Play subscription management through the platform. Subscription entitlements include state, renewal and expiry; refresh them on return from the store. Canceled state typing awaits server contract iap#184.",
+      "methods": [
+        {
+          "name": "cancelOrder",
+          "description": "Cancels an unfinished order. Repeating the same call is safe.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "orderId": {
+                "description": "Id of the order to cancel.",
+                "type": "string"
+              },
+              "reason": {
+                "description": "Why: `user_cancelled`, `store_error`, `not_shown` (ad was not shown) or `not_rewarded`.",
+                "type": "string",
+                "enum": [
+                  "user_cancelled",
+                  "store_error",
+                  "not_shown",
+                  "not_rewarded"
+                ]
+              }
+            },
+            "required": [
+              "orderId",
+              "reason"
+            ]
+          },
+          "returns": {
+            "description": "The updated order.",
+            "x-type": "GameOrder"
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            },
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "The order id or reason was invalid."
+            },
+            {
+              "code": "NOT_FOUND",
+              "hint": "The order does not exist."
+            }
+          ],
+          "example": "const order = await sdk.iap.cancelOrder(orderId, 'user_cancelled');\nconsole.log(order.status);"
+        },
+        {
+          "name": "claim",
+          "description": "Reports that the ad of an ad order was watched and asks for the reward.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "id": {
+                "description": "Order id returned by `createAdOrder`.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "returns": {
+            "description": "The order, the reward status (`granted` or `pending`) and the advance counters.",
+            "allOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "reward": {
+                    "description": "`granted` (reward is in inventory) or `pending` (waiting for server confirmation).",
+                    "type": "string",
+                    "enum": [
+                      "granted",
+                      "pending"
+                    ]
+                  },
+                  "advance": {
+                    "description": "`true` when the reward was granted in advance, before the server confirmed the ad.",
+                    "type": "boolean"
+                  },
+                  "advanceOutstanding": {
+                    "description": "Number of rewards granted in advance that are not yet confirmed by the server.",
+                    "type": "number"
+                  },
+                  "advanceMax": {
+                    "description": "Maximum number of unconfirmed advance rewards.",
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "reward",
+                  "advanceOutstanding",
+                  "advanceMax"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "order": {
+                    "description": "The order after the claim.",
+                    "x-type": "GameOrder"
+                  }
+                },
+                "required": [
+                  "order"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            },
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "The order id was invalid."
+            },
+            {
+              "code": "NOT_FOUND",
+              "hint": "The order does not exist."
+            }
+          ],
+          "example": "const result = await sdk.iap.claim(order.orderId);\nif (result.reward === 'granted') showReward();"
+        },
+        {
+          "name": "createAdOrder",
+          "description": "Creates an order for a rewarded-ad offer before the ad is shown.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "input": {
+                "description": "`offerKey` and `placement` (ad placement key) are required; optional `variantKey` and `txId` (UUIDv7).",
+                "type": "object",
+                "properties": {
+                  "txId": {
+                    "description": "Optional persisted UUIDv7 action id; the SDK creates one otherwise.",
+                    "type": "string"
+                  },
+                  "offerKey": {
+                    "description": "Key of the rewarded-ad offer.",
+                    "type": "string"
+                  },
+                  "variantKey": {
+                    "description": "Offer variant key; default is the variant of the current context.",
+                    "type": "string"
+                  },
+                  "placement": {
+                    "description": "Placement of `ads.placements` (sdk.ads).",
+                    "type": "string"
+                  },
+                  "applied": {
+                    "description": "Default: of the offer in the current snapshot.",
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "scopeVersion": {
+                    "description": "Version of the configs scope the offer was read from; sent to the server as is.",
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "offerKey",
+                  "placement"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "input"
+            ]
+          },
+          "returns": {
+            "description": "The created order; `ads` holds the outstanding and maximum reward advance counts.",
+            "allOf": [
+              {
+                "x-type": "GameOrder"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "ads": {
+                    "description": "Reward advance counters: outstanding and maximum unconfirmed advance rewards.",
+                    "type": "object",
+                    "properties": {
+                      "advanceOutstanding": {
+                        "description": "Number of rewards granted in advance that are not yet confirmed by the server.",
+                        "type": "number"
+                      },
+                      "advanceMax": {
+                        "description": "Maximum number of unconfirmed advance rewards.",
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "advanceOutstanding",
+                      "advanceMax"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            ]
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            },
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "The input was invalid."
+            },
+            {
+              "code": "NOT_FOUND",
+              "hint": "The offer or variant does not exist."
+            }
+          ],
+          "example": "const order = await sdk.iap.createAdOrder({ offerKey: 'extra_life', placement: 'rewarded' });\nawait sdk.iap.claim(order.orderId);"
+        },
+        {
+          "name": "dispose",
+          "description": "Stops the module's background work and listeners. Called by the SDK on shutdown.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "type": "null"
+          },
+          "errors": [],
+          "example": "sdk.iap.dispose();"
+        },
+        {
+          "name": "entitlements",
+          "description": "Lists the player's entitlements: owned non-consumable products and subscriptions.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "options": {
+                "description": "`force: true` ignores the cached list and asks again.",
+                "type": "object",
+                "properties": {
+                  "force": {
+                    "description": "`true` ignores the cached list and asks the server again.",
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "returns": {
+            "description": "Entitlements with state and expiry (ISO 8601, null if none).",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "productKey": {
+                  "description": "Product key from the game catalog.",
+                  "type": "string"
+                },
+                "orderId": {
+                  "description": "Id of the order that created the entitlement.",
+                  "type": "string"
+                },
+                "kind": {
+                  "description": "`non_consumable` (bought once) or `subscription` (renewing).",
+                  "type": "string",
+                  "enum": [
+                    "non_consumable",
+                    "subscription"
+                  ]
+                },
+                "state": {
+                  "description": "`active`; `grace` (payment retry, access kept); `on_hold` (payment failed, no access); `paused`; `canceled` (renewal canceled, access until expiry); `expired`; `revoked` (withdrawn by the store or server); `refunded`. `canceled` emission requires server contract iap#184; it is never inferred by the SDK.",
+                  "type": "string",
+                  "enum": [
+                    "active",
+                    "grace",
+                    "on_hold",
+                    "paused",
+                    "canceled",
+                    "expired",
+                    "revoked",
+                    "refunded"
+                  ]
+                },
+                "autoRenew": {
+                  "description": "Whether the subscription renews automatically; `null` when unknown or not a subscription.",
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ]
+                },
+                "expiresAt": {
+                  "description": "End of access, ISO 8601 UTC; `null` when it does not expire.",
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "productKey",
+                "orderId",
+                "kind",
+                "state",
+                "autoRenew",
+                "expiresAt"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            }
+          ],
+          "example": "const owned = await sdk.iap.entitlements();\nconst noAds = owned.some((e) => e.productKey === 'no_ads' && e.state === 'active');"
+        },
+        {
+          "name": "load",
+          "description": "Loads pending orders, entitlements and offer limits for the current player. Concurrent calls share one request and the result is cached.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "options": {
+                "description": "`force: true` ignores the cached result and asks again.",
+                "type": "object",
+                "properties": {
+                  "force": {
+                    "description": "`true` ignores the cached result and asks the server again.",
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "returns": {
+            "description": "Pending orders, entitlements, per-offer counters (keyed by offerKey) and the rewarded-ad advance state.",
+            "allOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "ads": {
+                    "description": "Reward advance counters of the player's ad offers.",
+                    "type": "object",
+                    "properties": {
+                      "advanceOutstanding": {
+                        "description": "Number of rewards granted in advance that are not yet confirmed by the server.",
+                        "type": "number"
+                      },
+                      "advanceMax": {
+                        "description": "Maximum number of unconfirmed advance rewards; `null` when there is no limit.",
+                        "anyOf": [
+                          {
+                            "type": "null"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "advanceOutstanding",
+                      "advanceMax"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "offerState": {
+                    "description": "Server counters per offer key, for offers with limits or a cooldown.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "properties": {
+                        "cooldownUntil": {
+                          "description": "End of the cooldown, ISO 8601 UTC; `null` when the offer is not cooling down.",
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "remaining": {
+                          "description": "Orders left under the limits; a field is absent when that limit is not set.",
+                          "type": "object",
+                          "properties": {
+                            "hour": {
+                              "description": "Orders left in the current hour.",
+                              "type": "number"
+                            },
+                            "day": {
+                              "description": "Orders left in the current day.",
+                              "type": "number"
+                            },
+                            "total": {
+                              "description": "Orders left over the player's lifetime.",
+                              "type": "number"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "cooldownUntil"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "ads",
+                  "offerState"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "pendingOrders": {
+                    "description": "Orders that are not in a final state yet.",
+                    "type": "array",
+                    "items": {
+                      "x-type": "GameOrder"
+                    }
+                  },
+                  "entitlements": {
+                    "description": "Products the player owns: non-consumables and subscriptions.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "productKey": {
+                          "description": "Product key from the game catalog.",
+                          "type": "string"
+                        },
+                        "orderId": {
+                          "description": "Id of the order that created the entitlement.",
+                          "type": "string"
+                        },
+                        "kind": {
+                          "description": "`non_consumable` (bought once) or `subscription` (renewing).",
+                          "type": "string",
+                          "enum": [
+                            "non_consumable",
+                            "subscription"
+                          ]
+                        },
+                        "state": {
+                          "description": "`active`; `grace` (payment retry, access kept); `on_hold` (payment failed, no access); `paused`; `canceled` (renewal canceled, access until expiry); `expired`; `revoked` (withdrawn by the store or server); `refunded`. `canceled` emission requires server contract iap#184; it is never inferred by the SDK.",
+                          "type": "string",
+                          "enum": [
+                            "active",
+                            "grace",
+                            "on_hold",
+                            "paused",
+                            "canceled",
+                            "expired",
+                            "revoked",
+                            "refunded"
+                          ]
+                        },
+                        "autoRenew": {
+                          "description": "Whether the subscription renews automatically; `null` when unknown or not a subscription.",
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "boolean"
+                            }
+                          ]
+                        },
+                        "expiresAt": {
+                          "description": "End of access, ISO 8601 UTC; `null` when it does not expire.",
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "productKey",
+                        "orderId",
+                        "kind",
+                        "state",
+                        "autoRenew",
+                        "expiresAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "pendingOrders",
+                  "entitlements"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            },
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "The server answer was not a valid state."
+            }
+          ],
+          "example": "const state = await sdk.iap.load();\nconsole.log(state.entitlements.length);"
+        },
+        {
+          "name": "offer",
+          "description": "Returns one offer by key. Synchronous.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "input": {
+                "description": "`offerKey`: offer key; `placement`: optional placement key, so that its limits are applied.",
+                "type": "object",
+                "properties": {
+                  "offerKey": {
+                    "description": "Offer key from the game configuration.",
+                    "type": "string"
+                  },
+                  "placement": {
+                    "description": "Placement key; when set, the placement limits are applied.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "offerKey"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "input"
+            ]
+          },
+          "returns": {
+            "description": "The offer, or undefined if it does not exist.",
+            "allOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "description": "Offer key, unique in `iap.offers`.",
+                    "type": "string"
+                  },
+                  "kind": {
+                    "description": "Offer kind: `paid` (store purchase), `free` (free claim) or `ad` (rewarded ad).",
+                    "type": "string",
+                    "enum": [
+                      "paid",
+                      "free",
+                      "ad"
+                    ]
+                  },
+                  "format": {
+                    "description": "Ad format; only for `ad` offers.",
+                    "type": "string",
+                    "enum": [
+                      "rewarded",
+                      "rewarded_interstitial"
+                    ]
+                  },
+                  "name": {
+                    "description": "Offer name, as configured.",
+                    "type": "string"
+                  },
+                  "description": {
+                    "description": "Short description of the offer, as configured.",
+                    "type": "string"
+                  },
+                  "iconUrl": {
+                    "description": "URL of the offer icon.",
+                    "type": "string"
+                  },
+                  "customs": {
+                    "description": "Free-form game data of the offer, passed through as configured."
+                  },
+                  "ui": {
+                    "description": "Display block of the offer (texts, asset keys, template; E95 п. 11), as configured."
+                  },
+                  "placement": {
+                    "description": "Key of the placement (`iap.placements`) the offer is shown in.",
+                    "type": "string"
+                  },
+                  "applied": {
+                    "description": "Label of the conditional of `iap.offers` applied here (E94), sent with the order.",
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "scopeVersion": {
+                    "description": "Version of scope `iap.offers` in the snapshot, sent with the order.",
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "variant": {
+                    "description": "`default` (or the first) variant; `variants` are all of them.",
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "description": "Variant key, unique within the offer.",
+                        "type": "string"
+                      },
+                      "description": {
+                        "description": "Short description of the variant, as configured.",
+                        "type": "string"
+                      },
+                      "productKey": {
+                        "description": "Only `paid`: key of `iap.settings.products`.",
+                        "type": "string"
+                      },
+                      "entities": {
+                        "description": "Entities granted for this variant.",
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "description": "Id of the granted entity (inventory item or currency).",
+                              "type": "string"
+                            },
+                            "amount": {
+                              "description": "Quantity granted, in units of the entity.",
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "amount"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "custom": {
+                        "description": "Free-form game data of the variant, passed through as configured."
+                      },
+                      "ui": {
+                        "description": "Display block of the variant (E95 п. 11, configs#110), passed through as configured."
+                      }
+                    },
+                    "required": [
+                      "key",
+                      "entities",
+                      "custom"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "variants": {
+                    "description": "All variants of the offer.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "description": "Variant key, unique within the offer.",
+                          "type": "string"
+                        },
+                        "description": {
+                          "description": "Short description of the variant, as configured.",
+                          "type": "string"
+                        },
+                        "productKey": {
+                          "description": "Only `paid`: key of `iap.settings.products`.",
+                          "type": "string"
+                        },
+                        "entities": {
+                          "description": "Entities granted for this variant.",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "description": "Id of the granted entity (inventory item or currency).",
+                                "type": "string"
+                              },
+                              "amount": {
+                                "description": "Quantity granted, in units of the entity.",
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "amount"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "custom": {
+                          "description": "Free-form game data of the variant, passed through as configured."
+                        },
+                        "ui": {
+                          "description": "Display block of the variant (E95 п. 11, configs#110), passed through as configured."
+                        }
+                      },
+                      "required": [
+                        "key",
+                        "entities",
+                        "custom"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "limits": {
+                    "description": "Order limits of the offer.",
+                    "type": "object",
+                    "properties": {
+                      "perSession": {
+                        "description": "Max orders per game session; absent means no limit.",
+                        "type": "number"
+                      },
+                      "perHour": {
+                        "description": "Max orders per hour; absent means no limit.",
+                        "type": "number"
+                      },
+                      "perDay": {
+                        "description": "Max orders per day; absent means no limit.",
+                        "type": "number"
+                      },
+                      "total": {
+                        "description": "Max orders over the player's lifetime; absent means no limit.",
+                        "type": "number"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "cooldownSec": {
+                    "description": "Pause between orders of the offer, in seconds; 0 means none.",
+                    "type": "number"
+                  },
+                  "available": {
+                    "description": "Whether the offer can be ordered now.",
+                    "type": "boolean"
+                  },
+                  "reason": {
+                    "description": "Why the offer is unavailable; absent when `available` is true.",
+                    "type": "string",
+                    "enum": [
+                      "cooldown",
+                      "limit_offer",
+                      "limit_placement",
+                      "schedule",
+                      "no_product",
+                      "store_unavailable"
+                    ]
+                  },
+                  "availableAt": {
+                    "description": "ISO time the offer is available again, when it is known: the end of a cooldown, the start of a schedule window that has not begun, or the time an hour/day limit frees an order (counted on this device). Absent when it never comes back (ended schedule, total or session limit) or the time is unknown — never a promise the offer cannot keep.",
+                    "type": "string"
+                  },
+                  "endsAt": {
+                    "description": "ISO end of the schedule window, if any.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "kind",
+                  "name",
+                  "placement",
+                  "applied",
+                  "scopeVersion",
+                  "variant",
+                  "variants",
+                  "limits",
+                  "cooldownSec",
+                  "available"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "product": {
+                    "description": "Product the offer sells, with its localized store price; absent for offers without one.",
+                    "allOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "productKey": {
+                            "description": "Product key from the game catalog (`iap.settings.products`).",
+                            "type": "string"
+                          },
+                          "entities": {
+                            "description": "Entities granted by the product.",
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "description": "Id of the granted entity (inventory item or currency).",
+                                  "type": "string"
+                                },
+                                "amount": {
+                                  "description": "Quantity granted, in units of the entity.",
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "amount"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "name": {
+                            "description": "Product name, as configured.",
+                            "type": "string"
+                          },
+                          "type": {
+                            "description": "Product type, for example a one-time purchase or a subscription.",
+                            "type": "string",
+                            "enum": [
+                              "consumable",
+                              "non_consumable",
+                              "subscription"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "productKey",
+                          "entities",
+                          "name",
+                          "type"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "description": "Localized product title from the store.",
+                            "type": "string"
+                          },
+                          "price": {
+                            "description": "Price in the store currency as a decimal number (major units); `null` if unknown.",
+                            "anyOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "number"
+                              }
+                            ]
+                          },
+                          "currency": {
+                            "description": "ISO 4217 currency code of the price; `null` if unknown.",
+                            "anyOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          },
+                          "priceText": {
+                            "description": "Price formatted by the store for display, for example `$0.99`; `—` if unknown.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "price",
+                          "currency",
+                          "priceText"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            ]
+          },
+          "errors": [],
+          "example": "const offer = sdk.iap.offer({ offerKey: 'starter_pack', placement: 'shop_main' });\nif (offer?.available) showOffer(offer);"
+        },
+        {
+          "name": "offers",
+          "description": "Lists the offers shown in a placement on the player's current context. Synchronous.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "input": {
+                "description": "`placement`: placement key from the game configuration.",
+                "type": "object",
+                "properties": {
+                  "placement": {
+                    "description": "Placement key from the game configuration.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "placement"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "input"
+            ]
+          },
+          "returns": {
+            "description": "Offers of the placement with availability, limits and (when known) the localized product price; empty if the placement has none.",
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "description": "Offer key, unique in `iap.offers`.",
+                      "type": "string"
+                    },
+                    "kind": {
+                      "description": "Offer kind: `paid` (store purchase), `free` (free claim) or `ad` (rewarded ad).",
+                      "type": "string",
+                      "enum": [
+                        "paid",
+                        "free",
+                        "ad"
+                      ]
+                    },
+                    "format": {
+                      "description": "Ad format; only for `ad` offers.",
+                      "type": "string",
+                      "enum": [
+                        "rewarded",
+                        "rewarded_interstitial"
+                      ]
+                    },
+                    "name": {
+                      "description": "Offer name, as configured.",
+                      "type": "string"
+                    },
+                    "description": {
+                      "description": "Short description of the offer, as configured.",
+                      "type": "string"
+                    },
+                    "iconUrl": {
+                      "description": "URL of the offer icon.",
+                      "type": "string"
+                    },
+                    "customs": {
+                      "description": "Free-form game data of the offer, passed through as configured."
+                    },
+                    "ui": {
+                      "description": "Display block of the offer (texts, asset keys, template; E95 п. 11), as configured."
+                    },
+                    "placement": {
+                      "description": "Key of the placement (`iap.placements`) the offer is shown in.",
+                      "type": "string"
+                    },
+                    "applied": {
+                      "description": "Label of the conditional of `iap.offers` applied here (E94), sent with the order.",
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "scopeVersion": {
+                      "description": "Version of scope `iap.offers` in the snapshot, sent with the order.",
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "variant": {
+                      "description": "`default` (or the first) variant; `variants` are all of them.",
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "description": "Variant key, unique within the offer.",
+                          "type": "string"
+                        },
+                        "description": {
+                          "description": "Short description of the variant, as configured.",
+                          "type": "string"
+                        },
+                        "productKey": {
+                          "description": "Only `paid`: key of `iap.settings.products`.",
+                          "type": "string"
+                        },
+                        "entities": {
+                          "description": "Entities granted for this variant.",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "description": "Id of the granted entity (inventory item or currency).",
+                                "type": "string"
+                              },
+                              "amount": {
+                                "description": "Quantity granted, in units of the entity.",
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "amount"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "custom": {
+                          "description": "Free-form game data of the variant, passed through as configured."
+                        },
+                        "ui": {
+                          "description": "Display block of the variant (E95 п. 11, configs#110), passed through as configured."
+                        }
+                      },
+                      "required": [
+                        "key",
+                        "entities",
+                        "custom"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "variants": {
+                      "description": "All variants of the offer.",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "description": "Variant key, unique within the offer.",
+                            "type": "string"
+                          },
+                          "description": {
+                            "description": "Short description of the variant, as configured.",
+                            "type": "string"
+                          },
+                          "productKey": {
+                            "description": "Only `paid`: key of `iap.settings.products`.",
+                            "type": "string"
+                          },
+                          "entities": {
+                            "description": "Entities granted for this variant.",
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "description": "Id of the granted entity (inventory item or currency).",
+                                  "type": "string"
+                                },
+                                "amount": {
+                                  "description": "Quantity granted, in units of the entity.",
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "amount"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "custom": {
+                            "description": "Free-form game data of the variant, passed through as configured."
+                          },
+                          "ui": {
+                            "description": "Display block of the variant (E95 п. 11, configs#110), passed through as configured."
+                          }
+                        },
+                        "required": [
+                          "key",
+                          "entities",
+                          "custom"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "limits": {
+                      "description": "Order limits of the offer.",
+                      "type": "object",
+                      "properties": {
+                        "perSession": {
+                          "description": "Max orders per game session; absent means no limit.",
+                          "type": "number"
+                        },
+                        "perHour": {
+                          "description": "Max orders per hour; absent means no limit.",
+                          "type": "number"
+                        },
+                        "perDay": {
+                          "description": "Max orders per day; absent means no limit.",
+                          "type": "number"
+                        },
+                        "total": {
+                          "description": "Max orders over the player's lifetime; absent means no limit.",
+                          "type": "number"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "cooldownSec": {
+                      "description": "Pause between orders of the offer, in seconds; 0 means none.",
+                      "type": "number"
+                    },
+                    "available": {
+                      "description": "Whether the offer can be ordered now.",
+                      "type": "boolean"
+                    },
+                    "reason": {
+                      "description": "Why the offer is unavailable; absent when `available` is true.",
+                      "type": "string",
+                      "enum": [
+                        "cooldown",
+                        "limit_offer",
+                        "limit_placement",
+                        "schedule",
+                        "no_product",
+                        "store_unavailable"
+                      ]
+                    },
+                    "availableAt": {
+                      "description": "ISO time the offer is available again, when it is known: the end of a cooldown, the start of a schedule window that has not begun, or the time an hour/day limit frees an order (counted on this device). Absent when it never comes back (ended schedule, total or session limit) or the time is unknown — never a promise the offer cannot keep.",
+                      "type": "string"
+                    },
+                    "endsAt": {
+                      "description": "ISO end of the schedule window, if any.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "key",
+                    "kind",
+                    "name",
+                    "placement",
+                    "applied",
+                    "scopeVersion",
+                    "variant",
+                    "variants",
+                    "limits",
+                    "cooldownSec",
+                    "available"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "product": {
+                      "description": "Product the offer sells, with its localized store price; absent for offers without one.",
+                      "allOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "productKey": {
+                              "description": "Product key from the game catalog (`iap.settings.products`).",
+                              "type": "string"
+                            },
+                            "entities": {
+                              "description": "Entities granted by the product.",
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "description": "Id of the granted entity (inventory item or currency).",
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "description": "Quantity granted, in units of the entity.",
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "amount"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "name": {
+                              "description": "Product name, as configured.",
+                              "type": "string"
+                            },
+                            "type": {
+                              "description": "Product type, for example a one-time purchase or a subscription.",
+                              "type": "string",
+                              "enum": [
+                                "consumable",
+                                "non_consumable",
+                                "subscription"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "productKey",
+                            "entities",
+                            "name",
+                            "type"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "description": "Localized product title from the store.",
+                              "type": "string"
+                            },
+                            "price": {
+                              "description": "Price in the store currency as a decimal number (major units); `null` if unknown.",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "number"
+                                }
+                              ]
+                            },
+                            "currency": {
+                              "description": "ISO 4217 currency code of the price; `null` if unknown.",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "priceText": {
+                              "description": "Price formatted by the store for display, for example `$0.99`; `—` if unknown.",
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "price",
+                            "currency",
+                            "priceText"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "errors": [],
+          "example": "const offers = sdk.iap.offers({ placement: 'shop_main' });\nconst available = offers.filter((offer) => offer.available);"
+        },
+        {
+          "name": "openSubscriptionManagement",
+          "description": "Opens Google Play's subscription center through the platform in system mode. No store identifiers or purchase proofs are exposed to game code.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "description": "Resolves when the platform opened the center; refresh entitlements on return.",
+            "type": "null"
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            },
+            {
+              "code": "SDK_IAP_NOT_AVAILABLE",
+              "hint": "Google Play or the platform capability is unavailable."
+            },
+            {
+              "code": "SDK_IAP_STORE_ERROR",
+              "hint": "The platform could not open subscription management."
+            }
+          ],
+          "example": "await sdk.iap.openSubscriptionManagement();"
+        },
+        {
+          "name": "order",
+          "description": "Reads the current state of an order.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "orderId": {
+                "description": "Id of the order.",
+                "type": "string"
+              },
+              "options": {
+                "description": "`signal`: AbortSignal to stop waiting for the answer.",
+                "type": "object",
+                "properties": {
+                  "signal": {
+                    "description": "Aborts the request.",
+                    "x-type": "AbortSignal"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "orderId"
+            ]
+          },
+          "returns": {
+            "description": "The order.",
+            "x-type": "GameOrder"
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            },
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "The order id was invalid."
+            },
+            {
+              "code": "NOT_FOUND",
+              "hint": "The order does not exist."
+            }
+          ],
+          "example": "const order = await sdk.iap.order(orderId);\nconsole.log(order.status, order.grantStatus);"
+        },
+        {
+          "name": "orders",
+          "description": "Lists the player's orders one page at a time.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "query": {
+                "description": "Optional `status` filter (order statuses), `cursor` from the previous page and `limit` (page size, number of orders).",
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "description": "Return only orders in these statuses; default is all.",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "not_rewarded",
+                        "granted",
+                        "canceled",
+                        "expired",
+                        "revoked",
+                        "refunded",
+                        "created",
+                        "pending_store",
+                        "pending_validation",
+                        "validated",
+                        "failed",
+                        "granted_advance",
+                        "advance_unconfirmed",
+                        "confirmed"
+                      ]
+                    }
+                  },
+                  "cursor": {
+                    "description": "`nextCursor` of the previous page; omit for the first page.",
+                    "type": "string"
+                  },
+                  "limit": {
+                    "description": "Page size: maximum number of orders returned.",
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "returns": {
+            "description": "A page: `items` and `nextCursor` (null on the last page).",
+            "type": "object",
+            "properties": {
+              "items": {
+                "description": "Orders of this page.",
+                "type": "array",
+                "items": {
+                  "x-type": "GameOrder"
+                }
+              },
+              "nextCursor": {
+                "description": "Cursor for the next page; `null` on the last page.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "items",
+              "nextCursor"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            },
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "The query was invalid."
+            }
+          ],
+          "example": "const page = await sdk.iap.orders({ status: ['granted'], limit: 20 });\nconst next = page.nextCursor;"
+        },
+        {
+          "name": "pendingOrders",
+          "description": "Lists the player's unfinished orders.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "description": "Orders that are not yet in a final state.",
+            "type": "array",
+            "items": {
+              "x-type": "GameOrder"
+            }
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            }
+          ],
+          "example": "const pending = await sdk.iap.pendingOrders();\nfor (const order of pending) await sdk.iap.waitOrder(order.orderId);"
+        },
+        {
+          "name": "products",
+          "description": "Loads localized store prices for the game's products.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "options": {
+                "description": "`force: true` ignores cached prices and asks the store again.",
+                "type": "object",
+                "properties": {
+                  "force": {
+                    "description": "`true` ignores cached prices and asks the store again.",
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "returns": {
+            "description": "Products with the price in store currency (decimal number, null if unknown), ISO 4217 currency code and a ready-to-show price text; empty when the build has no store.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "productKey": {
+                  "description": "Product key from the game catalog.",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Localized product title from the store.",
+                  "type": "string"
+                },
+                "price": {
+                  "description": "Price in the store currency as a decimal number (major units), null if unknown.",
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                },
+                "currency": {
+                  "description": "ISO 4217 currency code of the price, null if unknown.",
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "priceText": {
+                  "description": "Price formatted by the store for display, for example `$0.99`.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "productKey",
+                "title",
+                "price",
+                "currency",
+                "priceText"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            }
+          ],
+          "example": "const products = await sdk.iap.products();\nconst label = products.find((p) => p.productKey === 'gems_100')?.priceText;"
+        },
+        {
+          "name": "purchase",
+          "description": "Buys an offer or claims a free one. Store and availability problems are returned in the outcome instead of thrown.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "input": {
+                "description": "`offerKey` or `productKey` to buy; optional `variantKey`, `placement` and `payload` (JSON object, keys `[A-Za-z0-9_-]`, depth up to 4, up to 4 KB); optional `txId` (UUIDv7) to retry the same purchase.",
+                "type": "object",
+                "properties": {
+                  "txId": {
+                    "description": "Optional persisted UUIDv7 action id; the SDK creates and journals one otherwise.",
+                    "type": "string"
+                  },
+                  "offerKey": {
+                    "description": "Key of the offer to buy; give `offerKey` or `productKey`.",
+                    "type": "string"
+                  },
+                  "productKey": {
+                    "description": "Key of the product to buy; give `offerKey` or `productKey`.",
+                    "type": "string"
+                  },
+                  "variantKey": {
+                    "description": "Offer variant key; default is the variant of the current context.",
+                    "type": "string"
+                  },
+                  "placement": {
+                    "description": "Placement of `iap.placements` the offer is shown in: its limits apply.",
+                    "type": "string"
+                  },
+                  "payload": {
+                    "description": "Logic/Endless context stored with the order (keys `[A-Za-z0-9_-]`, depth ≤ 4, ≤ 4 KB).",
+                    "type": "object",
+                    "additionalProperties": {}
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "input"
+            ]
+          },
+          "returns": {
+            "description": "Outcome: `status` is `purchased` only after the server confirmed delivery; `orderId` is null when no order was created; `code` is set for every status except `purchased`.",
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "Id of the created order; `null` when no order was created.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "status": {
+                "description": "purchased means the server confirmed delivery, never merely that a store charged money.",
+                "type": "string",
+                "enum": [
+                  "pending",
+                  "canceled",
+                  "failed",
+                  "purchased",
+                  "already_owned",
+                  "not_available"
+                ]
+              },
+              "order": {
+                "description": "The order in its last known state; absent when no order was created.",
+                "x-type": "GameOrder"
+              },
+              "code": {
+                "description": "Reason code; set for every status except `purchased`.",
+                "type": "string",
+                "enum": [
+                  "SDK_IAP_NOT_AVAILABLE",
+                  "SDK_IAP_ALREADY_OWNED",
+                  "SDK_IAP_CANCELED",
+                  "SDK_IAP_PENDING",
+                  "SDK_IAP_STORE_ERROR",
+                  "SDK_IAP_VALIDATION_FAILED",
+                  "SDK_IAP_NETWORK_ERROR",
+                  "SDK_IAP_FAILED"
+                ]
+              }
+            },
+            "required": [
+              "orderId",
+              "status"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            },
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "The input was invalid."
+            },
+            {
+              "code": "NOT_FOUND",
+              "hint": "The offer or variant does not exist."
+            }
+          ],
+          "example": "const result = await sdk.iap.purchase({ offerKey: 'starter_pack', placement: 'shop_main' });\nif (result.status === 'purchased') showReward();"
+        },
+        {
+          "name": "restore",
+          "description": "Restores purchases the player already owns in the store, for example after reinstalling.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "description": "Number of restored purchases, restored orders, current entitlements and conflicts (purchases owned by another player).",
+            "type": "object",
+            "properties": {
+              "restored": {
+                "description": "Number of restored purchases.",
+                "type": "number"
+              },
+              "orders": {
+                "description": "Restored orders with their status.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "orderId": {
+                      "description": "Id of the restored order.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "Status of the restored order.",
+                      "type": "string",
+                      "enum": [
+                        "not_rewarded",
+                        "granted",
+                        "canceled",
+                        "expired",
+                        "revoked",
+                        "refunded",
+                        "created",
+                        "pending_store",
+                        "pending_validation",
+                        "validated",
+                        "failed",
+                        "granted_advance",
+                        "advance_unconfirmed",
+                        "confirmed"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "orderId",
+                    "status"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "entitlements": {
+                "description": "Current entitlements of the player.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "productKey": {
+                      "description": "Product key from the game catalog.",
+                      "type": "string"
+                    },
+                    "orderId": {
+                      "description": "Id of the order that created the entitlement.",
+                      "type": "string"
+                    },
+                    "kind": {
+                      "description": "`non_consumable` (bought once) or `subscription` (renewing).",
+                      "type": "string",
+                      "enum": [
+                        "non_consumable",
+                        "subscription"
+                      ]
+                    },
+                    "state": {
+                      "description": "`active`; `grace` (payment retry, access kept); `on_hold` (payment failed, no access); `paused`; `canceled` (renewal canceled, access until expiry); `expired`; `revoked` (withdrawn by the store or server); `refunded`. `canceled` emission requires server contract iap#184; it is never inferred by the SDK.",
+                      "type": "string",
+                      "enum": [
+                        "active",
+                        "grace",
+                        "on_hold",
+                        "paused",
+                        "canceled",
+                        "expired",
+                        "revoked",
+                        "refunded"
+                      ]
+                    },
+                    "autoRenew": {
+                      "description": "Whether the subscription renews automatically; `null` when unknown or not a subscription.",
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "boolean"
+                        }
+                      ]
+                    },
+                    "expiresAt": {
+                      "description": "End of access, ISO 8601 UTC; `null` when it does not expire.",
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "productKey",
+                    "orderId",
+                    "kind",
+                    "state",
+                    "autoRenew",
+                    "expiresAt"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "conflicts": {
+                "description": "Purchases that could not be restored because another player owns them.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "description": "Always `SDK_IAP_ALREADY_OWNED`: another player owns the purchase.",
+                      "const": "SDK_IAP_ALREADY_OWNED"
+                    }
+                  },
+                  "required": [
+                    "code"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "restored",
+              "orders",
+              "entitlements",
+              "conflicts"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            }
+          ],
+          "example": "const result = await sdk.iap.restore();\nconsole.log(result.restored);"
+        },
+        {
+          "name": "state",
+          "description": "Returns the last loaded state without a request.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "description": "The state of the last `load()`, or undefined before it completed.",
+            "allOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "ads": {
+                    "description": "Reward advance counters of the player's ad offers.",
+                    "type": "object",
+                    "properties": {
+                      "advanceOutstanding": {
+                        "description": "Number of rewards granted in advance that are not yet confirmed by the server.",
+                        "type": "number"
+                      },
+                      "advanceMax": {
+                        "description": "Maximum number of unconfirmed advance rewards; `null` when there is no limit.",
+                        "anyOf": [
+                          {
+                            "type": "null"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "advanceOutstanding",
+                      "advanceMax"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "offerState": {
+                    "description": "Server counters per offer key, for offers with limits or a cooldown.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "properties": {
+                        "cooldownUntil": {
+                          "description": "End of the cooldown, ISO 8601 UTC; `null` when the offer is not cooling down.",
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "remaining": {
+                          "description": "Orders left under the limits; a field is absent when that limit is not set.",
+                          "type": "object",
+                          "properties": {
+                            "hour": {
+                              "description": "Orders left in the current hour.",
+                              "type": "number"
+                            },
+                            "day": {
+                              "description": "Orders left in the current day.",
+                              "type": "number"
+                            },
+                            "total": {
+                              "description": "Orders left over the player's lifetime.",
+                              "type": "number"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "cooldownUntil"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "ads",
+                  "offerState"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "pendingOrders": {
+                    "description": "Orders that are not in a final state yet.",
+                    "type": "array",
+                    "items": {
+                      "x-type": "GameOrder"
+                    }
+                  },
+                  "entitlements": {
+                    "description": "Products the player owns: non-consumables and subscriptions.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "productKey": {
+                          "description": "Product key from the game catalog.",
+                          "type": "string"
+                        },
+                        "orderId": {
+                          "description": "Id of the order that created the entitlement.",
+                          "type": "string"
+                        },
+                        "kind": {
+                          "description": "`non_consumable` (bought once) or `subscription` (renewing).",
+                          "type": "string",
+                          "enum": [
+                            "non_consumable",
+                            "subscription"
+                          ]
+                        },
+                        "state": {
+                          "description": "`active`; `grace` (payment retry, access kept); `on_hold` (payment failed, no access); `paused`; `canceled` (renewal canceled, access until expiry); `expired`; `revoked` (withdrawn by the store or server); `refunded`. `canceled` emission requires server contract iap#184; it is never inferred by the SDK.",
+                          "type": "string",
+                          "enum": [
+                            "active",
+                            "grace",
+                            "on_hold",
+                            "paused",
+                            "canceled",
+                            "expired",
+                            "revoked",
+                            "refunded"
+                          ]
+                        },
+                        "autoRenew": {
+                          "description": "Whether the subscription renews automatically; `null` when unknown or not a subscription.",
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "boolean"
+                            }
+                          ]
+                        },
+                        "expiresAt": {
+                          "description": "End of access, ISO 8601 UTC; `null` when it does not expire.",
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "productKey",
+                        "orderId",
+                        "kind",
+                        "state",
+                        "autoRenew",
+                        "expiresAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "pendingOrders",
+                  "entitlements"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "errors": [],
+          "example": "const cached = sdk.iap.state();\nconst owned = cached?.entitlements ?? [];"
+        },
+        {
+          "name": "subscriptions",
+          "description": "Lists the player's subscription entitlements.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "options": {
+                "description": "`force: true` ignores the cached list and asks again.",
+                "type": "object",
+                "properties": {
+                  "force": {
+                    "description": "`true` ignores the cached list and asks the server again.",
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "returns": {
+            "description": "Entitlements of kind `subscription` with state and expiry (ISO 8601).",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "productKey": {
+                  "description": "Product key from the game catalog.",
+                  "type": "string"
+                },
+                "orderId": {
+                  "description": "Id of the order that created the entitlement.",
+                  "type": "string"
+                },
+                "kind": {
+                  "description": "`non_consumable` (bought once) or `subscription` (renewing).",
+                  "type": "string",
+                  "enum": [
+                    "non_consumable",
+                    "subscription"
+                  ]
+                },
+                "state": {
+                  "description": "`active`; `grace` (payment retry, access kept); `on_hold` (payment failed, no access); `paused`; `canceled` (renewal canceled, access until expiry); `expired`; `revoked` (withdrawn by the store or server); `refunded`. `canceled` emission requires server contract iap#184; it is never inferred by the SDK.",
+                  "type": "string",
+                  "enum": [
+                    "active",
+                    "grace",
+                    "on_hold",
+                    "paused",
+                    "canceled",
+                    "expired",
+                    "revoked",
+                    "refunded"
+                  ]
+                },
+                "autoRenew": {
+                  "description": "Whether the subscription renews automatically; `null` when unknown or not a subscription.",
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ]
+                },
+                "expiresAt": {
+                  "description": "End of access, ISO 8601 UTC; `null` when it does not expire.",
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "productKey",
+                "orderId",
+                "kind",
+                "state",
+                "autoRenew",
+                "expiresAt"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            }
+          ],
+          "example": "const subs = await sdk.iap.subscriptions();\nconst active = subs.filter((s) => s.state === 'active');"
+        },
+        {
+          "name": "waitOrder",
+          "description": "Waits until an order reaches a final state or the time runs out, then returns its last state.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "orderId": {
+                "description": "Id of the order.",
+                "type": "string"
+              },
+              "options": {
+                "description": "`timeoutMs`: maximum wait in milliseconds (default 30000); `signal`: AbortSignal to stop waiting.",
+                "type": "object",
+                "properties": {
+                  "timeoutMs": {
+                    "description": "Default 30 s; the last state is returned when it runs out.",
+                    "type": "number"
+                  },
+                  "signal": {
+                    "description": "Aborts the wait.",
+                    "x-type": "AbortSignal"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "orderId"
+            ]
+          },
+          "returns": {
+            "description": "The order in its last known state.",
+            "x-type": "GameOrder"
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module was disposed or is not running."
+            },
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "The order id or options were invalid."
+            },
+            {
+              "code": "NOT_FOUND",
+              "hint": "The order does not exist."
+            }
+          ],
+          "example": "const order = await sdk.iap.waitOrder(orderId, { timeoutMs: 15000 });\nif (order.grantStatus === 'granted') showReward();"
+        }
+      ],
+      "events": [
+        {
+          "name": "iap:entitlement:changed",
+          "description": "Entitlement state, renewal, expiry, source order or membership changed. The payload lists affected product keys, including removed entitlements. Identical refreshes do not emit.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "ids": {
+                "description": "Product keys whose entitlement changed.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "ids"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "iap:offers:updated",
+          "description": "The offers of a placement changed (new configuration or limits). Re-read them with `iap.offers()`.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "placement": {
+                "description": "Key of the placement whose offers changed.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "placement"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "iap:order:created",
+          "description": "An order was created for an offer, before payment starts.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "Id of the new order.",
+                "type": "string"
+              },
+              "offerKey": {
+                "description": "Key of the purchased offer.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "orderId",
+              "offerKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "iap:order:failed",
+          "description": "The order failed or was cancelled and will not be delivered. The payload carries an SDK_IAP_* error code.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "Id of the order that failed or was cancelled.",
+                "type": "string"
+              },
+              "code": {
+                "description": "Error code of the failure (SDK_IAP_* string).",
+                "type": "string"
+              }
+            },
+            "required": [
+              "orderId",
+              "code"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "iap:order:granted",
+          "description": "The server delivered the purchased items. The only event that means the player received the reward.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "Id of the order that was delivered.",
+                "type": "string"
+              },
+              "offerKey": {
+                "description": "Key of the delivered offer.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "orderId",
+              "offerKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "iap:order:pending",
+          "description": "The order is waiting for payment or confirmation (for example a deferred store payment). It can still complete later.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "Id of the order that is still waiting for payment or confirmation.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "orderId"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "iap:order:validated",
+          "description": "The server confirmed the payment of an order; delivery follows.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "Id of the order whose payment was confirmed by the server.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "orderId"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "iap:restore:completed",
+          "description": "A restore of owned purchases finished. The payload has the number of restored purchases.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "restored": {
+                "description": "Number of purchases restored (count).",
+                "type": "number"
+              }
+            },
+            "required": [
+              "restored"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "iap:store:purchase-cancelled",
+          "description": "The player closed the store payment without paying.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "Id of the order the player cancelled in the store.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "orderId"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "iap:store:purchase-failed",
+          "description": "The store payment failed. The payload carries an SDK_IAP_* error code.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "Id of the order whose store payment failed.",
+                "type": "string"
+              },
+              "code": {
+                "description": "Error code of the failure (SDK_IAP_* string).",
+                "type": "string"
+              }
+            },
+            "required": [
+              "orderId",
+              "code"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "iap:store:purchase-started",
+          "description": "The store payment sheet was opened for an order.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "Id of the order being paid in the store.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "orderId"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "iap:window:close",
+          "description": "Requests the host to close the named window once. The host reports iap:window:closed with the same target only after unmount, or when presentation was skipped.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "target": {
+                "description": "Window to show: the shop (`main`), one offer (`offer`) or an offer chain (`chain`).",
+                "type": "string",
+                "enum": [
+                  "main",
+                  "offer",
+                  "chain"
+                ]
+              }
+            },
+            "required": [
+              "target"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "iap:window:open",
+          "description": "A game moment or `sdk.ui.open('iap[:main|offer|chain]')` asks the host to show an iap window. The payload carries `target` (`main`, `offer` or `chain`), and `placement`/`offerKey` (empty when not given).",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "target": {
+                "description": "Window to show: the shop (`main`), one offer (`offer`) or an offer chain (`chain`).",
+                "type": "string",
+                "enum": [
+                  "main",
+                  "offer",
+                  "chain"
+                ]
+              },
+              "placement": {
+                "description": "Placement the moment asked for; empty when none was given.",
+                "type": "string"
+              },
+              "offerKey": {
+                "description": "Offer to show in an `offer` window; empty when the host picks one from the placement.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "target",
+              "placement",
+              "offerKey"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    }
+  ],
+  "libraries": []
+}

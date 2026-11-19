@@ -1,0 +1,81 @@
+import type { KitComponent } from './core.js';
+import type { WindowOrientation } from './window-layout.js';
+import type { CardAlbumProps, CardCollectionProps, CardDetailProps, EasterGuestProps, GamesShelfProps } from './services/collection.js';
+import type { PromoBonusProps, PromoLivesProps, PromoSlotProps } from './services/cross-promo.js';
+import type { DailyBoardProps, DailyCalendarProps, DailyGiftProps } from './services/daily-rewards.js';
+import type { ErrorProps } from './services/error.js';
+import type { OfferChainProps, ShopWindowProps } from './services/iap-windows.js';
+import type { ChestOpenedProps, ChestsWindowProps, InventoryWindowProps, SkinDetailProps } from './services/inventory-windows.js';
+import type { LeaderboardWindowProps } from './services/leaderboard-window.js';
+import type { LevelGoalProps, PauseProps } from './services/level-windows.js';
+import type { LoginProps } from './services/login.js';
+import type { MailboxProps } from './services/mailbox.js';
+import type { ConfirmProps, PopupProps } from './services/popup.js';
+import type { ContentEndProps, ContinueProps, CrossQuestProps, EndlessEntryProps, EndlessHudProps, EndlessResultProps, EndlessReviveProps, LevelFailProps, LevelLoseProps, LevelMapProps, LevelWinProps, PointsProps, QuestsProps, SeasonProps } from './services/progress-windows.js';
+import type { DailyRewardProps } from './services/progress.js';
+import type { RewardWindowProps } from './services/reward-window.js';
+import type { SettingsProps } from './services/settings.js';
+import type { LimitedOfferProps } from './services/shop.js';
+export interface KitWindowView {
+    readonly component: string;
+    readonly source: string;
+    readonly artboards: Readonly<Record<WindowOrientation, readonly string[]>>;
+}
+export interface KitWindowDefinition extends KitWindowView {
+    readonly id: string;
+    readonly kind: 'window' | 'popup' | 'component';
+    readonly locked: boolean;
+    readonly variants: Readonly<Record<string, KitWindowView>>;
+}
+export declare function windowDefinition(id: string): KitWindowDefinition;
+export declare const KIT_WINDOWS: readonly KitWindowDefinition[];
+export interface KitWindowProps {
+    'ad-slot': PromoSlotProps;
+    'album': CardAlbumProps;
+    'bonus': PromoBonusProps;
+    'calendar': DailyCalendarProps;
+    'card-detail': CardDetailProps;
+    'chest-opened': ChestOpenedProps;
+    'chests': ChestsWindowProps;
+    'collection': CardCollectionProps;
+    'confirm': ConfirmProps;
+    'content-end': ContentEndProps;
+    'continue': ContinueProps;
+    'cross-quest': CrossQuestProps;
+    'daily-reward': DailyRewardProps;
+    'easter': EasterGuestProps;
+    'endless': EndlessHudProps;
+    'endless-entry': EndlessEntryProps;
+    'endless-result': EndlessResultProps;
+    'endless-revive': EndlessReviveProps;
+    'error': ErrorProps;
+    'gift': DailyGiftProps;
+    'help': LevelGoalProps;
+    'id-account': LoginProps;
+    'inventory': InventoryWindowProps;
+    'leaderboard': LeaderboardWindowProps;
+    'level-fail': LevelFailProps;
+    'level-map': LevelMapProps;
+    'lives': PromoLivesProps;
+    'login': LoginProps;
+    'lose': LevelLoseProps;
+    'mail': MailboxProps;
+    'offer': LimitedOfferProps;
+    'offer-chain': OfferChainProps;
+    'pause': PauseProps;
+    'points': PointsProps;
+    'popup': PopupProps;
+    'quests': QuestsProps;
+    'reward': RewardWindowProps;
+    'season': SeasonProps;
+    'settings': SettingsProps;
+    'shelf': GamesShelfProps;
+    'shop': ShopWindowProps;
+    'skin-detail': SkinDetailProps;
+    'win': LevelWinProps;
+}
+export declare function loadWindow(id: 'daily-reward', variant: 'board'): Promise<KitComponent<DailyBoardProps>>;
+export declare function loadWindow(id: 'leaderboard', variant: 'hall'): Promise<KitComponent<LeaderboardWindowProps>>;
+export declare function loadWindow<Id extends keyof KitWindowProps>(id: Id): Promise<KitComponent<KitWindowProps[Id]>>;
+export declare function loadWindow(id: string, variant?: string): Promise<KitComponent<never>>;
+//# sourceMappingURL=windows.d.ts.map

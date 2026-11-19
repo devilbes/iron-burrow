@@ -1,0 +1,68 @@
+{
+  "id": "ads",
+  "version": "1.0.0-rc.30",
+  "entry": "sdk-runtime/ads.js",
+  "targets": [
+    "web"
+  ],
+  "title": {
+    "ru": "Реклама",
+    "en": "Ads"
+  },
+  "description": {
+    "ru": "Реклама для игры на ManyPlay.",
+    "en": "ManyPlay ads module (sdk.ads): mediator adapter port, ad pool and rotation, isAvailable decisions, the rewarded offer cycle over sdk.iap; fake mediator for dev/test builds."
+  },
+  "llmDescription": "ManyPlay ads module (sdk.ads): mediator adapter port, ad pool and rotation, isAvailable decisions, the rewarded offer cycle over sdk.iap; fake mediator for dev/test builds. Select mod-ads-web when the game needs this SDK capability. Read the linked module documentation for methods and events.",
+  "selection": "optional",
+  "status": "ready",
+  "preview": {
+    "icon": "catalog/icon.png",
+    "media": []
+  },
+  "docs": [
+    {
+      "title": {
+        "ru": "Документация",
+        "en": "Documentation"
+      },
+      "uri": "https://github.com/manygamescorp/client-sdk/tree/main/packages/mod-ads-web"
+    }
+  ],
+  "settings": {
+    "schemaVersion": 1,
+    "fields": [
+      {
+        "ref": "availability"
+      }
+    ]
+  },
+  "group": "monetization",
+  "tags": [
+    "ads",
+    "rewarded",
+    "interstitial"
+  ],
+  "load": "eager",
+  "files": {
+    "scripts": [
+      "ads.js",
+      "banner.js",
+      "counters.js",
+      "decide.js",
+      "definition.js",
+      "fake.js",
+      "pool.js",
+      "runtime.js",
+      "sdk-runtime/ads.js",
+      "settings.js",
+      "types.js",
+      "version.js"
+    ],
+    "styles": [],
+    "assets": [
+      "catalog/icon.png",
+      "sdk-runtime/ads.json"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "packages": [
+    {
+      "package": "@manygamescorp/core",
+      "version": "1.0.0",
+      "requires": {},
+      "vendorSha256": "d22711ce88072312b57babca6e9215021271364f1cdc3b18876468e43996e313",
+      "docsSha256": "490dea534ac187048fb2f6eca43f5535e3c86247efd21306e03a43d065e1fa5f"
+    },
+    {
+      "package": "@manygamescorp/mod-iap",
+      "version": "1.2.3",
+      "requires": {
+        "@manygamescorp/core": "1.0.0"
+      },
+      "vendorSha256": "ebc57fbe0ac7f22b59cbc68779a4970f66032eee4aab79bc830145f60d46515b",
+      "docsSha256": "d3afb731fd5f489f5b0cd30f9f1370d3427bd988e485e8838df22e298a758e09"
+    }
+  ],
+  "referenceSha256": "17edd7017b5ffe8d9c9ffa813290dba92517f14c376504095b20def5006f9be1",
+  "methods": [
+    {
+      "namespace": "core",
+      "name": "boot",
+      "kind": "method",
+      "package": "@manygamescorp/core",
+      "version": "1.0.0",
+      "signatureSha256": "b18335b12346ff61ee6ac3faaac328224a005b8800e0f445dc74caf2df6b40ca"
+    },
+    {
+      "namespace": "iap",
+      "name": "cancelOrder",
+      "kind": "method",
+      "package": "@manygamescorp/mod-iap",
+      "version": "1.2.3",
+      "signatureSha256": "1f9fb8b51e580a0bf877f9a56ea5f54f79dca2a2c38038d2cd9ff3b71a271698"
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "package": "@manygamescorp/mod-realtime",
+  "version": "1.0.0-rc.30",
+  "requires": {
+    "@manygamescorp/contracts-client": "1.0.0-rc.30",
+    "@manygamescorp/core": "1.0.0-rc.30"
+  },
+  "modules": [
+    {
+      "name": "realtime",
+      "package": "@manygamescorp/mod-realtime",
+      "description": "Realtime delivery: keeps one server connection (SSE, WebSocket or polling), exposes connection status, metrics and broadcast notices.",
+      "methods": [
+        {
+          "name": "ack",
+          "description": "Acknowledges a guaranteed message delivered in this player run. With autoAck disabled, call after successful processing; unconfirmed messages may be delivered again. Resolves when the transport send completes, not when a separate server receipt arrives.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "message": {
+                "description": "The received message's id, epoch and sequence.",
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "Message id received from realtime.",
+                    "type": "string"
+                  },
+                  "epoch": {
+                    "description": "Server epoch; must be present on the received guaranteed message to acknowledge it.",
+                    "type": "string"
+                  },
+                  "seq": {
+                    "description": "Positive sequence; must be present on the received guaranteed message to acknowledge it.",
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "id"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "message"
+            ]
+          },
+          "returns": {
+            "type": "null"
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "Unknown, stale or malformed message identity."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The player run has stopped."
+            },
+            {
+              "code": "UPSTREAM_UNAVAILABLE",
+              "hint": "No active connection or the acknowledgement send failed."
+            }
+          ],
+          "example": "async function acknowledgeProcessed(message: { id: string; epoch: string; seq: number }) {\n  await sdk.realtime.ack(message);\n}"
+        },
+        {
+          "name": "metrics",
+          "description": "Delivery counters since the module started.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "description": "Counts of received, duplicate, invalid, expired and acknowledged messages and reconnects.",
+            "type": "object",
+            "properties": {
+              "received": {
+                "description": "Messages delivered to handlers.",
+                "type": "number"
+              },
+              "duplicates": {
+                "description": "Messages dropped as already seen.",
+                "type": "number"
+              },
+              "invalid": {
+                "description": "Messages or batches dropped as malformed.",
+                "type": "number"
+              },
+              "expired": {
+                "description": "Messages dropped because they were past their expiry time.",
+                "type": "number"
+              },
+              "acknowledged": {
+                "description": "Guaranteed messages acknowledged to the server.",
+                "type": "number"
+              },
+              "reconnects": {
+                "description": "Reconnect attempts, including manual `reconnect()` calls.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "received",
+              "duplicates",
+              "invalid",
+              "expired",
+              "acknowledged",
+              "reconnects"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [],
+          "example": "const { received, reconnects } = sdk.realtime.metrics();"
+        },
+        {
+          "name": "notice",
+          "description": "Current broadcast notice (announcement, maintenance or update), if any.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "description": "The active notice, or `undefined` when there is none.",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "Notice identifier.",
+                "type": "string"
+              },
+              "kind": {
+                "description": "Notice kind: `announcement`, `maintenance` or `update` (a new app version).",
+                "type": "string",
+                "enum": [
+                  "announcement",
+                  "maintenance",
+                  "update"
+                ]
+              },
+              "title": {
+                "description": "Notice title, localized.",
+                "type": "string"
+              },
+              "text": {
+                "description": "Notice body text, localized.",
+                "type": "string"
+              },
+              "imageUrl": {
+                "description": "Optional image URL to show with the notice.",
+                "type": "string"
+              },
+              "linkUrl": {
+                "description": "Optional URL the notice links to, for example a store page.",
+                "type": "string"
+              },
+              "required": {
+                "description": "`true` when the player cannot continue without acting (for example a required update).",
+                "type": "boolean"
+              },
+              "startsAt": {
+                "description": "Optional time the notice becomes active, ISO 8601 UTC.",
+                "type": "string"
+              },
+              "endsAt": {
+                "description": "Optional time the notice stops being shown, ISO 8601 UTC.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "title",
+              "text"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [],
+          "example": "const notice = sdk.realtime.notice();\nif (notice) showBanner(notice.title, notice.text);"
+        },
+        {
+          "name": "reconnect",
+          "description": "Drops the current connection and connects again from the first preferred transport.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "type": "null"
+          },
+          "errors": [],
+          "example": "await sdk.realtime.reconnect();"
+        },
+        {
+          "name": "status",
+          "description": "Current connection state.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "description": "`state` (`connecting`, `open`, `offline` or `stopped`) and the active `transport` (`sse`, `ws` or `poll`) when connected.",
+            "type": "object",
+            "properties": {
+              "state": {
+                "description": "Connection state: `connecting`, `open`, `offline` (lost, retrying) or `stopped`.",
+                "type": "string",
+                "enum": [
+                  "connecting",
+                  "open",
+                  "offline",
+                  "stopped"
+                ]
+              },
+              "transport": {
+                "description": "Active transport: `sse`, `ws` or `poll`; absent when not connected.",
+                "type": "string",
+                "enum": [
+                  "sse",
+                  "ws",
+                  "poll"
+                ]
+              }
+            },
+            "required": [
+              "state"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [],
+          "example": "const { state, transport } = sdk.realtime.status();"
+        }
+      ],
+      "events": [
+        {
+          "name": "realtime:connection:connected",
+          "description": "The realtime connection opened. Payload: state ('open').",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "state": {
+                "description": "Always `open`.",
+                "const": "open"
+              }
+            },
+            "required": [
+              "state"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "realtime:connection:disconnected",
+          "description": "The realtime connection is not open. Payload: state ('connecting', 'offline' or 'stopped').",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "state": {
+                "description": "Connection state: `connecting`, `offline` or `stopped`.",
+                "type": "string",
+                "enum": [
+                  "open",
+                  "connecting",
+                  "offline",
+                  "stopped"
+                ]
+              }
+            },
+            "required": [
+              "state"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "realtime:connection:resync",
+          "description": "The server epoch changed or a guaranteed sequence was missed. Resynchronize domain state; an ordinary connected event does not require it.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "description": "Changed server epoch or a gap before a delivered guaranteed message.",
+                "type": "string",
+                "enum": [
+                  "epoch",
+                  "sequence_gap"
+                ]
+              }
+            },
+            "required": [
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "realtime:connection:transport",
+          "description": "The active realtime transport is known or changed. Payload: transport ('sse', 'ws' or 'poll').",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "transport": {
+                "description": "Active transport: `sse`, `ws` or `poll`.",
+                "type": "string",
+                "enum": [
+                  "sse",
+                  "ws",
+                  "poll"
+                ]
+              }
+            },
+            "required": [
+              "transport"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    }
+  ],
+  "libraries": []
+}

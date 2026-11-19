@@ -1,0 +1,75 @@
+{
+    "schemaVersion": 1,
+    "fields": [
+        {
+            "key": "skin",
+            "type": "enum",
+            "label": {
+                "ru": "Скин",
+                "en": "Skin"
+            },
+            "options": [
+                {
+                    "value": "manyplay",
+                    "label": {
+                        "ru": "manyplay",
+                        "en": "manyplay"
+                    }
+                },
+                {
+                    "value": "default",
+                    "label": {
+                        "ru": "default",
+                        "en": "default"
+                    }
+                }
+            ],
+            "default": "manyplay"
+        },
+        {
+            "key": "topbarMain",
+            "type": "boolean",
+            "label": {
+                "ru": "Топ-бар главного экрана",
+                "en": "Main top bar"
+            },
+            "default": true
+        },
+        {
+            "key": "topbarCore",
+            "type": "boolean",
+            "label": {
+                "ru": "Топ-бар механики",
+                "en": "Core top bar"
+            },
+            "default": true
+        },
+        {
+            "key": "hud",
+            "type": "boolean",
+            "label": {
+                "ru": "Боковые иконки",
+                "en": "HUD"
+            },
+            "default": true
+        },
+        {
+            "key": "bottomMenu",
+            "type": "boolean",
+            "label": {
+                "ru": "Нижнее меню",
+                "en": "Bottom menu"
+            },
+            "default": true
+        },
+        {
+            "key": "windowQueue",
+            "type": "boolean",
+            "label": {
+                "ru": "Автоматические окна",
+                "en": "Automatic windows"
+            },
+            "default": true
+        }
+    ]
+}

@@ -1,0 +1,2 @@
+export declare const REWARD_GRID_CSS = "\n:host{--kit-reward-tooltip-bg:var(--mp-raised);--kit-reward-tooltip-color:var(--mp-text)}\n.reward-grid .reward-grid-entry{background:var(--mp-surface);color:var(--mp-text);\n border:1px solid var(--mp-line);border-radius:12px;box-shadow:none}\n.reward-grid .reward-grid-entry:hover{background:var(--mp-raised)}\n.reward-grid .reward-grid-entry .reward-name{border-radius:12px}\n.reward-grid [data-gold] .reward-amount{color:var(--mp-gold)}\n";
+//# sourceMappingURL=reward-grid.d.ts.map

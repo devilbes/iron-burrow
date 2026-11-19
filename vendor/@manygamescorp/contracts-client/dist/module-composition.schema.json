@@ -1,0 +1,131 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://manygamescorp.com/schemas/sdk/module-composition.schema.json",
+    "title": "SDK build module composition",
+    "type": "array",
+    "maxItems": 256,
+    "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "package",
+            "version",
+            "source",
+            "load"
+        ],
+        "properties": {
+            "id": {
+                "type": "string",
+                "maxLength": 64,
+                "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?:\\.[a-z][a-z0-9]*(?:-[a-z0-9]+)*)*$",
+                "description": "Module identifier from its manifest; dot-separated namespaces are allowed."
+            },
+            "package": {
+                "type": "string",
+                "maxLength": 214,
+                "pattern": "^(?:@[a-z0-9][a-z0-9._-]*/)?[a-z0-9][a-z0-9._-]*$",
+                "description": "npm package name containing the module."
+            },
+            "version": {
+                "type": "string",
+                "maxLength": 64,
+                "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$",
+                "description": "Exact SemVer of the module; ranges and tags are not accepted."
+            },
+            "source": {
+                "enum": [
+                    "local",
+                    "remote"
+                ],
+                "description": "local: included in the game build; remote: loaded from the configured CDN."
+            },
+            "load": {
+                "enum": [
+                    "eager",
+                    "on-demand",
+                    "lazy",
+                    "deferred",
+                    "on-event",
+                    "on-route"
+                ],
+                "description": "Build-owned activation policy; lazy is an alias of on-demand."
+            },
+            "settings": {
+                "type": "object",
+                "description": "E152 module setting values; validated against the selected module schema."
+            },
+            "onEvent": {
+                "type": "string",
+                "maxLength": 128,
+                "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*:[a-z][a-z0-9]*(?:-[a-z0-9]+)*:[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+            },
+            "onRoute": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "^[^\\s\\u0000-\\u001f\\u007f]+$"
+            }
+        },
+        "description": "One module selected for this application.",
+        "oneOf": [
+            {
+                "properties": {
+                    "load": {
+                        "enum": [
+                            "eager",
+                            "on-demand",
+                            "lazy",
+                            "deferred"
+                        ]
+                    }
+                },
+                "not": {
+                    "anyOf": [
+                        {
+                            "required": [
+                                "onEvent"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "onRoute"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "properties": {
+                    "load": {
+                        "const": "on-event"
+                    }
+                },
+                "required": [
+                    "onEvent"
+                ],
+                "not": {
+                    "required": [
+                        "onRoute"
+                    ]
+                }
+            },
+            {
+                "properties": {
+                    "load": {
+                        "const": "on-route"
+                    }
+                },
+                "required": [
+                    "onRoute"
+                ],
+                "not": {
+                    "required": [
+                        "onEvent"
+                    ]
+                }
+            }
+        ]
+    },
+    "description": "Immutable build module selection, at most 256 entries."
+}

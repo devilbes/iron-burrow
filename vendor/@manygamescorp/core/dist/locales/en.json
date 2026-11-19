@@ -1,0 +1,28 @@
+{
+    "sdk": {
+        "error": {
+            "default": "Something went wrong. Please try again.",
+            "SDK_OFFLINE": "You are offline. Check your connection.",
+            "SDK_REQUEST_TIMEOUT": "The request timed out. Please try again.",
+            "NETWORK_ERROR": "Unable to connect. Please try again.",
+            "OFFLINE": "You are offline. Check your connection.",
+            "TIMEOUT": "The request timed out. Please try again.",
+            "RATE_LIMITED": "Too many requests. Please try again later.",
+            "AUTH_CODE_INVALID": "The code is incorrect.",
+            "AUTH_CODE_EXPIRED": "The code has expired. Request a new code.",
+            "AUTH_CODE_ATTEMPTS_EXCEEDED": "Too many attempts. Request a new code.",
+            "AUTH_DELIVERY_UNAVAILABLE": "Unable to send the code. Please try again later.",
+            "AUTH_PROVIDER_UNAVAILABLE": "Sign-in is unavailable. Please try again later.",
+            "AUTH_PROVIDER_TOKEN_INVALID": "Unable to sign in. Please try again.",
+            "AUTH_LINK_CONFLICT": "This sign-in method belongs to another account.",
+            "AUTH_LINK_TICKET_EXPIRED": "The account link has expired. Please try again.",
+            "AUTH_LINK_TICKET_INVALID": "The account link is invalid. Please try again.",
+            "AUTH_CONTACT_CONFLICT": "This email is already used by another account.",
+            "AUTH_LAST_SIGNIN_METHOD": "You cannot remove the last sign-in method.",
+            "SDK_AUTH_RESEND_TOO_EARLY": "You can request a new code in {seconds} s.",
+            "SDK_AUTH_INPUT_INVALID": "Check the entered value.",
+            "SDK_AUTH_EMAIL_REQUIRED": "Sign in with email first.",
+            "SDK_AUTH_NO_PENDING": "Sign in again."
+        }
+    }
+}

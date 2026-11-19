@@ -1,0 +1,582 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "AI.GAMES platform.json",
+    "description": "Game SDK configuration. appId, endpoints, cdn and assets.cdnBase are required. Including any build field requires the complete schemaVersion 1 build configuration.",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+        "appId",
+        "endpoints",
+        "cdn",
+        "assets"
+    ],
+    "properties": {
+        "schemaVersion": {
+            "const": 1,
+            "description": "Build configuration format version; the only supported value is 1."
+        },
+        "appId": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991,
+            "description": "Numeric application ID for initial auth and X-App-Id usage attribution; game JWTs authorize access."
+        },
+        "store": {
+            "type": "string",
+            "description": "Store of the build (`google_play`, `app_store`, `playgama`, `yandex`, `web`, \u2026): the filter fact `$store` (E96).",
+            "pattern": "^[a-z][a-z0-9_]{0,31}$"
+        },
+        "environment": {
+            "enum": [
+                "local",
+                "dev",
+                "test",
+                "prod"
+            ],
+            "description": "Deployment environment: local, dev, test or prod."
+        },
+        "endpoints": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "api"
+            ],
+            "properties": {
+                "api": {
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 2048,
+                    "pattern": "^(https://[^/?#@\\\\\\s]+|http://(localhost|127\\.0\\.0\\.1|\\[::1\\])(:[0-9]+)?)/?$",
+                    "description": "Public API origin, without a path, query or fragment. HTTPS is required except for local loopback HTTP."
+                },
+                "realtime": {
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 2048,
+                    "pattern": "^(https://[^/?#@\\\\\\s]+|http://(localhost|127\\.0\\.0\\.1|\\[::1\\])(:[0-9]+)?)/?$",
+                    "description": "Optional realtime origin for WS/SSE/poll (rt host); other services use endpoints.api."
+                }
+            },
+            "description": "Public service origins used by the game SDK."
+        },
+        "cdn": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048,
+            "pattern": "^(https://[^/?#@\\\\\\s]+|http://(localhost|127\\.0\\.0\\.1|\\[::1\\])(:[0-9]+)?)(/[^?#\\\\\\s]*)?$",
+            "description": "Public SDK asset base URL; may contain a path but no query or fragment."
+        },
+        "platform": {
+            "enum": [
+                "web",
+                "cordova"
+            ],
+            "description": "Game runtime target: web or cordova."
+        },
+        "orientation": {
+            "enum": [
+                "portrait",
+                "landscape",
+                "any"
+            ],
+            "description": "Requested screen orientation: portrait, landscape or any."
+        },
+        "sdk": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "package",
+                "version",
+                "adapter",
+                "modules",
+                "modulesRevision"
+            ],
+            "properties": {
+                "package": {
+                    "$ref": "#/$defs/packageName",
+                    "description": "npm package providing the SDK core."
+                },
+                "version": {
+                    "$ref": "#/$defs/exactVersion",
+                    "description": "Exact SDK SemVer; no ranges or tags."
+                },
+                "adapter": {
+                    "$ref": "#/$defs/packageVersion",
+                    "description": "Platform adapter package and exact version."
+                },
+                "modules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/module"
+                    },
+                    "description": "Modules included in this build."
+                },
+                "modulesRevision": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Revision of the projects module record (E152 \u00a75 p.1)"
+                },
+                "overrides": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "scope"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "const": "panel.sdk.overrides"
+                        }
+                    }
+                }
+            },
+            "description": "SDK package, exact version, platform adapter and selected modules."
+        },
+        "uiKit": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "package",
+                "version"
+            ],
+            "properties": {
+                "package": {
+                    "$ref": "#/$defs/packageName",
+                    "description": "npm package providing the UI kit."
+                },
+                "version": {
+                    "$ref": "#/$defs/exactVersion",
+                    "description": "Exact UI kit SemVer; no ranges or tags."
+                },
+                "skin": {
+                    "$ref": "#/$defs/packageVersion",
+                    "description": "Optional skin package and exact version."
+                }
+            },
+            "description": "UI component package, exact version and optional skin."
+        },
+        "buildKit": {
+            "$ref": "#/$defs/packageVersion",
+            "description": "Automatically resolved target-specific Build Kit package and exact version."
+        },
+        "loginProviders": {
+            "$ref": "#/$defs/publicLoginProviders",
+            "description": "Public login provider settings; contains no provider secrets."
+        },
+        "moduleConfig": {
+            "type": "object",
+            "maxProperties": 64,
+            "additionalProperties": true,
+            "description": "Data-only SDK module settings. iap.storeAdapter selects a separate store adapter module."
+        },
+        "assets": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "cdnBase"
+            ],
+            "properties": {
+                "cdnBase": {
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 2048,
+                    "pattern": "^(https://[^/?#@\\\\\\s]+|http://(localhost|127\\.0\\.0\\.1|\\[::1\\])(:[0-9]+)?)(/[^?#\\\\\\s]*)?$",
+                    "description": "Environment public app-assets base (E136), separate from SDK module delivery cdn."
+                },
+                "allowedHosts": {
+                    "type": "array",
+                    "maxItems": 32,
+                    "items": {
+                        "type": "string",
+                        "maxLength": 253,
+                        "pattern": "^[a-z0-9][a-z0-9.-]*(?::[0-9]+)?$"
+                    },
+                    "description": "Exact HTTPS host[:port] allowlist delivered by environment; no wildcards."
+                }
+            }
+        },
+        "android": {
+            "$ref": "#/$defs/android",
+            "description": "Optional E109 build-only Cordova settings. Runtime ignores this block; project branding and package ID are excluded."
+        },
+        "clientAuthoritative": {
+            "type": "boolean",
+            "description": "Build-time D7 client-score flag; never read from auth responses."
+        },
+        "gameType": {
+            "enum": [
+                "server",
+                "client",
+                "offline"
+            ],
+            "description": "Game execution model selected by the platform build."
+        }
+    },
+    "$defs": {
+        "buildFields": {
+            "required": [
+                "schemaVersion",
+                "appId",
+                "environment",
+                "endpoints",
+                "cdn",
+                "platform",
+                "orientation",
+                "sdk",
+                "buildKit"
+            ]
+        },
+        "packageName": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?:@[a-z0-9][a-z0-9._-]*/)?[a-z0-9][a-z0-9._-]*$(?![\\s\\S])",
+            "description": "npm package name, optionally scoped."
+        },
+        "exactVersion": {
+            "type": "string",
+            "description": "Exact SemVer only: no ranges, tags, v prefix or latest.",
+            "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$(?![\\s\\S])"
+        },
+        "packageVersion": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "package",
+                "version"
+            ],
+            "properties": {
+                "package": {
+                    "$ref": "#/$defs/packageName",
+                    "description": "npm package name."
+                },
+                "version": {
+                    "$ref": "#/$defs/exactVersion",
+                    "description": "Exact SemVer; no ranges or tags."
+                }
+            },
+            "description": "npm package name and exact SemVer."
+        },
+        "module": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "package",
+                "version",
+                "load",
+                "source"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Module id from its registry manifest."
+                },
+                "package": {
+                    "$ref": "#/$defs/packageName",
+                    "description": "npm package name."
+                },
+                "version": {
+                    "$ref": "#/$defs/exactVersion",
+                    "description": "Exact SemVer; no ranges or tags."
+                },
+                "load": {
+                    "enum": [
+                        "eager",
+                        "on-demand",
+                        "lazy",
+                        "deferred",
+                        "on-event",
+                        "on-route"
+                    ],
+                    "description": "Build-owned activation policy; lazy is an alias of on-demand."
+                },
+                "source": {
+                    "enum": [
+                        "local",
+                        "remote"
+                    ],
+                    "description": "local: bundled with the game; remote: loaded from the configured CDN."
+                },
+                "settings": {
+                    "type": "object",
+                    "description": "E152 module setting values."
+                },
+                "onEvent": {
+                    "type": "string",
+                    "maxLength": 128,
+                    "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*:[a-z][a-z0-9]*(?:-[a-z0-9]+)*:[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+                },
+                "onRoute": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[^\\s\\u0000-\\u001f\\u007f]+$"
+                }
+            },
+            "description": "One SDK module in the build configuration.",
+            "oneOf": [
+                {
+                    "properties": {
+                        "load": {
+                            "enum": [
+                                "eager",
+                                "on-demand",
+                                "lazy",
+                                "deferred"
+                            ]
+                        }
+                    },
+                    "not": {
+                        "anyOf": [
+                            {
+                                "required": [
+                                    "onEvent"
+                                ]
+                            },
+                            {
+                                "required": [
+                                    "onRoute"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "properties": {
+                        "load": {
+                            "const": "on-event"
+                        }
+                    },
+                    "required": [
+                        "onEvent"
+                    ],
+                    "not": {
+                        "required": [
+                            "onRoute"
+                        ]
+                    }
+                },
+                {
+                    "properties": {
+                        "load": {
+                            "const": "on-route"
+                        }
+                    },
+                    "required": [
+                        "onRoute"
+                    ],
+                    "not": {
+                        "required": [
+                            "onEvent"
+                        ]
+                    }
+                }
+            ]
+        },
+        "publicLoginProviders": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "version",
+                "google",
+                "facebook"
+            ],
+            "properties": {
+                "version": {
+                    "type": "string",
+                    "pattern": "^(0|[a-f0-9]{24})$",
+                    "description": "Provider settings revision: 0 or a lowercase hex24 identifier."
+                },
+                "google": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "enabled",
+                        "webClientId",
+                        "androidClientId"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "description": "Whether this login provider is available."
+                        },
+                        "webClientId": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "minLength": 1,
+                            "maxLength": 256,
+                            "pattern": "^[A-Za-z0-9_-]+\\.apps\\.googleusercontent\\.com$",
+                            "description": "Public Google web OAuth client ID, or null when not configured."
+                        },
+                        "androidClientId": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "minLength": 1,
+                            "maxLength": 256,
+                            "pattern": "^[A-Za-z0-9_-]+\\.apps\\.googleusercontent\\.com$",
+                            "description": "Public Google Android OAuth client ID, or null when not configured."
+                        }
+                    },
+                    "description": "Public Google login settings."
+                },
+                "facebook": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "enabled",
+                        "appId",
+                        "redirectUris"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "description": "Whether this login provider is available."
+                        },
+                        "appId": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "pattern": "^[1-9][0-9]{0,31}$",
+                            "description": "Public Facebook application ID as a decimal string, or null."
+                        },
+                        "redirectUris": {
+                            "type": "array",
+                            "maxItems": 4,
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "maxLength": 2048,
+                                "pattern": "^https://[^/?#@\\\\\\s]+/v1/auth/oauth/callback/facebook$",
+                                "description": "One element of publicLoginProviders.facebook.redirectUris."
+                            },
+                            "description": "Allowed HTTPS Facebook callback URLs; at most four unique values."
+                        }
+                    },
+                    "description": "Public Facebook login settings."
+                }
+            },
+            "description": "Public Google and Facebook login settings."
+        },
+        "android": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "minSdk": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                },
+                "targetSdk": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                },
+                "plugins": {
+                    "type": "array",
+                    "maxItems": 64,
+                    "items": {
+                        "$ref": "#/$defs/androidPlugin"
+                    }
+                },
+                "permissions": {
+                    "type": "array",
+                    "maxItems": 128,
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string",
+                        "maxLength": 256,
+                        "pattern": "^android\\.permission\\.[A-Z][A-Z0-9_]*$"
+                    }
+                },
+                "preferences": {
+                    "type": "object",
+                    "maxProperties": 64,
+                    "propertyNames": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128,
+                        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                    },
+                    "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 1024
+                    }
+                },
+                "defaultBuildType": {
+                    "enum": [
+                        "debug",
+                        "release"
+                    ]
+                }
+            }
+        },
+        "androidPlugin": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "version",
+                "source"
+            ],
+            "properties": {
+                "id": {
+                    "$ref": "#/$defs/packageName"
+                },
+                "version": {
+                    "$ref": "#/$defs/exactVersion"
+                },
+                "source": {
+                    "type": "string",
+                    "pattern": "^(?:manual|module:[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?:\\.[a-z][a-z0-9]*(?:-[a-z0-9]+)*)*)$"
+                },
+                "variables": {
+                    "type": "object",
+                    "maxProperties": 64,
+                    "propertyNames": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128,
+                        "pattern": "^[A-Z][A-Z0-9_]*$"
+                    },
+                    "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 1024
+                    }
+                }
+            }
+        }
+    },
+    "dependentSchemas": {
+        "schemaVersion": {
+            "$ref": "#/$defs/buildFields"
+        },
+        "environment": {
+            "$ref": "#/$defs/buildFields"
+        },
+        "platform": {
+            "$ref": "#/$defs/buildFields"
+        },
+        "orientation": {
+            "$ref": "#/$defs/buildFields"
+        },
+        "sdk": {
+            "$ref": "#/$defs/buildFields"
+        },
+        "uiKit": {
+            "$ref": "#/$defs/buildFields"
+        },
+        "buildKit": {
+            "$ref": "#/$defs/buildFields"
+        }
+    },
+    "not": {
+        "required": [
+            "app"
+        ]
+    }
+}

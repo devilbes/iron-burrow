@@ -1,0 +1,1387 @@
+{
+  "schemaVersion": 1,
+  "package": "@manygamescorp/mod-ads-web",
+  "version": "1.0.0-rc.30",
+  "requires": {
+    "@manygamescorp/core": "1.0.0-rc.30"
+  },
+  "modules": [
+    {
+      "name": "ads",
+      "package": "@manygamescorp/mod-ads-web",
+      "description": "Advertising: rewarded, rewarded interstitial, interstitial, app open and banner ads shown through a mediator. Decide with isAvailable, show with show/showBanner; rewarded ads grant the offer reward to the player's inventory after completion. Limits, cooldowns and placements come from the ads configuration.",
+      "methods": [
+        {
+          "name": "bannerInset",
+          "description": "Space taken by the current banner, to keep game UI clear of it.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "description": "Insets in CSS pixels for `top` and `bottom` (0 when no banner), and the banner placement or `null`.",
+            "type": "object",
+            "properties": {
+              "top": {
+                "description": "Space taken at the top of the screen, CSS pixels (0 when none).",
+                "type": "number"
+              },
+              "bottom": {
+                "description": "Space taken at the bottom of the screen, CSS pixels (0 when none).",
+                "type": "number"
+              },
+              "placement": {
+                "description": "Placement key of the current banner, or `null` when there is no banner.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "top",
+              "bottom",
+              "placement"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [],
+          "example": "const { bottom } = sdk.ads.bannerInset();\ncanvasPadding.bottom = bottom;"
+        },
+        {
+          "name": "consentState",
+          "description": "Reads the last CMP state, or null until consent has been resolved.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "description": "Native or shell consent state; null before initialization.",
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "hasUserConsent": {
+                    "description": "Consent to personalized advertising; false still permits contextual ads after CMP.",
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "boolean"
+                      }
+                    ]
+                  },
+                  "region": {
+                    "description": "CMP geography or country; null when unknown.",
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "canRequestAds": {
+                    "description": "Whether the CMP has completed and permits ad requests.",
+                    "type": "boolean"
+                  },
+                  "privacyOptionsRequired": {
+                    "description": "Privacy options form is required for this user.",
+                    "type": "boolean"
+                  },
+                  "ageRestricted": {
+                    "description": "Age restricted users must never initialize MAX.",
+                    "type": "boolean"
+                  },
+                  "doNotSell": {
+                    "description": "CCPA opt out of sale, supplied before native initialization.",
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "hasUserConsent",
+                  "region"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "errors": [],
+          "example": "const consent = sdk.ads.consentState();"
+        },
+        {
+          "name": "hideBanner",
+          "description": "Removes the current banner request and view. Does nothing when there is no banner.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "type": "null"
+          },
+          "errors": [],
+          "example": "await sdk.ads.hideBanner();"
+        },
+        {
+          "name": "init",
+          "description": "Starts the ad mediator. The module calls it on start and the game never has to wait for it; call it again only to retry after a failed init.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "description": "Resolves when the mediator is ready; rejects when it cannot be initialized.",
+            "type": "null"
+          },
+          "errors": [
+            {
+              "code": "SDK_MODULE_NOT_INSTALLED",
+              "hint": "The configured mediator adapter is not registered."
+            },
+            {
+              "code": "SDK_PERMISSION_DENIED",
+              "hint": "The test (fake) mediator was requested in a production build."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The ads module has been stopped."
+            }
+          ],
+          "example": "await sdk.ads.init();"
+        },
+        {
+          "name": "isAvailable",
+          "description": "Decides whether an ad can be shown now. Synchronous, no network request.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "placement": {
+                "description": "Placement key from the ads configuration (e.g. `level_end`).",
+                "type": "string"
+              },
+              "offer": {
+                "description": "Optional rewarded offer key; required to get a rewarded decision.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "placement"
+            ]
+          },
+          "returns": {
+            "description": "`available: true` with the format and unit to show, or `available: false` with a `reason`.",
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "available": {
+                    "description": "An ad can be shown now.",
+                    "const": true
+                  },
+                  "placement": {
+                    "description": "Placement key the decision is for.",
+                    "type": "string"
+                  },
+                  "format": {
+                    "description": "Ad format that will be shown.",
+                    "type": "string",
+                    "enum": [
+                      "rewarded",
+                      "rewarded_interstitial",
+                      "interstitial",
+                      "app_open",
+                      "banner"
+                    ]
+                  },
+                  "offer": {
+                    "description": "Rewarded offer key, or `null` for ads without a reward.",
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "unitKey": {
+                    "description": "Key of the ad unit to show.",
+                    "type": "string"
+                  },
+                  "applied": {
+                    "description": "Placement key actually used when a fallback replaced the requested one; else `null`.",
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "available",
+                  "placement",
+                  "format",
+                  "offer",
+                  "unitKey",
+                  "applied"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "available": {
+                    "description": "No ad can be shown now.",
+                    "const": false
+                  },
+                  "reason": {
+                    "description": "Why: no fill, limit reached, locked, disabled, not initialized, no offer, no advance.",
+                    "type": "string",
+                    "enum": [
+                      "no_fill",
+                      "limit_placement",
+                      "limit_format",
+                      "locked",
+                      "disabled",
+                      "not_initialized",
+                      "no_offer",
+                      "advance_exhausted"
+                    ]
+                  },
+                  "placement": {
+                    "description": "Placement key the decision is for.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "available",
+                  "reason",
+                  "placement"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "errors": [],
+          "example": "const decision = sdk.ads.isAvailable('level_end', 'extra_life');\nif (decision.available) await sdk.ads.show(decision);"
+        },
+        {
+          "name": "registerAdapter",
+          "description": "Registers a mediator adapter under an id, to be selected by the ads configuration. Call before `init`.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "id": {
+                "description": "Adapter id: lowercase letters, digits and `_`, starting with a letter, up to 32 characters.",
+                "type": "string"
+              },
+              "factory": {
+                "description": "Function that creates the adapter instance.",
+                "x-function": "() => MediatorAdapter"
+              }
+            },
+            "required": [
+              "id",
+              "factory"
+            ]
+          },
+          "returns": {
+            "type": "null"
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "The id has a wrong format or the factory is not a function."
+            }
+          ],
+          "example": "sdk.ads.registerAdapter('my_mediator', () => createMyAdapter());"
+        },
+        {
+          "name": "setMockConfig",
+          "description": "Overrides the test mediator behavior (fill, price, durations, outcome). Dev/test builds only: absent in production.",
+          "kind": "property",
+          "params": {
+            "type": "object",
+            "properties": {}
+          },
+          "returns": {
+            "description": "Overrides the test mediator behavior (fill, price, durations, outcome). Dev/test builds only: absent in production.",
+            "x-function": "(cfg: AdsMockConfig | null) => void"
+          },
+          "errors": [],
+          "example": "sdk.ads.setMockConfig?.({ outcome: 'completed', auto: true });"
+        },
+        {
+          "name": "show",
+          "description": "Shows a full-screen ad (rewarded, rewarded interstitial, interstitial or app open) and resolves when it is closed. Rewarded ads grant the offer reward after completion; check `reward` of the result.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "decision": {
+                "description": "Decision from `isAvailable`, or a placement key to decide and show at once.",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "An ad can be shown now.",
+                        "const": true
+                      },
+                      "placement": {
+                        "description": "Placement key the decision is for.",
+                        "type": "string"
+                      },
+                      "format": {
+                        "description": "Ad format that will be shown.",
+                        "type": "string",
+                        "enum": [
+                          "rewarded",
+                          "rewarded_interstitial",
+                          "interstitial",
+                          "app_open",
+                          "banner"
+                        ]
+                      },
+                      "offer": {
+                        "description": "Rewarded offer key, or `null` for ads without a reward.",
+                        "anyOf": [
+                          {
+                            "type": "null"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "unitKey": {
+                        "description": "Key of the ad unit to show.",
+                        "type": "string"
+                      },
+                      "applied": {
+                        "description": "Placement key actually used when a fallback replaced the requested one; else `null`.",
+                        "anyOf": [
+                          {
+                            "type": "null"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "available",
+                      "placement",
+                      "format",
+                      "offer",
+                      "unitKey",
+                      "applied"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "No ad can be shown now.",
+                        "const": false
+                      },
+                      "reason": {
+                        "description": "Why: no fill, limit reached, locked, disabled, not initialized, no offer, no advance.",
+                        "type": "string",
+                        "enum": [
+                          "no_fill",
+                          "limit_placement",
+                          "limit_format",
+                          "locked",
+                          "disabled",
+                          "not_initialized",
+                          "no_offer",
+                          "advance_exhausted"
+                        ]
+                      },
+                      "placement": {
+                        "description": "Placement key the decision is for.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "available",
+                      "reason",
+                      "placement"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "offer": {
+                "description": "Rewarded offer key; used only when `decision` is a placement key.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "decision"
+            ]
+          },
+          "returns": {
+            "description": "Result with `status` (`completed`, `skipped`, `failed` or `unavailable`), placement, offer and reward state.",
+            "type": "object",
+            "properties": {
+              "status": {
+                "description": "Outcome: `completed` (watched), `skipped` (closed early), `failed` or `unavailable`.",
+                "type": "string",
+                "enum": [
+                  "completed",
+                  "skipped",
+                  "failed",
+                  "unavailable"
+                ]
+              },
+              "reason": {
+                "description": "Why the ad was not completed; set for `failed` and `unavailable`.",
+                "type": "string",
+                "enum": [
+                  "no_fill",
+                  "limit_placement",
+                  "limit_format",
+                  "locked",
+                  "disabled",
+                  "not_initialized",
+                  "no_offer",
+                  "advance_exhausted",
+                  "order_failed",
+                  "state_changed"
+                ]
+              },
+              "placement": {
+                "description": "Placement key the ad was requested for.",
+                "type": "string"
+              },
+              "offer": {
+                "description": "Rewarded offer key, or `null` for ads without a reward.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "orderId": {
+                "description": "rewarded, rewarded_interstitial.",
+                "type": "string"
+              },
+              "reward": {
+                "description": "Only by the answer of iap: `granted` — the reward is in inventory.",
+                "type": "string",
+                "enum": [
+                  "granted",
+                  "pending",
+                  "none"
+                ]
+              }
+            },
+            "required": [
+              "status",
+              "placement",
+              "offer"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [],
+          "example": "const result = await sdk.ads.show('level_end', 'extra_life');\nif (result.status === 'completed') console.log(result.reward);"
+        },
+        {
+          "name": "showBanner",
+          "description": "Requests a banner at a placement. Returns immediately; `ads:banner:shown` is emitted when it is visible.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "placement": {
+                "description": "Placement key of a banner from the ads configuration.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "placement"
+            ]
+          },
+          "returns": {
+            "description": "`requested`, or `unavailable` with a `reason`.",
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "description": "The banner was requested; `ads:banner:shown` follows when it is visible.",
+                    "const": "requested"
+                  },
+                  "placement": {
+                    "description": "Placement key of the banner.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "status",
+                  "placement"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "description": "The banner cannot be shown now.",
+                    "const": "unavailable"
+                  },
+                  "reason": {
+                    "description": "Why the banner is unavailable.",
+                    "type": "string",
+                    "enum": [
+                      "no_fill",
+                      "limit_placement",
+                      "limit_format",
+                      "locked",
+                      "disabled",
+                      "not_initialized",
+                      "no_offer",
+                      "advance_exhausted"
+                    ]
+                  },
+                  "placement": {
+                    "description": "Placement key of the banner.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "status",
+                  "reason",
+                  "placement"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "errors": [],
+          "example": "const res = sdk.ads.showBanner('main_menu_banner');\nif (res.status === 'unavailable') console.log(res.reason);"
+        },
+        {
+          "name": "showPrivacyOptions",
+          "description": "Opens the native privacy options form. Ad requests pause until it completes.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "description": "Updated consent state, including whether ads may be requested.",
+            "type": "object",
+            "properties": {
+              "hasUserConsent": {
+                "description": "Consent to personalized advertising; false still permits contextual ads after CMP.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              },
+              "region": {
+                "description": "CMP geography or country; null when unknown.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "canRequestAds": {
+                "description": "Whether the CMP has completed and permits ad requests.",
+                "type": "boolean"
+              },
+              "privacyOptionsRequired": {
+                "description": "Privacy options form is required for this user.",
+                "type": "boolean"
+              },
+              "ageRestricted": {
+                "description": "Age restricted users must never initialize MAX.",
+                "type": "boolean"
+              },
+              "doNotSell": {
+                "description": "CCPA opt out of sale, supplied before native initialization.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "hasUserConsent",
+              "region"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "SDK_PLATFORM_UNSUPPORTED",
+              "hint": "The adapter has no privacy options form."
+            },
+            {
+              "code": "SDK_PERMISSION_DENIED",
+              "hint": "A full-screen ad is currently showing."
+            }
+          ],
+          "example": "await sdk.ads.showPrivacyOptions();"
+        }
+      ],
+      "events": [
+        {
+          "name": "ads:ad:completed",
+          "description": "An ad was watched to the end (for rewarded ads, the reward is being granted).",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "format": {
+                "description": "Ad format: `rewarded`, `rewarded_interstitial`, `interstitial`, `app_open` or `banner`.",
+                "type": "string",
+                "enum": [
+                  "rewarded",
+                  "rewarded_interstitial",
+                  "interstitial",
+                  "app_open",
+                  "banner"
+                ]
+              },
+              "placement": {
+                "description": "Placement key the ad was requested for.",
+                "type": "string"
+              },
+              "offer": {
+                "description": "Rewarded offer key, or `null` for ads without a reward.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "applied": {
+                "description": "Placement key actually used when a fallback replaced the requested one; otherwise `null`.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "orderId": {
+                "description": "Reward order id (hex24), present for rewarded ads.",
+                "type": "string"
+              },
+              "reason": {
+                "description": "Failure reason (e.g. `no_fill`, `order_failed`, `advance_exhausted`); only on `ads:ad:failed`.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "format",
+              "placement",
+              "offer",
+              "applied"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "ads:ad:failed",
+          "description": "An ad could not be shown or its reward order could not be created; see reason.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "format": {
+                "description": "Ad format: `rewarded`, `rewarded_interstitial`, `interstitial`, `app_open` or `banner`.",
+                "type": "string",
+                "enum": [
+                  "rewarded",
+                  "rewarded_interstitial",
+                  "interstitial",
+                  "app_open",
+                  "banner"
+                ]
+              },
+              "placement": {
+                "description": "Placement key the ad was requested for.",
+                "type": "string"
+              },
+              "offer": {
+                "description": "Rewarded offer key, or `null` for ads without a reward.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "applied": {
+                "description": "Placement key actually used when a fallback replaced the requested one; otherwise `null`.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "orderId": {
+                "description": "Reward order id (hex24), present for rewarded ads.",
+                "type": "string"
+              },
+              "reason": {
+                "description": "Failure reason (e.g. `no_fill`, `order_failed`, `advance_exhausted`); only on `ads:ad:failed`.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "format",
+              "placement",
+              "offer",
+              "applied"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "ads:ad:fallback",
+          "description": "A different placement was used because the requested one had no ad available.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "placement": {
+                "description": "Placement key that was requested.",
+                "type": "string"
+              },
+              "to": {
+                "description": "Placement key shown instead.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "placement",
+              "to"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "ads:ad:shown",
+          "description": "A full-screen ad started to show.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "format": {
+                "description": "Ad format: `rewarded`, `rewarded_interstitial`, `interstitial`, `app_open` or `banner`.",
+                "type": "string",
+                "enum": [
+                  "rewarded",
+                  "rewarded_interstitial",
+                  "interstitial",
+                  "app_open",
+                  "banner"
+                ]
+              },
+              "placement": {
+                "description": "Placement key the ad was requested for.",
+                "type": "string"
+              },
+              "offer": {
+                "description": "Rewarded offer key, or `null` for ads without a reward.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "applied": {
+                "description": "Placement key actually used when a fallback replaced the requested one; otherwise `null`.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "unitKey": {
+                "description": "Key of the ad unit that was shown.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "format",
+              "placement",
+              "offer",
+              "applied",
+              "unitKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "ads:ad:skipped",
+          "description": "The player closed a rewarded ad before the reward; no reward is granted.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "format": {
+                "description": "Ad format: `rewarded`, `rewarded_interstitial`, `interstitial`, `app_open` or `banner`.",
+                "type": "string",
+                "enum": [
+                  "rewarded",
+                  "rewarded_interstitial",
+                  "interstitial",
+                  "app_open",
+                  "banner"
+                ]
+              },
+              "placement": {
+                "description": "Placement key the ad was requested for.",
+                "type": "string"
+              },
+              "offer": {
+                "description": "Rewarded offer key, or `null` for ads without a reward.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "applied": {
+                "description": "Placement key actually used when a fallback replaced the requested one; otherwise `null`.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "orderId": {
+                "description": "Reward order id (hex24), present for rewarded ads.",
+                "type": "string"
+              },
+              "reason": {
+                "description": "Failure reason (e.g. `no_fill`, `order_failed`, `advance_exhausted`); only on `ads:ad:failed`.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "format",
+              "placement",
+              "offer",
+              "applied"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "ads:banner:failed",
+          "description": "A requested banner could not be shown.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "placement": {
+                "description": "Banner placement key.",
+                "type": "string"
+              },
+              "reason": {
+                "description": "Why the banner could not be shown.",
+                "type": "string",
+                "enum": [
+                  "disabled",
+                  "no_fill",
+                  "limit_placement",
+                  "limit_format",
+                  "locked",
+                  "not_initialized",
+                  "no_offer",
+                  "advance_exhausted"
+                ]
+              }
+            },
+            "required": [
+              "placement",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "ads:banner:hidden",
+          "description": "A banner was removed or paused.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "placement": {
+                "description": "Placement key of the banner that was hidden.",
+                "type": "string"
+              },
+              "reason": {
+                "description": "Why: `hide` (hideBanner call), `screen` (screen change), `disabled`, `replaced` (another banner) or `paused` (app in background or full-screen view).",
+                "type": "string",
+                "enum": [
+                  "screen",
+                  "hide",
+                  "disabled",
+                  "replaced",
+                  "paused"
+                ]
+              },
+              "inset": {
+                "description": "Space taken by banners after it was hidden.",
+                "type": "object",
+                "properties": {
+                  "top": {
+                    "description": "Space taken at the top of the screen, CSS pixels (0 when none).",
+                    "type": "number"
+                  },
+                  "bottom": {
+                    "description": "Space taken at the bottom of the screen, CSS pixels (0 when none).",
+                    "type": "number"
+                  },
+                  "placement": {
+                    "description": "Placement key of the current banner, or `null` when there is no banner.",
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "top",
+                  "bottom",
+                  "placement"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "placement",
+              "reason",
+              "inset"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "ads:banner:shown",
+          "description": "A banner became visible; use its inset to keep game UI clear of it.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "placement": {
+                "description": "Placement key the banner was requested for.",
+                "type": "string"
+              },
+              "applied": {
+                "description": "Placement key actually used when a fallback replaced the requested one; otherwise `null`.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "unitKey": {
+                "description": "Key of the ad unit that was shown.",
+                "type": "string"
+              },
+              "height": {
+                "description": "Banner height in CSS pixels.",
+                "type": "number"
+              },
+              "inset": {
+                "description": "Space the banner takes on screen after it appeared.",
+                "type": "object",
+                "properties": {
+                  "top": {
+                    "description": "Space taken at the top of the screen, CSS pixels (0 when none).",
+                    "type": "number"
+                  },
+                  "bottom": {
+                    "description": "Space taken at the bottom of the screen, CSS pixels (0 when none).",
+                    "type": "number"
+                  },
+                  "placement": {
+                    "description": "Placement key of the current banner, or `null` when there is no banner.",
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "top",
+                  "bottom",
+                  "placement"
+                ],
+                "additionalProperties": false
+              },
+              "position": {
+                "description": "Screen edge the banner is attached to.",
+                "type": "string",
+                "enum": [
+                  "top",
+                  "bottom"
+                ]
+              },
+              "size": {
+                "description": "Banner size: `adaptive` (screen width), `standard` (320x50) or `leader` (728x90).",
+                "type": "string",
+                "enum": [
+                  "adaptive",
+                  "standard",
+                  "leader"
+                ]
+              },
+              "autoRefreshSec": {
+                "description": "Seconds between banner refreshes; `null` when it is not refreshed automatically.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              "background": {
+                "description": "Banner background color as a CSS color string.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "placement",
+              "applied",
+              "unitKey",
+              "height",
+              "inset",
+              "position",
+              "size",
+              "autoRefreshSec",
+              "background"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "ads:limit:reached",
+          "description": "A frequency limit (session, hour, day, total or cooldown) of a placement or ad format was reached.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "placement": {
+                "description": "Placement key whose limit was reached.",
+                "type": "string"
+              },
+              "level": {
+                "description": "Which limit: the placement's own or its ad format's.",
+                "type": "string",
+                "enum": [
+                  "placement",
+                  "format"
+                ]
+              },
+              "window": {
+                "description": "Limit window: `session`, `hour`, `day`, `total` or `cooldown`.",
+                "type": "string",
+                "enum": [
+                  "session",
+                  "hour",
+                  "day",
+                  "total",
+                  "cooldown"
+                ]
+              }
+            },
+            "required": [
+              "placement",
+              "level",
+              "window"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "ads:pool:loaded",
+          "description": "The number of loaded ad units of a format changed.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "format": {
+                "description": "Ad format of the pool.",
+                "type": "string",
+                "enum": [
+                  "rewarded",
+                  "rewarded_interstitial",
+                  "interstitial",
+                  "app_open",
+                  "banner"
+                ]
+              },
+              "loaded": {
+                "description": "Number of units of this format loaded and ready to show.",
+                "type": "number"
+              },
+              "total": {
+                "description": "Number of units of this format configured.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "format",
+              "loaded",
+              "total"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "ads:reward:granted",
+          "description": "The reward of a rewarded ad was confirmed and added to the player's inventory.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "Reward order id (hex24).",
+                "type": "string"
+              },
+              "offer": {
+                "description": "Rewarded offer key whose reward was granted.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "orderId",
+              "offer"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "ads:sdk:init-failed",
+          "description": "The ad mediator could not be started; ads stay unavailable until init is retried.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "adapter": {
+                "description": "Id of the mediator adapter that failed to start.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "adapter"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "ads:sdk:initialized",
+          "description": "The ad mediator started and ad units begin loading.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "adapter": {
+                "description": "Id of the mediator adapter that is running.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "adapter"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "ads:window:open",
+          "description": "The SDK window queue opened a named ads window (ad-slot, bonus, lives); the host's ui-kit presents it.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Name of the window to present (`ad-slot`, `bonus` or `lives`).",
+                "type": "string",
+                "enum": [
+                  "ad-slot",
+                  "bonus",
+                  "lives"
+                ]
+              },
+              "placement": {
+                "description": "Placement key the window was opened for (`params.placement`); `null` when none was given.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "placement"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "consent:form:failed",
+          "description": "Native privacy options failed; ads remain blocked until a successful retry.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "Sanitized SDK error code; native errors are never forwarded.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "code"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "consent:form:required",
+          "description": "Native privacy options are opening; ad requests are paused.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "description": "Native form being presented.",
+                "const": "privacy_options"
+              }
+            },
+            "required": [
+              "source"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "consent:state:changed",
+          "description": "The ad CMP resolved consent or privacy options; false personalization may still allow contextual ads.",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "hasUserConsent": {
+                "description": "Consent to personalized advertising; false still permits contextual ads after CMP.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              },
+              "region": {
+                "description": "CMP geography or country; null when unknown.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "canRequestAds": {
+                "description": "Whether the CMP has completed and permits ad requests.",
+                "type": "boolean"
+              },
+              "privacyOptionsRequired": {
+                "description": "Privacy options form is required for this user.",
+                "type": "boolean"
+              },
+              "ageRestricted": {
+                "description": "Age restricted users must never initialize MAX.",
+                "type": "boolean"
+              },
+              "doNotSell": {
+                "description": "CCPA opt out of sale, supplied before native initialization.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "hasUserConsent",
+              "region"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    }
+  ],
+  "libraries": []
+}

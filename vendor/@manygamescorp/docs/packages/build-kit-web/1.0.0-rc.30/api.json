@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "package": "@manygamescorp/build-kit-web",
+  "version": "1.0.0-rc.30",
+  "requires": {
+    "@manygamescorp/contracts-client": "1.0.0-rc.30",
+    "@manygamescorp/core": "1.0.0-rc.30",
+    "@manygamescorp/platform-web": "1.0.0-rc.30"
+  },
+  "modules": [],
+  "libraries": []
+}

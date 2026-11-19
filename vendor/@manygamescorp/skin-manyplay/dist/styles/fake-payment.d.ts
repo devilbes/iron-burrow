@@ -1,0 +1,2 @@
+export declare const FAKE_PAYMENT_CSS = "\n.mpg-fake-store-sheet{background:rgba(0,0,0,0.6);font:16px system-ui,sans-serif}\n.mpg-fake-store-card{background:#fff;color:#111;border-radius:12px}\n";
+//# sourceMappingURL=fake-payment.d.ts.map

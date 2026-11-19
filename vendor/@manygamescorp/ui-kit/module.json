@@ -1,0 +1,263 @@
+{
+  "id": "ui-kit",
+  "version": "1.0.0-rc.30",
+  "entry": "dist/sdk-runtime/ui-kit.js",
+  "targets": [
+    "cordova",
+    "web"
+  ],
+  "title": {
+    "ru": "UI Kit",
+    "en": "UI Kit"
+  },
+  "description": {
+    "ru": "Нейтральные компоненты SDK и окна ManyPlay ID.",
+    "en": "Neutral UI components and window contracts with a fixed ManyPlay ID presentation."
+  },
+  "llmDescription": "Neutral UI components and window contracts with a fixed ManyPlay ID presentation. Game presentation is selected separately with a skin bundle.",
+  "selection": "required",
+  "status": "ready",
+  "preview": {
+    "icon": "dist/catalog/icon.png",
+    "media": []
+  },
+  "docs": [
+    {
+      "title": {
+        "ru": "Документация",
+        "en": "Documentation"
+      },
+      "uri": "https://github.com/manygamescorp/client-sdk/tree/main/packages/ui-kit"
+    }
+  ],
+  "settings": {
+    "schemaVersion": 1,
+    "fields": [
+      {
+        "key": "skin",
+        "type": "enum",
+        "label": {
+          "ru": "Скин",
+          "en": "Skin"
+        },
+        "options": [
+          {
+            "value": "manyplay",
+            "label": {
+              "ru": "manyplay",
+              "en": "manyplay"
+            }
+          },
+          {
+            "value": "default",
+            "label": {
+              "ru": "default",
+              "en": "default"
+            }
+          }
+        ],
+        "default": "manyplay"
+      },
+      {
+        "key": "topbarMain",
+        "type": "boolean",
+        "label": {
+          "ru": "Топ-бар главного экрана",
+          "en": "Main top bar"
+        },
+        "default": true
+      },
+      {
+        "key": "topbarCore",
+        "type": "boolean",
+        "label": {
+          "ru": "Топ-бар механики",
+          "en": "Core top bar"
+        },
+        "default": true
+      },
+      {
+        "key": "hud",
+        "type": "boolean",
+        "label": {
+          "ru": "Боковые иконки",
+          "en": "HUD"
+        },
+        "default": true
+      },
+      {
+        "key": "bottomMenu",
+        "type": "boolean",
+        "label": {
+          "ru": "Нижнее меню",
+          "en": "Bottom menu"
+        },
+        "default": true
+      },
+      {
+        "key": "windowQueue",
+        "type": "boolean",
+        "label": {
+          "ru": "Автоматические окна",
+          "en": "Automatic windows"
+        },
+        "default": true
+      }
+    ]
+  },
+  "group": "foundation",
+  "tags": [],
+  "load": "eager",
+  "files": {
+    "scripts": [
+      "dist/adapter-views.js",
+      "dist/asset-image.js",
+      "dist/asset-variants.js",
+      "dist/core.js",
+      "dist/features/daily-parts.js",
+      "dist/features/daily-reward-window.js",
+      "dist/features/display-title.js",
+      "dist/features/progress-status.js",
+      "dist/features/public-name.js",
+      "dist/features/reward-grid-layout.js",
+      "dist/features/reward-grid.js",
+      "dist/features/shared.js",
+      "dist/icon.js",
+      "dist/layout.js",
+      "dist/module.js",
+      "dist/neutral.js",
+      "dist/preview/engine.js",
+      "dist/preview/modules.js",
+      "dist/preview/preview.js",
+      "dist/preview/protocol.js",
+      "dist/preview/schemas.js",
+      "dist/preview/vendor/contracts-client/asset-ref.js",
+      "dist/preview/vendor/contracts-client/facts.js",
+      "dist/preview/vendor/contracts-client/filter-syntax.js",
+      "dist/preview/vendor/contracts-client/filter-values.js",
+      "dist/preview/vendor/contracts-client/filters.js",
+      "dist/preview/vendor/contracts-client/module-editor-text.js",
+      "dist/preview/vendor/contracts-client/module-settings.js",
+      "dist/preview/vendor/contracts-client/native-facts.js",
+      "dist/preview/vendor/contracts-client/resolve.js",
+      "dist/preview/vendor/contracts-client/ui-slots.js",
+      "dist/sdk-runtime/ui-kit.js",
+      "dist/services/account-icons.js",
+      "dist/services/account-strings.js",
+      "dist/services/account-window.js",
+      "dist/services/account.js",
+      "dist/services/ads.js",
+      "dist/services/announcement.js",
+      "dist/services/bottommenu.js",
+      "dist/services/collection.js",
+      "dist/services/configs-live.js",
+      "dist/services/configs.js",
+      "dist/services/cross-promo.js",
+      "dist/services/daily-rewards.js",
+      "dist/services/device.js",
+      "dist/services/error.js",
+      "dist/services/events.js",
+      "dist/services/fake-ads.js",
+      "dist/services/fake-payment.js",
+      "dist/services/feature-strings.js",
+      "dist/services/game-hud.js",
+      "dist/services/game-widgets.js",
+      "dist/services/hub.js",
+      "dist/services/hud-contract.js",
+      "dist/services/hud-registry.js",
+      "dist/services/hud.js",
+      "dist/services/iap-windows.js",
+      "dist/services/inspector.js",
+      "dist/services/inventory-windows.js",
+      "dist/services/inventory.js",
+      "dist/services/kv.js",
+      "dist/services/leaderboard-hall.js",
+      "dist/services/leaderboard-window.js",
+      "dist/services/leaderboard.js",
+      "dist/services/level-windows.js",
+      "dist/services/lobby.js",
+      "dist/services/localization.js",
+      "dist/services/login-strings.js",
+      "dist/services/login-types.js",
+      "dist/services/login.js",
+      "dist/services/mailbox.js",
+      "dist/services/media.js",
+      "dist/services/modules.js",
+      "dist/services/narrative-playback.js",
+      "dist/services/offer-art.js",
+      "dist/services/platform-about.js",
+      "dist/services/popup.js",
+      "dist/services/portal-login.js",
+      "dist/services/preloader.js",
+      "dist/services/profile-presentation.js",
+      "dist/services/profile.js",
+      "dist/services/progress-windows.js",
+      "dist/services/progress.js",
+      "dist/services/provider-marks.js",
+      "dist/services/realtime.js",
+      "dist/services/reward-window.js",
+      "dist/services/reward.js",
+      "dist/services/settings.js",
+      "dist/services/shop.js",
+      "dist/services/standard-windows.js",
+      "dist/services/topbar.js",
+      "dist/services/web-login.js",
+      "dist/shell.js",
+      "dist/skin-bundle-schema.js",
+      "dist/skin-bundle.js",
+      "dist/skin-catalog.js",
+      "dist/skin-keys.generated.js",
+      "dist/skin-layer.js",
+      "dist/skin-layout.js",
+      "dist/skin-slot.js",
+      "dist/skin-spec.js",
+      "dist/skin.js",
+      "dist/skins/manyplay/account-mps-styles.js",
+      "dist/skins/manyplay/account-styles.js",
+      "dist/skins/manyplay/assets.js",
+      "dist/skins/manyplay/default.js",
+      "dist/skins/manyplay/id-layer.js",
+      "dist/skins/manyplay/id-presentation.js",
+      "dist/skins/manyplay/styles/account-mps-styles.js",
+      "dist/skins/manyplay/styles/account-styles.js",
+      "dist/skins/manyplay/styles/login.js",
+      "dist/skins/manyplay/styles/reward-grid.js",
+      "dist/skins/manyplay/styles/web-login.js",
+      "dist/skins/manyplay/theme.js",
+      "dist/strings.js",
+      "dist/version.js",
+      "dist/view-types.js",
+      "dist/window-context.js",
+      "dist/window-layout.js",
+      "dist/window-port.js",
+      "dist/windows.js",
+      "dist/zones.js"
+    ],
+    "styles": [
+      "dist/preview/preview.css"
+    ],
+    "assets": [
+      "dist/assets/manyplay/27f39f623f57be38cb8dc62eb235f8e0.png",
+      "dist/assets/manyplay/2f0ff10be215d5ae0a9b53c3d22754f6.png",
+      "dist/assets/manyplay/44c2bb0166e6ecd2c5d092660393088b.png",
+      "dist/assets/manyplay/6445ab4dd8170b0a376d638bdff32433.png",
+      "dist/assets/manyplay/6511b64132bebe7795a12faf3cb30247.png",
+      "dist/assets/manyplay/6613f847b10cd4596abfcac4f5d3ab6d.png",
+      "dist/assets/manyplay/7dda9cb7b511ca0fba156b0b9a1ff438.png",
+      "dist/assets/manyplay/9b26b2b4c8e91644b6a31c1a2c58b5f4.png",
+      "dist/assets/manyplay/cc1fb30ffe68ed1468d21e8aa89b828a.png",
+      "dist/assets/manyplay/d4cffe1cb5a4bbb8c4fbd2689986bd08.png",
+      "dist/assets/manyplay/fe96df813bd789c61172962f0965f4dc.png",
+      "dist/assets/manyplay/icons.json",
+      "dist/assets/manyplay/icons.png",
+      "dist/catalog.json",
+      "dist/catalog/icon.png",
+      "dist/module-settings.schema.json",
+      "dist/preview/vendor/contracts-client/asset-ref.schema.json",
+      "dist/preview/vendor/contracts-client/facts.json",
+      "dist/sdk-runtime/ui-kit.json",
+      "dist/skin-keys.json",
+      "dist/skin.schema.json"
+    ]
+  }
+}

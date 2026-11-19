@@ -1,0 +1,908 @@
+{
+  "schemaVersion": 1,
+  "package": "@manygamescorp/mod-profile-pack",
+  "version": "1.0.0-rc.30",
+  "requires": {
+    "@manygamescorp/contracts-client": "1.0.0-rc.30",
+    "@manygamescorp/core": "1.0.0-rc.30"
+  },
+  "modules": [
+    {
+      "name": "kv",
+      "package": "@manygamescorp/mod-profile-pack",
+      "description": "Per-player key-value storage of JSON values, split by optional scope.",
+      "methods": [
+        {
+          "name": "delete",
+          "description": "Deletes one key.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "key": {
+                "description": "Key of 1-128 characters from `A-Za-z0-9:_-`.",
+                "type": "string"
+              },
+              "options": {
+                "description": "Optional `scope`, abort `signal` and `idempotencyKey` (UUID v4).",
+                "type": "object",
+                "properties": {
+                  "idempotencyKey": {
+                    "description": "Keep this UUID v4 when retrying the same mutation after an uncertain network result.",
+                    "type": "string"
+                  },
+                  "scope": {
+                    "description": "Storage scope: lowercase letter, then lowercase letters, digits, `_` or `-`, up to 32 characters; omitted or `global` selects the shared scope.",
+                    "type": "string"
+                  },
+                  "signal": {
+                    "description": "Aborts the request when triggered.",
+                    "x-type": "AbortSignal"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "key"
+            ]
+          },
+          "returns": {
+            "description": "Resolves when the key is deleted.",
+            "type": "null"
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "Invalid key, scope or idempotency key."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped or the player changed."
+            }
+          ],
+          "example": "await sdk.kv.delete('tutorial');"
+        },
+        {
+          "name": "dispose",
+          "description": "Cancels requests in flight and refuses new ones; the SDK calls it on stop.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "type": "null"
+          },
+          "errors": [],
+          "example": "sdk.kv.dispose();"
+        },
+        {
+          "name": "get",
+          "description": "Reads one key.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "key": {
+                "description": "Key of 1-128 characters from `A-Za-z0-9:_-`, e.g. `settings`.",
+                "type": "string"
+              },
+              "options": {
+                "description": "Optional `scope` and abort `signal`.",
+                "type": "object",
+                "properties": {
+                  "scope": {
+                    "description": "Storage scope: lowercase letter, then lowercase letters, digits, `_` or `-`, up to 32 characters; omitted or `global` selects the shared scope.",
+                    "type": "string"
+                  },
+                  "signal": {
+                    "description": "Aborts the request when triggered.",
+                    "x-type": "AbortSignal"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "key"
+            ]
+          },
+          "returns": {
+            "description": "Player data holding the requested key.",
+            "type": "object",
+            "properties": {
+              "data": {
+                "description": "Stored values by key; JSON values.",
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "x-recursive": "Json"
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": {
+                        "x-recursive": "Json"
+                      }
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ]
+                }
+              },
+              "updatedAt": {
+                "description": "Last change time, ISO 8601 UTC string; `null` when nothing is stored.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "data",
+              "updatedAt"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "Invalid key or scope."
+            },
+            {
+              "code": "PROFILE_PLAYER_DATA_KEY_INVALID",
+              "hint": "The key is refused by the service."
+            },
+            {
+              "code": "PROFILE_PLAYER_DATA_KEY_NOT_FOUND",
+              "hint": "The key is not stored."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped or the player changed."
+            }
+          ],
+          "example": "const { data } = await sdk.kv.get('settings');\nconsole.log(data.settings);"
+        },
+        {
+          "name": "list",
+          "description": "Reads all stored keys of a scope.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "options": {
+                "description": "Optional `scope` and abort `signal`.",
+                "type": "object",
+                "properties": {
+                  "scope": {
+                    "description": "Storage scope: lowercase letter, then lowercase letters, digits, `_` or `-`, up to 32 characters; omitted or `global` selects the shared scope.",
+                    "type": "string"
+                  },
+                  "signal": {
+                    "description": "Aborts the request when triggered.",
+                    "x-type": "AbortSignal"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "returns": {
+            "description": "Player data with all keys.",
+            "type": "object",
+            "properties": {
+              "data": {
+                "description": "Stored values by key; JSON values.",
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "x-recursive": "Json"
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": {
+                        "x-recursive": "Json"
+                      }
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ]
+                }
+              },
+              "updatedAt": {
+                "description": "Last change time, ISO 8601 UTC string; `null` when nothing is stored.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "data",
+              "updatedAt"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "Invalid scope."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped or the player changed."
+            }
+          ],
+          "example": "const { data } = await sdk.kv.list({ scope: 'quests' });"
+        },
+        {
+          "name": "query",
+          "description": "Reads several keys in one request; keys that are not stored are omitted from the result.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "keys": {
+                "description": "1 to 50 keys, each of 1-128 characters from `A-Za-z0-9:_-`.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "options": {
+                "description": "Optional `scope` and abort `signal`.",
+                "type": "object",
+                "properties": {
+                  "scope": {
+                    "description": "Storage scope: lowercase letter, then lowercase letters, digits, `_` or `-`, up to 32 characters; omitted or `global` selects the shared scope.",
+                    "type": "string"
+                  },
+                  "signal": {
+                    "description": "Aborts the request when triggered.",
+                    "x-type": "AbortSignal"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "keys"
+            ]
+          },
+          "returns": {
+            "description": "Player data with the existing keys.",
+            "type": "object",
+            "properties": {
+              "data": {
+                "description": "Stored values by key; JSON values.",
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "x-recursive": "Json"
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": {
+                        "x-recursive": "Json"
+                      }
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ]
+                }
+              },
+              "updatedAt": {
+                "description": "Last change time, ISO 8601 UTC string; `null` when nothing is stored.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "data",
+              "updatedAt"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "Empty or too long list, invalid key or scope."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped or the player changed."
+            }
+          ],
+          "example": "const { data } = await sdk.kv.query(['settings', 'tutorial']);"
+        },
+        {
+          "name": "set",
+          "description": "Writes one key.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "key": {
+                "description": "Key of 1-128 characters from `A-Za-z0-9:_-`, e.g. `settings`.",
+                "type": "string"
+              },
+              "value": {
+                "description": "JSON value: no `undefined`, functions or cycles; object keys must not start with `$` or contain `.`; at most 256 KiB serialized, 6 levels deep.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "x-recursive": "Json"
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": {
+                      "x-recursive": "Json"
+                    }
+                  },
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              },
+              "options": {
+                "description": "Optional `scope`, abort `signal` and `idempotencyKey` (UUID v4).",
+                "type": "object",
+                "properties": {
+                  "idempotencyKey": {
+                    "description": "Keep this UUID v4 when retrying the same mutation after an uncertain network result.",
+                    "type": "string"
+                  },
+                  "scope": {
+                    "description": "Storage scope: lowercase letter, then lowercase letters, digits, `_` or `-`, up to 32 characters; omitted or `global` selects the shared scope.",
+                    "type": "string"
+                  },
+                  "signal": {
+                    "description": "Aborts the request when triggered.",
+                    "x-type": "AbortSignal"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "key",
+              "value"
+            ]
+          },
+          "returns": {
+            "description": "Player data after the write.",
+            "type": "object",
+            "properties": {
+              "data": {
+                "description": "Stored values by key; JSON values.",
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "x-recursive": "Json"
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": {
+                        "x-recursive": "Json"
+                      }
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ]
+                }
+              },
+              "updatedAt": {
+                "description": "Last change time, ISO 8601 UTC string; `null` when nothing is stored.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "data",
+              "updatedAt"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "Invalid key, scope, value or idempotency key."
+            },
+            {
+              "code": "PROFILE_PLAYER_DATA_VALUE_INVALID",
+              "hint": "The service rejected the value."
+            },
+            {
+              "code": "PROFILE_PLAYER_DATA_LIMIT_EXCEEDED",
+              "hint": "Key count or size limit exceeded."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped or the player changed."
+            }
+          ],
+          "example": "await sdk.kv.set('settings', { music: true, volume: 0.8 });"
+        }
+      ],
+      "events": []
+    },
+    {
+      "name": "gamestate",
+      "package": "@manygamescorp/mod-profile-pack",
+      "description": "The current player's cloud save: one versioned JSON document with optional public data, guarded against conflicting writes.",
+      "methods": [
+        {
+          "name": "clear",
+          "description": "Deletes the save.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "options": {
+                "description": "Optional expected `version`, `idempotencyKey` (UUID v4) and `signal`.",
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "description": "Expected current version, integer from 0; when set, a different current version is refused.",
+                    "type": "number"
+                  },
+                  "signal": {
+                    "description": "Aborts the request when triggered.",
+                    "x-type": "AbortSignal"
+                  },
+                  "idempotencyKey": {
+                    "description": "Keep this UUID when retrying the same write after an uncertain network result.",
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "returns": {
+            "description": "New version and write time.",
+            "type": "object",
+            "properties": {
+              "version": {
+                "description": "New save version, positive integer.",
+                "type": "number"
+              },
+              "updatedAt": {
+                "description": "Write time, ISO 8601 UTC string.",
+                "type": "string"
+              },
+              "ts": {
+                "description": "Write time in Unix seconds; deprecated, use `updatedAt`.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "version",
+              "updatedAt",
+              "ts"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "Invalid version or idempotency key."
+            },
+            {
+              "code": "GAME_STATE_VERSION_CONFLICT",
+              "hint": "The save changed since the given `version`."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped or the player changed."
+            }
+          ],
+          "example": "await sdk.gamestate.clear();"
+        },
+        {
+          "name": "dispose",
+          "description": "Cancels requests in flight and refuses new ones; the SDK calls it on stop.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {}
+          },
+          "returns": {
+            "type": "null"
+          },
+          "errors": [],
+          "example": "sdk.gamestate.dispose();"
+        },
+        {
+          "name": "get",
+          "description": "Reads the save.",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "options": {
+                "description": "Optional abort `signal`.",
+                "type": "object",
+                "properties": {
+                  "signal": {
+                    "description": "Aborts the request when triggered.",
+                    "x-type": "AbortSignal"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "returns": {
+            "description": "The save; `version` is 0 when nothing was saved yet.",
+            "type": "object",
+            "properties": {
+              "version": {
+                "description": "Save version, integer from 0; 0 means no save yet.",
+                "type": "number"
+              },
+              "data": {
+                "description": "Save contents: JSON object, at most 1 MiB serialized.",
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "x-recursive": "Json"
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": {
+                        "x-recursive": "Json"
+                      }
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ]
+                }
+              },
+              "publicData": {
+                "description": "Part of the save shown to other players, at most 8 KiB serialized; `null` when not set.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "x-recursive": "Json"
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "additionalProperties": {
+                            "x-recursive": "Json"
+                          }
+                        },
+                        {
+                          "type": "boolean"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "updatedAt": {
+                "description": "Last write time, ISO 8601 UTC string; `null` when nothing was saved.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "ts": {
+                "description": "`updatedAt` in Unix seconds; deprecated, use `updatedAt`.",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "version",
+              "data",
+              "publicData",
+              "updatedAt",
+              "ts"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped or the player changed."
+            }
+          ],
+          "example": "const save = await sdk.gamestate.get();\nconsole.log(save.version, save.data);"
+        },
+        {
+          "name": "set",
+          "description": "Replaces the whole save. A stale `version` is refused with the server save in `details` (`currentVersion`, `data`, `publicData`, `resolution`).",
+          "kind": "method",
+          "params": {
+            "type": "object",
+            "x-positional": true,
+            "properties": {
+              "data": {
+                "description": "Save object: JSON only, at most 1 MiB serialized.",
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "x-recursive": "Json"
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": {
+                        "x-recursive": "Json"
+                      }
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ]
+                }
+              },
+              "options": {
+                "description": "`version` the save replaces (0 for the first save), optional `publicData` (at most 8 KiB serialized), `idempotencyKey` (UUID v4) and `signal`.",
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "description": "Version the save replaces: `get().version`, 0 for the first save.",
+                    "type": "number"
+                  },
+                  "publicData": {
+                    "description": "Shown to other players (≤ 8 KiB); null removes it.",
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": {
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "x-recursive": "Json"
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "additionalProperties": {
+                                "x-recursive": "Json"
+                              }
+                            },
+                            {
+                              "type": "boolean"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "signal": {
+                    "description": "Aborts the request when triggered.",
+                    "x-type": "AbortSignal"
+                  },
+                  "idempotencyKey": {
+                    "description": "Keep this UUID when retrying the same write after an uncertain network result.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "version"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "data",
+              "options"
+            ]
+          },
+          "returns": {
+            "description": "New version and write time.",
+            "type": "object",
+            "properties": {
+              "version": {
+                "description": "New save version, positive integer.",
+                "type": "number"
+              },
+              "updatedAt": {
+                "description": "Write time, ISO 8601 UTC string.",
+                "type": "string"
+              },
+              "ts": {
+                "description": "Write time in Unix seconds; deprecated, use `updatedAt`.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "version",
+              "updatedAt",
+              "ts"
+            ],
+            "additionalProperties": false
+          },
+          "errors": [
+            {
+              "code": "VALIDATION_FAILED",
+              "hint": "Invalid data, version or idempotency key."
+            },
+            {
+              "code": "GAME_STATE_VERSION_CONFLICT",
+              "hint": "The save changed since `version` was read."
+            },
+            {
+              "code": "PROFILE_GAME_STATE_LIMIT_EXCEEDED",
+              "hint": "`data` or `publicData` is over the size limit."
+            },
+            {
+              "code": "MODULE_NOT_ACTIVE",
+              "hint": "The module is stopped or the player changed."
+            }
+          ],
+          "example": "const { version } = await sdk.gamestate.get();\nawait sdk.gamestate.set({ level: 12, coins: 340 }, { version });"
+        }
+      ],
+      "events": []
+    }
+  ],
+  "libraries": []
+}

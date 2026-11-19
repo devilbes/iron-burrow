@@ -1,0 +1,1147 @@
+[
+    {
+        "name": "spec §3.6 first match",
+        "base": {
+            "interstitial": {
+                "levelsPeriod": 3,
+                "skip": [
+                    1,
+                    2
+                ]
+            },
+            "rewardMultiplier": 1.2
+        },
+        "conditionals": [
+            {
+                "label": "ca_android",
+                "filters": {
+                    "$country": "CA",
+                    "$os": "android"
+                },
+                "data": {
+                    "rewardMultiplier": 1.5,
+                    "interstitial": {
+                        "skip": [
+                            5
+                        ]
+                    }
+                }
+            },
+            {
+                "label": "paying",
+                "filters": {
+                    "$segment": {
+                        "$in": [
+                            "paying"
+                        ]
+                    }
+                },
+                "data": {
+                    "interstitial": {
+                        "levelsPeriod": 10
+                    }
+                }
+            },
+            {
+                "label": "no_ads",
+                "filters": {
+                    "$inventory.no_ads": {
+                        "$gt": 0
+                    }
+                },
+                "mode": "replace",
+                "data": {
+                    "interstitial": null
+                }
+            }
+        ],
+        "opts": {
+            "conditionalsMode": "merge"
+        },
+        "facts": {
+            "country": "CA",
+            "os": "android",
+            "segment": [
+                "paying"
+            ],
+            "inventory.no_ads": 1
+        },
+        "expected": {
+            "data": {
+                "interstitial": {
+                    "levelsPeriod": 3,
+                    "skip": [
+                        5
+                    ]
+                },
+                "rewardMultiplier": 1.5
+            },
+            "applied": "ca_android"
+        }
+    },
+    {
+        "name": "spec §3.6 segment",
+        "base": {
+            "interstitial": {
+                "levelsPeriod": 3,
+                "skip": [
+                    1,
+                    2
+                ]
+            },
+            "rewardMultiplier": 1.2
+        },
+        "conditionals": [
+            {
+                "label": "ca_android",
+                "filters": {
+                    "$country": "CA",
+                    "$os": "android"
+                },
+                "data": {
+                    "rewardMultiplier": 1.5,
+                    "interstitial": {
+                        "skip": [
+                            5
+                        ]
+                    }
+                }
+            },
+            {
+                "label": "paying",
+                "filters": {
+                    "$segment": {
+                        "$in": [
+                            "paying"
+                        ]
+                    }
+                },
+                "data": {
+                    "interstitial": {
+                        "levelsPeriod": 10
+                    }
+                }
+            },
+            {
+                "label": "no_ads",
+                "filters": {
+                    "$inventory.no_ads": {
+                        "$gt": 0
+                    }
+                },
+                "mode": "replace",
+                "data": {
+                    "interstitial": null
+                }
+            }
+        ],
+        "opts": {
+            "conditionalsMode": "merge"
+        },
+        "facts": {
+            "country": "US",
+            "os": "android",
+            "segment": [
+                "paying"
+            ]
+        },
+        "expected": {
+            "data": {
+                "interstitial": {
+                    "levelsPeriod": 10,
+                    "skip": [
+                        1,
+                        2
+                    ]
+                },
+                "rewardMultiplier": 1.2
+            },
+            "applied": "paying"
+        }
+    },
+    {
+        "name": "spec §3.6 replace",
+        "base": {
+            "interstitial": {
+                "levelsPeriod": 3,
+                "skip": [
+                    1,
+                    2
+                ]
+            },
+            "rewardMultiplier": 1.2
+        },
+        "conditionals": [
+            {
+                "label": "ca_android",
+                "filters": {
+                    "$country": "CA",
+                    "$os": "android"
+                },
+                "data": {
+                    "rewardMultiplier": 1.5,
+                    "interstitial": {
+                        "skip": [
+                            5
+                        ]
+                    }
+                }
+            },
+            {
+                "label": "paying",
+                "filters": {
+                    "$segment": {
+                        "$in": [
+                            "paying"
+                        ]
+                    }
+                },
+                "data": {
+                    "interstitial": {
+                        "levelsPeriod": 10
+                    }
+                }
+            },
+            {
+                "label": "no_ads",
+                "filters": {
+                    "$inventory.no_ads": {
+                        "$gt": 0
+                    }
+                },
+                "mode": "replace",
+                "data": {
+                    "interstitial": null
+                }
+            }
+        ],
+        "opts": {
+            "conditionalsMode": "merge"
+        },
+        "facts": {
+            "country": "US",
+            "segment": [],
+            "inventory.no_ads": 1
+        },
+        "expected": {
+            "data": {
+                "interstitial": null
+            },
+            "applied": "no_ads"
+        }
+    },
+    {
+        "name": "spec §3.6 no match",
+        "base": {
+            "interstitial": {
+                "levelsPeriod": 3,
+                "skip": [
+                    1,
+                    2
+                ]
+            },
+            "rewardMultiplier": 1.2
+        },
+        "conditionals": [
+            {
+                "label": "ca_android",
+                "filters": {
+                    "$country": "CA",
+                    "$os": "android"
+                },
+                "data": {
+                    "rewardMultiplier": 1.5,
+                    "interstitial": {
+                        "skip": [
+                            5
+                        ]
+                    }
+                }
+            },
+            {
+                "label": "paying",
+                "filters": {
+                    "$segment": {
+                        "$in": [
+                            "paying"
+                        ]
+                    }
+                },
+                "data": {
+                    "interstitial": {
+                        "levelsPeriod": 10
+                    }
+                }
+            },
+            {
+                "label": "no_ads",
+                "filters": {
+                    "$inventory.no_ads": {
+                        "$gt": 0
+                    }
+                },
+                "mode": "replace",
+                "data": {
+                    "interstitial": null
+                }
+            }
+        ],
+        "opts": {
+            "conditionalsMode": "merge"
+        },
+        "facts": {
+            "country": "US",
+            "segment": [
+                "tier1"
+            ]
+        },
+        "expected": {
+            "data": {
+                "interstitial": {
+                    "levelsPeriod": 3,
+                    "skip": [
+                        1,
+                        2
+                    ]
+                },
+                "rewardMultiplier": 1.2
+            },
+            "applied": null
+        }
+    },
+    {
+        "name": "empty conditionals",
+        "base": {
+            "a": 1
+        },
+        "conditionals": [],
+        "facts": {},
+        "expected": {
+            "data": {
+                "a": 1
+            },
+            "applied": null
+        }
+    },
+    {
+        "name": "first match only",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "one",
+                "filters": {},
+                "data": {
+                    "a": 2
+                }
+            },
+            {
+                "label": "two",
+                "filters": {},
+                "data": {
+                    "a": 3,
+                    "b": 1
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 2
+            },
+            "applied": "one"
+        }
+    },
+    {
+        "name": "skips non-matching",
+        "base": {
+            "a": 1
+        },
+        "facts": {
+            "custom.level": 5
+        },
+        "conditionals": [
+            {
+                "label": "high",
+                "filters": {
+                    "level": {
+                        "$gte": 10
+                    }
+                },
+                "data": {
+                    "a": 2
+                }
+            },
+            {
+                "label": "low",
+                "filters": {
+                    "level": {
+                        "$lt": 10
+                    }
+                },
+                "data": {
+                    "a": 3
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 3
+            },
+            "applied": "low"
+        }
+    },
+    {
+        "name": "applied index without label",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "never",
+                "filters": {
+                    "x": 1
+                },
+                "data": {
+                    "a": 2
+                }
+            },
+            {
+                "filters": {},
+                "data": {
+                    "a": 3
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 3
+            },
+            "applied": "#1"
+        }
+    },
+    {
+        "name": "merge nested objects",
+        "base": {
+            "a": {
+                "b": 1,
+                "c": {
+                    "d": 1,
+                    "e": 2
+                }
+            },
+            "f": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "m",
+                "filters": {},
+                "data": {
+                    "a": {
+                        "c": {
+                            "e": 3,
+                            "g": 4
+                        }
+                    }
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": {
+                    "b": 1,
+                    "c": {
+                        "d": 1,
+                        "e": 3,
+                        "g": 4
+                    }
+                },
+                "f": 1
+            },
+            "applied": "m"
+        }
+    },
+    {
+        "name": "merge replaces arrays",
+        "base": {
+            "a": [
+                1,
+                2,
+                3
+            ]
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "m",
+                "filters": {},
+                "data": {
+                    "a": [
+                        4
+                    ]
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": [
+                    4
+                ]
+            },
+            "applied": "m"
+        }
+    },
+    {
+        "name": "merge object over scalar",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "m",
+                "filters": {},
+                "data": {
+                    "a": {
+                        "b": 1
+                    }
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": {
+                    "b": 1
+                }
+            },
+            "applied": "m"
+        }
+    },
+    {
+        "name": "merge scalar over object",
+        "base": {
+            "a": {
+                "b": 1
+            }
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "m",
+                "filters": {},
+                "data": {
+                    "a": "x"
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": "x"
+            },
+            "applied": "m"
+        }
+    },
+    {
+        "name": "merge null deletes key",
+        "base": {
+            "a": {
+                "b": 1,
+                "c": 2
+            },
+            "d": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "m",
+                "filters": {},
+                "data": {
+                    "a": {
+                        "b": null
+                    },
+                    "d": null
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": {
+                    "c": 2
+                }
+            },
+            "applied": "m"
+        }
+    },
+    {
+        "name": "merge null for missing key",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "m",
+                "filters": {},
+                "data": {
+                    "b": null
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 1
+            },
+            "applied": "m"
+        }
+    },
+    {
+        "name": "merge null inside new object",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "m",
+                "filters": {},
+                "data": {
+                    "b": {
+                        "c": null,
+                        "d": 1
+                    }
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 1,
+                "b": {
+                    "d": 1
+                }
+            },
+            "applied": "m"
+        }
+    },
+    {
+        "name": "merge object over scalar base",
+        "base": 5,
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "m",
+                "filters": {},
+                "data": {
+                    "a": 1,
+                    "b": null
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 1
+            },
+            "applied": "m"
+        }
+    },
+    {
+        "name": "merge scalar data",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "m",
+                "filters": {},
+                "data": 7
+            }
+        ],
+        "expected": {
+            "data": 7,
+            "applied": "m"
+        }
+    },
+    {
+        "name": "replace keeps data verbatim",
+        "base": {
+            "a": 1,
+            "b": {
+                "c": 1
+            }
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "r",
+                "filters": {},
+                "mode": "replace",
+                "data": {
+                    "b": null
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "b": null
+            },
+            "applied": "r"
+        }
+    },
+    {
+        "name": "conditionalsMode replace",
+        "base": {
+            "a": 1,
+            "b": 2
+        },
+        "facts": {},
+        "opts": {
+            "conditionalsMode": "replace"
+        },
+        "conditionals": [
+            {
+                "label": "r",
+                "filters": {},
+                "data": {
+                    "a": 3
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 3
+            },
+            "applied": "r"
+        }
+    },
+    {
+        "name": "conditional mode overrides record",
+        "base": {
+            "a": 1,
+            "b": 2
+        },
+        "facts": {},
+        "opts": {
+            "conditionalsMode": "replace"
+        },
+        "conditionals": [
+            {
+                "label": "m",
+                "filters": {},
+                "mode": "merge",
+                "data": {
+                    "a": 3
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 3,
+                "b": 2
+            },
+            "applied": "m"
+        }
+    },
+    {
+        "name": "server side skipped by default",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "s",
+                "side": "server",
+                "filters": {},
+                "data": {
+                    "a": 2
+                }
+            },
+            {
+                "label": "c",
+                "filters": {},
+                "data": {
+                    "a": 3
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 3
+            },
+            "applied": "c"
+        }
+    },
+    {
+        "name": "sides server",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "opts": {
+            "sides": [
+                "server"
+            ]
+        },
+        "conditionals": [
+            {
+                "label": "s",
+                "side": "server",
+                "filters": {},
+                "data": {
+                    "a": 2
+                }
+            },
+            {
+                "label": "c",
+                "side": "client",
+                "filters": {},
+                "data": {
+                    "a": 3
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 2
+            },
+            "applied": "s"
+        }
+    },
+    {
+        "name": "sides server skips default client",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "opts": {
+            "sides": [
+                "server"
+            ]
+        },
+        "conditionals": [
+            {
+                "label": "c",
+                "filters": {},
+                "data": {
+                    "a": 3
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 1
+            },
+            "applied": null
+        }
+    },
+    {
+        "name": "sides empty",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "opts": {
+            "sides": []
+        },
+        "conditionals": [
+            {
+                "label": "c",
+                "filters": {},
+                "data": {
+                    "a": 3
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 1
+            },
+            "applied": null
+        }
+    },
+    {
+        "name": "invalid filter never applies",
+        "base": {
+            "a": 1
+        },
+        "facts": {
+            "custom.x": "a"
+        },
+        "conditionals": [
+            {
+                "label": "bad",
+                "filters": {
+                    "x": {
+                        "$regex": "a"
+                    }
+                },
+                "data": {
+                    "a": 2
+                }
+            },
+            {
+                "label": "unknown native",
+                "filters": {
+                    "$x": 1
+                },
+                "data": {
+                    "a": 4
+                }
+            },
+            {
+                "label": "ok",
+                "filters": {},
+                "data": {
+                    "a": 3
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 3
+            },
+            "applied": "ok"
+        }
+    },
+    {
+        "name": "malformed conditional never applies",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "mode",
+                "filters": {},
+                "mode": "patch",
+                "data": {
+                    "a": 2
+                }
+            },
+            {
+                "label": "side",
+                "filters": {},
+                "side": "edge",
+                "data": {
+                    "a": 2
+                }
+            },
+            {
+                "label": "no data",
+                "filters": {}
+            },
+            {
+                "label": "no filters",
+                "data": {
+                    "a": 2
+                }
+            },
+            {
+                "label": 5,
+                "filters": {},
+                "data": {
+                    "a": 2
+                }
+            },
+            null,
+            "x",
+            {
+                "label": "ok",
+                "filters": {},
+                "data": {
+                    "a": 3
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 3
+            },
+            "applied": "ok"
+        }
+    },
+    {
+        "name": "native and custom facts",
+        "base": {
+            "bonus": 0
+        },
+        "facts": {
+            "country": "US",
+            "custom.level": 12
+        },
+        "conditionals": [
+            {
+                "label": "us_veteran",
+                "filters": {
+                    "$and": [
+                        {
+                            "$country": "US"
+                        },
+                        {
+                            "level": {
+                                "$gte": 10
+                            }
+                        }
+                    ]
+                },
+                "data": {
+                    "bonus": 5
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "bonus": 5
+            },
+            "applied": "us_veteran"
+        }
+    },
+    {
+        "name": "uid rollout bucket",
+        "base": {
+            "feature": false
+        },
+        "facts": {
+            "uid": 1042
+        },
+        "conditionals": [
+            {
+                "label": "rollout_10",
+                "filters": {
+                    "$uid": {
+                        "$mod": [
+                            100,
+                            42
+                        ]
+                    }
+                },
+                "data": {
+                    "feature": true
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "feature": true
+            },
+            "applied": "rollout_10"
+        }
+    },
+    {
+        "name": "disabled first, next applies",
+        "base": {
+            "a": 1,
+            "b": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "off",
+                "enabled": false,
+                "filters": {},
+                "data": {
+                    "a": 2
+                }
+            },
+            {
+                "label": "on",
+                "filters": {},
+                "data": {
+                    "b": 2
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 1,
+                "b": 2
+            },
+            "applied": "on"
+        }
+    },
+    {
+        "name": "all disabled gives base",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "label": "off1",
+                "enabled": false,
+                "filters": {},
+                "data": {
+                    "a": 2
+                }
+            },
+            {
+                "enabled": false,
+                "mode": "replace",
+                "filters": {},
+                "data": {
+                    "a": 3
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 1
+            },
+            "applied": null
+        }
+    },
+    {
+        "name": "enabled true applies, index counts disabled",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "enabled": false,
+                "filters": {},
+                "data": {
+                    "a": 2
+                }
+            },
+            {
+                "enabled": true,
+                "filters": {},
+                "data": {
+                    "a": 3
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 3
+            },
+            "applied": "#1"
+        }
+    },
+    {
+        "name": "non-boolean enabled never applies",
+        "base": {
+            "a": 1
+        },
+        "facts": {},
+        "conditionals": [
+            {
+                "enabled": "no",
+                "filters": {},
+                "data": {
+                    "a": 2
+                }
+            }
+        ],
+        "expected": {
+            "data": {
+                "a": 1
+            },
+            "applied": null
+        }
+    }
+]

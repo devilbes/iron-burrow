@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI.GAMES skin.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "version",
+    "kind",
+    "compat",
+    "integrity"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,63}$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "kind": {
+      "const": "skin"
+    },
+    "extends": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,63}$"
+    },
+    "compat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ui-kit"
+      ],
+      "properties": {
+        "ui-kit": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^--[a-z][a-z0-9-]{0,63}$"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "maxLength": 512
+      }
+    },
+    "integrity": {
+      "const": "integrity.json"
+    },
+    "closePosition": {
+      "enum": [
+        "head-right",
+        "head-left",
+        "corner-out"
+      ]
+    },
+    "displayTitle": {
+      "oneOf": [
+        {
+          "const": true
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "arc": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 48
+            },
+            "windows": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "fonts": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "family",
+          "url"
+        ],
+        "properties": {
+          "family": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9 _-]{0,63}$"
+          },
+          "url": {
+            "$ref": "#/$defs/path"
+          },
+          "weight": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "style": {
+            "enum": [
+              "normal",
+              "italic"
+            ]
+          },
+          "unicodeRange": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "overrides": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^window:[a-z][a-z0-9.-]*:[a-z][a-z0-9.-]*$": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "component",
+            "template"
+          ],
+          "properties": {
+            "component": {
+              "type": "string"
+            },
+            "template": {
+              "$ref": "#/$defs/path"
+            },
+            "css": {
+              "$ref": "#/$defs/path"
+            }
+          }
+        },
+        "^(component|slot):.+$": {
+          "$ref": "#/$defs/path"
+        },
+        "^(icon|asset):.+$": {
+          "$ref": "#/$defs/asset"
+        }
+      }
+    },
+    "locales": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/path"
+      }
+    }
+  },
+  "$defs": {
+    "path": {
+      "type": "string",
+      "maxLength": 256,
+      "pattern": "^[a-zA-Z0-9_-]+(?:/[a-zA-Z0-9_.-]+)*\\.[a-zA-Z0-9]+$"
+    },
+    "asset": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/path"
+        },
+        {
+          "type": "string",
+          "maxLength": 320,
+          "pattern": "^[a-zA-Z0-9_-]+(?:/[a-zA-Z0-9_.-]+)*\\.png#sprite=(?:0|[1-9][0-9]{0,4})(?:,(?:0|[1-9][0-9]{0,4})){5}$"
+        }
+      ]
+    }
+  },
+  "$comment": "The runtime also validates registered keys, file extensions, safe paths, font weights, tokens and templates. Compatibility and SHA-256 checks run during loading."
+}

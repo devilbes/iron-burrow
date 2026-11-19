@@ -1,0 +1,612 @@
+[
+    {
+        "name": "newest compatible web module and UI Kit; deprecated and wrong engine excluded",
+        "coreVersion": "1.0.0",
+        "targets": [
+            "web"
+        ],
+        "registry": [
+            {
+                "id": "ui-kit",
+                "package": "@manygamescorp/ui-kit",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web",
+                    "cordova"
+                ],
+                "kind": "ui-kit",
+                "state": "published"
+            },
+            {
+                "id": "build-kit-web",
+                "package": "@manygamescorp/build-kit-web",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web"
+                ],
+                "kind": "build-kit",
+                "state": "published"
+            },
+            {
+                "id": "platform-web",
+                "package": "@manygamescorp/platform-web",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web"
+                ],
+                "kind": "adapter",
+                "state": "published"
+            },
+            {
+                "id": "ui-kit",
+                "package": "@manygamescorp/ui-kit",
+                "version": "1.1.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web",
+                    "cordova"
+                ],
+                "kind": "ui-kit",
+                "state": "published"
+            },
+            {
+                "id": "ui-kit",
+                "package": "@manygamescorp/ui-kit",
+                "version": "2.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web"
+                ],
+                "kind": "ui-kit",
+                "state": "deprecated"
+            },
+            {
+                "id": "mod-shop",
+                "package": "@manygamescorp/mod-shop",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web"
+                ],
+                "kind": "module",
+                "state": "published"
+            },
+            {
+                "id": "mod-shop",
+                "package": "@manygamescorp/mod-shop",
+                "version": "1.2.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web"
+                ],
+                "kind": "module",
+                "state": "published"
+            },
+            {
+                "id": "mod-shop",
+                "package": "@manygamescorp/mod-shop",
+                "version": "3.0.0",
+                "engines": {
+                    "core": "^3.0.0"
+                },
+                "targets": [
+                    "web"
+                ],
+                "kind": "module",
+                "state": "published"
+            },
+            {
+                "id": "skin-test",
+                "package": "@manygamescorp/skin-test",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web",
+                    "cordova"
+                ],
+                "kind": "skin",
+                "state": "published"
+            },
+            {
+                "id": "skin-test",
+                "package": "@manygamescorp/skin-test",
+                "version": "1.2.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web",
+                    "cordova"
+                ],
+                "kind": "skin",
+                "state": "published"
+            }
+        ],
+        "expected": {
+            "uiKit": {
+                "package": "@manygamescorp/ui-kit",
+                "version": "1.1.0"
+            },
+            "buildKit": {
+                "web": {
+                    "package": "@manygamescorp/build-kit-web",
+                    "version": "1.0.0"
+                }
+            },
+            "adapters": {
+                "web": {
+                    "package": "@manygamescorp/platform-web",
+                    "version": "1.0.0"
+                }
+            },
+            "modules": [
+                {
+                    "package": "@manygamescorp/mod-shop",
+                    "version": "1.2.0"
+                }
+            ],
+            "errors": [],
+            "skins": [
+                {
+                    "package": "@manygamescorp/skin-test",
+                    "version": "1.2.0"
+                }
+            ]
+        },
+        "targetAdapters": {
+            "web": {
+                "build": {
+                    "target": "web"
+                },
+                "buildKit": "@manygamescorp/build-kit-web",
+                "adapter": "@manygamescorp/platform-web"
+            },
+            "android": {
+                "build": {
+                    "target": "cordova",
+                    "store": "google_play"
+                },
+                "buildKit": "@manygamescorp/build-kit-cordova",
+                "adapter": "@manygamescorp/platform-cordova",
+                "modules": [
+                    "@manygamescorp/mod-iap-google-play"
+                ]
+            },
+            "ios": {
+                "build": {
+                    "target": "cordova",
+                    "store": "app_store"
+                },
+                "buildKit": "@manygamescorp/build-kit-cordova",
+                "adapter": "@manygamescorp/platform-cordova",
+                "modules": [
+                    "@manygamescorp/mod-iap-app-store"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Android requires the store adapter and Cordova kits",
+        "coreVersion": "1.0.0",
+        "targets": [
+            "android"
+        ],
+        "registry": [
+            {
+                "id": "ui-kit",
+                "package": "@manygamescorp/ui-kit",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web",
+                    "cordova"
+                ],
+                "kind": "ui-kit",
+                "state": "published"
+            },
+            {
+                "id": "build-kit-cordova",
+                "package": "@manygamescorp/build-kit-cordova",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "cordova"
+                ],
+                "kind": "build-kit",
+                "state": "published"
+            },
+            {
+                "id": "platform-cordova",
+                "package": "@manygamescorp/platform-cordova",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "cordova"
+                ],
+                "kind": "adapter",
+                "state": "published"
+            },
+            {
+                "id": "mod-iap-google-play",
+                "package": "@manygamescorp/mod-iap-google-play",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "cordova"
+                ],
+                "kind": "module",
+                "state": "published",
+                "stores": [
+                    "google_play"
+                ]
+            }
+        ],
+        "expected": {
+            "uiKit": {
+                "package": "@manygamescorp/ui-kit",
+                "version": "1.0.0"
+            },
+            "buildKit": {
+                "android": {
+                    "package": "@manygamescorp/build-kit-cordova",
+                    "version": "1.0.0"
+                }
+            },
+            "adapters": {
+                "android": {
+                    "package": "@manygamescorp/platform-cordova",
+                    "version": "1.0.0"
+                }
+            },
+            "modules": [
+                {
+                    "package": "@manygamescorp/mod-iap-google-play",
+                    "version": "1.0.0"
+                }
+            ],
+            "errors": [],
+            "skins": []
+        },
+        "targetAdapters": {
+            "web": {
+                "build": {
+                    "target": "web"
+                },
+                "buildKit": "@manygamescorp/build-kit-web",
+                "adapter": "@manygamescorp/platform-web"
+            },
+            "android": {
+                "build": {
+                    "target": "cordova",
+                    "store": "google_play"
+                },
+                "buildKit": "@manygamescorp/build-kit-cordova",
+                "adapter": "@manygamescorp/platform-cordova",
+                "modules": [
+                    "@manygamescorp/mod-iap-google-play"
+                ]
+            },
+            "ios": {
+                "build": {
+                    "target": "cordova",
+                    "store": "app_store"
+                },
+                "buildKit": "@manygamescorp/build-kit-cordova",
+                "adapter": "@manygamescorp/platform-cordova",
+                "modules": [
+                    "@manygamescorp/mod-iap-app-store"
+                ]
+            }
+        }
+    },
+    {
+        "name": "duplicate target is invalid",
+        "coreVersion": "1.0.0",
+        "targets": [
+            "web",
+            "web"
+        ],
+        "registry": [
+            {
+                "id": "ui-kit",
+                "package": "@manygamescorp/ui-kit",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web",
+                    "cordova"
+                ],
+                "kind": "ui-kit",
+                "state": "published"
+            },
+            {
+                "id": "build-kit-web",
+                "package": "@manygamescorp/build-kit-web",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web"
+                ],
+                "kind": "build-kit",
+                "state": "published"
+            },
+            {
+                "id": "platform-web",
+                "package": "@manygamescorp/platform-web",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web"
+                ],
+                "kind": "adapter",
+                "state": "published"
+            }
+        ],
+        "expected": {
+            "uiKit": null,
+            "buildKit": {},
+            "adapters": {},
+            "modules": [],
+            "errors": [
+                {
+                    "code": "SDK_RESOLVE_FAILED",
+                    "package": "targets"
+                }
+            ],
+            "skins": []
+        },
+        "targetAdapters": {
+            "web": {
+                "build": {
+                    "target": "web"
+                },
+                "buildKit": "@manygamescorp/build-kit-web",
+                "adapter": "@manygamescorp/platform-web"
+            },
+            "android": {
+                "build": {
+                    "target": "cordova",
+                    "store": "google_play"
+                },
+                "buildKit": "@manygamescorp/build-kit-cordova",
+                "adapter": "@manygamescorp/platform-cordova",
+                "modules": [
+                    "@manygamescorp/mod-iap-google-play"
+                ]
+            },
+            "ios": {
+                "build": {
+                    "target": "cordova",
+                    "store": "app_store"
+                },
+                "buildKit": "@manygamescorp/build-kit-cordova",
+                "adapter": "@manygamescorp/platform-cordova",
+                "modules": [
+                    "@manygamescorp/mod-iap-app-store"
+                ]
+            }
+        }
+    },
+    {
+        "name": "a shared skin must support all selected targets",
+        "coreVersion": "1.0.0",
+        "targets": [
+            "web",
+            "android"
+        ],
+        "registry": [
+            {
+                "id": "ui-kit",
+                "package": "@manygamescorp/ui-kit",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web",
+                    "cordova"
+                ],
+                "kind": "ui-kit",
+                "state": "published"
+            },
+            {
+                "id": "build-kit-cordova",
+                "package": "@manygamescorp/build-kit-cordova",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "cordova"
+                ],
+                "kind": "build-kit",
+                "state": "published"
+            },
+            {
+                "id": "platform-cordova",
+                "package": "@manygamescorp/platform-cordova",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "cordova"
+                ],
+                "kind": "adapter",
+                "state": "published"
+            },
+            {
+                "id": "mod-iap-google-play",
+                "package": "@manygamescorp/mod-iap-google-play",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "cordova"
+                ],
+                "kind": "module",
+                "state": "published",
+                "stores": [
+                    "google_play"
+                ]
+            },
+            {
+                "id": "build-kit-web",
+                "package": "@manygamescorp/build-kit-web",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web"
+                ],
+                "kind": "build-kit",
+                "state": "published"
+            },
+            {
+                "id": "platform-web",
+                "package": "@manygamescorp/platform-web",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web"
+                ],
+                "kind": "adapter",
+                "state": "published"
+            },
+            {
+                "id": "skin-test",
+                "package": "@manygamescorp/skin-test",
+                "version": "1.0.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web",
+                    "cordova"
+                ],
+                "kind": "skin",
+                "state": "published"
+            },
+            {
+                "id": "skin-test",
+                "package": "@manygamescorp/skin-test",
+                "version": "1.3.0",
+                "engines": {
+                    "core": "^1.0.0"
+                },
+                "targets": [
+                    "web"
+                ],
+                "kind": "skin",
+                "state": "published"
+            }
+        ],
+        "expected": {
+            "uiKit": {
+                "package": "@manygamescorp/ui-kit",
+                "version": "1.0.0"
+            },
+            "buildKit": {
+                "web": {
+                    "package": "@manygamescorp/build-kit-web",
+                    "version": "1.0.0"
+                },
+                "android": {
+                    "package": "@manygamescorp/build-kit-cordova",
+                    "version": "1.0.0"
+                }
+            },
+            "adapters": {
+                "web": {
+                    "package": "@manygamescorp/platform-web",
+                    "version": "1.0.0"
+                },
+                "android": {
+                    "package": "@manygamescorp/platform-cordova",
+                    "version": "1.0.0"
+                }
+            },
+            "modules": [
+                {
+                    "package": "@manygamescorp/mod-iap-google-play",
+                    "version": "1.0.0"
+                }
+            ],
+            "errors": [],
+            "skins": [
+                {
+                    "package": "@manygamescorp/skin-test",
+                    "version": "1.0.0"
+                }
+            ]
+        },
+        "targetAdapters": {
+            "web": {
+                "build": {
+                    "target": "web"
+                },
+                "buildKit": "@manygamescorp/build-kit-web",
+                "adapter": "@manygamescorp/platform-web"
+            },
+            "android": {
+                "build": {
+                    "target": "cordova",
+                    "store": "google_play"
+                },
+                "buildKit": "@manygamescorp/build-kit-cordova",
+                "adapter": "@manygamescorp/platform-cordova",
+                "modules": [
+                    "@manygamescorp/mod-iap-google-play"
+                ]
+            },
+            "ios": {
+                "build": {
+                    "target": "cordova",
+                    "store": "app_store"
+                },
+                "buildKit": "@manygamescorp/build-kit-cordova",
+                "adapter": "@manygamescorp/platform-cordova",
+                "modules": [
+                    "@manygamescorp/mod-iap-app-store"
+                ]
+            }
+        }
+    }
+]

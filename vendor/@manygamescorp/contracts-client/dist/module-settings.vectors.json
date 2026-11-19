@@ -1,0 +1,965 @@
+{
+    "schema": {
+        "schemaVersion": 1,
+        "fields": [
+            {
+                "key": "enabled",
+                "type": "boolean",
+                "label": {
+                    "ru": "Enabled",
+                    "en": "Enabled"
+                },
+                "default": true
+            },
+            {
+                "key": "entry",
+                "type": "enum",
+                "label": {
+                    "ru": "Entry",
+                    "en": "Entry"
+                },
+                "default": "menu",
+                "options": [
+                    {
+                        "value": "menu",
+                        "label": {
+                            "ru": "menu",
+                            "en": "menu"
+                        }
+                    },
+                    {
+                        "value": "hud",
+                        "label": {
+                            "ru": "hud",
+                            "en": "hud"
+                        }
+                    }
+                ]
+            },
+            {
+                "key": "count",
+                "type": "integer",
+                "label": {
+                    "ru": "Count",
+                    "en": "Count"
+                },
+                "min": 0,
+                "max": 10,
+                "step": 2,
+                "default": 2
+            },
+            {
+                "key": "name",
+                "type": "string",
+                "label": {
+                    "ru": "Name",
+                    "en": "Name"
+                },
+                "maxLength": 10,
+                "pattern": "^[a-z]+$",
+                "default": "daily"
+            },
+            {
+                "key": "color",
+                "type": "color",
+                "label": {
+                    "ru": "Color",
+                    "en": "Color"
+                },
+                "default": "#abcdef"
+            },
+            {
+                "key": "corner",
+                "type": "enum",
+                "label": {
+                    "ru": "Corner",
+                    "en": "Corner"
+                },
+                "default": "right",
+                "options": [
+                    {
+                        "value": "left",
+                        "label": {
+                            "ru": "left",
+                            "en": "left"
+                        }
+                    },
+                    {
+                        "value": "right",
+                        "label": {
+                            "ru": "right",
+                            "en": "right"
+                        }
+                    }
+                ],
+                "visibleIf": {
+                    "entry": "hud"
+                }
+            },
+            {
+                "key": "icon",
+                "type": "image",
+                "label": {
+                    "ru": "Icon",
+                    "en": "Icon"
+                },
+                "accept": [
+                    "image/png"
+                ],
+                "maxBytes": 262144,
+                "size": {
+                    "min": 96,
+                    "max": 512,
+                    "square": true
+                }
+            }
+        ]
+    },
+    "cases": [
+        {
+            "name": "defaults",
+            "input": {},
+            "errors": [],
+            "value": {
+                "enabled": true,
+                "entry": "menu",
+                "count": 2,
+                "name": "daily",
+                "color": "#abcdef",
+                "icon": null
+            }
+        },
+        {
+            "name": "visible",
+            "input": {
+                "entry": "hud",
+                "corner": "left"
+            },
+            "errors": []
+        },
+        {
+            "name": "hidden",
+            "input": {
+                "corner": "left"
+            },
+            "errors": []
+        },
+        {
+            "name": "image",
+            "input": {
+                "icon": "skin:chest_gold"
+            },
+            "errors": []
+        },
+        {
+            "name": "unknown",
+            "input": {
+                "surprise": true
+            },
+            "errors": [
+                {
+                    "path": "surprise",
+                    "code": "UNKNOWN_KEY"
+                }
+            ]
+        },
+        {
+            "name": "boolean",
+            "input": {
+                "enabled": 1
+            },
+            "errors": [
+                {
+                    "path": "enabled",
+                    "code": "TYPE"
+                }
+            ]
+        },
+        {
+            "name": "option",
+            "input": {
+                "entry": "side"
+            },
+            "errors": [
+                {
+                    "path": "entry",
+                    "code": "OPTION"
+                }
+            ]
+        },
+        {
+            "name": "integer",
+            "input": {
+                "count": 1.1
+            },
+            "errors": [
+                {
+                    "path": "count",
+                    "code": "TYPE"
+                }
+            ]
+        },
+        {
+            "name": "range",
+            "input": {
+                "count": 12
+            },
+            "errors": [
+                {
+                    "path": "count",
+                    "code": "RANGE"
+                }
+            ]
+        },
+        {
+            "name": "step",
+            "input": {
+                "count": 3
+            },
+            "errors": [
+                {
+                    "path": "count",
+                    "code": "RANGE"
+                }
+            ]
+        },
+        {
+            "name": "pattern",
+            "input": {
+                "name": "ABC"
+            },
+            "errors": [
+                {
+                    "path": "name",
+                    "code": "PATTERN"
+                }
+            ]
+        },
+        {
+            "name": "control",
+            "input": {
+                "name": "a\u0000"
+            },
+            "errors": [
+                {
+                    "path": "name",
+                    "code": "PATTERN"
+                }
+            ]
+        },
+        {
+            "name": "length",
+            "input": {
+                "name": "abcdefghijkl"
+            },
+            "errors": [
+                {
+                    "path": "name",
+                    "code": "RANGE"
+                }
+            ]
+        },
+        {
+            "name": "color",
+            "input": {
+                "color": "#ABCDEF"
+            },
+            "errors": [
+                {
+                    "path": "color",
+                    "code": "PATTERN"
+                }
+            ]
+        },
+        {
+            "name": "prototype",
+            "input": {
+                "__proto__": {}
+            },
+            "errors": [
+                {
+                    "path": "__proto__",
+                    "code": "UNKNOWN_KEY"
+                }
+            ]
+        },
+        {
+            "name": "dollar",
+            "input": {
+                "$x": 1
+            },
+            "errors": [
+                {
+                    "path": "$x",
+                    "code": "UNKNOWN_KEY"
+                }
+            ]
+        },
+        {
+            "name": "dot",
+            "input": {
+                "a.b": 1
+            },
+            "errors": [
+                {
+                    "path": "a.b",
+                    "code": "UNKNOWN_KEY"
+                }
+            ]
+        },
+        {
+            "name": "traversal",
+            "input": {
+                "icon": {
+                    "file": "../icon.png",
+                    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "bytes": 100,
+                    "width": 256,
+                    "height": 256,
+                    "contentType": "image/png"
+                }
+            },
+            "errors": [
+                {
+                    "path": "icon",
+                    "code": "ASSET_INVALID"
+                }
+            ]
+        },
+        {
+            "name": "hash",
+            "input": {
+                "icon": {
+                    "file": "sdk-modules/daily-rewards/icon-aaaaaaaaaaaa.png",
+                    "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                    "bytes": 100,
+                    "width": 256,
+                    "height": 256,
+                    "contentType": "image/png"
+                }
+            },
+            "errors": [
+                {
+                    "path": "icon",
+                    "code": "ASSET_INVALID"
+                }
+            ]
+        },
+        {
+            "name": "svg",
+            "input": {
+                "icon": {
+                    "file": "sdk-modules/daily-rewards/icon-aaaaaaaaaaaa.png",
+                    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "bytes": 100,
+                    "width": 256,
+                    "height": 256,
+                    "contentType": "image/svg+xml"
+                }
+            },
+            "errors": [
+                {
+                    "path": "icon",
+                    "code": "ASSET_INVALID"
+                }
+            ]
+        },
+        {
+            "name": "bytes",
+            "input": {
+                "icon": {
+                    "file": "sdk-modules/daily-rewards/icon-aaaaaaaaaaaa.png",
+                    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "bytes": 262145,
+                    "width": 256,
+                    "height": 256,
+                    "contentType": "image/png"
+                }
+            },
+            "errors": [
+                {
+                    "path": "icon",
+                    "code": "ASSET_INVALID"
+                }
+            ]
+        },
+        {
+            "name": "size",
+            "input": {
+                "icon": {
+                    "file": "sdk-modules/daily-rewards/icon-aaaaaaaaaaaa.png",
+                    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "bytes": 100,
+                    "width": 95,
+                    "height": 256,
+                    "contentType": "image/png"
+                }
+            },
+            "errors": [
+                {
+                    "path": "icon",
+                    "code": "ASSET_INVALID"
+                }
+            ]
+        },
+        {
+            "name": "square",
+            "input": {
+                "icon": {
+                    "file": "sdk-modules/daily-rewards/icon-aaaaaaaaaaaa.png",
+                    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "bytes": 100,
+                    "width": 256,
+                    "height": 128,
+                    "contentType": "image/png"
+                }
+            },
+            "errors": [
+                {
+                    "path": "icon",
+                    "code": "ASSET_INVALID"
+                }
+            ]
+        },
+        {
+            "name": "url",
+            "input": {
+                "icon": {
+                    "file": "https://evil.test/icon.png",
+                    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "bytes": 100,
+                    "width": 256,
+                    "height": 256,
+                    "contentType": "image/png"
+                }
+            },
+            "errors": [
+                {
+                    "path": "icon",
+                    "code": "ASSET_INVALID"
+                }
+            ]
+        },
+        {
+            "name": "too-large",
+            "input": {
+                "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "errors": [
+                {
+                    "path": "",
+                    "code": "TOO_LARGE"
+                },
+                {
+                    "path": "name",
+                    "code": "RANGE"
+                }
+            ]
+        }
+    ],
+    "overrideSchema": {
+        "schemaVersion": 1,
+        "fields": [
+            {
+                "key": "enabled",
+                "type": "boolean",
+                "label": {
+                    "ru": "Enabled",
+                    "en": "Enabled"
+                },
+                "default": true
+            },
+            {
+                "key": "entry",
+                "type": "enum",
+                "label": {
+                    "ru": "Entry",
+                    "en": "Entry"
+                },
+                "default": "menu",
+                "options": [
+                    {
+                        "value": "menu",
+                        "label": {
+                            "ru": "menu",
+                            "en": "menu"
+                        }
+                    },
+                    {
+                        "value": "hud",
+                        "label": {
+                            "ru": "hud",
+                            "en": "hud"
+                        }
+                    }
+                ]
+            },
+            {
+                "key": "count",
+                "type": "integer",
+                "label": {
+                    "ru": "Count",
+                    "en": "Count"
+                },
+                "min": 0,
+                "max": 10,
+                "step": 2,
+                "default": 2,
+                "overridable": false
+            },
+            {
+                "key": "name",
+                "type": "string",
+                "label": {
+                    "ru": "Name",
+                    "en": "Name"
+                },
+                "maxLength": 10,
+                "pattern": "^[a-z]+$",
+                "default": "daily"
+            },
+            {
+                "key": "color",
+                "type": "color",
+                "label": {
+                    "ru": "Color",
+                    "en": "Color"
+                },
+                "default": "#abcdef"
+            },
+            {
+                "key": "corner",
+                "type": "enum",
+                "label": {
+                    "ru": "Corner",
+                    "en": "Corner"
+                },
+                "default": "right",
+                "options": [
+                    {
+                        "value": "left",
+                        "label": {
+                            "ru": "left",
+                            "en": "left"
+                        }
+                    },
+                    {
+                        "value": "right",
+                        "label": {
+                            "ru": "right",
+                            "en": "right"
+                        }
+                    }
+                ],
+                "visibleIf": {
+                    "entry": "hud"
+                }
+            },
+            {
+                "key": "icon",
+                "type": "image",
+                "label": {
+                    "ru": "Icon",
+                    "en": "Icon"
+                },
+                "accept": [
+                    "image/png"
+                ],
+                "maxBytes": 262144,
+                "size": {
+                    "min": 96,
+                    "max": 512,
+                    "square": true
+                }
+            }
+        ]
+    },
+    "overrideCases": [
+        {
+            "name": "priority and null reset",
+            "base": {
+                "name": "built"
+            },
+            "ctx": {
+                "facts": {}
+            },
+            "overrides": [
+                {
+                    "configId": 2,
+                    "priority": 10,
+                    "data": {
+                        "name": null
+                    }
+                },
+                {
+                    "configId": 1,
+                    "priority": 1,
+                    "data": {
+                        "name": "remote"
+                    }
+                }
+            ],
+            "effective": {
+                "name": "built"
+            },
+            "ignored": []
+        },
+        {
+            "name": "field isolation and non-overridable",
+            "base": {},
+            "ctx": {
+                "facts": {}
+            },
+            "overrides": [
+                {
+                    "configId": 1,
+                    "data": {
+                        "enabled": false,
+                        "entry": "bad",
+                        "count": 4,
+                        "icon": null,
+                        "__proto__": "x"
+                    }
+                }
+            ],
+            "effective": {
+                "enabled": false,
+                "entry": "menu",
+                "count": 2,
+                "icon": null
+            },
+            "ignored": [
+                {
+                    "configId": 1,
+                    "path": "entry",
+                    "code": "OPTION"
+                },
+                {
+                    "configId": 1,
+                    "path": "count",
+                    "code": "NOT_OVERRIDABLE"
+                },
+                {
+                    "configId": 1,
+                    "path": "icon",
+                    "code": "NOT_OVERRIDABLE"
+                },
+                {
+                    "configId": 1,
+                    "path": "__proto__",
+                    "code": "UNKNOWN_KEY"
+                }
+            ]
+        },
+        {
+            "name": "segment, ab and conditional reset",
+            "base": {
+                "name": "built"
+            },
+            "ctx": {
+                "facts": {
+                    "segment": [
+                        "vip"
+                    ],
+                    "ab": {
+                        "entry": "b"
+                    }
+                }
+            },
+            "overrides": [
+                {
+                    "configId": 1,
+                    "filters": {
+                        "$segment": {
+                            "$in": [
+                                "vip"
+                            ]
+                        }
+                    },
+                    "data": {
+                        "name": "remote"
+                    },
+                    "conditionals": [
+                        {
+                            "filters": {
+                                "$ab.entry": "b"
+                            },
+                            "data": {
+                                "name": null
+                            },
+                            "side": "client"
+                        }
+                    ]
+                }
+            ],
+            "effective": {
+                "name": "built"
+            },
+            "ignored": []
+        },
+        {
+            "name": "hidden field preserved until final visibility",
+            "base": {
+                "corner": "left"
+            },
+            "ctx": {
+                "facts": {}
+            },
+            "overrides": [
+                {
+                    "configId": 1,
+                    "data": {
+                        "entry": "hud"
+                    }
+                }
+            ],
+            "effective": {
+                "entry": "hud",
+                "corner": "left"
+            },
+            "ignored": []
+        },
+        {
+            "name": "no record matches",
+            "base": {
+                "name": "built"
+            },
+            "ctx": {
+                "facts": {
+                    "country": "RU"
+                }
+            },
+            "overrides": [
+                {
+                    "configId": 1,
+                    "filters": {
+                        "$country": "US"
+                    },
+                    "data": {
+                        "name": "other"
+                    }
+                }
+            ],
+            "effective": {
+                "name": "built"
+            },
+            "ignored": []
+        },
+        {
+            "name": "conditional null restores build after an earlier record",
+            "base": {
+                "name": "built"
+            },
+            "ctx": {
+                "facts": {}
+            },
+            "overrides": [
+                {
+                    "configId": 1,
+                    "priority": 1,
+                    "data": {
+                        "name": "early"
+                    }
+                },
+                {
+                    "configId": 2,
+                    "priority": 2,
+                    "data": {
+                        "name": "late"
+                    },
+                    "conditionals": [
+                        {
+                            "filters": {},
+                            "data": {
+                                "name": null
+                            }
+                        }
+                    ]
+                }
+            ],
+            "effective": {
+                "name": "built"
+            },
+            "ignored": []
+        },
+        {
+            "name": "ties sorted by configId",
+            "base": {},
+            "ctx": {
+                "facts": {}
+            },
+            "overrides": [
+                {
+                    "configId": 10,
+                    "data": {
+                        "name": "last"
+                    }
+                },
+                {
+                    "configId": 2,
+                    "data": {
+                        "name": "first"
+                    }
+                }
+            ],
+            "effective": {
+                "name": "last"
+            },
+            "ignored": []
+        },
+        {
+            "name": "minVersion above app version not applied",
+            "base": {
+                "name": "built"
+            },
+            "ctx": {
+                "facts": {
+                    "v": "1.2.0"
+                }
+            },
+            "overrides": [
+                {
+                    "configId": 1,
+                    "minVersion": "1.3.0",
+                    "maxVersion": null,
+                    "data": {
+                        "name": "remote"
+                    }
+                }
+            ],
+            "effective": {
+                "name": "built"
+            },
+            "ignored": []
+        },
+        {
+            "name": "version bound without app version not applied",
+            "base": {
+                "name": "built"
+            },
+            "ctx": {
+                "facts": {}
+            },
+            "overrides": [
+                {
+                    "configId": 1,
+                    "maxVersion": "9.0.0",
+                    "data": {
+                        "name": "remote"
+                    }
+                }
+            ],
+            "effective": {
+                "name": "built"
+            },
+            "ignored": []
+        },
+        {
+            "name": "inclusive version bounds applied",
+            "base": {
+                "name": "built"
+            },
+            "ctx": {
+                "facts": {
+                    "v": "1.2.0"
+                }
+            },
+            "overrides": [
+                {
+                    "configId": 1,
+                    "minVersion": "1.2.0",
+                    "maxVersion": "1.2.0",
+                    "data": {
+                        "name": "remote"
+                    }
+                }
+            ],
+            "effective": {
+                "name": "remote"
+            },
+            "ignored": []
+        },
+        {
+            "name": "patch exposing an invalid hidden field rolled back",
+            "base": {
+                "corner": "middle"
+            },
+            "ctx": {
+                "facts": {}
+            },
+            "overrides": [
+                {
+                    "configId": 1,
+                    "data": {
+                        "entry": "hud"
+                    }
+                },
+                {
+                    "configId": 2,
+                    "data": {
+                        "name": "remote"
+                    }
+                }
+            ],
+            "effective": {
+                "entry": "menu",
+                "name": "remote"
+            },
+            "ignored": [
+                {
+                    "configId": 1,
+                    "path": "corner",
+                    "code": "OPTION"
+                }
+            ]
+        }
+    ],
+    "typesSchema": {
+        "schemaVersion": 1,
+        "fields": [
+            { "key": "ratio", "type": "number", "label": { "ru": "Ratio", "en": "Ratio", "de": "Ratio" }, "min": 0, "max": 1, "default": 0.5 },
+            { "key": "wait", "type": "duration", "label": { "ru": "Wait", "en": "Wait" }, "min": 0, "max": 3600, "default": 60 },
+            { "key": "when", "type": "schedule", "label": { "ru": "When", "en": "When" }, "default": null },
+            { "key": "item", "type": "entityRef", "label": { "ru": "Item", "en": "Item" }, "default": null },
+            { "key": "title", "type": "text", "label": { "ru": "Title", "en": "Title" }, "maxLength": 32, "default": { "key": "daily.title" } },
+            { "key": "prize", "type": "reward", "label": { "ru": "Prize", "en": "Prize" }, "maxItems": 4, "maxAmount": 1000, "default": [] },
+            { "key": "days", "type": "list", "label": { "ru": "Days", "en": "Days" }, "maxItems": 7, "default": [],
+                "item": { "type": "object", "fields": [
+                        { "key": "label", "type": "text", "label": { "ru": "Label", "en": "Label" } },
+                        { "key": "reward", "type": "reward", "label": { "ru": "Reward", "en": "Reward" } }
+                    ] } }
+        ]
+    },
+    "typeCases": [
+        { "name": "types-defaults", "input": {}, "errors": [] },
+        { "name": "types-full", "errors": [], "input": { "ratio": 0.25, "wait": 90, "when": "0 12 * * 1-5", "item": "chest:daily",
+                "title": { "values": { "ru": "Привет", "en": "Hi", "pt-BR": "Oi" } }, "prize": [{ "id": "coins", "amount": 10 }],
+                "days": [{ "label": { "key": "day.1" }, "reward": [{ "id": "coins", "amount": 1 }] }] } },
+        { "name": "types-ratio-range", "input": { "ratio": 1.01 }, "errors": [{ "path": "ratio", "code": "RANGE" }] },
+        { "name": "types-wait-fraction", "input": { "wait": 1.5 }, "errors": [{ "path": "wait", "code": "TYPE" }] },
+        { "name": "types-when-bad", "input": { "when": "* * * *" }, "errors": [{ "path": "when", "code": "PATTERN" }] },
+        { "name": "types-item-bad", "input": { "item": "Coins" }, "errors": [{ "path": "item", "code": "PATTERN" }] },
+        { "name": "types-title-both", "input": { "title": { "key": "a", "values": {} } }, "errors": [{ "path": "title", "code": "TYPE" }] },
+        { "name": "types-prize-duplicate", "input": { "prize": [{ "id": "coins", "amount": 1 }, { "id": "coins", "amount": 2 }] }, "errors": [{ "path": "prize", "code": "OPTION" }] },
+        { "name": "types-prize-zero", "input": { "prize": [{ "id": "coins", "amount": 0 }] }, "errors": [{ "path": "prize", "code": "RANGE" }] },
+        { "name": "types-days-extra-key", "input": { "days": [{ "label": { "key": "a" }, "reward": [], "x": 1 }] }, "errors": [{ "path": "days", "code": "TYPE" }] }
+    ],
+    "availabilitySchema": {
+        "schemaVersion": 1,
+        "fields": [
+            { "ref": "availability" },
+            { "key": "speed", "type": "integer", "label": { "ru": "Скорость", "en": "Speed" }, "min": 1, "max": 9, "default": 3 }
+        ]
+    },
+    "availabilityParameters": { "level": { "type": "number" }, "xp": { "type": "number" } },
+    "availabilityCases": [
+        { "name": "availability-defaults", "input": {}, "errors": [], "value": { "enabled": true, "availability": {}, "speed": 3 } },
+        { "name": "availability-disabled", "input": { "enabled": false }, "errors": [], "value": { "enabled": false, "availability": {}, "speed": 3 } },
+        { "name": "availability-filter", "input": { "availability": { "$install.days": { "$gte": 3 }, "level": { "$gte": 5 } } }, "errors": [] },
+        { "name": "availability-logical", "input": { "availability": { "$or": [{ "$platform": "ios" }, { "$segment": "vip" }] } }, "errors": [] },
+        { "name": "availability-unknown-parameter", "input": { "availability": { "vip": true } }, "errors": [{ "path": "availability", "code": "OPTION" }], "strictParameters": true },
+        { "name": "availability-parameter-type", "input": { "availability": { "level": "high" } }, "errors": [{ "path": "availability", "code": "TYPE" }], "strictParameters": true },
+        { "name": "availability-not-object", "input": { "availability": [] }, "errors": [{ "path": "availability", "code": "TYPE" }] },
+        { "name": "availability-enabled-type", "input": { "enabled": "yes" }, "errors": [{ "path": "enabled", "code": "TYPE" }] }
+    ]
+}

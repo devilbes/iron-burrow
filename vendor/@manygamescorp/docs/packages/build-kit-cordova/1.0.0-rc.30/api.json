@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "package": "@manygamescorp/build-kit-cordova",
+  "version": "1.0.0-rc.30",
+  "requires": {
+    "@manygamescorp/build-kit-web": "1.0.0-rc.30",
+    "@manygamescorp/contracts-client": "1.0.0-rc.30",
+    "@manygamescorp/core": "1.0.0-rc.30",
+    "@manygamescorp/platform-cordova": "1.0.0-rc.30"
+  },
+  "modules": [],
+  "libraries": []
+}

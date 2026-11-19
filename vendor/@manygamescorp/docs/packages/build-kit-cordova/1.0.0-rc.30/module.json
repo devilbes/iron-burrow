@@ -1,0 +1,50 @@
+{
+  "id": "build-kit-cordova",
+  "version": "1.0.0-rc.30",
+  "entry": "build-kit.js",
+  "targets": [
+    "cordova"
+  ],
+  "title": {
+    "ru": "Сборка Cordova",
+    "en": "Build Kit Cordova"
+  },
+  "description": {
+    "ru": "Сборка Cordova для игры на ManyPlay.",
+    "en": "ManyPlay SDK 1.0 cordova build input validation and shell template."
+  },
+  "llmDescription": "ManyPlay SDK 1.0 cordova build input validation and shell template. Select build-kit-cordova when the game needs this SDK capability. Read the linked module documentation for methods and events.",
+  "selection": "optional",
+  "status": "ready",
+  "preview": {
+    "icon": "catalog/icon.png",
+    "media": []
+  },
+  "docs": [
+    {
+      "title": {
+        "ru": "Документация",
+        "en": "Documentation"
+      },
+      "uri": "https://github.com/manygamescorp/client-sdk/tree/main/packages/build-kit-cordova"
+    }
+  ],
+  "settings": {
+    "schemaVersion": 1,
+    "fields": []
+  },
+  "group": "platform",
+  "tags": [],
+  "load": "eager",
+  "files": {
+    "scripts": [
+      "build-kit.js",
+      "version.js"
+    ],
+    "styles": [],
+    "assets": [
+      "catalog/icon.png",
+      "catalog/native-plugins.minimum.json"
+    ]
+  }
+}

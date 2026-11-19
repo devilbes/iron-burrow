@@ -1,0 +1,142 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Optional E185 mechanic metadata",
+    "type": "object",
+    "properties": {
+        "modes": {
+            "type": "array",
+            "maxItems": 2,
+            "uniqueItems": true,
+            "items": {
+                "enum": [
+                    "core",
+                    "minigame"
+                ]
+            },
+            "minItems": 1
+        },
+        "genres": {
+            "type": "array",
+            "maxItems": 16,
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]{1,24}$"
+            }
+        },
+        "layers": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "engine": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "entry": {
+                            "allOf": [
+                                {
+                                    "type": "string",
+                                    "maxLength": 256,
+                                    "pattern": "^(?:\\./)?(?:[A-Za-z0-9_][A-Za-z0-9._-]*|\\.mech-copy\\.json)(?:/(?:[A-Za-z0-9_][A-Za-z0-9._-]*|\\.mech-copy\\.json))*$"
+                                },
+                                {
+                                    "pattern": "\\.m?js$"
+                                }
+                            ]
+                        },
+                        "version": {
+                            "type": "string",
+                            "maxLength": 64,
+                            "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+                        }
+                    },
+                    "required": [
+                        "entry",
+                        "version"
+                    ]
+                },
+                "presentation": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "entry": {
+                            "allOf": [
+                                {
+                                    "type": "string",
+                                    "maxLength": 256,
+                                    "pattern": "^(?:\\./)?(?:[A-Za-z0-9_][A-Za-z0-9._-]*|\\.mech-copy\\.json)(?:/(?:[A-Za-z0-9_][A-Za-z0-9._-]*|\\.mech-copy\\.json))*$"
+                                },
+                                {
+                                    "pattern": "\\.m?js$"
+                                }
+                            ]
+                        },
+                        "version": {
+                            "type": "string",
+                            "maxLength": 64,
+                            "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+                        },
+                        "files": {
+                            "type": "array",
+                            "maxItems": 500,
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "maxLength": 256,
+                                "pattern": "^(?:\\./)?(?:(?:[A-Za-z0-9_][A-Za-z0-9._-]*|\\.mech-copy\\.json)|\\*|\\*\\*)(?:/(?:(?:[A-Za-z0-9_][A-Za-z0-9._-]*|\\.mech-copy\\.json)|\\*|\\*\\*))*$"
+                            }
+                        },
+                        "copyable": {
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "entry",
+                        "files",
+                        "copyable"
+                    ]
+                },
+                "server": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "verifier": {
+                            "type": "string",
+                            "pattern": "^[a-z][a-z0-9:./-]{0,127}$"
+                        },
+                        "version": {
+                            "type": "string",
+                            "maxLength": 64,
+                            "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+                        },
+                        "configScopes": {
+                            "type": "array",
+                            "maxItems": 64,
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "pattern": "^[a-z][a-z0-9.-]{0,126}(?:\\.\\*)?$"
+                            }
+                        }
+                    },
+                    "required": [
+                        "verifier",
+                        "configScopes"
+                    ]
+                }
+            },
+            "required": [
+                "engine"
+            ]
+        },
+        "extensionPoints": {
+            "type": "array",
+            "maxItems": 64,
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9.-]{0,63}$"
+            }
+        }
+    }
+}

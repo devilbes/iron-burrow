@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "package": "@manygamescorp/mod-ads-mobile",
+  "version": "1.0.0-rc.30",
+  "requires": {
+    "@manygamescorp/core": "1.0.0-rc.30",
+    "@manygamescorp/mod-ads-web": "1.0.0-rc.30"
+  },
+  "modules": [],
+  "libraries": []
+}
