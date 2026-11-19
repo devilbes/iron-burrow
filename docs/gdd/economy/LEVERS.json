@@ -1,0 +1,124 @@
+{
+ "version": 1,
+ "src": "decision:economy-design: tunable keys of the economy, from ECONOMY.json remoteConfigLevers",
+ "levers": [
+  {
+   "key": "game.rewards.first_clear_rotation",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "first-clear type order; change the service data via services-publish (progress level rewards / daily-rewards) and mirror the same value in game.rewards for display (D-31-03)",
+   "src": "gdd:31_platform_integration plat.configs; gdd:15_economy_meta meta.rewards.level"
+  },
+  {
+   "key": "game.rewards.first_clear_qty",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "items per first clear (default 1); change the service data via services-publish (progress level rewards / daily-rewards) and mirror the same value in game.rewards",
+   "src": "gdd:31_platform_integration plat.configs"
+  },
+  {
+   "key": "game.rewards.finale_bundle",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "bundle on finale_stages 10/20/30 (default 1 of each); +1 hull eases chapter 3; change the service data via services-publish (progress level rewards / daily-rewards) and mirror the same value in game.rewards",
+   "src": "gdd:31_platform_integration plat.configs; gdd:15_economy_meta meta.rewards.finale"
+  },
+  {
+   "key": "game.rewards.three_star",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "first 3-star reward (default bst_bubble 1); change the service data via services-publish (progress level rewards / daily-rewards) and mirror the same value in game.rewards",
+   "src": "gdd:31_platform_integration plat.configs; gdd:15_economy_meta meta.rewards.stars"
+  },
+  {
+   "key": "game.rewards.daily_preview",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "7-day calendar (13 per cycle), main post-campaign income; change the service data via services-publish (progress level rewards / daily-rewards) and mirror the same value in game.rewards",
+   "src": "gdd:31_platform_integration plat.configs; gdd:15_economy_meta meta.daily"
+  },
+  {
+   "key": "game.rewards.start_grant",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "separate one-time grant (2 of each); change the service data via services-publish (progress level rewards / daily-rewards) and mirror the same value in game.rewards",
+   "src": "gdd:31_platform_integration plat.configs; gdd:15_economy_meta meta.grant"
+  },
+  {
+   "key": "game.boosters.bubble",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "max_per_stage 2 (Siege x2): bounds bubble consumption",
+   "src": "gdd:31_platform_integration plat.configs"
+  },
+  {
+   "key": "game.boosters.shockwave",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "max_per_stage 1 (Siege x2)",
+   "src": "gdd:31_platform_integration plat.configs"
+  },
+  {
+   "key": "game.boosters.fortify",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "max_per_stage 1 (Siege x2)",
+   "src": "gdd:31_platform_integration plat.configs"
+  },
+  {
+   "key": "game.boosters.hull",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "prestage_max 1 + continue_max 1 per stage (Siege prestage 2 + continue 1)",
+   "src": "gdd:31_platform_integration plat.configs; gdd:10_core_rules 7"
+  },
+  {
+   "key": "game.boosters.siege_limit_mult",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "Siege use limit multiplier (default 2); main post-campaign sink size",
+   "src": "gdd:31_platform_integration plat.configs"
+  },
+  {
+   "key": "game.siege.unlock_after_stage",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "Siege unlock threshold (default 5)",
+   "src": "gdd:15_economy_meta meta.unlocks"
+  },
+  {
+   "key": "iap.packs",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "pack contents and display prices; real prices live in iap offers (services-publish)",
+   "src": "gdd:16_monetization_ads mon.model"
+  },
+  {
+   "key": "iap.placements",
+   "schema": "see gdd:31_platform_integration plat.configs",
+   "default": "gdd:31_platform_integration plat.configs",
+   "reader": "src/modules/meta-bridge (written by later steps)",
+   "effect": "starter_crate cooldown_h 24, max_auto_shows 3",
+   "src": "gdd:16_monetization_ads mon.placements"
+  }
+ ],
+ "absent": [
+  {
+   "key": "ads.caps",
+   "reason": "no ads in this flow"
+  }
+ ]
+}
