@@ -20,54 +20,54 @@
 }
 :root,:host,.mpg-shell{
   /* 1. Palette */
-  --mp-card-background:#1A1D45;      /* base of panels and bars (inside: --mp-night) */
-  --mp-card-surface:#23275F;         /* cards, tiles (inside: --mp-navy, --mp-surface) */
-  --mp-card-raised:#2D3275;          /* hover, raised tiles */
-  --mp-card-line:#33386F;            /* borders */
-  --mp-card-line-strong:#4A4F96;
-  --mp-window-background:#11132E;    /* windows */
-  --mp-card-fg:#FFFFFF;              /* text */
-  --mp-card-muted:#C3C5F0;
-  --mp-card-subtle:#9A9CD0;
-  --mp-card-accent:#7E80FF;          /* main buttons, selection */
-  --mp-card-accent-hover:#9597FF;
-  --mp-card-accent-text:#A9AAFF;     /* accent as text */
-  --mp-card-success:#4CC98A;
-  --mp-card-error:#FF7A70;
-  --mp-card-warning:#E3AE4A;
-  --mp-card-info:#6FA8F0;
-  --mp-card-gold:#FFC94D;            /* points, rewards */
-  --mp-card-overlay:rgba(9,10,28,.82); /* dim behind windows */
-  --game-shade:#000000;              /* shadows */
-  --mp-gold-edge:#C9922A;            /* chests, wood, medals */
-  --mp-wood:#8A5A2B;
-  --mp-wood-dark:#6B4320;
-  --mp-wood-edge:#3A2410;
-  --mp-chest-bronze:#C7843F;
-  --mp-chest-bronze-deep:#A86A2E;
-  --mp-chest-bronze-rim:#8F5A27;
-  --mp-chest-green-deep:#2F9A66;
-  --mp-chest-violet-deep:#5A5CD6;
-  --game-bronze:#D9935B;             /* third place of the leaderboard */
-  --mp-game-0:#22B573;               /* tones of tiles and sets */
-  --mp-game-1:#FF7A45;
-  --mp-game-2:#A855F7;
-  --mp-game-3:#3B82F6;
-  --mp-game-4:#EC4899;
-  --mp-game-5:#14B8A6;
-  --game-tone-orange:#FF9A3C;
-  --game-tone-blue:#4C8DFF;
-  --mp-bg-edge-top:#0E0F2A;          /* scene behind everything, when there is no scene art */
-  --game-bg-mid:#14164A;
-  --mp-bg-edge-bottom:#0C0D24;
-  --mp-bg-glow-center:rgba(124,124,255,.42);
-  --mp-bg-glow-left:rgba(91,91,230,.38);
-  --mp-bg-glow-right:rgba(58,110,230,.32);
+  --mp-card-background:#121E29;      /* base of panels and bars (inside: --mp-night) */
+  --mp-card-surface:#1E2E3D;         /* cards, tiles (inside: --mp-navy, --mp-surface) */
+  --mp-card-raised:#2F4558;          /* hover, raised tiles */
+  --mp-card-line:#2F4558;            /* borders */
+  --mp-card-line-strong:#5D6B75;
+  --mp-window-background:#0A1118;    /* windows */
+  --mp-card-fg:#F2F6F7;              /* text */
+  --mp-card-muted:#CFE6E8;
+  --mp-card-subtle:#8FA3B0;
+  --mp-card-accent:#FF6A1A;          /* main buttons, selection */
+  --mp-card-accent-hover:#FFB23F;
+  --mp-card-accent-text:#FFB23F;     /* accent as text */
+  --mp-card-success:#6FC2C4;
+  --mp-card-error:#FF3B3B;
+  --mp-card-warning:#FFB23F;
+  --mp-card-info:#CFE6E8;
+  --mp-card-gold:#FFC845;            /* points, rewards */
+  --mp-card-overlay:rgba(10,17,24,.80); /* dim behind windows */
+  --game-shade:#0A1118;              /* shadows */
+  --mp-gold-edge:#B5713F;            /* chests, wood, medals */
+  --mp-wood:#5D6B75;
+  --mp-wood-dark:#2F4558;
+  --mp-wood-edge:#0A1118;
+  --mp-chest-bronze:#D08A5E;
+  --mp-chest-bronze-deep:#A65A3A;
+  --mp-chest-bronze-rim:#7A4A2E;
+  --mp-chest-green-deep:#2F7D86;
+  --mp-chest-violet-deep:#B8320C;
+  --game-bronze:#D08A5E;             /* third place of the leaderboard */
+  --mp-game-0:#2F7D86;               /* tones of tiles and sets */
+  --mp-game-1:#FF6A1A;
+  --mp-game-2:#FFC845;
+  --mp-game-3:#6FC2C4;
+  --mp-game-4:#B8320C;
+  --mp-game-5:#D08A5E;
+  --game-tone-orange:#FF6A1A;
+  --game-tone-blue:#6FC2C4;
+  --mp-bg-edge-top:#0A1118;          /* scene behind everything, when there is no scene art */
+  --game-bg-mid:#121E29;
+  --mp-bg-edge-bottom:#0A1118;
+  --mp-bg-glow-center:rgba(255,106,26,.22);
+  --mp-bg-glow-left:rgba(47,125,134,.30);
+  --mp-bg-glow-right:rgba(111,194,196,.18);
   --game-bar-top:transparent;        /* band of the top bar over the scene (stock: panel color) */
   --game-bar-bottom:transparent;     /* band of the bottom menu over the scene */
   --game-bar-line:transparent;       /* edge line of both bands */
-  --game-sheet-paper:#fff;           /* test payment sheet (dev builds) */
-  --game-sheet-ink:#111;
+  --game-sheet-paper:#F2F6F7;           /* test payment sheet (dev builds) */
+  --game-sheet-ink:#0A1118;
 
   /* 2. Derived */
   --mp-card-on-accent:var(--mp-window-background);
@@ -80,8 +80,8 @@
   --mp-card-error-soft:color-mix(in srgb,var(--mp-card-error) 14%,transparent);
   --mp-card-warning-soft:color-mix(in srgb,var(--mp-card-warning) 16%,transparent);
   --mp-card-info-soft:color-mix(in srgb,var(--mp-card-info) 16%,transparent);
-  --mp-card-focus:0 0 0 3px color-mix(in srgb,var(--mp-card-accent) 35%,transparent);
-  --mp-card-shadow:0 24px 48px color-mix(in srgb,var(--game-shade) 40%,transparent);
+  --mp-card-focus:0 0 0 2px var(--mp-window-background),0 0 0 4px var(--mp-card-muted); /* ring 2px steel_frost, gap 2px (bible States) */
+  --mp-card-shadow:var(--game-shadow-modal);
   --mp-points-soft:color-mix(in srgb,var(--mp-points) 8%,transparent);
   --mp-points-line:color-mix(in srgb,var(--mp-points) 45%,transparent);
   --mp-bg-glow-gold:color-mix(in srgb,var(--mp-points) 14%,transparent);
@@ -93,15 +93,56 @@
   --game-dot:color-mix(in srgb,var(--mp-card-fg) 18%,transparent);
 
   /* 3. Radii and fonts */
-  --mp-radius-window:16px;
-  --mp-radius-card:12px;
-  --mp-radius-button:12px;
-  --mp-radius-field:8px;
-  --mp-font-display:'Onest',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  --mp-font-ui:'Onest',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  --mp-font-body:'Onest',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mp-radius-window:0px;            /* armour plate: corners are cut (--game-cut-*), never rounded */
+  --mp-radius-card:0px;
+  --mp-radius-button:0px;
+  --mp-radius-field:4px;             /* inner plates, fields */
+  --mp-font-display:'Russo One','Exo 2',system-ui,sans-serif;
+  --mp-font-ui:'Exo 2',system-ui,sans-serif;
+  --mp-font-body:'Exo 2',system-ui,sans-serif;
   --game-close-zone:44px;            /* room the window head keeps on both sides for the close
                                         button: the title (plate, ribbon) stays in the middle */
+
+  /* 3a. Shape and material of the forged plates (sheets.ts COMMON; docs/skin/map.json identity) */
+  --game-magma-deep:#B8320C;         /* pressed primary, lower face of the main button */
+  --game-steel-teal:#2F7D86;         /* second button */
+  --game-frost:var(--mp-card-muted); /* specular edges, close bars */
+  --game-slit:var(--mp-card-success);/* thin glowing teal slit inside the window frame */
+  --game-cut-window:16px;            /* id-cut-corners: 45° cut of the window */
+  --game-cut:8px;                    /* buttons, tiles, capsules, cards */
+  --game-cut-close:6px;              /* close plate */
+  --game-cut-badge:4px;              /* badges */
+  --game-frame-outline:1px;          /* id-forged-frame: outer outline */
+  --game-frame-bevel:2px;            /* bevel inside the outline */
+  --game-slit-inset:6px;             /* the slit, from the outer edge */
+  --game-rivet:6px;                  /* id-rivets: diameter */
+  --game-rivet-offset:12px;          /* centre from the cut, along the diagonal */
+  --game-plate-h:44px;               /* id-nameplate: height of the title plate */
+  --game-plate-overhang:22px;        /* how far it rises over the top edge of the window */
+  --game-plate-chamfer:12px;         /* 45° ends of the plate */
+  --game-plate-line:2px;             /* glowing magma line under the title */
+  --game-plate-pad:28px;             /* side room of the title text on the plate */
+  --game-title-size:24px;
+  --game-title-size-wide:32px;
+  --game-button-face:4px;            /* id-button-face: lower face; pressed: 2px and sinks 2px */
+  --game-button-face-pressed:2px;
+  --game-close-size:40px;            /* id-close-plate */
+  --game-close-bar:4px;
+  --game-close-bar-len:18px;
+  --game-shadow-room:16px;           /* room around the window where its shadow shows */
+  --game-plate-light:color-mix(in srgb,var(--mp-card-muted) 24%,transparent); /* upper-left bevel */
+  --game-plate-dark:color-mix(in srgb,var(--game-shade) 60%,transparent);     /* lower-right bevel */
+  --game-plate-shine:color-mix(in srgb,var(--mp-card-fg) 45%,transparent);    /* 1px highlight of a face */
+  --game-slit-glow:color-mix(in srgb,var(--mp-card-success) 35%,transparent);
+  --game-magma-glow:color-mix(in srgb,var(--mp-card-accent) 40%,transparent);
+  --game-shadow-raised:0 2px 4px color-mix(in srgb,var(--game-shade) 24%,transparent);
+  --game-shadow-floating:0 6px 12px color-mix(in srgb,var(--game-shade) 32%,transparent);
+  --game-shadow-modal:0 12px 24px color-mix(in srgb,var(--game-shade) 40%,transparent);
+  --kit-title-size:var(--game-title-size);
+  --kit-title-weight:400;
+  --kit-title-depth:2px;             /* window titles (plate text, COMMON): the one restrained text
+                                        shadow 0 2px 0 slate_abyss; color --kit-title-top */
+  --kit-title-tracking:.04em;
 
   /* 4. Scene */
   --game-scene-position:50% 50%;     /* the point of the art kept in view in every size */
@@ -109,9 +150,15 @@
   /* 5. Raster buttons (art.ts `button-base`) */
   --game-button-slice:24;            /* edges of the picture that never stretch, in its pixels */
   --game-button-edge:12px;           /* the same edges as shown (a 2x picture: half the slice) */
-  --game-button-primary:var(--mp-card-accent);   /* main action */
-  --game-button-secondary:var(--mp-card-raised); /* second action, cancel */
-  --game-button-buy:var(--mp-card-success);      /* price buttons of the shop */
+  --game-button-primary:var(--mp-card-accent);   /* main action (also the coded plates of COMMON) */
+  --game-button-secondary:var(--game-steel-teal); /* second action, cancel */
+  --game-button-buy:var(--mp-card-gold);         /* price buttons of the shop */
   --game-button-danger:var(--mp-card-error);     /* delete, leave */
-  --game-button-text:var(--mp-card-fg);          /* label; one kind: --game-button-<kind>-text */
+  --game-button-text:var(--mp-window-background);/* label on orange and amber */
+  --game-button-secondary-text:var(--mp-card-fg);/* label on teal and red */
+  --game-button-danger-text:var(--mp-card-fg);
+  --game-button-primary-edge:var(--game-magma-deep);  /* lower face of each kind */
+  --game-button-secondary-edge:var(--mp-window-background);
+  --game-button-buy-edge:var(--mp-gold-edge);
+  --game-button-danger-edge:color-mix(in srgb,var(--mp-card-error) 55%,var(--game-shade));
 }
