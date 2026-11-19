@@ -1,0 +1,191 @@
+{
+  "name": "progress/progress_main",
+  "data": {
+    "mode": "sequence",
+    "schedule": null,
+    "duration": null,
+    "reset": null,
+    "selection": null,
+    "steps": [
+      {
+        "key": "level_1",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 1,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "item_coins",
+            "amount": 20
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_1.title"
+        }
+      },
+      {
+        "key": "level_2",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 2,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "item_coins",
+            "amount": 30
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_2.title"
+        }
+      },
+      {
+        "key": "level_3",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 3,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "item_coins",
+            "amount": 40
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_3.title"
+        }
+      },
+      {
+        "key": "level_4",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 4,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "item_coins",
+            "amount": 50
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_4.title"
+        }
+      },
+      {
+        "key": "level_5",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 5,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "item_coins",
+            "amount": 60
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_5.title"
+        }
+      }
+    ],
+    "groups": [],
+    "ttl": null,
+    "ui": {},
+    "payload": {
+      "title": "levels.main.title"
+    }
+  },
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": []
+}

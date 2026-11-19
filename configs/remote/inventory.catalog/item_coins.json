@@ -1,0 +1,20 @@
+{
+  "itemId": "item_coins",
+  "itemType": "soft_currency",
+  "isStackable": true,
+  "maxBalance": null,
+  "attrsSchema": null,
+  "offlineAllowed": false,
+  "revocable": false,
+  "expiresAt": null,
+  "clientConsumable": false,
+  "display": {
+    "name": "Coins",
+    "titleKey": "item.coins.title",
+    "descriptionKey": "item.coins.description",
+    "images": {
+      "iconSmall": null,
+      "iconLarge": null
+    }
+  }
+}

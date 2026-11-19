@@ -1,0 +1,6 @@
+# Source artwork and design references are not build inputs.
+# Runtime assets: assets/images, assets/audio, assets/skin (docs/platform/recipes/add-art-and-sound.md).
+design/**
+assets/source/**
+# Schemas of the service records are for the local check (npm run records), not for the game.
+schemas/**

@@ -6,9 +6,20 @@
   "engines": { "node": ">=24" },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "typecheck": "tsc --noEmit -p tsconfig.json"
+    "typecheck": "node scripts/typecheck.mjs",
+    "strings": "node scripts/strings.mjs",
+    "records": "node scripts/validate-records.mjs",
+    "assets": "node scripts/assets.mjs",
+    "check": "node scripts/check.mjs",
+    "check:fast": "node scripts/check.mjs --fast",
+    "shot": "node tests/screen-shot.mjs",
+    "test:unit": "node scripts/strings.mjs && node --test \"tests/*.test.mjs\" \"tests/build/*.test.mjs\"",
+    "test": "npm run test:unit"
   },
   "devDependencies": {
+    "ajv": "8.17.1",
+    "esbuild": "0.28.2",
+    "sharp": "0.35.5",
     "typescript": "5.9.3"
   }
 }

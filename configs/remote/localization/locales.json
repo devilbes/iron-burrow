@@ -1,0 +1,10 @@
+{
+  "defaultLocale": "en",
+  "locales": [
+    {
+      "tag": "en",
+      "name": "English",
+      "status": "published"
+    }
+  ]
+}

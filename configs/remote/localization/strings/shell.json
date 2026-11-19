@@ -1,0 +1,38 @@
+{
+  "en": {
+    "shell": {
+      "title": "Game",
+      "loading": {
+        "status": "Loading the game…",
+        "caption": "Preparing levels and rewards"
+      },
+      "error": {
+        "boot": "The game could not start ({code}). Try again later."
+      },
+      "currency": {
+        "coins": "Coins"
+      },
+      "leaderboard": {
+        "weekly": "This week"
+      },
+      "daily": {
+        "day": "Day {n}"
+      },
+      "status": {
+        "loading": "Loading…",
+        "noSdk": "The game SDK is not installed in this build."
+      },
+      "profile": {
+        "title": "Profile",
+        "player": "Player {gid}"
+      },
+      "bar": {
+        "profile": "Profile",
+        "settings": "Settings"
+      },
+      "account": {
+        "signedIn": "Signed in"
+      }
+    }
+  }
+}

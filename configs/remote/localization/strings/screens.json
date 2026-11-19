@@ -1,0 +1,23 @@
+{
+  "en": {
+    "screen": {
+      "home": {
+        "play": "Play"
+      },
+      "game": {
+        "placeholder": "Game template",
+        "close": "Close",
+        "leave": {
+          "title": "Leave the level?",
+          "text": "The progress of this level will be lost.",
+          "confirm": "Leave",
+          "stay": "Stay"
+        }
+      },
+      "profile": {
+        "levels": "Levels completed",
+        "best": "Best score"
+      }
+    }
+  }
+}

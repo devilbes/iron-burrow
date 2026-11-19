@@ -1,0 +1,35 @@
+{
+  "name": "iap.offers/offer_coins_large",
+  "data": {
+    "name": "Large coin pack",
+    "kind": "paid",
+    "enabled": true,
+    "cooldownSec": 0,
+    "durationSec": null,
+    "schedule": null,
+    "variants": [
+      {
+        "key": "default",
+        "productKey": "product_coins_large"
+      }
+    ],
+    "ui": {
+      "texts": {
+        "subtitle": {
+          "l10n": "offer.coins_large.subtitle"
+        },
+        "cta": {
+          "l10n": "shop.buy"
+        },
+        "badge": {
+          "l10n": "offer.coins_large.badge"
+        }
+      },
+      "highlight": true,
+      "order": 3
+    }
+  },
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": []
+}

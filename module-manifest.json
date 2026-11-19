@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "modules": [
+    {
+      "id": "game",
+      "kind": "game",
+      "entry": "src/modules/game/index.ts",
+      "description": "The game seam: GamePorts (src/boot/game-ports.ts) and the game module."
+    },
+    {
+      "id": "starter.windows",
+      "kind": "game",
+      "entry": "src/shell/windows/presenter.ts",
+      "description": "Presenters of the stock UI Kit service windows (shop, daily reward, leaderboard, profile)."
+    }
+  ]
+}

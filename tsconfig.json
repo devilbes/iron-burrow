@@ -5,10 +5,9 @@
     "moduleResolution": "Bundler",
     "lib": ["ES2022", "DOM"],
     "strict": true,
-    "rootDir": "src",
     "outDir": "dist/app",
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/*.ts", "src/modules/**/*.ts", "src/debug*/**/*.ts"]
 }

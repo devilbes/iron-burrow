@@ -1,0 +1,117 @@
+/*
+ * Theme of the game: every color, radius and font of the UI as a variable. To recolor the game,
+ * edit this file only. As shipped, every value is the stock ManyPlay one, except the bands of the
+ * bars (--game-bar-*): transparent, the scene runs under the bars edge to edge.
+ * 1. Palette — set every line; that alone recolors every kit window, the top bar, HUD, menu,
+ *    page and the game's own screens.
+ * 2. Derived — follow the palette; change one only to break its link.
+ * 3. Radii and fonts — font families must be declared in art.ts (FONTS).
+ * 4. Scene — focal point of the scene art (asset `scene` in art.ts) that covers the whole shell.
+ * 5. Raster buttons — read only when art.ts declares `button-base`: one grayscale picture, every
+ *    button kind tinted by its color here.
+ * The second rule reaches the page (:root), kit components (:host) and the shell (.mpg-shell).
+ * Inside them the stock sheets compute --mp-night, --mp-navy, --mp-violet… from the
+ * --mp-card-* inputs below: set the inputs, never those on :host (STOCK_DERIVED).
+ * Full list of color variables the stock skin reads: src/shell/stock-colors.ts (STOCK_COLORS);
+ * tests/skin-readiness.test.mjs checks that all of them are here (SKIN_STRICT=1: all changed).
+ */
+:root{
+  --mp-night:var(--mp-window-background); /* the page around the game */
+}
+:root,:host,.mpg-shell{
+  /* 1. Palette */
+  --mp-card-background:#1A1D45;      /* base of panels and bars (inside: --mp-night) */
+  --mp-card-surface:#23275F;         /* cards, tiles (inside: --mp-navy, --mp-surface) */
+  --mp-card-raised:#2D3275;          /* hover, raised tiles */
+  --mp-card-line:#33386F;            /* borders */
+  --mp-card-line-strong:#4A4F96;
+  --mp-window-background:#11132E;    /* windows */
+  --mp-card-fg:#FFFFFF;              /* text */
+  --mp-card-muted:#C3C5F0;
+  --mp-card-subtle:#9A9CD0;
+  --mp-card-accent:#7E80FF;          /* main buttons, selection */
+  --mp-card-accent-hover:#9597FF;
+  --mp-card-accent-text:#A9AAFF;     /* accent as text */
+  --mp-card-success:#4CC98A;
+  --mp-card-error:#FF7A70;
+  --mp-card-warning:#E3AE4A;
+  --mp-card-info:#6FA8F0;
+  --mp-card-gold:#FFC94D;            /* points, rewards */
+  --mp-card-overlay:rgba(9,10,28,.82); /* dim behind windows */
+  --game-shade:#000000;              /* shadows */
+  --mp-gold-edge:#C9922A;            /* chests, wood, medals */
+  --mp-wood:#8A5A2B;
+  --mp-wood-dark:#6B4320;
+  --mp-wood-edge:#3A2410;
+  --mp-chest-bronze:#C7843F;
+  --mp-chest-bronze-deep:#A86A2E;
+  --mp-chest-bronze-rim:#8F5A27;
+  --mp-chest-green-deep:#2F9A66;
+  --mp-chest-violet-deep:#5A5CD6;
+  --game-bronze:#D9935B;             /* third place of the leaderboard */
+  --mp-game-0:#22B573;               /* tones of tiles and sets */
+  --mp-game-1:#FF7A45;
+  --mp-game-2:#A855F7;
+  --mp-game-3:#3B82F6;
+  --mp-game-4:#EC4899;
+  --mp-game-5:#14B8A6;
+  --game-tone-orange:#FF9A3C;
+  --game-tone-blue:#4C8DFF;
+  --mp-bg-edge-top:#0E0F2A;          /* scene behind everything, when there is no scene art */
+  --game-bg-mid:#14164A;
+  --mp-bg-edge-bottom:#0C0D24;
+  --mp-bg-glow-center:rgba(124,124,255,.42);
+  --mp-bg-glow-left:rgba(91,91,230,.38);
+  --mp-bg-glow-right:rgba(58,110,230,.32);
+  --game-bar-top:transparent;        /* band of the top bar over the scene (stock: panel color) */
+  --game-bar-bottom:transparent;     /* band of the bottom menu over the scene */
+  --game-bar-line:transparent;       /* edge line of both bands */
+  --game-sheet-paper:#fff;           /* test payment sheet (dev builds) */
+  --game-sheet-ink:#111;
+
+  /* 2. Derived */
+  --mp-card-on-accent:var(--mp-window-background);
+  --mp-points:var(--mp-card-gold);
+  --mp-on-game:var(--mp-card-fg);
+  --kit-title-top:var(--mp-card-fg);
+  --game-sparkle:var(--mp-card-fg);
+  --mp-card-accent-soft:color-mix(in srgb,var(--mp-card-accent) 16%,transparent);
+  --mp-card-success-soft:color-mix(in srgb,var(--mp-card-success) 16%,transparent);
+  --mp-card-error-soft:color-mix(in srgb,var(--mp-card-error) 14%,transparent);
+  --mp-card-warning-soft:color-mix(in srgb,var(--mp-card-warning) 16%,transparent);
+  --mp-card-info-soft:color-mix(in srgb,var(--mp-card-info) 16%,transparent);
+  --mp-card-focus:0 0 0 3px color-mix(in srgb,var(--mp-card-accent) 35%,transparent);
+  --mp-card-shadow:0 24px 48px color-mix(in srgb,var(--game-shade) 40%,transparent);
+  --mp-points-soft:color-mix(in srgb,var(--mp-points) 8%,transparent);
+  --mp-points-line:color-mix(in srgb,var(--mp-points) 45%,transparent);
+  --mp-bg-glow-gold:color-mix(in srgb,var(--mp-points) 14%,transparent);
+  --mp-bg-base:linear-gradient(180deg,var(--mp-bg-edge-top) 0%,var(--game-bg-mid) 50%,var(--mp-bg-edge-bottom) 100%);
+  --game-shade-strong:color-mix(in srgb,var(--game-shade) 35%,transparent);
+  --game-shade-inset:color-mix(in srgb,var(--game-shade) 18%,transparent);
+  --game-shade-text:color-mix(in srgb,var(--game-shade) 25%,transparent);
+  --game-sheet-scrim:color-mix(in srgb,var(--game-shade) 60%,transparent);
+  --game-dot:color-mix(in srgb,var(--mp-card-fg) 18%,transparent);
+
+  /* 3. Radii and fonts */
+  --mp-radius-window:16px;
+  --mp-radius-card:12px;
+  --mp-radius-button:12px;
+  --mp-radius-field:8px;
+  --mp-font-display:'Onest',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mp-font-ui:'Onest',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mp-font-body:'Onest',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --game-close-zone:44px;            /* room the window head keeps on both sides for the close
+                                        button: the title (plate, ribbon) stays in the middle */
+
+  /* 4. Scene */
+  --game-scene-position:50% 50%;     /* the point of the art kept in view in every size */
+
+  /* 5. Raster buttons (art.ts `button-base`) */
+  --game-button-slice:24;            /* edges of the picture that never stretch, in its pixels */
+  --game-button-edge:12px;           /* the same edges as shown (a 2x picture: half the slice) */
+  --game-button-primary:var(--mp-card-accent);   /* main action */
+  --game-button-secondary:var(--mp-card-raised); /* second action, cancel */
+  --game-button-buy:var(--mp-card-success);      /* price buttons of the shop */
+  --game-button-danger:var(--mp-card-error);     /* delete, leave */
+  --game-button-text:var(--mp-card-fg);          /* label; one kind: --game-button-<kind>-text */
+}
