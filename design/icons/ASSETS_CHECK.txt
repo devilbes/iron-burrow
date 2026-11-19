@@ -1,0 +1,13 @@
+npm warn Unknown env config "store-dir". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "cache-dir". This will error in a future major version of npm. See `npm help npmrc` for supported config options.
+npm notice run manyplay-game@1.0.0 assets
+npm notice run node scripts/assets.mjs --check
+folder            files   ok  problems
+assets/game           4    4         0
+assets/ui             4    4         0
+assets/ui/icons     116  116         0
+assets/ui/items      16   16         0
+assets/ui/offers     20   20         0
+total               160  160         0
+
+assets --check ok in 3.9 s
