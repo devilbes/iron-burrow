@@ -1,0 +1,113 @@
+[
+ {
+  "title": "auth/init",
+  "status": 200,
+  "rid": null,
+  "body": {
+   "gid": 32079,
+   "restoredBy": "new_guest"
+  }
+ },
+ {
+  "title": "progress/me/init (before)",
+  "status": 200,
+  "rid": null,
+  "body": [
+   {
+    "key": "progress_main",
+    "status": "active",
+    "level_1": "available",
+    "rewards": []
+   },
+   {
+    "key": "stars_main",
+    "status": "active",
+    "level_1": "available",
+    "rewards": []
+   },
+   {
+    "key": "reward_daily",
+    "status": "active",
+    "level_1": "available",
+    "rewards": []
+   }
+  ]
+ },
+ {
+  "title": "inventory before",
+  "status": 200,
+  "rid": null,
+  "body": {
+   "updatedAt": "2026-11-19T11:32:56.871Z",
+   "serverTime": "2026-11-19T11:32:56.960Z"
+  }
+ },
+ {
+  "title": "attempts/begin",
+  "status": 200,
+  "rid": null,
+  "body": {
+   "attemptId": "6afede6829adc430e862f925",
+   "seed": "Z9vuMctr9_Dl_N_B1yRopad6_oyCmzoPiwg3SNibqCc"
+  }
+ },
+ {
+  "title": "levelEnd level 1 (moves 0, durationMs 61000, score 5000)",
+  "status": 202,
+  "rid": null,
+  "body": {
+   "eventId": "da199811-6e1a-4339-a08f-323b09dc71c7",
+   "status": "accepted",
+   "acceptedAt": "2026-11-19T11:33:59.140Z",
+   "duplicate": false,
+   "level": {
+    "verified": false,
+    "stars": 0,
+    "reason": "win_mismatch"
+   }
+  }
+ },
+ {
+  "title": "progress/me/init (after)",
+  "status": 200,
+  "rid": null,
+  "body": [
+   {
+    "key": "progress_main",
+    "status": "active",
+    "steps": {
+     "level_1": "available",
+     "level_2": "locked"
+    },
+    "rewards": []
+   },
+   {
+    "key": "stars_main",
+    "status": "active",
+    "steps": {
+     "stars3_1": "available",
+     "stars3_2": "available"
+    },
+    "rewards": []
+   },
+   {
+    "key": "reward_daily",
+    "status": "active",
+    "steps": {
+     "day_1": "available",
+     "day_2": "locked"
+    },
+    "rewards": []
+   }
+  ]
+ },
+ {
+  "title": "inventory after",
+  "status": 200,
+  "rid": null,
+  "body": {
+   "updatedAt": "2026-11-19T11:32:56.871Z",
+   "serverTime": "2026-11-19T11:34:07.345Z"
+  }
+ }
+]

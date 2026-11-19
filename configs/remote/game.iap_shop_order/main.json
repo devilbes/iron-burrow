@@ -1,0 +1,17 @@
+{
+  "scope": "game.iap_shop_order",
+  "key": "main",
+  "name": "game.iap_shop_order/main",
+  "data": {
+    "order": [
+      "starter_crate",
+      "hull_pack",
+      "field_kit",
+      "heavy_arsenal",
+      "commander_cache"
+    ],
+    "placement_id": "shop"
+  },
+  "visibility": 3,
+  "enabled": true
+}

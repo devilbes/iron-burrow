@@ -1,0 +1,13 @@
+{
+  "scope": "ads.game.placements",
+  "key": "start_grant",
+  "name": "ads.game.placements/start_grant",
+  "data": {
+    "name": "Welcome gift",
+    "domains": [
+      "iap"
+    ]
+  },
+  "visibility": 3,
+  "enabled": true
+}

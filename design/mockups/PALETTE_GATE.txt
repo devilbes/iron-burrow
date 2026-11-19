@@ -1,0 +1,7 @@
+CHECK palette/PL-01 FAIL gates.art.budgetOfRoot: параметр gates.art.budgetOfRoot не задан (gate-facts «Проверки» → .devflow/facts.json)
+CHECK palette/PL-02 PASS
+CHECK palette/PL-03 WARN unmeasured art.paletteDeltaEMax —; unmeasured art.paletteDeltaEPercentile —
+FAIL gates.art.budgetOfRoot PL-01 параметр gates.art.budgetOfRoot не задан (gate-facts «Проверки» → .devflow/facts.json)
+WARN PL-03 unmeasured art.paletteDeltaEMax —
+WARN PL-03 unmeasured art.paletteDeltaEPercentile —
+GATE palette FAIL: 1 нарушений, 2 WARN

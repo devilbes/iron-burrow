@@ -1,0 +1,40 @@
+{
+  "planned": 87,
+  "exportFiles": 340,
+  "missingOrEmpty": [],
+  "over2MB": [],
+  "maxOwnFileBytes": 1945540,
+  "newGenerationCalls": 0,
+  "visualAcceptance": "FAIL",
+  "assetCommand": "FAIL: sharp missing",
+  "assetContract": "FAIL: missing gate facts",
+  "sourceCompression": {
+    "dirs": [
+      "game/batch-1",
+      "game/batch-2",
+      "game/batch-3",
+      "game/batch-4",
+      "game/batch-5",
+      "game/batch-6",
+      "game/batch-7",
+      "game/batch-8"
+    ],
+    "bytesBefore": 167495943,
+    "bytesAfter": 21779644,
+    "converted": 87,
+    "keptAsIs": 0,
+    "failed": [],
+    "referencesUpdatedIn": [
+      "game/plan.json",
+      "game/parts/part-8.json",
+      "game/parts/part-7.json",
+      "game/parts/part-6.json",
+      "game/parts/part-5.json",
+      "game/parts/part-4.json",
+      "game/parts/part-3.json",
+      "game/parts/part-2.json",
+      "game/parts/part-1.json"
+    ],
+    "duplicates": []
+  }
+}

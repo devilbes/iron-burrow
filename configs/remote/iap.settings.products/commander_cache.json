@@ -1,0 +1,34 @@
+{
+  "name": "iap.settings.products/commander_cache",
+  "data": {
+    "name": "Commander Cache",
+    "type": "consumable",
+    "priceUsd": 19.99,
+    "entities": [
+      {
+        "id": "bst_bubble",
+        "amount": 35
+      },
+      {
+        "id": "bst_shockwave",
+        "amount": 35
+      },
+      {
+        "id": "bst_fortify",
+        "amount": 35
+      },
+      {
+        "id": "bst_hull",
+        "amount": 35
+      }
+    ],
+    "bindings": {
+      "google_play": {
+        "productId": "commander_cache"
+      }
+    }
+  },
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": []
+}

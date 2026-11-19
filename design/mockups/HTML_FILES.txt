@@ -1,0 +1,5 @@
+-rw-r--r-- 1 65532 65532 5661 Nov 19 11:14 design/mockups/main/game/index.html
+-rw-r--r-- 1 65532 65532 5140 Nov 19 11:08 design/mockups/main/lobby/index.html
+-rw-r--r-- 1 65532 65532 7700 Nov 19 11:15 design/mockups/main/stage-map/index.html
+-rw-r--r-- 1 65532 65532 4278 Nov 19 11:09 design/mockups/results/defeat/index.html
+-rw-r--r-- 1 65532 65532 5655 Nov 19 11:14 design/mockups/results/stage-clear/index.html

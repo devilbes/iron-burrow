@@ -1,0 +1,38 @@
+{
+  "scope": "iap.settings.products",
+  "key": "starter_crate",
+  "revision": 1,
+  "schemaId": "iap.settings.products@6",
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": [],
+  "readAt": "2026-11-19T11:28Z",
+  "data": {
+    "name": "Starter Crate",
+    "type": "consumable",
+    "priceUsd": 0.99,
+    "entities": [
+      {
+        "id": "bst_bubble",
+        "amount": 3
+      },
+      {
+        "id": "bst_shockwave",
+        "amount": 3
+      },
+      {
+        "id": "bst_fortify",
+        "amount": 3
+      },
+      {
+        "id": "bst_hull",
+        "amount": 3
+      }
+    ],
+    "bindings": {
+      "google_play": {
+        "productId": "starter_crate"
+      }
+    }
+  }
+}

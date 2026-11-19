@@ -1,7 +1,6 @@
 {
   "en": {
     "shell": {
-      "title": "Game",
       "loading": {
         "status": "Loading the game…",
         "caption": "Preparing levels and rewards"

@@ -1,0 +1,12 @@
+{
+  "name": "iap.placements/defeat",
+  "data": {
+    "offers": [
+      "hull_pack",
+      "starter_crate"
+    ]
+  },
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": []
+}

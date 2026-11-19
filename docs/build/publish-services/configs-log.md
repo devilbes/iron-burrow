@@ -87,3 +87,20 @@ Strings per locale "en" (from localization/strings.json, npm run strings: up to 
 | localization/en | created | 4 dryRuns (3 refusals) + 1 write | locale version 2 | match 53/53 |
 
 Re-run rule: each record is read first; when the readback equals the file (as now), no write is sent and the record is reported unchanged. Writing again with ifMatch 0 is refused for existing keys, so a re-run cannot create duplicates.
+
+## Level ranges update (win.objectives removed)
+Date 2026-11-19, app 360 (iron-burrow), env test. Change: `data.server.win` ({objectives:["destroy_all"]}) removed from 3 range records; contentHash unchanged; data outside `server` unchanged (export.mjs no longer emits win.objectives, D-DATA-12).
+Pre-checks: `npm run records` → only the 3 known localization findings (defaultLocale, locales, "en"); levels.main validated by schemas/levels.main.json. `node scripts/levels-hash.mjs --check` → exit 0 (hashes e9191faa…, d6dcea1b…, e02e56de…).
+Read before write (configs.get): r_0001_0010 rev 1, r_0011_0020 rev 1, r_0021_0030 rev 1; each still had server.win, otherwise equal to the file → status: update needed.
+- dryRun batch items [r_0001_0010, r_0011_0020, r_0021_0030], scope levels.main, ifMatch 1 each, value {data, description, visibility:3} from the files, idempotencyKey 1ff57ef9-8156-4de7-b4c2-0cc5246495b1: accepted (created 0, updated 3, errors [], each data.valid true)
+- write same batch dryRun:false, idempotencyKey b204f425-8980-4fc6-9483-1ec58f6f740c: updated 3, errors []; revisions r_0001_0010=2 (configId 2), r_0011_0020=2 (configId 3), r_0021_0030=2 (configId 4); schemaId levels.main@4, version 2
+- readback configs.get {levels.main, key}: saved to docs/build/publish-services/readback/levels.main__<key>.json; deep compare (node) → data equals file for all 3; envelope (name, description, visibility 3) match; `server.win` absent (also in every server.entries[i]); contentHash recomputed (JCS sha256 of data without server) matches for all 3.
+- refusals: none.
+
+| record | result | ifMatch | revision before → after | readback |
+|---|---|---|---|---|
+| levels.main/r_0001_0010 | updated | 1 | 1 → 2 | match, no server.win, contentHash ok |
+| levels.main/r_0011_0020 | updated | 1 | 1 → 2 | match, no server.win, contentHash ok |
+| levels.main/r_0021_0030 | updated | 1 | 1 → 2 | match, no server.win, contentHash ok |
+
+Re-run rule: read first; readback now equals the files, so a re-run sends no write and reports unchanged (rev 2).

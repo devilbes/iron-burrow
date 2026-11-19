@@ -1,0 +1,41 @@
+{
+  "scope": "game.boosters",
+  "key": "main",
+  "name": "game.boosters/main",
+  "data": {
+    "items": {
+      "bubble": {
+        "item_id": "bst_bubble"
+      },
+      "shockwave": {
+        "item_id": "bst_shockwave"
+      },
+      "fortify": {
+        "item_id": "bst_fortify"
+      },
+      "hull": {
+        "item_id": "bst_hull"
+      }
+    },
+    "bubble": {
+      "duration_s": 10,
+      "max_per_stage": 2
+    },
+    "shockwave": {
+      "max_per_stage": 1
+    },
+    "fortify": {
+      "duration_s": 20,
+      "max_per_stage": 1
+    },
+    "hull": {
+      "prestage_max": 1,
+      "continue_max": 1,
+      "continue_lives": 2,
+      "continue_rebuild_core": true
+    },
+    "siege_limit_mult": 2
+  },
+  "visibility": 3,
+  "enabled": true
+}

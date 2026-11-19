@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shop order",
+  "description": "Iron Burrow — Shop order: numbers read by the game through sdk.configs.get('game.iap_shop_order', 'main'). Values from GDD 31 plat.configs; item, offer, level-set and board ids match the published service records.",
+  "x-ui": {
+    "label": "Shop order"
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "order",
+    "placement_id"
+  ],
+  "properties": {
+    "order": {
+      "title": "order",
+      "description": "Iron Burrow tunable `order` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "order"
+      },
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "title": "order[]",
+        "description": "Iron Burrow tunable `order[]` (GDD 31 plat.configs).",
+        "x-ui": {
+          "label": "order[]"
+        },
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 64
+      }
+    },
+    "placement_id": {
+      "title": "placement_id",
+      "description": "Iron Burrow tunable `placement_id` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "placement_id"
+      },
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    }
+  }
+}

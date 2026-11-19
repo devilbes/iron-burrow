@@ -7,6 +7,8 @@
 import type { SkinFont } from '@manygamescorp/ui-kit/skin';
 import { ICONS } from './icons.js';
 
+const LATIN = 'U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD';
+
 export const ASSETS: Readonly<Record<string, string>> = {
   // Icons (icon-<key>): src/skin/icons.ts, written by scripts/skin-icons.mjs — the stock atlas
   // recolored to theme.css and/or the game's own sheet; a single file per icon goes below and
@@ -28,10 +30,11 @@ export const ASSETS: Readonly<Record<string, string>> = {
 };
 
 export const FONTS: readonly SkinFont[] = [
-  // Two families at most, latin and cyrillic files apart; the family names are the ones the
-  // --mp-font-* variables of theme.css use:
-  // { family: 'Game Title', url: 'fonts/title-latin.woff2', weight: 800, unicodeRange: 'U+0000-00FF' },
-  // { family: 'Game Title', url: 'fonts/title-cyrillic.woff2', weight: 800, unicodeRange: 'U+0400-045F' },
+  // Two families (UI_ART_BIBLE Typography, D-ART-03), @fontsource, SIL OFL 1.1; Latin files only —
+  // the base language is en; the localization step adds Cyrillic files when a language needs them.
+  { family: 'Russo One', url: 'fonts/russo-one-latin-400.woff2', weight: 400, unicodeRange: LATIN },
+  { family: 'Exo 2', url: 'fonts/exo-2-latin-500.woff2', weight: 500, unicodeRange: LATIN },
+  { family: 'Exo 2', url: 'fonts/exo-2-latin-700.woff2', weight: 700, unicodeRange: LATIN },
 ];
 
 // Pictures of the game's items and offers — the one place for them. Every kit window takes them
@@ -46,7 +49,9 @@ export const FONTS: readonly SkinFont[] = [
 // a currency) — never the game's; tests/skin-readiness.test.mjs lists such items (strict: fails).
 // The name under the picture is the catalog `display.titleKey` through localization.
 export const ITEMS: Readonly<Record<string, string>> = {
-  item_coins: 'icon:coins',
+  // Template placeholder of the catalog (item_coins): the recolored coin cut out of the atlas as a
+  // file until the item art step replaces the catalog and its pictures (docs/skin/BASE.md).
+  item_coins: 'items/item_coins.webp',
 };
 
 export const OFFERS: Readonly<Record<string, string>> = {

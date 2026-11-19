@@ -1,0 +1,22 @@
+{
+  "scope": "game.powerups",
+  "key": "main",
+  "name": "game.powerups/main",
+  "data": {
+    "lifetime_s": 12,
+    "weights": {
+      "star": 30,
+      "bubble": 15,
+      "rebar": 15,
+      "quake": 10,
+      "freeze": 20,
+      "hull": 10
+    },
+    "bubble_s": 10,
+    "rebar_s": 15,
+    "freeze_s": 8,
+    "quake_scores": false
+  },
+  "visibility": 3,
+  "enabled": true
+}

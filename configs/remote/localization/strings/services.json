@@ -6,70 +6,9 @@
         "description": "Soft currency. Earn it in levels and daily rewards."
       }
     },
-    "offer": {
-      "coins_small": {
-        "title": "Small coin pack",
-        "subtitle": "500 coins"
-      },
-      "coins_medium": {
-        "title": "Medium coin pack",
-        "subtitle": "3,000 coins"
-      },
-      "coins_large": {
-        "title": "Large coin pack",
-        "subtitle": "7,000 coins",
-        "badge": "Best value"
-      }
-    },
     "placement": {
       "shop": {
         "title": "Shop"
-      }
-    },
-    "levels": {
-      "main": {
-        "title": "Levels",
-        "level_1": {
-          "title": "Level 1"
-        },
-        "level_2": {
-          "title": "Level 2"
-        },
-        "level_3": {
-          "title": "Level 3"
-        },
-        "level_4": {
-          "title": "Level 4"
-        },
-        "level_5": {
-          "title": "Level 5"
-        }
-      }
-    },
-    "reward": {
-      "daily": {
-        "title": "Daily reward",
-        "day_1": {
-          "title": "Day 1"
-        },
-        "day_2": {
-          "title": "Day 2"
-        },
-        "day_3": {
-          "title": "Day 3"
-        },
-        "day_4": {
-          "title": "Day 4"
-        },
-        "day_5": {
-          "title": "Day 5"
-        },
-        "day_6": {
-          "title": "Day 6"
-        },
-        "day_7": {
-          "title": "Day 7"
-        }
       }
     },
     "leaderboard": {

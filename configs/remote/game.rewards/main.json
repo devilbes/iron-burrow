@@ -1,0 +1,73 @@
+{
+  "scope": "game.rewards",
+  "key": "main",
+  "name": "game.rewards/main",
+  "data": {
+    "first_clear_rotation": [
+      "bst_bubble",
+      "bst_shockwave",
+      "bst_fortify",
+      "bst_hull"
+    ],
+    "first_clear_qty": 1,
+    "three_star": {
+      "bst_bubble": 1
+    },
+    "finale_stages": [
+      10,
+      20,
+      30
+    ],
+    "finale_bundle": {
+      "bst_bubble": 1,
+      "bst_shockwave": 1,
+      "bst_fortify": 1,
+      "bst_hull": 1
+    },
+    "start_grant": {
+      "bst_bubble": 2,
+      "bst_shockwave": 2,
+      "bst_fortify": 2,
+      "bst_hull": 2
+    },
+    "daily_preview": [
+      {
+        "bst_bubble": 1
+      },
+      {
+        "bst_shockwave": 1
+      },
+      {
+        "bst_fortify": 1
+      },
+      {
+        "bst_hull": 1
+      },
+      {
+        "bst_bubble": 2
+      },
+      {
+        "bst_shockwave": 1,
+        "bst_fortify": 1
+      },
+      {
+        "bst_hull": 2,
+        "bst_bubble": 2,
+        "bst_shockwave": 1
+      }
+    ],
+    "level_set_id": "main",
+    "progress": {
+      "levels": "progress_main",
+      "three_star": "stars_main",
+      "daily": "reward_daily"
+    },
+    "start_grant_offer_id": "start_grant",
+    "boards": {
+      "siege_best": "siege_best",
+      "campaign_score": "campaign_score"
+    }
+  },
+  "visibility": 3,
+  "enabled": true
+}

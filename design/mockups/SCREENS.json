@@ -1,0 +1,92 @@
+{
+  "game": "Iron Burrow",
+  "htmlScreens": 5,
+  "renderedViews": 15,
+  "assets": [
+    {
+      "id": "lobby",
+      "area": "main",
+      "title": "Lobby",
+      "file": "assets/ui/screens/lobby-2x.png",
+      "display": "assets/ui/screens/lobby.webp",
+      "width": 1536,
+      "height": 1024,
+      "genCount": 1,
+      "source": "builtin-codex-imagegen",
+      "promptLog": "design/mockups/main/lobby/ASSETS.md",
+      "viewports": [
+        "1440x900",
+        "844x390",
+        "390x844"
+      ]
+    },
+    {
+      "id": "stage-map",
+      "area": "main",
+      "title": "Campaign",
+      "file": "assets/ui/screens/stage-map-2x.png",
+      "display": "assets/ui/screens/stage-map.webp",
+      "width": 1536,
+      "height": 1024,
+      "genCount": 1,
+      "source": "builtin-codex-imagegen",
+      "promptLog": "design/mockups/main/stage-map/ASSETS.md",
+      "viewports": [
+        "1440x900",
+        "844x390",
+        "390x844"
+      ]
+    },
+    {
+      "id": "game",
+      "area": "main",
+      "title": "In-level",
+      "file": "assets/ui/screens/game-2x.png",
+      "display": "assets/ui/screens/game.webp",
+      "width": 1254,
+      "height": 1254,
+      "genCount": 1,
+      "source": "builtin-codex-imagegen",
+      "promptLog": "design/mockups/main/game/ASSETS.md",
+      "viewports": [
+        "1440x900",
+        "844x390",
+        "390x844"
+      ]
+    },
+    {
+      "id": "stage-clear",
+      "area": "results",
+      "title": "Stage Clear",
+      "file": "assets/ui/screens/stage-clear-2x.png",
+      "display": "assets/ui/screens/stage-clear.webp",
+      "width": 1254,
+      "height": 1254,
+      "genCount": 1,
+      "source": "builtin-codex-imagegen",
+      "promptLog": "design/mockups/results/stage-clear/ASSETS.md",
+      "viewports": [
+        "1440x900",
+        "844x390",
+        "390x844"
+      ]
+    },
+    {
+      "id": "defeat",
+      "area": "results",
+      "title": "Defeat",
+      "file": "assets/ui/screens/defeat-2x.png",
+      "display": "assets/ui/screens/defeat.webp",
+      "width": 1254,
+      "height": 1254,
+      "genCount": 1,
+      "source": "builtin-codex-imagegen",
+      "promptLog": "design/mockups/results/defeat/ASSETS.md",
+      "viewports": [
+        "1440x900",
+        "844x390",
+        "390x844"
+      ]
+    }
+  ]
+}

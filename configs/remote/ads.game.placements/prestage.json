@@ -1,0 +1,13 @@
+{
+  "scope": "ads.game.placements",
+  "key": "prestage",
+  "name": "ads.game.placements/prestage",
+  "data": {
+    "name": "Pre-stage",
+    "domains": [
+      "iap"
+    ]
+  },
+  "visibility": 3,
+  "enabled": true
+}

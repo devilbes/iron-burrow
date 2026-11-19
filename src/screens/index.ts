@@ -1,12 +1,17 @@
-// The screens of the game, by route, which of them are gameplay screens, and what a screen gets
-// from the app. The game owns this file; src/shell/router.ts implements ScreenContext and mounts
-// one screen at a time.
-import { CURRENCY } from '../boot/ids.js';
+// The screens of Iron Burrow, by route, which of them are gameplay screens, and what a screen gets
+// from the app (docs/game/CONTRACT.md §4). The game owns this file; src/shell/router.ts implements
+// ScreenContext and mounts one screen at a time. The game API is `gameOf(ctx.game)`
+// (src/modules/game/index.ts). Windows S04, S06–S09, S11, S13, S14 (game part), S16 are game
+// windows (`ctx.window`), not routes; S10 shop and S12 daily are kit windows of the HUD tiles.
 import type { GamePorts } from '../modules/game/index.js';
 import { mount as game } from './game.js';
 import { mount as home } from './home.js';
 
-export type Route = 'home' | 'game';
+/**
+ * `home` — S02 Lobby (the shell's start route, keep the name); `map` — S03 Stage Map;
+ * `game` — S05 Gameplay (Canvas field, match HUD, S15 hints, the game windows of a stage).
+ */
+export type Route = 'home' | 'map' | 'game';
 
 export interface ScreenContext {
   /** Localized text by key (the strings record: bundled, then the published one); `{name}` filled from params. */
@@ -95,7 +100,13 @@ export interface GameOverlay {
 /** Draws a screen into `root`; returns the function that removes it and its subscriptions. */
 export type ScreenMount = (root: HTMLElement, ctx: ScreenContext) => () => void;
 
-export const screens: Record<Route, ScreenMount> = { home, game };
+/**
+ * TEMPORARY stubs of the contract step: `map` shows the Lobby placeholder until the screens step
+ * adds src/screens/map.ts; home.ts and game.ts are still the template placeholders.
+ */
+const map: ScreenMount = (root, ctx) => home(root, ctx);
+
+export const screens: Record<Route, ScreenMount> = { home, map, game };
 
 /** Gameplay routes: the shell shows them without the lobby HUD and bottom menu, with a compact top bar. */
 export const GAMEPLAY: ReadonlySet<Route> = new Set<Route>(['game']);
@@ -120,6 +131,7 @@ export interface MenuItem {
  * (daily-rewards `entry: bottomMenu`) shows the bar too and keeps the slot it took.
  */
 export const MENU: readonly MenuItem[] = [];
+// Iron Burrow: no bottom menu — Play and Siege live on the Lobby, the map is reached by Play.
 
 /**
  * What a HUD entry is about; the side follows from it, the game never picks one:
@@ -178,8 +190,14 @@ export interface HudEntry {
  */
 export const HUD: readonly HudEntry[] = [
   { id: 'daily-rewards', kind: 'activity' },
-  { id: 'leaderboards', kind: 'activity' },
-  { id: 'shop', kind: 'money' },
+  // S13: two boards (siege_best weekly, campaign_score all-time) in a game window — the stock
+  // leaderboard window shows one board only (CONTRACT D-GC-07). TEMPORARY: the screens step
+  // replaces `run` with the S13 window.
+  { id: 'boards', kind: 'activity', icon: 'trophy', label: 'screen.hud.boards', open: { run: () => undefined } },
+  // S10: the game's shop window (offers of `placement_shop`, Starter Crate only after its trigger,
+  // no currency line) — the stock shop window shows a coins capsule (CONTRACT D-GC-19).
+  // TEMPORARY: the screens step replaces `run` with the S10 window.
+  { id: 'store', kind: 'money', icon: 'shop', label: 'screen.hud.shop', open: { run: () => undefined } },
 ];
 
 /**
@@ -201,10 +219,10 @@ export type BarResource =
   | { readonly kind: 'level'; readonly label?: string; readonly icon?: string };
 
 /** Counters of the top bar, in this order; nothing else is shown there (the right side is settings only). */
-export const TOP_BAR: readonly BarResource[] = [
-  { kind: 'item', id: CURRENCY, label: 'shell.currency.coins' },
-  { kind: 'level' },
-];
+export const TOP_BAR: readonly BarResource[] = [];
+// Iron Burrow: no currency (D-FP-02), inventory is not shown, the profile level is not a number of
+// this game — the top bar has the profile on the left and settings on the right only. Campaign
+// stars are shown on the Lobby (`lobby-stars`) from the same progress the map reads.
 
 /**
  * Languages of the game: the base one (`en`, the bundled branch of the strings record) and every other language the
@@ -226,6 +244,8 @@ export const LOCALES: readonly string[] = ['en'];
  * by the game (docs/platform/recipes/orientation.md; tests/orientation.test.mjs compares them).
  */
 export type GameOrientation = 'any' | 'landscape' | 'portrait';
+// Iron Burrow: portrait 390×844, landscape 844×390 and desktop 1440×900 are equal layouts of every
+// screen (GDD 20, D-00-01; layout by `layoutOf`, src/modules/game/index.ts) — `any`.
 export const ORIENTATION: GameOrientation = 'any';
 
 /** A line of the profile window: localization key of its label and where its value comes from. */
@@ -244,6 +264,7 @@ export interface ProfileStat {
  * value is not shown. Keep it short and about the game: no ids, codes or technical values.
  */
 export const PROFILE_STATS: readonly ProfileStat[] = [
+  // Stages cleared (campaign progress) and the best stage score.
   { label: 'screen.profile.levels', value: 'levelsCompleted' },
   { label: 'screen.profile.best', value: 'highestScore' },
 ];

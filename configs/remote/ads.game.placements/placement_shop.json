@@ -1,0 +1,13 @@
+{
+  "scope": "ads.game.placements",
+  "key": "placement_shop",
+  "name": "ads.game.placements/placement_shop",
+  "data": {
+    "name": "Shop window (stock shell)",
+    "domains": [
+      "iap"
+    ]
+  },
+  "visibility": 3,
+  "enabled": true
+}

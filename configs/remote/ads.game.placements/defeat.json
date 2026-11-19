@@ -1,0 +1,13 @@
+{
+  "scope": "ads.game.placements",
+  "key": "defeat",
+  "name": "ads.game.placements/defeat",
+  "data": {
+    "name": "Defeat",
+    "domains": [
+      "iap"
+    ]
+  },
+  "visibility": 3,
+  "enabled": true
+}

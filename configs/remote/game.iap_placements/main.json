@@ -1,0 +1,34 @@
+{
+  "scope": "game.iap_placements",
+  "key": "main",
+  "name": "game.iap_placements/main",
+  "data": {
+    "defeat": {
+      "packs": [
+        "hull_pack",
+        "starter_crate"
+      ],
+      "placement_id": "defeat"
+    },
+    "prestage": {
+      "pack": "hull_pack",
+      "when_hull_zero": true,
+      "placement_id": "prestage"
+    },
+    "starter_crate": {
+      "triggers": [
+        "first_defeat",
+        "stage3_first_clear"
+      ],
+      "cooldown_h": 24,
+      "max_auto_shows": 3,
+      "placement_id": "starter_auto"
+    },
+    "start_grant": {
+      "offer_id": "start_grant",
+      "placement_id": "start_grant"
+    }
+  },
+  "visibility": 3,
+  "enabled": true
+}

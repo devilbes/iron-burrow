@@ -1,0 +1,13 @@
+{
+  "scope": "ads.game.placements",
+  "key": "shop",
+  "name": "ads.game.placements/shop",
+  "data": {
+    "name": "Shop",
+    "domains": [
+      "iap"
+    ]
+  },
+  "visibility": 3,
+  "enabled": true
+}

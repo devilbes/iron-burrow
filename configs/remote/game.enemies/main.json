@@ -1,0 +1,30 @@
+{
+  "scope": "game.enemies",
+  "key": "main",
+  "name": "game.enemies/main",
+  "data": {
+    "scout": {
+      "speed": 3.6,
+      "hp": 1,
+      "points": 200
+    },
+    "grunt": {
+      "speed": 1.8,
+      "hp": 1,
+      "points": 100
+    },
+    "gunner": {
+      "speed": 2.4,
+      "hp": 1,
+      "points": 300,
+      "fast_bullet": true
+    },
+    "brute": {
+      "speed": 1.8,
+      "hp": 4,
+      "points": 400
+    }
+  },
+  "visibility": 3,
+  "enabled": true
+}
