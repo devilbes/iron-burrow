@@ -50,7 +50,7 @@ export class Host {
     const on = (pattern: string, listener: (payload: unknown) => void): void => {
       try { this.offs.push(ctx.bus.on(pattern, listener)); } catch { /* not granted */ }
     };
-    on('auth:playerChanged', () => this.reset());
+    on('auth:identity:changed', () => this.reset());
     on('sdk:reload:required', () => this.reset());
     on('inventory:state:changed', () => this.emitBalances());
     on('realtime:connection:connected', () => { this.connection = 'open'; });

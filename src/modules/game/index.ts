@@ -335,7 +335,7 @@ const BRAND = Symbol.for('iron-burrow.game');
 /** The SDK modules the game calls itself (CONTRACT §3.2); ids of src/boot/ids.ts `MODULES`. */
 const USES = ['progress', 'levels', 'inventory', 'iap', 'leaderboards', 'kv', 'gamestate', 'daily-rewards', 'realtime'] as const;
 /** Bus events the game listens to: player change, SDK reload, inventory and connection pushes. */
-const LISTENS = ['auth:playerChanged', 'sdk:reload:required', 'inventory:state:changed', 'realtime:connection:connected',
+const LISTENS = ['auth:identity:changed', 'sdk:reload:required', 'inventory:state:changed', 'realtime:connection:connected',
   'realtime:connection:disconnected'] as const;
 
 function branded(api: IronBurrowApi): IronBurrow {
