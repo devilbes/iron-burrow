@@ -291,7 +291,7 @@ export const COMPONENTS: Readonly<Record<string, string>> = {
     + '.mpg-shell,.mpg-shell *{scrollbar-width:none}.mpg-shell ::-webkit-scrollbar{display:none}'
     // The battle (route `game`): the field gets the whole screen slot — the slot's 16px frame is
     // the game screen's own margin there (GDD 20 S05: the field as tall as the screen allows).
-    + '.mpg-shell [data-slot=screen]>[data-element=game]{margin:-16px;height:calc(100% + 32px)}',
+    + `.mpg-shell [data-slot=screen]>[data-element=game]${OVER}{margin:-16px;height:calc(100% + 32px)}`,
   settings: SETTINGS,
   profile: PROFILE,
   dailyReward: DAILY,

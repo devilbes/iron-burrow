@@ -126,6 +126,16 @@ async function pass([w, h]) {
     const shellClose = page.locator('[data-part=window-close]');
     if (await shellClose.count() && await shellClose.first().isVisible()) { await shellClose.first().click(); await page.waitForTimeout(400); }
   };
+  /** Closes the top window as a player would: its main button (Great, Collect, OK, Continue), else ×, else Escape. */
+  const dismiss = async () => {
+    const d = dialog();
+    const names = await d.locator('button').evaluateAll((list) => list.map((b) => (b.textContent ?? '').trim() || b.getAttribute('aria-label') || '?'));
+    log.steps.push({ dismiss: names });
+    const main = d.getByRole('button', { name: /^(great|collect|ok|continue|claim|got it)$/i });
+    try { await main.last().click({ timeout: 5000 }); await page.waitForTimeout(800); return; } catch { /* next way */ }
+    try { await d.locator('.dialog-close').first().click({ timeout: 5000 }); await page.waitForTimeout(800); return; } catch { /* next way */ }
+    await page.keyboard.press('Escape'); await page.waitForTimeout(800);
+  };
   const waitDialog = async (timeout = 20000) => { await page.locator('[role=dialog]').first().waitFor({ state: 'visible', timeout }); await page.waitForTimeout(800); };
 
   await step('boot', async () => {
@@ -138,6 +148,7 @@ async function pass([w, h]) {
     await press(action('grant-collect'));
     await page.waitForTimeout(2500);
     await shot('grant-reward');
+    await dismiss();
     await closeAll();
   });
   await step('lobby', async () => { await page.waitForTimeout(1000); await shot('lobby', 'lobby'); });
@@ -231,13 +242,12 @@ async function pass([w, h]) {
   await playStage(1, true);
   for (const stage of [2, 3]) {
     await step(`level${stage - 1}-next`, async () => {
-      await press(action('clear-next'));
+      await action('clear-next').click({ timeout: 10000 }).catch((e) => log.errors.push(`[next] ${String(e.message).split('\n')[0]}`));
       await page.waitForTimeout(2500);
       // the reward window comes right after the result window
       if (await hasDialog() && !(await page.locator('[data-testid$=".action.prestage-start"]').count())) {
         await shot(`reward-after-level${stage - 1}`);
-        const d = dialog(); const b = d.locator('button:visible');
-        await b.last().click(); await page.waitForTimeout(1500);
+        await dismiss(); await page.waitForTimeout(1500);
       }
     });
     await playStage(stage, false);
