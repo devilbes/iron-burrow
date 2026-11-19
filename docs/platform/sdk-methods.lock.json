@@ -1,0 +1,1064 @@
+{
+ "schemaVersion": 1,
+ "source": "MCP sdk.kit.get {target:web} + sdk.modules.list (revision 2); method list from the kit docs package @manygamescorp/docs api.json (packages of the selected modules and core)",
+ "sdkVersion": "1.0.0-rc.30",
+ "modulesRevision": 2,
+ "lockHash": "881abf2b5d1b3d3e4e2e0f20a7e18b7db813658c55851bd5be13501205b3c530",
+ "platformJsonSha256": "13c3a1e655ca5ab2293c1da999f5d7d06cd5188ded783c855ea26c33ae330846",
+ "apiJsonSha256": "99cdc61decff44107ad3c187316010d30f186808a9019242d9a51eb071a6e9f0",
+ "kitApiJsonEntry": {
+  "path": "sdk/vendor/@manygamescorp/docs/api.json",
+  "sha256": "99cdc61decff44107ad3c187316010d30f186808a9019242d9a51eb071a6e9f0"
+ },
+ "excludedNamespaces": {
+  "ads": "not selected: no ads in this flow",
+  "scheduling": "not selected: beta module, liveops=false"
+ },
+ "mode": "strict",
+ "methods": [
+  "analytics.registerProvider",
+  "analytics.sendEvent",
+  "auth.availableProviders",
+  "auth.cancelProvider",
+  "auth.changeNickname",
+  "auth.checkMyNicknameAvailability",
+  "auth.code",
+  "auth.confirm",
+  "auth.discard",
+  "auth.forgetSaved",
+  "auth.getAccount",
+  "auth.getGames",
+  "auth.getProviderConfig",
+  "auth.init",
+  "auth.link",
+  "auth.linkProvider",
+  "auth.links",
+  "auth.logout",
+  "auth.onAccountChanging",
+  "auth.pending",
+  "auth.portalSession",
+  "auth.refresh",
+  "auth.refreshPortal",
+  "auth.restorePortal",
+  "auth.resume",
+  "auth.savedEmail",
+  "auth.session",
+  "auth.signin",
+  "auth.signinWithProvider",
+  "auth.suggestNickname",
+  "auth.unlink",
+  "bus.off",
+  "bus.on",
+  "bus.once",
+  "bus.replay",
+  "configs.dispose",
+  "configs.fetch",
+  "configs.get",
+  "configs.getScope",
+  "configs.init",
+  "configs.refresh",
+  "configs.resolve",
+  "configs.resolveSnapshot",
+  "configs.snapshot",
+  "context.get",
+  "context.on",
+  "context.set",
+  "context.snapshot",
+  "core.boot",
+  "core.destroy",
+  "core.getModule",
+  "core.loadModule",
+  "core.moduleStatuses",
+  "core.modules",
+  "daily-rewards.open",
+  "daily-rewards.plan",
+  "daily-rewards.setNextRewardAt",
+  "device.advertisingId",
+  "device.app",
+  "device.audio",
+  "device.battery",
+  "device.camera",
+  "device.capabilities",
+  "device.clipboard",
+  "device.geo",
+  "device.haptics",
+  "device.info",
+  "device.isSupported",
+  "device.keyboard",
+  "device.links",
+  "device.motion",
+  "device.network",
+  "device.performance",
+  "device.permissions",
+  "device.screen",
+  "device.share",
+  "device.store",
+  "device.tracking",
+  "endpoints.api",
+  "endpoints.appId",
+  "endpoints.cdn",
+  "endpoints.service",
+  "filters.canonicalize",
+  "filters.compile",
+  "filters.match",
+  "filters.validate",
+  "gamestate.clear",
+  "gamestate.dispose",
+  "gamestate.get",
+  "gamestate.set",
+  "hud.items",
+  "hud.open",
+  "hud.register",
+  "hud.slot",
+  "iap.cancelOrder",
+  "iap.claim",
+  "iap.createAdOrder",
+  "iap.dispose",
+  "iap.entitlements",
+  "iap.load",
+  "iap.offer",
+  "iap.offers",
+  "iap.openSubscriptionManagement",
+  "iap.order",
+  "iap.orders",
+  "iap.pendingOrders",
+  "iap.products",
+  "iap.purchase",
+  "iap.restore",
+  "iap.state",
+  "iap.subscriptions",
+  "iap.waitOrder",
+  "inventory.balance",
+  "inventory.consume",
+  "inventory.current",
+  "inventory.entities",
+  "inventory.exchange",
+  "inventory.expectGrant",
+  "inventory.get",
+  "inventory.positions",
+  "inventory.quantity",
+  "inventory.refresh",
+  "kv.delete",
+  "kv.dispose",
+  "kv.get",
+  "kv.list",
+  "kv.query",
+  "kv.set",
+  "l10n.available",
+  "l10n.chain",
+  "l10n.errorText",
+  "l10n.has",
+  "l10n.locale",
+  "l10n.plural",
+  "l10n.ready",
+  "l10n.refresh",
+  "l10n.registerDefaults",
+  "l10n.setLocale",
+  "l10n.stats",
+  "l10n.t",
+  "leaderboards.around",
+  "leaderboards.aroundOf",
+  "leaderboards.canSubmit",
+  "leaderboards.dispose",
+  "leaderboards.get",
+  "leaderboards.rank",
+  "leaderboards.rankOf",
+  "leaderboards.submit",
+  "leaderboards.submitScore",
+  "levels.dispose",
+  "levels.open",
+  "locale.get",
+  "locale.on",
+  "platform.id",
+  "portal.active",
+  "portal.exit",
+  "portal.fullscreen",
+  "portal.openId",
+  "profile.byGid",
+  "profile.dispose",
+  "profile.field",
+  "profile.get",
+  "profile.query",
+  "profile.replace",
+  "profile.setField",
+  "profile.summary",
+  "profile.update",
+  "progress.beginAttempt",
+  "progress.dispose",
+  "progress.init",
+  "progress.levelEnd",
+  "progress.send",
+  "realtime.ack",
+  "realtime.metrics",
+  "realtime.notice",
+  "realtime.reconnect",
+  "realtime.status",
+  "time.now",
+  "time.offset",
+  "time.synced",
+  "uiState.setFullscreenPopup",
+  "uiState.setScreen"
+ ],
+ "later": [],
+ "ctxOnly": [],
+ "namespaces": {
+  "core": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "boot",
+     "kind": "method"
+    },
+    {
+     "name": "destroy",
+     "kind": "method"
+    },
+    {
+     "name": "getModule",
+     "kind": "method"
+    },
+    {
+     "name": "loadModule",
+     "kind": "method"
+    },
+    {
+     "name": "modules",
+     "kind": "method"
+    },
+    {
+     "name": "moduleStatuses",
+     "kind": "method"
+    }
+   ]
+  },
+  "auth": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "availableProviders",
+     "kind": "method"
+    },
+    {
+     "name": "cancelProvider",
+     "kind": "method"
+    },
+    {
+     "name": "changeNickname",
+     "kind": "method"
+    },
+    {
+     "name": "checkMyNicknameAvailability",
+     "kind": "method"
+    },
+    {
+     "name": "code",
+     "kind": "method"
+    },
+    {
+     "name": "confirm",
+     "kind": "method"
+    },
+    {
+     "name": "discard",
+     "kind": "method"
+    },
+    {
+     "name": "forgetSaved",
+     "kind": "method"
+    },
+    {
+     "name": "getAccount",
+     "kind": "method"
+    },
+    {
+     "name": "getGames",
+     "kind": "method"
+    },
+    {
+     "name": "getProviderConfig",
+     "kind": "method"
+    },
+    {
+     "name": "init",
+     "kind": "method"
+    },
+    {
+     "name": "link",
+     "kind": "method"
+    },
+    {
+     "name": "linkProvider",
+     "kind": "method"
+    },
+    {
+     "name": "links",
+     "kind": "method"
+    },
+    {
+     "name": "logout",
+     "kind": "method"
+    },
+    {
+     "name": "onAccountChanging",
+     "kind": "method"
+    },
+    {
+     "name": "pending",
+     "kind": "property"
+    },
+    {
+     "name": "portalSession",
+     "kind": "property"
+    },
+    {
+     "name": "refresh",
+     "kind": "method"
+    },
+    {
+     "name": "refreshPortal",
+     "kind": "method"
+    },
+    {
+     "name": "restorePortal",
+     "kind": "method"
+    },
+    {
+     "name": "resume",
+     "kind": "method"
+    },
+    {
+     "name": "savedEmail",
+     "kind": "method"
+    },
+    {
+     "name": "session",
+     "kind": "property"
+    },
+    {
+     "name": "signin",
+     "kind": "method"
+    },
+    {
+     "name": "signinWithProvider",
+     "kind": "method"
+    },
+    {
+     "name": "suggestNickname",
+     "kind": "method"
+    },
+    {
+     "name": "unlink",
+     "kind": "method"
+    }
+   ]
+  },
+  "configs": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "dispose",
+     "kind": "method"
+    },
+    {
+     "name": "fetch",
+     "kind": "method"
+    },
+    {
+     "name": "get",
+     "kind": "method"
+    },
+    {
+     "name": "getScope",
+     "kind": "method"
+    },
+    {
+     "name": "init",
+     "kind": "method"
+    },
+    {
+     "name": "refresh",
+     "kind": "method"
+    },
+    {
+     "name": "resolve",
+     "kind": "method"
+    },
+    {
+     "name": "resolveSnapshot",
+     "kind": "method"
+    },
+    {
+     "name": "snapshot",
+     "kind": "method"
+    }
+   ]
+  },
+  "l10n": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "available",
+     "kind": "method"
+    },
+    {
+     "name": "chain",
+     "kind": "method"
+    },
+    {
+     "name": "errorText",
+     "kind": "method"
+    },
+    {
+     "name": "has",
+     "kind": "method"
+    },
+    {
+     "name": "locale",
+     "kind": "method"
+    },
+    {
+     "name": "plural",
+     "kind": "method"
+    },
+    {
+     "name": "ready",
+     "kind": "method"
+    },
+    {
+     "name": "refresh",
+     "kind": "method"
+    },
+    {
+     "name": "registerDefaults",
+     "kind": "method"
+    },
+    {
+     "name": "setLocale",
+     "kind": "method"
+    },
+    {
+     "name": "stats",
+     "kind": "method"
+    },
+    {
+     "name": "t",
+     "kind": "method"
+    }
+   ]
+  },
+  "context": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "get",
+     "kind": "method"
+    },
+    {
+     "name": "on",
+     "kind": "method"
+    },
+    {
+     "name": "set",
+     "kind": "method"
+    },
+    {
+     "name": "snapshot",
+     "kind": "method"
+    }
+   ]
+  },
+  "filters": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "canonicalize",
+     "kind": "method"
+    },
+    {
+     "name": "compile",
+     "kind": "method"
+    },
+    {
+     "name": "match",
+     "kind": "method"
+    },
+    {
+     "name": "validate",
+     "kind": "method"
+    }
+   ]
+  },
+  "uiState": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "setFullscreenPopup",
+     "kind": "method"
+    },
+    {
+     "name": "setScreen",
+     "kind": "method"
+    }
+   ]
+  },
+  "device": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "advertisingId",
+     "kind": "method"
+    },
+    {
+     "name": "app",
+     "kind": "property"
+    },
+    {
+     "name": "audio",
+     "kind": "property"
+    },
+    {
+     "name": "battery",
+     "kind": "method"
+    },
+    {
+     "name": "camera",
+     "kind": "property"
+    },
+    {
+     "name": "capabilities",
+     "kind": "method"
+    },
+    {
+     "name": "clipboard",
+     "kind": "property"
+    },
+    {
+     "name": "geo",
+     "kind": "property"
+    },
+    {
+     "name": "haptics",
+     "kind": "property"
+    },
+    {
+     "name": "info",
+     "kind": "method"
+    },
+    {
+     "name": "isSupported",
+     "kind": "method"
+    },
+    {
+     "name": "keyboard",
+     "kind": "property"
+    },
+    {
+     "name": "links",
+     "kind": "property"
+    },
+    {
+     "name": "motion",
+     "kind": "property"
+    },
+    {
+     "name": "network",
+     "kind": "property"
+    },
+    {
+     "name": "performance",
+     "kind": "method"
+    },
+    {
+     "name": "permissions",
+     "kind": "property"
+    },
+    {
+     "name": "screen",
+     "kind": "method"
+    },
+    {
+     "name": "share",
+     "kind": "method"
+    },
+    {
+     "name": "store",
+     "kind": "property"
+    },
+    {
+     "name": "tracking",
+     "kind": "property"
+    }
+   ]
+  },
+  "bus": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "off",
+     "kind": "method"
+    },
+    {
+     "name": "on",
+     "kind": "method"
+    },
+    {
+     "name": "once",
+     "kind": "method"
+    },
+    {
+     "name": "replay",
+     "kind": "method"
+    }
+   ]
+  },
+  "platform": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "id",
+     "kind": "property"
+    }
+   ]
+  },
+  "endpoints": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "api",
+     "kind": "property"
+    },
+    {
+     "name": "appId",
+     "kind": "property"
+    },
+    {
+     "name": "cdn",
+     "kind": "property"
+    },
+    {
+     "name": "service",
+     "kind": "method"
+    }
+   ]
+  },
+  "time": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "now",
+     "kind": "method"
+    },
+    {
+     "name": "offset",
+     "kind": "method"
+    },
+    {
+     "name": "synced",
+     "kind": "method"
+    }
+   ]
+  },
+  "locale": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "get",
+     "kind": "method"
+    },
+    {
+     "name": "on",
+     "kind": "method"
+    }
+   ]
+  },
+  "portal": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "active",
+     "kind": "method"
+    },
+    {
+     "name": "exit",
+     "kind": "method"
+    },
+    {
+     "name": "fullscreen",
+     "kind": "method"
+    },
+    {
+     "name": "openId",
+     "kind": "method"
+    }
+   ]
+  },
+  "analytics": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "registerProvider",
+     "kind": "method"
+    },
+    {
+     "name": "sendEvent",
+     "kind": "method"
+    }
+   ]
+  },
+  "daily-rewards": {
+   "package": "@manygamescorp/mod-daily-rewards",
+   "members": [
+    {
+     "name": "open",
+     "kind": "method"
+    },
+    {
+     "name": "plan",
+     "kind": "method"
+    },
+    {
+     "name": "setNextRewardAt",
+     "kind": "method"
+    }
+   ]
+  },
+  "hud": {
+   "package": "@manygamescorp/mod-hud",
+   "members": [
+    {
+     "name": "items",
+     "kind": "method"
+    },
+    {
+     "name": "open",
+     "kind": "method"
+    },
+    {
+     "name": "register",
+     "kind": "method"
+    },
+    {
+     "name": "slot",
+     "kind": "method"
+    }
+   ]
+  },
+  "iap": {
+   "package": "@manygamescorp/mod-iap",
+   "members": [
+    {
+     "name": "cancelOrder",
+     "kind": "method"
+    },
+    {
+     "name": "claim",
+     "kind": "method"
+    },
+    {
+     "name": "createAdOrder",
+     "kind": "method"
+    },
+    {
+     "name": "dispose",
+     "kind": "method"
+    },
+    {
+     "name": "entitlements",
+     "kind": "method"
+    },
+    {
+     "name": "load",
+     "kind": "method"
+    },
+    {
+     "name": "offer",
+     "kind": "method"
+    },
+    {
+     "name": "offers",
+     "kind": "method"
+    },
+    {
+     "name": "openSubscriptionManagement",
+     "kind": "method"
+    },
+    {
+     "name": "order",
+     "kind": "method"
+    },
+    {
+     "name": "orders",
+     "kind": "method"
+    },
+    {
+     "name": "pendingOrders",
+     "kind": "method"
+    },
+    {
+     "name": "products",
+     "kind": "method"
+    },
+    {
+     "name": "purchase",
+     "kind": "method"
+    },
+    {
+     "name": "restore",
+     "kind": "method"
+    },
+    {
+     "name": "state",
+     "kind": "method"
+    },
+    {
+     "name": "subscriptions",
+     "kind": "method"
+    },
+    {
+     "name": "waitOrder",
+     "kind": "method"
+    }
+   ]
+  },
+  "inventory": {
+   "package": "@manygamescorp/mod-inventory",
+   "members": [
+    {
+     "name": "balance",
+     "kind": "method"
+    },
+    {
+     "name": "consume",
+     "kind": "method"
+    },
+    {
+     "name": "current",
+     "kind": "method"
+    },
+    {
+     "name": "entities",
+     "kind": "method"
+    },
+    {
+     "name": "exchange",
+     "kind": "method"
+    },
+    {
+     "name": "expectGrant",
+     "kind": "method"
+    },
+    {
+     "name": "get",
+     "kind": "method"
+    },
+    {
+     "name": "positions",
+     "kind": "method"
+    },
+    {
+     "name": "quantity",
+     "kind": "method"
+    },
+    {
+     "name": "refresh",
+     "kind": "method"
+    }
+   ]
+  },
+  "kv": {
+   "package": "@manygamescorp/mod-profile-pack",
+   "members": [
+    {
+     "name": "delete",
+     "kind": "method"
+    },
+    {
+     "name": "dispose",
+     "kind": "method"
+    },
+    {
+     "name": "get",
+     "kind": "method"
+    },
+    {
+     "name": "list",
+     "kind": "method"
+    },
+    {
+     "name": "query",
+     "kind": "method"
+    },
+    {
+     "name": "set",
+     "kind": "method"
+    }
+   ]
+  },
+  "gamestate": {
+   "package": "@manygamescorp/mod-profile-pack",
+   "members": [
+    {
+     "name": "clear",
+     "kind": "method"
+    },
+    {
+     "name": "dispose",
+     "kind": "method"
+    },
+    {
+     "name": "get",
+     "kind": "method"
+    },
+    {
+     "name": "set",
+     "kind": "method"
+    }
+   ]
+  },
+  "leaderboards": {
+   "package": "@manygamescorp/mod-leaderboards",
+   "members": [
+    {
+     "name": "around",
+     "kind": "method"
+    },
+    {
+     "name": "aroundOf",
+     "kind": "method"
+    },
+    {
+     "name": "canSubmit",
+     "kind": "property"
+    },
+    {
+     "name": "dispose",
+     "kind": "method"
+    },
+    {
+     "name": "get",
+     "kind": "method"
+    },
+    {
+     "name": "rank",
+     "kind": "method"
+    },
+    {
+     "name": "rankOf",
+     "kind": "method"
+    },
+    {
+     "name": "submit",
+     "kind": "method"
+    },
+    {
+     "name": "submitScore",
+     "kind": "method"
+    }
+   ]
+  },
+  "profile": {
+   "package": "@manygamescorp/core",
+   "members": [
+    {
+     "name": "byGid",
+     "kind": "method"
+    },
+    {
+     "name": "dispose",
+     "kind": "method"
+    },
+    {
+     "name": "field",
+     "kind": "method"
+    },
+    {
+     "name": "get",
+     "kind": "method"
+    },
+    {
+     "name": "query",
+     "kind": "method"
+    },
+    {
+     "name": "replace",
+     "kind": "method"
+    },
+    {
+     "name": "setField",
+     "kind": "method"
+    },
+    {
+     "name": "summary",
+     "kind": "method"
+    },
+    {
+     "name": "update",
+     "kind": "method"
+    }
+   ]
+  },
+  "levels": {
+   "package": "@manygamescorp/mod-progress",
+   "members": [
+    {
+     "name": "dispose",
+     "kind": "method"
+    },
+    {
+     "name": "open",
+     "kind": "method"
+    }
+   ]
+  },
+  "progress": {
+   "package": "@manygamescorp/mod-progress",
+   "members": [
+    {
+     "name": "beginAttempt",
+     "kind": "method"
+    },
+    {
+     "name": "dispose",
+     "kind": "method"
+    },
+    {
+     "name": "init",
+     "kind": "method"
+    },
+    {
+     "name": "levelEnd",
+     "kind": "method"
+    },
+    {
+     "name": "send",
+     "kind": "method"
+    }
+   ]
+  },
+  "realtime": {
+   "package": "@manygamescorp/mod-realtime",
+   "members": [
+    {
+     "name": "ack",
+     "kind": "method"
+    },
+    {
+     "name": "metrics",
+     "kind": "method"
+    },
+    {
+     "name": "notice",
+     "kind": "method"
+    },
+    {
+     "name": "reconnect",
+     "kind": "method"
+    },
+    {
+     "name": "status",
+     "kind": "method"
+    }
+   ]
+  }
+ }
+}
