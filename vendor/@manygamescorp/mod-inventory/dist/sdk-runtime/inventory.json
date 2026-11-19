@@ -1,0 +1,146 @@
+{
+  "settings": {
+    "schemaVersion": 1,
+    "fields": [
+      {
+        "ref": "availability"
+      }
+    ]
+  },
+  "ui": {
+    "slots": [
+      {
+        "id": "entry",
+        "zone": "hud",
+        "contexts": [
+          "main"
+        ],
+        "order": 30,
+        "fallback": [],
+        "features": [
+          "badge",
+          "timer",
+          "value"
+        ],
+        "does": {
+          "ru": "Рюкзак",
+          "en": "Inventory"
+        }
+      },
+      {
+        "id": "counters",
+        "zone": "topbar",
+        "contexts": [
+          "main"
+        ],
+        "order": 10,
+        "features": [
+          "value"
+        ],
+        "does": {
+          "ru": "Счётчики",
+          "en": "Counters"
+        }
+      }
+    ]
+  },
+  "id": "inventory",
+  "version": "1.0.0-rc.30",
+  "kind": "service",
+  "engines": {
+    "core": "^1.0.0"
+  },
+  "targets": [
+    "web",
+    "cordova"
+  ],
+  "permissions": [
+    "http:inventory",
+    "storage",
+    "windows"
+  ],
+  "load": "eager",
+  "entry": "sdk-runtime/inventory.js",
+  "consumes": [
+    "ui.slots@1",
+    "hud.registry@1",
+    "topbar.registry@1"
+  ],
+  "optional": {
+    "ui-kit": "^1.0.0",
+    "hud-ui": "^1.0.0",
+    "topbar": "^1.0.0"
+  },
+  "events": {
+    "emits": [
+      "inventory:state:changed",
+      "inventory:items:granted",
+      "inventory:window:open",
+      "inventory:window:close",
+      "inventory:currency:tap"
+    ],
+    "listens": [
+      "inventory:window:closed",
+      "realtime:inventory.balance.changed",
+      "realtime:connection:resync",
+      "realtime:connection:connected"
+    ]
+  },
+  "realtime": {
+    "handles": [
+      "inventory.balance.changed"
+    ]
+  },
+  "title": {
+    "ru": "Инвентарь",
+    "en": "Inventory"
+  },
+  "description": {
+    "ru": "Инвентарь для игры на ManyPlay.",
+    "en": "ManyPlay player inventory projection and exchange by server rule."
+  },
+  "llmDescription": "ManyPlay player inventory projection and exchange by server rule. Select mod-inventory when the game needs this SDK capability. Read the linked module documentation for methods and events.",
+  "selection": "optional",
+  "status": "ready",
+  "preview": {
+    "icon": "catalog/icon.png",
+    "media": [],
+    "mock": {
+      "badge": {
+        "kind": "dot"
+      },
+      "value": 1
+    }
+  },
+  "docs": [
+    {
+      "title": {
+        "ru": "Документация",
+        "en": "Documentation"
+      },
+      "uri": "https://github.com/manygamescorp/client-sdk/tree/main/packages/mod-inventory"
+    }
+  ],
+  "group": "economy",
+  "tags": [
+    "items",
+    "inventory"
+  ],
+  "package": "@manygamescorp/mod-inventory",
+  "files": {
+    "scripts": [
+      "gen/inventory.js",
+      "inventory.js",
+      "sdk-runtime/inventory.js",
+      "version.js"
+    ],
+    "styles": [],
+    "assets": [
+      "catalog/icon.png",
+      "contracts/inventory.client.json",
+      "contracts/sources.json",
+      "sdk-runtime/inventory.json",
+      "ui.json"
+    ]
+  }
+}

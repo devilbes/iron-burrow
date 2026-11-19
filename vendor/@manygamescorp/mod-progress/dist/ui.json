@@ -1,0 +1,22 @@
+{
+    "slots": [
+        {
+            "id": "entry",
+            "zone": "hud",
+            "contexts": [
+                "main"
+            ],
+            "order": 20,
+            "fallback": [],
+            "features": [
+                "badge",
+                "timer",
+                "value"
+            ],
+            "does": {
+                "ru": "Прогресс",
+                "en": "Progress"
+            }
+        }
+    ]
+}

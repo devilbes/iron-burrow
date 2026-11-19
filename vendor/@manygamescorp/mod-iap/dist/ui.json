@@ -1,0 +1,22 @@
+{
+    "slots": [
+        {
+            "id": "entry",
+            "zone": "hud",
+            "contexts": [
+                "main"
+            ],
+            "order": 50,
+            "fallback": [],
+            "features": [
+                "badge",
+                "timer",
+                "value"
+            ],
+            "does": {
+                "ru": "Магазин",
+                "en": "Shop"
+            }
+        }
+    ]
+}

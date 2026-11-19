@@ -1,0 +1,25 @@
+{
+  "name": "@manygamescorp/mod-inventory",
+  "version": "1.0.0-rc.30",
+  "description": "ManyPlay player inventory projection and exchange by server rule.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./inventory": {
+      "types": "./dist/inventory.d.ts",
+      "default": "./dist/inventory.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "default": "./dist/version.js"
+    },
+    "./package.json": "./package.json",
+    "./contracts": {
+      "types": "./dist/gen/inventory.d.ts",
+      "default": "./dist/gen/inventory.js"
+    },
+    "./contracts/inventory.client.json": "./dist/contracts/inventory.client.json",
+    "./contracts/sources.json": "./dist/contracts/sources.json"
+  }
+}
