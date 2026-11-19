@@ -42,6 +42,7 @@ import { SKIN } from '/app/skin/index.js';
 import { playerCard } from '/app/shell/windows/player.js';
 import { HUD, TOP_BAR, screens } from '/app/screens/index.js';
 import { mountView, view } from '/app/screens/ui.js';
+import { icon } from '@manygamescorp/ui-kit/icon';
 import { createGameWindows, createOverlays } from '/app/shell/windows/game.js';
 import { createWindowOrder } from '/app/shell/windows/order.js';
 import './modal-layers.js';
@@ -50,25 +51,34 @@ import { barCounters, gameTileSpec, hudLayout, hudOrder, isGameTile, moduleCount
 
 const NOW = Date.UTC(2026, 10, 16, 12);
 const common = { ready: true, busy: false, lang: 'en', playerKey: '12' };
-const coins = (amount) => ({ key: `coins_${amount}`, name: `${amount} coins`, kind: 'iap', available: true,
-  placement: 'shop_soft', priceText: `$${(amount / 100).toFixed(2)}`,
-  variant: { key: 'v', entities: [{ id: 'item_coins', name: 'Coins', amount }] } });
+/** The four boosters of Iron Burrow (configs/remote/inventory.catalog/, GDD 15) and their names. */
+const BOOSTERS = [['bst_bubble', 'Bubble Shield'], ['bst_shockwave', 'Shockwave'], ['bst_fortify', 'Steel Fortress'],
+  ['bst_hull', 'Spare Hull']];
+const NAME = Object.fromEntries(BOOSTERS);
+/** A pack of the shop (GDD 16 iap.packs): what it grants of each booster. */
+const pack = (key, name, price, grants) => ({ key, name, kind: 'iap', available: true, placement: 'placement_shop',
+  priceText: price, variant: { key: 'default', entities: grants.map(([id, amount]) => ({ id, name: NAME[id], amount })) } });
+const PACKS = [pack('hull_pack', 'Hull Pack', '$1.99', [['bst_hull', 5]]),
+  pack('field_kit', 'Field Kit', '$4.99', BOOSTERS.map(([id]) => [id, 6])),
+  pack('starter_crate', 'Starter Crate', '$0.99', [['bst_bubble', 3], ['bst_shockwave', 3]])];
 const STATUS = ['claimed', 'claimed', 'available', 'locked', 'locked', 'locked', 'locked'];
+/** Daily rewards of CONTRACT §8.2: D1 bubble · D2 shockwave · D3 fortify · D4 hull · D5 bubble 2 · D6 shockwave · D7 hull 2. */
+const DAILY = [['bst_bubble', 1], ['bst_shockwave', 1], ['bst_fortify', 1], ['bst_hull', 1], ['bst_bubble', 2],
+  ['bst_shockwave', 1], ['bst_hull', 2]];
 /** Pictures of the game's items as the shell resolves them (`ITEMS` of src/skin/art.ts). */
 const items = createItemCatalog(() => { throw new Error('no SDK in the gallery'); });
 /** A granted line as the reward window gets it in the game: catalog name, picture of `ITEMS`. */
 const granted = (id, kind, quantity, name) => ({ id, kind, quantity, name,
   ...(items.icon(id) ? { icon: items.icon(id) } : {}) });
-/** The sample item of the template (configs/remote/inventory.catalog/item_coins.json). */
-const SAMPLE_ITEM = 'item_coins';
+/** The sample item: a booster of the catalog (configs/remote/inventory.catalog/bst_bubble.json). */
+const SAMPLE_ITEM = 'bst_bubble';
 
 /** View → kit window opened over the home screen: [component name, export, kind, props]. */
 const WINDOWS = {
-  shop: ['shopWindow', shopWindow, 'window', { offers: [coins(100), coins(550), coins(1200)], now: NOW,
-    currencies: [{ name: 'Coins', quantity: 1250 }], purchasingOfferKeys: [] }],
+  shop: ['shopWindow', shopWindow, 'window', { offers: PACKS, now: NOW, currencies: [], purchasingOfferKeys: [] }],
   daily: ['dailyReward', dailyReward, 'window', { trackKey: 'daily_login', nextInMs: 51_720_000,
-    days: STATUS.map((status, i) => ({ key: `day_${i + 1}`, title: `Day ${i + 1}`, amount: (i + 1) * 50,
-      icon: items.icon(SAMPLE_ITEM) ?? 'gift', status })) }],
+    days: STATUS.map((status, i) => ({ key: `day_${i + 1}`, title: `Day ${i + 1}`, amount: DAILY[i][1],
+      icon: items.icon(DAILY[i][0]) ?? 'gift', status })) }],
   leaderboard: ['leaderboardWindow', leaderboardWindow, 'window', { tab: 'weekly',
     tabs: [{ id: 'weekly', label: 'Weekly' }], me: { rank: 12, score: 340 }, meGid: 12,
     entries: Array.from({ length: 10 }, (_, i) => ({ rank: i + 1, gid: 100 + i, score: 2000 - i * 150,
@@ -82,21 +92,93 @@ const WINDOWS = {
   orientation: 'auto', now: () => NOW }],
   popup: ['popup', popup, 'popup', { title: 'Daily gift', header: { icon: 'gift' },
     content: [{ kind: 'text', text: 'Come back tomorrow for one more gift.' }], actions: [{ id: 'ok', label: 'OK' }] }],
-  confirm: ['confirm', confirm, 'popup', { title: 'Buy coins', subject: '550 coins', details: 'Balance after: 1 800',
-    price: '$5.50', icon: 'coins' }],
+  confirm: ['confirm', confirm, 'popup', { title: 'Buy Field Kit', subject: '6 of each booster', details: 'You have 2 Spare Hulls',
+    price: '$4.99', icon: 'shop' }],
   error: ['error', error, 'system', { code: 'NETWORK_ERROR', retry: true }],
-  reward: ['rewardWindow', rewardWindow, 'reward', { items: [granted(SAMPLE_ITEM, 'soft_currency', 550, 'Coins')] }],
+  reward: ['rewardWindow', rewardWindow, 'reward', { items: [granted(SAMPLE_ITEM, 'item', 2, NAME[SAMPLE_ITEM]),
+    granted('bst_hull', 'item', 1, NAME.bst_hull)] }],
 };
 /** A level result as a game shows it through `ctx.window.open`: the kit window, the game's rows. */
 const RESULT = { title: 'Level 7 complete', header: { stars: 2 },
   actions: [{ id: 'next', label: 'Next level' }, { id: 'menu', label: 'Menu' }] };
-const RESULT_CSS = '.result{display:grid;gap:8px;margin:0;padding:0;list-style:none;min-width:min(16rem,100%)}'
-  + '.result li{display:flex;justify-content:space-between;gap:16px;padding:8px 12px;'
-  + 'border-radius:var(--mp-radius-field);background:var(--mp-raised)}'
+// One soft underlay for the whole group, no outline; the rows have no plate of their own.
+const RESULT_CSS = '.result{display:grid;gap:2px;margin:0;padding:8px 12px;list-style:none;min-width:min(16rem,100%);'
+  + 'border-radius:var(--mp-radius-field);background:color-mix(in srgb,var(--mp-surface) 70%,transparent)}'
+  + '.result li{display:flex;justify-content:space-between;gap:16px;padding:6px 0}'
   + '.result b{color:var(--mp-gold);font-variant-numeric:tabular-nums}';
 const resultBody = (root) => mountView(root, 'result', () => view('ul', { class: 'result', 'data-testid': 'result-rows' },
   ...[['Score', '1,240'], ['Best', '2,050'], ['Moves left', '3']].map(([label, value]) =>
     view('li', {}, view('span', {}, label), view('b', {}, value)))), { styles: RESULT_CSS });
+// ---- Windows of Iron Burrow the game opens through `ctx.window.open` (GDD 20 S04, S06, S07, S08, S09,
+// S16; mockups design/mockups/results/*): kit windows with the game's content, as the screens step
+// will draw it — item pictures from `ITEMS` big and first in their place, no frame inside the frame
+// (a group sits on one soft underlay without an outline), numbers in the display font.
+const GAME_CSS = '.gw{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:min(17rem,100%);text-align:center}'
+  + '.gw p{margin:0}.gw-eyebrow{font:600 12px/1.3 var(--mp-font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--mp-text-3)}'
+  + '.gw-text{color:var(--mp-text-2)}'
+  + '.gw-prize{display:flex;flex-direction:column;align-items:center;gap:4px}'
+  + '.gw-art{position:relative;display:grid;place-items:center}'
+  + '.gw-art [data-part=icon]{filter:drop-shadow(0 6px 10px color-mix(in srgb,var(--mp-night) 70%,transparent))}'
+  + '.gw-count{position:absolute;right:-4px;bottom:0;font:400 22px/1 var(--mp-font-display);color:var(--mp-text);'
+  + 'text-shadow:0 2px 0 var(--mp-night)}'
+  + '.gw-name{font:700 16px/1.2 var(--mp-font-ui)}'
+  + '.gw-rows{display:grid;gap:2px;width:100%;margin:0;padding:8px 14px;list-style:none;border-radius:var(--mp-radius-field);'
+  + 'background:color-mix(in srgb,var(--mp-surface) 70%,transparent)}'
+  + '.gw-rows li{display:flex;justify-content:space-between;gap:16px;padding:4px 0;color:var(--mp-text-2)}'
+  + '.gw-rows b{color:var(--mp-text);font-variant-numeric:tabular-nums}'
+  + '.gw-total{display:flex;align-items:baseline;justify-content:space-between;width:100%;padding:0 14px}'
+  + '.gw-total strong{font:400 30px/1 var(--mp-font-display);color:var(--mp-gold)}'
+  + '.gw-best{align-self:flex-end;padding:0 14px;font:600 13px/1 var(--mp-font-ui);color:var(--mp-gold)}'
+  + '.gw-stats{display:flex;justify-content:center;gap:32px;width:100%}'
+  + '.gw-stat{display:flex;flex-direction:column;gap:4px}.gw-stat span{font-size:13px;color:var(--mp-text-3)}'
+  + '.gw-stat strong{font:400 30px/1 var(--mp-font-display);color:var(--mp-text)}'
+  + '.gw-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:100%;margin:0;padding:10px 8px;'
+  + 'list-style:none;border-radius:var(--mp-radius-field);background:color-mix(in srgb,var(--mp-surface) 70%,transparent)}'
+  + '.gw-tiles li{display:flex;flex-direction:column;align-items:center;gap:2px}'
+  + '.gw-tiles b{font:400 18px/1 var(--mp-font-display);color:var(--mp-text)}'
+  + '.gw-line{display:flex;align-items:center;gap:12px;width:100%;padding:6px 14px;border-radius:var(--mp-radius-field);'
+  + 'background:color-mix(in srgb,var(--mp-surface) 70%,transparent);text-align:left}'
+  + '.gw-line span{flex:1;color:var(--mp-text-2)}.gw-line b{color:var(--mp-text)}';
+const gameBody = (name, render) => (root) => mountView(root, name, () => view('div', { class: 'gw' }, ...render()),
+  { styles: GAME_CSS });
+const prize = (id, count, size = 128) => view('div', { class: 'gw-prize' },
+  view('div', { class: 'gw-art' }, icon(id, size), count ? view('span', { class: 'gw-count' }, `×${count}`) : null),
+  view('p', { class: 'gw-name' }, NAME[id]));
+const rows = (list) => view('ul', { class: 'gw-rows' },
+  ...list.map(([label, value]) => view('li', {}, view('span', {}, label), view('b', {}, value))));
+const stat = (label, value) => view('div', { class: 'gw-stat' }, view('span', {}, label), view('strong', {}, value));
+/** View → [route under it, window spec]. */
+const GAME_WINDOWS = {
+  'stage-clear': ['game', { title: 'Stage Clear!', header: { stars: 3 }, dismissible: false,
+    body: gameBody('stage-clear', () => [view('p', { class: 'gw-eyebrow' }, 'Stage 3 · Clay Tunnels'), prize('bst_bubble', 2),
+      rows([['Rustbugs', '3,200'], ['Power-ups', '1,500'], ['Clear bonus', '1,000'], ['Lives left ×3', '1,500']]),
+      view('div', { class: 'gw-total' }, view('span', {}, 'Score'), view('strong', {}, '7,200')),
+      view('p', { class: 'gw-best' }, 'New best!')]),
+    actions: [{ id: 'next', label: 'Next Stage' }, { id: 'replay', label: 'Replay' }, { id: 'map', label: 'Map' }] }],
+  defeat: ['game', { title: 'Core lost', dismissible: false,
+    body: gameBody('defeat', () => [view('p', { class: 'gw-eyebrow' }, 'Run report · Stage 7'),
+      view('p', { class: 'gw-text' }, 'The Core was destroyed.'),
+      view('div', { class: 'gw-stats' }, stat('Final score', '1,840'), stat('Stage reached', '7')),
+      view('div', { class: 'gw-line' }, icon('bst_hull', 56), view('span', {}, 'Continue uses 1 Spare Hull'), view('b', {}, '2 left'))]),
+    actions: [{ id: 'continue', label: 'Continue' }, { id: 'retry', label: 'Retry' }, { id: 'map', label: 'Stage Map' }] }],
+  pause: ['game', { title: 'Paused', text: 'Stage 7 · Clay Tunnels. The Core waits for you.',
+    actions: [{ id: 'resume', label: 'Resume' }, { id: 'restart', label: 'Restart' }, { id: 'quit', label: 'Quit' }] }],
+  prestage: ['map', { title: 'Stage 7', header: { stars: 2 },
+    body: gameBody('prestage', () => [view('p', { class: 'gw-text' }, 'Defend the Core from 20 Rustbugs.'),
+      rows([['Best score', '6,040'], ['Spare Hull before start', '+1 life']]),
+      view('ul', { class: 'gw-tiles' }, ...BOOSTERS.map(([id], i) => view('li', {}, icon(id, 64), view('b', {}, `×${[2, 1, 1, 2][i]}`))))]),
+    actions: [{ id: 'start', label: 'Start' }, { id: 'shop', label: 'Get boosters' }] }],
+  'siege-result': ['game', { title: 'Siege over', dismissible: false,
+    body: gameBody('siege-result', () => [view('p', { class: 'gw-eyebrow' }, 'Pit Siege · this week'),
+      view('div', { class: 'gw-stats' }, stat('Wave', '14'), stat('Score', '12,480')),
+      rows([['Best this week', '12,480'], ['Rank', '#37']])]),
+    actions: [{ id: 'again', label: 'Play Again' }, { id: 'boards', label: 'Leaderboards' }, { id: 'lobby', label: 'Lobby' }] }],
+  'booster-info': ['game', { title: 'Bubble Shield',
+    body: gameBody('booster-info', () => [prize('bst_bubble', 0, 144),
+      view('p', { class: 'gw-text' }, "You can't be hurt for 10 s. Up to 2 per stage."), rows([['You have', '2']])]),
+    actions: [{ id: 'more', label: 'Get more' }] }],
+};
+
 /** Button kinds as the kit draws them: [kind, classes, label, disabled]. */
 const BUTTONS = [['primary', 'mp-button mp-button--primary', 'Play'], ['secondary', 'mp-button mp-button--secondary', 'Menu'],
   ['buy', 'mp-button iap-buy', '$4.99'], ['danger', 'mp-button mp-button--critical', 'Delete'],
@@ -122,10 +204,11 @@ const LAYERS = {
   'game-overlay': ['home', (ctx) => ctx.overlay({ draw: (root) => mountView(root, 'tip', () => view('section', { class: 'hero' },
     view('p', { class: 'hero-title' }, 'Tap a tile to start'))) })],
   buttons: ['home', (ctx) => ctx.overlay({ draw: buttonKinds })],
+  ...Object.fromEntries(Object.entries(GAME_WINDOWS).map(([id, [route, spec]]) => [id, [route, (ctx) => ctx.window.open(spec)]])),
 };
 
 /** Every view: covered component(s) → how it is shown. */
-export const VIEWS = ['home', 'home-menu', 'home-hud', 'home-hud-full', 'game', 'preloader', 'preloader-error',
+export const VIEWS = ['home', 'home-menu', 'home-hud', 'home-hud-full', 'map', 'game', 'preloader', 'preloader-error',
   ...Object.keys(WINDOWS), ...Object.keys(LAYERS)];
 
 /** Test items of the `home-menu` view: the raised center and two side slots. */
@@ -242,7 +325,8 @@ async function show(skin, view, tint, asked, level) {
     return;
   }
   if (asked && !(asked in screens)) throw new Error(`no route "${asked}" (routes of src/screens/index.ts: ${Object.keys(screens).join(', ')})`);
-  const route = asked ?? LAYERS[view]?.[0] ?? (view === 'game' ? 'game' : 'home');
+  // `map`: the S03 Stage Map route over its own scene (`scene-map` of src/skin/art.ts).
+  const route = asked ?? LAYERS[view]?.[0] ?? (view === 'game' || view === 'map' ? view : 'home');
   const shell = mountShell(root, route, view === 'home-menu', DECLARED[view], level);
   if (WINDOWS[view]) shell.open(`gallery.${view}`);
   LAYERS[view]?.[1](shell.ctx);
@@ -504,6 +588,11 @@ function checks(view) {
   found.push(...globalThis.modalLayers.problems());
   if ((WINDOWS[view] || LAYERS[view]) && !globalThis.modalLayers.measure().open) found.push('no window or overlay open');
   if (view === 'game-window') found.push(...globalThis.modalLayers.gameWindow(RESULT.title, { actions: RESULT.actions.length }));
+  const spec = GAME_WINDOWS[view]?.[1];
+  if (spec) {
+    found.push(...globalThis.modalLayers.gameWindow(spec.title, { actions: spec.actions.length, body: Boolean(spec.body),
+      close: spec.dismissible !== false }));
+  }
   if (view === 'profile') {
     const terms = all('[data-part=system-profile] dt');
     const values = all('[data-part=system-profile] dd');
