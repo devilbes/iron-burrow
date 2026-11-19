@@ -1,0 +1,90 @@
+{
+  "node": "design-foundation",
+  "verifier": "verifier-score",
+  "date": "2026-11-19",
+  "commit": "abd6ee8",
+  "authorCommits": ["4d2c600", "909c122"],
+  "acSource": "Отдельного acceptance узла в проекте нет (docs/plan/design-foundation/CONTEXT.md отсутствует, FLOW_PLAN.md шаг не описывает). Критерии выведены из контракта шага в скилах devflow-design (выходы и замок design-sources/design-inventory/art-brief), devflow (заморозка INVENTORY после gate-design-foundation), codex-image-assets (якорь STYLE_REF.png + palette.json), asset-pipeline (ART_BRIEF/AUDIO_BRIEF до assets и sound-previews) и ГДД 21. Решение D-VER-DF-01.",
+  "criteria": [
+    {
+      "id": "AC-DF-01",
+      "title": "Стилевой якорь сгенерирован встроенной генерацией Codex: STYLE_REF.png (+2x), без текста на растре, материал соответствует ГДД 21",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 9,
+      "evidence": "sha256sum design/system/*.png|*.webp совпадают с design/system/VERIFY.json; PIL: STYLE_REF-2x 1254x1254, STYLE_REF 627x627; Pillow LANCZOS 2x→1x vs STYLE_REF.png: средняя разница 0.0; визуальный осмотр STYLE_REF.png и CONTACT_SHEET.png: сталь цвета сланца, бирюзовая эмаль, оранжевая вставка, янтарное Ядро, срез углов 45°, зелёный только с краю, текста нет; в оттенках серого Ядро остаётся самым светлым",
+      "why": "Якорь сгенерирован одним вызовом, пары 1x/2x корректны, текста на растре нет. Минус: запрошенный 1024 генератор не выдал, 1x = 627 px (нечётный, но 2x чётный)."
+    },
+    {
+      "id": "AC-DF-02",
+      "title": "palette.json по схеме codex-image-assets, точные цвета палитры ГДД 21, порог ΔE не записан числом",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 10,
+      "evidence": "python: в palette.json 22 уникальных hex = 22 уникальных hex раздела art.palette (docs/gdd/21_art_direction.md строки 9–47), лишних нет; 8 hex ГДД вне палитры — только цвета тем глав art.chapters (строки 54–56); ключи version/source/colors/deltaEMaxRef; gate palette PL-02 PASS",
+      "why": "Палитра совпадает с ГДД точно, все цвета с ролями, порог ΔE взят ссылкой."
+    },
+    {
+      "id": "AC-DF-03",
+      "title": "Система стиля: SYSTEM.md, UI_ART_BIBLE.md, TOKENS.json согласованы с ГДД 21/20 и QUALITY_TARGETS",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 8,
+      "evidence": "TOKENS.json валиден, все hex из palette.json; шрифты Russo One 400 / Exo 2 500/700 = ГДД 21 art.ui.03; тень текста 0 2px 0 #0A1118 = ГДД; касания ≥48 = QUALITY_TARGETS.web.touchTargetsMinPx и ГДД 20; правило цвета, форма, свет, тени, отступы и состояния описаны в UI_ART_BIBLE.md",
+      "why": "Система стиля полная и согласуется с ГДД. MINOR: 2 гарнитуры вместо 3 по game-ui-generation, обосновано в D-ART-03 прямым требованием ГДД 21."
+    },
+    {
+      "id": "AC-DF-04",
+      "title": "PROMPTS.md: точный промпт якоря и английский префикс для следующих генераций, окончание NO TEXT…",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 9,
+      "evidence": "design/system/PROMPTS.md: точный промпт, единственный вызов, префикс «Iron Burrow: tactile toy-scale forged slate armor…», исключение для вращающихся спрайтов (центральный верхний свет, ГДД D-21), окончание NO TEXT, NO LETTERS, NO NUMBERS, NO LOGOS",
+      "why": "Следующие шаги получают воспроизводимый префикс и правило прикладывать якорь."
+    },
+    {
+      "id": "AC-DF-05",
+      "title": "Выходы и замок design-foundation: design/sources/SOURCES.json, design/BRIEF.md, design/INVENTORY.json+.md, design/ART_BRIEF.md, design/AUDIO_BRIEF.md (гейты design-sources, design-inventory, art-brief)",
+      "mandatory": true,
+      "status": "FAIL",
+      "score": 3,
+      "evidence": "npx studio-gates design-sources → exit 1 (DS-01 нет design/sources/SOURCES.json); npx studio-gates design-inventory → exit 1 (DI-01 INVENTORY.json, DI-02 INVENTORY.md, DI-03 BRIEF.md нет); npx studio-gates art-brief → exit 1 (AB-01 ART_BRIEF.md, AB-02 AUDIO_BRIEF.md нет); @abd6ee8",
+      "why": "Автор сузил шаг до одного якоря (D-ART-04), но по devflow после gate-design-foundation замораживается состав INVENTORY, а assets и sound-previews стартуют только от ART_BRIEF/AUDIO_BRIEF. Без них следующие шаги дизайна и ассетов не получают вход."
+    },
+    {
+      "id": "AC-DF-06",
+      "title": "Защищённые пути SDK/UI Kit/тема manyplay не тронуты; правки только в design/system/** и журнале решений",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 10,
+      "evidence": "git show --stat 4d2c600 909c122: только design/system/** (12 файлов) и docs/gdd/DECISIONS.md; git diff --check c8d2294 abd6ee8 -- design docs/gdd/DECISIONS.md → exit 0",
+      "why": "Защищённые пути не изменены."
+    },
+    {
+      "id": "AC-DF-07",
+      "title": "Решения шага записаны в журнал docs/gdd/DECISIONS.md",
+      "mandatory": false,
+      "status": "PASS",
+      "score": 9,
+      "evidence": "docs/gdd/DECISIONS.md раздел «Основа визуального стиля (19.11.2026)», D-ART-01…05 с обоснованиями",
+      "why": "Решения записаны с причинами."
+    },
+    {
+      "id": "AC-DF-08",
+      "title": "Механические проверки проекта (сборка, конвейер ассетов, palette-гейт)",
+      "mandatory": false,
+      "status": "PARTIAL",
+      "score": 6,
+      "evidence": "нет package-lock.json и node_modules (ls) → npm ci/typecheck/build невозможны; в package.json нет скрипта assets; npx studio-gates palette → exit 1: PL-01 FAIL «gates.art.budgetOfRoot не задан» (факт окружения, не файл шага), PL-02 PASS, PL-03 WARN (нет QUALITY_TARGETS.art.paletteDeltaEMax)",
+      "why": "Провалы — из-за отсутствующих фактов и лок-файла шаблона, не из-за автора; автор честно записал их как FAIL/NOT_RUN. Платформе нужно задать gates.art.* и art.paletteDeltaEMax."
+    }
+  ],
+  "defects": [
+    {"id": "F-1", "severity": "MAJOR", "mandatory": true, "path": "design/BRIEF.md, design/INVENTORY.json, design/INVENTORY.md, design/sources/SOURCES.json, design/ART_BRIEF.md, design/AUDIO_BRIEF.md", "verify": "npx studio-gates design-sources && npx studio-gates design-inventory && npx studio-gates art-brief", "fix": "Дописать выходы основы по devflow-design: бриф по ГДД 14–16/20/21, инвентарь всех окон S01–S16 с area/states/dataParts/ownerModule/base/компонентом UI Kit/landscape, копии источников UI Kit из установленного пакета (без правок), ART_BRIEF на базе текущей design/system, AUDIO_BRIEF по ГДД 23. Якорь и палитру не перегенерировать."},
+    {"id": "F-2", "severity": "MINOR", "mandatory": false, "path": "design/system/STYLE_REF.png", "verify": "PIL size", "fix": "1x = 627 px (нечётный); при следующем проходе можно оставить — это эталон материала, не игровой ассет."},
+    {"id": "F-3", "severity": "MINOR", "mandatory": false, "path": ".devflow/facts.json, docs/plan/QUALITY_TARGETS.json", "verify": "npx studio-gates palette", "fix": "Платформа/flow-plan: задать gates.art.budgetOfRoot и art.paletteDeltaEMax — не дефект автора."}
+  ],
+  "score": 5,
+  "source": "design-foundation",
+  "summary": "Якорь, палитра, система стиля и промпты сделаны качественно (8–10). Обязательный замок шага не пройден: нет брифа, инвентаря окон, источников UI Kit, арт-брифа и аудио-брифа — 3 гейта FAIL. По шкале devflow обязательный FAIL → потолок 5."
+}

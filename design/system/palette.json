@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "source": "STYLE_REF-2x.png",
+  "colors": [
+    {
+      "name": "slate_abyss",
+      "hex": "#0A1118",
+      "role": "\u043e\u0431\u0432\u043e\u0434\u043a\u0438, \u0441\u0430\u043c\u044b\u0439 \u0442\u0451\u043c\u043d\u044b\u0439 \u0444\u043e\u043d, \u0442\u0435\u043d\u0438"
+    },
+    {
+      "name": "slate_deep",
+      "hex": "#121E29",
+      "role": "\u0444\u043e\u043d \u044d\u043a\u0440\u0430\u043d\u043e\u0432, \u043f\u043e\u0434\u043b\u043e\u0436\u043a\u0430 \u043f\u043e\u043b\u044f"
+    },
+    {
+      "name": "slate_blue",
+      "hex": "#1E2E3D",
+      "role": "\u043f\u0430\u043d\u0435\u043b\u0438 UI (\u0442\u0435\u043b\u043e), \u043f\u043e\u043b Clay Tunnels \u0432 \u0442\u0435\u043d\u0438"
+    },
+    {
+      "name": "slate_mid",
+      "hex": "#2F4558",
+      "role": "\u0437\u0430\u043b\u0438\u0432\u043a\u0430 \u0440\u0430\u043c\u043e\u043a, \u043d\u0435\u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0435 \u0442\u0430\u0431\u044b"
+    },
+    {
+      "name": "steel_teal",
+      "hex": "#2F7D86",
+      "role": "\u043a\u043e\u0440\u043f\u0443\u0441 \u0438\u0433\u0440\u043e\u043a\u0430, \u0432\u0442\u043e\u0440\u0438\u0447\u043d\u044b\u0435 \u043a\u043d\u043e\u043f\u043a\u0438, \u0441\u0442\u0430\u043b\u044c"
+    },
+    {
+      "name": "steel_teal_light",
+      "hex": "#6FC2C4",
+      "role": "\u0431\u043b\u0438\u043a\u0438 \u0441\u0442\u0430\u043b\u0438, \u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0435 \u0442\u0430\u0431\u044b, \u043f\u0440\u043e\u0433\u0440\u0435\u0441\u0441-\u0431\u0430\u0440 \u00ab\u0445\u043e\u043b\u043e\u0434\u043d\u044b\u0439\u00bb"
+    },
+    {
+      "name": "steel_frost",
+      "hex": "#CFE6E8",
+      "role": "\u0441\u043f\u0435\u043a\u0443\u043b\u044f\u0440, \u0438\u043a\u043e\u043d\u043a\u0438 \u043d\u0430 \u0442\u0451\u043c\u043d\u043e\u043c, \u044d\u0444\u0444\u0435\u043a\u0442 Freeze"
+    },
+    {
+      "name": "rivet_iron",
+      "hex": "#5D6B75",
+      "role": "\u0437\u0430\u043a\u043b\u0451\u043f\u043a\u0438, \u043a\u043e\u0432\u0430\u043d\u044b\u0439 \u043c\u0435\u0442\u0430\u043b\u043b \u0440\u0430\u043c\u043e\u043a"
+    },
+    {
+      "name": "magma_orange",
+      "hex": "#FF6A1A",
+      "role": "\u043e\u0441\u043d\u043e\u0432\u043d\u0430\u044f \u043a\u043d\u043e\u043f\u043a\u0430, \u043e\u0433\u043e\u043d\u044c, \u043b\u0430\u0432\u0430, \u0431\u0435\u0439\u0434\u0436\u0438"
+    },
+    {
+      "name": "magma_hot",
+      "hex": "#FFB23F",
+      "role": "\u0440\u0430\u0441\u043a\u0430\u043b\u0451\u043d\u043d\u0430\u044f \u0441\u0435\u0440\u0434\u0446\u0435\u0432\u0438\u043d\u0430, \u0431\u043b\u0438\u043a \u043a\u043d\u043e\u043f\u043a\u0438, \u043f\u0443\u043b\u044f L3"
+    },
+    {
+      "name": "magma_deep",
+      "hex": "#B8320C",
+      "role": "\u0442\u0435\u043d\u044c \u043c\u0430\u0433\u043c\u044b, \u043d\u0430\u0436\u0430\u0442\u0430\u044f \u043a\u043d\u043e\u043f\u043a\u0430, \u043a\u043e\u0440\u043a\u0430 \u043b\u0430\u0432\u044b"
+    },
+    {
+      "name": "core_amber",
+      "hex": "#FFC845",
+      "role": "\u0441\u0432\u0435\u0447\u0435\u043d\u0438\u0435 Burrow Core, \u0437\u0432\u0451\u0437\u0434\u044b, \u043d\u0430\u0433\u0440\u0430\u0434\u044b"
+    },
+    {
+      "name": "core_white",
+      "hex": "#FFF4D6",
+      "role": "\u0446\u0435\u043d\u0442\u0440 \u044f\u0434\u0440\u0430, \u0432\u0441\u043f\u044b\u0448\u043a\u0438 \u0432\u0437\u0440\u044b\u0432\u043e\u0432"
+    },
+    {
+      "name": "acid_green",
+      "hex": "#9BFF2E",
+      "role": "\u0433\u043b\u0430\u0437\u0430 Rustbugs, \u0432\u0440\u0430\u0436\u0435\u0441\u043a\u0438\u0435 \u043f\u0443\u043b\u0438"
+    },
+    {
+      "name": "acid_green_dark",
+      "hex": "#3F9E12",
+      "role": "\u0441\u0432\u0435\u0447\u0435\u043d\u0438\u0435 \u0432\u043e\u043a\u0440\u0443\u0433 \u0433\u043b\u0430\u0437, \u0441\u043f\u0430\u0432\u043d \u0432\u0440\u0430\u0433\u043e\u0432"
+    },
+    {
+      "name": "rust_shell",
+      "hex": "#7A4A2E",
+      "role": "\u043f\u0430\u043d\u0446\u0438\u0440\u0438 Rustbugs (\u0440\u0436\u0430\u0432\u0447\u0438\u043d\u0430)"
+    },
+    {
+      "name": "rust_light",
+      "hex": "#B5713F",
+      "role": "\u0431\u043b\u0438\u043a\u0438 \u0440\u0436\u0430\u0432\u0447\u0438\u043d\u044b"
+    },
+    {
+      "name": "clay_brick",
+      "hex": "#A65A3A",
+      "role": "\u043a\u0438\u0440\u043f\u0438\u0447 Clay Tunnels"
+    },
+    {
+      "name": "clay_brick_light",
+      "hex": "#D08A5E",
+      "role": "\u0444\u0430\u0441\u043a\u0430 \u043a\u0438\u0440\u043f\u0438\u0447\u0430"
+    },
+    {
+      "name": "alarm_red",
+      "hex": "#FF3B3B",
+      "role": "\u0442\u0440\u0435\u0432\u043e\u0433\u0430 \u044f\u0434\u0440\u0430, \u043e\u0448\u0438\u0431\u043a\u0438"
+    },
+    {
+      "name": "text_main",
+      "hex": "#F2F6F7",
+      "role": "\u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u0442\u0435\u043a\u0441\u0442 UI"
+    },
+    {
+      "name": "text_dim",
+      "hex": "#8FA3B0",
+      "role": "\u0432\u0442\u043e\u0440\u043e\u0441\u0442\u0435\u043f\u0435\u043d\u043d\u044b\u0439 \u0442\u0435\u043a\u0441\u0442, \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0435"
+    }
+  ],
+  "deltaEMaxRef": "QUALITY_TARGETS.art.paletteDeltaEMax"
+}
