@@ -19,7 +19,8 @@
         "best": "Best score"
       },
       "hud": {
-        "boards": "Leaderboards"
+        "boards": "Leaderboards",
+        "shop": "Shop"
       }
     }
   }
