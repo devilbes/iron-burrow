@@ -56,11 +56,11 @@ const BOOSTERS = [['bst_bubble', 'Bubble Shield'], ['bst_shockwave', 'Shockwave'
   ['bst_hull', 'Spare Hull']];
 const NAME = Object.fromEntries(BOOSTERS);
 /** A pack of the shop (GDD 16 iap.packs): what it grants of each booster. */
-const pack = (key, name, price, grants) => ({ key, name, kind: 'iap', available: true, placement: 'placement_shop',
+const pack = (key, name, price, grants, placement) => ({ key, name, kind: 'iap', available: true, placement,
   priceText: price, variant: { key: 'default', entities: grants.map(([id, amount]) => ({ id, name: NAME[id], amount })) } });
-const PACKS = [pack('hull_pack', 'Hull Pack', '$1.99', [['bst_hull', 5]]),
-  pack('field_kit', 'Field Kit', '$4.99', BOOSTERS.map(([id]) => [id, 6])),
-  pack('starter_crate', 'Starter Crate', '$0.99', [['bst_bubble', 3], ['bst_shockwave', 3]])];
+const PACKS = [pack('hull_pack', 'Hull Pack', '$1.99', [['bst_hull', 5]], 'shop_bundles'),
+  pack('field_kit', 'Field Kit', '$4.99', BOOSTERS.map(([id]) => [id, 6]), 'shop_bundles'),
+  pack('starter_crate', 'Starter Crate', '$0.99', BOOSTERS.map(([id]) => [id, 3]), 'shop_special')];
 const STATUS = ['claimed', 'claimed', 'available', 'locked', 'locked', 'locked', 'locked'];
 /** Daily rewards of CONTRACT §8.2: D1 bubble · D2 shockwave · D3 fortify · D4 hull · D5 bubble 2 · D6 shockwave · D7 hull 2. */
 const DAILY = [['bst_bubble', 1], ['bst_shockwave', 1], ['bst_fortify', 1], ['bst_hull', 1], ['bst_bubble', 2],
