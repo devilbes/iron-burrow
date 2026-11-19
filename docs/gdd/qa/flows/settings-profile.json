@@ -1,0 +1,125 @@
+{
+  "name": "settings-profile",
+  "path": "/",
+  "ac": [
+    "AC-20-09",
+    "AC-22-03",
+    "AC-23-01",
+    "AC-31-05"
+  ],
+  "steps": [
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"grant-collect\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"topbar-settings\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"settings-music\"]",
+      "attr": "data-state",
+      "value": "on"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"settings-music\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"settings-music\"]",
+      "attr": "data-state",
+      "value": "off"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"audio-state\"]",
+      "attr": "data-music",
+      "value": "off"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"settings-sfx\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"settings-sfx\"]",
+      "attr": "data-state",
+      "value": "off"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"audio-state\"]",
+      "attr": "data-sfx",
+      "value": "off"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"settings-motion\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"settings-profile\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"settings-version\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"settings-close\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"topbar-settings\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"settings-music\"]",
+      "attr": "data-state",
+      "value": "off"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"settings-music\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"audio-state\"]",
+      "attr": "data-music",
+      "value": "on"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"settings-close\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true
+    }
+  ]
+}

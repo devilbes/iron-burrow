@@ -1,0 +1,122 @@
+{
+  "name": "defeat-continue",
+  "path": "/",
+  "ac": [
+    "AC-10-03",
+    "AC-10-09",
+    "AC-16-02"
+  ],
+  "steps": [
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"grant-collect\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"lobby-play\"]",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"stagemap-play\"]",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"tutorial-hint\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"tutorial-skip\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-testid=\"qa-lose\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"defeat-reason\"]",
+      "attr": "data-reason",
+      "value": "core"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"defeat-offer\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"defeat-continue\"]",
+      "attr": "data-state",
+      "value": "available"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"defeat-continue\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"hud-lives\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-testid=\"qa-lose\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"defeat-continue\"]",
+      "attr": "data-state",
+      "value": "used"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"defeat-retry\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"prestage-start\"]",
+      "visible": true
+    }
+  ]
+}

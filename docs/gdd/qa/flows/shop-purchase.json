@@ -1,0 +1,81 @@
+{
+  "name": "shop-purchase",
+  "path": "/",
+  "ac": [
+    "AC-16-01"
+  ],
+  "steps": [
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"grant-collect\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"topbar-shop\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"shop-pack\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"shop-pack\"]",
+      "attr": "data-state",
+      "value": "available"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"shop-buy\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"purchase-status\"]",
+      "attr": "data-state",
+      "value": "success",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"purchase-ok\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"shop-pack\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"shop-close\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "name": "slice",
+  "path": "/",
+  "ac": [
+    "AC-10-09",
+    "AC-22-04"
+  ],
+  "steps": [
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"grant-collect\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"lobby-play\"]",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"stagemap-play\"]",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"tutorial-hint\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"tutorial-skip\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing",
+      "phase": "start"
+    },
+    {
+      "action": "type",
+      "selector": "[data-part=\"game-field\"]",
+      "key": "ArrowLeft",
+      "holdMs": 300,
+      "phase": "action"
+    },
+    {
+      "action": "type",
+      "selector": "[data-part=\"game-field\"]",
+      "key": "Space",
+      "phase": "action"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-fx-ack",
+      "contains": "fx.shot",
+      "phase": "feedback"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"hud-score\"]",
+      "visible": true,
+      "phase": "feedback"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"hud-enemies\"]",
+      "visible": true,
+      "phase": "feedback"
+    },
+    {
+      "action": "click",
+      "selector": "[data-testid=\"qa-win\"]",
+      "phase": "win"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "won",
+      "phase": "win"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"clear-stars\"]",
+      "visible": true,
+      "phase": "win"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-collect\"]",
+      "phase": "win"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-replay\"]",
+      "phase": "replay"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]",
+      "phase": "replay"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing",
+      "phase": "replay"
+    },
+    {
+      "action": "type",
+      "selector": "[data-part=\"game-field\"]",
+      "key": "Space",
+      "phase": "action"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-fx-ack",
+      "contains": "fx.shot",
+      "phase": "feedback"
+    },
+    {
+      "action": "click",
+      "selector": "[data-testid=\"qa-lose\"]",
+      "phase": "lose"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "lost",
+      "phase": "lose"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"defeat-reason\"]",
+      "attr": "data-reason",
+      "value": "core",
+      "phase": "lose"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"defeat-retry\"]",
+      "phase": "replay"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]",
+      "phase": "replay"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing",
+      "phase": "replay"
+    }
+  ]
+}
