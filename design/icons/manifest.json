@@ -1,0 +1,2393 @@
+{
+  "version": 1,
+  "game": "Iron Burrow",
+  "assemblyOnly": true,
+  "originalGenerationCounts": "not supplied; genCount records this step only",
+  "assets": [
+    {
+      "id": "boost",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/boost.png",
+      "files": {
+        "1x": "assets/ui/icons/boost.png",
+        "2x": "assets/ui/icons/boost-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): молния на шестигранном жетоне — общий значок бустеров",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-1/boost-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3794,
+        "2x": 13710
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/boost.webp",
+        "2x": "assets/ui/icons/boost-2x.webp"
+      },
+      "sha256": {
+        "1x": "94df5984b0f4ecb3678f0069569b8c98b7a687deecfba9b1d18afb02710902b0",
+        "2x": "b0c612113577f4b78b8175a1c31ddd187449f3fea09026d74be65323a89b6fcd"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 5014,
+        "opaquePixels": 170,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "brand-mark",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/brand-mark.png",
+      "files": {
+        "1x": "assets/ui/icons/brand-mark.png",
+        "2x": "assets/ui/icons/brand-mark-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): бур-танк Burrower сверху, бирюзовый корпус",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-2/brand-mark-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3962,
+        "2x": 14326
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/brand-mark.webp",
+        "2x": "assets/ui/icons/brand-mark-2x.webp"
+      },
+      "sha256": {
+        "1x": "98dff20d34654863e6ef6820c040b9481acefddc4ba546b6ed8424ff569b7ce4",
+        "2x": "8b7a7197a325b62ea63a31f7c2dbbd8a2f97bcc7035ec443b7e7abb165412cdb"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4942,
+        "opaquePixels": 187,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "calendar",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/calendar.png",
+      "files": {
+        "1x": "assets/ui/icons/calendar.png",
+        "2x": "assets/ui/icons/calendar-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): железная табличка-календарь с оранжевой меткой (icon_daily)",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-3/calendar-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 4206,
+        "2x": 15546
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/calendar.webp",
+        "2x": "assets/ui/icons/calendar-2x.webp"
+      },
+      "sha256": {
+        "1x": "f62d0791eff286175e2f47e181c46a83edd2a074cc8e0bc68d35342cdd57ca97",
+        "2x": "d0e3874d521d4b6348c7b0f978dab31746d34566b785bdd5fa3d6a2999432277"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4323,
+        "opaquePixels": 220,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "check",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/check.png",
+      "files": {
+        "1x": "assets/ui/icons/check.png",
+        "2x": "assets/ui/icons/check-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): толстая галочка steel_teal_light с обводкой",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-4/check-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 2171,
+        "2x": 7132
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/check.webp",
+        "2x": "assets/ui/icons/check-2x.webp"
+      },
+      "sha256": {
+        "1x": "778c1bd4255bd7dbe008643f8d01d4d8e1d785aaaa6db61485425c1539c046e9",
+        "2x": "3674c48ac694bfa80195054266254e09834845f432b2a0b5b3d024d951255366"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 6873,
+        "opaquePixels": 118,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "clock",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/clock.png",
+      "files": {
+        "1x": "assets/ui/icons/clock.png",
+        "2x": "assets/ui/icons/clock-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): стальной циферблат с заклёпками",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-1/clock-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3811,
+        "2x": 13358
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/clock.webp",
+        "2x": "assets/ui/icons/clock-2x.webp"
+      },
+      "sha256": {
+        "1x": "9b94312c664d393f8773cd9394be843a7a3c2ce6e6413cb8603bc4b7b1070477",
+        "2x": "4e3a28f0502c72c84b917419be4b4243e6f4e9ea9ba486d35351c69fd9922cda"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4645,
+        "opaquePixels": 163,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "close",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/close.png",
+      "files": {
+        "1x": "assets/ui/icons/close.png",
+        "2x": "assets/ui/icons/close-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): крест из двух брусков на плите со срезом (как id-close-plate)",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-2/close-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 4155,
+        "2x": 14811
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/close.webp",
+        "2x": "assets/ui/icons/close-2x.webp"
+      },
+      "sha256": {
+        "1x": "98426b2bdacfc76b6e48a43b4cba5044aac86a10b1b3242fd66fd4667b9df91c",
+        "2x": "2a4b085d0f80f79e22122efee3ca19d20dfb3789bf7498d9dc00e591b8d08c83"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4238,
+        "opaquePixels": 223,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "coins",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/coins.png",
+      "files": {
+        "1x": "assets/ui/icons/coins.png",
+        "2x": "assets/ui/icons/coins-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): ящик снабжения с оранжевыми швами — валюты в игре нет (библия Palette), монет не рисуем",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-3/coins-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3817,
+        "2x": 13559
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/coins.webp",
+        "2x": "assets/ui/icons/coins-2x.webp"
+      },
+      "sha256": {
+        "1x": "05226be5ddc5b9a1e39a55e6bd6eea7c5ae906d060234ee57a4bd5bac65ceaaf",
+        "2x": "89902ef17bf11a59b202c4f40ecda01791699f7a4fcfb6410c86eb145cc2f5c4"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4951,
+        "opaquePixels": 182,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "flame",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/flame.png",
+      "files": {
+        "1x": "assets/ui/icons/flame.png",
+        "2x": "assets/ui/icons/flame-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): язык магмы magma_orange → magma_hot",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-4/flame-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 2713,
+        "2x": 8848
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/flame.webp",
+        "2x": "assets/ui/icons/flame-2x.webp"
+      },
+      "sha256": {
+        "1x": "7ab28dac9a2122a4250e4891d72c56af81a4cb18b57e7560fac3ec5d80ff461f",
+        "2x": "89e00c24a02fbd9f60b0ee8bd81b49eae52375cbbad0e61e69770a499e4a7ac0"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 6343,
+        "opaquePixels": 165,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "gems",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/gems.png",
+      "files": {
+        "1x": "assets/ui/icons/gems.png",
+        "2x": "assets/ui/icons/gems-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): янтарный осколок Ядра (core_amber) — валюты нет, это знак награды",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-1/gems-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3072,
+        "2x": 10555
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/gems.webp",
+        "2x": "assets/ui/icons/gems-2x.webp"
+      },
+      "sha256": {
+        "1x": "ec4d74fa5ec984f7e33871d85d5f243c7161c2957e915c29c60ae88b5d0c7d88",
+        "2x": "cbee87f2bccf60fdf3bfbbc35f5f9aa613cbc324bd65f26358bfd772c5da77b6"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 5997,
+        "opaquePixels": 147,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "gift",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/gift.png",
+      "files": {
+        "1x": "assets/ui/icons/gift.png",
+        "2x": "assets/ui/icons/gift-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): кованый ящик с янтарным свечением в щели",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-2/gift-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 4215,
+        "2x": 15274
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/gift.webp",
+        "2x": "assets/ui/icons/gift-2x.webp"
+      },
+      "sha256": {
+        "1x": "1eb9b5881fd3764e18e5c1e2de4af185cf5acadefaa4861fd146d0bc176d0190",
+        "2x": "ee4ab863738019b567a160076fe93e05a3f5adaecde1192b74b6f9af545f2629"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4177,
+        "opaquePixels": 219,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "heart",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/heart.png",
+      "files": {
+        "1x": "assets/ui/icons/heart.png",
+        "2x": "assets/ui/icons/heart-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): запасной корпус-жизнь (icon_life)",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-3/heart-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3958,
+        "2x": 14424
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/heart.webp",
+        "2x": "assets/ui/icons/heart-2x.webp"
+      },
+      "sha256": {
+        "1x": "b147ef568f6f72475dfbca4fa26c272bb7a215849abb7111d4e4a97d8c10c783",
+        "2x": "00bb8c2c5f7fcc34aef1c3fec11356e6ffb3fe971cebdfc042f27d7f07518874"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4677,
+        "opaquePixels": 194,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "hud-hud-item-view-1",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/hud-hud-item-view-1.png",
+      "files": {
+        "1x": "assets/ui/icons/hud-hud-item-view-1.png",
+        "2x": "assets/ui/icons/hud-hud-item-view-1-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): шестерня на плите — пункт HUD",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-4/hud-hud-item-view-1-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3919,
+        "2x": 14193
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/hud-hud-item-view-1.webp",
+        "2x": "assets/ui/icons/hud-hud-item-view-1-2x.webp"
+      },
+      "sha256": {
+        "1x": "6a8f207194b91d384f1f983ae664fa102a012aa48315374f241ffda5f99edccf",
+        "2x": "5d3b4691c07f7747bc19f09efea008613593cb89a3464c304658e8f8f2cc762c"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4190,
+        "opaquePixels": 174,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "hud-settings",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/hud-settings.png",
+      "files": {
+        "1x": "assets/ui/icons/hud-settings.png",
+        "2x": "assets/ui/icons/hud-settings-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): кованая шестерня с заклёпками (icon_settings)",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-1/hud-settings-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 4397,
+        "2x": 15479
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/hud-settings.webp",
+        "2x": "assets/ui/icons/hud-settings-2x.webp"
+      },
+      "sha256": {
+        "1x": "0c0ccb73330332591f673f561e86a1f6fa2fb70151d8a5e5f8963cac6fa76ab8",
+        "2x": "8de2582ffc18720bd0b9dd7f00aacba1aca3a6645e7d6342ae80d3d4de8f213d"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4279,
+        "opaquePixels": 269,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "lock",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/lock.png",
+      "files": {
+        "1x": "assets/ui/icons/lock.png",
+        "2x": "assets/ui/icons/lock-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): стальной навесной замок (node_lock)",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-2/lock-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3818,
+        "2x": 13301
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/lock.webp",
+        "2x": "assets/ui/icons/lock-2x.webp"
+      },
+      "sha256": {
+        "1x": "92fc81f9d635f93a15b66259ad51a60fa0c8d810f67ab321d843253f17b73d35",
+        "2x": "db02d8793dfc58dd41be01a11e9cee7e73f4e6f890177292a3b6872653645bcc"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4705,
+        "opaquePixels": 235,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "medal",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/medal.png",
+      "files": {
+        "1x": "assets/ui/icons/medal.png",
+        "2x": "assets/ui/icons/medal-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): кованая медаль с янтарной звездой",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-3/medal-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3898,
+        "2x": 14199
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/medal.webp",
+        "2x": "assets/ui/icons/medal-2x.webp"
+      },
+      "sha256": {
+        "1x": "c79d43094983db664697b1d8e489017fac35b6f10067fa4f7bcbf12f98a751d8",
+        "2x": "3e834c120f72f06a00c1f56df40bafb1e7f4c1aaf1aad4cee16c90a5a345cb8c"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4755,
+        "opaquePixels": 240,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "medal-1",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/medal-1.png",
+      "files": {
+        "1x": "assets/ui/icons/medal-1.png",
+        "2x": "assets/ui/icons/medal-1-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): медаль core_amber, цифра формой без текста — 1 зубец",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-4/medal-1-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 4055,
+        "2x": 14042
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/medal-1.webp",
+        "2x": "assets/ui/icons/medal-1-2x.webp"
+      },
+      "sha256": {
+        "1x": "cec7c7707c86e72883d3173ba8c9a6b047e7ac55d13e20e297c203b4fadb184c",
+        "2x": "5f82a22d044bdafb280653ef96809d5d790c22b845e8b47028631eed662179e8"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4710,
+        "opaquePixels": 189,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "medal-2",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/medal-2.png",
+      "files": {
+        "1x": "assets/ui/icons/medal-2.png",
+        "2x": "assets/ui/icons/medal-2-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): медаль steel_frost — 2 зубца",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-1/medal-2-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3499,
+        "2x": 12355
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/medal-2.webp",
+        "2x": "assets/ui/icons/medal-2-2x.webp"
+      },
+      "sha256": {
+        "1x": "98b7cf0352ee19b351ba7eb3ccdfdec9c877fde6c02dde1ed77c762399ab3476",
+        "2x": "17a1888a3a80e1d93394c73dc23614548d00734be14c1818842ea5e0866e448f"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 5149,
+        "opaquePixels": 143,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "medal-3",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/medal-3.png",
+      "files": {
+        "1x": "assets/ui/icons/medal-3.png",
+        "2x": "assets/ui/icons/medal-3-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): медаль clay_brick_light — 3 зубца",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-2/medal-3-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3832,
+        "2x": 13348
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/medal-3.webp",
+        "2x": "assets/ui/icons/medal-3-2x.webp"
+      },
+      "sha256": {
+        "1x": "c9471486e4997de16151bcec5ea0ab282f6df2bb0a6c7f97ff11253891edaec4",
+        "2x": "bda6c5f92e59fcaf5995d36175b7303b4566a7401a37f9ca3165ba114bd2c161"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4870,
+        "opaquePixels": 166,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "no-signal",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/no-signal.png",
+      "files": {
+        "1x": "assets/ui/icons/no-signal.png",
+        "2x": "assets/ui/icons/no-signal-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): антенна с перечёркиванием alarm_red",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-3/no-signal-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 4343,
+        "2x": 14833
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/no-signal.webp",
+        "2x": "assets/ui/icons/no-signal-2x.webp"
+      },
+      "sha256": {
+        "1x": "c5e248f4af46a6c84ca979770566c3ca06474b3e7d4e903e4d879a0111eb223e",
+        "2x": "ac1172fc27a5c5c402f3d7e331c0a597cca57da42aa5c8d77d2760215fa0c5a8"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4915,
+        "opaquePixels": 434,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "play",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/play.png",
+      "files": {
+        "1x": "assets/ui/icons/play.png",
+        "2x": "assets/ui/icons/play-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): толстый треугольник на плите",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-1/play-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 4189,
+        "2x": 14381
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/play.webp",
+        "2x": "assets/ui/icons/play-2x.webp"
+      },
+      "sha256": {
+        "1x": "2cb8375727a9f071e55cfee9825a511f680cb0ad8ee024541eead7aa1d740754",
+        "2x": "7024936580ee8351933ba015cdd7587e03d1ae83ce4502c9fc6abacc96f0470c"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 3668,
+        "opaquePixels": 188,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "quest",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/quest.png",
+      "files": {
+        "1x": "assets/ui/icons/quest.png",
+        "2x": "assets/ui/icons/quest-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): вымпел стадии (icon_stage)",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-2/quest-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 2723,
+        "2x": 9576
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/quest.webp",
+        "2x": "assets/ui/icons/quest-2x.webp"
+      },
+      "sha256": {
+        "1x": "857efd6c0d0aa06ebcfb3cd49ce57a80b33419190b92566747c875ace107610e",
+        "2x": "1e3ebd8928f5da1be5b9b2df11da3a3d38802335310a89b8115aa358ff609cbd"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 6356,
+        "opaquePixels": 180,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "rating-star",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/rating-star.png",
+      "files": {
+        "1x": "assets/ui/icons/rating-star.png",
+        "2x": "assets/ui/icons/rating-star-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): янтарная звезда с фаской (star_small)",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-3/rating-star-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3755,
+        "2x": 13384
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/rating-star.webp",
+        "2x": "assets/ui/icons/rating-star-2x.webp"
+      },
+      "sha256": {
+        "1x": "c86262cd0af3249c1eb720edac2827433fa0931499942ef2ba79c56ce87eff3c",
+        "2x": "5041e4e1171855a23603345b7c5611b5833788b4e18c96ed5f139ce794b093ea"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 5185,
+        "opaquePixels": 184,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "retry",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/retry.png",
+      "files": {
+        "1x": "assets/ui/icons/retry.png",
+        "2x": "assets/ui/icons/retry-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): стальная круговая стрелка",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-4/retry-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3350,
+        "2x": 11096
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/retry.webp",
+        "2x": "assets/ui/icons/retry-2x.webp"
+      },
+      "sha256": {
+        "1x": "df2b3214da9c114afffbd96ea1254df99939ac4ca245f0cb47e57b1bd1508702",
+        "2x": "04910529c4ab49084329d734455956b01f81bfd5229eb78bb801b2645d4a626f"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 5807,
+        "opaquePixels": 252,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "shop",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/shop.png",
+      "files": {
+        "1x": "assets/ui/icons/shop.png",
+        "2x": "assets/ui/icons/shop-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): ящик снабжения с оранжевыми швами (icon_shop)",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-1/shop-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3885,
+        "2x": 13746
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/shop.webp",
+        "2x": "assets/ui/icons/shop-2x.webp"
+      },
+      "sha256": {
+        "1x": "a8f671fe444be2b1335b37086957408868b83d42084f210cd65fc4f5006046ea",
+        "2x": "378d041175f275d5e8293aa7651cb2158659e427950bc023d2d1e35a758b6074"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4611,
+        "opaquePixels": 179,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "sparkle",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/sparkle.png",
+      "files": {
+        "1x": "assets/ui/icons/sparkle.png",
+        "2x": "assets/ui/icons/sparkle-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): четырёхлучевая искра core_white",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-2/sparkle-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 2829,
+        "2x": 9680
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/sparkle.webp",
+        "2x": "assets/ui/icons/sparkle-2x.webp"
+      },
+      "sha256": {
+        "1x": "cb21e72f87900923c625da7733aa4f14093193fb8383b78be4c92977f150b707",
+        "2x": "fb8387a9f39020cd12ad6885c4f9e3519d854755c89842f2f8861925fa0280c4"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 6307,
+        "opaquePixels": 135,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "star",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/star.png",
+      "files": {
+        "1x": "assets/ui/icons/star.png",
+        "2x": "assets/ui/icons/star-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): янтарная звезда (свой icon-star отменяет замену на rating-star)",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-3/star-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3632,
+        "2x": 12958
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/star.webp",
+        "2x": "assets/ui/icons/star-2x.webp"
+      },
+      "sha256": {
+        "1x": "578f4d912589c99648300390497b44ff920e49062deb43b9ad275cc09b3f013d",
+        "2x": "57c7c21c4a22d25aa7893f73ec17c84b5fccf0b8cb766cd8e8a30622db11b15f"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 5369,
+        "opaquePixels": 163,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "stopwatch-chip",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/stopwatch-chip.png",
+      "files": {
+        "1x": "assets/ui/icons/stopwatch-chip.png",
+        "2x": "assets/ui/icons/stopwatch-chip-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): стальной секундомер",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-4/stopwatch-chip-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3761,
+        "2x": 13290
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/stopwatch-chip.webp",
+        "2x": "assets/ui/icons/stopwatch-chip-2x.webp"
+      },
+      "sha256": {
+        "1x": "de1914677d04ffa3b7b3131867a5542284cd40e6d2deb02734fa3004fb513a0c",
+        "2x": "f056282ca2dd12a39b96f53c8bda1c774636414fe4a8c2329e64bc3cbf520670"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 5071,
+        "opaquePixels": 173,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "trophy",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/trophy.png",
+      "files": {
+        "1x": "assets/ui/icons/trophy.png",
+        "2x": "assets/ui/icons/trophy-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): кованый кубок с янтарным свечением (icon_leaderboard)",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-1/trophy-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 3918,
+        "2x": 13608
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/trophy.webp",
+        "2x": "assets/ui/icons/trophy-2x.webp"
+      },
+      "sha256": {
+        "1x": "3842d3a6fa7fc41f1314d4b5dc7759e7fda2a2e435fb0318ec3cd57dab4c5479",
+        "2x": "8f0b0cdb3cfa69bb354cccca5f0460639f0de7858c6d25ea648209483adab6e7"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4949,
+        "opaquePixels": 281,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "user",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "icon",
+      "file": "assets/ui/icons/user.png",
+      "files": {
+        "1x": "assets/ui/icons/user.png",
+        "2x": "assets/ui/icons/user-2x.png"
+      },
+      "size": {
+        "w": 48,
+        "h": 48
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): шлем пилота бур-танка",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-2/user-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 4383,
+        "2x": 16010
+      },
+      "dimensions": {
+        "1x": {
+          "w": 48,
+          "h": 48
+        },
+        "2x": {
+          "w": 96,
+          "h": 96
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/icons/user.webp",
+        "2x": "assets/ui/icons/user-2x.webp"
+      },
+      "sha256": {
+        "1x": "295f3d020d25fb38d6d4af4c6772961d4dcbff27ac098d38f93463dd4449a38c",
+        "2x": "90e7e29da624eada77eeacacd9e49d546ca9931f071cf1cd0c1770736b81066d"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 4295,
+        "opaquePixels": 182,
+        "totalPixels": 9216
+      }
+    },
+    {
+      "id": "bst_bubble",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "item",
+      "file": "assets/ui/items/bst_bubble.png",
+      "files": {
+        "1x": "assets/ui/items/bst_bubble.png",
+        "2x": "assets/ui/items/bst_bubble-2x.png"
+      },
+      "size": {
+        "w": 160,
+        "h": 160
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): ITEMS: items/bst_bubble.webp",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-3/bst_bubble-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 40772,
+        "2x": 149843
+      },
+      "dimensions": {
+        "1x": {
+          "w": 160,
+          "h": 160
+        },
+        "2x": {
+          "w": 320,
+          "h": 320
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/items/bst_bubble.webp",
+        "2x": "assets/ui/items/bst_bubble-2x.webp"
+      },
+      "sha256": {
+        "1x": "198906ab89acf163102aa6c1d9c84c1ddffc565310eb680c6d608e57da14d7e3",
+        "2x": "e0c32e6d45e52ee493adb470784db164618855c697c3d5495e19e30971eba6f9"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 46563,
+        "opaquePixels": 662,
+        "totalPixels": 102400
+      }
+    },
+    {
+      "id": "bst_shockwave",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "item",
+      "file": "assets/ui/items/bst_shockwave.png",
+      "files": {
+        "1x": "assets/ui/items/bst_shockwave.png",
+        "2x": "assets/ui/items/bst_shockwave-2x.png"
+      },
+      "size": {
+        "w": 160,
+        "h": 160
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): ITEMS: items/bst_shockwave.webp",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-2/bst_shockwave-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 42141,
+        "2x": 159492
+      },
+      "dimensions": {
+        "1x": {
+          "w": 160,
+          "h": 160
+        },
+        "2x": {
+          "w": 320,
+          "h": 320
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/items/bst_shockwave.webp",
+        "2x": "assets/ui/items/bst_shockwave-2x.webp"
+      },
+      "sha256": {
+        "1x": "965a8c0c7fba6778c95c5223d8093d2c0b7d671130b147c014ecbfac1ec1d643",
+        "2x": "a07d01f2e3c897836a8a7b15945cace772ea2a8c224faf396bc338f72f7d1842"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 51726,
+        "opaquePixels": 513,
+        "totalPixels": 102400
+      }
+    },
+    {
+      "id": "bst_fortify",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "item",
+      "file": "assets/ui/items/bst_fortify.png",
+      "files": {
+        "1x": "assets/ui/items/bst_fortify.png",
+        "2x": "assets/ui/items/bst_fortify-2x.png"
+      },
+      "size": {
+        "w": 160,
+        "h": 160
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): ITEMS: items/bst_fortify.webp",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-4/bst_fortify-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 32212,
+        "2x": 116494
+      },
+      "dimensions": {
+        "1x": {
+          "w": 160,
+          "h": 160
+        },
+        "2x": {
+          "w": 320,
+          "h": 320
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/items/bst_fortify.webp",
+        "2x": "assets/ui/items/bst_fortify-2x.webp"
+      },
+      "sha256": {
+        "1x": "d5ff2cd390cf873b9debcdf9742017d1865f7c31f375df088679cbedee85af50",
+        "2x": "6e1c628f61c304626f255a482172ca0d506fc0219ee0e678d15acf433473e4b2"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 49780,
+        "opaquePixels": 610,
+        "totalPixels": 102400
+      }
+    },
+    {
+      "id": "bst_hull",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "item",
+      "file": "assets/ui/items/bst_hull.png",
+      "files": {
+        "1x": "assets/ui/items/bst_hull.png",
+        "2x": "assets/ui/items/bst_hull-2x.png"
+      },
+      "size": {
+        "w": 160,
+        "h": 160
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): ITEMS: items/bst_hull.webp",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-1/bst_hull-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 37921,
+        "2x": 141578
+      },
+      "dimensions": {
+        "1x": {
+          "w": 160,
+          "h": 160
+        },
+        "2x": {
+          "w": 320,
+          "h": 320
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/items/bst_hull.webp",
+        "2x": "assets/ui/items/bst_hull-2x.webp"
+      },
+      "sha256": {
+        "1x": "16aa42e5cd7e8e0c137bb2d42f0d278dbff2b0168e6b1428cb1b7d02d98aa815",
+        "2x": "f8aa7068cb98944c4bd8877901d976f89aa1dc06cd37db584959a2f05478e246"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 49738,
+        "opaquePixels": 694,
+        "totalPixels": 102400
+      }
+    },
+    {
+      "id": "offer-starter_crate",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "offer",
+      "file": "assets/ui/offers/offer-starter_crate.png",
+      "files": {
+        "1x": "assets/ui/offers/offer-starter_crate.png",
+        "2x": "assets/ui/offers/offer-starter_crate-2x.png"
+      },
+      "size": {
+        "w": 160,
+        "h": 160
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): OFFERS: offers/starter_crate.webp",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-4/offer-starter_crate-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 35663,
+        "2x": 132365
+      },
+      "dimensions": {
+        "1x": {
+          "w": 160,
+          "h": 160
+        },
+        "2x": {
+          "w": 320,
+          "h": 320
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/offers/offer-starter_crate.webp",
+        "2x": "assets/ui/offers/offer-starter_crate-2x.webp"
+      },
+      "sha256": {
+        "1x": "9975db3fbf997af2bbe53829fe0192a9c993d5d2b45e6278eca4718921aeb189",
+        "2x": "0b0b5331ea825f537f269ceaff10a79d9122c33d7fc7b1bc89d8c25e98833583"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 54633,
+        "opaquePixels": 597,
+        "totalPixels": 102400
+      }
+    },
+    {
+      "id": "offer-hull_pack",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "offer",
+      "file": "assets/ui/offers/offer-hull_pack.png",
+      "files": {
+        "1x": "assets/ui/offers/offer-hull_pack.png",
+        "2x": "assets/ui/offers/offer-hull_pack-2x.png"
+      },
+      "size": {
+        "w": 160,
+        "h": 160
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): OFFERS: offers/hull_pack.webp",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-3/offer-hull_pack-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 43947,
+        "2x": 166864
+      },
+      "dimensions": {
+        "1x": {
+          "w": 160,
+          "h": 160
+        },
+        "2x": {
+          "w": 320,
+          "h": 320
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/offers/offer-hull_pack.webp",
+        "2x": "assets/ui/offers/offer-hull_pack-2x.webp"
+      },
+      "sha256": {
+        "1x": "92c0a27c3c18c34a2e0ee45e6c8ff54eb5bb860de4ffc5b3bb43e2e7e4a47cbb",
+        "2x": "29ea29a9a0b67d2c1ab683bf984e066b4d50f684514a69b6ee96c38d0cf94af2"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 42788,
+        "opaquePixels": 681,
+        "totalPixels": 102400
+      }
+    },
+    {
+      "id": "offer-field_kit",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "offer",
+      "file": "assets/ui/offers/offer-field_kit.png",
+      "files": {
+        "1x": "assets/ui/offers/offer-field_kit.png",
+        "2x": "assets/ui/offers/offer-field_kit-2x.png"
+      },
+      "size": {
+        "w": 160,
+        "h": 160
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): OFFERS: offers/field_kit.webp",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-1/offer-field_kit-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 45740,
+        "2x": 172724
+      },
+      "dimensions": {
+        "1x": {
+          "w": 160,
+          "h": 160
+        },
+        "2x": {
+          "w": 320,
+          "h": 320
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/offers/offer-field_kit.webp",
+        "2x": "assets/ui/offers/offer-field_kit-2x.webp"
+      },
+      "sha256": {
+        "1x": "5af7badb4193818962d8255884a6d3580a00f4a4c79978e827769591fb69cb17",
+        "2x": "7bcce30d9c09bd9160c153d2cc4e7e061f5befee37aa6205ab52d8f778fe0fb7"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 42222,
+        "opaquePixels": 709,
+        "totalPixels": 102400
+      }
+    },
+    {
+      "id": "offer-heavy_arsenal",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "offer",
+      "file": "assets/ui/offers/offer-heavy_arsenal.png",
+      "files": {
+        "1x": "assets/ui/offers/offer-heavy_arsenal.png",
+        "2x": "assets/ui/offers/offer-heavy_arsenal-2x.png"
+      },
+      "size": {
+        "w": 160,
+        "h": 160
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): OFFERS: offers/heavy_arsenal.webp",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-2/offer-heavy_arsenal-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 47924,
+        "2x": 180297
+      },
+      "dimensions": {
+        "1x": {
+          "w": 160,
+          "h": 160
+        },
+        "2x": {
+          "w": 320,
+          "h": 320
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/offers/offer-heavy_arsenal.webp",
+        "2x": "assets/ui/offers/offer-heavy_arsenal-2x.webp"
+      },
+      "sha256": {
+        "1x": "e099849b498ad6a53e948c119050102687b8d069b1e49452595298b838e1ddfc",
+        "2x": "c06715dded4aeb902b9b3a243cf25eda30a0c24be059311c3e652480e67352d5"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 41849,
+        "opaquePixels": 705,
+        "totalPixels": 102400
+      }
+    },
+    {
+      "id": "offer-commander_cache",
+      "area": "shell",
+      "skin": "iron-burrow",
+      "role": "offer",
+      "file": "assets/ui/offers/offer-commander_cache.png",
+      "files": {
+        "1x": "assets/ui/offers/offer-commander_cache.png",
+        "2x": "assets/ui/offers/offer-commander_cache-2x.png"
+      },
+      "size": {
+        "w": 160,
+        "h": 160
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): OFFERS: offers/commander_cache.webp",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-4/offer-commander_cache-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": true,
+      "bytes": {
+        "1x": 44074,
+        "2x": 164196
+      },
+      "dimensions": {
+        "1x": {
+          "w": 160,
+          "h": 160
+        },
+        "2x": {
+          "w": 320,
+          "h": 320
+        }
+      },
+      "webp": {
+        "1x": "assets/ui/offers/offer-commander_cache.webp",
+        "2x": "assets/ui/offers/offer-commander_cache-2x.webp"
+      },
+      "sha256": {
+        "1x": "476660823a67ff247b99e3718869676a8b35421cbe405e19cdf2b28011d33b0b",
+        "2x": "0ad0c118862e2b8a6d935ae1e4e488f61ceb10647211b2e4b97f92b59053663a"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 42533,
+        "opaquePixels": 719,
+        "totalPixels": 102400
+      }
+    },
+    {
+      "id": "app_icon",
+      "area": "application",
+      "skin": "iron-burrow",
+      "role": "app",
+      "file": "assets/game/app_icon.png",
+      "files": {
+        "1x": "assets/game/app_icon.png",
+        "2x": "assets/game/app_icon-2x.png"
+      },
+      "size": {
+        "w": 512,
+        "h": 512
+      },
+      "scale": [
+        "1x",
+        "2x"
+      ],
+      "prompt": "Assembly brief (original generation prompt not supplied): Stubby teal drill-tank bursting through brick, amber headlights, orange sparks, slate-blue background. No text.",
+      "source": "codex",
+      "provenance": {
+        "basis": "User supplied pre-generated Codex batches; no generation calls in this assembly step",
+        "original": "assets/source/icons/batch-1/app_icon-2x.png",
+        "originalPromptAvailable": false
+      },
+      "ref": [
+        "design/system/STYLE_REF.png",
+        "design/system/palette.json"
+      ],
+      "genCount": 0,
+      "generationCountScope": "this assembly step",
+      "alpha": false,
+      "bytes": {
+        "1x": 546705,
+        "2x": 1998745
+      },
+      "dimensions": {
+        "1x": {
+          "w": 512,
+          "h": 512
+        },
+        "2x": {
+          "w": 1024,
+          "h": 1024
+        }
+      },
+      "webp": {
+        "1x": "assets/game/app_icon.webp",
+        "2x": "assets/game/app_icon-2x.webp"
+      },
+      "sha256": {
+        "1x": "d0fe617805f9a798d905dc439c04d5abd9633ed5456225e1eed1263bfe77dcbb",
+        "2x": "fd6ce2a27349633aa369b076c48c750b2f9d1818850dbb4928bc0154bacd33d0"
+      },
+      "alphaCoverage": {
+        "transparentPixels": 0,
+        "opaquePixels": 1048576,
+        "totalPixels": 1048576
+      }
+    }
+  ],
+  "atlas": {
+    "file": "assets/ui/game-icons.png",
+    "file2x": "assets/ui/game-icons-2x.png",
+    "columns": 6,
+    "rows": 5,
+    "cell1x": 48,
+    "cell2x": 96,
+    "keys": [
+      "boost",
+      "brand-mark",
+      "calendar",
+      "check",
+      "clock",
+      "close",
+      "coins",
+      "flame",
+      "gems",
+      "gift",
+      "heart",
+      "hud-hud-item-view-1",
+      "hud-settings",
+      "lock",
+      "medal",
+      "medal-1",
+      "medal-2",
+      "medal-3",
+      "no-signal",
+      "play",
+      "quest",
+      "rating-star",
+      "retry",
+      "shop",
+      "sparkle",
+      "star",
+      "stopwatch-chip",
+      "trophy",
+      "user"
+    ]
+  },
+  "processing": {
+    "originalBytes": 45708002,
+    "productionBytesAllFormats": 5408935,
+    "regenerated": 0,
+    "problems": []
+  }
+}

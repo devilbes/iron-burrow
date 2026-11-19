@@ -40,6 +40,11 @@ test('the declared HUD: no problems, every activity on the left, every money ent
   assert.equal(Object.keys(layout.items).length, HUD.length, 'nothing but the declared entries');
 });
 
+// The template's sample HUD: the record rules below hold for any declaration, a game's HUD may
+// have other tiles (Iron Burrow: its own `boards` tile instead of `leaderboards`).
+const SAMPLE_HUD = [{ id: 'daily-rewards', kind: 'activity' }, { id: 'leaderboards', kind: 'activity' },
+  { id: 'shop', kind: 'money' }];
+
 test('the published record hides or segments a declared tile, never moves or adds one', () => {
   const published = { unlisted: 'show', items: {
     shop: { slot: 'left', order: 1, visible: false },
@@ -47,7 +52,7 @@ test('the published record hides or segments a declared tile, never moves or add
     inventory: { slot: 'left', visible: true },
     profile: { visible: true },
   } };
-  const layout = hudLayout(HUD, published);
+  const layout = hudLayout(SAMPLE_HUD, published);
   assert.equal(layout.unlisted, 'hide');
   assert.deepEqual(layout.items.shop, { slot: 'right', order: 10, visible: false });
   assert.deepEqual(layout.items.leaderboards, { slot: 'left', order: 20, visible: true, filters: { segment: 'a' }, badge: { kind: 'dot' } });
@@ -56,7 +61,7 @@ test('the published record hides or segments a declared tile, never moves or add
 });
 
 test('run-time state: hidden tiles and offer pictures', () => {
-  const entries = [...HUD, { id: 'offer-starter', kind: 'money', icon: 'gift', label: 'x', offer: true }];
+  const entries = [...SAMPLE_HUD, { id: 'offer-starter', kind: 'money', icon: 'gift', label: 'x', offer: true }];
   const layout = hudLayout(entries, undefined, new Set(['leaderboards']), new Map([['offer-starter', 'offer-starter_pack']]));
   assert.equal(layout.items.leaderboards.visible, false);
   assert.equal(layout.items['offer-starter'].icon, 'offer-starter_pack');

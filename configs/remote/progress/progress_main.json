@@ -29,12 +29,6 @@
             "payload": {}
           }
         ],
-        "reward": [
-          {
-            "id": "item_coins",
-            "amount": 20
-          }
-        ],
         "claimMode": "auto",
         "ui": {},
         "payload": {
@@ -61,12 +55,6 @@
             "target": 1,
             "maxValue": null,
             "payload": {}
-          }
-        ],
-        "reward": [
-          {
-            "id": "item_coins",
-            "amount": 30
           }
         ],
         "claimMode": "auto",
@@ -97,12 +85,6 @@
             "payload": {}
           }
         ],
-        "reward": [
-          {
-            "id": "item_coins",
-            "amount": 40
-          }
-        ],
         "claimMode": "auto",
         "ui": {},
         "payload": {
@@ -131,12 +113,6 @@
             "payload": {}
           }
         ],
-        "reward": [
-          {
-            "id": "item_coins",
-            "amount": 50
-          }
-        ],
         "claimMode": "auto",
         "ui": {},
         "payload": {
@@ -163,12 +139,6 @@
             "target": 1,
             "maxValue": null,
             "payload": {}
-          }
-        ],
-        "reward": [
-          {
-            "id": "item_coins",
-            "amount": 60
           }
         ],
         "claimMode": "auto",
