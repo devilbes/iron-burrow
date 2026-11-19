@@ -72,7 +72,7 @@ function spawnEnemy(state: RunState): void {
     const carriers = state.siege ? state.tun.siege.carriers : state.tun.carriers;
     const enemy: Enemy = { id: state.nextId++, type: next.type, slot: next.slot, wave: state.wave, x: col * unit, y: row * unit,
       dir: 2, moved: 0, hp: state.tun.enemies[next.type].hp, carrier: carriers.includes(next.slot),
-      spawning: state.tun.ticks.spawnAnim, decisionTimer: 0, fireTimer: 0, wantDecision: true, stuck: 0, fire: false };
+      spawning: state.tun.ticks.spawnAnim, decisionTimer: 0, fireTimer: 0, wantDecision: true, stuck: 0, fire: false, fireDir: 2 };
     state.enemies.push(enemy);
     state.spawnPoint = (index + 1) % points.length;
     state.spawnTimer = state.spawnInterval;
@@ -110,7 +110,7 @@ function shots(state: RunState, wantFire: boolean): void {
     if (!e.fire) continue;
     e.fire = false;
     if (state.freeze > 0 || state.bullets.some((b) => b.owner === e.id)) continue;
-    fire(state, e, e.id, tun.enemies[e.type].bulletSpeed, false);
+    fire(state, e, e.id, tun.enemies[e.type].bulletSpeed, false, e.fireDir);
   }
 }
 

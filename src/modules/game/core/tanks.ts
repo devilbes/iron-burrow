@@ -206,7 +206,9 @@ export function enemyTick(state: RunState, e: Enemy, hasBullet: boolean): void {
     const byTile = sweep(state.field, e.x, e.y, state.tun.unit, e.dir, 1) === 0;
     const ahead = aheadKinds(state, e, e.dir);
     if (byTile && ahead.brick && !hasBullet) {
+      // The shot goes the way the tank faced when it hit the brick, even if it turns now.
       e.fire = true;
+      e.fireDir = e.dir;
       if (state.rngAI() >= state.tun.ai.brickKeepP) decide(state, e, e.dir);
     } else decide(state, e, e.dir);
     e.stuck++;
@@ -215,6 +217,6 @@ export function enemyTick(state: RunState, e: Enemy, hasBullet: boolean): void {
   if (e.fireTimer >= t.aiFireCheck) {
     e.fireTimer = 0;
     const p = aimLine(state, e) ? state.tun.ai.aimFireP : state.tun.enemies[e.type].fireP * state.fireMult;
-    if (!hasBullet && !e.fire && state.rngAI() < p) e.fire = true;
+    if (!hasBullet && !e.fire && state.rngAI() < p) { e.fire = true; e.fireDir = e.dir; }
   }
 }

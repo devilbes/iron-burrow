@@ -11,12 +11,12 @@ const BULLET_DIV = 4; // bullet box = 1/4 cell (core.bullet_size)
 export const bulletSize = (state: RunState): number => state.tun.unit / BULLET_DIV;
 
 /** A new bullet centred on the tank axis at its front edge. */
-export function fire(state: RunState, tank: Tank, owner: number, speed: number, steel: boolean): void {
+export function fire(state: RunState, tank: Tank, owner: number, speed: number, steel: boolean, dir: Dir = tank.dir): void {
   const unit = state.tun.unit;
   const half = bulletSize(state) / 2;
-  const cx = tank.x + unit / 2 + (DX[tank.dir] * unit) / 2;
-  const cy = tank.y + unit / 2 + (DY[tank.dir] * unit) / 2;
-  state.bullets.push({ id: state.nextId++, owner, x: cx - half, y: cy - half, dir: tank.dir, speed, steel });
+  const cx = tank.x + unit / 2 + (DX[dir] * unit) / 2;
+  const cy = tank.y + unit / 2 + (DY[dir] * unit) / 2;
+  state.bullets.push({ id: state.nextId++, owner, x: cx - half, y: cy - half, dir, speed, steel });
   state.events.push({ t: 'shot', owner });
 }
 

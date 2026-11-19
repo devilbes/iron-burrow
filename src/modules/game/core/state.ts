@@ -41,6 +41,8 @@ export interface Enemy extends Tank {
   wantDecision: boolean;
   stuck: number;
   fire: boolean;
+  /** Direction of the shot the AI decided on (the tank may turn before the shot leaves). */
+  fireDir: Dir;
 }
 
 export interface Bullet {
