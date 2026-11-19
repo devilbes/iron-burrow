@@ -1,0 +1,127 @@
+{
+  "name": "orientation-switch",
+  "path": "/",
+  "ac": [
+    "AC-20-08",
+    "AC-20-10"
+  ],
+  "steps": [
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "viewport": "390x844",
+      "attr": "data-layout",
+      "value": "portrait"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"grant-collect\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "viewport": "844x390",
+      "attr": "data-layout",
+      "value": "landscape"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "viewport": "1440x900",
+      "attr": "data-layout",
+      "value": "desktop"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"topbar-settings\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"lobby-play\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"stagemap-play\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"tutorial-skip\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-grid",
+      "value": "13x13"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"hud-score\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "viewport": "844x390",
+      "attr": "data-state",
+      "value": "paused"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"pause-resume\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"pause-resume\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"hud-booster-fortify\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "viewport": "390x844",
+      "attr": "data-state",
+      "value": "paused"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"pause-resume\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"hud-enemies\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "attr": "data-layout",
+      "value": "portrait"
+    }
+  ]
+}

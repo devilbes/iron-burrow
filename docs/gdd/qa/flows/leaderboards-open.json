@@ -1,0 +1,77 @@
+{
+  "name": "leaderboards-open",
+  "path": "/",
+  "ac": [
+    "AC-20-04"
+  ],
+  "steps": [
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"grant-collect\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"topbar-leaderboards\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"boards-tab\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"boards-tab\"]",
+      "attr": "data-board",
+      "value": "siege_best"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"boards-period\"]",
+      "attr": "data-state",
+      "value": "weekly"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"boards-period\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"boards-period\"]",
+      "attr": "data-state",
+      "value": "alltime"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"boards-self\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"boards-close\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true
+    }
+  ]
+}

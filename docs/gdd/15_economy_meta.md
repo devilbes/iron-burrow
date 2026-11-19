@@ -17,7 +17,7 @@
 | `bst_bubble` | Bubble Shield | 1 шт. → неуязвимость 10 с | 2 за стадию (Siege 4 за забег) |
 | `bst_shockwave` | Shockwave | 1 шт. → уничтожить всех врагов на поле (засчитываются, очки начисляются) | 1 за стадию (Siege 2) |
 | `bst_fortify` | Steel Fortress | 1 шт. → стена Core стальная 20 с, разрушенные четверти восстановлены | 1 за стадию (Siege 2) |
-| `bst_hull` | Spare Hull | 1 шт. → +1 жизнь (pre-stage) **или** continue: +2 жизни и восстановление Core | pre-stage 1 + continue 1 за стадию (Siege: continue 1) |
+| `bst_hull` | Spare Hull | 1 шт. → +1 жизнь (pre-stage) **или** continue: +2 жизни и восстановление Core | pre-stage 1 + continue 1 за стадию (Siege: pre-stage 2 + continue 1 за забег; 10 §7) |
 
 Платформенные id предметов создаёт services-publish (id «—»), игра читает их из `game.boosters.items.<key>.item_id`, не хардкодит.
 
@@ -97,7 +97,7 @@ D-15-03: ★★★-награда публикуется как награда �
 |---|---|---|
 | inventory | балансы `bst_bubble`, `bst_shockwave`, `bst_fortify`, `bst_hull` (сервер — источник истины) | boosters |
 | progress (level-set `campaign`, 30 уровней) | по стадии: пройдена, лучшие звёзды 0–3, лучший счёт, выданы ли награды первого прохождения / ★★★ / финала | meta-bridge |
-| profile-pack kv | `settings.music` 0..1 (0.7), `settings.sfx` 0..1 (0.8), `settings.haptics` bool (true), `settings.stick_side` left/right (left), `tut.stage1_done` bool, `tut.booster_info_seen` bool, `offer.starter.last_auto_at` (время `core.time.now()`), `offer.starter.auto_shows` int, `flag.first_defeat_seen` bool | meta-bridge |
+| profile-pack kv | `settings` = `{v, music, sfx, haptics, motion}` (схема — 23 `aud.settings`); флаги обучения и онбординга `onb.*`, `tut.*` (14 §4); `offer.starter.last_auto_at` (время `sdk.time.now()`), `offer.starter.auto_shows` int, `flag.first_defeat_seen` bool, `booster_info.seen` bool | meta-bridge |
 | profile-pack gamestate | `campaign.gun_level` 0–3 (перенос между стадиями, сброс при смерти), `campaign.last_stage` int, `campaign.selected_chapter` 1–3, `grant.start_seen` bool (зеркало, источник истины — сервис) | meta-bridge |
 | iap | факт покупки one-time Starter Crate (сервер) | shop |
 | leaderboards | `siege_best`, `campaign_score` | meta-bridge |

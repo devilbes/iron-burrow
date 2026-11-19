@@ -153,7 +153,7 @@
 | 43 | icon_bst_hull | `assets/game/icon_bst_hull.png` | 320×320 | 128 / 160; 44 / 56; 96 / 128 | — | бустер Spare Hull | spare drill-tank hull on a small crate pallet, teal panels, amber headlights, item icon |
 | 44 | fx_explosion_small | `assets/game/fx_explosion_small.png` | 384×96 (4×96) | 21 / 42 | кадры 1–4 | попадание пули в стену/пулю | small burst of orange sparks and dust puff, four frames from flash to smoke |
 | 45 | fx_explosion_big | `assets/game/fx_explosion_big.png` | 1536×256 (6×256) | 56 / 112 (2 клетки) | кадры 1–6 | гибель танка (игрок и враги) | big fiery explosion with scrap fragments and smoke ring, six frames from white flash to dark smoke |
-| 46 | fx_explosion_core | `assets/game/fx_explosion_core.png` | 2048×256 (8×256) | 70 / 140 (2.5 клетки) | кадры 1–8 | уничтожение ядра | huge amber-white energy blast with shattering crystal shards and shock ring, eight frames |
+| 46 | fx_explosion_core | `assets/game/fx_explosion_core.png` | 2048×256 (8×256) | 56 / 112 (2 клетки) | кадры 1–8 | уничтожение ядра | huge amber-white energy blast with shattering crystal shards and shock ring, eight frames |
 | 47 | fx_spawn | `assets/game/fx_spawn.png` | 768×128 (6×128) | 28 / 56 | кадры 1–6 | появление врага (игрок — тот же лист с бирюзовой тонировкой кодом) | ground bursting open from below, swirling acid-green sparks and dirt ring, six frames |
 | 48 | fx_bubble | `assets/game/fx_bubble.png` | 320×160 (2×160) | 35 / 70 | кадры 1–2 | щит спавна и Bubble | translucent teal hexagon-patterned energy bubble, two shimmer frames |
 | 49 | fx_shockwave | `assets/game/fx_shockwave.png` | 512×512 | до размера поля (масштаб кодом) | — | волна Shockwave и Quake | expanding orange-white shock ring with dust, transparent center |
@@ -205,29 +205,29 @@
 
 ## art.uiskin — элементы скина UI (`assets/ui/<id>.png`)
 
-Правила как выше (исходник 2x, 1x — `npm run assets`). 9-slice/3-slice: в колонке «исходник» указаны вставки (insets) в px исходника. Общий суффикс промпта: *"game UI element, forged dark metal with rivets, glowing inset, soft light from top-left, transparent background, no text"*.
+Правила как выше (исходник 2x, 1x — `npm run assets`), с одним отличием: у тянущихся по ширине 3-slice элементов (кнопки, табы, строки, прогресс) кадры состояний сложены **по вертикали**, чтобы срез по ширине был общим. 9-slice/3-slice: в колонке «исходник» указаны вставки (insets) в px исходника. Общий суффикс промпта: *"game UI element, forged dark metal with rivets, glowing inset, soft light from top-left, transparent background, no text"*.
 
 | # | id | путь | исходник 2x, px | показ CSS px (портрет / десктоп) | состояния | назначение | описание для генерации |
 |---|---|---|---|---|---|---|---|
 | 1 | ui_panel | `assets/ui/ui_panel.png` | 192×192, 9-slice 48 | тянется; кромка 24 / 24 | — | базовая панель экранов | dark slate forged metal panel, corner rivets, beveled rim, subtle inner shadow |
 | 2 | ui_popup_frame | `assets/ui/ui_popup_frame.png` | 256×256, 9-slice 64 | ширина 350 / 520 | — | рамка попапов S04, S06, S08, S09, S11, S12, S16 | heavy forged frame with large corner rivets and thin teal glowing inner slit |
-| 3 | ui_header_plate | `assets/ui/ui_header_plate.png` | 480×96, 3-slice 64 | высота 48 / 56 | — | плашка заголовка попапа | wide forged nameplate with bolted ends and orange glowing underline |
-| 4 | ui_btn_primary | `assets/ui/ui_btn_primary.png` | 320×336 (3 кадра 320×112 по вертикали), 3-slice 56 | высота 56 / 64 | normal / pressed / disabled | главная кнопка (PLAY, CONTINUE, NEXT, BUY) | chunky rounded button, molten orange glowing face, forged iron rim with rivets, top gloss; pressed: darker and sunk; disabled: desaturated grey metal |
-| 5 | ui_btn_secondary | `assets/ui/ui_btn_secondary.png` | 320×336 (3×112), 3-slice 56 | высота 48 / 56 | normal / pressed / disabled | вторичная кнопка | same shape, teal steel face with soft glow |
+| 3 | ui_header_plate | `assets/ui/ui_header_plate.png` | 480×112, 3-slice 64 | высота 48 / 56 | — | плашка заголовка попапа | wide forged nameplate with bolted ends and orange glowing underline |
+| 4 | ui_btn_primary | `assets/ui/ui_btn_primary.png` | 320×384 (3 кадра 320×128 по вертикали), 3-slice 64 | высота 56 / 64 | normal / pressed / disabled | главная кнопка (PLAY, CONTINUE, NEXT, BUY) | chunky rounded button, molten orange glowing face, forged iron rim with rivets, top gloss; pressed: darker and sunk; disabled: desaturated grey metal |
+| 5 | ui_btn_secondary | `assets/ui/ui_btn_secondary.png` | 320×384 (3×128 по вертикали), 3-slice 64 | высота 48 / 56 | normal / pressed / disabled | вторичная кнопка | same shape, teal steel face with soft glow |
 | 6 | ui_btn_round | `assets/ui/ui_btn_round.png` | 256×128 (2×128) | 52 / 64 | normal / pressed | круглая кнопка под иконку (фичи HUD, пауза) | round forged button with rivet ring and teal inner glow |
 | 7 | ui_btn_close | `assets/ui/ui_btn_close.png` | 192×96 (2×96) | 40 / 44 | normal / pressed | закрыть попап | round iron button with a bold X cross, orange edge glow |
 | 8 | ui_tab | `assets/ui/ui_tab.png` | 240×192 (2×96 по вертикали), 3-slice 48 | высота 40 / 48 | active / inactive | табы S13 | forged tab plate; active: teal glowing face; inactive: dark slate |
 | 9 | ui_badge | `assets/ui/ui_badge.png` | 48×48 | 20 / 22 | — | счётчик на иконках (бустеры, фичи HUD) | small round magma-orange badge with dark rim and gloss |
 | 10 | ui_progress_track | `assets/ui/ui_progress_track.png` | 256×40, 3-slice 20 | высота 14 / 18 | — | дорожка прогресс-бара | recessed dark metal groove with rivet caps at ends |
 | 11 | ui_progress_fill | `assets/ui/ui_progress_fill.png` | 256×80 (2×40 по вертикали), 3-slice 20 | высота 10 / 14 | magma / teal | заливка прогресса (волна Siege, цикл daily, загрузка ассетов) | glowing liquid bar; magma: orange with hot highlight; teal: cold steel glow |
-| 12 | ui_card | `assets/ui/ui_card.png` | 512×320 (2×256×320), 9-slice 48 | 160×200 / 220×280 | normal / highlight | карточка пака S10 | tall forged card frame; highlight: amber glowing rim |
+| 12 | ui_card | `assets/ui/ui_card.png` | 896×560 (2×448×560), 9-slice 64 | 160×200 / 220×280 | normal / highlight | карточка пака S10 | tall forged card frame; highlight: amber glowing rim |
 | 13 | ui_ribbon | `assets/ui/ui_ribbon.png` | 256×64, 3-slice 32 | высота 24 / 28 | — | лента «BEST VALUE» / «ONE TIME» (текст кодом) | orange metal ribbon banner with folded ends |
 | 14 | ui_toggle | `assets/ui/ui_toggle.png` | 256×64 (2×128×64) | 52×26 / 60×30 | on / off | тумблеры S14, Spare Hull в S04 | forged toggle switch; on: orange glow knob right; off: dark knob left |
-| 15 | ui_slider_track | `assets/ui/ui_slider_track.png` | 256×32, 3-slice 16 | высота 10 / 12 | — | громкость music/sfx | thin recessed metal track with teal glow fill groove |
-| 16 | ui_slider_knob | `assets/ui/ui_slider_knob.png` | 64×64 | 24 / 28 | — | ручка слайдера | round riveted steel knob |
+| 15 | ui_slider_track | `assets/ui/ui_slider_track.png` | 256×32, 3-slice 16 | высота 10 / 12 | empty / filled | прогресс-бары (загрузка S01, прогресс главы S03) | thin recessed metal track with teal glow fill groove |
+| 16 | ui_slider_knob | `assets/ui/ui_slider_knob.png` | 64×64 | 24 / 28 | idle / pressed | резерв: ручка ползунка (в MVP не используется в S14 — там тумблеры) | round riveted steel knob |
 | 17 | ui_booster_slot | `assets/ui/ui_booster_slot.png` | 512×128 (4×128) | 52 / 64 | ready / active / spent / empty | слот бустера в HUD S05 | square forged slot frame; ready: teal rim; active: pulsing orange rim; spent: dark with lock-out hatch; empty: dim grey |
-| 18 | ui_daily_cell | `assets/ui/ui_daily_cell.png` | 576×224 (3×192×224), 9-slice 40 | 76×92 / 104×124 | claimed / today / locked | ячейка дня S12 | forged plate cell; claimed: dim with check mark; today: orange glowing rim; locked: dark slate |
-| 19 | ui_list_row | `assets/ui/ui_list_row.png` | 512×160 (2×80 по вертикали), 3-slice 40 | высота 44 / 52 | normal / self | строка лидерборда S13 | long thin forged plate; self: teal glowing rim |
+| 18 | ui_daily_cell | `assets/ui/ui_daily_cell.png` | 624×248 (3×208×248), 9-slice 40 | 76×92 / 104×124 | claimed / today / locked | ячейка дня S12 | forged plate cell; claimed: dim with check mark; today: orange glowing rim; locked: dark slate |
+| 19 | ui_list_row | `assets/ui/ui_list_row.png` | 512×208 (2×104 по вертикали), 3-slice 48 | высота 44 / 52 | normal / self | строка лидерборда S13 | long thin forged plate; self: teal glowing rim |
 | 20 | ui_tooltip | `assets/ui/ui_tooltip.png` | 160×128, 9-slice 40 | тянется | — | подсказка туториала S15 | dark metal speech bubble with small pointer at bottom, teal rim |
 | 21 | ui_keycap | `assets/ui/ui_keycap.png` | 192×96 (2×96), 9-slice 24 | 32 / 36 (ширина тянется под Space) | normal / pressed | клавиши в туториале и S14 | chunky keyboard key cap in dark steel with top bevel |
 | 22 | ui_divider | `assets/ui/ui_divider.png` | 512×16, 3-slice 32 | высота 6 / 8 | — | разделитель в попапах | thin forged bar with rivet ends and teal glow dot center |

@@ -1,0 +1,110 @@
+{
+  "name": "stage-clear",
+  "path": "/",
+  "ac": [
+    "AC-10-09",
+    "AC-15-03",
+    "AC-20-05",
+    "AC-31-02"
+  ],
+  "steps": [
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"grant-collect\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"lobby-play\"]",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"stagemap-play\"]",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"tutorial-hint\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"tutorial-skip\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-testid=\"qa-win\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"clear-stars\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"clear-score\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-collect\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"clear-next\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-next\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"prestage-goal\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"prestage-start\"]",
+      "visible": true
+    }
+  ]
+}

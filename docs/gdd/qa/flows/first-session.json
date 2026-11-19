@@ -1,0 +1,161 @@
+{
+  "name": "first-session",
+  "path": "/",
+  "ac": [
+    "AC-10-01",
+    "AC-14-01",
+    "AC-15-02",
+    "AC-20-07",
+    "AC-23-02"
+  ],
+  "steps": [
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"audio-state\"]",
+      "attr": "data-state",
+      "value": "locked"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item-count\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"grant-collect\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"topbar-daily\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"topbar-shop\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"topbar-leaderboards\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"topbar-settings\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"lobby-play\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"stage-node\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"stagemap-play\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"prestage-goal\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"prestage-hull\"]",
+      "attr": "data-state",
+      "value": "off"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-grid",
+      "value": "13x13"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"tutorial-hint\"]",
+      "attr": "data-step",
+      "value": "1"
+    },
+    {
+      "action": "type",
+      "selector": "[data-part=\"game-field\"]",
+      "key": "ArrowUp",
+      "holdMs": 400
+    },
+    {
+      "action": "type",
+      "selector": "[data-part=\"game-field\"]",
+      "key": "Space"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-fx-ack",
+      "contains": "fx.shot"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"audio-state\"]",
+      "attr": "data-state",
+      "value": "unlocked"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"tutorial-skip\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"hud-enemies\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"hud-lives\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"hud-stage\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"hud-score\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"hud-booster-bubble\"]",
+      "attr": "data-state",
+      "value": "ready"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"hud-booster-count\"]",
+      "visible": true
+    }
+  ]
+}

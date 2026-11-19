@@ -1,0 +1,67 @@
+{
+  "name": "daily-claim",
+  "path": "/",
+  "ac": [
+    "AC-15-04",
+    "AC-20-04"
+  ],
+  "steps": [
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"grant-collect\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"topbar-daily\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"daily-day\"]",
+      "attr": "data-state",
+      "value": "today"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"daily-claim\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"daily-day\"]",
+      "attr": "data-state",
+      "value": "claimed"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"daily-close\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true
+    }
+  ]
+}

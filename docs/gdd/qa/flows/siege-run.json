@@ -1,0 +1,286 @@
+{
+  "name": "siege-run",
+  "path": "/",
+  "ac": [
+    "AC-16-04",
+    "AC-31-03"
+  ],
+  "steps": [
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"grant-collect\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-siege\"]",
+      "attr": "data-state",
+      "value": "locked"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"lobby-play\"]",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"stagemap-play\"]",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"tutorial-hint\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"tutorial-skip\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-testid=\"qa-win\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"clear-stars\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-collect\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-next\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing"
+    },
+    {
+      "action": "click",
+      "selector": "[data-testid=\"qa-win\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"clear-stars\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-collect\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-next\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing"
+    },
+    {
+      "action": "click",
+      "selector": "[data-testid=\"qa-win\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"clear-stars\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-collect\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-next\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"shop-pack\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"shop-close\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing"
+    },
+    {
+      "action": "click",
+      "selector": "[data-testid=\"qa-win\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"clear-stars\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-collect\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-next\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing"
+    },
+    {
+      "action": "click",
+      "selector": "[data-testid=\"qa-win\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"clear-stars\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-collect\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"clear-map\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"stagemap-back\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-siege\"]",
+      "attr": "data-state",
+      "value": "open"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"lobby-siege\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"hud-stage\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing"
+    },
+    {
+      "action": "type",
+      "selector": "[data-part=\"game-field\"]",
+      "key": "Space"
+    },
+    {
+      "action": "click",
+      "selector": "[data-testid=\"qa-lose\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"defeat-reason\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"defeat-map\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"siege-score\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"siege-rank\"]",
+      "visible": true
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"siege-boards\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"boards-tab\"]",
+      "attr": "data-board",
+      "value": "siege_best"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"boards-close\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"siege-lobby\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true
+    }
+  ]
+}

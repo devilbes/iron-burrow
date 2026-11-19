@@ -1,0 +1,124 @@
+{
+  "name": "pause-resume",
+  "path": "/",
+  "ac": [
+    "AC-20-03"
+  ],
+  "steps": [
+    {
+      "action": "expect",
+      "selector": "[data-testid=\"app-ready\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"reward-item\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"grant-collect\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"lobby-play\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"lobby-play\"]",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"stagemap-play\"]",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"prestage-start\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"tutorial-hint\"]",
+      "visible": true,
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"tutorial-skip\"]",
+      "phase": "start"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing",
+      "phase": "start"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"hud-pause\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"pause-resume\"]",
+      "visible": true
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "paused"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"pause-resume\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing"
+    },
+    {
+      "action": "type",
+      "selector": "[data-part=\"game-field\"]",
+      "key": "Escape"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"pause-resume\"]",
+      "visible": true
+    },
+    {
+      "action": "type",
+      "selector": "[data-part=\"game-field\"]",
+      "key": "Escape"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"game-field\"]",
+      "attr": "data-state",
+      "value": "playing"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"hud-pause\"]"
+    },
+    {
+      "action": "click",
+      "selector": "[data-part=\"pause-quit\"]"
+    },
+    {
+      "action": "expect",
+      "selector": "[data-part=\"stagemap-play\"]",
+      "visible": true
+    }
+  ]
+}

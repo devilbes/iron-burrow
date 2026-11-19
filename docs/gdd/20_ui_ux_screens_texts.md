@@ -30,7 +30,7 @@
 | S11 Purchase result | `purchase-result` | Успех (ряд наград) / ошибка / отмена | Модальная карточка по центру; ряд наград как в S07 |
 | S12 Daily Rewards | `daily` | 7-дневный календарь, Claim | P: сетка 3+3, день 7 широкой плашкой снизу, Claim снизу. L/D: 7 карточек в ряд, день 7 в 1.5 ширины, Claim под ними |
 | S13 Leaderboards | `leaderboards` | Вкладки `siege_best` / `campaign_score`, период weekly/all-time, строка игрока | UI Kit leaderboard; P — во весь экран под топ-баром; L/D — карточка 720 px по центру, строка игрока закреплена снизу |
-| S14 Settings | `settings` | Music, Sound, Reduce Motion, ManyPlay ID / профиль (компонент UI Kit), версия | Модальная карточка; P — 92 % ширины; L/D — 520 px |
+| S14 Settings | `settings` | Music, Sound, Reduce Motion, Vibration (тач), ManyPlay ID / профиль (компонент UI Kit), версия | Модальная карточка; P — 92 % ширины; L/D — 520 px |
 | S15 Tutorial overlay | `tutorial` | Подсказки стадии 1 (§14) поверх S05 | Облако-подсказка со стрелкой к цели; P — над зоной управления; L/D — над полем у края цели. Поле на паузе только на шагах с кнопкой |
 | S16 Booster info | `booster-info` | Карточка бустера: картинка, имя, эффект, лимит, количество, «Get more» | Модальная карточка 360 px (P — 92 %); игра на паузе пока окно открыто |
 
@@ -52,7 +52,7 @@
 | S04 | `prestage-start` | S05 (стадия 1 при первом запуске → + S15) |
 | S04 | `prestage-shop` (при `bst_hull = 0`) | S10 → закрытие → S04 |
 | S04 | `prestage-close` | S03 (siege → S02) |
-| S05 | `hud-pause` / Esc / вкладка скрыта / смена ориентации | S06 |
+| S05 | `hud-pause` / Esc / вкладка скрыта / смена `data-layout` | S06 |
 | S05 | бустер с количеством 0 или long-press 500 ms на бустере | S16 (игра на паузе) |
 | S05 | уничтожены все 20 врагов (кампания) | S07 через 1500 ms (`fx.stage_clear`) |
 | S05 | Ядро уничтожено или жизней 0 | S08 через 1800 ms (`fx.core_destroyed` / `fx.player_death`) |
@@ -120,6 +120,7 @@ Spare Hull в HUD не показывается (только S04 и S08). Ли�
 | Music on/off | `settings-music` (`data-state="on|off"`) | profile-pack kv `settings.music` |
 | Sound on/off | `settings-sfx` (`data-state="on|off"`) | `settings.sfx` |
 | Reduce Motion | `settings-motion` (`data-state="on|off"`) | `settings.motion`; по умолчанию = `prefers-reduced-motion` (D-20-03) |
+| Vibration (только тач и если `sdk.device.haptics` доступен) | `settings-haptics` (`data-state="on|off"`) | `settings.haptics` (23 `aud.settings`) |
 | ManyPlay ID / профиль | `settings-profile` | компонент UI Kit (вход, имя, аватар); гость → кнопка Sign In |
 | Версия | `settings-version` | `Version {version}` |
 
@@ -235,6 +236,7 @@ Spare Hull в HUD не показывается (только S04 и S08). Ли�
 | ui.siege.lobby | Lobby |
 | ui.shop.title | Shop |
 | ui.shop.one_time | One-time offer |
+| ui.shop.best_value | Best value |
 | ui.shop.contents | {count} boosters |
 | ui.shop.buy | {price} |
 | ui.shop.pending | Processing... |
@@ -268,6 +270,7 @@ Spare Hull в HUD не показывается (только S04 и S08). Ли�
 | ui.settings.music | Music |
 | ui.settings.sfx | Sound |
 | ui.settings.motion | Reduce Motion |
+| ui.settings.haptics | Vibration |
 | ui.settings.on | On |
 | ui.settings.off | Off |
 | ui.settings.profile | ManyPlay ID |
@@ -304,7 +307,7 @@ Spare Hull в HUD не показывается (только S04 и S08). Ли�
 
 | window | state | element | data-part / data-testid | data-cta | owner module |
 |---|---|---|---|---|---|
-| root | `loading` → `ready` | корень приложения, `data-layout="portrait|landscape|desktop"` | `data-testid="app-ready"` (появляется на S02 ready) | — | `app` |
+| root | `loading` → `ready` | корень приложения, `data-layout="portrait|landscape|desktop"` | `data-testid="app-ready"` (появляется, когда S02 отрисован, в т.ч. в состоянии `grant`) | — | `app` |
 | root | `unlocked|locked` | скрытый статус аудио, `data-music`, `data-sfx` = `on|off` | `data-testid="audio-state"` | — | `audio` |
 | boot | `loading|error` | прогресс-бар | `boot-progress` | — | `app` |
 | boot | `error` | Retry | `boot-retry` | primary | `app` |
@@ -376,6 +379,7 @@ Spare Hull в HUD не показывается (только S04 и S08). Ли�
 | settings | `open` | Music | `settings-music` | — | `settings` (profile-pack) |
 | settings | `open` | Sound | `settings-sfx` | — | `settings` |
 | settings | `open` | Reduce Motion | `settings-motion` | — | `settings` |
+| settings | `open` | Vibration (тач) | `settings-haptics` | — | `settings` |
 | settings | `guest|signed` | ManyPlay ID / профиль (UI Kit) | `settings-profile` | — | `settings` (ui-kit profile) |
 | settings | `open` | версия | `settings-version` | — | `settings` |
 | settings | `open` | Close | `settings-close` | — | `settings` |
@@ -410,7 +414,7 @@ QA-хуки `qa-win` / `qa-lose` рендерятся только при `platf
 - D-20-03: добавлен тумблер Reduce Motion (по умолчанию из `prefers-reduced-motion`) — нужен §22.
 - D-20-04: data-part на элементы UI Kit передаются пропсами или обёрткой игры.
 - D-20-05: QA-хуки `qa-win`/`qa-lose` только в тестовом окружении.
-- D-20-06: смена ориентации и скрытие вкладки во время стадии ставят паузу (S06).
+- D-20-06: смена раскладки (`data-layout`: portrait/landscape/desktop) и скрытие вкладки во время стадии ставят паузу (S06); поле перестраивается под новую раскладку до показа паузы.
 - D-20-07: Siege стартует через S04 (тумблер Spare Hull доступен, как в кампании); `pause-quit` в Siege завершает забег с отправкой счёта.
 - D-20-08: Starter Crate после первого clear стадии 3 показывается как S10 с фокусом на наборе через очередь окон, после закрытия S07; после первого поражения — карточкой в S08.
 - D-20-09: Continue при `bst_hull = 0` открывает S16 (Spare Hull) с «Get more», а не сразу магазин.
