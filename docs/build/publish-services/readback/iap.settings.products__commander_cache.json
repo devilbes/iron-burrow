@@ -1,0 +1,38 @@
+{
+  "scope": "iap.settings.products",
+  "key": "commander_cache",
+  "revision": 1,
+  "schemaId": "iap.settings.products@6",
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": [],
+  "readAt": "2026-11-19T11:28Z",
+  "data": {
+    "name": "Commander Cache",
+    "type": "consumable",
+    "priceUsd": 19.99,
+    "entities": [
+      {
+        "id": "bst_bubble",
+        "amount": 35
+      },
+      {
+        "id": "bst_shockwave",
+        "amount": 35
+      },
+      {
+        "id": "bst_fortify",
+        "amount": 35
+      },
+      {
+        "id": "bst_hull",
+        "amount": 35
+      }
+    ],
+    "bindings": {
+      "google_play": {
+        "productId": "commander_cache"
+      }
+    }
+  }
+}

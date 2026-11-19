@@ -1,0 +1,42 @@
+{
+  "scope": "iap.offers",
+  "key": "field_kit",
+  "revision": 1,
+  "schemaId": "iap.offers@10",
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": [],
+  "readAt": "2026-11-19T11:28Z",
+  "data": {
+    "name": "Field Kit",
+    "kind": "paid",
+    "enabled": true,
+    "cooldownSec": 0,
+    "durationSec": null,
+    "schedule": null,
+    "variants": [
+      {
+        "key": "default",
+        "productKey": "field_kit"
+      }
+    ],
+    "ui": {
+      "texts": {
+        "title": {
+          "l10n": "offer.field_kit.title"
+        },
+        "subtitle": {
+          "l10n": "offer.field_kit.subtitle"
+        },
+        "cta": {
+          "l10n": "offer.cta.buy"
+        },
+        "badge": {
+          "l10n": "offer.field_kit.badge"
+        }
+      },
+      "highlight": true,
+      "order": 3
+    }
+  }
+}
