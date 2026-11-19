@@ -535,8 +535,7 @@
         "limit_siege": "Up to {count} per Siege run"
       },
       "profile": {
-        "levels": "Stages cleared",
-        "best": "Best score"
+        "levels": "Stages cleared"
       }
     }
   }

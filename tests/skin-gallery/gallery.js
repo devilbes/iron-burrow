@@ -49,6 +49,7 @@ import packsRecord from '../../configs/remote/game.iap_packs/main.json';
 import shopOrderRecord from '../../configs/remote/game.iap_shop_order/main.json';
 import fieldKitRecord from '../../configs/remote/iap.offers/field_kit.json';
 import './modal-layers.js';
+import { GAME_WINDOWS, fits } from './game-windows.js';
 import { testPorts } from './test-ports.js';
 import { barCounters, gameTileSpec, hudLayout, hudOrder, isGameTile, moduleCounter } from '/app/shell/hud-plan.js';
 
@@ -139,6 +140,7 @@ const galleryShop = (ctx) => ctx.window.open(shopWindowSpec(ctx, { ...shopState(
 
 /** Views of the game's own layers: [route, what is opened over it]. */
 const LAYERS = {
+  ...GAME_WINDOWS,
   'game-shop': ['home', galleryShop],
   'game-offer': ['home', (ctx) => ctx.window.open(offerWindowSpec(ctx, STARTER))],
   'game-purchase-failed': ['home', (ctx) => ctx.window.open(purchaseWindowSpec(ctx, 'hull_pack', () => 'failed'))],
@@ -575,6 +577,7 @@ function checks(view) {
   // A window or an overlay is open: its dim covers the viewport, top bar included.
   found.push(...globalThis.modalLayers.problems());
   if ((WINDOWS[view] || LAYERS[view]) && !globalThis.modalLayers.measure().open) found.push('no window or overlay open');
+  if (GAME_WINDOWS[view]) found.push(...fits());
   if (view === 'game-window') found.push(...globalThis.modalLayers.gameWindow(RESULT.title, { actions: RESULT.actions.length }));
   if (view === 'game-shop') found.push(...globalThis.modalLayers.gameWindow(SHOP_TITLE, { actions: 1 }), ...shopChecks());
   if (view === 'game-offer') found.push(...globalThis.modalLayers.gameWindow(bootText('offer.starter_crate.title'), { actions: 1 }), ...windowInView());

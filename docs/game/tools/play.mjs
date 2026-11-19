@@ -19,11 +19,13 @@ const args = process.argv.slice(2);
 const opt = (name, def) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : def; };
 const SIZES = opt('--sizes', '1440x900,844x390,390x844').split(',').map((s) => s.split('x').map(Number));
 const ONLY_UI = args.includes('--only-ui');
+/** Straight to stage 1: the map, the stage window, the tutorial and the field — no windows tour, no win. */
+const QUICK = args.includes('--quick-game');
 const HOLD_MS = Number(opt('--hold', '61000'));
-const OUT = resolve('docs/game/shots');
+const OUT = resolve(process.env.OUT ?? 'docs/game/shots');
 mkdirSync(OUT, { recursive: true });
 
-const root = resolve('dist');
+const root = resolve(process.env.DIST ?? 'dist');
 const types = { '.js': 'text/javascript', '.json': 'application/json', '.css': 'text/css', '.png': 'image/png',
   '.webp': 'image/webp', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.html': 'text/html', '.mp3': 'audio/mpeg',
   '.ogg': 'audio/ogg', '.m4a': 'audio/mp4' };
@@ -139,10 +141,25 @@ async function pass([w, h]) {
     await closeAll();
   });
   await step('lobby', async () => { await page.waitForTimeout(1000); await shot('lobby', 'lobby'); });
+  if (QUICK) {
+    await step('map', async () => { await press(page.locator('[data-testid=lobby-play]')); await page.locator('[data-testid=stagemap-play]').waitFor(); await page.waitForTimeout(1200); await shot('stagemap', 'stagemap'); await press(page.locator('[data-testid=stagemap-play]')); });
+    await step('quick', async () => {
+      await waitDialog(); await shot('prestage'); await press(action('prestage-start'));
+      await page.locator('[data-testid=game-field]').waitFor({ timeout: 30000 });
+      await page.waitForTimeout(1500); await shot('tutorial-1', 'tutorial');
+      for (let k = 0; k < 4; k += 1) {
+        const next = page.locator('[data-testid=tutorial-next]');
+        if (await next.count()) { await next.first().click(); await page.waitForTimeout(1200); await shot(`tutorial-${k + 2}`, 'tutorial'); }
+      }
+      await page.waitForTimeout(6000); await shot('game-level1', 'game');
+      await press(page.locator('[data-testid=qa-lose]')); await waitDialog(30000); await page.waitForTimeout(1200); await shot('defeat', 'defeat');
+    });
+    await finish(); return log;
+  }
   await step('profile', async () => { await press(page.locator('[data-testid="hud.profile"]')); await page.waitForTimeout(2000); await shot('profile'); await closeAll(); });
   await step('settings', async () => {
     await press(page.locator('[data-testid="hud.settings"]')); await waitDialog(); await shot('settings');
-    const sign = dialog().getByRole('button', { name: /sign in|log in|manyplay/i });
+    const sign = page.getByRole('button', { name: /^\s*(sign in|log in)\s*$/i });
     if (await sign.count()) { await sign.first().click(); await page.waitForTimeout(2500); await shot('login'); }
     else log.errors.push('[settings] no Sign in button');
     await closeAll();
@@ -260,8 +277,8 @@ async function pass([w, h]) {
   async function finish() {
     phase = 'end';
     log.verdicts = log.levels.map((one) => ({ phase: one.phase, status: one.status,
-      verified: one.body?.verified ?? one.body?.data?.verified ?? one.body?.result?.verified ?? null,
-      stars: one.body?.stars ?? one.body?.data?.stars ?? null }));
+      kind: one.sent?.type ?? one.sent?.action ?? null,
+      verified: one.body?.level?.verified ?? null, stars: one.body?.level?.stars ?? null }));
     writeFileSync(`${OUT}/${size}-log.json`, JSON.stringify(log, null, 1));
     await browser.close();
   }

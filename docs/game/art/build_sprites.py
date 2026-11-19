@@ -448,12 +448,12 @@ def roots_tile(theme, seed):
     rnd = random.Random(seed)
     base = {'clay': (44, 36, 30), 'iron': (16, 34, 40), 'magma': (40, 18, 16)}[theme]
     d = ImageDraw.Draw(big)
-    d.rounded_rectangle((4 * S, 4 * S, (w - 4) * S, (w - 4) * S), radius=22 * S, fill=base + (215,))
+    d.rounded_rectangle((4 * S, 4 * S, (w - 4) * S, (w - 4) * S), radius=22 * S, fill=base + (235,))
     vine = {'clay': ((70, 120, 96), (130, 190, 150)), 'iron': ((31, 125, 134), (111, 194, 196)),
-            'magma': ((80, 110, 60), (150, 190, 90))}[theme]
-    for k in range(13):
+            'magma': ((122, 74, 46), (181, 113, 63))}[theme]
+    for k in range(24):
         pts = []
-        x, y = rnd.uniform(0, w), rnd.choice([0, w, rnd.uniform(0, w)])
+        x, y = (k % 5) * 30 + rnd.uniform(0, 20), (k // 5) * 28 + rnd.uniform(0, 20)
         ang = rnd.uniform(0, math.tau)
         for _ in range(14):
             pts.append((x * S, y * S))
@@ -713,7 +713,7 @@ def build_player():
     sheet = Image.new('RGBA', (256, 128))
     for i, f in enumerate([im, roll_columns(im, rs, y0, y1, 3)]):
         canvas = Image.new('RGBA', (128, 128))
-        center_on(canvas, fit(f, 118, 118))
+        center_on(canvas, fit(f, 124, 124))
         sheet.paste(canvas, (i * 128, 0))
     save('player_hull', expect('hull', sheet, (256, 128)))
 
@@ -986,8 +986,8 @@ def speaker(d, S, muted):
     body = [(14, 38), (30, 38), (50, 20), (54, 20), (54, 76), (50, 76), (30, 58), (14, 58)]
     d.polygon([(x * S, y * S) for x, y in body], fill=o)
     inner = [(18, 42), (32, 42), (50, 25), (50, 71), (32, 54), (18, 54)]
-    d.polygon([(x * S, y * S) for x, y in inner], fill=rgb('rivet_iron'))
-    d.polygon([(x * S, y * S) for x, y in [(18, 42), (32, 42), (50, 25), (50, 44), (18, 46)]], fill=(150, 168, 178, 255))
+    d.polygon([(x * S, y * S) for x, y in inner], fill=(120, 138, 150, 255))
+    d.polygon([(x * S, y * S) for x, y in [(18, 42), (32, 42), (50, 25), (50, 44), (18, 46)]], fill=(185, 205, 212, 255))
     d.rectangle((18 * S, 42 * S, 23 * S, 54 * S), fill=rgb('steel_teal_light'))
     if not muted:
         for r, wdt in ((14, 6), (26, 6)):
@@ -1016,7 +1016,7 @@ def build_icons():
                   fill=(255, 255, 255, 255))
     save('icon_back', symbol_on_plate(back))
     for name, muted in (('icon_sfx', False), ('icon_sfx_off', True)):
-        save(name, draw_ss((96, 96), 4, lambda d, S, _b, m=muted: speaker(d, S, m)))
+        save(name, center_on(icon_canvas(), fit(bbox_crop(draw_ss((96, 96), 4, lambda d, S, _b, m=muted: speaker(d, S, m))), 90, 84)))
 
     def music(d, S, _):
         o, fill, hi = rgb('slate_abyss'), rgb('steel_teal_light'), rgb('steel_frost')
@@ -1029,7 +1029,7 @@ def build_icons():
             d.ellipse(((54 - e) * S, (52 - e) * S, (74 + e) * S, (70 + e) * S), fill=col)
         d.ellipse((24 * S, 63 * S, 31 * S, 68 * S), fill=hi)
         d.ellipse((58 * S, 55 * S, 65 * S, 60 * S), fill=hi)
-    save('icon_music', draw_ss((96, 96), 4, music))
+    save('icon_music', center_on(icon_canvas(), fit(bbox_crop(draw_ss((96, 96), 4, music)), 84, 84)))
     # life: the player's tank (brand mark of the own sheet: the drill tank, facing up)
     c = icon_canvas()
     center_on(c, fit(src_icon('brand-mark'), 88, 88))
@@ -1046,14 +1046,15 @@ def build_icons():
             x0, y0 = 30 + math.cos(a) * r0, 66 + math.sin(a) * r0
             x1, y1 = 30 + math.cos(a) * r1, 66 + math.sin(a) * r1
             d.line((x0 * S, y0 * S, x1 * S, y1 * S), fill=col, width=int(wdt * S))
-        seg(-14, 56, 26, o)
-        seg(-12, 54, 20, (120, 138, 150, 255))
-        seg(-10, 52, 7, rgb('steel_frost'))
-        seg(44, 56, 30, o)
-        seg(46, 54, 24, rgb('slate_mid'))
-        d.ellipse((10 * S, 54 * S, 38 * S, 82 * S), fill=o)
-        d.ellipse((14 * S, 58 * S, 34 * S, 78 * S), fill=rgb('steel_teal'))
-        d.ellipse((19 * S, 63 * S, 26 * S, 70 * S), fill=rgb('steel_teal_light'))
+        seg(-16, 50, 34, o)
+        seg(-14, 48, 26, (120, 138, 150, 255))
+        seg(-12, 46, 9, rgb('steel_frost'))
+        seg(38, 54, 40, o)
+        seg(40, 52, 32, rgb('slate_mid'))
+        seg(42, 50, 10, rgb('rivet_iron'))
+        d.ellipse((6 * S, 50 * S, 42 * S, 86 * S), fill=o)
+        d.ellipse((11 * S, 55 * S, 37 * S, 81 * S), fill=rgb('steel_teal'))
+        d.ellipse((17 * S, 61 * S, 26 * S, 70 * S), fill=rgb('steel_teal_light'))
     c = draw_ss((96, 96), 4, barrel)
     star = fit(src_icon('rating-star'), 46, 46)
     c.alpha_composite(star, (96 - star.width - 2, 96 - star.height - 2))
