@@ -1,0 +1,34 @@
+{
+  "name": "iap.settings.products/field_kit",
+  "data": {
+    "name": "Field Kit",
+    "type": "consumable",
+    "priceUsd": 4.99,
+    "entities": [
+      {
+        "id": "bst_bubble",
+        "amount": 6
+      },
+      {
+        "id": "bst_shockwave",
+        "amount": 6
+      },
+      {
+        "id": "bst_fortify",
+        "amount": 6
+      },
+      {
+        "id": "bst_hull",
+        "amount": 6
+      }
+    ],
+    "bindings": {
+      "google_play": {
+        "productId": "field_kit"
+      }
+    }
+  },
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": []
+}

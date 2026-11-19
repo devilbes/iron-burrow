@@ -1,0 +1,61 @@
+{
+  "scope": "game.iap_packs",
+  "key": "main",
+  "name": "game.iap_packs/main",
+  "data": {
+    "starter_crate": {
+      "offer_id": "starter_crate",
+      "items": {
+        "bst_bubble": 3,
+        "bst_shockwave": 3,
+        "bst_fortify": 3,
+        "bst_hull": 3
+      },
+      "price_usd": 0.99,
+      "one_time": true
+    },
+    "hull_pack": {
+      "offer_id": "hull_pack",
+      "items": {
+        "bst_hull": 5
+      },
+      "price_usd": 1.99,
+      "one_time": false
+    },
+    "field_kit": {
+      "offer_id": "field_kit",
+      "items": {
+        "bst_bubble": 6,
+        "bst_shockwave": 6,
+        "bst_fortify": 6,
+        "bst_hull": 6
+      },
+      "price_usd": 4.99,
+      "one_time": false
+    },
+    "heavy_arsenal": {
+      "offer_id": "heavy_arsenal",
+      "items": {
+        "bst_bubble": 15,
+        "bst_shockwave": 15,
+        "bst_fortify": 15,
+        "bst_hull": 15
+      },
+      "price_usd": 9.99,
+      "one_time": false
+    },
+    "commander_cache": {
+      "offer_id": "commander_cache",
+      "items": {
+        "bst_bubble": 35,
+        "bst_shockwave": 35,
+        "bst_fortify": 35,
+        "bst_hull": 35
+      },
+      "price_usd": 19.99,
+      "one_time": false
+    }
+  },
+  "visibility": 3,
+  "enabled": true
+}

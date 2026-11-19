@@ -1,0 +1,26 @@
+{
+  "scope": "game.siege",
+  "key": "main",
+  "name": "game.siege/main",
+  "data": {
+    "unlock_after_stage": 5,
+    "level_set_id": "endless",
+    "level_id": "siege_pit",
+    "wave_size": 10,
+    "max_alive": {
+      "base": 4,
+      "wave_div": 3,
+      "cap": 8
+    },
+    "brute_share": {
+      "per_wave": 0.1,
+      "cap": 0.5
+    },
+    "lives": 3,
+    "continue_max": 1,
+    "kill_mult_per_wave": 0.1,
+    "wave_clear_bonus_per_wave": 300
+  },
+  "visibility": 3,
+  "enabled": true
+}

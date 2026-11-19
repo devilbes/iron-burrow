@@ -1,0 +1,53 @@
+{
+  "leaderboardKey": "siege_best",
+  "title": "leaderboard.siege_best.title",
+  "enabled": true,
+  "writeMode": "best",
+  "direction": "max",
+  "allowNegativeScores": false,
+  "score": {
+    "minDelta": 0,
+    "maxDelta": 3995000,
+    "minValue": 0,
+    "maxValue": 3995000
+  },
+  "sources": [
+    {
+      "eventType": "game.actions",
+      "value": "score",
+      "weight": 1,
+      "filters": {
+        "type": "levelEnd",
+        "data.set": "endless"
+      }
+    }
+  ],
+  "startsAt": null,
+  "endsAt": null,
+  "scopes": [
+    "regional"
+  ],
+  "rateLimit": {
+    "minIntervalMs": 2000,
+    "maxUpdatesPerUserPerMinute": 10,
+    "maxUpdatesPerUserPerHour": 120
+  },
+  "velocity": {
+    "maxScoreGainPerMinute": 200000,
+    "maxScoreGainPerHour": 2000000
+  },
+  "dedup": {
+    "required": true,
+    "windowSec": 86400,
+    "mode": "strict_event_id"
+  },
+  "integrity": {
+    "requireIdempotencyKey": true,
+    "rejectOutOfOrderTs": true,
+    "maxClientSkewSec": 60
+  },
+  "action": {
+    "onSoftViolation": "flag",
+    "onHardViolation": "reject"
+  }
+}

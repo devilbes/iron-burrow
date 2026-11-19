@@ -1,0 +1,54 @@
+{
+  "leaderboardKey": "campaign_score",
+  "title": "leaderboard.campaign_score.title",
+  "enabled": true,
+  "writeMode": "increment",
+  "direction": "max",
+  "allowNegativeScores": false,
+  "score": {
+    "minDelta": 0,
+    "maxDelta": 17550,
+    "minValue": 0,
+    "maxValue": 1000000000
+  },
+  "sources": [
+    {
+      "eventType": "game.actions",
+      "value": "score",
+      "weight": 1,
+      "filters": {
+        "type": "levelEnd",
+        "data.set": "main",
+        "data.won": true
+      }
+    }
+  ],
+  "startsAt": null,
+  "endsAt": null,
+  "scopes": [
+    "regional"
+  ],
+  "rateLimit": {
+    "minIntervalMs": 500,
+    "maxUpdatesPerUserPerMinute": 30,
+    "maxUpdatesPerUserPerHour": 600
+  },
+  "velocity": {
+    "maxScoreGainPerMinute": 3000,
+    "maxScoreGainPerHour": 50000
+  },
+  "dedup": {
+    "required": true,
+    "windowSec": 86400,
+    "mode": "strict_event_id"
+  },
+  "integrity": {
+    "requireIdempotencyKey": true,
+    "rejectOutOfOrderTs": true,
+    "maxClientSkewSec": 60
+  },
+  "action": {
+    "onSoftViolation": "flag",
+    "onHardViolation": "reject"
+  }
+}
