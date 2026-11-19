@@ -14,9 +14,10 @@ test('npm run test:unit runs every test file of tests/', () => {
   const globs = [...script.matchAll(/"(tests\/[^"]+)"/g)].map((match) => match[1]);
   assert.ok(globs.length > 0, script);
   assert.deepEqual(files.filter((file) => !globs.some((glob) => matchesGlob(file, glob))), []);
-  // The full check (scripts/check.mjs) runs the same files.
+  // The full check (scripts/check.mjs) runs the same files. The game logic tests (tests/game/*.spec.mjs, named
+  // *.spec.mjs on purpose) are run by `npm run test:unit` only.
   const check = readFileSync(new URL('scripts/check.mjs', root), 'utf8');
-  for (const glob of globs) assert.ok(check.includes(`'${glob}'`), glob);
+  for (const glob of globs.filter((item) => !item.endsWith('.spec.mjs'))) assert.ok(check.includes(`'${glob}'`), glob);
 });
 
 test('the quick set (tests/*.test.mjs) runs no build: tests that build a project copy are in tests/build/', () => {

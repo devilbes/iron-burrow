@@ -3,9 +3,12 @@
 // ScreenContext and mounts one screen at a time. The game API is `gameOf(ctx.game)`
 // (src/modules/game/index.ts). Windows S04, S06–S09, S11, S13, S14 (game part), S16 are game
 // windows (`ctx.window`), not routes; S10 shop and S12 daily are kit windows of the HUD tiles.
-import type { GamePorts } from '../modules/game/index.js';
+import { gameOf, type GamePorts } from '../modules/game/index.js';
+import { openBoards } from './boards.js';
 import { mount as game } from './game.js';
 import { mount as home } from './home.js';
+import { mount as map } from './map.js';
+import { openShop } from './shop.js';
 
 /**
  * `home` — S02 Lobby (the shell's start route, keep the name); `map` — S03 Stage Map;
@@ -100,12 +103,6 @@ export interface GameOverlay {
 /** Draws a screen into `root`; returns the function that removes it and its subscriptions. */
 export type ScreenMount = (root: HTMLElement, ctx: ScreenContext) => () => void;
 
-/**
- * TEMPORARY stubs of the contract step: `map` shows the Lobby placeholder until the screens step
- * adds src/screens/map.ts; home.ts and game.ts are still the template placeholders.
- */
-const map: ScreenMount = (root, ctx) => home(root, ctx);
-
 export const screens: Record<Route, ScreenMount> = { home, map, game };
 
 /** Gameplay routes: the shell shows them without the lobby HUD and bottom menu, with a compact top bar. */
@@ -191,14 +188,22 @@ export interface HudEntry {
 export const HUD: readonly HudEntry[] = [
   { id: 'daily-rewards', kind: 'activity' },
   // S13: two boards (siege_best weekly, campaign_score all-time) in a game window — the stock
-  // leaderboard window shows one board only (CONTRACT D-GC-07). TEMPORARY: the screens step
-  // replaces `run` with the S13 window.
-  { id: 'boards', kind: 'activity', icon: 'trophy', label: 'screen.hud.boards', open: { run: () => undefined } },
+  // leaderboard window shows one board only (CONTRACT D-GC-07).
+  { id: 'boards', kind: 'activity', icon: 'trophy', label: 'screen.hud.boards', open: { run: (ctx) => { void openBoards(ctx); } } },
   // S10: the game's shop window (offers of `placement_shop`, Starter Crate only after its trigger,
-  // no currency line) — the stock shop window shows a coins capsule (CONTRACT D-GC-19).
-  // TEMPORARY: the screens step replaces `run` with the S10 window.
-  { id: 'store', kind: 'money', icon: 'shop', label: 'screen.hud.shop', open: { run: () => undefined } },
+  // no currency line) — the stock shop window shows a coins capsule (CONTRACT D-GC-19). Badge: a
+  // dot while a one-time offer (Starter Crate after its trigger, D-20-12) is in the shop.
+  { id: 'store', kind: 'money', icon: 'shop', label: 'screen.hud.shop', open: { run: (ctx) => { void openShop(ctx); } },
+    status: { on: ['inventory:state:changed'], read: (ctx) => storeStatus(ctx) } },
 ];
+
+/** Shop tile badge: a dot while the shop has a one-time offer; nothing when the shop is unavailable. */
+async function storeStatus(ctx: ScreenContext): Promise<HudStatus> {
+  try {
+    const offers = await gameOf(ctx.game).offers('shop');
+    return offers.some((offer) => offer.badge === 'one_time') ? { badge: 'dot' } : { badge: 0 };
+  } catch { return { badge: 0 }; }
+}
 
 /**
  * A counter of the top bar, on the left after the profile:

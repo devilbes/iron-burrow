@@ -82,11 +82,18 @@ test('starter artifact has visible baseline styles and uses the public project n
   assert.doesNotMatch(code, /sourceMappingURL/);
 });
 
+// `shell.title` of the base locale (en) of the project: the parts of the strings record.
+const stringsDir = join(template, 'configs/remote/localization/strings');
+const projectTitle = readdirSync(stringsDir).filter(file => file.endsWith('.json'))
+  .map(file => JSON.parse(readFileSync(join(stringsDir, file), 'utf8')).en?.shell?.title)
+  .find(value => typeof value === 'string');
+assert.ok(projectTitle, 'shell.title of the base locale is in a part of configs/remote/localization/strings/');
+
 // The page before any script: the game's name (project.json, else `shell.title` of the base
 // locale) and language, the neutral loading line inline — no stock title, no ManyPlay blue.
 for (const [label, files, title] of [
   ['the project name', { 'project.json': JSON.stringify({ name: 'Moon Garden' }) }, 'Moon Garden'],
-  ['the game title of the base locale without a project name', { 'project.json': JSON.stringify({ name: null }) }, 'Game'],
+  ['the game title of the base locale without a project name', { 'project.json': JSON.stringify({ name: null }) }, projectTitle],
   ['a base locale other than English', {
     'project.json': '{}',
     'src/boot/strings.ts': readFileSync(join(template, 'src/boot/strings.ts'), 'utf8')

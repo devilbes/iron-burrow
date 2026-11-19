@@ -1,0 +1,85 @@
+{
+  "node": "skin-join",
+  "verifier": "verifier-score",
+  "date": "2026-11-19",
+  "commit": "4a559f6",
+  "branch": "s/6afee31e4b8d34270121402c",
+  "base": "main@062d32a",
+  "authorCommits": ["6134fab", "9813a6f", "4a559f6 (last checkpoint, marked 'not finished')"],
+  "acSource": "Отдельного acceptance у узла нет: docs/plan/skin-join не было, FLOW_PLAN.md шаг не описывает, QUALITY_TARGETS.json называет skin-join только у assets.skinImages. Критерии выведены из задачи шага (собрать скин игры по областям: HUD, магазин и офферы, daily, лидерборды, окна, арт предметов) и приёмки скила ui-kit-skins (все экраны под скином игры в трёх размерах, ManyPlay по умолчанию не меняется, тексты HTML, иконки только из скина). Решение D-VER-SJ-01.",
+  "howChecked": "Работа шага в main не влита; проверена ветка автора в отдельной копии /tmp/vj-skin (detached 4a559f6), базовая линия — копия main /tmp/vj-main. Отчёт автора docs/skin/shots/final/gallery-output.txt — подсказка; все результаты ниже повторены самостоятельно.",
+  "criteria": [
+    {
+      "id": "AC-SJ-01",
+      "title": "Скин собран по всем областям: ни одного элемента в цветах/картинках стокового ManyPlay ни в одном виде и размере",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 9,
+      "evidence": "SKIN_STRICT=1 PLAYWRIGHT=<@playwright/mcp/playwright> node tests/skin-gallery.mjs → exit 0, 'PASS', 27 видов × 390x844/844x390/1280x720 = 81 снимок; stock-colored 0, stock-art 0, identical 'no', no-theme 0 во всех строках; 'stock pictures: none'; 25 показанных иконок из visible-icons.json",
+      "why": "Строгая галерея повторена сама и прошла; совпадает с отчётом автора."
+    },
+    {
+      "id": "AC-SJ-02",
+      "title": "Покрыты экраны ГДД 20 S01–S16 под скином игры",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 8,
+      "evidence": "виды галереи: preloader/preloader-error (S01), home/home-hud (S02), map (S03), prestage (S04), game (S05), pause (S06), stage-clear (S07), defeat (S08), siege-result (S09), shop (S10), reward (S11), daily (S12), leaderboard (S13), settings (S14), game-overlay (S15), booster-info (S16) + profile, popup, confirm, error, game-window, buttons",
+      "why": "Все 16 экранов есть; S11 и S15 показаны общими видами (reward, game-overlay), а не отдельным сценарием."
+    },
+    {
+      "id": "AC-SJ-03",
+      "title": "Арт предметов и офферов: у каждого id каталога своя картинка, без надписей в картинках",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 9,
+      "evidence": "src/skin/art.ts ITEMS/OFFERS → assets/skin/items/bst_{bubble,fortify,hull,shockwave}.webp, assets/skin/offers/{starter_crate,hull_pack,field_kit,heavy_arsenal,commander_cache,start_grant}.webp — 256x256 RGBA (PIL); тест 'items of the catalog … SKIN_STRICT=1: own pictures, none missing' на main падает (item_coins), в ветке проходит; просмотр снимков shop/reward/stage-clear/prestage/daily",
+      "why": "Арт взят из готовых паков шага ассетов (без новых генераций), подписи — HTML-текстом."
+    },
+    {
+      "id": "AC-SJ-04",
+      "title": "Без регрессий: типы, сборка, тесты",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 8,
+      "evidence": "npm run typecheck → exit 0; npm run build → exit 0; npm run test:unit → exit 1, 6 ✖; на main@062d32a тот же прогон → 7 ✖; diff списков падений: в ветке исчез только тест предметов каталога, остальные 6 (пары картинок assets/game, заголовок страницы, записи/ids inventory.catalog/item_coins) совпадают построчно; check:fast: bundle ok, types ok, tests FAIL по тем же 6",
+      "why": "Шаг убрал одно падение и не добавил новых; оставшиеся красные тесты — старые и чужие (assets, records)."
+    },
+    {
+      "id": "AC-SJ-05",
+      "title": "SDK, UI Kit и тема ManyPlay не изменены; скин — только файлами игры",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 10,
+      "evidence": "git diff --name-only main...4a559f6 | grep -E '^(sdk/|src/sdk/|sdk-lock|sdk.lock|platform.json|tools/vendor-sdk|src/ui-kit/|ui-kit-lock|node_modules/)' → пусто; изменены src/skin/*, assets/skin/*, tests/skin-gallery/gallery.js, configs/remote/localization/strings.json, docs/skin/shots/final/*",
+      "why": "Защищённые пути не тронуты, стоковый скин в галерее рисуется отдельно и не меняется."
+    },
+    {
+      "id": "AC-SJ-06",
+      "title": "Вид в трёх ориентациях: целостный, читаемый, без обрезки главного действия",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 8,
+      "evidence": "собственные контакт-листы ffmpeg xstack из /tmp/vj-shots/gallery: портрет (home-hud, shop, daily, leaderboard, reward, stage-clear, prestage, profile), ландшафт (home-hud, shop, daily, stage-clear), 1280x720 (home-hud, shop, leaderboard, prestage) — единые стальные окна с шильдой, оранжевые основные и бирюзовые вторые кнопки, иконки скина",
+      "why": "Скин цельный во всех размерах; замечания F-1..F-3 — MINOR."
+    },
+    {
+      "id": "AC-SJ-07",
+      "title": "Результат шага доставлен: работа завершена и вливается в main",
+      "mandatory": false,
+      "status": "PARTIAL",
+      "score": 7,
+      "evidence": "git log: последний коммит ветки 4a559f6 '[checkpoint] … (not finished)'; git merge-base --is-ancestor 6134fab main → нет; git merge-tree --write-tree main 4a559f6 → exit 0 (конфликтов нет)",
+      "why": "Содержимое готово и проверено, но сессия автора помечена незавершённой и в main не влита; слияние без конфликтов."
+    }
+  ],
+  "defects": [
+    {"id": "F-1", "severity": "MINOR", "mandatory": false, "path": "src/skin/sheets.ts", "detail": "Магазин 844x390: кнопка цены оффера и 4-й предмет набора ниже первого экрана окна, покупка видна только после прокрутки", "verify": "SKIN_STRICT=1 node tests/skin-gallery.mjs --only shop --size 844x390"},
+    {"id": "F-2", "severity": "MINOR", "mandatory": false, "path": "tests/skin-gallery.mjs", "detail": "Десктоп проверяется в 1280x720, а QUALITY_TARGETS.qa.viewports — 1440x900", "verify": "docs/plan/QUALITY_TARGETS.json qa.viewports"},
+    {"id": "F-3", "severity": "MINOR", "mandatory": false, "path": "configs/remote/localization/strings.json", "detail": "Daily показывает строку кита по умолчанию kit.daily.hint 'Skip a day and the streak starts over' / 'A missed day resets the streak', а ГДД 15 и D-FP-06: onMiss false, пропуск цикл не сбрасывает. Владелец — экраны игры / строки, не скин", "verify": "grep kit.daily.hint configs/remote/localization/strings.json"},
+    {"id": "F-4", "severity": "MINOR", "mandatory": false, "path": "docs/plan/QUALITY_TARGETS.json", "detail": "assets.skinImages = 24 (stage skin-join) не обновлён после D-SKIN-02 (растровые ui_* не генерируются, вид рисует код); фактически 0 строк ui_* — по решению, не нехватка (как D-VER-AR-03)", "verify": "docs/skin/MAP.md D-SKIN-02"}
+  ],
+  "score": 8,
+  "source": "skin-join",
+  "remarks": "Все обязательные критерии PASS, 4 MINOR → 8 по шкале devflow. Влить ветку s/6afee31e4b8d34270121402c в main (конфликтов нет). F-3 передать шагу экранов/строк."
+}

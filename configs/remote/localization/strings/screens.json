@@ -1,26 +1,191 @@
 {
   "en": {
     "screen": {
-      "home": {
-        "play": "Play"
-      },
-      "game": {
-        "placeholder": "Game template",
+      "common": {
         "close": "Close",
-        "leave": {
-          "title": "Leave the level?",
-          "text": "The progress of this level will be lost.",
-          "confirm": "Leave",
-          "stay": "Stay"
-        }
+        "back": "Back",
+        "ok": "OK",
+        "collect": "Collect",
+        "count": "×{count}",
+        "offline": "No connection. Reconnecting..."
       },
-      "profile": {
-        "levels": "Levels completed",
-        "best": "Best score"
+      "lobby": {
+        "play": "Play",
+        "play_sub": "Stage {n}",
+        "siege": "Siege",
+        "siege_locked": "Clear stage {n} to unlock",
+        "stars": "{stars}/{max}",
+        "grant_title": "Welcome, Burrower!",
+        "grant_body": "Your starter boosters",
+        "sound": "Sound"
       },
       "hud": {
         "boards": "Leaderboards",
-        "shop": "Shop"
+        "shop": "Shop",
+        "enemies": "Rustbugs left: {count}",
+        "lives": "Lives: {count}",
+        "stage": "Stage {n}",
+        "wave": "Wave {n}",
+        "score": "Score",
+        "gun": "Gun level {n}",
+        "fire": "FIRE",
+        "pause": "Pause",
+        "key": "{key}",
+        "limit": "Limit reached"
+      },
+      "toast": {
+        "go": "Stage {n}. Go!",
+        "wave": "Wave {n}",
+        "wave_clear": "Wave {n} cleared! +{bonus}",
+        "star": "Gun Up!",
+        "star_max": "Gun Maxed!",
+        "bubble": "Shield On!",
+        "rebar": "Rebar Wall!",
+        "quake": "Quake!",
+        "freeze": "Freeze!",
+        "hull": "+1 Life!",
+        "fortify": "Steel Fortress!",
+        "shockwave": "Shockwave!"
+      },
+      "qa": {
+        "win": "QA: Win",
+        "lose": "QA: Lose"
+      },
+      "map": {
+        "title": "Campaign",
+        "chapter": "Chapter {n}",
+        "chapter_locked": "Clear stage {n} to open",
+        "play": "Play Stage {n}"
+      },
+      "pre": {
+        "title": "Stage {n}",
+        "title_siege": "Siege",
+        "goal": "Destroy {count} Rustbugs. Protect the Core!",
+        "goal_siege": "Survive the waves. Protect the Core!",
+        "best": "Best: {score}",
+        "hull": "Take a Spare Hull (+1 life)",
+        "hull_owned": "You have {count}",
+        "hull_none": "No Spare Hulls left",
+        "hull_hint": "Spare Hull: +1 life for this stage.",
+        "shop": "Get more",
+        "start": "Start",
+        "close": "Close",
+        "rewards": "First clear reward",
+        "offline": "Connection needed"
+      },
+      "pause": {
+        "title": "Paused",
+        "resume": "Resume",
+        "restart": "Restart Stage",
+        "quit": "Quit"
+      },
+      "clear": {
+        "title": "Stage Clear!",
+        "chapter_done": "Chapter Complete!",
+        "campaign_done": "Campaign Complete!",
+        "kills": "Rustbugs",
+        "pickups": "Power-ups",
+        "bonus": "Clear bonus",
+        "lives": "Lives left ×{count}",
+        "total": "Score",
+        "best": "New Best!",
+        "rewards": "Rewards",
+        "next": "Next Stage",
+        "replay": "Replay",
+        "map": "Map",
+        "save_title": "Save failed",
+        "save_failed": "Couldn't save the result.",
+        "retry_save": "Retry saving",
+        "leave": "Map"
+      },
+      "defeat": {
+        "title": "Defeat",
+        "core": "The Core was destroyed!",
+        "lives": "Out of lives!",
+        "continue": "Continue",
+        "continue_hint": "Use 1 Spare Hull: +2 lives, Core rebuilt",
+        "continue_used": "Continue already used",
+        "offer_title": "Need more hulls?",
+        "retry": "Retry",
+        "map": "Map",
+        "end_siege": "End Run"
+      },
+      "siege": {
+        "title": "Siege Over",
+        "wave": "Reached wave {n}",
+        "score": "Score: {score}",
+        "best": "Best this week: {score}",
+        "new_best": "New Best!",
+        "rank": "Rank #{rank}",
+        "unranked": "Unranked",
+        "retry": "Play Again",
+        "boards": "Leaderboards",
+        "lobby": "Lobby"
+      },
+      "shop": {
+        "title": "Shop",
+        "one_time": "One-time offer",
+        "best_value": "Best value",
+        "contents": "{count} boosters",
+        "buy": "{price}",
+        "pending": "Processing...",
+        "test": "Test purchase",
+        "unavailable": "Shop is unavailable. Try again later."
+      },
+      "purchase": {
+        "success": "Purchase Complete",
+        "failed": "Purchase Failed",
+        "failed_body": "No charge was made. Please try again.",
+        "cancelled": "Purchase Cancelled"
+      },
+      "boards": {
+        "title": "Leaderboards",
+        "siege": "Siege",
+        "campaign": "Campaign",
+        "weekly": "This Week",
+        "alltime": "All Time",
+        "you": "You",
+        "empty": "No scores yet. Be the first!",
+        "reset": "Resets in {time}",
+        "guest": "Sign in to keep your rank",
+        "unavailable": "Leaderboards unavailable"
+      },
+      "settings": {
+        "title": "Settings",
+        "music": "Music",
+        "sfx": "Sound",
+        "motion": "Reduce Motion",
+        "haptics": "Vibration",
+        "on": "On",
+        "off": "Off",
+        "version": "Version {version}"
+      },
+      "tut": {
+        "move_touch": "Drag the stick to drive",
+        "move_keys": "Drive with Arrow keys or WASD",
+        "fire_touch": "Tap FIRE to shoot",
+        "fire_keys": "Press Space or J to fire",
+        "brick": "Shots chew through brick. Blast a path!",
+        "core": "Guard the Burrow Core. One hit and it's gone!",
+        "core_selfhit": "Even your own shots can break it.",
+        "enemy": "Rustbugs incoming! Destroy all {count}.",
+        "carrier": "Flashing Rustbugs drop power-ups. Grab it!",
+        "booster_hint": "Core in danger! Use a booster.",
+        "booster_keys": "Press 1, 2 or 3",
+        "booster_touch": "Tap a booster button",
+        "next": "Got it",
+        "skip": "Skip"
+      },
+      "booster": {
+        "owned": "You have {count}",
+        "more": "Get more",
+        "duration": "Lasts {seconds} s",
+        "limit": "Up to {count} per stage",
+        "limit_siege": "Up to {count} per Siege run"
+      },
+      "profile": {
+        "levels": "Stages cleared",
+        "best": "Best score"
       }
     }
   }

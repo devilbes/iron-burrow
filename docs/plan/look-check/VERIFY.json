@@ -1,0 +1,78 @@
+{
+  "node": "look-check",
+  "verifier": "verifier-score",
+  "date": "2026-11-19",
+  "commit": "5d04b40",
+  "authorStep": "6aff29ce4b8d342701214d47 (commits 4ff4cb7..5d04b40)",
+  "acSource": "Отдельного acceptance у узла нет (docs/plan/look-check не было, FLOW_PLAN.md шаг не описывает). Критерии выведены из самого шага (приёмка по виду опубликованной сборки: пункты A1–H4 в docs/game/LOOK.md, список нарушений, честная проходимость, без правок кода) и целей docs/plan/QUALITY_TARGETS.json со stage look-check (viewports, touchTargetsMinPx, acceptanceCriteria, blind_*). Решение D-VER-LC-01.",
+  "howChecked": "Проверяющий read-only по коду игры. Повторно открыты 12 ключевых снимков из docs/game/look; сверены с отчётом. Утверждения о коде, конфигах и файлах ассетов проверены grep/sed/ffmpeg. Живую сборку повторно не прогонял: снимки — первичный след шага, все выборочно проверенные совпали (D-VER-LC-02).",
+  "criteria": [
+    {
+      "id": "AC-LC-01",
+      "title": "Отчёт есть: итоговая оценка, таблица пунктов приёмки с доказательствами, нарушения с приоритетом, размером, местом и «как должно быть»",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 9,
+      "evidence": "docs/game/LOOK.md: оценка 3/10 (стр. 3), таблица A1–H4 из 26 пунктов со ссылками на снимки (§1), 40+ нарушений Н-01…Н-90 с P0–P3 (§2), проход новичка (§3), решения (§4), ограничения платформы (§5), порядок доводки (§6)",
+      "why": "Структура полная, каждое нарушение можно передать в работу без доп. вопросов."
+    },
+    {
+      "id": "AC-LC-02",
+      "title": "Проверены три размера из QUALITY_TARGETS.qa.viewports, у каждого вывода есть снимок",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 9,
+      "evidence": "ls docs/game/look → 90 PNG = 30 экранов × 1440x900/844x390/390x844; все имена, упомянутые в §1–§3, существуют; viewports QT = [390x844, 844x390, 1440x900]",
+      "why": "Матрица экранов × размеров полная и совпадает с целью плана."
+    },
+    {
+      "id": "AC-LC-03",
+      "title": "Выводы отчёта верны (выборочная независимая сверка)",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 9,
+      "evidence": "Н-01: ffmpeg hstack tile_clay_floor/brick/steel, core, star_small, icon_pause (assets/game/*-2x.png) → все шесть — вариации «стальная плита с ядром»; 1440x900-17-game-level1 поле нечитаемо, пауза — ящик с подписью Esc (Н-60). Н-20: 1440x900-10-shop узкие колонки, кнопка-полоса «—», Close поверх карточек. Н-40: 844x390-14-prestage Start/Close за краем, «Off» белая плашка (Н-34). Н-41: 844x390-21-win-level1 числа «1,(», «2,!» обрезаны. Н-45: 390x844-09-boards «LEADERBOARD / S». Н-81: 21-win «×1» vs 1440x900-23-reward «+2». Н-34b: 1440x900-30-profile-final Best score 0. E1/E2: 390x844-28-stagemap-after-win2 открыта стадия 3. D2/Н-50: 03-lobby розовый сундук и красная сумка, src/skin/icons.ts → icons-recolored.png, game-icons.png в assets/skin нет",
+      "why": "12 из 12 проверенных утверждений подтвердились; оценка 3/10 обоснована P0 (поле, магазин, окна 844)."
+    },
+    {
+      "id": "AC-LC-04",
+      "title": "Отступления от честной проверки названы и обоснованы (тестовая победа, QA-кнопки, макеты, 409)",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 9,
+      "evidence": "configs/remote/levels.main/r_0001_0010.json:483 durationMs.min = 58000; src/modules/game/api/host.ts:81 qa = environment === 'test'; LOOK.md §4 D-LOOK-01…05 = docs/gdd/DECISIONS.md «Приёмка по виду, look»; E1 и F1 честно не засчитаны (7 попыток, лучший 8/20)",
+      "why": "Тестовая победа отделена от честной проходимости, факты о коде и конфиге верны."
+    },
+    {
+      "id": "AC-LC-05",
+      "title": "Шаг не менял код, записи, сборку и защищённые пути SDK/UI Kit",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 10,
+      "evidence": "git diff --name-only 4ff4cb7~1 5d04b40 → docs/game/LOOK.md, docs/gdd/DECISIONS.md, 90 × docs/game/look/*.png; ни одного пути из src/, sdk/, configs/, platform.json, node_modules/",
+      "why": "Только отчёт, снимки и журнал решений."
+    },
+    {
+      "id": "AC-LC-06",
+      "title": "Цели QUALITY_TARGETS со stage look-check закрыты: touchTargetsMinPx 48, acceptanceCriteria 52 (ГДД 40), blind_goal_understood / blind_want_more",
+      "mandatory": false,
+      "status": "PARTIAL",
+      "score": 5,
+      "evidence": "grep -n '48\\|touch\\|blind\\|52' docs/game/LOOK.md → ничего по теме; кроп 390x844-03-lobby (×2): кнопки профиля и настроек ≈ 40×40 CSS px < 48 (ГДД 20 стр. 12 «Тач-цели ≥ 48×48»); ГДД 40: 52 уникальных AC-xx-yy, в отчёте не сопоставлены; blind — playtest:blind с 3 живыми игроками (ГДД 40 стр. 117), агенту недоступен, но в отчёте не отмечен как NOT_RUN",
+      "why": "Размер касаний не замерен и пропущено нарушение ГДД 20; индекс AC ГДД 40 и слепой плейтест не упомянуты. Вывод «вернуть на доводку» это не меняет."
+    }
+  ],
+  "defects": [
+    {"id": "F-1", "severity": "MAJOR", "mandatory": false, "path": "docs/game/LOOK.md", "detail": "Не замерены тач-цели (QT web.touchTargetsMinPx = 48, stage look-check). Кнопки топбара (профиль, настройки) в 390x844 ≈ 40×40 px — нарушение ГДД 20 «Тач-цели ≥ 48×48», в список Н-xx не попало. Доводке игры: добавить в рабочий список (владелец — экраны/скин)", "verify": "docs/game/look/390x844-03-lobby.png, getBoundingClientRect кнопок [data-part=topbar] на 390x844"},
+    {"id": "F-2", "severity": "MINOR", "mandatory": false, "path": "docs/game/LOOK.md", "detail": "52 AC индекса ГДД 40 (QT qa.acceptanceCriteria, stage look-check) не сопоставлены с пунктами A1–H4", "verify": "grep -o 'AC-[0-9]\\{2\\}-[0-9]\\{2\\}' docs/gdd/40_qa_acceptance.md | sort -u"},
+    {"id": "F-3", "severity": "MINOR", "mandatory": false, "path": "docs/game/LOOK.md", "detail": "Слепой плейтест (gt.qa.blind_*) не отмечен как NOT_RUN с причиной «нужны 3 живых игрока»", "verify": "docs/gdd/40_qa_acceptance.md:109-117"},
+    {"id": "F-4", "severity": "MINOR", "mandatory": false, "path": "docs/game/LOOK.md", "detail": "Нет минимального шрифта UI (ГДД 20: ≥ 14 px portrait, ≥ 16 px desktop) — например, подписи «Test purchase» и бейджи ×N в 1440x900-10-shop выглядят мельче 16 px", "verify": "getComputedStyle(fontSize) на 1440x900 shop"}
+  ],
+  "decisions": [
+    "D-VER-LC-01 — критерии выведены из задачи шага и QT stage look-check (нет acceptance узла)",
+    "D-VER-LC-02 — живую сборку не перепрогонял: снимки — первичный след, 12/12 выборочных совпадений",
+    "D-VER-LC-03 — пропуск тач-целей и индекса ГДД 40 — необязательный критерий: итоговый вывод и список P0 не меняются, недостающее дописывается в рабочий список доводки"
+  ],
+  "score": 8,
+  "verdict": "ACCEPTED: отчёт приёмки по виду точен и пригоден для доводки; вывод «игра 3/10, вернуть» подтверждён. Дописать F-1 (тач-цели 40 px) в рабочий список."
+}

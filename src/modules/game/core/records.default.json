@@ -1,0 +1,216 @@
+{
+  "$comment": "Built-in fallback of the game.* config records (GDD 31 plat.configs: defaults = 00_MASTER numbers, used when a key is missing or fails its schema). The published records are the source of truth; this file mirrors them key for key.",
+  "game.balance": {
+    "field_cells": 13,
+    "core_cell": [
+      6,
+      12
+    ],
+    "player_spawn": [
+      4,
+      12
+    ],
+    "enemy_spawns": [
+      [
+        0,
+        0
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        12,
+        0
+      ]
+    ],
+    "unit_per_cell": 600,
+    "ticks_per_second": 60,
+    "max_ticks_per_frame": 5,
+    "max_frame_ms": 250,
+    "player_speed": 3.0,
+    "player_lives": 3,
+    "spawn_shield_s": 3,
+    "bullet_speed": 9,
+    "gun_l1_bullet_speed": 13.5,
+    "gun_l2_bullets": 2,
+    "gun_carry_campaign": true,
+    "oil_slide_cells": 0.5,
+    "stage_enemies": 20,
+    "carrier_indices": [
+      4,
+      11,
+      18
+    ],
+    "max_alive_by_chapter": [
+      4,
+      5,
+      6
+    ],
+    "spawn_interval_s_by_chapter": [
+      3.0,
+      2.5,
+      2.0
+    ],
+    "fire_mult_by_chapter": [
+      0.71,
+      1.4,
+      1.38
+    ],
+    "score_clear_bonus": 1000,
+    "score_life_bonus": 500,
+    "score_powerup": 500,
+    "score_max_lives_check": 7,
+    "intro_s": 1.5,
+    "clear_delay_s": 2.0,
+    "defeat_delay_s": 1.5,
+    "continue_ready_s": 1.0,
+    "first_spawn_delay_s": 3,
+    "enemy_spawn_anim_s": 1.0,
+    "player_respawn_delay_s": 1.0,
+    "player_fire_cooldown_s": 0.2,
+    "booster_cooldown_s": 1.0,
+    "threat_radius_cells": 2.5,
+    "level_end_retry_s": [
+      2,
+      4,
+      8,
+      16,
+      32
+    ],
+    "ai": {
+      "weights": {
+        "core": 19,
+        "player": 17,
+        "random": 64
+      },
+      "decision_s": 0.5,
+      "fire_check_s": 0.5,
+      "fire_p": {
+        "scout": 0.07,
+        "grunt": 0.13,
+        "gunner": 0.26,
+        "brute": 0.21
+      },
+      "aim_fire_p": 0.19,
+      "brick_keep_dir_p": 0.49,
+      "stuck_s": 1.0
+    },
+    "tut": {
+      "step_min_show_s": 1.5,
+      "step_gap_s": 0.5,
+      "move_done_cells": 1,
+      "idle_pulse_s": 6,
+      "brick_timeout_s": 10,
+      "core_show_s": 4,
+      "enemy_timeout_s": 10,
+      "spawn_hold_max_s": 25,
+      "booster_pulse_s": 5
+    }
+  },
+  "game.enemies": {
+    "scout": {
+      "speed": 3.6,
+      "hp": 1,
+      "points": 200
+    },
+    "grunt": {
+      "speed": 1.8,
+      "hp": 1,
+      "points": 100
+    },
+    "gunner": {
+      "speed": 2.4,
+      "hp": 1,
+      "points": 300,
+      "fast_bullet": true
+    },
+    "brute": {
+      "speed": 1.8,
+      "hp": 4,
+      "points": 400
+    }
+  },
+  "game.powerups": {
+    "lifetime_s": 12,
+    "max_on_field": 1,
+    "weights": {
+      "star": 30,
+      "bubble": 15,
+      "rebar": 15,
+      "quake": 10,
+      "freeze": 20,
+      "hull": 10
+    },
+    "bubble_s": 10,
+    "rebar_s": 15,
+    "freeze_s": 8,
+    "quake_scores": false
+  },
+  "game.boosters": {
+    "bubble": {
+      "duration_s": 10,
+      "max_per_stage": 2
+    },
+    "shockwave": {
+      "max_per_stage": 1
+    },
+    "fortify": {
+      "duration_s": 20,
+      "max_per_stage": 1
+    },
+    "hull": {
+      "prestage_max": 1,
+      "continue_max": 1,
+      "continue_lives": 2,
+      "continue_rebuild_core": true
+    },
+    "siege_limit_mult": 2,
+    "consume_retry_s": [
+      1,
+      2,
+      4
+    ]
+  },
+  "game.siege": {
+    "unlock_after_stage": 5,
+    "wave_size": 10,
+    "max_alive": {
+      "base": 4,
+      "wave_div": 3,
+      "cap": 8
+    },
+    "brute_share": {
+      "per_wave": 0.1,
+      "cap": 0.5
+    },
+    "gunner": {
+      "wave_div": 2,
+      "cap": 3
+    },
+    "scout": {
+      "base": 1,
+      "wave_div": 3,
+      "cap": 2
+    },
+    "spawn_interval": {
+      "start": 4.3,
+      "step": 0.16,
+      "min": 1.5
+    },
+    "fire_mult": {
+      "base": 0.45,
+      "step": 0.15,
+      "cap": 3.0
+    },
+    "carrier_indices": [
+      4,
+      9
+    ],
+    "wave_break_s": 3.0,
+    "lives": 3,
+    "continue_max": 1,
+    "kill_mult_per_wave": 0.1,
+    "wave_clear_bonus_per_wave": 300
+  }
+}
