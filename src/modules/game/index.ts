@@ -5,8 +5,10 @@
 //   boards, settings and flags. The game module gets the SDK modules it needs through
 //   `manifest.sdk.uses` (kind `game`, ModuleContext.sdk) — no SDK imports here, structural types
 //   only; the pure rules live in files next to this one, without SDK and DOM.
-// Screens reach it with `gameOf(ctx.game)`. This file holds the declarations and the stub; the
-// game-logic step implements them (src/modules/game/**), the screens step only calls them.
+// Screens reach it with `gameOf(ctx.game)`. This file holds the declarations and the module; the
+// implementation is ./api/ (over the level controller ./controller/ and the rules ./core/).
+import { IronBurrowApi, ironBurrow } from './api/index.js';
+import type { ModuleCtx } from './api/sdk.js';
 
 /** A game's own cloud save (JSON object); a game narrows it. */
 export type GameState = Readonly<Record<string, unknown>>;
@@ -325,43 +327,19 @@ export function layoutOf(width: number, height: number): Layout {
   return width < 1024 ? 'landscape' : 'desktop';
 }
 
-// ---------------------------------------------------------------- module (stub)
+// ---------------------------------------------------------------- module
 
 export const GAME_MODULE_ID = 'game';
 const BRAND = Symbol.for('iron-burrow.game');
 
-function notReady(name: string): never {
-  const error = new Error(`game API «${name}» is not implemented yet (game-logic)`) as Error & { code: GameErrorCode };
-  error.code = 'unavailable';
-  throw error;
-}
+/** The SDK modules the game calls itself (CONTRACT §3.2); ids of src/boot/ids.ts `MODULES`. */
+const USES = ['progress', 'levels', 'inventory', 'iap', 'leaderboards', 'kv', 'gamestate', 'daily-rewards', 'realtime'] as const;
+/** Bus events the game listens to: player change, SDK reload, inventory and connection pushes. */
+const LISTENS = ['auth:playerChanged', 'sdk:reload:required', 'inventory:state:changed', 'realtime:connection:connected',
+  'realtime:connection:disconnected'] as const;
 
-/**
- * The Iron Burrow API over plain ports. Stub: services answer «not implemented»; the game-logic
- * step replaces it (module context with `sdk.uses` in `init`, detached mode without it — the gallery).
- */
-function createIronBurrow(ports: GamePorts): IronBurrow {
-  const fail = (name: string) => () => notReady(name);
-  const later = (name: string) => () => Promise.reject(new Error(`game API «${name}» is not implemented yet`));
-  const api: IronBurrow = {
-    currentLevel: () => ports.currentLevel(), level: (n) => ports.level(n),
-    beginAttempt: (n) => ports.beginAttempt(n), endLevel: (n, won, stats) => ports.endLevel(n, won, stats),
-    loadSave: () => ports.loadSave(), save: (state) => ports.save(state), track: (e, p) => ports.track(e, p),
-    env: { qa: false, haptics: false, version: '0.0.0' },
-    ready: () => Promise.resolve(), refresh: () => Promise.resolve(), campaign: later('campaign'), prestage: later('prestage'),
-    select: fail('select'), selected: () => null, start: later('start'),
-    balances: () => ({ bst_bubble: 0, bst_shockwave: 0, bst_fortify: 0, bst_hull: 0 }),
-    onBalances: () => () => undefined, boosterLimits: fail('boosterLimits'),
-    startGrant: () => Promise.resolve(null), claimStartGrant: later('claimStartGrant'),
-    offers: () => Promise.resolve([]), buy: later('buy'),
-    starterDue: () => Promise.resolve(false), starterShown: () => Promise.resolve(),
-    board: later('board'), siegeStanding: later('siegeStanding'),
-    settings: () => ({ music: true, sfx: true, motion: false, haptics: true }),
-    setSettings: () => Promise.resolve(), onSettings: () => () => undefined,
-    flag: () => false, setFlag: () => Promise.resolve(), haptic: () => undefined,
-    notice: () => Promise.resolve(null), online: () => true, event: () => undefined,
-  };
-  return Object.defineProperty(api, BRAND, { value: true });
+function branded(api: IronBurrowApi): IronBurrow {
+  return Object.defineProperty(ironBurrow(api), BRAND, { value: true });
 }
 
 /** The Iron Burrow API behind `ctx.game` (the module's API); plain ports (gallery, tests) get a detached one. */
@@ -369,30 +347,43 @@ export function gameOf(ports: GamePorts): IronBurrow {
   if ((ports as unknown as Record<symbol, unknown>)[BRAND] === true) return ports as IronBurrow;
   const known = detached.get(ports);
   if (known) return known;
-  const made = createIronBurrow(ports);
+  const made = branded(new IronBurrowApi(ports));
   detached.set(ports, made);
   return made;
 }
 const detached = new WeakMap<GamePorts, IronBurrow>();
 
-/** The SDK module of the game (`sdk.getModule(GAME_MODULE_ID)`); its API is IronBurrow (GamePorts and more). */
+/**
+ * The SDK module of the game (`sdk.getModule(GAME_MODULE_ID)`); its API is IronBurrow (GamePorts and
+ * more). One API object keeps the latest module context: the core calls `api(ctx)` on every start.
+ */
 export function createGameModule(makePorts: () => GamePorts) {
-  let game: IronBurrow | null = null;
-  const api = (): IronBurrow => (game ??= createIronBurrow(makePorts()));
+  let state: { api: IronBurrowApi; game: IronBurrow } | null = null;
+  const instance = (): { api: IronBurrowApi; game: IronBurrow } => {
+    if (state) return state;
+    const api = new IronBurrowApi(makePorts());
+    state = { api, game: branded(api) };
+    return state;
+  };
+  const attach = (ctx: unknown): IronBurrow => {
+    const made = instance();
+    if (ctx && typeof ctx === 'object' && 'sdk' in ctx) made.api.attach(ctx as ModuleCtx);
+    return made.game;
+  };
   return {
     manifest: {
       id: GAME_MODULE_ID,
       version: '1.0.0',
       kind: 'game',
       engines: { core: '^1.0.0' },
-      // game-logic: `sdk: { uses: [...] }`, permissions; one API object keeping the latest ctx (CONTRACT §3.2).
-      permissions: [],
-      events: { emits: [], listens: [] },
+      sdk: { uses: [...USES] },
+      permissions: ['device:haptics'],
+      events: { emits: [], listens: [...LISTENS] },
       load: 'eager',
       targets: ['web', 'cordova'],
       entry: 'modules/game/index.js',
     },
-    init(): void { api(); },
-    api,
+    init(ctx: unknown): void { attach(ctx); },
+    api: (ctx: unknown): IronBurrow => attach(ctx),
   } as const;
 }

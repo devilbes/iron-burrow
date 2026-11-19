@@ -24,7 +24,7 @@ const HAPTICS: Readonly<Record<Haptic, number | readonly number[]>> = {
 const HAPTIC_COOLDOWN_MS = 150;
 const VERSION = '1.0.0';
 
-export function gameError(code: GameErrorCode, message = code): GameError {
+export function gameError(code: GameErrorCode, message: string = code): GameError {
   return Object.assign(new Error(message), { code });
 }
 
@@ -161,7 +161,7 @@ export class IronBurrowApi {
         host.ports.track('tutorial_done', flat({ duration_s: Math.round((host.now() - started) / 1000), skipped }));
         void host.setKv(KV.tutDone, true).catch(() => undefined);
       },
-    }, host.records().tut.tutorial);
+    }, host.records().tun.tutorial);
   }
 
   private boosterHint(): boolean {

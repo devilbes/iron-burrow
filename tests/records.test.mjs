@@ -94,9 +94,13 @@ test('ids the code names are records: src/boot/ids.ts and the items of TOP_BAR',
   const load = transpile(['screens/index', 'boot/ids']);
   const ids = await load('boot/ids');
   const { TOP_BAR } = await load('screens/index');
-  const have = new Set(readRecords(template).records.map((item) => `${item.scope}/${item.key}`));
+  const { records } = readRecords(template);
+  const have = new Set(records.map((item) => `${item.scope}/${item.key}`));
+  // A game without a currency (no soft/hard currency in its catalog) names none: the template's
+  // CURRENCY then only feeds the stock shop window and capsule, which such a game does not show.
+  const currencies = records.filter((item) => item.scope === 'inventory.catalog' && /currency/.test(String(item.json?.itemType ?? '')));
   const named = [
-    ...(typeof ids.CURRENCY === 'string' ? [`inventory.catalog/${ids.CURRENCY}`] : []),
+    ...(typeof ids.CURRENCY === 'string' && currencies.length > 0 ? [`inventory.catalog/${ids.CURRENCY}`] : []),
     ...(typeof ids.LEADERBOARD === 'string' ? [`leaderboards/${ids.LEADERBOARD}`] : []),
     ...(typeof ids.SHOP_PLACEMENT === 'string' ? [`iap.placements/${ids.SHOP_PLACEMENT}`] : []),
     ...Object.values(ids.PROGRESS ?? {}).map((key) => `progress/${key}`),

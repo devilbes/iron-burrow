@@ -89,7 +89,8 @@ export function stageResult(host: Host, match: MatchImpl, outcome: Outcome, run:
     if (firstClear && n === host.records().tun.siege.unlockAfter) host.ports.track('siege_unlock', {});
   }
   const list = chapters(host, host.current);
-  const quit = !campaign ? false : !outcome.won && outcome.score >= 0 && run === null;
+  // Quit from the pause: no level end was sent and there is no run to report.
+  const quit = campaign && !outcome.won && run === null;
   return {
     mode: match.mode, n, result: won ? 'clear' : quit ? 'quit' : 'defeat',
     reason: won || quit ? null : run?.cause ?? 'lives', score: outcome.score,

@@ -27,6 +27,11 @@ export const ASSETS: Readonly<Record<string, string>> = {
   //                                  // behind the bars and screens (src/shell/skin.ts); focal point:
   //                                  // --game-scene-position in theme.css
   // 'scene-game': 'scene-game.webp',  // the scene of one route (`scene-<route>`), e.g. gameplay
+  // Iron Burrow (CONTRACT §7.3, D-GC-13): the scenes of the art step, wired where they are drawn —
+  // Lobby, Stage Map, the tunnel wall around the field; one layer edge to edge under the panels.
+  scene: '../game/scene-2x.webp',
+  'scene-map': '../game/scene-map-2x.webp',
+  'scene-game': '../game/scene-game-2x.webp',
 };
 
 export const FONTS: readonly SkinFont[] = [
@@ -49,11 +54,19 @@ export const FONTS: readonly SkinFont[] = [
 // a currency) — never the game's; tests/skin-readiness.test.mjs lists such items (strict: fails).
 // The name under the picture is the catalog `display.titleKey` through localization.
 export const ITEMS: Readonly<Record<string, string>> = {
-  // Template placeholder of the catalog (item_coins): the recolored coin cut out of the atlas as a
-  // file until the item art step replaces the catalog and its pictures (docs/skin/BASE.md).
-  item_coins: 'items/item_coins.webp',
+  // The four boosters of the catalog (icon_bst_* of the art step, 320×320).
+  bst_bubble: '../ui/items/bst_bubble-2x.webp',
+  bst_shockwave: '../ui/items/bst_shockwave-2x.webp',
+  bst_fortify: '../ui/items/bst_fortify-2x.webp',
+  bst_hull: '../ui/items/bst_hull-2x.webp',
 };
 
 export const OFFERS: Readonly<Record<string, string>> = {
-  // offer_coins_small: 'offers/coins-small.png',
+  // pack_* of the art step; the free start grant shows the daily crate (D-GC-13).
+  starter_crate: '../ui/offers/offer-starter_crate-2x.webp',
+  hull_pack: '../ui/offers/offer-hull_pack-2x.webp',
+  field_kit: '../ui/offers/offer-field_kit-2x.webp',
+  heavy_arsenal: '../ui/offers/offer-heavy_arsenal-2x.webp',
+  commander_cache: '../ui/offers/offer-commander_cache-2x.webp',
+  start_grant: '../game/daily_crate-2x.webp',
 };

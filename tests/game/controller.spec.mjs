@@ -138,16 +138,18 @@ test('(a) win: one call of each, save once after the answer, server stars on the
   assert.deepEqual([f.calls.currentLevel, f.calls.level, f.calls.beginAttempt, f.calls.endLevel, f.calls.loadSave, f.calls.save],
     [1, 1, 1, 1, 1, 1]);
   assert.deepEqual(f.log.slice(-2), ['endLevel', 'save']);
-  assert.deepEqual(f.saves[0], { other: 'x', campaign: { selected_chapter: 2, gun_level: 2, last_stage: 1 } });
+  assert.deepEqual(f.saves[0], { other: 'x', campaign: { selected_chapter: 2, gun_level: 2, last_stage: 1,
+    best: { 1: result.outcome.score } } });
   const [n, won, stats] = f.opts.endArgs[0];
   assert.deepEqual([n, won, stats.score], [1, true, result.outcome.score]);
-  assert.ok(stats.moves > 0);
+  // `moves` = lives lost (D-LVL-03): none in this run.
+  assert.equal(stats.moves, 0);
   assert.equal(f.clock.pending(), 0);
   assert.deepEqual(f.tracks.map(([e]) => e), ['an.stage_start', 'an.stage_end']);
 });
 
-test('(a) win with an unchanged gun carry writes no save', async () => {
-  const f = fakes({ save: { campaign: { gun_level: 0, last_stage: 1 } } });
+test('(a) win with an unchanged gun carry and best score writes no save', async () => {
+  const f = fakes({ save: { campaign: { gun_level: 0, last_stage: 1, best: { 1: Number.MAX_SAFE_INTEGER } } } });
   await f.ctl.start({ mode: 'campaign', stage: 1 });
   await winStage(f, 0);
   assert.equal(f.ctl.phase, 'result');
