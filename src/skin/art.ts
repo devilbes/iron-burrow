@@ -26,15 +26,14 @@ export const ASSETS: Readonly<Record<string, string>> = {
   // 'bar-track': 'bar-track.webp',    // progress bars, 9-slice by the kit (--kit-bar-slice/-edge in theme.css)
   // 'bar-fill': 'bar-fill.webp',
   // 'page-texture': 'texture.webp',   // page margins around the game (kit key)
-  // scene: 'scene.webp',              // the scene: one picture under the whole game, edge to edge,
-  //                                  // behind the bars and screens (src/shell/skin.ts); focal point:
-  //                                  // --game-scene-position in theme.css
-  // 'scene-game': 'scene-game.webp',  // the scene of one route (`scene-<route>`), e.g. gameplay
-  // Iron Burrow (CONTRACT §7.3, D-GC-13): the scenes of the art step, wired where they are drawn —
-  // Lobby, Stage Map, the tunnel wall around the field; one layer edge to edge under the panels.
-  scene: '../game/scene-2x.webp',
-  'scene-map': '../game/scene-map-2x.webp',
-  'scene-game': '../game/scene-game-2x.webp',
+  // The scene (docs/skin/map.json part «Фон сцены»; Iron Burrow CONTRACT §7.3, D-GC-13): the scenes
+  // of the art step, wired where they are drawn — Lobby, Stage Map, the tunnel wall around the field;
+  // one layer edge to edge, behind the transparent bars and screens (src/shell/skin.ts); focal point —
+  // --game-scene-position in theme.css. From assets/game/scene*-2x.webp (2560x1600), 1920x1200 WebP:
+  // a 1280x720 window covers it at 1280x800, so this is 1.5x of the largest display.
+  scene: 'scene.webp',              // S02 Lobby: the cave with steel scaffolds over the magma
+  'scene-map': 'scene-map.webp',    // S03 Stage Map: the tunnel to the Core
+  'scene-game': 'scene-game.webp',  // S05 In-level: the dark tunnel wall around the field
 };
 
 export const FONTS: readonly SkinFont[] = [
@@ -57,19 +56,23 @@ export const FONTS: readonly SkinFont[] = [
 // a currency) — never the game's; tests/skin-readiness.test.mjs lists such items (strict: fails).
 // The name under the picture is the catalog `display.titleKey` through localization.
 export const ITEMS: Readonly<Record<string, string>> = {
-  // The four boosters of the catalog (icon_bst_* of the art step, 320×320).
-  bst_bubble: '../ui/items/bst_bubble-2x.webp',
-  bst_shockwave: '../ui/items/bst_shockwave-2x.webp',
-  bst_fortify: '../ui/items/bst_fortify-2x.webp',
-  bst_hull: '../ui/items/bst_hull-2x.webp',
+  // The four boosters of the catalog (GDD 15, CONTRACT §8.3), icon_bst_* of the art step
+  // (assets/ui/items/*-2x.png, 320x320 → 256x256 WebP: shown up to 128px in the reward window).
+  bst_bubble: 'items/bst_bubble.webp',
+  bst_shockwave: 'items/bst_shockwave.webp',
+  bst_fortify: 'items/bst_fortify.webp',
+  bst_hull: 'items/bst_hull.webp',
 };
 
 export const OFFERS: Readonly<Record<string, string>> = {
-  // pack_* of the art step; the free start grant shows the daily crate (D-GC-13).
-  starter_crate: '../ui/offers/offer-starter_crate-2x.webp',
-  hull_pack: '../ui/offers/offer-hull_pack-2x.webp',
-  field_kit: '../ui/offers/offer-field_kit-2x.webp',
-  heavy_arsenal: '../ui/offers/offer-heavy_arsenal-2x.webp',
-  commander_cache: '../ui/offers/offer-commander_cache-2x.webp',
-  start_grant: '../game/daily_crate-2x.webp',
+  // The six offers of configs/remote/iap.offers/ (GDD 16 mon.catalog): pack_* of the art step
+  // (assets/ui/offers/offer-<key>-2x.png, 320x320 → 256x256 WebP: shown up to 128px in the shop and
+  // the defeat window). The free welcome gift has no pack art: the game's daily crate
+  // (assets/game/daily_crate-2x.png, D-GC-13) — the same supply crate the daily reward shows.
+  starter_crate: 'offers/starter_crate.webp',
+  hull_pack: 'offers/hull_pack.webp',
+  field_kit: 'offers/field_kit.webp',
+  heavy_arsenal: 'offers/heavy_arsenal.webp',
+  commander_cache: 'offers/commander_cache.webp',
+  start_grant: 'offers/start_grant.webp',
 };

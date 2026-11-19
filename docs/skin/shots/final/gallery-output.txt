@@ -1,0 +1,86 @@
+view                size      elements  stock-colored  stock-art  identical  no-theme
+home                390x844         46              0          0         no         0
+home-menu           390x844         71              0          0         no         0
+home-hud            390x844         62              0          0         no         0
+home-hud-full       390x844         93              0          0         no         0
+map                 390x844         46              0          0         no         0
+game                390x844         17              0          0         no         0
+preloader           390x844         11              0          0         no         0
+preloader-error     390x844         13              0          0         no         0
+shop                390x844        129              0          0         no         0
+daily               390x844        122              0          0         no         0
+leaderboard         390x844        118              0          0         no         0
+profile             390x844         63              0          0         no         0
+settings            390x844         61              0          0         no         0
+popup               390x844         61              0          0         no         0
+confirm             390x844         65              0          0         no         0
+error               390x844         66              0          0         no         0
+reward              390x844         85              0          0         no         0
+game-window         390x844         48              0          0         no         0
+game-overlay        390x844         50              0          0         no         0
+buttons             390x844         61              0          0         no         0
+stage-clear         390x844         64              0          0         no         0
+defeat              390x844         50              0          0         no         0
+pause               390x844         31              0          0         no         0
+prestage            390x844         89              0          0         no         0
+siege-result        390x844         48              0          0         no         0
+booster-info        390x844         41              0          0         no         0
+home                844x390         46              0          0         no         0
+home-menu           844x390         70              0          0         no         0
+home-hud            844x390         62              0          0         no         0
+home-hud-full       844x390         93              0          0         no         0
+map                 844x390         46              0          0         no         0
+game                844x390         19              0          0         no         0
+preloader           844x390         11              0          0         no         0
+preloader-error     844x390         13              0          0         no         0
+shop                844x390        123              0          0         no         0
+daily               844x390        122              0          0         no         0
+leaderboard         844x390        119              0          0         no         0
+profile             844x390         63              0          0         no         0
+settings            844x390         61              0          0         no         0
+popup               844x390         58              0          0         no         0
+confirm             844x390         65              0          0         no         0
+error               844x390         66              0          0         no         0
+reward              844x390         85              0          0         no         0
+game-window         844x390         50              0          0         no         0
+game-overlay        844x390         50              0          0         no         0
+buttons             844x390         61              0          0         no         0
+stage-clear         844x390         66              0          0         no         0
+defeat              844x390         52              0          0         no         0
+pause               844x390         33              0          0         no         0
+prestage            844x390         89              0          0         no         0
+siege-result        844x390         50              0          0         no         0
+booster-info        844x390         43              0          0         no         0
+home                1280x720        46              0          0         no         0
+home-menu           1280x720        70              0          0         no         0
+home-hud            1280x720        62              0          0         no         0
+home-hud-full       1280x720        93              0          0         no         0
+map                 1280x720        46              0          0         no         0
+game                1280x720        19              0          0         no         0
+preloader           1280x720        11              0          0         no         0
+preloader-error     1280x720        13              0          0         no         0
+shop                1280x720       129              0          0         no         0
+daily               1280x720       122              0          0         no         0
+leaderboard         1280x720       118              0          0         no         0
+profile             1280x720        63              0          0         no         0
+settings            1280x720        61              0          0         no         0
+popup               1280x720        61              0          0         no         0
+confirm             1280x720        65              0          0         no         0
+error               1280x720        66              0          0         no         0
+reward              1280x720        85              0          0         no         0
+game-window         1280x720        50              0          0         no         0
+game-overlay        1280x720        50              0          0         no         0
+buttons             1280x720        61              0          0         no         0
+stage-clear         1280x720        66              0          0         no         0
+defeat              1280x720        52              0          0         no         0
+pause               1280x720        33              0          0         no         0
+prestage            1280x720        89              0          0         no         0
+siege-result        1280x720        50              0          0         no         0
+booster-info        1280x720        43              0          0         no         0
+
+icons shown: 25 (boost brand-mark calendar check clock coins flame gems gift heart hud-settings lock medal medal-1 medal-2 medal-3 no-signal play quest rating-star retry shop stopwatch-chip trophy user)
+stock pictures (scripts/skin-icons.mjs, src/skin/art.ts): none
+
+stock still visible: none identical to stock; 0 stock-colored elements in all sizes (details: /project/wt/6afee31e4b8d34270121402c/tmp/final/gallery/report.json)
+27 views x 3 sizes in 125.7 s, 2 pages at once
+PASS screenshots: /project/wt/6afee31e4b8d34270121402c/tmp/final/gallery

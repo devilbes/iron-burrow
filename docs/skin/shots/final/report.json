@@ -1,0 +1,1307 @@
+[
+  {
+    "view": "home",
+    "size": "390x844",
+    "elements": 46,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "home-menu",
+    "size": "390x844",
+    "elements": 71,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "trophy",
+      "play",
+      "shop",
+      "gift"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "home-hud",
+    "size": "390x844",
+    "elements": 62,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "gems",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "calendar",
+      "shop",
+      "flame",
+      "stopwatch-chip"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "home-hud-full",
+    "size": "390x844",
+    "elements": 93,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "gems",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "calendar",
+      "quest",
+      "medal",
+      "heart",
+      "shop",
+      "flame",
+      "stopwatch-chip",
+      "coins",
+      "boost"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "map",
+    "size": "390x844",
+    "elements": 46,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "game",
+    "size": "390x844",
+    "elements": 17,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "preloader",
+    "size": "390x844",
+    "elements": 11,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "brand-mark"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "preloader-error",
+    "size": "390x844",
+    "elements": 13,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "brand-mark"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "shop",
+    "size": "390x844",
+    "elements": 129,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "daily",
+    "size": "390x844",
+    "elements": 122,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "check",
+      "lock",
+      "clock",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "leaderboard",
+    "size": "390x844",
+    "elements": 118,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "medal-1",
+      "medal-2",
+      "medal-3",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "profile",
+    "size": "390x844",
+    "elements": 63,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "settings",
+    "size": "390x844",
+    "elements": 61,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "popup",
+    "size": "390x844",
+    "elements": 61,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "confirm",
+    "size": "390x844",
+    "elements": 65,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "shop",
+      "gift",
+      "trophy"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "error",
+    "size": "390x844",
+    "elements": 66,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "no-signal",
+      "retry",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "reward",
+    "size": "390x844",
+    "elements": 85,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "game-window",
+    "size": "390x844",
+    "elements": 48,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "rating-star"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "game-overlay",
+    "size": "390x844",
+    "elements": 50,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "buttons",
+    "size": "390x844",
+    "elements": 61,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "stage-clear",
+    "size": "390x844",
+    "elements": 64,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "rating-star"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "defeat",
+    "size": "390x844",
+    "elements": 50,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "pause",
+    "size": "390x844",
+    "elements": 31,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "prestage",
+    "size": "390x844",
+    "elements": 89,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "rating-star",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "siege-result",
+    "size": "390x844",
+    "elements": 48,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "booster-info",
+    "size": "390x844",
+    "elements": 41,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "home",
+    "size": "844x390",
+    "elements": 46,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "home-menu",
+    "size": "844x390",
+    "elements": 70,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "trophy",
+      "play",
+      "shop",
+      "gift"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "home-hud",
+    "size": "844x390",
+    "elements": 62,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "gems",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "calendar",
+      "shop",
+      "flame",
+      "stopwatch-chip"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "home-hud-full",
+    "size": "844x390",
+    "elements": 93,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "gems",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "calendar",
+      "quest",
+      "medal",
+      "heart",
+      "shop",
+      "flame",
+      "stopwatch-chip",
+      "coins",
+      "boost"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "map",
+    "size": "844x390",
+    "elements": 46,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "game",
+    "size": "844x390",
+    "elements": 19,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "preloader",
+    "size": "844x390",
+    "elements": 11,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "brand-mark"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "preloader-error",
+    "size": "844x390",
+    "elements": 13,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "brand-mark"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "shop",
+    "size": "844x390",
+    "elements": 123,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "daily",
+    "size": "844x390",
+    "elements": 122,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "check",
+      "lock",
+      "clock",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "leaderboard",
+    "size": "844x390",
+    "elements": 119,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "medal-1",
+      "medal-2",
+      "medal-3",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "profile",
+    "size": "844x390",
+    "elements": 63,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "settings",
+    "size": "844x390",
+    "elements": 61,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "popup",
+    "size": "844x390",
+    "elements": 58,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "confirm",
+    "size": "844x390",
+    "elements": 65,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "shop",
+      "gift",
+      "trophy"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "error",
+    "size": "844x390",
+    "elements": 66,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "no-signal",
+      "retry",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "reward",
+    "size": "844x390",
+    "elements": 85,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "game-window",
+    "size": "844x390",
+    "elements": 50,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "rating-star"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "game-overlay",
+    "size": "844x390",
+    "elements": 50,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "buttons",
+    "size": "844x390",
+    "elements": 61,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "stage-clear",
+    "size": "844x390",
+    "elements": 66,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "rating-star"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "defeat",
+    "size": "844x390",
+    "elements": 52,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "pause",
+    "size": "844x390",
+    "elements": 33,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "prestage",
+    "size": "844x390",
+    "elements": 89,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "rating-star",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "siege-result",
+    "size": "844x390",
+    "elements": 50,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "booster-info",
+    "size": "844x390",
+    "elements": 43,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "home",
+    "size": "1280x720",
+    "elements": 46,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "home-menu",
+    "size": "1280x720",
+    "elements": 70,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "trophy",
+      "play",
+      "shop",
+      "gift"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "home-hud",
+    "size": "1280x720",
+    "elements": 62,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "gems",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "calendar",
+      "shop",
+      "flame",
+      "stopwatch-chip"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "home-hud-full",
+    "size": "1280x720",
+    "elements": 93,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "gems",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "calendar",
+      "quest",
+      "medal",
+      "heart",
+      "shop",
+      "flame",
+      "stopwatch-chip",
+      "coins",
+      "boost"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "map",
+    "size": "1280x720",
+    "elements": 46,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "game",
+    "size": "1280x720",
+    "elements": 19,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "preloader",
+    "size": "1280x720",
+    "elements": 11,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "brand-mark"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "preloader-error",
+    "size": "1280x720",
+    "elements": 13,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "brand-mark"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "shop",
+    "size": "1280x720",
+    "elements": 129,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "daily",
+    "size": "1280x720",
+    "elements": 122,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "check",
+      "lock",
+      "clock",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "leaderboard",
+    "size": "1280x720",
+    "elements": 118,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "medal-1",
+      "medal-2",
+      "medal-3",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "profile",
+    "size": "1280x720",
+    "elements": 63,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "settings",
+    "size": "1280x720",
+    "elements": 61,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "popup",
+    "size": "1280x720",
+    "elements": 61,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "confirm",
+    "size": "1280x720",
+    "elements": 65,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "shop",
+      "gift",
+      "trophy"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "error",
+    "size": "1280x720",
+    "elements": 66,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "no-signal",
+      "retry",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "reward",
+    "size": "1280x720",
+    "elements": 85,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "game-window",
+    "size": "1280x720",
+    "elements": 50,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "rating-star"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "game-overlay",
+    "size": "1280x720",
+    "elements": 50,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "buttons",
+    "size": "1280x720",
+    "elements": 61,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "stage-clear",
+    "size": "1280x720",
+    "elements": 66,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "rating-star"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "defeat",
+    "size": "1280x720",
+    "elements": 52,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "pause",
+    "size": "1280x720",
+    "elements": 33,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "prestage",
+    "size": "1280x720",
+    "elements": 89,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [
+      "user",
+      "hud-settings",
+      "play",
+      "rating-star",
+      "gift",
+      "trophy",
+      "shop"
+    ],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "siege-result",
+    "size": "1280x720",
+    "elements": 50,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  },
+  {
+    "view": "booster-info",
+    "size": "1280x720",
+    "elements": 43,
+    "stockColored": 0,
+    "identical": false,
+    "unthemed": [],
+    "icons": [],
+    "stockArt": [],
+    "left": []
+  }
+]
