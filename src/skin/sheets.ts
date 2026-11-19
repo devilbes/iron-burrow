@@ -263,6 +263,9 @@ const ACTIONS = `${ROW}{flex-flow:row wrap;justify-content:center;align-items:ce
   // The retry of the loading screen's error: the same.
   + `.mp-preloader__copy>.mp-button${OVER}{width:fit-content;min-width:min(${v('game-button-min-primary')},100%);`
   + `max-width:min(${v('game-button-max')},100%);margin-inline:auto;padding-inline:${v('game-button-pad')}}`
+  // The main button of the game's own screens (src/screens/ui.ts `.hero-stack`): the same limits.
+  + `.hero-stack>.mp-button${OVER}{width:auto;min-width:min(${v('game-button-min-primary')},100%);`
+  + `max-width:min(${v('game-button-max')},100%);padding-inline:${v('game-button-pad')}}`
   // Price buttons of the shop: the same limits, centred under their pack.
   + `.dialog :is(.iap-row,.iap-slide)>.iap-buy${OVER}{align-self:center;width:auto;min-width:min(${v('game-button-min')},100%);`
   + `max-width:min(${v('game-button-max')},100%);padding-inline:${v('game-button-pad')}}`;
@@ -270,6 +273,15 @@ const ACTIONS = `${ROW}{flex-flow:row wrap;justify-content:center;align-items:ce
 // ---- Loading screen: the game's own sheet draws the brand mark (the Burrower), so the shell's mark
 // shows; nothing to hide any more.
 export const COMMON = WINDOW + BUTTONS + PLATE + PROGRESS + INNER + ACTIONS;
+
+// ---- HUD (map parts «Верхняя панель» and «HUD слева и справа», sheet): the side tiles are square
+// plates with the smaller 6px cut (ГДД 21 S02 feature buttons, UI_ART_BIBLE Shape), the plate of
+// COMMON keeps its look and takes the cut from this variable; the offer timer is a small magma plate;
+// a top bar counter reads in the display font.
+const HUD = `.hud[data-slot=left] .hud-item,.hud[data-slot=right] .hud-item{--game-cut:${v('game-cut-tile')}}`
+  // The plate's own bevel is its edge: the kit's 1px outline would be cut short at the 45° corners.
+  + `.hud[data-slot] .hud-item{border-color:transparent}`
+  + `.hud-value{font-family:${v('mp-font-display')};font-weight:400}`;
 
 // ---- Shop (map part «Магазин», sheet): each pack is one calm underlay (no outline, no plate in a
 // plate), its picture big at the head; the item tiles inside are bare; sections part by the divider.
@@ -343,6 +355,7 @@ const REWARD = `.reward-box{${UNDERLAY}}.reward-burst{border:0;background:none;b
 export const COMPONENTS: Readonly<Record<string, string>> = {
   // Not a sheet of its own: the common window of COMMON, for the one frame the shell draws itself.
   shell: SHELL_WINDOW,
+  hud: HUD,
   shopWindow: SHOP,
   dailyReward: DAILY,
   leaderboardWindow: LEADERBOARD,
