@@ -1,0 +1,172 @@
+[
+ {
+  "id": "sfx_powerup_drop",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "bright magical pop with rising chime, sparkly pickup appears, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_powerup_drop.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":0.5,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 0.522,
+  "meanVolumeDb": -27.1,
+  "file": "assets/audio/raw/powerups/sfx_powerup_drop.mp3"
+ },
+ {
+  "id": "sfx_powerup_vanish",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "soft descending fizzle, magic sparkle dissipating, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_powerup_vanish.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":0.5,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 0.522,
+  "meanVolumeDb": -37.6,
+  "file": "assets/audio/raw/powerups/sfx_powerup_vanish.mp3"
+ },
+ {
+  "id": "sfx_pu_star",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "rising metallic power-up chime with a mechanical lock-in clunk, weapon upgrade, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_pu_star.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":0.7,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 0.731,
+  "meanVolumeDb": -20.1,
+  "file": "assets/audio/raw/powerups/sfx_pu_star.mp3"
+ },
+ {
+  "id": "sfx_pu_bubble",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "shimmering energy bubble inflating, airy whoosh, force field shield forming, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_pu_bubble.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":0.7,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 0.731,
+  "meanVolumeDb": -13.6,
+  "file": "assets/audio/raw/powerups/sfx_pu_bubble.mp3"
+ },
+ {
+  "id": "sfx_pu_rebar",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "quick series of heavy steel plates slamming into place, metallic clanks, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_pu_rebar.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":0.8,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 0.836,
+  "meanVolumeDb": -25.9,
+  "file": "assets/audio/raw/powerups/sfx_pu_rebar.mp3"
+ },
+ {
+  "id": "sfx_pu_quake",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "deep ground rumble swelling into a big shockwave boom, earthquake explosion, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_pu_quake.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":1.2,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 1.228,
+  "meanVolumeDb": -13.3,
+  "file": "assets/audio/raw/powerups/sfx_pu_quake.mp3"
+ },
+ {
+  "id": "sfx_pu_freeze",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "crystalline ice crackle spreading, cold glassy chime, freezing frost, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_pu_freeze.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":0.8,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 0.836,
+  "meanVolumeDb": -27.3,
+  "file": "assets/audio/raw/powerups/sfx_pu_freeze.mp3"
+ },
+ {
+  "id": "sfx_pu_hull",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "warm rising extra-life chime with a tank engine rev, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_pu_hull.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":0.8,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 0.836,
+  "meanVolumeDb": -16.2,
+  "file": "assets/audio/raw/powerups/sfx_pu_hull.mp3"
+ },
+ {
+  "id": "sfx_freeze_end",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "ice cracking and shattering, short glassy break, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_freeze_end.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":0.5,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 0.522,
+  "meanVolumeDb": -35,
+  "file": "assets/audio/raw/powerups/sfx_freeze_end.mp3"
+ },
+ {
+  "id": "sfx_shield_down",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "flickering electric energy shield hum fading out, sputtering power down, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_shield_down.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":0.6,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 0.627,
+  "meanVolumeDb": -25.1,
+  "file": "assets/audio/raw/powerups/sfx_shield_down.mp3"
+ },
+ {
+  "id": "sfx_shield_block",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "soft energy shield deflect thump, short bullet absorbed by force field, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_shield_block.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":0.5,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 0.522,
+  "meanVolumeDb": -32.7,
+  "file": "assets/audio/raw/powerups/sfx_shield_block.mp3"
+ },
+ {
+  "id": "sfx_wall_revert",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "metal plates retracting with a clunk, mechanical slide back, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_wall_revert.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":0.6,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 0.627,
+  "meanVolumeDb": -26.3,
+  "file": "assets/audio/raw/powerups/sfx_wall_revert.mp3"
+ },
+ {
+  "id": "sfx_bst_bubble",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "powerful energy dome deploy, bright electric hum burst, force field shield activating, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_bst_bubble.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":0.8,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 0.836,
+  "meanVolumeDb": -31.3,
+  "file": "assets/audio/raw/powerups/sfx_bst_bubble.mp3"
+ },
+ {
+  "id": "sfx_bst_shockwave",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "massive charge-up whine into a huge concussive blast, explosive shockwave boom, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_bst_shockwave.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":1.4,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 1.411,
+  "meanVolumeDb": -8.6,
+  "file": "assets/audio/raw/powerups/sfx_bst_shockwave.mp3"
+ },
+ {
+  "id": "sfx_bst_fortify",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "heavy fortress lockdown, big steel slams and hydraulic hiss, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_bst_fortify.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":1,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 1.045,
+  "meanVolumeDb": -19.2,
+  "file": "assets/audio/raw/powerups/sfx_bst_fortify.mp3"
+ },
+ {
+  "id": "sfx_bst_hull",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "heavy metal tank hull dropping onto ground with a thud, then diesel engine start roar, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_bst_hull.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":1,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 1.045,
+  "meanVolumeDb": -16.7,
+  "file": "assets/audio/raw/powerups/sfx_bst_hull.mp3"
+ },
+ {
+  "id": "sfx_bst_denied",
+  "tool": "mcp__elevenlabs__sound_effect",
+  "prompt": "short dull double buzz, error denied UI sound, single sound, starts instantly, no music",
+  "params": "{\"path\":\"assets/audio/raw/powerups/sfx_bst_denied.mp3\",\"output_format\":\"mp3_44100_128\",\"duration_seconds\":0.5,\"prompt_influence\":0.6}",
+  "attempts": 1,
+  "durationSec": 0.522,
+  "meanVolumeDb": -31.7,
+  "file": "assets/audio/raw/powerups/sfx_bst_denied.mp3"
+ }
+]

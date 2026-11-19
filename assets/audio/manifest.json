@@ -91,15 +91,6 @@
       "license": "generated"
     },
     {
-      "id": "elevenlabs-sound_effect-20261119T100627-267cd2",
-      "path": "assets/audio/raw/combat/sfx_hit_brick.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "crumbling brick chunk break, short gritty debris, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
       "id": "elevenlabs-sound_effect-20261119T100627-d6c7ef",
       "path": "assets/audio/raw/powerups/sfx_pu_bubble.mp3",
       "type": "sfx",
@@ -196,24 +187,6 @@
       "bytes": 1313689,
       "tool": "elevenlabs:music",
       "prompt": "upbeat arcade action track, punchy synth bass, clicky metallic drums, earthy wooden-and-iron percussion, energetic but light and springy, recurring four-note low Burrow motif (D-A-F-D figure on deep synth bass) as the hook, no vocals, seamless loop. 120 BPM, D minor. steady groove from first to last bar, no intro fade-in, no ending, no outro, no fade-out, ends mid-phrase so it can loop back to the start",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-sound_effect-20261119T100747-1366a6",
-      "path": "assets/audio/raw/ui/sfx_ui_locked.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "dull padlock rattle, short locked denial, single short UI sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
-      "id": "elevenlabs-music-20261119T100748-e5c229",
-      "path": "assets/audio/raw/jingles/jgl_siege_result.mp3",
-      "type": "music",
-      "bytes": 97428,
-      "tool": "elevenlabs:music",
-      "prompt": "short neutral result jingle, starts immediately on the first beat, no silence at start: steady proud synth chord with metallic shimmer, calm and confident, clean short ending, instrumental, 3 seconds",
       "license": "generated"
     },
     {
@@ -325,15 +298,6 @@
       "license": "generated"
     },
     {
-      "id": "elevenlabs-sound_effect-20261119T100802-6d0290",
-      "path": "assets/audio/raw/combat/sfx_brute_hit.mp3",
-      "type": "sfx",
-      "bytes": 8820,
-      "tool": "elevenlabs:sound_effect",
-      "prompt": "dull heavy armor clank with a plate rattle, single sound, starts instantly, dry, no music",
-      "license": "generated"
-    },
-    {
       "id": "elevenlabs-sound_effect-20261119T100802-fb041c",
       "path": "assets/audio/raw/powerups/sfx_shield_down.mp3",
       "type": "sfx",
@@ -367,6 +331,222 @@
       "bytes": 20105,
       "tool": "elevenlabs:sound_effect",
       "prompt": "crate lid opening with golden shimmer and chime, single short UI sound, starts instantly, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100905-adad42",
+      "path": "assets/audio/raw/ui/sfx_purchase_ok.mp3",
+      "type": "sfx",
+      "bytes": 20105,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "satisfying heavy crate unlock followed by a bright chime cascade, single short UI sound, starts instantly, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100907-ee19d4",
+      "path": "assets/audio/raw/ui/sfx_purchase_fail.mp3",
+      "type": "sfx",
+      "bytes": 8820,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "soft low negative double tone, two descending muted beeps, single short UI sound, starts instantly, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100908-4c1b74",
+      "path": "assets/audio/raw/powerups/sfx_shield_block.mp3",
+      "type": "sfx",
+      "bytes": 8820,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "soft energy shield deflect thump, short bullet absorbed by force field, single sound, starts instantly, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100908-c6bac0",
+      "path": "assets/audio/raw/ui/sfx_tut_step.mp3",
+      "type": "sfx",
+      "bytes": 8820,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "gentle soft ping, single short UI sound, starts instantly, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100910-36fad2",
+      "path": "assets/audio/raw/powerups/sfx_wall_revert.mp3",
+      "type": "sfx",
+      "bytes": 10492,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "metal plates retracting with a clunk, mechanical slide back, single sound, starts instantly, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100912-858ce8",
+      "path": "assets/audio/raw/powerups/sfx_bst_bubble.mp3",
+      "type": "sfx",
+      "bytes": 13835,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "powerful energy dome deploy, bright electric hum burst, force field shield activating, single sound, starts instantly, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100913-c67954",
+      "path": "assets/audio/raw/powerups/sfx_bst_shockwave.mp3",
+      "type": "sfx",
+      "bytes": 23030,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "massive charge-up whine into a huge concussive blast, explosive shockwave boom, single sound, starts instantly, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100915-ce9782",
+      "path": "assets/audio/raw/powerups/sfx_bst_fortify.mp3",
+      "type": "sfx",
+      "bytes": 17179,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "heavy fortress lockdown, big steel slams and hydraulic hiss, single sound, starts instantly, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100916-e44946",
+      "path": "assets/audio/raw/combat/sfx_player_explode.mp3",
+      "type": "sfx",
+      "bytes": 17179,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "big punchy tank explosion, metal shrapnel, short low rumble tail, single sound, starts instantly, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100917-ad6049",
+      "path": "assets/audio/raw/ui/sfx_ui_locked.mp3",
+      "type": "sfx",
+      "bytes": 8820,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "loud clear metal padlock shake and rattle, locked door denial clack, single short UI sound, starts instantly, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100917-9c9032",
+      "path": "assets/audio/raw/combat/sfx_player_spawn.mp3",
+      "type": "sfx",
+      "bytes": 13835,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "ground drill burrowing up, engine kick, single sound, starts instantly, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100919-5602d4",
+      "path": "assets/audio/raw/combat/sfx_engine_loop.mp3",
+      "type": "sfx",
+      "bytes": 25120,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "low steady tank engine idle-to-move rumble with tread clatter, seamless loop, single sound, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100921-c5b17a",
+      "path": "assets/audio/raw/combat/sfx_oil_slide.mp3",
+      "type": "sfx",
+      "bytes": 8820,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "slick wet skid squeal, single sound, starts instantly, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T100923-75e9b5",
+      "path": "assets/audio/raw/combat/sfx_core_alarm.mp3",
+      "type": "sfx",
+      "bytes": 13835,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "urgent two-tone metallic alarm beep, short, single sound, starts instantly, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-music-20261119T100938-16970e",
+      "path": "assets/audio/raw/music/mus_stage_magma.mp3",
+      "type": "music",
+      "bytes": 1313689,
+      "tool": "elevenlabs:music",
+      "prompt": "intense hot arcade battle track, heavy distorted synth bass, fast metallic drums, rumbling low drone layer, fiery bright synth stabs and burning pads, tense, same recurring four-note low Burrow motif (F-C-Ab-F figure on deep synth bass), no vocals, seamless loop. 136 BPM, F minor. steady groove from first to last bar, no intro fade-in, no ending, no outro, no fade-out, ends mid-phrase so it can loop back to the start",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-music-20261119T100945-bc4836",
+      "path": "assets/audio/raw/jingles/jgl_siege_result.mp3",
+      "type": "music",
+      "bytes": 56468,
+      "tool": "elevenlabs:music",
+      "prompt": "very short neutral result stinger, starts immediately on the first beat, no silence at start: one steady proud synth chord with a metallic shimmer, calm and confident, quick clean ending, instrumental, 3 seconds total",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-music-20261119T100950-9efd4d",
+      "path": "assets/audio/raw/music/mus_siege.mp3",
+      "type": "music",
+      "bytes": 1440749,
+      "tool": "elevenlabs:music",
+      "prompt": "relentless siege arcade track, maximum energy, pounding war drums mixed with metal clangs, aggressive synth arpeggio, continuously rising tension, recurring four-note low Burrow motif (F-C-Ab-F figure) played in brass-like synth over deep bass, no vocals, seamless loop. 144 BPM, F minor. steady groove from first to last bar, no intro fade-in, no ending, no outro, no fade-out, ends mid-phrase so it can loop back to the start",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T101021-f3535a",
+      "path": "assets/audio/raw/powerups/sfx_bst_hull.mp3",
+      "type": "sfx",
+      "bytes": 17179,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "heavy metal tank hull dropping onto ground with a thud, then diesel engine start roar, single sound, starts instantly, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T101023-0ad314",
+      "path": "assets/audio/raw/powerups/sfx_bst_denied.mp3",
+      "type": "sfx",
+      "bytes": 8820,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "short dull double buzz, error denied UI sound, single sound, starts instantly, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T101031-865bb4",
+      "path": "assets/audio/raw/combat/sfx_core_destroyed.mp3",
+      "type": "sfx",
+      "bytes": 33061,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "huge crystal energy implosion and shatter, deep boom, power-down whine, single sound, starts instantly, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T101033-23f775",
+      "path": "assets/audio/raw/combat/sfx_enemy_spawn.mp3",
+      "type": "sfx",
+      "bytes": 10492,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "ground cracking open with a buzzy acid-green energy swirl, single sound, starts instantly, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T101035-12fb0e",
+      "path": "assets/audio/raw/combat/sfx_last_enemy.mp3",
+      "type": "sfx",
+      "bytes": 13835,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "heavy final impact boom with ringing metal, single sound, starts instantly, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T101037-27ad61",
+      "path": "assets/audio/raw/combat/sfx_hit_brick.mp3",
+      "type": "sfx",
+      "bytes": 8820,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "loud crumbling brick wall chunk breaking apart, sharp crack of masonry with short gritty rubble debris falling, single sound, starts instantly, dry, no music",
+      "license": "generated"
+    },
+    {
+      "id": "elevenlabs-sound_effect-20261119T101047-003f73",
+      "path": "assets/audio/raw/combat/sfx_brute_hit.mp3",
+      "type": "sfx",
+      "bytes": 8820,
+      "tool": "elevenlabs:sound_effect",
+      "prompt": "loud heavy armor plate clank, bullet striking thick steel armor with a dull metallic thud and a plate rattle, single sound, starts instantly, dry, no music",
       "license": "generated"
     }
   ]
