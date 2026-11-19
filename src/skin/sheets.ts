@@ -234,7 +234,50 @@ const PRELOADER = `.mp-preloader__brand [data-icon=brand-mark]${OVER}{display:no
 
 export const COMMON = WINDOW + BUTTONS + PLATE + PROGRESS + PRELOADER;
 
+// ---- Kit windows, short additions (docs/game/LOOK.md):
+// Settings (Н-30): the chosen language is a steel second choice, not the window's orange main action;
+// the kit's scrollbar gutter (12px on the right only) goes with the scrollbars.
+const SETTINGS = '.std-content[data-part=settings]{padding-inline-end:0;scrollbar-gutter:auto}'
+  + '.std-content [data-part=language]>button{--_tint:var(--mp-card-surface);--_edge:var(--mp-window-background);'
+  + '--_ink:var(--mp-card-subtle)}'
+  + '.std-content [data-part=language]>button[aria-pressed=true]{--_tint:var(--game-button-secondary);'
+  + '--_edge:var(--game-button-secondary-edge);--_ink:var(--game-button-secondary-text)}';
+// Profile (Н-35, Н-36): the name in text_main; the player card a sunk groove, not a thin-lined box.
+const GROOVE = `border:0;border-radius:0;background:${v('mp-window-background')};`
+  + `box-shadow:inset 0 2px 3px ${v('game-shade-strong')},inset 0 -1px 0 ${LIGHT};clip-path:${platePath(v('game-cut-groove'), '0px')}`;
+const PROFILE = `[data-part=player-name]{color:${v('mp-card-fg')}}`
+  + `[data-part=player-card]>.card{margin:0;padding:12px 16px;${GROOVE}}`
+  + `[data-part=player-card] .avatar{border-radius:0;clip-path:${platePath(v('game-cut'), '0px')}}`;
+// Daily gift (Н-32, Н-33): in a landscape phone the streak runs over the full width and the days fill
+// the window under it (the kit kept a 216px column for a hint and a Claim the auto track never has);
+// the lock and the check sit inside the cut corner of their tile.
+const DAILY = '@media (orientation:landscape){.dialog .daily-reward{display:flex;flex-direction:column;gap:12px}'
+  + '.dialog .daily-reward>.daily-days{grid-area:auto}}'
+  + `.daily-day .daily-check,.daily-day .daily-lock{top:6px;right:6px;box-shadow:none}`
+  + `.daily-day .daily-lock{border-radius:0;clip-path:${platePath('4px', '0px')}}`;
+// Reward received (Н-43, Н-80): four items in one row (2×2 in a portrait window), the button under
+// them; from three items on, the showcase above shows the leading picture (the kit draws at most
+// three there, so a fourth item was missing from it).
+const REWARD = '.reward-grid[data-count="4"]{grid-template-columns:repeat(4,minmax(0,1fr))}'
+  + '@media (orientation:portrait){.reward-grid[data-count="4"]{grid-template-columns:repeat(2,minmax(0,1fr))}}'
+  + '.reward-hero-icons[data-count="3"] .reward-hero-icon+.reward-hero-icon{display:none}'
+  + '.reward-hero-icons[data-count="3"] .reward-hero-icon img{width:96px;height:96px}';
+// Leaderboard (kit): the list keeps its own scroll port once the window is as high as its content.
+const LEADERBOARD = ':host([data-pop-kind]) .lbw-body{flex:1 1 auto}';
+// Top bar (Н-48): profile and settings plates are touch targets of 48×48 CSS px.
+// The row of the top bar grows to them (the shell clips it to one row of 40px; a second row stays hidden).
+const HUD = '.hud[data-slot=top]{max-height:48px;align-items:center}'
+  + '.hud[data-slot=top]>.hud-item:not([data-capsule]){min-width:48px;min-height:48px}';
+
 export const COMPONENTS: Readonly<Record<string, string>> = {
-  // Not a sheet of its own: the common window of COMMON, for the one frame the shell draws itself.
-  shell: SHELL_WINDOW,
+  // Not a sheet of its own: the common window of COMMON, for the one frame the shell draws itself;
+  // its popup host as high as its content (the shell's frame reads --kit-pop-h) and no scrollbars.
+  shell: SHELL_WINDOW + '.mpg-shell [data-part=popup][data-popup]:not([data-pop-kind=fullscreen]){--kit-pop-h:auto}'
+    + '.mpg-shell,.mpg-shell *{scrollbar-width:none}.mpg-shell ::-webkit-scrollbar{display:none}',
+  settings: SETTINGS,
+  profile: PROFILE,
+  dailyReward: DAILY,
+  rewardWindow: REWARD,
+  leaderboardWindow: LEADERBOARD,
+  hud: HUD,
 };
