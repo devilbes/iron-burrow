@@ -1,0 +1,70 @@
+{
+ "version": 1,
+ "src": "decision:economy-design: first A/B after release, one parameter",
+ "requiredEvents": [
+  {
+   "name": "purchase_result",
+   "source": "new",
+   "feeds": [
+    "payer_conversion",
+    "hull_pack_share"
+   ]
+  },
+  {
+   "name": "continue_used",
+   "source": "new",
+   "feeds": [
+    "continue_rate"
+   ]
+  },
+  {
+   "name": "stage_end",
+   "source": "new",
+   "feeds": [
+    "d1_retention_proxy"
+   ]
+  }
+ ],
+ "experiments": [
+  {
+   "id": "hull_pack_size",
+   "hypothesis": "A Hull Pack with 6 hulls instead of 5 at the same 1.99 lowers the per-item premium versus Field Kit (from +91% to +60%) and raises Defeat-screen conversion without hurting Field Kit sales",
+   "parameter": "iap.packs",
+   "variants": [
+    {
+     "id": "control",
+     "value": 5,
+     "modelPath": "/packs/1/contents/bst_hull",
+     "configRef": "iap.packs"
+    },
+    {
+     "id": "hull6",
+     "value": 6,
+     "modelPath": "/packs/1/contents/bst_hull",
+     "configRef": "iap.packs"
+    }
+   ],
+   "primaryMetric": "payer_conversion",
+   "secondaryMetrics": [
+    "hull_pack_share"
+   ],
+   "guardrails": [
+    "continue_rate",
+    "d1_retention_proxy"
+   ],
+   "segments": [
+    "all_new_players"
+   ],
+   "exclude": [
+    "platform.holdout"
+   ],
+   "simulation": {
+    "status": "unmeasured",
+    "reason": "no QUALITY_TARGETS.economy seed/runs/horizon and no policy facts"
+   },
+   "stoppingRule": "fixed horizon 14 days or 1000 payers per arm, whichever is later",
+   "rolloutRule": "roll out hull6 if payer_conversion is up with p<0.05 and no guardrail drops more than 2%",
+   "rollbackRule": "return to control through the remote config if any guardrail drops more than 2%"
+  }
+ ]
+}
