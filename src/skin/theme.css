@@ -135,13 +135,18 @@
                                         groups are parted by room and one soft underlay */
   --game-underlay:color-mix(in srgb,var(--mp-card-surface) 72%,transparent); /* that one underlay */
   --game-self:color-mix(in srgb,var(--mp-card-success) 18%,transparent);     /* own leaderboard row */
-  --game-button-min:9.5rem;          /* window buttons: width by the label, within these limits */
+  --game-button-min:8.5rem;          /* window buttons: width by the label, within these limits;
+                                        two second actions fit side by side in a phone window */
+  --game-button-min-primary:13rem;   /* the main action: wider, on a line of its own */
   --game-button-max:18rem;
   --game-button-pad:1.75rem;         /* side room of the label */
   --game-button-h-primary:56px;      /* id-button-face: primary 56, others 48 */
   --game-art-tile:56px;              /* item pictures: tiles of the shop and windows */
   --game-art-reward:72px;            /* tiles of the reward window */
-  --game-art-day:44px;               /* daily reward cells */
+  --game-art-day:48px;               /* daily reward cells */
+  --game-day-h:96px;                 /* a daily cell: title, picture, count */
+  --game-art-offer:112px;            /* the pack picture of a featured shop offer */
+  --game-art-offer-row:64px;         /* the pack picture at the head of a shop row */
   --game-medal-1:var(--mp-card-gold);   /* podium: amber, frost steel, brick (map icons medal-1…3) */
   --game-medal-2:var(--mp-card-muted);
   --game-medal-3:var(--game-bronze);

@@ -78,7 +78,9 @@ const WINDOWS = {
   shop: ['shopWindow', shopWindow, 'window', { offers: PACKS, now: NOW, currencies: [], purchasingOfferKeys: [] }],
   daily: ['dailyReward', dailyReward, 'window', { trackKey: 'daily_login', nextInMs: 51_720_000,
     days: STATUS.map((status, i) => ({ key: `day_${i + 1}`, title: `Day ${i + 1}`, amount: DAILY[i][1],
-      icon: items.icon(DAILY[i][0]) ?? 'gift', status })) }],
+      icon: items.icon(DAILY[i][0]) ?? 'gift', status,
+      // The big 7th day is the wide cell, as src/shell/windows/daily.ts gives it (7 days, the last).
+      ...(i === 6 ? { wide: true } : {}) })) }],
   leaderboard: ['leaderboardWindow', leaderboardWindow, 'window', { tab: 'weekly',
     tabs: [{ id: 'weekly', label: 'Weekly' }], me: { rank: 12, score: 340 }, meGid: 12,
     entries: Array.from({ length: 10 }, (_, i) => ({ rank: i + 1, gid: 100 + i, score: 2000 - i * 150,

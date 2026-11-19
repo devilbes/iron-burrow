@@ -192,7 +192,7 @@ const PLATE_FILL: Layer[] = [
   [`linear-gradient(180deg,${v('mp-card-raised')},${v('mp-card-surface')} 45%,${v('mp-card-background')})`, 'center|100% 100%'],
 ];
 const PLATES = ['.hud-capsule', '.hud[data-slot=top]>.hud-item', '.hud[data-slot=left] .hud-item', '.hud[data-slot=right] .hud-item',
-  '.bottommenu .hud-item', '.iap-pack', '.daily-day', '.lbw-mine', '.mp-icon-button'].map((s) => `${s}${OVER}`).join(',');
+  '.bottommenu .hud-item', '.iap-pack', '.mp-icon-button'].map((s) => `${s}${OVER}`).join(',');
 const PLATE = `:is(${PLATES}){border-radius:0;${layers(PLATE_FILL)};box-shadow:${v('game-shadow-raised')};`
   + `clip-path:${platePath(BC, '6px')}}`
   + `.hud-capsule${OVER} .hud-item${OVER}{background:none;box-shadow:none;clip-path:none}`
@@ -210,13 +210,104 @@ const PROGRESS = `progress${OVER}{border:0;border-radius:${v('mp-radius-field')}
   + `progress${OVER}::-moz-progress-bar{border-radius:${v('mp-radius-field')};`
   + `background:linear-gradient(90deg,${v('mp-card-accent')},${v('mp-card-accent-hover')})}`;
 
-// ---- Loading screen: the recolored atlas declares `icon-brand-mark`, so the shell shows the mark —
-// it is the ManyPlay "M". Hidden until the game's own icon sheet draws the Burrower (then drop this).
-const PRELOADER = `.mp-preloader__brand [data-icon=brand-mark]${OVER}{display:none}`;
+// ---- Inside a window only the window has a frame: groups part by room and, where needed, one soft
+// underlay without an outline (`UNDERLAY`); item tiles are the picture and the count, no plate or
+// outline of their own; item pictures are the main thing of their tile (--game-art-*).
+const UNDERLAY = `border:0;border-radius:${v('mp-radius-field')};background:${v('game-underlay')};box-shadow:none`;
+const ART = (size: string): string => `width:${size};height:${size};max-width:100%`;
+const INNER = `.reward-grid .reward-grid-entry${OVER}{border:0;background:none;box-shadow:none}`
+  + `.reward-grid .reward-grid-entry${OVER}:hover{background:${v('game-underlay')}}`
+  + `.reward-grid .reward-art${OVER},.reward-grid .reward-art${OVER}>*{${ART(v('game-art-tile'))}}`
+  + `.reward-grid .reward-amount${OVER}{font:400 16px/1.2 ${v('mp-font-display')};color:${v('mp-card-fg')}}`;
 
-export const COMMON = WINDOW + BUTTONS + PLATE + PROGRESS + PRELOADER;
+// ---- Divider (id-divider): a forged 4px slate_mid bar, a rivet at each end, a glowing teal dot in
+// the middle; drawn as a block of its own before a section that follows another.
+const DIVIDER_LAYERS: Layer[] = [
+  [`radial-gradient(circle,${v('mp-card-success')} 0 1.5px,${v('game-slit-glow')} 2px,transparent 4px)`, 'center|10px 10px'],
+  [RIVET, `left center|${v('game-rivet')} ${v('game-rivet')}`],
+  [RIVET, `right center|${v('game-rivet')} ${v('game-rivet')}`],
+  [`linear-gradient(180deg,${v('mp-card-line-strong')},${v('mp-card-raised')} 50%,${v('mp-card-background')})`,
+    `center|calc(100% - ${v('game-rivet')}) 4px`],
+];
+const DIVIDER = `content:'';display:block;flex:none;height:10px;margin:8px 0 10px;${layers(DIVIDER_LAYERS)}`;
+
+// ---- Action rows of every kit window: a button is as wide as its label within limits (never the
+// width of the window), centred; the main action on a line of its own, second actions in a row
+// under it (design/mockups/results/*: «Next Stage» over «Replay · Map»). The empty ::before is the
+// line break between the two (order 1); the main action is order 0, second actions order 2.
+const ROW = `.dialog :is(.std-actions,.window-actions)${OVER}`;
+const SECOND = ':is(.std-action--secondary,.mp-button--secondary,[data-variant=ghost])';
+const ACTIONS = `${ROW}{flex-flow:row wrap;justify-content:center;align-items:center;column-gap:8px;row-gap:0}`
+  + `${ROW}::before{content:'';order:1;flex:0 0 100%;height:8px}`
+  + `${ROW}>button{order:0;flex:0 1 auto;width:auto;min-width:min(${v('game-button-min-primary')},100%);`
+  + `max-width:min(${v('game-button-max')},100%);min-height:${v('game-button-h-primary')};`
+  + `padding-inline:${v('game-button-pad')};white-space:normal}`
+  + `${ROW}>button${SECOND}{order:2;min-width:min(${v('game-button-min')},100%);min-height:48px;margin-bottom:8px}`
+  // Price buttons of the shop: the same limits, centred under their pack.
+  + `.dialog :is(.iap-row,.iap-slide)>.iap-buy${OVER}{align-self:center;width:auto;min-width:min(${v('game-button-min')},100%);`
+  + `max-width:min(${v('game-button-max')},100%);padding-inline:${v('game-button-pad')}}`;
+
+// ---- Loading screen: the game's own sheet draws the brand mark (the Burrower), so the shell's mark
+// shows; nothing to hide any more.
+export const COMMON = WINDOW + BUTTONS + PLATE + PROGRESS + INNER + ACTIONS;
+
+// ---- Shop (map part «Магазин», sheet): each pack is one calm underlay (no outline, no plate in a
+// plate), its picture big at the head; the item tiles inside are bare; sections part by the divider.
+const SHOP = `.iap-section>:is(.iap-slide,.iap-row){flex:none;${UNDERLAY};padding:12px 14px}`
+  + `.iap-section+.iap-section::before{${DIVIDER}}`
+  + `.iap-section>h4{font:400 13px/18px ${v('mp-font-display')};letter-spacing:.08em;text-transform:uppercase;`
+  + `color:${v('mp-card-subtle')}}`
+  + `.iap-row__title{font:400 17px/22px ${v('mp-font-display')}}`
+  + `.iap-slide>[data-part=asset-image]{align-self:center;${ART(v('game-art-offer'))};object-fit:contain;`
+  + `filter:drop-shadow(${v('game-shadow-floating')})}`
+  + `.iap-row__icon{${ART(v('game-art-offer-row'))};border:0;background:none;box-shadow:none}`
+  + `.iap-row__icon>*{${ART(v('game-art-offer-row'))};object-fit:contain}`;
+
+// ---- Daily rewards (sheet): a cell is a cut plate of the soft underlay, no outline; today glows
+// (the magma line of the nameplate under it, a warm fill); the big 7th day is the wide plate of the kit.
+const DAY_GLOW: Layer[] = [
+  [`linear-gradient(0deg,${v('game-magma-glow')},transparent)`, `center bottom|100% 14px`],
+  [solid(v('mp-card-accent')), `center bottom|calc(100% - 2 * ${BC}) ${v('game-plate-line')}`],
+  [`linear-gradient(180deg,color-mix(in srgb,${v('mp-card-accent')} 22%,${v('mp-card-surface')}),${v('mp-card-surface')})`, 'center|100% 100%'],
+];
+const DAILY = `.dialog .daily-day{height:auto;min-height:${v('game-day-h')};border:0;border-radius:0;`
+  + `background:${v('game-underlay')};box-shadow:none;clip-path:${platePath(BC, '0px')}}`
+  + `.dialog .daily-day[data-state=available]{border:0;${layers(DAY_GLOW)}}`
+  + `.daily-day .daily-art,.daily-day .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-day'))}}`
+  + `.dialog .daily-day[data-wide] .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-day'))}}`
+  + `.daily-amount{font:400 16px/1.2 ${v('mp-font-display')}}`
+  + `.daily-day :is(.daily-check,.daily-lock){border:0;border-radius:0;clip-path:polygon(${v('game-cut-badge')} 0,100% 0,`
+  + `100% calc(100% - ${v('game-cut-badge')}),calc(100% - ${v('game-cut-badge')}) 100%,0 100%,0 ${v('game-cut-badge')})}`
+  + `.daily-hint{${UNDERLAY}}`;
+
+// ---- Leaderboard (sheet): one underlay under the whole table, rows bare; the podium steps are
+// plates without an outline, tinted by their medal (amber, frost steel, brick); avatars are small
+// cut plates like every carrier of the game, not circles; the player's own row — a teal underlay.
+const AVATAR = `border:0;border-radius:0;clip-path:polygon(25% 0,75% 0,100% 25%,100% 75%,75% 100%,25% 100%,0 75%,0 25%)`;
+const LEADERBOARD = `.lbw-table{${UNDERLAY};padding:4px 0}`
+  + `.lbw-table>.lbw-row{border:0;border-radius:0;background:none;box-shadow:none}`
+  + `.lbw-avatar{${AVATAR};font-family:${v('mp-font-display')};font-weight:400}`
+  + `.lbw-pod .lbw-avatar{background:linear-gradient(180deg,${v('mp-card-raised')},${v('mp-card-background')});`
+  + `box-shadow:inset 0 0 0 3px var(--_medal);color:${v('mp-card-fg')}}`
+  + `.lbw-pod{--_medal:${v('game-medal-3')}}.lbw-pod[data-rank="1"]{--_medal:${v('game-medal-1')}}`
+  + `.lbw-pod[data-rank="2"]{--_medal:${v('game-medal-2')}}`
+  + `.lbw-step{border:0;border-radius:0;color:${v('mp-window-background')};font-family:${v('mp-font-display')};`
+  + `background:linear-gradient(180deg,color-mix(in srgb,var(--_medal) 85%,${v('mp-card-fg')}),var(--_medal) 40%,`
+  + `color-mix(in srgb,var(--_medal) 70%,${v('game-shade')}));box-shadow:${v('game-shadow-raised')};`
+  + `clip-path:polygon(${BC} 0,calc(100% - ${BC}) 0,100% ${BC},100% 100%,0 100%,0 ${BC})}`
+  + `.lbw-mine{${UNDERLAY};background:${v('game-self')}}`
+  + `.lbw-mine .lbw-avatar{background:${v('game-steel-teal')};color:${v('mp-card-fg')}}`
+  + `.lbw-mine .lbw-rank{color:${v('mp-card-success')}}`;
+
+// ---- Reward received (recolor + the shared rules above): the list of what came is one underlay.
+const REWARD = `.reward-box{${UNDERLAY}}`
+  + `.reward-box .reward-grid .reward-art${OVER},.reward-box .reward-grid .reward-art${OVER}>*{${ART(v('game-art-reward'))}}`;
 
 export const COMPONENTS: Readonly<Record<string, string>> = {
   // Not a sheet of its own: the common window of COMMON, for the one frame the shell draws itself.
   shell: SHELL_WINDOW,
+  shopWindow: SHOP,
+  dailyReward: DAILY,
+  leaderboardWindow: LEADERBOARD,
+  rewardWindow: REWARD,
 };
