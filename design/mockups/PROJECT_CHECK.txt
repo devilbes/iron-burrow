@@ -6,3 +6,6 @@ ok   build (types, bundle, dist/) (135.7 s)
 ok   pictures of assets/ (1x made from 2x) (3.5 s)
 FAIL records of configs/remote/ (4.9 s)
 FAIL tests (223.6 s) — 130 tests
+
+Execution ended with SIGTERM (exit 143) after the lines above; the full skin gallery did not produce a final report. This is an incomplete failed project run, not acceptance.
+Known unit result before termination: 130 tests, 122 passed, 5 failed, 3 skipped. Failures are records/schema/legacy item references outside the screen writeSet.
