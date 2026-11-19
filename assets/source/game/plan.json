@@ -1182,8 +1182,8 @@
     "skin": "shared",
     "role": "CONTRACT §7.3 / D-GC-13: replaces GDD bg_lobby_portrait and bg_lobby_landscape; shared full-screen lobby and boot scene; 2880x1800 source at 2x; cover at all supported aspect ratios; portrait sees center, keep meaningful details within central safe region",
     "size": {
-      "w": 1440,
-      "h": 900
+      "w": 1280,
+      "h": 800
     },
     "transparent": false,
     "prompt": "vast underground cavern with cold slate-blue rock, teal steel scaffolds and distant molten orange glow below; calm empty center for live title and buttons. Wide composition, opaque full-bleed background, safe cover cropping for portrait, landscape and desktop. No text, letters, numerals, captions, labels or watermarks.\n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",
@@ -1196,8 +1196,8 @@
     "skin": "shared",
     "role": "CONTRACT §7.3 / D-GC-13: one shared scene replaces all six GDD bg_map_clay/iron/magma portrait/landscape assets; map nodes and paths are drawn by code; 2880x1800 source at 2x; cover at all supported aspect ratios; portrait sees center, keep meaningful details within central safe region",
     "size": {
-      "w": 1440,
-      "h": 900
+      "w": 1280,
+      "h": 800
     },
     "transparent": false,
     "prompt": "wide underground tunnel cross-section with cold clay rock, restrained teal roots, distant steel girders and dim magma glow; calm low-contrast areas for stage nodes; no baked nodes or paths. Wide composition, opaque full-bleed background, safe cover cropping for portrait, landscape and desktop. No text, letters, numerals, captions, labels or watermarks.\n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",
@@ -1210,8 +1210,8 @@
     "skin": "shared",
     "role": "CONTRACT §7.3 / D-GC-13: dedicated dark tunnel wall around the gameplay field instead of chapter-map background reuse; 2880x1800 source at 2x; cover at all supported aspect ratios; portrait sees center, keep meaningful details within central safe region",
     "size": {
-      "w": 1440,
-      "h": 900
+      "w": 1280,
+      "h": 800
     },
     "transparent": false,
     "prompt": "dark low-contrast slate-blue tunnel wall around the battlefield, restrained steel and rock details at edges, empty dark center; no board, tanks, tile grid or controls. Wide composition, opaque full-bleed background, safe cover cropping for portrait, landscape and desktop. No text, letters, numerals, captions, labels or watermarks.\n\n- Stubborn little machinery protecting a warm underground heart: tough, friendly, tactile.\n- Cool forged steel supports one hot focal action; silhouette and value stay readable during fast arcade play.\n- Chunky toy proportions, restrained rivets and bevels; wear describes material without visual noise.\n\nCold slate and teal steel against magma orange express the underground drill workshop and make the Core/action immediately visible. No paper or timber panels. Exact colors: palette.json (GDD 21, unchanged).\n\nA forged armor plate with clipped 45-degree corners is the recurring motif. At 1x: corner cut 8px, inner rounding 4px, outer outline 1px, inner bevel 2px. Use the same geometry for future panels, buttons, badges and icon carriers; larger frames may scale the cut to 16px. Rivets belong at structural corners, never behind text. Hexagons remain exclusive to power-up tokens (GDD).\n\nUI and static materials: one soft upper-left key, pale upper edge and dark lower edge. Shadows use #0A1118: raised 0/2/4px at 24%; floating 0/6/12px at 32%; modal 0/12/24px at 40%. Field and background stay grounded; only interactive plates lift. Orange insets emit restrained local glow. Rotating gameplay sprites use a centered overhead dome and no baked directional cast shadow (GDD exception).",

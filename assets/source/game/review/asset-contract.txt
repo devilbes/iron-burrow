@@ -1,0 +1,9 @@
+CHECK asset-contract/AC-01 FAIL gates.art.budgetOfRoot: параметр gates.art.budgetOfRoot не задан (gate-facts «Проверки» → .devflow/facts.json) (+1)
+CHECK asset-contract/AC-02 PASS
+CHECK asset-contract/AC-03 PASS
+CHECK asset-contract/AC-04 PASS
+CHECK asset-contract/AC-05 PASS
+CHECK asset-contract/AC-06 PASS
+FAIL gates.art.budgetOfRoot AC-01 параметр gates.art.budgetOfRoot не задан (gate-facts «Проверки» → .devflow/facts.json)
+FAIL gates.asset-contract.fields AC-01 параметр gates.asset-contract.fields не задан (gate-facts «Проверки» → .devflow/facts.json)
+GATE asset-contract FAIL: 2 нарушений
