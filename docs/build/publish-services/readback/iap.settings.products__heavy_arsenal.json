@@ -1,0 +1,38 @@
+{
+  "scope": "iap.settings.products",
+  "key": "heavy_arsenal",
+  "revision": 1,
+  "schemaId": "iap.settings.products@6",
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": [],
+  "readAt": "2026-11-19T11:28Z",
+  "data": {
+    "name": "Heavy Arsenal",
+    "type": "consumable",
+    "priceUsd": 9.99,
+    "entities": [
+      {
+        "id": "bst_bubble",
+        "amount": 15
+      },
+      {
+        "id": "bst_shockwave",
+        "amount": 15
+      },
+      {
+        "id": "bst_fortify",
+        "amount": 15
+      },
+      {
+        "id": "bst_hull",
+        "amount": 15
+      }
+    ],
+    "bindings": {
+      "google_play": {
+        "productId": "heavy_arsenal"
+      }
+    }
+  }
+}

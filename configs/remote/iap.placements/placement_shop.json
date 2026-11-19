@@ -1,0 +1,15 @@
+{
+  "name": "iap.placements/placement_shop",
+  "data": {
+    "offers": [
+      "starter_crate",
+      "hull_pack",
+      "field_kit",
+      "heavy_arsenal",
+      "commander_cache"
+    ]
+  },
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": []
+}

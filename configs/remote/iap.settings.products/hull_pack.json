@@ -1,0 +1,22 @@
+{
+  "name": "iap.settings.products/hull_pack",
+  "data": {
+    "name": "Hull Pack",
+    "type": "consumable",
+    "priceUsd": 1.99,
+    "entities": [
+      {
+        "id": "bst_hull",
+        "amount": 5
+      }
+    ],
+    "bindings": {
+      "google_play": {
+        "productId": "hull_pack"
+      }
+    }
+  },
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": []
+}

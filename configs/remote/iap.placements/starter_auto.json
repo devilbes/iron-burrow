@@ -1,0 +1,11 @@
+{
+  "name": "iap.placements/starter_auto",
+  "data": {
+    "offers": [
+      "starter_crate"
+    ]
+  },
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": []
+}

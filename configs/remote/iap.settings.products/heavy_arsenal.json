@@ -1,0 +1,34 @@
+{
+  "name": "iap.settings.products/heavy_arsenal",
+  "data": {
+    "name": "Heavy Arsenal",
+    "type": "consumable",
+    "priceUsd": 9.99,
+    "entities": [
+      {
+        "id": "bst_bubble",
+        "amount": 15
+      },
+      {
+        "id": "bst_shockwave",
+        "amount": 15
+      },
+      {
+        "id": "bst_fortify",
+        "amount": 15
+      },
+      {
+        "id": "bst_hull",
+        "amount": 15
+      }
+    ],
+    "bindings": {
+      "google_play": {
+        "productId": "heavy_arsenal"
+      }
+    }
+  },
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": []
+}

@@ -29,6 +29,12 @@
             "payload": {}
           }
         ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
         "claimMode": "auto",
         "ui": {},
         "payload": {
@@ -55,6 +61,12 @@
             "target": 1,
             "maxValue": null,
             "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_shockwave",
+            "amount": 1
           }
         ],
         "claimMode": "auto",
@@ -85,6 +97,12 @@
             "payload": {}
           }
         ],
+        "reward": [
+          {
+            "id": "bst_fortify",
+            "amount": 1
+          }
+        ],
         "claimMode": "auto",
         "ui": {},
         "payload": {
@@ -111,6 +129,12 @@
             "target": 1,
             "maxValue": null,
             "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_hull",
+            "amount": 1
           }
         ],
         "claimMode": "auto",
@@ -141,10 +165,902 @@
             "payload": {}
           }
         ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
         "claimMode": "auto",
         "ui": {},
         "payload": {
           "title": "levels.main.level_5.title"
+        }
+      },
+      {
+        "key": "level_6",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 6,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_shockwave",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_6.title"
+        }
+      },
+      {
+        "key": "level_7",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 7,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_fortify",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_7.title"
+        }
+      },
+      {
+        "key": "level_8",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 8,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_hull",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_8.title"
+        }
+      },
+      {
+        "key": "level_9",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 9,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_9.title"
+        }
+      },
+      {
+        "key": "level_10",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 10,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          },
+          {
+            "id": "bst_shockwave",
+            "amount": 2
+          },
+          {
+            "id": "bst_fortify",
+            "amount": 1
+          },
+          {
+            "id": "bst_hull",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_10.title"
+        }
+      },
+      {
+        "key": "level_11",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 11,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_fortify",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_11.title"
+        }
+      },
+      {
+        "key": "level_12",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 12,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_hull",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_12.title"
+        }
+      },
+      {
+        "key": "level_13",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 13,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_13.title"
+        }
+      },
+      {
+        "key": "level_14",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 14,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_shockwave",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_14.title"
+        }
+      },
+      {
+        "key": "level_15",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 15,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_fortify",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_15.title"
+        }
+      },
+      {
+        "key": "level_16",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 16,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_hull",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_16.title"
+        }
+      },
+      {
+        "key": "level_17",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 17,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_17.title"
+        }
+      },
+      {
+        "key": "level_18",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 18,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_shockwave",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_18.title"
+        }
+      },
+      {
+        "key": "level_19",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 19,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_fortify",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_19.title"
+        }
+      },
+      {
+        "key": "level_20",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 20,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          },
+          {
+            "id": "bst_shockwave",
+            "amount": 1
+          },
+          {
+            "id": "bst_fortify",
+            "amount": 1
+          },
+          {
+            "id": "bst_hull",
+            "amount": 2
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_20.title"
+        }
+      },
+      {
+        "key": "level_21",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 21,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_21.title"
+        }
+      },
+      {
+        "key": "level_22",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 22,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_shockwave",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_22.title"
+        }
+      },
+      {
+        "key": "level_23",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 23,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_fortify",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_23.title"
+        }
+      },
+      {
+        "key": "level_24",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 24,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_hull",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_24.title"
+        }
+      },
+      {
+        "key": "level_25",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 25,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_25.title"
+        }
+      },
+      {
+        "key": "level_26",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 26,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_shockwave",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_26.title"
+        }
+      },
+      {
+        "key": "level_27",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 27,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_fortify",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_27.title"
+        }
+      },
+      {
+        "key": "level_28",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 28,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_hull",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_28.title"
+        }
+      },
+      {
+        "key": "level_29",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 29,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_29.title"
+        }
+      },
+      {
+        "key": "level_30",
+        "conditions": [
+          {
+            "key": "win",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 30,
+              "won": true,
+              "verified": true
+            },
+            "operation": "count",
+            "field": null,
+            "target": 1,
+            "maxValue": null,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          },
+          {
+            "id": "bst_shockwave",
+            "amount": 2
+          },
+          {
+            "id": "bst_fortify",
+            "amount": 1
+          },
+          {
+            "id": "bst_hull",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "levels.main.level_30.title"
         }
       }
     ],

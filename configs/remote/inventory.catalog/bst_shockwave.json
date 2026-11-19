@@ -1,6 +1,6 @@
 {
   "itemId": "bst_shockwave",
-  "itemType": "item",
+  "itemType": "stackable",
   "isStackable": true,
   "maxBalance": null,
   "attrsSchema": null,

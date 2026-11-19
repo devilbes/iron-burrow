@@ -1,0 +1,89 @@
+{
+  "node": "art-review",
+  "verifier": "verifier-score",
+  "date": "2026-11-19",
+  "commit": "2a40478",
+  "authorCommits": ["3234a36", "055f58d"],
+  "acSource": "Отдельного acceptance узла нет (docs/plan/art-review отсутствовал, FLOW_PLAN.md шаг не описывает). Критерии выведены из самого шага (design/review/ART_ACCEPTANCE.md: полнота против ГДД 21, части карты скина, спрайты, макеты, ориентации, библия, список возврата) и скилов art-direction / design-judge / devflow-design. Решение D-VER-AR-01.",
+  "criteria": [
+    {
+      "id": "AC-AR-01",
+      "title": "Отчёт приёмки есть: ART_ACCEPTANCE.md + валидный ART_ACCEPTANCE.json с вердиктом, оценкой и returnTo",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 9,
+      "evidence": "python3 -I json.load(design/review/ART_ACCEPTANCE.json) → ok; verdict FAIL, score 3, returnTo [assets, design-screens, design-icons]; MD из 8 разделов",
+      "why": "Отчёт полный по структуре, машинная и текстовая версии согласованы."
+    },
+    {
+      "id": "AC-AR-02",
+      "title": "Полнота ассетов против таблицы art.assets ГДД 21",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 9,
+      "evidence": "ls assets/game → 87 уникальных id; таблица ГДД 21 (строки 99+) → 92 id; не хватает ровно bg_lobby_*×2, bg_map_{clay,iron,magma}_*×6, icon_settings; лишние scene, scene-map, scene-game, icon_gun = D-GC-13 (docs/game/CONTRACT.md:490). 24 ui_* второй таблицы закрыты D-SKIN-02 (docs/skin/map.json:205)",
+      "why": "Списки нехватки и лишних id точные; развилка (дорисовать или поправить ГДД) названа верно."
+    },
+    {
+      "id": "AC-AR-03",
+      "title": "Игровые спрайты оценены по контакт-листу и градациям серого; дефекты перечислены по id",
+      "mandatory": true,
+      "status": "PARTIAL",
+      "score": 5,
+      "evidence": "Собственная полоса ffmpeg hstack из исходных assets/game/{core,tile_clay_steel,tile_iron_oil,tile_magma_oil,core_wall_*,fx_explosion_core,icon_back,icon_pause,pu_star,tile_iron_brick,icon_gun}.png и просмотр design/review/GAME_ASSETS_CONTACT.webp: главный вывод (клон плиты STYLE_REF, бирюзовые враги) подтверждён. Но клон есть ещё в id, которых нет в styleCloneIds (см. extraStyleCloneIds), а часть из них в §7 названа эталоном",
+      "why": "Диагноз верный, перечень неполный: ~24 id с той же плитой с кристаллом не в списке, pu_*, tile_*_roots, fx_bubble, medal_top3 и большинство icon_* ошибочно в «оставить»."
+    },
+    {
+      "id": "AC-AR-04",
+      "title": "Макеты экранов и сцены оценены как картинки, по экранам и в серых тонах",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 8,
+      "evidence": "Просмотрены design/mockups/CONTACT_SHEET.png (15 рендеров, ls design/mockups/contact → 15) и design/review/SCENES.webp: плоские текстовые кнопки, d-pad текстом, поле на пол-экрана, нет рамок окна; плита в углу scene-game и в центре scene-map — совпадает с §4 и §2",
+      "why": "Находки по экранам конкретны и совпадают с рендерами."
+    },
+    {
+      "id": "AC-AR-05",
+      "title": "Таблица ориентаций (портрет 390x844, ландшафт 844x390, десктоп 1440x900) с явной готовностью каждой, включая магазин",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 9,
+      "evidence": "ART_ACCEPTANCE.md §5 + JSON orientations: menu/gameplay/victory/shop × 3, ready=false; магазин по docs/skin/shots/base/shop-* (D-ARTACC-03), монеты против библии",
+      "why": "Все три ориентации BUILD_BRIEF покрыты, «нет макета» не засчитано за готовность."
+    },
+    {
+      "id": "AC-AR-06",
+      "title": "Сверка с UI_ART_BIBLE по разделам и с картой скина docs/skin/map.json",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 8,
+      "evidence": "§2 части карты (scene PASS, scene-game FAIL, icons/items/offers PASS — подтверждено просмотром design/icons/CONTACT_SHEET.png: UI-набор assets/ui без плиты), §6 таблица по 7 разделам библии; отсутствие раздела «не так» записано в D-ARTACC-04",
+      "why": "Сверка по разделам есть; несовпадение путей offers в карте скина замечено."
+    },
+    {
+      "id": "AC-AR-07",
+      "title": "Список возврата конкретный и полный: исполнитель шага-адресата может закрыть все дефекты по нему",
+      "mandatory": true,
+      "status": "PARTIAL",
+      "score": 5,
+      "evidence": "§8 + returnTo: адресаты верные (assets, design-screens, design-icons), задачи для экранов конкретны. Для assets список ~30 id и §7 «эталон» содержит pu_*, tile_*_roots, icon_*, у которых тот же дефект → следующая приёмка снова упадёт",
+      "why": "Возврат на assets неполный и частично вводит в заблуждение: эталоном назван дефектный набор."
+    },
+    {
+      "id": "AC-AR-08",
+      "title": "Только свой writeSet (design/review/**, журнал решений); защищённые пути SDK/UI Kit/темы не тронуты; генераций нет",
+      "mandatory": true,
+      "status": "PASS",
+      "score": 10,
+      "evidence": "git show --stat 3234a36 055f58d: только design/review/* (7 файлов) и docs/gdd/DECISIONS.md; git diff --check → exit 0; ART_ACCEPTANCE.json generatedImages 0",
+      "why": "Чисто."
+    }
+  ],
+  "extraStyleCloneIds": {
+    "clear": ["core_wall_steel", "fx_bubble", "fx_explosion_core", "icon_bst_fortify", "icon_bst_shockwave", "icon_daily", "icon_gun", "icon_info", "icon_music", "icon_sfx", "icon_shop", "icon_back", "icon_pause", "medal_top3", "pu_bubble", "pu_freeze", "pu_quake", "pu_rebar", "pu_hull", "tile_clay_steel", "tile_clay_roots", "tile_iron_roots", "tile_magma_roots", "tile_magma_oil"],
+    "partial": ["tile_iron_oil", "pu_star", "player_turret_l0", "player_turret_l1", "player_turret_l2", "player_turret_l3", "daily_crate", "pack_commander_cache", "pack_field_kit", "pack_heavy_arsenal", "node_lock", "ctrl_stick_base"],
+    "note": "clear — объект нарисован поверх или внутри той же бирюзовой плиты с оранжевым гекс-кристаллом из STYLE_REF; partial — кристалл-вставка как лишний оранжевый акцент (библия Palette: оранжевый = один фокус). icon_back/icon_pause есть только в тексте §3, в JSON их нет. Чистые: app_icon, ctrl_fire, ctrl_stick_knob, fx_shockwave, icon_bst_bubble, icon_enemy_left, icon_haptics, icon_stage, tile_iron_brick, core_wall_brick, scene."
+  },
+  "verdictOfReviewedStep": "Вердикт FAIL по арту подтверждён; дополнить список возврата assets id из extraStyleCloneIds и убрать их из §7 «оставить».",
+  "score": 5
+}

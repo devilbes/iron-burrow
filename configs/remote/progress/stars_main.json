@@ -1,0 +1,1041 @@
+{
+  "name": "progress/stars_main",
+  "data": {
+    "mode": "parallel",
+    "schedule": null,
+    "duration": null,
+    "reset": null,
+    "selection": null,
+    "steps": [
+      {
+        "key": "stars3_1",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 1,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_1.title"
+        }
+      },
+      {
+        "key": "stars3_2",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 2,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_2.title"
+        }
+      },
+      {
+        "key": "stars3_3",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 3,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_3.title"
+        }
+      },
+      {
+        "key": "stars3_4",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 4,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_4.title"
+        }
+      },
+      {
+        "key": "stars3_5",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 5,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_5.title"
+        }
+      },
+      {
+        "key": "stars3_6",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 6,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_6.title"
+        }
+      },
+      {
+        "key": "stars3_7",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 7,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_7.title"
+        }
+      },
+      {
+        "key": "stars3_8",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 8,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_8.title"
+        }
+      },
+      {
+        "key": "stars3_9",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 9,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_9.title"
+        }
+      },
+      {
+        "key": "stars3_10",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 10,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_10.title"
+        }
+      },
+      {
+        "key": "stars3_11",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 11,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_11.title"
+        }
+      },
+      {
+        "key": "stars3_12",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 12,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_12.title"
+        }
+      },
+      {
+        "key": "stars3_13",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 13,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_13.title"
+        }
+      },
+      {
+        "key": "stars3_14",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 14,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_14.title"
+        }
+      },
+      {
+        "key": "stars3_15",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 15,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_15.title"
+        }
+      },
+      {
+        "key": "stars3_16",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 16,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_16.title"
+        }
+      },
+      {
+        "key": "stars3_17",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 17,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_17.title"
+        }
+      },
+      {
+        "key": "stars3_18",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 18,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_18.title"
+        }
+      },
+      {
+        "key": "stars3_19",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 19,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_19.title"
+        }
+      },
+      {
+        "key": "stars3_20",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 20,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_20.title"
+        }
+      },
+      {
+        "key": "stars3_21",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 21,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_21.title"
+        }
+      },
+      {
+        "key": "stars3_22",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 22,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_22.title"
+        }
+      },
+      {
+        "key": "stars3_23",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 23,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_23.title"
+        }
+      },
+      {
+        "key": "stars3_24",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 24,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_24.title"
+        }
+      },
+      {
+        "key": "stars3_25",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 25,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_25.title"
+        }
+      },
+      {
+        "key": "stars3_26",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 26,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_26.title"
+        }
+      },
+      {
+        "key": "stars3_27",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 27,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_27.title"
+        }
+      },
+      {
+        "key": "stars3_28",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 28,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_28.title"
+        }
+      },
+      {
+        "key": "stars3_29",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 29,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_29.title"
+        }
+      },
+      {
+        "key": "stars3_30",
+        "conditions": [
+          {
+            "key": "three_stars",
+            "event": "levelEnd",
+            "sources": [
+              "client"
+            ],
+            "filters": {
+              "set": "main",
+              "n": 30,
+              "won": true,
+              "verified": true
+            },
+            "operation": "max",
+            "field": "stars",
+            "target": 3,
+            "maxValue": 3,
+            "payload": {}
+          }
+        ],
+        "reward": [
+          {
+            "id": "bst_bubble",
+            "amount": 1
+          }
+        ],
+        "claimMode": "auto",
+        "ui": {},
+        "payload": {
+          "title": "progress.stars_main.stars3_30.title"
+        }
+      }
+    ],
+    "groups": [],
+    "ttl": null,
+    "ui": {},
+    "payload": {
+      "title": "progress.stars_main.title"
+    }
+  },
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": []
+}

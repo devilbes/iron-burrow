@@ -1,0 +1,15 @@
+{
+  "scope": "iap.placements",
+  "key": "start_grant",
+  "revision": 1,
+  "schemaId": "iap.placements@2",
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": [],
+  "readAt": "2026-11-19T11:28Z",
+  "data": {
+    "offers": [
+      "start_grant"
+    ]
+  }
+}

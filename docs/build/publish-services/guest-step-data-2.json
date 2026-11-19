@@ -1,0 +1,169 @@
+[
+ {
+  "title": "auth/init",
+  "status": 200,
+  "rid": null,
+  "body": {
+   "gid": 32091,
+   "restoredBy": "new_guest"
+  }
+ },
+ {
+  "title": "progress/me/init (before)",
+  "status": 200,
+  "rid": null,
+  "body": [
+   {
+    "key": "progress_main",
+    "status": "active",
+    "level_1": "available",
+    "rewards": []
+   },
+   {
+    "key": "stars_main",
+    "status": "active",
+    "level_1": "available",
+    "rewards": []
+   },
+   {
+    "key": "reward_daily",
+    "status": "active",
+    "level_1": "available",
+    "rewards": []
+   }
+  ]
+ },
+ {
+  "title": "inventory before",
+  "status": 200,
+  "rid": null,
+  "body": {
+   "updatedAt": "2026-11-19T11:34:12.498Z",
+   "serverTime": "2026-11-19T11:34:12.599Z"
+  }
+ },
+ {
+  "title": "attempts/begin",
+  "status": 200,
+  "rid": null,
+  "body": {
+   "attemptId": "6afedeb429adc430e862f92e",
+   "seed": "H8lDWKk4UekYZFeMWmv2zsmM4YqXYqip3XCTT9aQFSI"
+  }
+ },
+ {
+  "title": "levelEnd level 1 (moves 0, durationMs 61000, score 5000)",
+  "status": 202,
+  "rid": null,
+  "body": {
+   "eventId": "509b5f1d-e99d-4988-a24b-ddb1a9722a7a",
+   "status": "accepted",
+   "acceptedAt": "2026-11-19T11:35:14.714Z",
+   "duplicate": false,
+   "level": {
+    "verified": true,
+    "stars": 3
+   }
+  }
+ },
+ {
+  "title": "progress/me/init (after)",
+  "status": 200,
+  "rid": null,
+  "body": [
+   {
+    "key": "progress_main",
+    "status": "active",
+    "steps": {
+     "level_1": "completed",
+     "level_2": "available"
+    },
+    "rewards": [
+     {
+      "operationId": "6afedef229adc430e862f933",
+      "attemptId": "7b4f9d4bfe4ef523963f6b83",
+      "targetKey": "level_1",
+      "claimMode": "auto",
+      "status": "issued",
+      "reward": [
+       {
+        "id": "bst_bubble",
+        "amount": 1
+       }
+      ],
+      "grantResult": {
+       "status": "granted",
+       "applied": [
+        {
+         "id": "bst_bubble",
+         "amount": 1
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "key": "stars_main",
+    "status": "active",
+    "steps": {
+     "stars3_1": "completed",
+     "stars3_2": "available"
+    },
+    "rewards": [
+     {
+      "operationId": "6afedef229adc430e862f934",
+      "attemptId": "d5aa63d49385251115636cdd",
+      "targetKey": "stars3_1",
+      "claimMode": "auto",
+      "status": "issued",
+      "reward": [
+       {
+        "id": "bst_bubble",
+        "amount": 1
+       }
+      ],
+      "grantResult": {
+       "status": "granted",
+       "applied": [
+        {
+         "id": "bst_bubble",
+         "amount": 1
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "key": "reward_daily",
+    "status": "active",
+    "steps": {
+     "day_1": "available",
+     "day_2": "locked"
+    },
+    "rewards": []
+   }
+  ]
+ },
+ {
+  "title": "inventory after",
+  "status": 200,
+  "rid": null,
+  "body": {
+   "inventoryVersion": 2,
+   "items": [
+    {
+     "collection": "main",
+     "itemId": "bst_bubble",
+     "stackId": "default",
+     "quantity": 2,
+     "stateVersion": 2,
+     "updatedAt": "2026-11-19T11:35:15.258Z"
+    }
+   ],
+   "updatedAt": "2026-11-19T11:35:15.258Z",
+   "serverTime": "2026-11-19T11:35:23.037Z"
+  }
+ }
+]

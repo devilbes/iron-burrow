@@ -1,0 +1,16 @@
+{
+  "scope": "ads.game.placements",
+  "key": "start_grant",
+  "revision": 1,
+  "schemaId": "ads.game.placements@5",
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": [],
+  "readAt": "2026-11-19T11:28Z",
+  "data": {
+    "name": "Welcome gift",
+    "domains": [
+      "iap"
+    ]
+  }
+}

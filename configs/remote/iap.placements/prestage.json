@@ -1,0 +1,11 @@
+{
+  "name": "iap.placements/prestage",
+  "data": {
+    "offers": [
+      "hull_pack"
+    ]
+  },
+  "visibility": 3,
+  "enabled": true,
+  "conditionals": []
+}

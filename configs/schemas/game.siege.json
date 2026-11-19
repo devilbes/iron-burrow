@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Siege mode",
+  "description": "Iron Burrow — Siege mode: numbers read by the game through sdk.configs.get('game.siege', 'main'). Values from GDD 31 plat.configs; item, offer, level-set and board ids match the published service records.",
+  "x-ui": {
+    "label": "Siege mode"
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "unlock_after_stage",
+    "level_set_id",
+    "level_id",
+    "wave_size",
+    "max_alive",
+    "brute_share",
+    "lives",
+    "continue_max",
+    "kill_mult_per_wave",
+    "wave_clear_bonus_per_wave"
+  ],
+  "properties": {
+    "unlock_after_stage": {
+      "title": "unlock_after_stage",
+      "description": "Iron Burrow tunable `unlock_after_stage` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "unlock_after_stage"
+      },
+      "type": "integer",
+      "minimum": 0
+    },
+    "level_set_id": {
+      "title": "level_set_id",
+      "description": "Iron Burrow tunable `level_set_id` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "level_set_id"
+      },
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "level_id": {
+      "title": "level_id",
+      "description": "Iron Burrow tunable `level_id` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "level_id"
+      },
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "wave_size": {
+      "title": "wave_size",
+      "description": "Iron Burrow tunable `wave_size` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "wave_size"
+      },
+      "type": "integer",
+      "minimum": 0
+    },
+    "max_alive": {
+      "title": "max_alive",
+      "description": "Iron Burrow tunable `max_alive` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "max_alive"
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "base",
+        "wave_div",
+        "cap"
+      ],
+      "properties": {
+        "base": {
+          "title": "base",
+          "description": "Iron Burrow tunable `base` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "base"
+          },
+          "type": "integer",
+          "minimum": 0
+        },
+        "wave_div": {
+          "title": "wave_div",
+          "description": "Iron Burrow tunable `wave_div` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "wave_div"
+          },
+          "type": "integer",
+          "minimum": 0
+        },
+        "cap": {
+          "title": "cap",
+          "description": "Iron Burrow tunable `cap` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "cap"
+          },
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "brute_share": {
+      "title": "brute_share",
+      "description": "Iron Burrow tunable `brute_share` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "brute_share"
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "per_wave",
+        "cap"
+      ],
+      "properties": {
+        "per_wave": {
+          "title": "per_wave",
+          "description": "Iron Burrow tunable `per_wave` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "per_wave"
+          },
+          "type": "number",
+          "minimum": 0
+        },
+        "cap": {
+          "title": "cap",
+          "description": "Iron Burrow tunable `cap` (GDD 31 plat.configs).",
+          "x-ui": {
+            "label": "cap"
+          },
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "lives": {
+      "title": "lives",
+      "description": "Iron Burrow tunable `lives` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "lives"
+      },
+      "type": "integer",
+      "minimum": 0
+    },
+    "continue_max": {
+      "title": "continue_max",
+      "description": "Iron Burrow tunable `continue_max` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "continue_max"
+      },
+      "type": "integer",
+      "minimum": 0
+    },
+    "kill_mult_per_wave": {
+      "title": "kill_mult_per_wave",
+      "description": "Iron Burrow tunable `kill_mult_per_wave` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "kill_mult_per_wave"
+      },
+      "type": "number",
+      "minimum": 0
+    },
+    "wave_clear_bonus_per_wave": {
+      "title": "wave_clear_bonus_per_wave",
+      "description": "Iron Burrow tunable `wave_clear_bonus_per_wave` (GDD 31 plat.configs).",
+      "x-ui": {
+        "label": "wave_clear_bonus_per_wave"
+      },
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

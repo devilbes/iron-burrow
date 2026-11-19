@@ -1,6 +1,6 @@
 {
   "itemId": "bst_bubble",
-  "itemType": "item",
+  "itemType": "stackable",
   "isStackable": true,
   "maxBalance": null,
   "attrsSchema": null,
