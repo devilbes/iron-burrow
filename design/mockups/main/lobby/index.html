@@ -59,10 +59,10 @@
 <body><main id="screen"></main>
 <script type="module">
 import {button,boot,t} from '../../shared.mjs';
-const screen=await boot('lobby');
+const app=await boot('lobby');const screen=app.root;
 screen.innerHTML=`<header class="lobby-header"><div class="lobby-brand">${t('ui.lobby.title')}</div><nav class="lobby-nav" aria-label="Services"><div data-part="topbar-daily"></div><div data-part="topbar-shop"></div><div data-part="topbar-leaderboards"></div><div data-part="topbar-settings"></div></nav></header>
 <div class="lobby-content"><figure class="lobby-hero"><img src="/assets/ui/screens/lobby.png" alt="The teal Burrower drill tank guards the warm amber Core in its steel hangar"><figcaption>${t('story.ch1.intro.line')}</figcaption></figure>
-<section class="lobby-actions" aria-label="Campaign"><div class="lobby-eyebrow">${t('ui.map.title')}</div><h1>${t('ui.lobby.title')}</h1><p class="chapter">${t('ui.map.chapter_1')}</p><p class="lobby-stage">${t('ui.lobby.play_sub').replace('{n}','6')}</p><div class="lobby-buttons"><div data-part="lobby-play" data-cta="primary"></div><div data-part="lobby-siege" data-state="open"></div></div><div class="lobby-progress" data-part="lobby-stars"><strong>★ ${t('ui.lobby.stars').replace('{stars}','12')}</strong><span>${t('ui.map.title')}</span></div></section></div>`;
+<section class="lobby-actions" aria-label="Campaign"><div class="lobby-eyebrow">${t('ui.map.title')}</div><h1>${t('ui.lobby.title')}</h1><p class="chapter">${t('ui.map.chapter_1')}</p><p class="lobby-stage">${t('ui.lobby.play_sub').replace('{n}','7')}</p><div class="lobby-buttons"><div data-part="lobby-play" data-cta="primary"></div><div data-part="lobby-siege" data-state="open"></div></div><div class="lobby-progress" data-part="lobby-stars"><strong><img src="/assets/ui/icons/rating-star.png" alt="Stars" style="width:24px;height:24px"> ${t('ui.lobby.stars').replace('{stars}','16')}</strong><span>${t('ui.map.title')}</span></div></section></div>`;
 for(const [part,key] of [['daily','ui.topbar.daily'],['shop','ui.topbar.shop'],['leaderboards','ui.topbar.leaderboards'],['settings','ui.topbar.settings']])await button(screen.querySelector('[data-part="topbar-'+part+'"]'),t(key),{});
 await button(screen.querySelector('[data-part="lobby-play"]'),t('ui.lobby.play'),{primary:true,onclick:()=>location.href='../stage-map/index.html'});
 await button(screen.querySelector('[data-part="lobby-siege"]'),t('ui.lobby.siege'),{onclick:()=>location.href='../game/index.html'});

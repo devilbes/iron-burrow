@@ -1,0 +1,1360 @@
+{
+  "pass": true,
+  "views": [
+    {
+      "screen": "main/lobby",
+      "size": "1440x900",
+      "file": "design/mockups/contact/main-lobby-1440x900.png",
+      "ready": true,
+      "id": "lobby",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Daily",
+          "w": 88,
+          "h": 48,
+          "left": 1032,
+          "top": 24,
+          "right": 1120,
+          "bottom": 72,
+          "disabled": false
+        },
+        {
+          "label": "Shop",
+          "w": 88,
+          "h": 48,
+          "left": 1128,
+          "top": 24,
+          "right": 1216,
+          "bottom": 72,
+          "disabled": false
+        },
+        {
+          "label": "Ranks",
+          "w": 88,
+          "h": 48,
+          "left": 1224,
+          "top": 24,
+          "right": 1312,
+          "bottom": 72,
+          "disabled": false
+        },
+        {
+          "label": "Settings",
+          "w": 88,
+          "h": 48,
+          "left": 1320,
+          "top": 24,
+          "right": 1408,
+          "bottom": 72,
+          "disabled": false
+        },
+        {
+          "label": "Play",
+          "w": 516,
+          "h": 56,
+          "left": 832,
+          "top": 509.546875,
+          "right": 1348,
+          "bottom": 565.546875,
+          "disabled": false
+        },
+        {
+          "label": "Siege",
+          "w": 516,
+          "h": 48,
+          "left": 832,
+          "top": 577.546875,
+          "right": 1348,
+          "bottom": 625.546875,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "main/lobby",
+      "size": "844x390",
+      "file": "design/mockups/contact/main-lobby-844x390.png",
+      "ready": true,
+      "id": "lobby",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Daily",
+          "w": 88,
+          "h": 48,
+          "left": 448,
+          "top": 12,
+          "right": 536,
+          "bottom": 60,
+          "disabled": false
+        },
+        {
+          "label": "Shop",
+          "w": 88,
+          "h": 48,
+          "left": 544,
+          "top": 12,
+          "right": 632,
+          "bottom": 60,
+          "disabled": false
+        },
+        {
+          "label": "Ranks",
+          "w": 88,
+          "h": 48,
+          "left": 640,
+          "top": 12,
+          "right": 728,
+          "bottom": 60,
+          "disabled": false
+        },
+        {
+          "label": "Settings",
+          "w": 88,
+          "h": 48,
+          "left": 736,
+          "top": 12,
+          "right": 824,
+          "bottom": 60,
+          "disabled": false
+        },
+        {
+          "label": "Play",
+          "w": 339.796875,
+          "h": 56,
+          "left": 480.1875,
+          "top": 208.15625,
+          "right": 819.984375,
+          "bottom": 264.15625,
+          "disabled": false
+        },
+        {
+          "label": "Siege",
+          "w": 339.796875,
+          "h": 48,
+          "left": 480.1875,
+          "top": 272.15625,
+          "right": 819.984375,
+          "bottom": 320.15625,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "main/lobby",
+      "size": "390x844",
+      "file": "design/mockups/contact/main-lobby-390x844.png",
+      "ready": true,
+      "id": "lobby",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Daily",
+          "w": 83.5,
+          "h": 48,
+          "left": 16,
+          "top": 60,
+          "right": 99.5,
+          "bottom": 108,
+          "disabled": false
+        },
+        {
+          "label": "Shop",
+          "w": 83.5,
+          "h": 48,
+          "left": 107.5,
+          "top": 60,
+          "right": 191,
+          "bottom": 108,
+          "disabled": false
+        },
+        {
+          "label": "Ranks",
+          "w": 83.5,
+          "h": 48,
+          "left": 199,
+          "top": 60,
+          "right": 282.5,
+          "bottom": 108,
+          "disabled": false
+        },
+        {
+          "label": "Settings",
+          "w": 83.5,
+          "h": 48,
+          "left": 290.5,
+          "top": 60,
+          "right": 374,
+          "bottom": 108,
+          "disabled": false
+        },
+        {
+          "label": "Play",
+          "w": 342,
+          "h": 56,
+          "left": 24,
+          "top": 650.40625,
+          "right": 366,
+          "bottom": 706.40625,
+          "disabled": false
+        },
+        {
+          "label": "Siege",
+          "w": 342,
+          "h": 48,
+          "left": 24,
+          "top": 718.40625,
+          "right": 366,
+          "bottom": 766.40625,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "main/stage-map",
+      "size": "1440x900",
+      "file": "design/mockups/contact/main-stage-map-1440x900.png",
+      "ready": true,
+      "id": "stage-map",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Back",
+          "w": 60,
+          "h": 48,
+          "left": 32,
+          "top": 48,
+          "right": 92,
+          "bottom": 96,
+          "disabled": false
+        },
+        {
+          "label": "Clay Tunnels",
+          "w": 230,
+          "h": 48,
+          "left": 32,
+          "top": 326.40625,
+          "right": 262,
+          "bottom": 374.40625,
+          "disabled": false
+        },
+        {
+          "label": "Iron Works",
+          "w": 230,
+          "h": 48,
+          "left": 32,
+          "top": 390.40625,
+          "right": 262,
+          "bottom": 438.40625,
+          "disabled": true
+        },
+        {
+          "label": "Magma Depths",
+          "w": 230,
+          "h": 48,
+          "left": 32,
+          "top": 480,
+          "right": 262,
+          "bottom": 528,
+          "disabled": true
+        },
+        {
+          "label": "1",
+          "w": 72,
+          "h": 48,
+          "left": 463,
+          "top": 324,
+          "right": 535,
+          "bottom": 372,
+          "disabled": false
+        },
+        {
+          "label": "2",
+          "w": 72,
+          "h": 48,
+          "left": 637,
+          "top": 324,
+          "right": 709,
+          "bottom": 372,
+          "disabled": false
+        },
+        {
+          "label": "3",
+          "w": 72,
+          "h": 48,
+          "left": 811,
+          "top": 324,
+          "right": 883,
+          "bottom": 372,
+          "disabled": false
+        },
+        {
+          "label": "4",
+          "w": 72,
+          "h": 48,
+          "left": 985,
+          "top": 324,
+          "right": 1057,
+          "bottom": 372,
+          "disabled": false
+        },
+        {
+          "label": "5",
+          "w": 72,
+          "h": 48,
+          "left": 1159,
+          "top": 324,
+          "right": 1231,
+          "bottom": 372,
+          "disabled": false
+        },
+        {
+          "label": "6",
+          "w": 72,
+          "h": 48,
+          "left": 1159,
+          "top": 480,
+          "right": 1231,
+          "bottom": 528,
+          "disabled": false
+        },
+        {
+          "label": "7",
+          "w": 72,
+          "h": 48,
+          "left": 985,
+          "top": 480,
+          "right": 1057,
+          "bottom": 528,
+          "disabled": false
+        },
+        {
+          "label": "8",
+          "w": 72,
+          "h": 48,
+          "left": 811,
+          "top": 480,
+          "right": 883,
+          "bottom": 528,
+          "disabled": true
+        },
+        {
+          "label": "9",
+          "w": 72,
+          "h": 48,
+          "left": 637,
+          "top": 480,
+          "right": 709,
+          "bottom": 528,
+          "disabled": true
+        },
+        {
+          "label": "10",
+          "w": 72,
+          "h": 48,
+          "left": 463,
+          "top": 480,
+          "right": 535,
+          "bottom": 528,
+          "disabled": true
+        },
+        {
+          "label": "Play Stage 7",
+          "w": 230,
+          "h": 56,
+          "left": 1178,
+          "top": 790,
+          "right": 1408,
+          "bottom": 846,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "main/stage-map",
+      "size": "844x390",
+      "file": "design/mockups/contact/main-stage-map-844x390.png",
+      "ready": true,
+      "id": "stage-map",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Back",
+          "w": 60,
+          "h": 48,
+          "left": 12,
+          "top": 12,
+          "right": 72,
+          "bottom": 60,
+          "disabled": false
+        },
+        {
+          "label": "Clay Tunnels",
+          "w": 152,
+          "h": 48,
+          "left": 12,
+          "top": 85.609375,
+          "right": 164,
+          "bottom": 133.609375,
+          "disabled": false
+        },
+        {
+          "label": "Iron Works",
+          "w": 152,
+          "h": 48,
+          "left": 12,
+          "top": 141.609375,
+          "right": 164,
+          "bottom": 189.609375,
+          "disabled": true
+        },
+        {
+          "label": "Magma Depths",
+          "w": 152,
+          "h": 48,
+          "left": 12,
+          "top": 219,
+          "right": 164,
+          "bottom": 267,
+          "disabled": true
+        },
+        {
+          "label": "1",
+          "w": 58,
+          "h": 48,
+          "left": 226.921875,
+          "top": 128,
+          "right": 284.921875,
+          "bottom": 176,
+          "disabled": false
+        },
+        {
+          "label": "2",
+          "w": 58,
+          "h": 48,
+          "left": 349.953125,
+          "top": 128,
+          "right": 407.953125,
+          "bottom": 176,
+          "disabled": false
+        },
+        {
+          "label": "3",
+          "w": 58,
+          "h": 48,
+          "left": 472.984375,
+          "top": 128,
+          "right": 530.984375,
+          "bottom": 176,
+          "disabled": false
+        },
+        {
+          "label": "4",
+          "w": 58,
+          "h": 48,
+          "left": 596.03125,
+          "top": 128,
+          "right": 654.03125,
+          "bottom": 176,
+          "disabled": false
+        },
+        {
+          "label": "5",
+          "w": 58,
+          "h": 48,
+          "left": 719.0625,
+          "top": 128,
+          "right": 777.0625,
+          "bottom": 176,
+          "disabled": false
+        },
+        {
+          "label": "6",
+          "w": 58,
+          "h": 48,
+          "left": 719.0625,
+          "top": 216,
+          "right": 777.0625,
+          "bottom": 264,
+          "disabled": false
+        },
+        {
+          "label": "7",
+          "w": 58,
+          "h": 48,
+          "left": 596.03125,
+          "top": 216,
+          "right": 654.03125,
+          "bottom": 264,
+          "disabled": false
+        },
+        {
+          "label": "8",
+          "w": 58,
+          "h": 48,
+          "left": 472.984375,
+          "top": 216,
+          "right": 530.984375,
+          "bottom": 264,
+          "disabled": true
+        },
+        {
+          "label": "9",
+          "w": 58,
+          "h": 48,
+          "left": 349.953125,
+          "top": 216,
+          "right": 407.953125,
+          "bottom": 264,
+          "disabled": true
+        },
+        {
+          "label": "10",
+          "w": 58,
+          "h": 48,
+          "left": 226.921875,
+          "top": 216,
+          "right": 284.921875,
+          "bottom": 264,
+          "disabled": true
+        },
+        {
+          "label": "Play Stage 7",
+          "w": 180,
+          "h": 56,
+          "left": 652,
+          "top": 318,
+          "right": 832,
+          "bottom": 374,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "main/stage-map",
+      "size": "390x844",
+      "file": "design/mockups/contact/main-stage-map-390x844.png",
+      "ready": true,
+      "id": "stage-map",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Back",
+          "w": 60,
+          "h": 48,
+          "left": 16,
+          "top": 19,
+          "right": 76,
+          "bottom": 67,
+          "disabled": false
+        },
+        {
+          "label": "Clay Tunnels",
+          "w": 114,
+          "h": 63.375,
+          "left": 16,
+          "top": 82,
+          "right": 130,
+          "bottom": 145.375,
+          "disabled": false
+        },
+        {
+          "label": "Iron Works",
+          "w": 114,
+          "h": 48,
+          "left": 138,
+          "top": 82,
+          "right": 252,
+          "bottom": 130,
+          "disabled": true
+        },
+        {
+          "label": "Magma Depths",
+          "w": 114,
+          "h": 63.375,
+          "left": 260,
+          "top": 82,
+          "right": 374,
+          "bottom": 145.375,
+          "disabled": true
+        },
+        {
+          "label": "1",
+          "w": 64,
+          "h": 48,
+          "left": 95,
+          "top": 302.6875,
+          "right": 159,
+          "bottom": 350.6875,
+          "disabled": false
+        },
+        {
+          "label": "2",
+          "w": 64,
+          "h": 48,
+          "left": 231,
+          "top": 302.6875,
+          "right": 295,
+          "bottom": 350.6875,
+          "disabled": false
+        },
+        {
+          "label": "3",
+          "w": 64,
+          "h": 48,
+          "left": 231,
+          "top": 371.09375,
+          "right": 295,
+          "bottom": 419.09375,
+          "disabled": false
+        },
+        {
+          "label": "4",
+          "w": 64,
+          "h": 48,
+          "left": 95,
+          "top": 371.09375,
+          "right": 159,
+          "bottom": 419.09375,
+          "disabled": false
+        },
+        {
+          "label": "5",
+          "w": 64,
+          "h": 48,
+          "left": 95,
+          "top": 439.484375,
+          "right": 159,
+          "bottom": 487.484375,
+          "disabled": false
+        },
+        {
+          "label": "6",
+          "w": 64,
+          "h": 48,
+          "left": 231,
+          "top": 439.484375,
+          "right": 295,
+          "bottom": 487.484375,
+          "disabled": false
+        },
+        {
+          "label": "7",
+          "w": 64,
+          "h": 48,
+          "left": 231,
+          "top": 507.890625,
+          "right": 295,
+          "bottom": 555.890625,
+          "disabled": false
+        },
+        {
+          "label": "8",
+          "w": 64,
+          "h": 48,
+          "left": 95,
+          "top": 507.890625,
+          "right": 159,
+          "bottom": 555.890625,
+          "disabled": true
+        },
+        {
+          "label": "9",
+          "w": 64,
+          "h": 48,
+          "left": 95,
+          "top": 576.296875,
+          "right": 159,
+          "bottom": 624.296875,
+          "disabled": true
+        },
+        {
+          "label": "10",
+          "w": 64,
+          "h": 48,
+          "left": 231,
+          "top": 576.296875,
+          "right": 295,
+          "bottom": 624.296875,
+          "disabled": true
+        },
+        {
+          "label": "Play Stage 7",
+          "w": 180,
+          "h": 56,
+          "left": 194,
+          "top": 748,
+          "right": 374,
+          "bottom": 804,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "main/game",
+      "size": "1440x900",
+      "file": "design/mockups/contact/main-game-1440x900.png",
+      "ready": true,
+      "id": "game",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Pause",
+          "w": 160,
+          "h": 48,
+          "left": 59,
+          "top": 639.984375,
+          "right": 219,
+          "bottom": 687.984375,
+          "disabled": false
+        },
+        {
+          "label": "Up",
+          "w": 68,
+          "h": 48,
+          "left": 1260.5,
+          "top": 263.390625,
+          "right": 1328.5,
+          "bottom": 311.390625,
+          "disabled": false
+        },
+        {
+          "label": "Left",
+          "w": 67.5,
+          "h": 48,
+          "left": 1189,
+          "top": 315.390625,
+          "right": 1256.5,
+          "bottom": 363.390625,
+          "disabled": false
+        },
+        {
+          "label": "Down",
+          "w": 68,
+          "h": 48,
+          "left": 1260.5,
+          "top": 315.390625,
+          "right": 1328.5,
+          "bottom": 363.390625,
+          "disabled": false
+        },
+        {
+          "label": "Right",
+          "w": 67.5,
+          "h": 48,
+          "left": 1332.5,
+          "top": 315.390625,
+          "right": 1400,
+          "bottom": 363.390625,
+          "disabled": false
+        },
+        {
+          "label": "FIRE",
+          "w": 211,
+          "h": 56,
+          "left": 1189,
+          "top": 387.390625,
+          "right": 1400,
+          "bottom": 443.390625,
+          "disabled": false
+        },
+        {
+          "label": "Shield · 2",
+          "w": 211,
+          "h": 48,
+          "left": 1189,
+          "top": 459.390625,
+          "right": 1400,
+          "bottom": 507.390625,
+          "disabled": false
+        },
+        {
+          "label": "Shockwave · 1",
+          "w": 211,
+          "h": 48,
+          "left": 1189,
+          "top": 515.390625,
+          "right": 1400,
+          "bottom": 563.390625,
+          "disabled": false
+        },
+        {
+          "label": "Fortress · 1",
+          "w": 211,
+          "h": 48,
+          "left": 1189,
+          "top": 571.390625,
+          "right": 1400,
+          "bottom": 619.390625,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "main/game",
+      "size": "844x390",
+      "file": "design/mockups/contact/main-game-844x390.png",
+      "ready": true,
+      "id": "game",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Pause",
+          "w": 160,
+          "h": 48,
+          "left": 24,
+          "top": 326.859375,
+          "right": 184,
+          "bottom": 374.859375,
+          "disabled": false
+        },
+        {
+          "label": "Up",
+          "w": 68,
+          "h": 48,
+          "left": 692.5,
+          "top": 36,
+          "right": 760.5,
+          "bottom": 84,
+          "disabled": false
+        },
+        {
+          "label": "Left",
+          "w": 65.5,
+          "h": 48,
+          "left": 625,
+          "top": 86,
+          "right": 690.5,
+          "bottom": 134,
+          "disabled": false
+        },
+        {
+          "label": "Down",
+          "w": 68,
+          "h": 48,
+          "left": 692.5,
+          "top": 86,
+          "right": 760.5,
+          "bottom": 134,
+          "disabled": false
+        },
+        {
+          "label": "Right",
+          "w": 65.5,
+          "h": 48,
+          "left": 762.5,
+          "top": 86,
+          "right": 828,
+          "bottom": 134,
+          "disabled": false
+        },
+        {
+          "label": "FIRE",
+          "w": 203,
+          "h": 56,
+          "left": 625,
+          "top": 142,
+          "right": 828,
+          "bottom": 198,
+          "disabled": false
+        },
+        {
+          "label": "Shield · 2",
+          "w": 203,
+          "h": 48,
+          "left": 625,
+          "top": 202,
+          "right": 828,
+          "bottom": 250,
+          "disabled": false
+        },
+        {
+          "label": "Shockwave · 1",
+          "w": 203,
+          "h": 48,
+          "left": 625,
+          "top": 254,
+          "right": 828,
+          "bottom": 302,
+          "disabled": false
+        },
+        {
+          "label": "Fortress · 1",
+          "w": 203,
+          "h": 48,
+          "left": 625,
+          "top": 306,
+          "right": 828,
+          "bottom": 354,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "main/game",
+      "size": "390x844",
+      "file": "design/mockups/contact/main-game-390x844.png",
+      "ready": true,
+      "id": "game",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Up",
+          "w": 68,
+          "h": 48,
+          "left": 77,
+          "top": 566.703125,
+          "right": 145,
+          "bottom": 614.703125,
+          "disabled": false
+        },
+        {
+          "label": "Left",
+          "w": 55,
+          "h": 48,
+          "left": 16,
+          "top": 620.703125,
+          "right": 71,
+          "bottom": 668.703125,
+          "disabled": false
+        },
+        {
+          "label": "Down",
+          "w": 68,
+          "h": 48,
+          "left": 77,
+          "top": 620.703125,
+          "right": 145,
+          "bottom": 668.703125,
+          "disabled": false
+        },
+        {
+          "label": "Right",
+          "w": 64,
+          "h": 48,
+          "left": 151,
+          "top": 620.703125,
+          "right": 215,
+          "bottom": 668.703125,
+          "disabled": false
+        },
+        {
+          "label": "FIRE",
+          "w": 143,
+          "h": 56,
+          "left": 231,
+          "top": 537.90625,
+          "right": 374,
+          "bottom": 593.90625,
+          "disabled": false
+        },
+        {
+          "label": "Pause",
+          "w": 143,
+          "h": 48,
+          "left": 231,
+          "top": 619.296875,
+          "right": 374,
+          "bottom": 667.296875,
+          "disabled": false
+        },
+        {
+          "label": "Shield · 2",
+          "w": 114,
+          "h": 48,
+          "left": 16,
+          "top": 684.703125,
+          "right": 130,
+          "bottom": 732.703125,
+          "disabled": false
+        },
+        {
+          "label": "Shockwave · 1",
+          "w": 114,
+          "h": 63.375,
+          "left": 138,
+          "top": 684.703125,
+          "right": 252,
+          "bottom": 748.078125,
+          "disabled": false
+        },
+        {
+          "label": "Fortress · 1",
+          "w": 114,
+          "h": 48,
+          "left": 260,
+          "top": 684.703125,
+          "right": 374,
+          "bottom": 732.703125,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "results/stage-clear",
+      "size": "1440x900",
+      "file": "design/mockups/contact/results-stage-clear-1440x900.png",
+      "ready": true,
+      "id": "stage-clear",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Next Stage",
+          "w": 420,
+          "h": 56,
+          "left": 758,
+          "top": 647.796875,
+          "right": 1178,
+          "bottom": 703.796875,
+          "disabled": false
+        },
+        {
+          "label": "Replay",
+          "w": 206,
+          "h": 48,
+          "left": 758,
+          "top": 711.796875,
+          "right": 964,
+          "bottom": 759.796875,
+          "disabled": false
+        },
+        {
+          "label": "Map",
+          "w": 206,
+          "h": 48,
+          "left": 972,
+          "top": 711.796875,
+          "right": 1178,
+          "bottom": 759.796875,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "results/stage-clear",
+      "size": "844x390",
+      "file": "design/mockups/contact/results-stage-clear-844x390.png",
+      "ready": true,
+      "id": "stage-clear",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Next Stage",
+          "w": 115.328125,
+          "h": 56,
+          "left": 442,
+          "top": 310.671875,
+          "right": 557.328125,
+          "bottom": 366.671875,
+          "disabled": false
+        },
+        {
+          "label": "Replay",
+          "w": 115.328125,
+          "h": 48,
+          "left": 565.328125,
+          "top": 310.671875,
+          "right": 680.65625,
+          "bottom": 358.671875,
+          "disabled": false
+        },
+        {
+          "label": "Map",
+          "w": 115.34375,
+          "h": 48,
+          "left": 688.65625,
+          "top": 310.671875,
+          "right": 804,
+          "bottom": 358.671875,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "results/stage-clear",
+      "size": "390x844",
+      "file": "design/mockups/contact/results-stage-clear-390x844.png",
+      "ready": true,
+      "id": "stage-clear",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Next Stage",
+          "w": 342,
+          "h": 56,
+          "left": 24,
+          "top": 664.875,
+          "right": 366,
+          "bottom": 720.875,
+          "disabled": false
+        },
+        {
+          "label": "Replay",
+          "w": 167,
+          "h": 48,
+          "left": 24,
+          "top": 728.875,
+          "right": 191,
+          "bottom": 776.875,
+          "disabled": false
+        },
+        {
+          "label": "Map",
+          "w": 167,
+          "h": 48,
+          "left": 199,
+          "top": 728.875,
+          "right": 366,
+          "bottom": 776.875,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "results/defeat",
+      "size": "1440x900",
+      "file": "design/mockups/contact/results-defeat-1440x900.png",
+      "ready": true,
+      "id": "defeat",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Continue",
+          "w": 440,
+          "h": 56,
+          "left": 798,
+          "top": 476.578125,
+          "right": 1238,
+          "bottom": 532.578125,
+          "disabled": false
+        },
+        {
+          "label": "Retry",
+          "w": 214,
+          "h": 48,
+          "left": 798,
+          "top": 572.171875,
+          "right": 1012,
+          "bottom": 620.171875,
+          "disabled": false
+        },
+        {
+          "label": "Stage Map",
+          "w": 214,
+          "h": 48,
+          "left": 1024,
+          "top": 572.171875,
+          "right": 1238,
+          "bottom": 620.171875,
+          "disabled": false
+        },
+        {
+          "label": "Get Spare Hull",
+          "w": 440,
+          "h": 48,
+          "left": 798,
+          "top": 632.171875,
+          "right": 1238,
+          "bottom": 680.171875,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "results/defeat",
+      "size": "844x390",
+      "file": "design/mockups/contact/results-defeat-844x390.png",
+      "ready": true,
+      "id": "defeat",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Continue",
+          "w": 453.609375,
+          "h": 56,
+          "left": 358.390625,
+          "top": 165.984375,
+          "right": 812,
+          "bottom": 221.984375,
+          "disabled": false
+        },
+        {
+          "label": "Retry",
+          "w": 222.796875,
+          "h": 48,
+          "left": 358.390625,
+          "top": 250.78125,
+          "right": 581.1875,
+          "bottom": 298.78125,
+          "disabled": false
+        },
+        {
+          "label": "Stage Map",
+          "w": 222.8125,
+          "h": 48,
+          "left": 589.1875,
+          "top": 250.78125,
+          "right": 812,
+          "bottom": 298.78125,
+          "disabled": false
+        },
+        {
+          "label": "Get Spare Hull",
+          "w": 453.609375,
+          "h": 48,
+          "left": 358.390625,
+          "top": 306.78125,
+          "right": 812,
+          "bottom": 354.78125,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    },
+    {
+      "screen": "results/defeat",
+      "size": "390x844",
+      "file": "design/mockups/contact/results-defeat-390x844.png",
+      "ready": true,
+      "id": "defeat",
+      "overflow": {
+        "x": 0,
+        "y": 0
+      },
+      "broken": [],
+      "buttons": [
+        {
+          "label": "Continue",
+          "w": 342,
+          "h": 56,
+          "left": 24,
+          "top": 595.375,
+          "right": 366,
+          "bottom": 651.375,
+          "disabled": false
+        },
+        {
+          "label": "Retry",
+          "w": 165,
+          "h": 48,
+          "left": 24,
+          "top": 690.96875,
+          "right": 189,
+          "bottom": 738.96875,
+          "disabled": false
+        },
+        {
+          "label": "Stage Map",
+          "w": 165,
+          "h": 48,
+          "left": 201,
+          "top": 690.96875,
+          "right": 366,
+          "bottom": 738.96875,
+          "disabled": false
+        },
+        {
+          "label": "Get Spare Hull",
+          "w": 342,
+          "h": 48,
+          "left": 24,
+          "top": 750.96875,
+          "right": 366,
+          "bottom": 798.96875,
+          "disabled": false
+        }
+      ],
+      "unresolved": [],
+      "issues": []
+    }
+  ],
+  "missing": [],
+  "notes": [
+    "Read-only fallback to /project/repo for intentionally omitted reference art.",
+    "Five generated illustrations, one generation each. Static gameplay visualization; no runtime implementation claimed."
+  ]
+}
