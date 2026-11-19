@@ -247,7 +247,8 @@ const ACTIONS = `${ROW}{flex-flow:row wrap;justify-content:center;align-items:ce
   + `${ROW}>button${SECOND}{order:2;min-width:min(${v('game-button-min')},100%);min-height:48px;margin-bottom:8px}`
   // Landscape windows are low: the kit puts the row on one line, and so does the skin — main action first.
   + `[data-orientation=landscape] ${ROW}::before{display:none}`
-  + `[data-orientation=landscape] ${ROW}>button{min-height:48px;margin-bottom:0}`
+  + `[data-orientation=landscape] ${ROW}>button{flex:0 1 auto;min-width:min(${v('game-button-min-low')},100%);min-height:48px;margin-bottom:0;`
+  + `padding-inline:${v('game-button-pad-tight')}}`
   // Price buttons of the shop: the same limits, centred under their pack.
   + `.dialog :is(.iap-row,.iap-slide)>.iap-buy${OVER}{align-self:center;width:auto;min-width:min(${v('game-button-min')},100%);`
   + `max-width:min(${v('game-button-max')},100%);padding-inline:${v('game-button-pad')}}`;
@@ -282,6 +283,8 @@ const DAILY = `.dialog .daily-day{border:0;border-radius:0;`
   + `.dialog .daily-day[data-state=available]{border:0;${layers(DAY_GLOW)}}`
   + `.daily-day .daily-art,.daily-day .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-day'))}}`
   + `.dialog .daily-day[data-wide] .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-tile'))}}`
+  + `[data-orientation=landscape] .daily-day:not([data-wide]) .daily-art,`
+  + `[data-orientation=landscape] .daily-day:not([data-wide]) .daily-art :is(.mp-art-icon,.mp-glyph,img){${ART(v('game-art-day-low'))}}`
   + `.daily-amount{font:400 16px/1.2 ${v('mp-font-display')}}`
   + `.daily-day :is(.daily-check,.daily-lock){top:4px;right:4px;border:0;border-radius:0;clip-path:polygon(${v('game-cut-badge')} 0,100% 0,`
   + `100% calc(100% - ${v('game-cut-badge')}),calc(100% - ${v('game-cut-badge')}) 100%,0 100%,0 ${v('game-cut-badge')})}`
@@ -303,13 +306,17 @@ const LEADERBOARD = `.lbw-table{${UNDERLAY};padding:4px 0}`
   + `color-mix(in srgb,var(--_medal) 70%,${v('game-shade')}));box-shadow:${v('game-shadow-raised')};`
   + `clip-path:polygon(${BC} 0,calc(100% - ${BC}) 0,100% ${BC},100% 100%,0 100%,0 ${BC})}`
   // The lowest step (20px, rank 3 and every step in landscape): the number fits its height.
-  + `.lbw-step{display:grid;place-items:center;line-height:1}`
+  + `.lbw-step{display:grid;place-items:center;line-height:1}.lbw-pod[data-rank="3"] .lbw-step{font-size:14px}`
   + `.lbw-mine{${UNDERLAY};background:${v('game-self')}}`
   + `.lbw-mine .lbw-avatar{background:${v('game-steel-teal')};color:${v('mp-card-fg')}}`
   + `.lbw-mine .lbw-rank{color:${v('mp-card-success')}}`;
 
 // ---- Confirm (recolor): the subject is one underlay, its picture bare and big.
 const CONFIRM = `.cf-item{${UNDERLAY}}.cf-tile{background:none;box-shadow:none;border:0}`
+  // A landscape phone gives the kit's confirm window little height (even the stock subject runs under
+  // its buttons there): the subject goes compact.
+  + `[data-orientation=landscape] .cf-item{padding-block:4px;min-height:0}`
+  + `[data-orientation=landscape] .cf-tile,[data-orientation=landscape] .cf-tile>*{width:40px;height:40px}`
   + `.cf-price{font-family:${v('mp-font-display')};font-weight:400;color:${v('mp-card-gold')}}`;
 
 // ---- Reward received (recolor + the shared rules above): the list of what came is one underlay.

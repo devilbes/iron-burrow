@@ -140,10 +140,13 @@
   --game-button-min-primary:13rem;   /* the main action: wider, on a line of its own */
   --game-button-max:18rem;
   --game-button-pad:1.75rem;         /* side room of the label */
+  --game-button-pad-tight:1rem;      /* landscape: the row shares one line */
+  --game-button-min-low:6.5rem;      /* landscape: narrower minimum, the row is one line */
   --game-button-h-primary:56px;      /* id-button-face: primary 56, others 48 */
   --game-art-tile:56px;              /* item pictures: tiles of the shop and windows */
   --game-art-reward:72px;            /* tiles of the reward window */
   --game-art-day:48px;               /* daily reward cells */
+  --game-art-day-low:36px;           /* daily cells of a landscape window (the kit's cells are low) */
   --game-day-h:96px;                 /* a daily cell: title, picture, count */
   --game-art-offer:112px;            /* the pack picture of a featured shop offer */
   --game-art-offer-row:64px;         /* the pack picture at the head of a shop row */
