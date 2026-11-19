@@ -42,12 +42,12 @@ const WINDOW_PATH = `polygon(evenodd,0 0,100% 0,100% ${O},calc(100% - ${C}) ${O}
   + `calc(100% - ${C} - ${S}) calc(100% + ${S}),calc(${C} + ${S}) calc(100% + ${S}),`
   + `calc(0px - ${S}) calc(100% - ${C} - ${S}),calc(0px - ${S}) calc(${O} + ${C} + ${S}),${C} ${O},0 ${O})`;
 
-/** One background layer: image, position / size; never repeated. */
+/** One background layer: image, `position|size` (`|`: calc() of a place may divide); never repeated. */
 type Layer = readonly [image: string, place: string];
 const layers = (list: readonly Layer[]): string => `background-color:transparent;`
   + `background-image:${list.map(([image]) => image).join(',')};`
-  + `background-position:${list.map(([, place]) => place.split('/')[0]).join(',')};`
-  + `background-size:${list.map(([, place]) => place.split('/')[1]).join(',')};`
+  + `background-position:${list.map(([, place]) => place.split('|')[0]).join(',')};`
+  + `background-size:${list.map(([, place]) => place.split('|')[1]).join(',')};`
   + `background-repeat:no-repeat;background-origin:border-box;background-clip:border-box`;
 const solid = (color: string): string => `linear-gradient(${color},${color})`;
 
@@ -80,21 +80,21 @@ const LIGHT = v('game-plate-light');
 const DARK = v('game-plate-dark');
 
 const WINDOW_LAYERS: Layer[] = [
-  ...CORNERS.map(([x, y]) => [RIVET, `${at(x, y, RIVET_AT, RIVET_AT)}/${v('game-rivet')} ${v('game-rivet')}`] as Layer),
-  ...CORNERS.map(([x, y, angle]) => [slitDiag(angle), `${at(x, y, '0px', '0px')}/${SLIT_BOX} ${SLIT_BOX}`] as Layer),
-  [slitLine('180deg'), `left ${SLIT_END} top calc(${O} + ${v('game-slit-inset')} - 2px)/calc(100% - 2 * ${SLIT_END}) 5px`],
-  [slitLine('0deg'), `left ${SLIT_END} bottom calc(${v('game-slit-inset')} - 2px)/calc(100% - 2 * ${SLIT_END}) 5px`],
-  [slitLine('90deg'), `left calc(${v('game-slit-inset')} - 2px) top calc(${O} + ${SLIT_END})/5px calc(100% - ${O} - 2 * ${SLIT_END})`],
-  [slitLine('270deg'), `right calc(${v('game-slit-inset')} - 2px) top calc(${O} + ${SLIT_END})/5px calc(100% - ${O} - 2 * ${SLIT_END})`],
-  ...CORNERS.map(([x, y, angle]) => [edgeDiag(angle, y === 'top' ? LIGHT : DARK), `${at(x, y, '0px', '0px')}/${EDGE_BOX} ${EDGE_BOX}`] as Layer),
-  [solid(LIGHT), `left 0 top calc(${O} + ${IN})/100% ${BEVEL}`],
-  [solid(DARK), `left 0 bottom ${IN}/100% ${BEVEL}`],
-  [solid(LIGHT), `left ${IN} top ${O}/${BEVEL} calc(100% - ${O})`],
-  [solid(DARK), `right ${IN} top ${O}/${BEVEL} calc(100% - ${O})`],
+  ...CORNERS.map(([x, y]) => [RIVET, `${at(x, y, RIVET_AT, RIVET_AT)}|${v('game-rivet')} ${v('game-rivet')}`] as Layer),
+  ...CORNERS.map(([x, y, angle]) => [slitDiag(angle), `${at(x, y, '0px', '0px')}|${SLIT_BOX} ${SLIT_BOX}`] as Layer),
+  [slitLine('180deg'), `left ${SLIT_END} top calc(${O} + ${v('game-slit-inset')} - 2px)|calc(100% - 2 * ${SLIT_END}) 5px`],
+  [slitLine('0deg'), `left ${SLIT_END} bottom calc(${v('game-slit-inset')} - 2px)|calc(100% - 2 * ${SLIT_END}) 5px`],
+  [slitLine('90deg'), `left calc(${v('game-slit-inset')} - 2px) top calc(${O} + ${SLIT_END})|5px calc(100% - ${O} - 2 * ${SLIT_END})`],
+  [slitLine('270deg'), `right calc(${v('game-slit-inset')} - 2px) top calc(${O} + ${SLIT_END})|5px calc(100% - ${O} - 2 * ${SLIT_END})`],
+  ...CORNERS.map(([x, y, angle]) => [edgeDiag(angle, y === 'top' ? LIGHT : DARK), `${at(x, y, '0px', '0px')}|${EDGE_BOX} ${EDGE_BOX}`] as Layer),
+  [solid(LIGHT), `left 0 top calc(${O} + ${IN})|100% ${BEVEL}`],
+  [solid(DARK), `left 0 bottom ${IN}|100% ${BEVEL}`],
+  [solid(LIGHT), `left ${IN} top ${O}|${BEVEL} calc(100% - ${O})`],
+  [solid(DARK), `right ${IN} top ${O}|${BEVEL} calc(100% - ${O})`],
   // The steel itself: slate_blue under the light at the top, slate_abyss in the shade at the bottom.
   [`linear-gradient(180deg,${v('mp-card-raised')},${v('mp-card-surface')} 18%,${v('mp-card-background')} 62%,`
-    + `${v('mp-window-background')})`, `left ${IN} top calc(${O} + ${IN})/calc(100% - 2 * ${IN}) calc(100% - ${O} - 2 * ${IN})`],
-  [solid(v('mp-window-background')), `left 0 top ${O}/100% calc(100% - ${O})`],
+    + `${v('mp-window-background')})`, `left ${IN} top calc(${O} + ${IN})|calc(100% - 2 * ${IN}) calc(100% - ${O} - 2 * ${IN})`],
+  [solid(v('mp-window-background')), `left 0 top ${O}|100% calc(100% - ${O})`],
 ];
 
 const DIALOG = '.dialog-backdrop .dialog';
@@ -108,10 +108,10 @@ const WINDOW = `${DIALOG}{border:0;border-radius:0;padding-top:0;${layers(WINDOW
 // ---- Nameplate (id-nameplate): slate_mid plate, 45° ends, a glowing magma line under the text.
 const CH = v('game-plate-chamfer');
 const PLATE_LAYERS: Layer[] = [
-  [`linear-gradient(0deg,${v('game-magma-glow')},transparent)`, `center bottom/calc(100% - 2 * ${CH}) 10px`],
-  [solid(v('mp-card-accent')), `center bottom/calc(100% - 2 * ${CH}) ${v('game-plate-line')}`],
-  [solid(LIGHT), `center top/calc(100% - 2 * ${CH}) 1px`],
-  [`linear-gradient(180deg,${v('mp-card-line-strong')},${v('mp-card-raised')} 40%,${v('mp-card-surface')})`, 'center/100% 100%'],
+  [`linear-gradient(0deg,${v('game-magma-glow')},transparent)`, `center bottom|calc(100% - 2 * ${CH}) 10px`],
+  [solid(v('mp-card-accent')), `center bottom|calc(100% - 2 * ${CH}) ${v('game-plate-line')}`],
+  [solid(LIGHT), `center top|calc(100% - 2 * ${CH}) 1px`],
+  [`linear-gradient(180deg,${v('mp-card-line-strong')},${v('mp-card-raised')} 40%,${v('mp-card-surface')})`, 'center|100% 100%'],
 ];
 const TITLE_TEXT = `font-family:${v('mp-font-display')};font-weight:${v('kit-title-weight')};`
   + `text-transform:uppercase;letter-spacing:${v('kit-title-tracking')};color:${v('kit-title-top')};`
@@ -130,9 +130,9 @@ const BAR = (angle: string): string => `linear-gradient(${angle},transparent cal
   + `${v('game-frost')} 0 calc(50% + ${v('game-close-bar')} / 2),transparent 0)`;
 const CC = v('game-cut-close');
 const CLOSE_LAYERS: Layer[] = [
-  [BAR('45deg'), `center/${v('game-close-bar-len')} ${v('game-close-bar-len')}`],
-  [BAR('135deg'), `center/${v('game-close-bar-len')} ${v('game-close-bar-len')}`],
-  [`linear-gradient(180deg,${v('mp-card-line-strong')},${v('mp-card-raised')} 45%,${v('mp-card-surface')})`, 'center/100% 100%'],
+  [BAR('45deg'), `center|${v('game-close-bar-len')} ${v('game-close-bar-len')}`],
+  [BAR('135deg'), `center|${v('game-close-bar-len')} ${v('game-close-bar-len')}`],
+  [`linear-gradient(180deg,${v('mp-card-line-strong')},${v('mp-card-raised')} 45%,${v('mp-card-surface')})`, 'center|100% 100%'],
 ];
 const CLOSE_SEL = `${HEAD}>.dialog-close${OVER}`;
 const CLOSE = `${CLOSE_SEL}{width:${v('game-close-size')};height:${v('game-close-size')};min-height:0;`
@@ -150,19 +150,23 @@ const CLOSE = `${CLOSE_SEL}{width:${v('game-close-size')};height:${v('game-close
 // face narrows. Kinds and their selectors are the shell's (src/shell/button-tint.ts BUTTON_KINDS).
 const NEVER = ':not(.mp-button--text,.mp-button--social,.std-action--text)';
 const KIND = Object.entries(BUTTON_KINDS);
-const ANY = `:is(${KIND.flatMap(([, selectors]) => selectors).join(',')})${NEVER}${OVER}`;
+// :where() — no weight beyond `#stock`: raster buttons (src/shell/button-tint.ts, once art.ts declares
+// `button-base`) outweigh these rules, and the cut is dropped then: with the picture's variable the
+// clip path is invalid (a shape and a url together), i.e. none.
+const ANY = `:where(${KIND.flatMap(([, selectors]) => selectors).join(',')})${OVER}:where(${NEVER})`;
+const RASTER_OFF = ' var(--kit-asset-button-base,)';
 const BC = v('game-cut');
 const BUTTON_LAYERS: Layer[] = [
-  [solid(v('game-plate-shine')), `center top/calc(100% - 2 * ${BC}) 1px`],
-  [solid('var(--_edge)'), `center bottom/100% var(--_face)`],
+  [solid(v('game-plate-shine')), `center top|calc(100% - 2 * ${BC}) 1px`],
+  [solid('var(--_edge)'), `center bottom|100% var(--_face)`],
   ['linear-gradient(180deg,color-mix(in srgb,var(--_tint) 78%,var(--mp-card-fg)),var(--_tint) 55%,'
-    + 'color-mix(in srgb,var(--_tint) 88%,var(--game-shade)))', 'center top/100% 100%'],
+    + 'color-mix(in srgb,var(--_tint) 88%,var(--game-shade)))', 'center top|100% 100%'],
 ];
-const BUTTONS = KIND.map(([kind, selectors]) => `:is(${selectors.join(',')}){--_tint:var(--game-button-${kind});`
+const BUTTONS = KIND.map(([kind, selectors]) => `:where(${selectors.join(',')}){--_tint:var(--game-button-${kind});`
   + `--_edge:var(--game-button-${kind}-edge);--_ink:var(--game-button-${kind}-text,var(--game-button-text))}`).join('')
   + `${ANY}{--_face:${v('game-button-face')};position:relative;border:0;border-radius:0;color:var(--_ink);`
   + `font-family:${v('mp-font-ui')};font-weight:700;letter-spacing:.02em;padding-bottom:var(--_face);`
-  + `${layers(BUTTON_LAYERS)};box-shadow:${v('game-shadow-raised')};clip-path:${platePath(BC, '6px')};`
+  + `${layers(BUTTON_LAYERS)};box-shadow:${v('game-shadow-raised')};clip-path:${platePath(BC, '6px')}${RASTER_OFF};`
   + 'transition:transform .06s,filter .12s}'
   + `${ANY}:not(:disabled,[aria-disabled=true]):hover{${layers(BUTTON_LAYERS)};filter:brightness(1.08)}`
   + `.mp-button--primary${OVER}:not(:disabled):hover,.std-action--primary${OVER}:not(:disabled):hover{--_tint:${v('mp-card-accent-hover')}}`
@@ -174,8 +178,8 @@ const BUTTONS = KIND.map(([kind, selectors]) => `:is(${selectors.join(',')}){--_
 // ---- Plates: top bar capsules and HUD tiles, shop cards, daily cells, the mine row of the
 // leaderboard, small icon buttons — the same steel with cut corners (UI_ART_BIBLE Shape).
 const PLATE_FILL: Layer[] = [
-  [solid(LIGHT), `center top/calc(100% - 2 * ${BC}) 1px`],
-  [`linear-gradient(180deg,${v('mp-card-raised')},${v('mp-card-surface')} 45%,${v('mp-card-background')})`, 'center/100% 100%'],
+  [solid(LIGHT), `center top|calc(100% - 2 * ${BC}) 1px`],
+  [`linear-gradient(180deg,${v('mp-card-raised')},${v('mp-card-surface')} 45%,${v('mp-card-background')})`, 'center|100% 100%'],
 ];
 const PLATES = ['.hud-capsule', '.hud[data-slot=top]>.hud-item', '.hud[data-slot=left] .hud-item', '.hud[data-slot=right] .hud-item',
   '.bottommenu .hud-item', '.iap-pack', '.daily-day', '.lbw-mine', '.mp-icon-button'].map((s) => `${s}${OVER}`).join(',');
