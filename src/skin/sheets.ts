@@ -253,12 +253,10 @@ const ACTIONS = `${ROW}{flex-flow:row wrap;justify-content:center;align-items:ce
   + `padding-inline:${v('game-button-pad')}}`
   + `${ROW}>button${SECOND}{order:2;min-width:min(${v('game-button-min')},100%);min-height:48px;margin-bottom:8px}`
   // A low screen: the kit puts the row on one line, and so does the skin — main action first.
-  // There the kit caps a popup at under half the screen and pins the row over the body: the header
-  // picture goes smaller, and the row gets the dark steel of the plate's lower edge under it (soft at
-  // its top), so what scrolls beneath does not show through between the buttons.
+  // There the kit caps a popup at under half the screen and pins the row over its text: the header
+  // icon of a popup (a picture of its title, the kit's svg; not the stars of a result) gives way.
   + LOW(`${ROW}::before{display:none}${ROW}>button${SECOND}{margin-bottom:0}`
-  + `${ROW}{background:linear-gradient(180deg,transparent,${v('mp-window-background')} 10px)}`
-  + `.dialog>.std-art>svg${OVER}{width:40px;height:40px}`
+  + `.dialog>.std-art>svg${OVER}{display:none}`
   + `${ROW}>button{flex:0 1 auto;min-width:min(${v('game-button-min-low')},100%);min-height:48px;margin-bottom:0;`
   + `padding-inline:${v('game-button-pad-tight')}}`)
   // The retry of an error alert, the same; the alert itself is a tinted underlay without an outline.
