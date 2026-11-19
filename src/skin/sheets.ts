@@ -326,14 +326,14 @@ const LEADERBOARD = `.lbw-table{${UNDERLAY};padding:4px 0}`
   + `.lbw-avatar{${AVATAR};font-family:${v('mp-font-display')};font-weight:400}`
   + `.lbw-pod .lbw-avatar{background:linear-gradient(180deg,${v('mp-card-raised')},${v('mp-card-background')});`
   + `box-shadow:inset 0 0 0 3px var(--_medal);color:${v('mp-card-fg')}}`
-  + `.lbw-pod{--_medal:${v('game-medal-3')}}.lbw-pod[data-rank="1"]{--_medal:${v('game-medal-1')}}`
-  + `.lbw-pod[data-rank="2"]{--_medal:${v('game-medal-2')}}`
+  + `.lbw-pod{--_medal:${v('game-medal-3')}}.lbw-pod[data-rank=\\31]{--_medal:${v('game-medal-1')}}`
+  + `.lbw-pod[data-rank=\\32]{--_medal:${v('game-medal-2')}}`
   + `.lbw-step{border:0;border-radius:0;color:${v('mp-window-background')};font-family:${v('mp-font-display')};`
   + `background:linear-gradient(180deg,color-mix(in srgb,var(--_medal) 85%,${v('mp-card-fg')}),var(--_medal) 40%,`
   + `color-mix(in srgb,var(--_medal) 70%,${v('game-shade')}));box-shadow:${v('game-shadow-raised')};`
   + `clip-path:polygon(${BC} 0,calc(100% - ${BC}) 0,100% ${BC},100% 100%,0 100%,0 ${BC})}`
   // The lowest step (20px, rank 3 and every step in landscape): the number fits its height.
-  + `.lbw-step{display:grid;place-items:center;line-height:1}.lbw-pod[data-rank="3"] .lbw-step{font-size:14px}`
+  + `.lbw-step{display:grid;place-items:center;line-height:1}.lbw-pod[data-rank=\\33] .lbw-step{font-size:14px}`
   + `.lbw-mine{${UNDERLAY};background:${v('game-self')}}`
   + `.lbw-mine .lbw-avatar{background:${v('game-steel-teal')};color:${v('mp-card-fg')}}`
   + `.lbw-mine .lbw-rank{color:${v('mp-card-success')}}`;
