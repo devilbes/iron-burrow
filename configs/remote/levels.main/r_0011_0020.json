@@ -487,11 +487,6 @@
       "seed": {
         "mode": "perAttempt"
       },
-      "win": {
-        "objectives": [
-          "destroy_all"
-        ]
-      },
       "moves": {
         "min": 0,
         "max": 9
