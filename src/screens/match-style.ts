@@ -7,7 +7,7 @@ export const MATCH_CSS = `
 :host{height:100%;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:none}
 .game{display:grid;height:100%;min-height:0;gap:8px;padding:8px;overflow:hidden;
  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
- grid-template-rows:auto var(--field,0px) auto auto minmax(0,1fr);
+ grid-template-rows:auto minmax(0,1fr) auto auto auto;
  grid-template-areas:"a b" "f f" "k k" "t t" "s r"}
 .game[data-layout=landscape],.game[data-layout=desktop]{
  grid-template-columns:minmax(0,1fr) var(--field,0px) minmax(0,1fr);
@@ -16,8 +16,8 @@ export const MATCH_CSS = `
 .game[data-layout=desktop]{padding:16px;gap:16px}
 .panel{display:flex;flex-wrap:wrap;align-items:center;gap:6px;min-width:0}
 .pa{grid-area:a}.pb{grid-area:b;justify-content:flex-end}
-[data-layout=landscape] .pa,[data-layout=desktop] .pa{flex-direction:column;align-items:stretch}
-[data-layout=landscape] .pb,[data-layout=desktop] .pb{flex-direction:column;align-items:stretch}
+[data-layout=landscape] .pa,[data-layout=landscape] .pb{align-content:flex-start}
+[data-layout=desktop] .pa,[data-layout=desktop] .pb{flex-direction:column;align-items:stretch}
 .field-box{grid-area:f;position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0}
 [data-layout=landscape] .field-box,[data-layout=desktop] .field-box{grid-row:1 / -1;height:var(--field,0px)}
 .field{display:block;border-radius:var(--mp-radius-field);touch-action:none}
@@ -34,18 +34,20 @@ export const MATCH_CSS = `
 .pause .long,.pause[data-art=missing] img{display:none}
 .pause[data-art=missing] .long{display:inline}
 .boosters{grid-area:k;display:flex;justify-content:center;flex-wrap:wrap;gap:8px;min-width:0}
-[data-layout=landscape] .boosters,[data-layout=desktop] .boosters{flex-direction:column;align-items:stretch}
+[data-layout=landscape] .boosters{justify-content:flex-end}
+[data-layout=desktop] .boosters{flex-direction:column;align-items:stretch}
 .booster{position:relative;display:block;width:64px;height:64px;padding:3px;border:0;border-radius:var(--mp-radius-button);
  --ring:var(--mp-card-accent);background:conic-gradient(var(--ring) calc(var(--p,0) * 1turn),var(--mp-line) 0);touch-action:none}
 .booster[data-state=active]{--ring:var(--mp-card-success)}
 .booster .face{display:grid;place-items:center;width:100%;height:100%;border-radius:var(--mp-radius-button);
  background:var(--mp-card-surface)}
-[data-layout=landscape] .booster,[data-layout=desktop] .booster{width:100%;height:56px}
-[data-layout=landscape] .booster .face,[data-layout=desktop] .booster .face{grid-template-columns:auto 1fr;gap:6px;padding:0 6px}
+[data-layout=landscape] .booster{width:56px;height:56px}
+[data-layout=desktop] .booster{width:100%;height:56px}
+[data-layout=desktop] .booster .face{grid-template-columns:auto 1fr;gap:6px;padding:0 6px}
 .booster img{width:44px;height:44px;object-fit:contain}
 [data-layout=landscape] .booster img{width:36px;height:36px}
 .booster .bname{display:none;font-size:.7rem;line-height:1.1;text-align:center;overflow-wrap:anywhere}
-[data-layout=landscape] .booster .bname,[data-layout=desktop] .booster .bname{display:block;text-align:left}
+[data-layout=desktop] .booster .bname{display:block;text-align:left}
 .booster[data-art=missing] img{display:none}.booster[data-art=missing] .bname{display:block}
 .booster[data-state=empty],.booster[data-state=limit],.booster[data-state=blocked]{opacity:.55}
 .booster .count{position:absolute;right:-4px;bottom:-4px;min-width:1.6em;padding:0 .3em;border-radius:var(--mp-radius-button);

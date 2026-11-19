@@ -135,7 +135,7 @@ function renderSiege(ctx: ScreenContext, result: StageResult, state: SiegeState)
 /** The level end was not saved: retry it or leave for the map (no close button). */
 export async function openSaveFailed(ctx: ScreenContext): Promise<'retry' | 'leave'> {
   const ticket = ctx.window.open({
-    title: ctx.t('screen.clear.save_failed'),
+    title: ctx.t('screen.clear.save_title'),
     body: (root) => mountView(root, 'save-retry', () =>
       view('div', { class: 'win', 'data-window': 'save-retry', 'data-state': 'failed' },
         view('p', { class: 'plate window-text' }, ctx.t('screen.clear.save_failed'))), { styles: WINDOW_CSS }),

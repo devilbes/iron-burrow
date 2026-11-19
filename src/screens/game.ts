@@ -75,7 +75,8 @@ class GameScreen implements FlowHost {
     this.watch(win);
     this.rendered();
     this.frame = win.requestAnimationFrame((now) => this.tick(now));
-    void startSelected(this);
+    // After the mount returns: a missing selection moves to the map, never inside the router's mount.
+    void Promise.resolve().then(() => { if (!this.gone) return startSelected(this); return undefined; });
   }
 
   private watch(win: Window): void {
