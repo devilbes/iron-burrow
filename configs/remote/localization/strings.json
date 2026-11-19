@@ -367,6 +367,10 @@
       "profile": {
         "levels": "Levels completed",
         "best": "Best score"
+      },
+      "hud": {
+        "boards": "Leaderboards",
+        "shop": "Shop"
       }
     }
   }
