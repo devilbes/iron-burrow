@@ -81,3 +81,22 @@ id из ответов сервисов в конфигах (D-DATA-09): `game.b
 `offer_coins_small`; `item_coins` в `src/boot/ids.ts`) и `tests/skin-readiness.test.mjs`
 (`ITEMS.item_coins` в `src/skin/art.ts`). Валюты в игре нет (контракт), а `ids.ts`/`art.ts` — код
 обвязки и экранов, этот шаг его не меняет: исправляют шаги кода (`CURRENCY`, `ITEMS`, бустеры в `ITEMS`).
+
+## Повторный прогон шага (2026-11-19)
+Записи на сервере не менялись: новых вызовов записи не было, новых отказов платформы нет.
+Повторно запросить данные с сервера через сабагенты сервисов не удалось: платформа исчерпала
+лимит частей шага (36 из 30) и требует сдать шаг (D-DATA-13). Поэтому файлы сверены с
+сохранёнными чтениями обратно `docs/build/publish-services/readback/`:
+- 33 записи (`levels.*`, `progress/*`, `iap.*`, `ads.game.placements/*`, `ui.hud`, `ui.windows`) —
+  `data` совпадает с файлами `configs/remote/` полностью;
+- `localization` `en` — 133/133 ключа, значения совпадают с текущим `strings.json`
+  (`npm run strings`: «up to date»);
+- 9 конфигов `game.*` есть в предпросмотре клиента;
+- `node scripts/levels-hash.mjs --check` — хеши трёх диапазонов сходятся.
+
+`npm run records`: все разделы проходят, кроме трёх строк на `localization/strings.json`
+(`defaultLocale`/`locales` обязательны, `en` лишний). Сохранённая схема сервера `localization@1`
+описывает **настройки языков** (запись без ключа; guidance сервера: «Get without key reads locale
+settings; key selects locale strings»), а `scripts/validate-records.mjs` применяет её и к записи
+строк. Сервис локализации строки принял (версия локали 4, 133 ключа). Схему сервера не
+переписывали, `scripts/**` не меняли: это ложное срабатывание проверки шаблона (D-DATA-13).
