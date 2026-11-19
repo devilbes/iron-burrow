@@ -23,6 +23,7 @@
 | T5 enemy | первый враг активен | `Rustbugs incoming! Destroy all 20.` | = | первое убийство или `tut.enemy_timeout_s` |
 | T6 power-up | первый power-up на поле | `Flashing Rustbugs drop power-ups. Grab it!` | = | подбор или исчезновение power-up |
 
+- Ключи строк (20 `ui.tut.*`, тексты совпадают дословно): T1 `move_keys`/`move_touch`, T2 `fire_keys`/`fire_touch`, T3 `brick`, T4 `core` + `core_selfhit`, T5 `enemy`, T6 `carrier`; Skip — `ui.tut.skip` (D-MRG-04).
 - **Skip**: кнопка `Skip` в правом верхнем углу S15, доступна с T1; без подтверждения. Ставит `tut.stage1_done = true`, снимает удержание спавна (первый спавн через `core.first_spawn_delay_s`). Esc — пауза, не skip.
 - **Клавиатура / тач**: режим по последнему вводу (keydown → keyboard; touch/pointer coarse → touch); стартовый — по `(pointer: coarse)`. Смена режима меняет строку текущего шага сразу. В тач-режиме стрелка указывает на стик/кнопку, в клавиатурном — плашка с клавишами.
 - `tut.stage1_step` = последний завершённый шаг (0–6). Повтор стадии 1 при `step ≥ 4` начинается с T5 без удержания спавна (D-14-04). `tut.stage1_done = true` после T6 или при первом исходе стадии 1 (`cleared`/`defeated`).

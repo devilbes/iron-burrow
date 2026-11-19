@@ -31,4 +31,4 @@ Section decisions from the parallel parts are kept under their ids. Merge decisi
 | DE-MRG-05 | Badges Save 20 % / Save 31 % / Rescue / One-time offer are economy decisions | GDD defines only Best value (D-16-08); the discounts are computed per item vs Field Kit |
 | DE-MRG-06 | Model horizon 14 days (2 daily cycles); the simulator horizon comes from QUALITY_TARGETS only | No threshold facts; the design horizon is not a threshold |
 | DE-MRG-07 | IAP sources use a model bound of 10 purchases per day (Starter: 1) | The simulator needs a numeric perDay value; the store itself has no limit |
-| DE-MRG-08 | First A/B: Hull Pack 5 → 6 hulls at 1.99 | It halves the per-item premium on the main Defeat-screen offer; one parameter, iap.packs |
+| DE-MRG-08 | First A/B: Hull Pack 5 → 6 hulls at 1.99 | It halves the per-item premium on the main Defeat-screen offer; one parameter, iap.packs.hull_pack (D-MRG-02) |

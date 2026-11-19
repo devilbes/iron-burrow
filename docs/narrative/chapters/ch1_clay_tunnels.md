@@ -23,7 +23,7 @@ The Rustbugs break into the clay tunnels for the first time and go straight for 
 - All cards are text only (UI Kit card in the game skin through the UI Kit window queue), skippable by the card's close/OK button or tap outside; skipping counts as seen.
 - **Max 1 story card per screen open.** If two cards qualify on the same open, the earlier beat in `beats.json` wins and the other waits for the next open of its screen.
 - A card never covers a system window: it is queued after grant (S02), daily (S12), rewards (S07 `collected`) and the Starter Crate redirect.
-- Seen state of `once: true` beats: proposed profile-pack kv key `story.seen` (array of beat ids). It is **not yet in 15 `meta.save`**, so it must be added there by the GDD owner / meta-bridge. Until then a beat may be shown again after a reinstall; this is acceptable.
+- Seen state of `once: true` beats: profile-pack kv key `story.seen` (array of beat ids), listed in 15 `meta.save` (D-MRG-03).
 - Crew-log lines are not cards; they are a muted secondary line on S04 and never block Start.
 
 ## Beats

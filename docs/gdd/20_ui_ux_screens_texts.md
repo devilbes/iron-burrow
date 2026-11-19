@@ -279,12 +279,14 @@ Spare Hull в HUD не показывается (только S04 и S08). Ли�
 | ui.settings.guest | Playing as guest |
 | ui.settings.version | Version {version} |
 | ui.tut.move_touch | Drag the stick to drive |
-| ui.tut.move_keys | Use WASD or arrows to drive |
+| ui.tut.move_keys | Drive with Arrow keys or WASD |
 | ui.tut.fire_touch | Tap FIRE to shoot |
-| ui.tut.fire_keys | Press Space to shoot |
-| ui.tut.brick | Shots chew through brick. Steel needs a stronger gun. |
-| ui.tut.core | Protect the Core! One hit and it's over. |
-| ui.tut.carrier | Hit flashing Rustbugs to drop power-ups |
+| ui.tut.fire_keys | Press Space or J to fire |
+| ui.tut.brick | Shots chew through brick. Blast a path! |
+| ui.tut.core | Guard the Burrow Core. One hit and it's gone! |
+| ui.tut.core_selfhit | Even your own shots can break it. |
+| ui.tut.enemy | Rustbugs incoming! Destroy all 20. |
+| ui.tut.carrier | Flashing Rustbugs drop power-ups. Grab it! |
 | ui.tut.booster | In trouble? Tap a booster. |
 | ui.tut.next | Got it |
 | ui.tut.skip | Skip |

@@ -97,7 +97,7 @@ D-15-03: ★★★-награда публикуется как награда �
 |---|---|---|
 | inventory | балансы `bst_bubble`, `bst_shockwave`, `bst_fortify`, `bst_hull` (сервер — источник истины) | boosters |
 | progress (level-set `campaign`, 30 уровней) | по стадии: пройдена, лучшие звёзды 0–3, лучший счёт, выданы ли награды первого прохождения / ★★★ / финала | meta-bridge |
-| profile-pack kv | `settings` = `{v, music, sfx, haptics, motion}` (схема — 23 `aud.settings`); флаги обучения и онбординга `onb.*`, `tut.*` (14 §4); `offer.starter.last_auto_at` (время `sdk.time.now()`), `offer.starter.auto_shows` int, `flag.first_defeat_seen` bool, `booster_info.seen` bool | meta-bridge |
+| profile-pack kv | `settings` = `{v, music, sfx, haptics, motion}` (схема — 23 `aud.settings`); флаги обучения и онбординга `onb.*`, `tut.*` (14 §4); `offer.starter.last_auto_at` (время `sdk.time.now()`), `offer.starter.auto_shows` int, `flag.first_defeat_seen` bool, `booster_info.seen` bool, `story.seen` string[] (id показанных сюжетных битов с `once: true`, D-NAR-07) | meta-bridge |
 | profile-pack gamestate | `campaign.gun_level` 0–3 (перенос между стадиями, сброс при смерти), `campaign.last_stage` int, `campaign.selected_chapter` 1–3, `grant.start_seen` bool (зеркало, источник истины — сервис) | meta-bridge |
 | iap | факт покупки one-time Starter Crate (сервер) | shop |
 | leaderboards | `siege_best`, `campaign_score` | meta-bridge |

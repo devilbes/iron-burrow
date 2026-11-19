@@ -29,19 +29,19 @@
   {
    "id": "hull_pack_size",
    "hypothesis": "A Hull Pack with 6 hulls instead of 5 at the same 1.99 lowers the per-item premium versus Field Kit (from +91% to +60%) and raises Defeat-screen conversion without hurting Field Kit sales",
-   "parameter": "iap.packs",
+   "parameter": "iap.packs.hull_pack",
    "variants": [
     {
      "id": "control",
      "value": 5,
      "modelPath": "/packs/1/contents/bst_hull",
-     "configRef": "iap.packs"
+     "configRef": "iap.packs.hull_pack"
     },
     {
      "id": "hull6",
      "value": 6,
      "modelPath": "/packs/1/contents/bst_hull",
-     "configRef": "iap.packs"
+     "configRef": "iap.packs.hull_pack"
     }
    ],
    "primaryMetric": "payer_conversion",
