@@ -1,0 +1,1 @@
+ok   boot screens 1440x900: neutral first paint, game loader in the skin, home

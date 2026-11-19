@@ -1,0 +1,2 @@
+NOT_RUN: runtime comparison not completed. The installed `studio-gates visual` builds the game and compares its root index.html with these mockups; game integration is outside this screen-only writeSet. The attempted runtime comparison was stopped. No official df-visual PASS is claimed.
+Screen authoring evidence: BROWSER_CHECK.txt and VERIFY.json cover five HTML mockups at all three requested sizes, independently of the runtime comparison.

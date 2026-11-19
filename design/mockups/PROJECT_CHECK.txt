@@ -5,3 +5,4 @@ npm notice run node scripts/check.mjs
 ok   build (types, bundle, dist/) (135.7 s)
 ok   pictures of assets/ (1x made from 2x) (3.5 s)
 FAIL records of configs/remote/ (4.9 s)
+FAIL tests (223.6 s) — 130 tests
