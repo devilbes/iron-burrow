@@ -1,0 +1,20 @@
+{
+  "scale": 2,
+  "assets": [
+    {
+      "id": "probe-gem",
+      "file": "probe-gem.png",
+      "prompt": "a shiny green gem"
+    },
+    {
+      "id": "probe-key",
+      "file": "probe-key.png",
+      "prompt": "a golden key"
+    },
+    {
+      "id": "probe-heart",
+      "file": "probe-heart.png",
+      "prompt": "a red heart"
+    }
+  ]
+}
