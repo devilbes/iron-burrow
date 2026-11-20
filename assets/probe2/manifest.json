@@ -1,0 +1,10 @@
+{
+  "scale": 2,
+  "assets": [
+    {
+      "id": "probe2-gem",
+      "file": "probe2-gem.png",
+      "prompt": "a shiny green gem"
+    }
+  ]
+}
