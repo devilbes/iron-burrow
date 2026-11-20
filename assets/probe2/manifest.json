@@ -5,6 +5,61 @@
       "id": "probe2-gem",
       "file": "probe2-gem.png",
       "prompt": "a shiny green gem"
+    },
+    {
+      "id": "probe2-key",
+      "file": "probe2-key.png",
+      "prompt": "a golden key"
+    },
+    {
+      "id": "probe2-heart",
+      "file": "probe2-heart.png",
+      "prompt": "a red heart"
+    },
+    {
+      "id": "probe2-coin",
+      "file": "probe2-coin.png",
+      "prompt": "a gold coin"
+    },
+    {
+      "id": "probe2-star",
+      "file": "probe2-star.png",
+      "prompt": "a yellow star"
+    },
+    {
+      "id": "probe2-shield",
+      "file": "probe2-shield.png",
+      "prompt": "a blue shield"
+    },
+    {
+      "id": "probe2-bomb",
+      "file": "probe2-bomb.png",
+      "prompt": "a round black bomb with a fuse"
+    },
+    {
+      "id": "probe2-clock",
+      "file": "probe2-clock.png",
+      "prompt": "an alarm clock"
+    },
+    {
+      "id": "probe2-potion",
+      "file": "probe2-potion.png",
+      "prompt": "a purple potion bottle"
+    },
+    {
+      "id": "probe2-crown",
+      "file": "probe2-crown.png",
+      "prompt": "a golden crown"
+    },
+    {
+      "id": "probe2-rocket",
+      "file": "probe2-rocket.png",
+      "prompt": "a small red rocket"
+    },
+    {
+      "id": "probe2-mushroom",
+      "file": "probe2-mushroom.png",
+      "prompt": "a red spotted mushroom"
     }
   ]
 }
