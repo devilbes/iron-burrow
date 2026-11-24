@@ -1,0 +1,11 @@
+{
+  "tool": "apps.metadata.get",
+  "timestamp": "2026-11-24T18:23:50Z",
+  "attempts": [
+    {"n": 1, "arguments": {}, "rawError": "Error POSTing to endpoint: {\"code\":\"MCP_UPSTREAM_KEY_REJECTED\",\"msg\":\"The MCP server rejected the application key of this run (401): the key is expired, revoked or issued for another environment.\"}"},
+    {"n": 2, "arguments": {}, "rawError": "Error POSTing to endpoint: {\"code\":\"MCP_UPSTREAM_KEY_REJECTED\",\"msg\":\"The MCP server rejected the application key of this run (401): the key is expired, revoked or issued for another environment.\"}"}
+  ],
+  "code": "MCP_UPSTREAM_KEY_REJECTED",
+  "message": "The MCP server rejected the application key of this run (401): the key is expired, revoked or issued for another environment.",
+  "rid": null
+}

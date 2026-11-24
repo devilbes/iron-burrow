@@ -1,0 +1,10 @@
+{
+  "tool": "apps.portal.readiness",
+  "timestamp": "2026-11-24T18:23:50Z",
+  "inputSchema": {"type":"object","properties":{},"additionalProperties":false},
+  "note": "inputSchema accepts no parameters (additionalProperties:false), so no resource/locale variants can be passed; called with {} twice.",
+  "attempts": [
+    {"n": 1, "arguments": {}, "raw": {"error":{"code":"NOT_FOUND","msg":"apps.portal.readiness: resource — not found.","details":{"field":"resource","reason":"NOT_FOUND","expected":"an existing resource accessible to this application","actual":"not reported by upstream","upstream":"panel"},"hint":"List or read the resource in this application, then call apps.portal.readiness with its resource. Foreign and missing resources return the same error.","rid":"faa87f70-31f7-46c7-a996-08741f95493f"}}},
+    {"n": 2, "arguments": {}, "raw": {"error":{"code":"NOT_FOUND","msg":"apps.portal.readiness: resource — not found.","details":{"field":"resource","reason":"NOT_FOUND","expected":"an existing resource accessible to this application","actual":"not reported by upstream","upstream":"panel"},"hint":"List or read the resource in this application, then call apps.portal.readiness with its resource. Foreign and missing resources return the same error.","rid":"f3f3b322-311b-46d5-9182-e6dcd688eb56"}}}
+  ]
+}

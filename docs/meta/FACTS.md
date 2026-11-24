@@ -1,7 +1,7 @@
 # Iron Burrow — факты для меты
 
 Дата сбора: 24.11.2026. Здесь только то, что подтверждено файлами проекта или наблюдением опубликованной сборки. Если факта нет, он помечен как «не подтверждено».
-Сырые ответы инструментов лежат в `docs/meta/current/`, наблюдение сборки — в `docs/meta/current/build-observation/OBSERVATION.md` (там же снимки).
+Сырые ответы инструментов лежат в `docs/meta/current/` (`apps.info.json`, `apps.catalog.get.json`, `projects.qa.current.json`, `mcp.session.get.json`; ошибки: `apps.metadata.get.error.json`, `apps.portal.readiness.error.json`, `portal.game.meta.*.unavailable.json`), наблюдение сборки — в `docs/meta/current/build-observation/OBSERVATION.md` (там же снимки).
 
 ## 1. Название и код
 | Факт | Значение | Источник |
@@ -74,7 +74,12 @@
 - Что это значит для пути сохранения: published build для скриншотов есть, но это сборка test-окружения. Скриншоты и обложки портала загружаются как `portal-cover`/`portal-screenshot` (dev/test) через `assets.upload.*` и записываются в мету через `apps.metadata.update` (`covers`, `screenshots`). Ссылки web в `storeLinks` пока нет.
 
 ## 10. Текущая мета: что заполнено, что пусто, что неверно
-Удалось прочитать только `apps.info` (version 1) и `apps.catalog.get` (version 1). **`apps.metadata.get` вернул 401 `MCP_UPSTREAM_KEY_REJECTED`** (две попытки), **`portal.game.meta.get` и `portal.game.meta.candidates` в MCP нет**, `apps.portal.readiness` вернул `NOT_FOUND`. Поэтому состояние портальной меты (SEO, FAQ, гайды, обложки, скриншоты, жанр, похожие игры) не прочитано.
+Удалось прочитать только `apps.info` (version 1) и `apps.catalog.get` (version 1). Повторное чтение 24.11.2026 18:23Z дало те же ошибки, что и первое в 18:03Z:
+- **`apps.metadata.get` → 401 `MCP_UPSTREAM_KEY_REJECTED`**, 2 попытки, rid не вернулся. Ключ приложения в этом прогоне истёк, отозван или выдан для другого окружения. Ответ в `current/apps.metadata.get.error.json`.
+- **`apps.portal.readiness` → `NOT_FOUND`** («resource — not found», upstream panel), 2 попытки, rid `faa87f70-…`, `f3f3b322-…`. Схема инструмента не принимает параметров, поэтому передать ресурс нельзя. Ответ в `current/apps.portal.readiness.error.json`.
+- `portal.game.meta.get` и `portal.game.meta.candidates` в MCP нет.
+
+Поэтому состояние портальной меты (SEO, FAQ, гайды, обложки, скриншоты, жанр, похожие игры) не прочитано. **Это блокер MF-2.** Нужно перевыпустить или проверить ключ приложения в Studio и повторить чтение. Писать мету вслепую поверх version 1 нельзя.
 
 | Поле | Состояние | Источник |
 |---|---|---|
