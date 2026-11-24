@@ -7,6 +7,15 @@
 | MM-1 apps.metadata.update (не dryRun), version выросла, en+ru | НЕ ВЫПОЛНЕНО: version = 1 (apps.info), обновления не было |
 | MM-2 обложка + ≥4 скриншота по HTTPS, 200 image/* | НЕ ВЫПОЛНЕНО: файлы не сняты и не загружены |
 
+## Повторный запуск (24.11.2026)
+- `mcp.session.get`: appId 360, env test, scope `apps.metadata.read` и `apps.metadata.write` на месте.
+- `find_tools` находит `apps.metadata.get`, `apps.metadata.update`, `apps.portal.readiness` и `apps.icon.update` на `/apps`. `request_tool` отвечает «granted», но вызвать их в сессии всё равно нельзя: ToolSearch по имени ничего не находит.
+- Переменной `MANYPLAY_MCP_URL` в окружении нет, поэтому прямой вызов тоже невозможен.
+- `apps.info`: version **1** (не изменилась), `icon512 = null`.
+- Итог: MM-1 и MM-2 **не выполнены**. Скриншоты не снимались, картинки не загружались, `qa.publish` не запускался: без `apps.metadata.update` адреса всё равно не попадут в мету (D-MT-11).
+- Readiness: прочитать нельзя, инструмент недоступен.
+- Языки, готовые к сохранению: en (основной), ru (`docs/meta/texts/*.json`).
+
 ## Причины
 1. Инструменты `apps.metadata.get`, `apps.metadata.update`, `apps.portal.readiness` и `apps.icon.update` есть у ключа: find_tools показывает их на пути `/apps`, scope apps.metadata.write есть. Однако в сессии агента их нельзя вызвать: request_tool ответил «granted», а инструменты так и не появились. Ключа и адреса MCP в окружении нет, поэтому прямой вызов `/apps` тоже невозможен.
 2. `projects.upload.begin` (purpose project-file) разрешает только корни src/, assets/, art/, docs/, configs/, localization/, stores/, scripts/ и tests/. Пути `public/meta/` из запроса там нет. Варианты: класть файлы в `assets/meta/`, если сборка его публикует, или разрешить `public/` на платформе. Это решает владелец или платформа.
