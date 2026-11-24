@@ -1,0 +1,1 @@
+{"tool":"apps.metadata.get","error":{"code":"MCP_UPSTREAM_KEY_REJECTED","msg":"The MCP server rejected the application key of this run (401): the key is expired, revoked or issued for another environment.","attempts":2},"at":"2026-11-24T18:03:40Z"}
