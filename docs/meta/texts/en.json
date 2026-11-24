@@ -1,0 +1,243 @@
+{
+  "locale": "en",
+  "primary": true,
+  "gameLocales": [
+    "en"
+  ],
+  "sourceFacts": "docs/meta/FACTS.md (24.11.2026)",
+  "fields": {
+    "name": "Iron Burrow",
+    "slug": "iron-burrow-tank-maze-defense",
+    "h1": "Iron Burrow: Underground Tank Maze Defense in Your Browser",
+    "seoTitle": "Iron Burrow: Tank Maze Defense | ManyPlay",
+    "seoDescription": "Drive an iron drill-tank through a destructible maze and guard the Burrow Core from 20 Rustbugs per stage. 30 stages, endless Siege, no ads.",
+    "shortDescription": "Blast through brick mazes in a drill-tank and guard the Core from Rustbugs.",
+    "storeDescription": "Iron Burrow is a top-down arcade tank shooter set deep underground. You drive the Burrower, a stubby iron drill-tank, through mazes of clay brick and steel plate, defending the glowing Burrow Core at the bottom of the map. Destroy 20 Rustbugs, the beetle-shaped scrap tanks that roll in from above, and the stage is yours. Let a single shot hit the Core and it is over. The maze fights back and so can you. Every shot chews through brick a quarter of a block at a time, so you reshape the map while you play. Carve a shortcut, open a firing lane, or keep the wall around the Core thick and safe. Flashing Rustbugs drop pickups when hit: a star upgrades your gun, a bubble makes you briefly untouchable, rebar turns the Core wall to steel for a while, a quake wipes out every Rustbug on the field, freeze stops them cold, and hull gives you an extra life. Your boosters are the emergency kit: Bubble Shield, Shockwave, Steel Fortress and Spare Hull. New players start with 2 of each. What is inside: 30 campaign stages across three chapters, Clay Tunnels, The Iron Works and Magma Depths. Up to 3 stars per stage, 90 in total. Siege, an endless mode that unlocks after stage 5. Leaderboards for your best Siege run and your campaign score. Daily rewards on a 7-day cycle. Short stages that fit a coffee break. Play in the browser on desktop with the keyboard or on your phone with a floating stick and a FIRE button, in portrait or landscape. There are no ads at all and no in-game currency. An optional shop sells booster packs for real money. The game is in English and needs an internet connection.",
+    "body": "Iron Burrow is a top-down arcade tank shooter set deep underground. You drive the Burrower, a stubby iron drill-tank, through mazes of clay brick and steel plate. At the bottom of every map sits the glowing Burrow Core. Your job is easy to explain and hard to pull off: destroy 20 Rustbugs, the beetle-shaped scrap tanks that roll in from above, and keep the Core in one piece. One hit on the Core and the stage is lost. The maze is part of the fight. Every shot chews through brick a quarter of a block at a time, so the layout changes while you play. Cut a shortcut to reach a Rustbug faster, open a firing lane, or think twice before you blast a hole that leaves the Core exposed. Steel shrugs off a basic gun, so it shapes the routes that you and the Rustbugs can take until your gun is strong enough to break it. Some Rustbugs flash. Hit one and it drops a pickup on the field. A star upgrades your gun, a bubble makes you briefly invulnerable, rebar turns the wall around the Core into steel for a while, a quake wipes out every Rustbug on the field, freeze stops them in their tracks, and hull gives you an extra life. Grab pickups quickly, because they do not stay on the field for long. When things go wrong, boosters are your emergency kit. Bubble Shield protects your tank, Shockwave clears the field, Steel Fortress hardens the Core wall, and Spare Hull adds a life before a stage or lets you continue after a defeat. New players start with 2 of each, and clearing stages earns more. The campaign has 30 stages across three chapters: Clay Tunnels, The Iron Works and Magma Depths. Each stage awards up to 3 stars, 90 in total, and the cleaner your run, the more stars you take home. Stages are short, so a quick break is enough for a few of them. Clear stage 5 to unlock Siege, an endless mode where you hold out as long as you can and chase a high score on the leaderboards. Leaderboards also track your campaign score, and a 7-day daily reward cycle gives you a reason to drop by each day. Iron Burrow plays in the browser on desktop and mobile. On a keyboard you move with the arrow keys or WASD, hold Space or J to fire, press 1, 2 or 3 for boosters, and press Esc or P to pause. On a touch screen a floating stick drives the tank and a FIRE button shoots, with booster buttons on the HUD. Portrait and landscape both work, and turning your phone pauses the game so you can settle in before the next shot. There are no ads at all and no in-game currency. An optional shop sells booster packs for real money. The game is in English and needs an internet connection. In the settings you can adjust Music, Sound and Reduce Motion, plus Vibration on touch devices.",
+    "faq": [
+      {
+        "question": "How do I control the tank?",
+        "answer": "On a keyboard, move with the arrow keys or WASD, hold Space or J to fire, press 1, 2 or 3 to use boosters, and press Esc or P to pause. On a touch screen, drag the floating stick to drive in four directions, hold the FIRE button to shoot and tap the booster buttons on the HUD. The mouse only works for menu buttons."
+      },
+      {
+        "question": "Which languages does Iron Burrow support?",
+        "answer": "The game is in English only. All menus, hints and messages are shown in English."
+      },
+      {
+        "question": "Which devices can I play on?",
+        "answer": "Iron Burrow runs in a web browser on desktop and on mobile phones. On a phone you can play in portrait or landscape. There is no separate app to install."
+      },
+      {
+        "question": "Do I have to pay to play?",
+        "answer": "No purchase is needed to play. The game has no in-game currency. An optional shop sells booster packs for real money, and you also get boosters as a starter gift for new players and as stage rewards."
+      },
+      {
+        "question": "How do I unlock Siege?",
+        "answer": "Clear stage 5 of the campaign. Siege is an endless mode with a leaderboard for your best score."
+      },
+      {
+        "question": "Do I need an internet connection?",
+        "answer": "Yes. Iron Burrow is an online browser game and needs an internet connection to run."
+      },
+      {
+        "question": "Are there ads in the game?",
+        "answer": "No. Iron Burrow has no ads at all, not between stages and not for rewards."
+      }
+    ],
+    "controls": [
+      {
+        "action": "Move",
+        "input": "Arrow keys or WASD. On touch screens, drag the floating stick (4 directions)."
+      },
+      {
+        "action": "Fire",
+        "input": "Hold Space or J. On touch screens, hold the FIRE button."
+      },
+      {
+        "action": "Use booster",
+        "input": "Press 1, 2 or 3 (Numpad 1 to 3 also works). On touch screens, tap the booster buttons on the HUD."
+      },
+      {
+        "action": "Pause",
+        "input": "Esc or P. On touch screens, tap the pause button on the HUD."
+      },
+      {
+        "action": "Spare Hull",
+        "input": "Switch it on in the window before a stage, or use it in the Defeat window to continue."
+      }
+    ],
+    "guides": {
+      "how-to-play": {
+        "slug": "how-to-play",
+        "h1": "How to Play Iron Burrow: Rules, Pickups, Boosters and Controls",
+        "title": "How to Play Iron Burrow | ManyPlay",
+        "description": "Learn the rules of Iron Burrow: protect the Burrow Core, destroy 20 Rustbugs, use pickups and boosters, earn stars and unlock Siege.",
+        "body": "Iron Burrow is a top-down arcade tank game played on a square underground map. This guide explains the rules from your first stage to the endless Siege mode, and it ends with the full controls for keyboard and touch screens. The goal. You drive the Burrower, an iron drill-tank. At the bottom of the map sits the Burrow Core, the glowing heart of your base. Rustbugs, beetle-shaped scrap tanks, enter from the top of the map and push toward it. Each stage has 20 Rustbugs. Destroy all 20 and the stage is cleared. If the Core takes a single hit, the stage is lost. The stage flow. From the lobby you open the campaign map and pick a stage. Before the stage starts, a short window lets you switch on a Spare Hull for an extra life. Then the fight begins. Rustbugs arrive in turn, a few at a time, so you never face all 20 at once. When the last one is destroyed you reach the Stage Clear screen, which shows your stars and score and hands out a booster reward. From there you move on to the next stage. The Core. The Core is the one thing you cannot afford to lose. It sits at the bottom centre of the map behind a wall of brick, and the wall is thickest on the side facing the enemy. Any bullet that reaches the Core destroys it, and that includes your own shots. Keep that in mind whenever you fire in its direction. Brick and steel. The maze is built from two kinds of blocks. Brick breaks under any shot, and it breaks a quarter of a block at a time, so you can nibble a narrow gap or clear a whole passage. Rustbugs chew through brick too, which means the maze changes during every stage. Steel is much tougher. A basic gun cannot dent it, and only a fully upgraded gun can break steel, again one quarter at a time. Pickups. Some Rustbugs flash. When you hit a flashing Rustbug, it drops a pickup somewhere on the field. Drive over it to collect it. Pickups do not stay long, so move quickly. There are six kinds. Star upgrades your gun by one step: first your bullets get faster, then you can have two bullets in the air at once, and at the top level your shots break steel. Bubble makes your tank invulnerable for a short time. Rebar turns the wall around the Core into steel for a while. Quake destroys every Rustbug currently on the field, though those kills give no score. Freeze stops all Rustbugs in place for a few seconds. Hull gives you one extra life. Gun level and lives. You start a stage with a small stock of lives. When your tank is destroyed, you lose a life and your gun drops back to its basic level. You respawn near the Core with a brief shield. If you finish a campaign stage without dying, your gun level carries over to the next one. Boosters. Boosters are items you keep in your inventory and use when you choose. New players get 2 of each. Bubble Shield makes your tank invulnerable for a while. Shockwave destroys every Rustbug on the field, and unlike the quake pickup those kills count for score. Steel Fortress turns the Core wall into steel for a while and rebuilds any parts of it that were shot away. These three are used during a stage, and each has a small limit on how many times you can use it per stage. Spare Hull works differently: you switch it on in the pre-stage window for an extra life, or you use it after a defeat to continue. Stars. Every campaign stage awards up to 3 stars, for 90 stars across the whole campaign. Clearing a stage earns at least one star. Losing no more than one life earns two, and a clear without losing a single life earns all three. An extra life from Spare Hull does not count against you, but each time your tank is destroyed it does. Losing and continuing. You lose a stage when the Core is destroyed or when you run out of lives. The Defeat window then gives you three choices. You can use a Spare Hull to continue, which brings you back with fresh lives and rebuilds the Core if it fell. You can buy a booster pack in the shop. Or you can simply retry the stage from the start. The campaign. The 30 stages are split into three chapters. Clay Tunnels covers stages 1 to 10. The Iron Works opens after stage 10, and Magma Depths opens after stage 20. Later chapters bring more pressure, so the stars you earn early are a good warm-up. Siege. Once you clear stage 5, Siege unlocks. It is an endless mode: there is no final Rustbug, only how long you can hold the Core and how high your score climbs. Your best Siege score goes on the leaderboard, and a separate leaderboard tracks your campaign score. Daily rewards and the shop. A daily reward is waiting in a 7-day cycle, so it pays to drop by every day. The shop sells booster packs for real money. There is no in-game currency and no ads. Keyboard controls. Move with the arrow keys or W, A, S and D. Hold Space or J to fire. Press 1, 2 or 3 to use a booster, and the Numpad keys 1 to 3 work too. Press Esc or P to pause. The mouse only clicks menu buttons and does not move or fire. Touch controls. Drag the floating stick to drive in four directions. Hold the FIRE button to shoot. Tap the booster buttons on the HUD to use boosters, and tap the pause button on the HUD to pause. You can play in portrait or landscape, and rotating the phone pauses the game. On devices with both a keyboard and a touch screen, both schemes work. Settings. In the settings you can switch Music and Sound, turn on Reduce Motion, and on touch devices toggle Vibration.",
+        "faq": [
+          {
+            "question": "Can my own shots destroy the Core?",
+            "answer": "Yes. Any bullet that hits the Core destroys it, including yours. Be careful when you fire toward the bottom of the map."
+          },
+          {
+            "question": "How do I break steel blocks?",
+            "answer": "Collect star pickups to upgrade your gun. At the top gun level your shots break steel, one quarter at a time. Losing a life resets the gun to its basic level."
+          },
+          {
+            "question": "Does using a Spare Hull cost me stars?",
+            "answer": "No. The extra life from a Spare Hull is not counted as a lost life. Stars only drop when your tank is destroyed."
+          },
+          {
+            "question": "What is the difference between the quake pickup and the Shockwave booster?",
+            "answer": "Both destroy every Rustbug on the field. Kills from a quake give no score, while kills from Shockwave count toward your score."
+          }
+        ]
+      },
+      "tips": {
+        "slug": "tips",
+        "h1": "Iron Burrow Tips: How to Protect the Core and Earn Three Stars",
+        "title": "Iron Burrow Tips and Strategy | ManyPlay",
+        "description": "Strategy tips for Iron Burrow: keep the Core wall intact, use flashing Rustbugs and pickups well, time your boosters and push for three stars.",
+        "body": "Iron Burrow looks simple: destroy 20 Rustbugs and keep the Core alive. The stages are short, but one stray bullet can end a run, so small habits make a big difference. These tips come straight from how the game works and will help you clear stages more cleanly, collect more stars and last longer in Siege. Treat the Core wall as sacred. The brick around the Core is your last line of defence, and it is thickest on top, facing the enemy. Every quarter of brick you lose there is a quarter that a Rustbug no longer has to shoot through. Avoid firing into that wall yourself, and when a Rustbug starts chewing at it, deal with that Rustbug first. Watch your own line of fire. Any bullet that hits the Core destroys it, and that includes yours. When you fight near the bottom of the map, check where your shot will go if it misses. A good habit is to stand between the Core and the Rustbug and fire away from the Core, never toward it. Fight in the middle, not at the door. Rustbugs come in from the top. If you meet them in the middle of the map, you have time to react and a missed shot flies into brick instead of the Core. If you always wait right next to the Core, every mistake happens in the worst possible place. Drift back toward the Core only when the field gets crowded or the wall is under fire. Shape the maze on purpose. Brick breaks a quarter at a time, so you decide how the map looks. Open long straight lanes that let you shoot a Rustbug from far away, and keep side walls that shield you from crossfire. Before you carve a shortcut, ask whether it also opens a straight path for Rustbugs toward the Core. If it does, leave it closed. Use steel as a shield. Until your gun reaches the top level, steel blocks your shots and theirs alike. Parking with steel between you and a Rustbug buys time. Once your gun can break steel, think twice before tearing it down, because it protects you just as well as it protects them. Hunt the flashing Rustbugs. A flashing Rustbug drops a pickup when you hit it, and a few of them appear in every stage. Make them your first target when it is safe. The drop lands somewhere on the field and fades quickly, so plan your route as soon as it appears. Still, never leave the Core open just to chase a pickup. Protect your gun level. Star pickups upgrade your gun step by step: faster bullets, then two bullets at once, then shots that break steel. Losing a life throws all of that away, and in the campaign a stage cleared without dying carries your gun level into the next one. Play a little more carefully once you are fully upgraded. That gun makes the next stage much easier. Use each pickup for what it does best. Freeze is a free window: stop, line up and pick off the frozen Rustbugs one by one. Bubble lets you drive straight through danger, so use it to reach a Rustbug that is attacking the Core wall. Rebar is perfect when the wall is already damaged and several Rustbugs are near. Quake clears the field instantly, which is great when you are in trouble, but those kills give no score. Hull is simply an extra life, so grab it whenever the path is safe. Time your boosters. Boosters are limited, so save them for the moments that matter. Steel Fortress is strongest after the Core wall has been chewed up, because it also rebuilds the missing pieces. Shockwave clears the field and still gives score for each kill, which makes it the better pick in Siege when you chase a high score. Bubble Shield is your answer when you have to take risks to save the Core. Use the respawn shield. After you lose a life, your tank comes back with a short shield. Use those seconds to get back into position or finish a Rustbug that is threatening the Core instead of waiting for the shield to run out. Plan for three stars. A stage earns three stars only if you finish it without losing a life, two if you lose at most one, and one for any clear. A Spare Hull taken before the stage does not count as a lost life, so it is a safe cushion on a tough stage where you want a perfect run. Slow down, take clean shots and keep your distance from groups of Rustbugs. Continue wisely. If the Core falls or you run out of lives, the Defeat window lets you continue with a Spare Hull. That brings you back with fresh lives and rebuilds the Core, so on a stage you were close to clearing it is often worth more than a full retry. If the run went badly from the start, a retry can be the better lesson. Siege strategy. Siege is endless, so pace matters more than speed. Keep the Core wall in good shape, upgrade your gun early and avoid losing lives, because a lost life also resets your gun. Your best score goes on the leaderboard, so think about which boosters earn points as well as which ones keep you alive. Build a daily routine. Claim your daily reward each day to move along the 7-day cycle, and replay early stages to pick up stars you missed. Every Stage Clear also hands out a booster reward, which keeps your emergency kit stocked. Make the controls work for you. On a phone, the floating stick follows your thumb, so you do not need to hit an exact spot. On a keyboard, holding Space or J keeps firing, so focus your attention on movement. If the screen feels busy, turn on Reduce Motion in the settings.",
+        "faq": [
+          {
+            "question": "When should I use Steel Fortress?",
+            "answer": "After the Core wall has taken damage. Steel Fortress turns the wall to steel for a while and rebuilds the parts that were shot away, so it is worth more on a battered wall than on an intact one."
+          },
+          {
+            "question": "Should I chase every pickup?",
+            "answer": "Only when the Core is safe. Pickups vanish after a short time, but losing the Core ends the stage. Grab them when the path is clear and the wall is not under attack."
+          },
+          {
+            "question": "What is the fastest way to earn three stars?",
+            "answer": "Avoid losing lives. A clear with no lives lost earns three stars. Fight in the middle of the map, keep your shots away from the Core and take a Spare Hull on hard stages, since it does not count as a lost life."
+          },
+          {
+            "question": "How do I score higher in Siege?",
+            "answer": "Stay alive to keep your upgraded gun, protect the Core wall and prefer Shockwave over relying on the quake pickup when you need a clear field, because Shockwave kills still give score."
+          }
+        ]
+      }
+    }
+  },
+  "patch": {
+    "common": {
+      "name": {
+        "en": "Iron Burrow"
+      },
+      "loc": {
+        "en": {
+          "description": "Iron Burrow is a top-down arcade tank shooter set deep underground. You drive the Burrower, a stubby iron drill-tank, through mazes of clay brick and steel plate, defending the glowing Burrow Core at the bottom of the map. Destroy 20 Rustbugs, the beetle-shaped scrap tanks that roll in from above, and the stage is yours. Let a single shot hit the Core and it is over. The maze fights back and so can you. Every shot chews through brick a quarter of a block at a time, so you reshape the map while you play. Carve a shortcut, open a firing lane, or keep the wall around the Core thick and safe. Flashing Rustbugs drop pickups when hit: a star upgrades your gun, a bubble makes you briefly untouchable, rebar turns the Core wall to steel for a while, a quake wipes out every Rustbug on the field, freeze stops them cold, and hull gives you an extra life. Your boosters are the emergency kit: Bubble Shield, Shockwave, Steel Fortress and Spare Hull. New players start with 2 of each. What is inside: 30 campaign stages across three chapters, Clay Tunnels, The Iron Works and Magma Depths. Up to 3 stars per stage, 90 in total. Siege, an endless mode that unlocks after stage 5. Leaderboards for your best Siege run and your campaign score. Daily rewards on a 7-day cycle. Short stages that fit a coffee break. Play in the browser on desktop with the keyboard or on your phone with a floating stick and a FIRE button, in portrait or landscape. There are no ads at all and no in-game currency. An optional shop sells booster packs for real money. The game is in English and needs an internet connection."
+        }
+      },
+      "locales": [
+        "en"
+      ],
+      "primary": "en",
+      "category": "GAME_ARCADE"
+    },
+    "portal": {
+      "locales": {
+        "en": {
+          "slug": "iron-burrow-tank-maze-defense",
+          "h1": "Iron Burrow: Underground Tank Maze Defense in Your Browser",
+          "title": "Iron Burrow: Tank Maze Defense | ManyPlay",
+          "description": "Drive an iron drill-tank through a destructible maze and guard the Burrow Core from 20 Rustbugs per stage. 30 stages, endless Siege, no ads.",
+          "body": "Iron Burrow is a top-down arcade tank shooter set deep underground. You drive the Burrower, a stubby iron drill-tank, through mazes of clay brick and steel plate. At the bottom of every map sits the glowing Burrow Core. Your job is easy to explain and hard to pull off: destroy 20 Rustbugs, the beetle-shaped scrap tanks that roll in from above, and keep the Core in one piece. One hit on the Core and the stage is lost. The maze is part of the fight. Every shot chews through brick a quarter of a block at a time, so the layout changes while you play. Cut a shortcut to reach a Rustbug faster, open a firing lane, or think twice before you blast a hole that leaves the Core exposed. Steel shrugs off a basic gun, so it shapes the routes that you and the Rustbugs can take until your gun is strong enough to break it. Some Rustbugs flash. Hit one and it drops a pickup on the field. A star upgrades your gun, a bubble makes you briefly invulnerable, rebar turns the wall around the Core into steel for a while, a quake wipes out every Rustbug on the field, freeze stops them in their tracks, and hull gives you an extra life. Grab pickups quickly, because they do not stay on the field for long. When things go wrong, boosters are your emergency kit. Bubble Shield protects your tank, Shockwave clears the field, Steel Fortress hardens the Core wall, and Spare Hull adds a life before a stage or lets you continue after a defeat. New players start with 2 of each, and clearing stages earns more. The campaign has 30 stages across three chapters: Clay Tunnels, The Iron Works and Magma Depths. Each stage awards up to 3 stars, 90 in total, and the cleaner your run, the more stars you take home. Stages are short, so a quick break is enough for a few of them. Clear stage 5 to unlock Siege, an endless mode where you hold out as long as you can and chase a high score on the leaderboards. Leaderboards also track your campaign score, and a 7-day daily reward cycle gives you a reason to drop by each day. Iron Burrow plays in the browser on desktop and mobile. On a keyboard you move with the arrow keys or WASD, hold Space or J to fire, press 1, 2 or 3 for boosters, and press Esc or P to pause. On a touch screen a floating stick drives the tank and a FIRE button shoots, with booster buttons on the HUD. Portrait and landscape both work, and turning your phone pauses the game so you can settle in before the next shot. There are no ads at all and no in-game currency. An optional shop sells booster packs for real money. The game is in English and needs an internet connection. In the settings you can adjust Music, Sound and Reduce Motion, plus Vibration on touch devices.",
+          "faq": [
+            {
+              "question": "How do I control the tank?",
+              "answer": "On a keyboard, move with the arrow keys or WASD, hold Space or J to fire, press 1, 2 or 3 to use boosters, and press Esc or P to pause. On a touch screen, drag the floating stick to drive in four directions, hold the FIRE button to shoot and tap the booster buttons on the HUD. The mouse only works for menu buttons."
+            },
+            {
+              "question": "Which languages does Iron Burrow support?",
+              "answer": "The game is in English only. All menus, hints and messages are shown in English."
+            },
+            {
+              "question": "Which devices can I play on?",
+              "answer": "Iron Burrow runs in a web browser on desktop and on mobile phones. On a phone you can play in portrait or landscape. There is no separate app to install."
+            },
+            {
+              "question": "Do I have to pay to play?",
+              "answer": "No purchase is needed to play. The game has no in-game currency. An optional shop sells booster packs for real money, and you also get boosters as a starter gift for new players and as stage rewards."
+            },
+            {
+              "question": "How do I unlock Siege?",
+              "answer": "Clear stage 5 of the campaign. Siege is an endless mode with a leaderboard for your best score."
+            },
+            {
+              "question": "Do I need an internet connection?",
+              "answer": "Yes. Iron Burrow is an online browser game and needs an internet connection to run."
+            },
+            {
+              "question": "Are there ads in the game?",
+              "answer": "No. Iron Burrow has no ads at all, not between stages and not for rewards."
+            }
+          ]
+        }
+      },
+      "variants": [
+        {
+          "id": "how-to-play",
+          "locales": {
+            "en": {
+              "slug": "how-to-play",
+              "h1": "How to Play Iron Burrow: Rules, Pickups, Boosters and Controls",
+              "title": "How to Play Iron Burrow | ManyPlay",
+              "description": "Learn the rules of Iron Burrow: protect the Burrow Core, destroy 20 Rustbugs, use pickups and boosters, earn stars and unlock Siege.",
+              "body": "Iron Burrow is a top-down arcade tank game played on a square underground map. This guide explains the rules from your first stage to the endless Siege mode, and it ends with the full controls for keyboard and touch screens. The goal. You drive the Burrower, an iron drill-tank. At the bottom of the map sits the Burrow Core, the glowing heart of your base. Rustbugs, beetle-shaped scrap tanks, enter from the top of the map and push toward it. Each stage has 20 Rustbugs. Destroy all 20 and the stage is cleared. If the Core takes a single hit, the stage is lost. The stage flow. From the lobby you open the campaign map and pick a stage. Before the stage starts, a short window lets you switch on a Spare Hull for an extra life. Then the fight begins. Rustbugs arrive in turn, a few at a time, so you never face all 20 at once. When the last one is destroyed you reach the Stage Clear screen, which shows your stars and score and hands out a booster reward. From there you move on to the next stage. The Core. The Core is the one thing you cannot afford to lose. It sits at the bottom centre of the map behind a wall of brick, and the wall is thickest on the side facing the enemy. Any bullet that reaches the Core destroys it, and that includes your own shots. Keep that in mind whenever you fire in its direction. Brick and steel. The maze is built from two kinds of blocks. Brick breaks under any shot, and it breaks a quarter of a block at a time, so you can nibble a narrow gap or clear a whole passage. Rustbugs chew through brick too, which means the maze changes during every stage. Steel is much tougher. A basic gun cannot dent it, and only a fully upgraded gun can break steel, again one quarter at a time. Pickups. Some Rustbugs flash. When you hit a flashing Rustbug, it drops a pickup somewhere on the field. Drive over it to collect it. Pickups do not stay long, so move quickly. There are six kinds. Star upgrades your gun by one step: first your bullets get faster, then you can have two bullets in the air at once, and at the top level your shots break steel. Bubble makes your tank invulnerable for a short time. Rebar turns the wall around the Core into steel for a while. Quake destroys every Rustbug currently on the field, though those kills give no score. Freeze stops all Rustbugs in place for a few seconds. Hull gives you one extra life. Gun level and lives. You start a stage with a small stock of lives. When your tank is destroyed, you lose a life and your gun drops back to its basic level. You respawn near the Core with a brief shield. If you finish a campaign stage without dying, your gun level carries over to the next one. Boosters. Boosters are items you keep in your inventory and use when you choose. New players get 2 of each. Bubble Shield makes your tank invulnerable for a while. Shockwave destroys every Rustbug on the field, and unlike the quake pickup those kills count for score. Steel Fortress turns the Core wall into steel for a while and rebuilds any parts of it that were shot away. These three are used during a stage, and each has a small limit on how many times you can use it per stage. Spare Hull works differently: you switch it on in the pre-stage window for an extra life, or you use it after a defeat to continue. Stars. Every campaign stage awards up to 3 stars, for 90 stars across the whole campaign. Clearing a stage earns at least one star. Losing no more than one life earns two, and a clear without losing a single life earns all three. An extra life from Spare Hull does not count against you, but each time your tank is destroyed it does. Losing and continuing. You lose a stage when the Core is destroyed or when you run out of lives. The Defeat window then gives you three choices. You can use a Spare Hull to continue, which brings you back with fresh lives and rebuilds the Core if it fell. You can buy a booster pack in the shop. Or you can simply retry the stage from the start. The campaign. The 30 stages are split into three chapters. Clay Tunnels covers stages 1 to 10. The Iron Works opens after stage 10, and Magma Depths opens after stage 20. Later chapters bring more pressure, so the stars you earn early are a good warm-up. Siege. Once you clear stage 5, Siege unlocks. It is an endless mode: there is no final Rustbug, only how long you can hold the Core and how high your score climbs. Your best Siege score goes on the leaderboard, and a separate leaderboard tracks your campaign score. Daily rewards and the shop. A daily reward is waiting in a 7-day cycle, so it pays to drop by every day. The shop sells booster packs for real money. There is no in-game currency and no ads. Keyboard controls. Move with the arrow keys or W, A, S and D. Hold Space or J to fire. Press 1, 2 or 3 to use a booster, and the Numpad keys 1 to 3 work too. Press Esc or P to pause. The mouse only clicks menu buttons and does not move or fire. Touch controls. Drag the floating stick to drive in four directions. Hold the FIRE button to shoot. Tap the booster buttons on the HUD to use boosters, and tap the pause button on the HUD to pause. You can play in portrait or landscape, and rotating the phone pauses the game. On devices with both a keyboard and a touch screen, both schemes work. Settings. In the settings you can switch Music and Sound, turn on Reduce Motion, and on touch devices toggle Vibration.",
+              "faq": [
+                {
+                  "question": "Can my own shots destroy the Core?",
+                  "answer": "Yes. Any bullet that hits the Core destroys it, including yours. Be careful when you fire toward the bottom of the map."
+                },
+                {
+                  "question": "How do I break steel blocks?",
+                  "answer": "Collect star pickups to upgrade your gun. At the top gun level your shots break steel, one quarter at a time. Losing a life resets the gun to its basic level."
+                },
+                {
+                  "question": "Does using a Spare Hull cost me stars?",
+                  "answer": "No. The extra life from a Spare Hull is not counted as a lost life. Stars only drop when your tank is destroyed."
+                },
+                {
+                  "question": "What is the difference between the quake pickup and the Shockwave booster?",
+                  "answer": "Both destroy every Rustbug on the field. Kills from a quake give no score, while kills from Shockwave count toward your score."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "tips",
+          "locales": {
+            "en": {
+              "slug": "tips",
+              "h1": "Iron Burrow Tips: How to Protect the Core and Earn Three Stars",
+              "title": "Iron Burrow Tips and Strategy | ManyPlay",
+              "description": "Strategy tips for Iron Burrow: keep the Core wall intact, use flashing Rustbugs and pickups well, time your boosters and push for three stars.",
+              "body": "Iron Burrow looks simple: destroy 20 Rustbugs and keep the Core alive. The stages are short, but one stray bullet can end a run, so small habits make a big difference. These tips come straight from how the game works and will help you clear stages more cleanly, collect more stars and last longer in Siege. Treat the Core wall as sacred. The brick around the Core is your last line of defence, and it is thickest on top, facing the enemy. Every quarter of brick you lose there is a quarter that a Rustbug no longer has to shoot through. Avoid firing into that wall yourself, and when a Rustbug starts chewing at it, deal with that Rustbug first. Watch your own line of fire. Any bullet that hits the Core destroys it, and that includes yours. When you fight near the bottom of the map, check where your shot will go if it misses. A good habit is to stand between the Core and the Rustbug and fire away from the Core, never toward it. Fight in the middle, not at the door. Rustbugs come in from the top. If you meet them in the middle of the map, you have time to react and a missed shot flies into brick instead of the Core. If you always wait right next to the Core, every mistake happens in the worst possible place. Drift back toward the Core only when the field gets crowded or the wall is under fire. Shape the maze on purpose. Brick breaks a quarter at a time, so you decide how the map looks. Open long straight lanes that let you shoot a Rustbug from far away, and keep side walls that shield you from crossfire. Before you carve a shortcut, ask whether it also opens a straight path for Rustbugs toward the Core. If it does, leave it closed. Use steel as a shield. Until your gun reaches the top level, steel blocks your shots and theirs alike. Parking with steel between you and a Rustbug buys time. Once your gun can break steel, think twice before tearing it down, because it protects you just as well as it protects them. Hunt the flashing Rustbugs. A flashing Rustbug drops a pickup when you hit it, and a few of them appear in every stage. Make them your first target when it is safe. The drop lands somewhere on the field and fades quickly, so plan your route as soon as it appears. Still, never leave the Core open just to chase a pickup. Protect your gun level. Star pickups upgrade your gun step by step: faster bullets, then two bullets at once, then shots that break steel. Losing a life throws all of that away, and in the campaign a stage cleared without dying carries your gun level into the next one. Play a little more carefully once you are fully upgraded. That gun makes the next stage much easier. Use each pickup for what it does best. Freeze is a free window: stop, line up and pick off the frozen Rustbugs one by one. Bubble lets you drive straight through danger, so use it to reach a Rustbug that is attacking the Core wall. Rebar is perfect when the wall is already damaged and several Rustbugs are near. Quake clears the field instantly, which is great when you are in trouble, but those kills give no score. Hull is simply an extra life, so grab it whenever the path is safe. Time your boosters. Boosters are limited, so save them for the moments that matter. Steel Fortress is strongest after the Core wall has been chewed up, because it also rebuilds the missing pieces. Shockwave clears the field and still gives score for each kill, which makes it the better pick in Siege when you chase a high score. Bubble Shield is your answer when you have to take risks to save the Core. Use the respawn shield. After you lose a life, your tank comes back with a short shield. Use those seconds to get back into position or finish a Rustbug that is threatening the Core instead of waiting for the shield to run out. Plan for three stars. A stage earns three stars only if you finish it without losing a life, two if you lose at most one, and one for any clear. A Spare Hull taken before the stage does not count as a lost life, so it is a safe cushion on a tough stage where you want a perfect run. Slow down, take clean shots and keep your distance from groups of Rustbugs. Continue wisely. If the Core falls or you run out of lives, the Defeat window lets you continue with a Spare Hull. That brings you back with fresh lives and rebuilds the Core, so on a stage you were close to clearing it is often worth more than a full retry. If the run went badly from the start, a retry can be the better lesson. Siege strategy. Siege is endless, so pace matters more than speed. Keep the Core wall in good shape, upgrade your gun early and avoid losing lives, because a lost life also resets your gun. Your best score goes on the leaderboard, so think about which boosters earn points as well as which ones keep you alive. Build a daily routine. Claim your daily reward each day to move along the 7-day cycle, and replay early stages to pick up stars you missed. Every Stage Clear also hands out a booster reward, which keeps your emergency kit stocked. Make the controls work for you. On a phone, the floating stick follows your thumb, so you do not need to hit an exact spot. On a keyboard, holding Space or J keeps firing, so focus your attention on movement. If the screen feels busy, turn on Reduce Motion in the settings.",
+              "faq": [
+                {
+                  "question": "When should I use Steel Fortress?",
+                  "answer": "After the Core wall has taken damage. Steel Fortress turns the wall to steel for a while and rebuilds the parts that were shot away, so it is worth more on a battered wall than on an intact one."
+                },
+                {
+                  "question": "Should I chase every pickup?",
+                  "answer": "Only when the Core is safe. Pickups vanish after a short time, but losing the Core ends the stage. Grab them when the path is clear and the wall is not under attack."
+                },
+                {
+                  "question": "What is the fastest way to earn three stars?",
+                  "answer": "Avoid losing lives. A clear with no lives lost earns three stars. Fight in the middle of the map, keep your shots away from the Core and take a Spare Hull on hard stages, since it does not count as a lost life."
+                },
+                {
+                  "question": "How do I score higher in Siege?",
+                  "answer": "Stay alive to keep your upgraded gun, protect the Core wall and prefer Shockwave over relying on the quake pickup when you need a clear field, because Shockwave kills still give score."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "genre": "arcade"
+  }
+}
