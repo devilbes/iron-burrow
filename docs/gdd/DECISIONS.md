@@ -237,3 +237,15 @@
 | D-META-03 | Разработчик — ManyPlay | apps.metadata.get вернул 401 MCP_UPSTREAM_KEY_REJECTED, в apps.info и apps.catalog.get поля разработчика нет; правило цели — «иначе ManyPlay» |
 | D-META-04 | Сборка пройдена headless Chromium из Playwright (локальные скрипты вне репозитория) | MCP-инструменты браузера выданы, но из сеанса не вызывались; так же, как D-PUB-07 |
 | D-META-05 | Полная мета не прочитана, это записано как блокер, а не догадка; в current/ лежат файлы *.error.json и *.unavailable.json с ошибками | portal.game.meta.get и candidates нет в MCP; повтор 24.11 18:23Z: apps.metadata.get снова 401, apps.portal.readiness снова NOT_FOUND (инструмент без параметров). Ключ — дело владельца или Studio |
+
+### Тексты меты по языкам (24.11.2026, docs/meta/texts)
+| ID | Решение | Обоснование |
+|---|---|---|
+| D-MT-01 | Языки меты: en (основной) и ru. Других нет | FACTS §6: игра показывает тексты только на en; ru требует цель шага |
+| D-MT-02 | Слаги гайдов равны фиксированному токену варианта (`how-to-play`, `tips`) на всех языках. Свой слаг у каждого языка только на главной странице | Схема apps.metadata.update: «variant pages use the fixed variant token»; при расхождении с целью прав инструмент |
+| D-MT-03 | seoDescription 50–160 символов (инструмент разрешает до 500), shortDescription до 80 символов, тело главной страницы 300–1500 слов | Порог инструмента для body не опубликован («panel checks word counts»); 160 — длина сниппета в выдаче, 80 — короткое описание Google Play, в которое поле может уйти позже |
+| D-MT-04 | В строках нет переводов строк: абзацы разделены пробелом | Требование «без управляющих символов»; \n — управляющий символ |
+| D-MT-05 | `common.locales`/`primary`/`category`/`genre` пишутся только из en.json (`["en"]`, `en`, `GAME_ARCADE`, `arcade`); ru.json даёт `common.name.ru`, `common.loc.ru` и `portal` ru | FACTS §6, D-META-01/02. Добавить ru в common.locales значит пообещать русский интерфейс в сторе — это решение владельца |
+| D-MT-06 | shortDescription и controls лежат в `fields` и не входят в `patch` | В common и portal у них нет поля; controls продублированы текстом в гайде how-to-play |
+| D-MT-07 | Patch собирает скрипт docs/meta/texts/build.mjs из `fields`. Он же проверяет лимиты, управляющие символы, угловые скобки и запретные слова и пишет README | Один источник правды для текстов, повторяемая проверка; tools/ вне writeSet шага |
+| D-MT-08 | Список запретных слов в скрипте составлен по смыслу 00_MASTER (референсная аркада, её издатель, консольные бренды) и FACTS §11 | Самого списка «Запретные слова» в проекте нет; bannedTerms у приложения не прочитаны (apps.metadata.get → 401) |
