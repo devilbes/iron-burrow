@@ -8,24 +8,24 @@
     "api": "https://test.manyplay.fun",
     "realtime": "https://test.manyplay.fun"
   },
-  "cdn": "https://test.manyplay.fun/sdk/",
+  "cdn": "https://games.utlragames.com/sdk/",
   "assets": {
-    "cdnBase": "https://test.manyplay.fun/"
+    "cdnBase": "https://games.utlragames.com/"
   },
   "store": "web",
   "platform": "web",
   "orientation": "any",
   "sdk": {
     "package": "@manygamescorp/core",
-    "version": "1.0.0-rc.30",
+    "version": "1.0.0-rc.46",
     "adapter": {
       "package": "@manygamescorp/platform-web",
-      "version": "1.0.0-rc.30"
+      "version": "1.0.0-rc.46"
     },
     "modules": [
       {
         "id": "daily-rewards",
-        "version": "1.0.0-rc.30",
+        "version": "1.0.0-rc.46",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -45,7 +45,7 @@
       },
       {
         "id": "hud",
-        "version": "1.0.0-rc.30",
+        "version": "1.0.0-rc.46",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -56,7 +56,18 @@
       },
       {
         "id": "iap",
-        "version": "1.0.0-rc.30",
+        "version": "1.0.0-rc.46",
+        "source": "local",
+        "load": "eager",
+        "settings": {
+          "enabled": true,
+          "availability": {}
+        },
+        "package": "@manygamescorp/mod-iap"
+      },
+      {
+        "id": "store-fake",
+        "version": "1.0.0-rc.46",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -67,7 +78,7 @@
       },
       {
         "id": "inventory",
-        "version": "1.0.0-rc.30",
+        "version": "1.0.0-rc.46",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -78,7 +89,7 @@
       },
       {
         "id": "leaderboards",
-        "version": "1.0.0-rc.30",
+        "version": "1.0.0-rc.46",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -88,8 +99,8 @@
         "package": "@manygamescorp/mod-leaderboards"
       },
       {
-        "id": "profile-pack",
-        "version": "1.0.0-rc.30",
+        "id": "gamestate",
+        "version": "1.0.0-rc.46",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -99,8 +110,44 @@
         "package": "@manygamescorp/mod-profile-pack"
       },
       {
+        "id": "kv",
+        "version": "1.0.0-rc.46",
+        "source": "local",
+        "load": "eager",
+        "settings": {
+          "enabled": true,
+          "availability": {}
+        },
+        "package": "@manygamescorp/mod-profile-pack"
+      },
+      {
+        "id": "profile-ui",
+        "version": "1.0.0-rc.46",
+        "source": "local",
+        "load": "eager",
+        "settings": {
+          "enabled": true,
+          "availability": {}
+        },
+        "package": "@manygamescorp/mod-profile-pack"
+      },
+      {
+        "id": "levels",
+        "version": "1.0.0-rc.46",
+        "source": "local",
+        "load": "eager",
+        "settings": {
+          "enabled": true,
+          "availability": {},
+          "chunkSize": 10,
+          "cacheMaxBytes": 2097152,
+          "prefetchDepth": 1
+        },
+        "package": "@manygamescorp/mod-progress"
+      },
+      {
         "id": "progress",
-        "version": "1.0.0-rc.30",
+        "version": "1.0.0-rc.46",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -114,7 +161,7 @@
       },
       {
         "id": "realtime",
-        "version": "1.0.0-rc.30",
+        "version": "1.0.0-rc.46",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -125,7 +172,7 @@
       },
       {
         "id": "ui-kit",
-        "version": "1.0.0-rc.30",
+        "version": "1.0.0-rc.46",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -139,21 +186,17 @@
         "package": "@manygamescorp/ui-kit"
       }
     ],
-    "modulesRevision": 3,
+    "modulesRevision": 4,
     "overrides": {
       "scope": "panel.sdk.overrides"
     }
   },
   "uiKit": {
     "package": "@manygamescorp/ui-kit",
-    "version": "1.0.0-rc.30",
-    "skin": {
-      "package": "@manygamescorp/skin-manyplay",
-      "version": "1.0.0-rc.30"
-    }
+    "version": "1.0.0-rc.46"
   },
   "buildKit": {
     "package": "@manygamescorp/build-kit-web",
-    "version": "1.0.0-rc.30"
+    "version": "1.0.0-rc.46"
   }
 }
