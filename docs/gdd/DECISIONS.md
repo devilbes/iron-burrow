@@ -236,4 +236,4 @@
 | D-META-02 | Язык игры только en; ru и другие языки меты — перевод страницы, а не язык интерфейса | locales.json и strings содержат только en; при локали браузера ru-RU и de-DE сборка показывает английский |
 | D-META-03 | Разработчик — ManyPlay | apps.metadata.get вернул 401 MCP_UPSTREAM_KEY_REJECTED, в apps.info и apps.catalog.get поля разработчика нет; правило цели — «иначе ManyPlay» |
 | D-META-04 | Сборка пройдена headless Chromium из Playwright (локальные скрипты вне репозитория) | MCP-инструменты браузера выданы, но из сеанса не вызывались; так же, как D-PUB-07 |
-| D-META-05 | Полная мета не прочитана, это записано как блокер, а не догадка; в current/ лежат файлы *.unavailable.json с ошибками | portal.game.meta.get и candidates нет в MCP, apps.portal.readiness вернул NOT_FOUND |
+| D-META-05 | Полная мета не прочитана, это записано как блокер, а не догадка; в current/ лежат файлы *.error.json и *.unavailable.json с ошибками | portal.game.meta.get и candidates нет в MCP; повтор 24.11 18:23Z: apps.metadata.get снова 401, apps.portal.readiness снова NOT_FOUND (инструмент без параметров). Ключ — дело владельца или Studio |
