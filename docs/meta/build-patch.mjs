@@ -73,5 +73,11 @@ check('all', 'slug', new Set(slugs).size === slugs.length, 'slugs must be unique
 
 console.log(summary.join('\n'));
 if (issues.length) { console.error(issues.join('\n')); process.exit(1); }
-writeFileSync(join(META, 'patch.json'), JSON.stringify(patch, null, 2) + '\n');
-console.log('patch.json written');
+// D-MT-21: the panel rejects portal metadata without covers (422 "Covers are required with portal metadata").
+// While portal assets cannot be uploaded, patch.json carries only the part the panel accepts without covers;
+// the full patch (portal pages, covers, screenshots) is kept in patch.full.json and becomes patch.json
+// automatically once docs/meta/current/assets.upload.json exists.
+writeFileSync(join(META, 'patch.full.json'), JSON.stringify(patch, null, 2) + '\n');
+const now = assets ? patch : (({ portal, covers, screenshots, ...rest }) => rest)(patch);
+writeFileSync(join(META, 'patch.json'), JSON.stringify(now, null, 2) + '\n');
+console.log(assets ? 'patch.json written (full)' : 'patch.json written (no portal: covers unavailable); full patch in patch.full.json');

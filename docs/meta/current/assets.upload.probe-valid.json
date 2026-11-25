@@ -1,0 +1,56 @@
+{
+  "app": {"appId": 360, "appCode": "iron-burrow", "env": "test", "server": "manyplay-assets"},
+  "date": "2026-11-25",
+  "purpose": "Service probe: does the platform accept portal-screenshot / portal-cover for this app with a fully valid PNG via base64 path. Not attached to metadata.",
+  "file": {
+    "path": "/tmp/metashots/probe-256.png",
+    "format": "PNG (IHDR 256x256, 8-bit RGB)",
+    "bytes": 569,
+    "sha256": "9083aeee52b284a7ceec0286552121107fe917ce296c00023de033133a1a7bbe",
+    "base64Length": 760,
+    "base64Verified": "sent string length 760, decoded sha256 equals file sha256, string identical to `base64 -w0` output"
+  },
+  "attempts": [
+    {
+      "step": 1,
+      "tool": "assets.upload",
+      "arguments": {"kind": "portal-screenshot", "filename": "probe-256.png", "contentBase64": "<760 chars, verified>"},
+      "result": "failed",
+      "error": {
+        "code": "NOT_FOUND",
+        "msg": "assets.upload: resource — not found.",
+        "details": {"field": "resource", "reason": "NOT_FOUND", "expected": "an existing resource accessible to this application", "actual": "not reported by upstream", "upstream": "panel"},
+        "rid": "ea31ce53-72f4-44c1-9051-8951fdd61418"
+      },
+      "publicUrl": null
+    },
+    {
+      "step": 2,
+      "tool": "assets.upload",
+      "arguments": {"kind": "portal-cover", "filename": "probe-256.png", "contentBase64": "<760 chars, verified>"},
+      "result": "failed",
+      "error": {
+        "code": "NOT_FOUND",
+        "msg": "assets.upload: resource — not found.",
+        "details": {"field": "resource", "reason": "NOT_FOUND", "expected": "an existing resource accessible to this application", "actual": "not reported by upstream", "upstream": "panel"},
+        "rid": "c7912211-96b1-4a0a-83c2-ceafdd47f43a"
+      },
+      "publicUrl": null
+    },
+    {
+      "step": 3,
+      "tool": "assets.upload.begin",
+      "arguments": {"kind": "portal-screenshot", "bytes": 569, "sha256": "9083aeee52b284a7ceec0286552121107fe917ce296c00023de033133a1a7bbe"},
+      "result": "failed",
+      "error": {
+        "code": "NOT_FOUND",
+        "msg": "assets.upload.begin: resource — not found.",
+        "details": {"field": "resource", "reason": "NOT_FOUND", "expected": "an existing resource accessible to this application", "actual": "not reported by upstream", "upstream": "panel"},
+        "rid": "72b5a223-1043-4cd4-9e5d-a730ffbdf0e5"
+      },
+      "publicUrl": null
+    }
+  ],
+  "step4_curl": "not performed: no attempt returned publicUrl",
+  "conclusion": "With a fully valid 256x256 PNG (within documented 256-4096 px and size limits) the panel upstream rejects both portal-screenshot and portal-cover for app 360 on both the base64 path and the staging path with NOT_FOUND field=resource. The tool input schemas have no resource parameter (additionalProperties:false), so the failure is not fixable from the client side: the panel-side resource for portal assets of this app/env is missing or not accessible to the key. Requires platform/Studio action."
+}

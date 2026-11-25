@@ -1,0 +1,50 @@
+{
+  "app": {"appId": 360, "appCode": "iron-burrow", "env": "test", "scopeAssetsUpload": true},
+  "date": "2026-11-25",
+  "methodUsed": null,
+  "status": "failed: panel returns NOT_FOUND (field resource) for portal-cover/portal-screenshot on both upload paths; no publicUrl obtained",
+  "toolsSeen": [
+    {"name": "assets.upload", "args": "{kind (app-icon|inventory-icon|offer-icon|offer-banner|config-asset|portal-cover|portal-screenshot), role? (icons/banners only), filename ^[A-Za-z0-9_-]{1,128}\\.(png|jpg|webp)$, contentBase64 (canonical, <=8 MiB decoded, maxLength 11184812), expectedKey? (own-app key promotion)}; returns {key, kind, publicUrl?, sha256, contentType, bytes, width, height}"},
+    {"name": "assets.upload.batch", "args": "{items[1..50]: {path (project file on git main), kind, role?, filename?}, ref?: {mainSha}}; files <=256 KiB each (projects read limit), per-file status uploaded|exists|error; not applicable: files are 0.47-1.6 MB and must not be copied into the project"},
+    {"name": "assets.upload.begin", "args": "{kind (config-asset|portal-cover|portal-screenshot), bytes, sha256}; additionalProperties:false, no resource param; returns {uploadId, method PUT, url, headers, expiresAt}"},
+    {"name": "assets.upload.complete", "args": "{uploadId (hex24)}; returns Asset with publicUrl"}
+  ],
+  "toolsNotPresent": ["assets.upload.get", "assets.list", "apps.portal.readiness (documented in docs, not in tool list)"],
+  "items": [
+    {
+      "file": "/tmp/metashots/upload/shot-4-shop.png", "kind": "portal-screenshot",
+      "sha256": "def2786d53e48b2750e4c5f3dc4a9cffb05cb0df2c260531c3d901cc7516f762", "bytes": 485460, "width": 1440, "height": 900,
+      "assetId": null, "publicUrl": null, "http": null, "contentType": null,
+      "rid": "6d8b3519-cdbb-4071-9044-916f903c72bc",
+      "error": {"tool": "assets.upload.begin", "code": "NOT_FOUND", "details": {"field": "resource", "reason": "NOT_FOUND", "upstream": "panel"}, "rid": "6d8b3519-cdbb-4071-9044-916f903c72bc"},
+      "probes": [
+        {"tool": "assets.upload", "arguments": {"kind": "portal-screenshot", "filename": "shot-4-shop.png", "contentBase64": "first 8 bytes (PNG signature) only, route probe"}, "code": "NOT_FOUND", "details": {"field": "resource", "upstream": "panel"}, "rid": "fe3233e6-2bac-4fce-aaee-d49f64834810"}
+      ]
+    },
+    {
+      "file": "/tmp/metashots/upload/cover-16x9.png", "kind": "portal-cover",
+      "sha256": "0f00b8ec0e5fb91364db01e94950bf9d79bca8dab142eb60e1fd65e101ba477c", "bytes": 1623487, "width": 1920, "height": 1080,
+      "assetId": null, "publicUrl": null, "http": null, "contentType": null,
+      "rid": "786e9df8-3b28-4416-a9eb-24ce36c5f6b5",
+      "error": {"tool": "assets.upload (route probe, PNG signature only)", "code": "NOT_FOUND", "details": {"field": "resource", "upstream": "panel"}, "rid": "786e9df8-3b28-4416-a9eb-24ce36c5f6b5", "previousBeginRid": "fa7180f5-719a-468a-af49-217fea10a9c8"},
+      "note": "full upload not attempted this pass: portal-cover route returns NOT_FOUND before content validation"
+    },
+    {
+      "file": "/tmp/metashots/upload/shot-1-lobby.png", "kind": "portal-screenshot",
+      "sha256": "a3bd3d57b93d382c15a82f5ad3583feabf0de1d94a4484b83ca4159caa5bd8d2", "bytes": 1226812, "width": 1440, "height": 900,
+      "assetId": null, "publicUrl": null, "http": null, "contentType": null, "rid": null,
+      "error": {"code": "NOT_ATTEMPTED", "reason": "same kind as shot-4-shop, which fails with NOT_FOUND on begin and on base64 upload (rids 6d8b3519-..., fe3233e6-...)"}
+    },
+    {
+      "file": "/tmp/metashots/upload/shot-3-campaign-map.png", "kind": "portal-screenshot",
+      "sha256": "0811b1b5b11af69942f5f63797d2d4f83f1d7fef81f6d2d3262b4fc25db02dc6", "bytes": 705554, "width": 1440, "height": 900,
+      "assetId": null, "publicUrl": null, "http": null, "contentType": null, "rid": null,
+      "error": {"code": "NOT_ATTEMPTED", "reason": "same kind as shot-4-shop, which fails with NOT_FOUND on begin and on base64 upload"}
+    }
+  ],
+  "diagnosis": {
+    "controlProbe": {"tool": "assets.upload", "arguments": {"kind": "config-asset", "filename": "probe.png", "contentBase64": "PNG signature only"}, "code": "VALIDATION_FAILED", "upstream": "panel", "rid": "f0e61cc0-f4e8-4c01-9cb1-9d26bea47590", "meaning": "panel assets route works for this app key (bytes reached panel and were rejected as invalid content; nothing saved)"},
+    "conclusion": "panel answers NOT_FOUND for kinds portal-cover and portal-screenshot before validating content, on both the staged route (begin) and the inline base64 route. Inputs are valid (PNG, 256-4096 px, within size limits; scope assets.upload present). This is a panel-side gap for portal asset kinds in env test for app 360 (route or feature not enabled), not an argument error. Needs platform/panel owners.",
+    "base64PathNote": "an inline base64 of the real files is not feasible through the agent tool channel (shot-4-shop = 647280 base64 chars); and the route probe shows it would fail with NOT_FOUND regardless."
+  }
+}
