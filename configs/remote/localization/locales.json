@@ -5,6 +5,26 @@
       "tag": "en",
       "name": "English",
       "status": "published"
+    },
+    {
+      "tag": "de",
+      "name": "Deutsch",
+      "status": "published"
+    },
+    {
+      "tag": "es",
+      "name": "Español",
+      "status": "published"
+    },
+    {
+      "tag": "fr",
+      "name": "Français",
+      "status": "published"
+    },
+    {
+      "tag": "ru",
+      "name": "Русский",
+      "status": "published"
     }
   ]
 }

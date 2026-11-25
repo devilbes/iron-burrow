@@ -2,9 +2,75 @@
   "en": {
     "levels": {
       "chapter": {
-        "c01": { "title": "Clay Tunnels" },
-        "c02": { "title": "The Iron Works" },
-        "c03": { "title": "Magma Depths" }
+        "c01": {
+          "title": "Clay Tunnels"
+        },
+        "c02": {
+          "title": "The Iron Works"
+        },
+        "c03": {
+          "title": "Magma Depths"
+        }
+      }
+    }
+  },
+  "de": {
+    "levels": {
+      "chapter": {
+        "c01": {
+          "title": "Lehmtunnel"
+        },
+        "c02": {
+          "title": "Die Eisenwerke"
+        },
+        "c03": {
+          "title": "Magmatiefen"
+        }
+      }
+    }
+  },
+  "es": {
+    "levels": {
+      "chapter": {
+        "c01": {
+          "title": "Túneles de Arcilla"
+        },
+        "c02": {
+          "title": "La Fundición"
+        },
+        "c03": {
+          "title": "Profundidades de Magma"
+        }
+      }
+    }
+  },
+  "fr": {
+    "levels": {
+      "chapter": {
+        "c01": {
+          "title": "Tunnels d'argile"
+        },
+        "c02": {
+          "title": "Les Forges"
+        },
+        "c03": {
+          "title": "Abysses de magma"
+        }
+      }
+    }
+  },
+  "ru": {
+    "levels": {
+      "chapter": {
+        "c01": {
+          "title": "Глиняные тоннели"
+        },
+        "c02": {
+          "title": "Железный завод"
+        },
+        "c03": {
+          "title": "Магмовые глубины"
+        }
       }
     }
   }

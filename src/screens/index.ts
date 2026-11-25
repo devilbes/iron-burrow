@@ -252,7 +252,7 @@ export const TOP_BAR: readonly BarResource[] = [
  * screens and every kit window alike (src/boot/start.ts). tests/strings.test.mjs checks the list
  * against configs/remote/localization/.
  */
-export const LOCALES: readonly string[] = ['en'];
+export const LOCALES: readonly string[] = ['en', 'de', 'es', 'fr', 'ru'];
 
 /**
  * The orientation the game is made for — a design decision of the game, by its genre and
