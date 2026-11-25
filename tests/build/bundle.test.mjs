@@ -97,15 +97,15 @@ for (const [label, files, title] of [
   ['a base locale other than English', {
     'project.json': '{}',
     'src/boot/strings.ts': readFileSync(join(template, 'src/boot/strings.ts'), 'utf8')
-      .replace("DEFAULT_LOCALE = 'en'", "DEFAULT_LOCALE = 'de'"),
-    'configs/remote/localization/strings/title.de.json': JSON.stringify({ de: { shell: { title: 'Mondgarten' } } }),
+      .replace("DEFAULT_LOCALE = 'en'", "DEFAULT_LOCALE = 'pt'"),
+    'configs/remote/localization/strings/title.pt.json': JSON.stringify({ pt: { shell: { title: 'Mondgarten' } } }),
   }, 'Mondgarten'],
 ]) it(`built page: title and language from ${label}, neutral first frame`, (t) => {
   const game = fixture(t, 'test', files);
   passes(game.build());
   const html = readFileSync(join(game.root, 'dist/index.html'), 'utf8');
   assert.match(html, new RegExp(`<title>${title}</title>`));
-  assert.match(html, new RegExp(`<html lang="${files['src/boot/strings.ts'] ? 'de' : 'en'}"`));
+  assert.match(html, new RegExp(`<html lang="${files['src/boot/strings.ts'] ? 'pt' : 'en'}"`));
   assert.doesNotMatch(html, /ManyPlay Game|Loading…/);
   assert.doesNotMatch(html, /#11132e|#1a1d45/i);
   assert.match(html, /<div id="boot-loader"[^>]*><i><\/i><\/div>/);
