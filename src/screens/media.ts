@@ -4,11 +4,16 @@
 // Files may still be missing while the art step works: every picture here degrades to nothing
 // (the caller keeps the name / number on a plate), never to a broken screen.
 import { assetUrl } from '../assets.js';
-import { ITEMS, OFFERS } from '../skin/art.js';
-import type { BoosterId, OfferKey } from '../modules/game/index.js';
+import type { BoosterId, GamePorts, OfferKey } from '../modules/game/index.js';
 import { view, type ViewNode } from './ui.js';
 
-const skin = (file: string): string => assetUrl(`skin/${file}`);
+/** Skin pictures come through the game port (src/boot/game-ports.ts); bound when a screen mounts. */
+let skinArt: GamePorts['skinArt'];
+
+/** Binds the skin pictures of the ports the screens got (screens/index.ts, every mount). */
+export function bindArt(ports: GamePorts): void {
+  skinArt = ports.skinArt?.bind(ports);
+}
 
 /** URL of the 2x art of the game (`assets/game/<id>-2x.png`). */
 export function gameArt(id: string): string {
@@ -17,15 +22,12 @@ export function gameArt(id: string): string {
 
 /** URL of the picture of an inventory item (booster). */
 export function itemArt(id: BoosterId | string): string {
-  const file = ITEMS[id];
-  if (file && !file.startsWith('icon:')) return skin(file);
-  return gameArt(`icon_${id}`);
+  return skinArt?.('item', id) ?? gameArt(`icon_${id}`);
 }
 
 /** URL of the picture of an offer, or null (then the caller shows the first item's picture). */
 export function offerArt(key: OfferKey | string): string | null {
-  const file = OFFERS[key];
-  return file && !file.startsWith('icon:') ? skin(file) : null;
+  return skinArt?.('offer', key) ?? null;
 }
 
 /** `<img>` that hides itself when its file is missing. */
