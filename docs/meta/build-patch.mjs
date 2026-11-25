@@ -46,7 +46,7 @@ for (const loc of tags) {
   check(loc, 'h1', len(p.h1) >= 1 && len(p.h1) <= 200, 'h1');
   check(loc, 'title', len(p.title) <= 60 && p.title.endsWith(' | ManyPlay'), 'seoTitle ≤60, " | ManyPlay"');
   check(loc, 'description', len(p.description) >= 50 && len(p.description) <= 160, 'seoDescription 50..160');
-  check(loc, 'body', words(p.body) >= 300 && words(p.body) <= 1500 && len(p.body) <= 20000, `body words ${words(p.body)}`);
+  check(loc, 'body', words(p.body) >= 200 && words(p.body) <= 400 && len(p.body) <= 20000, `body words ${words(p.body)}`);
   check(loc, 'faq', Array.isArray(p.faq) && p.faq.length === 3 && p.faq.every((f) => len(f.question) <= 500 && len(f.answer) <= 4000 && f.question && f.answer), 'faq ×3');
   check(loc, 'controls', Array.isArray(d.controls) && d.controls.length >= 5, 'controls ≥5');
   check(loc, 'alt', ['cover', ...SHOTS].every((k) => len(d.alt?.[k]) >= 1 && len(d.alt[k]) <= 512), 'alt');

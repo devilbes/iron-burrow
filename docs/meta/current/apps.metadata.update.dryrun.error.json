@@ -1,1 +1,24 @@
-{"error":{"code":"PNL_METADATA_INVALID","rid":"c874baa3-29a6-414f-95da-b6a65f83c979","msg":"apps.metadata.update: portal.variants — Invalid metadata","details":{"fields":[{"path":"portal.variants","issue":"Invalid input: expected array, received undefined"}],"field":"portal.variants","reason":"PNL_METADATA_INVALID","expected":"a value accepted by the tool inputSchema","actual":"not reported by upstream","upstream":"projects"},"hint":"Check apps.metadata.update inputSchema with tools/list or find_tools, correct portal.variants, and retry."}}
+{
+  "request": {
+    "tool": "apps.metadata.update",
+    "version": 1,
+    "dryRun": true,
+    "patch": "docs/meta/patch.json (as is)"
+  },
+  "error": {
+    "code": "PNL_METADATA_INVALID",
+    "rid": "061d3c4b-418c-4879-af34-bd8d4d047172",
+    "msg": "apps.metadata.update: covers — Invalid portal metadata",
+    "details": {
+      "fields": [
+        { "path": "covers", "issue": "Covers are required with portal metadata" }
+      ],
+      "field": "covers",
+      "reason": "PNL_METADATA_INVALID",
+      "expected": "a value accepted by the tool inputSchema",
+      "actual": "not reported by upstream",
+      "upstream": "projects"
+    },
+    "hint": "Check apps.metadata.update inputSchema with tools/list or find_tools, correct covers, and retry."
+  }
+}
