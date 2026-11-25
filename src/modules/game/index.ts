@@ -44,6 +44,11 @@ export interface GamePorts {
   save(state: GameState | null): Promise<void>;
   /** Analytics event (flat string and number params); never throws. */
   track(event: string, params?: Record<string, string | number>): void;
+  /**
+   * URL of the skin picture of an inventory item or an offer (the pictures the kit windows show),
+   * or null when the skin has none; screens then fall back to the game's own art.
+   */
+  skinArt?(kind: 'item' | 'offer', id: string): string | null;
 }
 
 // ---------------------------------------------------------------- vocabulary
