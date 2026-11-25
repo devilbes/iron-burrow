@@ -1,0 +1,58 @@
+{
+  "locale": "en",
+  "name": "Iron Burrow",
+  "shortDescription": "Blast through brick mazes in a drill-tank and guard the Core from Rustbugs.",
+  "fullDescription": "Iron Burrow is a top-down arcade tank shooter set deep underground. You drive the Burrower, a stubby iron drill-tank, through mazes of clay brick and steel plate. At the bottom of every map sits the glowing Burrow Core. Your job is easy to explain and hard to pull off: destroy 20 Rustbugs, the beetle-shaped scrap tanks that roll in from above, and keep the Core in one piece. One hit on the Core and the stage is lost.\n\nThe maze is part of the fight. Every shot chews through brick a quarter of a block at a time, so the layout changes while you play. Cut a shortcut to reach a Rustbug faster, open a firing lane, or think twice before you blast a hole that leaves the Core exposed. Steel shrugs off a basic gun, so it shapes the routes you and the Rustbugs can take until your gun is strong enough to break it.\n\nSome Rustbugs flash. Hit one and it drops a pickup on the field. A star upgrades your gun, a bubble makes you briefly invulnerable, rebar turns the wall around the Core into steel for a while, a quake wipes out every Rustbug on the field, freeze stops them in their tracks, and hull gives you an extra life. Grab pickups quickly, because they do not stay for long.\n\nWhen things go wrong, boosters are your emergency kit. Bubble Shield protects your tank, Shockwave clears the field, Steel Fortress hardens the Core wall, and Spare Hull adds a life before a stage or lets you continue after a defeat. New players start with 2 of each, and clearing stages earns more.\n\nThe campaign has 30 stages across three chapters: Clay Tunnels, The Iron Works and Magma Depths, with up to 3 stars per stage. Clear stage 5 to unlock Siege, an endless mode with a leaderboard. Daily rewards follow a 7-day cycle.\n\nPlay in your browser on desktop with the keyboard, or on your phone with a floating stick and a FIRE button, in portrait or landscape. The interface is available in English, German, Spanish, French and Russian. There are no ads at all.",
+  "portal": {
+    "slug": "iron-burrow-tank-maze-defense",
+    "h1": "Iron Burrow: Underground Tank Maze Defense in Your Browser",
+    "title": "Iron Burrow: Tank Maze Defense | ManyPlay",
+    "description": "Drive an iron drill-tank through a destructible maze and guard the Burrow Core from 20 Rustbugs per stage. 30 stages, endless Siege, no ads.",
+    "shortDescription": "Blast through brick mazes in a drill-tank and guard the Core from Rustbugs.",
+    "body": "Iron Burrow is a top-down arcade tank shooter set deep underground. You drive the Burrower, a stubby iron drill-tank, through mazes of clay brick and steel plate. At the bottom of every map sits the glowing Burrow Core. Your job is easy to explain and hard to pull off: destroy 20 Rustbugs, the beetle-shaped scrap tanks that roll in from above, and keep the Core in one piece. One hit on the Core and the stage is lost.\n\nThe maze is part of the fight. Every shot chews through brick a quarter of a block at a time, so the layout changes while you play. Cut a shortcut to reach a Rustbug faster, open a firing lane, or think twice before you blast a hole that leaves the Core exposed. Steel shrugs off a basic gun, so it shapes the routes you and the Rustbugs can take until your gun is strong enough to break it.\n\nSome Rustbugs flash. Hit one and it drops a pickup on the field. A star upgrades your gun, a bubble makes you briefly invulnerable, rebar turns the wall around the Core into steel for a while, a quake wipes out every Rustbug on the field, freeze stops them in their tracks, and hull gives you an extra life. Grab pickups quickly, because they do not stay for long.\n\nWhen things go wrong, boosters are your emergency kit. Bubble Shield protects your tank, Shockwave clears the field, Steel Fortress hardens the Core wall, and Spare Hull adds a life before a stage or lets you continue after a defeat. New players start with 2 of each, and clearing stages earns more.\n\nThe campaign has 30 stages across three chapters: Clay Tunnels, The Iron Works and Magma Depths. Each stage awards up to 3 stars, 90 in total, and the cleaner your run, the more stars you take home. Stages are short, so a quick break is enough for a few of them. Clear stage 5 to unlock Siege, an endless mode where you hold out as long as you can and chase a high score. Leaderboards track your best Siege run and your campaign score, and a 7-day daily reward cycle gives you a reason to drop by each day.\n\nControls. Iron Burrow plays in your browser on desktop and on phones. On a keyboard you move with the arrow keys or WASD, hold Space or J to fire, press 1, 2 or 3 to use boosters, and press Esc or P to pause. The mouse only clicks menu buttons. On a touch screen a floating stick drives the tank in four directions and a FIRE button shoots, with booster and pause buttons on the HUD. Portrait and landscape both work, and turning your phone pauses the game so you can settle in before the next shot.\n\nThe game interface is available in English, German, Spanish, French and Russian. In the settings you can adjust Music, Sound and Reduce Motion, plus Vibration on touch devices. There are no ads at all, not between stages and not for rewards. An optional shop offers booster packs, but you can play the whole campaign without it. Iron Burrow needs an internet connection to run.",
+    "faq": [
+      {
+        "question": "How do I control the tank?",
+        "answer": "On a keyboard, move with the arrow keys or WASD, hold Space or J to fire, press 1, 2 or 3 to use boosters, and press Esc or P to pause. On a touch screen, drag the floating stick to drive in four directions, hold the FIRE button to shoot and tap the booster buttons on the HUD."
+      },
+      {
+        "question": "Which languages does Iron Burrow support?",
+        "answer": "The game interface is available in English, German, Spanish, French and Russian."
+      },
+      {
+        "question": "How do I unlock Siege?",
+        "answer": "Clear stage 5 of the campaign. Siege is an endless mode with a leaderboard for your best score."
+      }
+    ]
+  },
+  "controls": [
+    {
+      "action": "Move",
+      "input": "Arrow keys or WASD. On touch screens, drag the floating stick (4 directions)."
+    },
+    {
+      "action": "Fire",
+      "input": "Hold Space or J. On touch screens, hold the FIRE button."
+    },
+    {
+      "action": "Boosters",
+      "input": "Press 1, 2 or 3 (Numpad 1 to 3 also works). On touch screens, tap the booster buttons on the HUD."
+    },
+    {
+      "action": "Pause",
+      "input": "Esc or P. On touch screens, tap the pause button on the HUD."
+    },
+    {
+      "action": "Touch screens",
+      "input": "Drag the floating stick to drive, hold FIRE to shoot. Portrait and landscape both work."
+    }
+  ],
+  "alt": {
+    "cover": "Key art of Iron Burrow: an iron drill-tank in an underground brick maze facing a swarm of Rustbugs near the glowing Core.",
+    "shot-1-lobby": "Iron Burrow lobby with the game logo and the Play and Siege buttons.",
+    "shot-2-battle": "Battle on stage 1: Rustbugs in a brick maze, the Core at the bottom and the booster panel with Bubble Shield, Shockwave and Steel Fortress.",
+    "shot-3-campaign-map": "Campaign map of the Clay Tunnels chapter showing stages 1 to 10.",
+    "shot-4-shop": "Shop with booster packs: Hull Pack, Field Kit, Heavy Arsenal and Commander Cache.",
+    "shot-5-stage-clear": "Stage Clear window with three stars, the score and booster rewards."
+  }
+}

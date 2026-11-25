@@ -1,0 +1,58 @@
+{
+  "locale": "fr",
+  "name": "Iron Burrow",
+  "shortDescription": "Défends le Noyau dans un labyrinthe de briques destructibles, sans pub.",
+  "fullDescription": "Iron Burrow est un jeu d'arcade en vue de dessus à jouer dans le navigateur. Tu pilotes le Fouisseur, un robuste tank foreur en fer, à travers des labyrinthes souterrains de briques d'argile et de plaques d'acier. Ta mission : protéger le Noyau du Terrier, qui brille en bas de la carte, contre les Rouillards, des tanks-insectes rongés par la rouille.\n\nChaque tir grignote la brique par quarts, donc le labyrinthe change en plein combat. Tu peux te frayer un passage vers l'ennemi, mais attention : une ouverture de trop et le Noyau devient une cible. Un seul tir dans le Noyau et le niveau est perdu, même si le tir vient de toi.\n\nChaque niveau dure entre 90 et 180 secondes. Pour le gagner, détruis 20 Rouillards sans laisser tomber le Noyau. Les Rouillards qui clignotent lâchent des bonus : amélioration du canon, bouclier, mur d'acier, séisme, gel ou vie supplémentaire. À la fin, tu gagnes jusqu'à trois étoiles, un score et des boosts en récompense.\n\nLa campagne compte 30 niveaux répartis en trois chapitres : Tunnels d'argile, Les Forges et Abysses de magma. Après le niveau 5, le mode Siège se débloque : des vagues sans fin, un score à battre et un classement hebdomadaire. Il y a aussi une récompense quotidienne sur un cycle de 7 jours.\n\nQuatre boosts te servent d'assurance dans les moments critiques : Bouclier Bulle, Onde de choc, Forteresse d'acier et Coque de secours. Chaque nouveau joueur en reçoit deux de chaque pour bien démarrer. La boutique propose des packs de boosts, mais la campagne se termine sans rien acheter.\n\nSur ordinateur, tu joues au clavier : flèches ou ZQSD pour rouler, Espace ou J pour tirer. Sur téléphone, un stick flottant et un bouton FEU apparaissent à l'écran. Iron Burrow s'adapte au format portrait, paysage et grand écran, et il n'y a aucune publicité.\n\nL'interface du jeu est disponible en français, anglais, allemand, espagnol et russe. Une connexion internet est nécessaire pour jouer.",
+  "portal": {
+    "slug": "iron-burrow-jeu-arcade-defense-de-base",
+    "h1": "Iron Burrow : jeu d'arcade, défends le Noyau du Terrier",
+    "title": "Iron Burrow, jeu de tank en labyrinthe | ManyPlay",
+    "description": "Pilote le Fouisseur, perce des murs de brique et protège le Noyau contre 20 Rouillards par niveau. Jeu d'arcade dans le navigateur, sans aucune pub.",
+    "shortDescription": "Défends le Noyau dans un labyrinthe de briques destructibles, sans pub.",
+    "body": "Iron Burrow est un jeu d'arcade de défense de base en vue de dessus, que tu lances directement dans ton navigateur, sur ordinateur comme sur mobile. Tu y incarnes le Fouisseur, un petit tank foreur tout en fer, dans un réseau de tunnels creusés sous terre. Au fond de la carte brille le Noyau du Terrier. C'est lui que tu dois défendre, et il n'a droit qu'à une seule erreur.\n\nLe principe est simple à comprendre et difficile à maîtriser. Chaque niveau te demande de détruire 20 Rouillards, des tanks-insectes couverts de rouille qui avancent dans le labyrinthe pour atteindre le Noyau. Si un seul tir touche le Noyau, c'est la défaite immédiate. La tension reste donc présente du début à la fin, mais un niveau ne dure que 90 à 180 secondes. Tu peux enchaîner plusieurs parties en une courte pause comme en une longue session.\n\nCe qui rend Iron Burrow singulier, c'est son labyrinthe destructible. Les murs de brique d'argile se découpent par quarts à chaque tir. Tu peux percer un raccourci pour surprendre un ennemi, dégager une ligne de tir ou, au contraire, ouvrir sans le vouloir un passage jusqu'au Noyau. Même tes propres tirs peuvent le briser, donc chaque coup compte. Les plaques d'acier, elles, résistent mieux et servent de repères solides sur la carte.\n\nCertains Rouillards clignotent. Les abattre fait apparaître un bonus sur le terrain : une étoile pour améliorer ton canon, un bouclier, un mur d'acier autour du Noyau, un séisme, un gel ou une coque supplémentaire. Ramasser ces bonus au bon moment change souvent le cours d'un niveau, et il faut parfois traverser une zone dangereuse pour les attraper.\n\nEn plus des bonus du terrain, tu disposes de quatre boosts à activer toi-même. Le Bouclier Bulle rend ton tank invulnérable pendant 10 secondes. L'Onde de choc détruit tous les ennemis présents et chaque élimination rapporte des points. La Forteresse d'acier transforme le mur du Noyau en acier pendant 20 secondes et reconstruit les quarts détruits. La Coque de secours ajoute une vie avant un niveau, ou te permet de continuer après une défaite avec deux vies et un Noyau reconstruit. Chaque nouveau joueur reçoit deux exemplaires de chaque boost pour apprendre à les utiliser.\n\nLes commandes dépendent de ton appareil. Au clavier, déplace-toi avec les flèches ou avec ZQSD (WASD sur un clavier QWERTY), maintiens Espace ou J pour tirer, et utilise les touches 1, 2 et 3 pour activer les boosts. Échap ou P met le jeu en pause. Sur un écran tactile, un stick virtuel flottant te permet de rouler dans les quatre directions, un bouton FEU se maintient pour tirer, et des boutons de boost et de pause sont affichés dans l'interface. Sur ordinateur, la souris sert uniquement à cliquer sur les boutons des menus.\n\nLa progression passe par la campagne de 30 niveaux, répartie en trois chapitres : Tunnels d'argile, Les Forges et Abysses de magma. Chaque niveau offre jusqu'à trois étoiles, soit 90 au total. À la fin d'un niveau réussi, tu vois tes étoiles, ton score et les boosts gagnés. Le chapitre suivant s'ouvre quand tu termines le dernier niveau du précédent.\n\nAprès le niveau 5, le mode Siège s'ouvre. Il n'a pas de fin : les vagues se succèdent et tu cherches à tenir le plus longtemps possible pour battre ton record. Ton score peut entrer dans un classement hebdomadaire, et un classement de campagne est aussi disponible. Une récompense quotidienne t'attend chaque jour sur un cycle de 7 jours.\n\nIron Burrow ne contient aucune publicité. La boutique propose des packs de boosts, mais ils servent de filet de sécurité, pas de passage obligé : toute la campagne se joue sans rien acheter. L'interface est disponible en français, en anglais, en allemand, en espagnol et en russe. Une connexion internet est nécessaire, et le jeu s'adapte aux formats portrait, paysage et grand écran. Lance une partie, protège le Noyau et vois jusqu'où ton Fouisseur peut descendre.",
+    "faq": [
+      {
+        "question": "Comment gagne-t-on un niveau dans Iron Burrow ?",
+        "answer": "Il faut détruire 20 Rouillards sans laisser le moindre tir toucher le Noyau du Terrier. À la fin, tu reçois jusqu'à trois étoiles, un score et des boosts en récompense."
+      },
+      {
+        "question": "Quelles sont les commandes du jeu ?",
+        "answer": "Au clavier : flèches ou ZQSD pour te déplacer, Espace ou J pour tirer, 1, 2 et 3 pour les boosts, Échap ou P pour la pause. Sur écran tactile : stick flottant, bouton FEU et boutons de boost."
+      },
+      {
+        "question": "Le jeu est-il disponible en français et contient-il des publicités ?",
+        "answer": "Oui, l'interface existe en français, en anglais, en allemand, en espagnol et en russe. Il n'y a aucune publicité dans Iron Burrow. Une connexion internet est nécessaire pour jouer."
+      }
+    ]
+  },
+  "controls": [
+    {
+      "action": "Se déplacer",
+      "input": "Flèches ou ZQSD (WASD sur clavier QWERTY) ; sur écran tactile, stick virtuel flottant"
+    },
+    {
+      "action": "Tirer",
+      "input": "Espace ou J (maintenir) ; sur écran tactile, bouton FEU (maintenir)"
+    },
+    {
+      "action": "Boosts",
+      "input": "Touches 1, 2 et 3 ; sur écran tactile, boutons de boost dans l'interface"
+    },
+    {
+      "action": "Pause",
+      "input": "Échap ou P ; sur écran tactile, bouton de pause dans l'interface"
+    },
+    {
+      "action": "Écrans tactiles",
+      "input": "Stick flottant pour rouler dans 4 directions et bouton FEU ; la souris ne sert qu'aux menus"
+    }
+  ],
+  "alt": {
+    "cover": "Illustration d'Iron Burrow : le Fouisseur, tank foreur en fer, face à des Rouillards dans un labyrinthe souterrain de briques",
+    "shot-1-lobby": "Accueil d'Iron Burrow avec le logo du jeu et les boutons Jouer et Siège",
+    "shot-2-battle": "Combat au niveau 1 : des Rouillards dans un labyrinthe de briques, le Noyau en bas et le panneau de boosts",
+    "shot-3-campaign-map": "Carte de la campagne, chapitre Tunnels d'argile, avec les niveaux 1 à 10",
+    "shot-4-shop": "Boutique avec les packs de boosts : Pack de coques, Kit de terrain, Arsenal lourd et Réserve du commandant",
+    "shot-5-stage-clear": "Fenêtre Niveau réussi avec trois étoiles, le score et les boosts gagnés en récompense"
+  }
+}

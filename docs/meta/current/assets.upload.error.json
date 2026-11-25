@@ -1,0 +1,31 @@
+{
+  "app": {"appId": 360, "appCode": "iron-burrow", "env": "test", "scopeAssetsUpload": true},
+  "toolInputSchema": "assets.upload.begin accepts only {kind, bytes, sha256} with additionalProperties:false; there is no resource parameter",
+  "attempts": [
+    {
+      "tool": "assets.upload.begin",
+      "file": "/tmp/metashots/upload/cover-16x9.png",
+      "arguments": {"kind": "portal-cover", "bytes": 1623487, "sha256": "0f00b8ec0e5fb91364db01e94950bf9d79bca8dab142eb60e1fd65e101ba477c"},
+      "error": {
+        "code": "NOT_FOUND",
+        "msg": "assets.upload.begin: resource — not found.",
+        "details": {"field": "resource", "reason": "NOT_FOUND", "expected": "an existing resource accessible to this application", "actual": "not reported by upstream", "upstream": "panel"},
+        "hint": "List or read the resource in this application, then call assets.upload.begin with its resource. Foreign and missing resources return the same error.",
+        "rid": "fa7180f5-719a-468a-af49-217fea10a9c8"
+      }
+    },
+    {
+      "tool": "assets.upload.begin",
+      "file": "/tmp/metashots/upload/shot-5-stage-clear.png",
+      "arguments": {"kind": "portal-screenshot", "bytes": 288122, "sha256": "b946cf8df90453046afddba32bac3b9a164c7842bf5f9eb7ee12d5ffe296499e"},
+      "error": {
+        "code": "NOT_FOUND",
+        "msg": "assets.upload.begin: resource — not found.",
+        "details": {"field": "resource", "reason": "NOT_FOUND", "expected": "an existing resource accessible to this application", "actual": "not reported by upstream", "upstream": "panel"},
+        "hint": "List or read the resource in this application, then call assets.upload.begin with its resource. Foreign and missing resources return the same error.",
+        "rid": "c8da61d5-7dd2-4368-ba20-9be141c5217f"
+      }
+    }
+  ],
+  "notAttempted": ["shot-1-lobby.png", "shot-2-battle.png", "shot-3-campaign-map.png", "shot-4-shop.png"]
+}
