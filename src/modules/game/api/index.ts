@@ -242,6 +242,7 @@ export function ironBurrow(api: IronBurrowApi): IronBurrow {
     currentLevel: () => ports.currentLevel(), level: (n) => ports.level(n), beginAttempt: (n) => ports.beginAttempt(n),
     endLevel: (n, won, stats) => ports.endLevel(n, won, stats), loadSave: () => ports.loadSave(), save: (s) => ports.save(s),
     track: (e, p) => ports.track(e, p),
+    skinArt: (kind, id) => ports.skinArt?.(kind, id) ?? null,
     get env() { return { qa: host.qa, haptics: api.canVibrate(), version: newerVersion(host.ctx?.appVersion, VERSION) }; },
     ready: () => host.ready(), refresh: () => api.refresh(),
     campaign: () => api.campaign(), prestage: (mode, n) => api.prestage(mode, n),
