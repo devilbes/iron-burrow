@@ -7,6 +7,8 @@ import type { AppliedLevel, LevelHandle, Levels } from '@manygamescorp/mod-progr
 import { GAME_MODULE_ID, type GamePorts, type GameState, type Level, type LevelResult } from
   '../modules/game/index.js';
 import { LEVEL_SET, LEVEL_SET_RECORD, MODULES, PROGRESS } from './ids.js';
+import { assetUrl } from '../assets.js';
+import { ITEMS, OFFERS } from '../skin/art.js';
 import type { GrantFollowUp } from './grants.js';
 import { withCompletedStep, type ProgressStore } from './progress-state.js';
 
@@ -133,6 +135,10 @@ export function createGamePorts(sdk: Sdk, progress: ProgressStore, grants: Grant
     save: (state) => save.save(state),
     track(event, params) {
       try { sdk.analytics.sendEvent(event, params ?? {}); } catch { /* analytics never blocks */ }
+    },
+    skinArt(kind, id) {
+      const file = (kind === 'item' ? ITEMS : OFFERS)[id];
+      return file && !file.startsWith('icon:') ? assetUrl(`skin/${file}`) : null;
     },
   };
 }
