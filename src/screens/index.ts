@@ -10,6 +10,7 @@ import { mount as game } from './game.js';
 import { mount as home } from './home.js';
 import { mount as map } from './map.js';
 import { openShop } from './shop.js';
+import { bindArt } from './media.js';
 
 /**
  * `home` — S02 Lobby (the shell's start route, keep the name); `map` — S03 Stage Map;
@@ -104,7 +105,8 @@ export interface GameOverlay {
 /** Draws a screen into `root`; returns the function that removes it and its subscriptions. */
 export type ScreenMount = (root: HTMLElement, ctx: ScreenContext) => () => void;
 
-export const screens: Record<Route, ScreenMount> = { home, map, game };
+const bound = (mount: ScreenMount): ScreenMount => (root, ctx) => { bindArt(ctx.game); return mount(root, ctx); };
+export const screens: Record<Route, ScreenMount> = { home: bound(home), map: bound(map), game: bound(game) };
 
 /** Gameplay routes: the shell shows them without the lobby HUD and bottom menu, with a compact top bar. */
 export const GAMEPLAY: ReadonlySet<Route> = new Set<Route>(['game']);
