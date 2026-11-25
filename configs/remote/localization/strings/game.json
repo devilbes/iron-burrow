@@ -296,5 +296,1197 @@
         "title": "Campaign score"
       }
     }
+  },
+  "de": {
+    "shell": {
+      "title": "Iron Burrow"
+    },
+    "item": {
+      "bst_bubble": {
+        "title": "Blasenschild",
+        "description": "Dein Panzer ist 10 Sekunden lang unverwundbar."
+      },
+      "bst_shockwave": {
+        "title": "Schockwelle",
+        "description": "Vernichtet alle Gegner auf dem Feld. Abschüsse zählen trotzdem."
+      },
+      "bst_fortify": {
+        "title": "Stahlfestung",
+        "description": "Die Kernmauer wird 20 Sekunden lang zu Stahl, zerstörte Teile werden repariert."
+      },
+      "bst_hull": {
+        "title": "Ersatzrumpf",
+        "description": "+1 Leben vor einem Level – oder nach einer Niederlage weiter mit 2 Leben und repariertem Kern."
+      }
+    },
+    "offer": {
+      "starter_crate": {
+        "title": "Starterkiste",
+        "subtitle": "3 von jedem Booster · nur einmal"
+      },
+      "hull_pack": {
+        "title": "Rumpfpaket",
+        "subtitle": "5 Ersatzrümpfe"
+      },
+      "field_kit": {
+        "title": "Feldausrüstung",
+        "subtitle": "6 von jedem Booster",
+        "badge": "Topangebot"
+      },
+      "heavy_arsenal": {
+        "title": "Schweres Arsenal",
+        "subtitle": "15 von jedem Booster"
+      },
+      "commander_cache": {
+        "title": "Kommandantenvorrat",
+        "subtitle": "35 von jedem Booster"
+      },
+      "start_grant": {
+        "title": "Willkommen, Kommandant!",
+        "subtitle": "2 von jedem Booster, gratis",
+        "cta": "Abholen"
+      },
+      "cta": {
+        "buy": "Kaufen"
+      }
+    },
+    "placement": {
+      "defeat": {
+        "title": "Zurück in den Kampf"
+      },
+      "prestage": {
+        "title": "Ersatzrumpf"
+      },
+      "starter_auto": {
+        "title": "Starterkiste"
+      },
+      "start_grant": {
+        "title": "Startgeschenk"
+      }
+    },
+    "levels": {
+      "main": {
+        "title": "Kampagne",
+        "level_1": {
+          "title": "Level 1"
+        },
+        "level_2": {
+          "title": "Level 2"
+        },
+        "level_3": {
+          "title": "Level 3"
+        },
+        "level_4": {
+          "title": "Level 4"
+        },
+        "level_5": {
+          "title": "Level 5"
+        },
+        "level_6": {
+          "title": "Level 6"
+        },
+        "level_7": {
+          "title": "Level 7"
+        },
+        "level_8": {
+          "title": "Level 8"
+        },
+        "level_9": {
+          "title": "Level 9"
+        },
+        "level_10": {
+          "title": "Level 10"
+        },
+        "level_11": {
+          "title": "Level 11"
+        },
+        "level_12": {
+          "title": "Level 12"
+        },
+        "level_13": {
+          "title": "Level 13"
+        },
+        "level_14": {
+          "title": "Level 14"
+        },
+        "level_15": {
+          "title": "Level 15"
+        },
+        "level_16": {
+          "title": "Level 16"
+        },
+        "level_17": {
+          "title": "Level 17"
+        },
+        "level_18": {
+          "title": "Level 18"
+        },
+        "level_19": {
+          "title": "Level 19"
+        },
+        "level_20": {
+          "title": "Level 20"
+        },
+        "level_21": {
+          "title": "Level 21"
+        },
+        "level_22": {
+          "title": "Level 22"
+        },
+        "level_23": {
+          "title": "Level 23"
+        },
+        "level_24": {
+          "title": "Level 24"
+        },
+        "level_25": {
+          "title": "Level 25"
+        },
+        "level_26": {
+          "title": "Level 26"
+        },
+        "level_27": {
+          "title": "Level 27"
+        },
+        "level_28": {
+          "title": "Level 28"
+        },
+        "level_29": {
+          "title": "Level 29"
+        },
+        "level_30": {
+          "title": "Level 30"
+        }
+      },
+      "endless": {
+        "title": "Belagerung",
+        "siege_pit": {
+          "title": "Die Grube"
+        }
+      }
+    },
+    "progress": {
+      "stars_main": {
+        "title": "Drei-Sterne-Level",
+        "stars3_1": {
+          "title": "Level 1: drei Sterne"
+        },
+        "stars3_2": {
+          "title": "Level 2: drei Sterne"
+        },
+        "stars3_3": {
+          "title": "Level 3: drei Sterne"
+        },
+        "stars3_4": {
+          "title": "Level 4: drei Sterne"
+        },
+        "stars3_5": {
+          "title": "Level 5: drei Sterne"
+        },
+        "stars3_6": {
+          "title": "Level 6: drei Sterne"
+        },
+        "stars3_7": {
+          "title": "Level 7: drei Sterne"
+        },
+        "stars3_8": {
+          "title": "Level 8: drei Sterne"
+        },
+        "stars3_9": {
+          "title": "Level 9: drei Sterne"
+        },
+        "stars3_10": {
+          "title": "Level 10: drei Sterne"
+        },
+        "stars3_11": {
+          "title": "Level 11: drei Sterne"
+        },
+        "stars3_12": {
+          "title": "Level 12: drei Sterne"
+        },
+        "stars3_13": {
+          "title": "Level 13: drei Sterne"
+        },
+        "stars3_14": {
+          "title": "Level 14: drei Sterne"
+        },
+        "stars3_15": {
+          "title": "Level 15: drei Sterne"
+        },
+        "stars3_16": {
+          "title": "Level 16: drei Sterne"
+        },
+        "stars3_17": {
+          "title": "Level 17: drei Sterne"
+        },
+        "stars3_18": {
+          "title": "Level 18: drei Sterne"
+        },
+        "stars3_19": {
+          "title": "Level 19: drei Sterne"
+        },
+        "stars3_20": {
+          "title": "Level 20: drei Sterne"
+        },
+        "stars3_21": {
+          "title": "Level 21: drei Sterne"
+        },
+        "stars3_22": {
+          "title": "Level 22: drei Sterne"
+        },
+        "stars3_23": {
+          "title": "Level 23: drei Sterne"
+        },
+        "stars3_24": {
+          "title": "Level 24: drei Sterne"
+        },
+        "stars3_25": {
+          "title": "Level 25: drei Sterne"
+        },
+        "stars3_26": {
+          "title": "Level 26: drei Sterne"
+        },
+        "stars3_27": {
+          "title": "Level 27: drei Sterne"
+        },
+        "stars3_28": {
+          "title": "Level 28: drei Sterne"
+        },
+        "stars3_29": {
+          "title": "Level 29: drei Sterne"
+        },
+        "stars3_30": {
+          "title": "Level 30: drei Sterne"
+        }
+      }
+    },
+    "reward": {
+      "daily": {
+        "title": "Täglicher Nachschub",
+        "day_1": {
+          "title": "Tag 1"
+        },
+        "day_2": {
+          "title": "Tag 2"
+        },
+        "day_3": {
+          "title": "Tag 3"
+        },
+        "day_4": {
+          "title": "Tag 4"
+        },
+        "day_5": {
+          "title": "Tag 5"
+        },
+        "day_6": {
+          "title": "Tag 6"
+        },
+        "day_7": {
+          "title": "Tag 7"
+        }
+      }
+    },
+    "leaderboard": {
+      "siege_best": {
+        "title": "Belagerung – bester Lauf"
+      },
+      "campaign_score": {
+        "title": "Kampagnenpunkte"
+      }
+    }
+  },
+  "es": {
+    "shell": {
+      "title": "Iron Burrow"
+    },
+    "item": {
+      "bst_bubble": {
+        "title": "Escudo Burbuja",
+        "description": "Tu tanque es invulnerable durante 10 segundos."
+      },
+      "bst_shockwave": {
+        "title": "Onda Expansiva",
+        "description": "Destruye a todos los enemigos del campo. Las bajas siguen puntuando."
+      },
+      "bst_fortify": {
+        "title": "Fortaleza de Acero",
+        "description": "El muro del Núcleo se vuelve de acero durante 20 segundos y se reconstruyen los tramos rotos."
+      },
+      "bst_hull": {
+        "title": "Casco de repuesto",
+        "description": "+1 vida antes de un nivel, o continúa tras una derrota con 2 vidas y el Núcleo reconstruido."
+      }
+    },
+    "offer": {
+      "starter_crate": {
+        "title": "Caja de inicio",
+        "subtitle": "3 de cada potenciador · solo una vez"
+      },
+      "hull_pack": {
+        "title": "Pack de cascos",
+        "subtitle": "5 Cascos de repuesto"
+      },
+      "field_kit": {
+        "title": "Equipo de campo",
+        "subtitle": "6 de cada potenciador",
+        "badge": "Mejor precio"
+      },
+      "heavy_arsenal": {
+        "title": "Arsenal Pesado",
+        "subtitle": "15 de cada potenciador"
+      },
+      "commander_cache": {
+        "title": "Alijo del Comandante",
+        "subtitle": "35 de cada potenciador"
+      },
+      "start_grant": {
+        "title": "¡Bienvenido, Comandante!",
+        "subtitle": "2 de cada potenciador, gratis",
+        "cta": "Recoger"
+      },
+      "cta": {
+        "buy": "Comprar"
+      }
+    },
+    "placement": {
+      "defeat": {
+        "title": "Vuelve a la lucha"
+      },
+      "prestage": {
+        "title": "Casco de repuesto"
+      },
+      "starter_auto": {
+        "title": "Caja de inicio"
+      },
+      "start_grant": {
+        "title": "Regalo de bienvenida"
+      }
+    },
+    "levels": {
+      "main": {
+        "title": "Campaña",
+        "level_1": {
+          "title": "Nivel 1"
+        },
+        "level_2": {
+          "title": "Nivel 2"
+        },
+        "level_3": {
+          "title": "Nivel 3"
+        },
+        "level_4": {
+          "title": "Nivel 4"
+        },
+        "level_5": {
+          "title": "Nivel 5"
+        },
+        "level_6": {
+          "title": "Nivel 6"
+        },
+        "level_7": {
+          "title": "Nivel 7"
+        },
+        "level_8": {
+          "title": "Nivel 8"
+        },
+        "level_9": {
+          "title": "Nivel 9"
+        },
+        "level_10": {
+          "title": "Nivel 10"
+        },
+        "level_11": {
+          "title": "Nivel 11"
+        },
+        "level_12": {
+          "title": "Nivel 12"
+        },
+        "level_13": {
+          "title": "Nivel 13"
+        },
+        "level_14": {
+          "title": "Nivel 14"
+        },
+        "level_15": {
+          "title": "Nivel 15"
+        },
+        "level_16": {
+          "title": "Nivel 16"
+        },
+        "level_17": {
+          "title": "Nivel 17"
+        },
+        "level_18": {
+          "title": "Nivel 18"
+        },
+        "level_19": {
+          "title": "Nivel 19"
+        },
+        "level_20": {
+          "title": "Nivel 20"
+        },
+        "level_21": {
+          "title": "Nivel 21"
+        },
+        "level_22": {
+          "title": "Nivel 22"
+        },
+        "level_23": {
+          "title": "Nivel 23"
+        },
+        "level_24": {
+          "title": "Nivel 24"
+        },
+        "level_25": {
+          "title": "Nivel 25"
+        },
+        "level_26": {
+          "title": "Nivel 26"
+        },
+        "level_27": {
+          "title": "Nivel 27"
+        },
+        "level_28": {
+          "title": "Nivel 28"
+        },
+        "level_29": {
+          "title": "Nivel 29"
+        },
+        "level_30": {
+          "title": "Nivel 30"
+        }
+      },
+      "endless": {
+        "title": "Asedio",
+        "siege_pit": {
+          "title": "El Foso"
+        }
+      }
+    },
+    "progress": {
+      "stars_main": {
+        "title": "Niveles con tres estrellas",
+        "stars3_1": {
+          "title": "Nivel 1: tres estrellas"
+        },
+        "stars3_2": {
+          "title": "Nivel 2: tres estrellas"
+        },
+        "stars3_3": {
+          "title": "Nivel 3: tres estrellas"
+        },
+        "stars3_4": {
+          "title": "Nivel 4: tres estrellas"
+        },
+        "stars3_5": {
+          "title": "Nivel 5: tres estrellas"
+        },
+        "stars3_6": {
+          "title": "Nivel 6: tres estrellas"
+        },
+        "stars3_7": {
+          "title": "Nivel 7: tres estrellas"
+        },
+        "stars3_8": {
+          "title": "Nivel 8: tres estrellas"
+        },
+        "stars3_9": {
+          "title": "Nivel 9: tres estrellas"
+        },
+        "stars3_10": {
+          "title": "Nivel 10: tres estrellas"
+        },
+        "stars3_11": {
+          "title": "Nivel 11: tres estrellas"
+        },
+        "stars3_12": {
+          "title": "Nivel 12: tres estrellas"
+        },
+        "stars3_13": {
+          "title": "Nivel 13: tres estrellas"
+        },
+        "stars3_14": {
+          "title": "Nivel 14: tres estrellas"
+        },
+        "stars3_15": {
+          "title": "Nivel 15: tres estrellas"
+        },
+        "stars3_16": {
+          "title": "Nivel 16: tres estrellas"
+        },
+        "stars3_17": {
+          "title": "Nivel 17: tres estrellas"
+        },
+        "stars3_18": {
+          "title": "Nivel 18: tres estrellas"
+        },
+        "stars3_19": {
+          "title": "Nivel 19: tres estrellas"
+        },
+        "stars3_20": {
+          "title": "Nivel 20: tres estrellas"
+        },
+        "stars3_21": {
+          "title": "Nivel 21: tres estrellas"
+        },
+        "stars3_22": {
+          "title": "Nivel 22: tres estrellas"
+        },
+        "stars3_23": {
+          "title": "Nivel 23: tres estrellas"
+        },
+        "stars3_24": {
+          "title": "Nivel 24: tres estrellas"
+        },
+        "stars3_25": {
+          "title": "Nivel 25: tres estrellas"
+        },
+        "stars3_26": {
+          "title": "Nivel 26: tres estrellas"
+        },
+        "stars3_27": {
+          "title": "Nivel 27: tres estrellas"
+        },
+        "stars3_28": {
+          "title": "Nivel 28: tres estrellas"
+        },
+        "stars3_29": {
+          "title": "Nivel 29: tres estrellas"
+        },
+        "stars3_30": {
+          "title": "Nivel 30: tres estrellas"
+        }
+      }
+    },
+    "reward": {
+      "daily": {
+        "title": "Suministro diario",
+        "day_1": {
+          "title": "Día 1"
+        },
+        "day_2": {
+          "title": "Día 2"
+        },
+        "day_3": {
+          "title": "Día 3"
+        },
+        "day_4": {
+          "title": "Día 4"
+        },
+        "day_5": {
+          "title": "Día 5"
+        },
+        "day_6": {
+          "title": "Día 6"
+        },
+        "day_7": {
+          "title": "Día 7"
+        }
+      }
+    },
+    "leaderboard": {
+      "siege_best": {
+        "title": "Asedio: mejor partida"
+      },
+      "campaign_score": {
+        "title": "Puntos de Campaña"
+      }
+    }
+  },
+  "fr": {
+    "shell": {
+      "title": "Iron Burrow"
+    },
+    "item": {
+      "bst_bubble": {
+        "title": "Bouclier Bulle",
+        "description": "Ton tank est invulnérable pendant 10 secondes."
+      },
+      "bst_shockwave": {
+        "title": "Onde de choc",
+        "description": "Détruit tous les ennemis du terrain. Les éliminations rapportent des points."
+      },
+      "bst_fortify": {
+        "title": "Forteresse d'acier",
+        "description": "Le mur du Noyau devient en acier pendant 20 secondes et les quartiers détruits sont reconstruits."
+      },
+      "bst_hull": {
+        "title": "Coque de secours",
+        "description": "+1 vie avant un niveau, ou continue après une défaite avec 2 vies et un Noyau reconstruit."
+      }
+    },
+    "offer": {
+      "starter_crate": {
+        "title": "Caisse de départ",
+        "subtitle": "3 de chaque boost · offre unique"
+      },
+      "hull_pack": {
+        "title": "Pack de coques",
+        "subtitle": "5 Coques de secours"
+      },
+      "field_kit": {
+        "title": "Kit de terrain",
+        "subtitle": "6 de chaque boost",
+        "badge": "Top affaire"
+      },
+      "heavy_arsenal": {
+        "title": "Arsenal lourd",
+        "subtitle": "15 de chaque boost"
+      },
+      "commander_cache": {
+        "title": "Réserve du commandant",
+        "subtitle": "35 de chaque boost"
+      },
+      "start_grant": {
+        "title": "Bienvenue, Commandant !",
+        "subtitle": "2 de chaque boost, offerts",
+        "cta": "Récupérer"
+      },
+      "cta": {
+        "buy": "Acheter"
+      }
+    },
+    "placement": {
+      "defeat": {
+        "title": "Retourne au combat"
+      },
+      "prestage": {
+        "title": "Coque de secours"
+      },
+      "starter_auto": {
+        "title": "Caisse de départ"
+      },
+      "start_grant": {
+        "title": "Cadeau de bienvenue"
+      }
+    },
+    "levels": {
+      "main": {
+        "title": "Campagne",
+        "level_1": {
+          "title": "Niveau 1"
+        },
+        "level_2": {
+          "title": "Niveau 2"
+        },
+        "level_3": {
+          "title": "Niveau 3"
+        },
+        "level_4": {
+          "title": "Niveau 4"
+        },
+        "level_5": {
+          "title": "Niveau 5"
+        },
+        "level_6": {
+          "title": "Niveau 6"
+        },
+        "level_7": {
+          "title": "Niveau 7"
+        },
+        "level_8": {
+          "title": "Niveau 8"
+        },
+        "level_9": {
+          "title": "Niveau 9"
+        },
+        "level_10": {
+          "title": "Niveau 10"
+        },
+        "level_11": {
+          "title": "Niveau 11"
+        },
+        "level_12": {
+          "title": "Niveau 12"
+        },
+        "level_13": {
+          "title": "Niveau 13"
+        },
+        "level_14": {
+          "title": "Niveau 14"
+        },
+        "level_15": {
+          "title": "Niveau 15"
+        },
+        "level_16": {
+          "title": "Niveau 16"
+        },
+        "level_17": {
+          "title": "Niveau 17"
+        },
+        "level_18": {
+          "title": "Niveau 18"
+        },
+        "level_19": {
+          "title": "Niveau 19"
+        },
+        "level_20": {
+          "title": "Niveau 20"
+        },
+        "level_21": {
+          "title": "Niveau 21"
+        },
+        "level_22": {
+          "title": "Niveau 22"
+        },
+        "level_23": {
+          "title": "Niveau 23"
+        },
+        "level_24": {
+          "title": "Niveau 24"
+        },
+        "level_25": {
+          "title": "Niveau 25"
+        },
+        "level_26": {
+          "title": "Niveau 26"
+        },
+        "level_27": {
+          "title": "Niveau 27"
+        },
+        "level_28": {
+          "title": "Niveau 28"
+        },
+        "level_29": {
+          "title": "Niveau 29"
+        },
+        "level_30": {
+          "title": "Niveau 30"
+        }
+      },
+      "endless": {
+        "title": "Siège",
+        "siege_pit": {
+          "title": "La Fosse"
+        }
+      }
+    },
+    "progress": {
+      "stars_main": {
+        "title": "Niveaux à trois étoiles",
+        "stars3_1": {
+          "title": "Niveau 1 : trois étoiles"
+        },
+        "stars3_2": {
+          "title": "Niveau 2 : trois étoiles"
+        },
+        "stars3_3": {
+          "title": "Niveau 3 : trois étoiles"
+        },
+        "stars3_4": {
+          "title": "Niveau 4 : trois étoiles"
+        },
+        "stars3_5": {
+          "title": "Niveau 5 : trois étoiles"
+        },
+        "stars3_6": {
+          "title": "Niveau 6 : trois étoiles"
+        },
+        "stars3_7": {
+          "title": "Niveau 7 : trois étoiles"
+        },
+        "stars3_8": {
+          "title": "Niveau 8 : trois étoiles"
+        },
+        "stars3_9": {
+          "title": "Niveau 9 : trois étoiles"
+        },
+        "stars3_10": {
+          "title": "Niveau 10 : trois étoiles"
+        },
+        "stars3_11": {
+          "title": "Niveau 11 : trois étoiles"
+        },
+        "stars3_12": {
+          "title": "Niveau 12 : trois étoiles"
+        },
+        "stars3_13": {
+          "title": "Niveau 13 : trois étoiles"
+        },
+        "stars3_14": {
+          "title": "Niveau 14 : trois étoiles"
+        },
+        "stars3_15": {
+          "title": "Niveau 15 : trois étoiles"
+        },
+        "stars3_16": {
+          "title": "Niveau 16 : trois étoiles"
+        },
+        "stars3_17": {
+          "title": "Niveau 17 : trois étoiles"
+        },
+        "stars3_18": {
+          "title": "Niveau 18 : trois étoiles"
+        },
+        "stars3_19": {
+          "title": "Niveau 19 : trois étoiles"
+        },
+        "stars3_20": {
+          "title": "Niveau 20 : trois étoiles"
+        },
+        "stars3_21": {
+          "title": "Niveau 21 : trois étoiles"
+        },
+        "stars3_22": {
+          "title": "Niveau 22 : trois étoiles"
+        },
+        "stars3_23": {
+          "title": "Niveau 23 : trois étoiles"
+        },
+        "stars3_24": {
+          "title": "Niveau 24 : trois étoiles"
+        },
+        "stars3_25": {
+          "title": "Niveau 25 : trois étoiles"
+        },
+        "stars3_26": {
+          "title": "Niveau 26 : trois étoiles"
+        },
+        "stars3_27": {
+          "title": "Niveau 27 : trois étoiles"
+        },
+        "stars3_28": {
+          "title": "Niveau 28 : trois étoiles"
+        },
+        "stars3_29": {
+          "title": "Niveau 29 : trois étoiles"
+        },
+        "stars3_30": {
+          "title": "Niveau 30 : trois étoiles"
+        }
+      }
+    },
+    "reward": {
+      "daily": {
+        "title": "Ravitaillement du jour",
+        "day_1": {
+          "title": "Jour 1"
+        },
+        "day_2": {
+          "title": "Jour 2"
+        },
+        "day_3": {
+          "title": "Jour 3"
+        },
+        "day_4": {
+          "title": "Jour 4"
+        },
+        "day_5": {
+          "title": "Jour 5"
+        },
+        "day_6": {
+          "title": "Jour 6"
+        },
+        "day_7": {
+          "title": "Jour 7"
+        }
+      }
+    },
+    "leaderboard": {
+      "siege_best": {
+        "title": "Siège — meilleure partie"
+      },
+      "campaign_score": {
+        "title": "Score de campagne"
+      }
+    }
+  },
+  "ru": {
+    "shell": {
+      "title": "Iron Burrow"
+    },
+    "item": {
+      "bst_bubble": {
+        "title": "Щит-пузырь",
+        "description": "Твой танк неуязвим 10 секунд."
+      },
+      "bst_shockwave": {
+        "title": "Ударная волна",
+        "description": "Уничтожает всех врагов на поле. Очки за них засчитываются."
+      },
+      "bst_fortify": {
+        "title": "Стальная крепость",
+        "description": "Стена Ядра становится стальной на 20 секунд, а разрушенные участки восстанавливаются."
+      },
+      "bst_hull": {
+        "title": "Запасной корпус",
+        "description": "+1 жизнь перед уровнем или продолжение после поражения с 2 жизнями и восстановленным Ядром."
+      }
+    },
+    "offer": {
+      "starter_crate": {
+        "title": "Стартовый ящик",
+        "subtitle": "По 3 каждого бустера · только один раз"
+      },
+      "hull_pack": {
+        "title": "Набор корпусов",
+        "subtitle": "5 запасных корпусов"
+      },
+      "field_kit": {
+        "title": "Полевой набор",
+        "subtitle": "По 6 каждого бустера",
+        "badge": "Выгодно!"
+      },
+      "heavy_arsenal": {
+        "title": "Тяжёлый арсенал",
+        "subtitle": "По 15 каждого бустера"
+      },
+      "commander_cache": {
+        "title": "Тайник командира",
+        "subtitle": "По 35 каждого бустера"
+      },
+      "start_grant": {
+        "title": "Привет, командир!",
+        "subtitle": "По 2 каждого бустера бесплатно",
+        "cta": "Забрать"
+      },
+      "cta": {
+        "buy": "Купить"
+      }
+    },
+    "placement": {
+      "defeat": {
+        "title": "Вернись в бой"
+      },
+      "prestage": {
+        "title": "Запасной корпус"
+      },
+      "starter_auto": {
+        "title": "Стартовый ящик"
+      },
+      "start_grant": {
+        "title": "Подарок новичку"
+      }
+    },
+    "levels": {
+      "main": {
+        "title": "Кампания",
+        "level_1": {
+          "title": "Уровень 1"
+        },
+        "level_2": {
+          "title": "Уровень 2"
+        },
+        "level_3": {
+          "title": "Уровень 3"
+        },
+        "level_4": {
+          "title": "Уровень 4"
+        },
+        "level_5": {
+          "title": "Уровень 5"
+        },
+        "level_6": {
+          "title": "Уровень 6"
+        },
+        "level_7": {
+          "title": "Уровень 7"
+        },
+        "level_8": {
+          "title": "Уровень 8"
+        },
+        "level_9": {
+          "title": "Уровень 9"
+        },
+        "level_10": {
+          "title": "Уровень 10"
+        },
+        "level_11": {
+          "title": "Уровень 11"
+        },
+        "level_12": {
+          "title": "Уровень 12"
+        },
+        "level_13": {
+          "title": "Уровень 13"
+        },
+        "level_14": {
+          "title": "Уровень 14"
+        },
+        "level_15": {
+          "title": "Уровень 15"
+        },
+        "level_16": {
+          "title": "Уровень 16"
+        },
+        "level_17": {
+          "title": "Уровень 17"
+        },
+        "level_18": {
+          "title": "Уровень 18"
+        },
+        "level_19": {
+          "title": "Уровень 19"
+        },
+        "level_20": {
+          "title": "Уровень 20"
+        },
+        "level_21": {
+          "title": "Уровень 21"
+        },
+        "level_22": {
+          "title": "Уровень 22"
+        },
+        "level_23": {
+          "title": "Уровень 23"
+        },
+        "level_24": {
+          "title": "Уровень 24"
+        },
+        "level_25": {
+          "title": "Уровень 25"
+        },
+        "level_26": {
+          "title": "Уровень 26"
+        },
+        "level_27": {
+          "title": "Уровень 27"
+        },
+        "level_28": {
+          "title": "Уровень 28"
+        },
+        "level_29": {
+          "title": "Уровень 29"
+        },
+        "level_30": {
+          "title": "Уровень 30"
+        }
+      },
+      "endless": {
+        "title": "Осада",
+        "siege_pit": {
+          "title": "Яма"
+        }
+      }
+    },
+    "progress": {
+      "stars_main": {
+        "title": "Уровни на три звезды",
+        "stars3_1": {
+          "title": "Уровень 1: три звезды"
+        },
+        "stars3_2": {
+          "title": "Уровень 2: три звезды"
+        },
+        "stars3_3": {
+          "title": "Уровень 3: три звезды"
+        },
+        "stars3_4": {
+          "title": "Уровень 4: три звезды"
+        },
+        "stars3_5": {
+          "title": "Уровень 5: три звезды"
+        },
+        "stars3_6": {
+          "title": "Уровень 6: три звезды"
+        },
+        "stars3_7": {
+          "title": "Уровень 7: три звезды"
+        },
+        "stars3_8": {
+          "title": "Уровень 8: три звезды"
+        },
+        "stars3_9": {
+          "title": "Уровень 9: три звезды"
+        },
+        "stars3_10": {
+          "title": "Уровень 10: три звезды"
+        },
+        "stars3_11": {
+          "title": "Уровень 11: три звезды"
+        },
+        "stars3_12": {
+          "title": "Уровень 12: три звезды"
+        },
+        "stars3_13": {
+          "title": "Уровень 13: три звезды"
+        },
+        "stars3_14": {
+          "title": "Уровень 14: три звезды"
+        },
+        "stars3_15": {
+          "title": "Уровень 15: три звезды"
+        },
+        "stars3_16": {
+          "title": "Уровень 16: три звезды"
+        },
+        "stars3_17": {
+          "title": "Уровень 17: три звезды"
+        },
+        "stars3_18": {
+          "title": "Уровень 18: три звезды"
+        },
+        "stars3_19": {
+          "title": "Уровень 19: три звезды"
+        },
+        "stars3_20": {
+          "title": "Уровень 20: три звезды"
+        },
+        "stars3_21": {
+          "title": "Уровень 21: три звезды"
+        },
+        "stars3_22": {
+          "title": "Уровень 22: три звезды"
+        },
+        "stars3_23": {
+          "title": "Уровень 23: три звезды"
+        },
+        "stars3_24": {
+          "title": "Уровень 24: три звезды"
+        },
+        "stars3_25": {
+          "title": "Уровень 25: три звезды"
+        },
+        "stars3_26": {
+          "title": "Уровень 26: три звезды"
+        },
+        "stars3_27": {
+          "title": "Уровень 27: три звезды"
+        },
+        "stars3_28": {
+          "title": "Уровень 28: три звезды"
+        },
+        "stars3_29": {
+          "title": "Уровень 29: три звезды"
+        },
+        "stars3_30": {
+          "title": "Уровень 30: три звезды"
+        }
+      }
+    },
+    "reward": {
+      "daily": {
+        "title": "Ежедневная поставка",
+        "day_1": {
+          "title": "День 1"
+        },
+        "day_2": {
+          "title": "День 2"
+        },
+        "day_3": {
+          "title": "День 3"
+        },
+        "day_4": {
+          "title": "День 4"
+        },
+        "day_5": {
+          "title": "День 5"
+        },
+        "day_6": {
+          "title": "День 6"
+        },
+        "day_7": {
+          "title": "День 7"
+        }
+      }
+    },
+    "leaderboard": {
+      "siege_best": {
+        "title": "Осада — лучший забег"
+      },
+      "campaign_score": {
+        "title": "Очки кампании"
+      }
+    }
   }
 }

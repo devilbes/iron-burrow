@@ -542,5 +542,2181 @@
         "levels": "Stages cleared"
       }
     }
+  },
+  "de": {
+    "shell": {
+      "title": "Iron Burrow",
+      "loading": {
+        "status": "Spiel wird geladen…",
+        "caption": "Level und Belohnungen werden vorbereitet"
+      },
+      "error": {
+        "boot": "Das Spiel konnte nicht starten ({code}). Versuch es später nochmal."
+      },
+      "currency": {
+        "coins": "Münzen"
+      },
+      "leaderboard": {
+        "weekly": "Diese Woche"
+      },
+      "daily": {
+        "day": "Tag {n}"
+      },
+      "status": {
+        "loading": "Lädt…",
+        "noSdk": "Das Spiel-SDK ist in diesem Build nicht installiert."
+      },
+      "profile": {
+        "title": "Profil",
+        "player": "Spieler {gid}"
+      },
+      "bar": {
+        "profile": "Profil",
+        "settings": "Optionen"
+      },
+      "account": {
+        "signedIn": "Angemeldet"
+      }
+    },
+    "item": {
+      "bst_bubble": {
+        "title": "Blasenschild",
+        "description": "Dein Panzer ist 10 Sekunden lang unverwundbar."
+      },
+      "bst_shockwave": {
+        "title": "Schockwelle",
+        "description": "Vernichtet alle Gegner auf dem Feld. Abschüsse zählen trotzdem."
+      },
+      "bst_fortify": {
+        "title": "Stahlfestung",
+        "description": "Die Kernmauer wird 20 Sekunden lang zu Stahl, zerstörte Teile werden repariert."
+      },
+      "bst_hull": {
+        "title": "Ersatzrumpf",
+        "description": "+1 Leben vor einem Level – oder nach einer Niederlage weiter mit 2 Leben und repariertem Kern."
+      },
+      "coins": {
+        "title": "Münzen",
+        "description": "Spielwährung. Verdien sie in Levels und mit täglichen Belohnungen."
+      }
+    },
+    "offer": {
+      "starter_crate": {
+        "title": "Starterkiste",
+        "subtitle": "3 von jedem Booster · nur einmal"
+      },
+      "hull_pack": {
+        "title": "Rumpfpaket",
+        "subtitle": "5 Ersatzrümpfe"
+      },
+      "field_kit": {
+        "title": "Feldausrüstung",
+        "subtitle": "6 von jedem Booster",
+        "badge": "Topangebot"
+      },
+      "heavy_arsenal": {
+        "title": "Schweres Arsenal",
+        "subtitle": "15 von jedem Booster"
+      },
+      "commander_cache": {
+        "title": "Kommandantenvorrat",
+        "subtitle": "35 von jedem Booster"
+      },
+      "start_grant": {
+        "title": "Willkommen, Kommandant!",
+        "subtitle": "2 von jedem Booster, gratis",
+        "cta": "Abholen"
+      },
+      "cta": {
+        "buy": "Kaufen"
+      }
+    },
+    "placement": {
+      "defeat": {
+        "title": "Zurück in den Kampf"
+      },
+      "prestage": {
+        "title": "Ersatzrumpf"
+      },
+      "starter_auto": {
+        "title": "Starterkiste"
+      },
+      "start_grant": {
+        "title": "Startgeschenk"
+      },
+      "shop": {
+        "title": "Shop"
+      }
+    },
+    "levels": {
+      "main": {
+        "title": "Kampagne",
+        "level_1": {
+          "title": "Level 1"
+        },
+        "level_2": {
+          "title": "Level 2"
+        },
+        "level_3": {
+          "title": "Level 3"
+        },
+        "level_4": {
+          "title": "Level 4"
+        },
+        "level_5": {
+          "title": "Level 5"
+        },
+        "level_6": {
+          "title": "Level 6"
+        },
+        "level_7": {
+          "title": "Level 7"
+        },
+        "level_8": {
+          "title": "Level 8"
+        },
+        "level_9": {
+          "title": "Level 9"
+        },
+        "level_10": {
+          "title": "Level 10"
+        },
+        "level_11": {
+          "title": "Level 11"
+        },
+        "level_12": {
+          "title": "Level 12"
+        },
+        "level_13": {
+          "title": "Level 13"
+        },
+        "level_14": {
+          "title": "Level 14"
+        },
+        "level_15": {
+          "title": "Level 15"
+        },
+        "level_16": {
+          "title": "Level 16"
+        },
+        "level_17": {
+          "title": "Level 17"
+        },
+        "level_18": {
+          "title": "Level 18"
+        },
+        "level_19": {
+          "title": "Level 19"
+        },
+        "level_20": {
+          "title": "Level 20"
+        },
+        "level_21": {
+          "title": "Level 21"
+        },
+        "level_22": {
+          "title": "Level 22"
+        },
+        "level_23": {
+          "title": "Level 23"
+        },
+        "level_24": {
+          "title": "Level 24"
+        },
+        "level_25": {
+          "title": "Level 25"
+        },
+        "level_26": {
+          "title": "Level 26"
+        },
+        "level_27": {
+          "title": "Level 27"
+        },
+        "level_28": {
+          "title": "Level 28"
+        },
+        "level_29": {
+          "title": "Level 29"
+        },
+        "level_30": {
+          "title": "Level 30"
+        }
+      },
+      "endless": {
+        "title": "Belagerung",
+        "siege_pit": {
+          "title": "Die Grube"
+        }
+      },
+      "chapter": {
+        "c01": {
+          "title": "Lehmtunnel"
+        },
+        "c02": {
+          "title": "Die Eisenwerke"
+        },
+        "c03": {
+          "title": "Magmatiefen"
+        }
+      }
+    },
+    "progress": {
+      "stars_main": {
+        "title": "Drei-Sterne-Level",
+        "stars3_1": {
+          "title": "Level 1: drei Sterne"
+        },
+        "stars3_2": {
+          "title": "Level 2: drei Sterne"
+        },
+        "stars3_3": {
+          "title": "Level 3: drei Sterne"
+        },
+        "stars3_4": {
+          "title": "Level 4: drei Sterne"
+        },
+        "stars3_5": {
+          "title": "Level 5: drei Sterne"
+        },
+        "stars3_6": {
+          "title": "Level 6: drei Sterne"
+        },
+        "stars3_7": {
+          "title": "Level 7: drei Sterne"
+        },
+        "stars3_8": {
+          "title": "Level 8: drei Sterne"
+        },
+        "stars3_9": {
+          "title": "Level 9: drei Sterne"
+        },
+        "stars3_10": {
+          "title": "Level 10: drei Sterne"
+        },
+        "stars3_11": {
+          "title": "Level 11: drei Sterne"
+        },
+        "stars3_12": {
+          "title": "Level 12: drei Sterne"
+        },
+        "stars3_13": {
+          "title": "Level 13: drei Sterne"
+        },
+        "stars3_14": {
+          "title": "Level 14: drei Sterne"
+        },
+        "stars3_15": {
+          "title": "Level 15: drei Sterne"
+        },
+        "stars3_16": {
+          "title": "Level 16: drei Sterne"
+        },
+        "stars3_17": {
+          "title": "Level 17: drei Sterne"
+        },
+        "stars3_18": {
+          "title": "Level 18: drei Sterne"
+        },
+        "stars3_19": {
+          "title": "Level 19: drei Sterne"
+        },
+        "stars3_20": {
+          "title": "Level 20: drei Sterne"
+        },
+        "stars3_21": {
+          "title": "Level 21: drei Sterne"
+        },
+        "stars3_22": {
+          "title": "Level 22: drei Sterne"
+        },
+        "stars3_23": {
+          "title": "Level 23: drei Sterne"
+        },
+        "stars3_24": {
+          "title": "Level 24: drei Sterne"
+        },
+        "stars3_25": {
+          "title": "Level 25: drei Sterne"
+        },
+        "stars3_26": {
+          "title": "Level 26: drei Sterne"
+        },
+        "stars3_27": {
+          "title": "Level 27: drei Sterne"
+        },
+        "stars3_28": {
+          "title": "Level 28: drei Sterne"
+        },
+        "stars3_29": {
+          "title": "Level 29: drei Sterne"
+        },
+        "stars3_30": {
+          "title": "Level 30: drei Sterne"
+        }
+      }
+    },
+    "reward": {
+      "daily": {
+        "title": "Täglicher Nachschub",
+        "day_1": {
+          "title": "Tag 1"
+        },
+        "day_2": {
+          "title": "Tag 2"
+        },
+        "day_3": {
+          "title": "Tag 3"
+        },
+        "day_4": {
+          "title": "Tag 4"
+        },
+        "day_5": {
+          "title": "Tag 5"
+        },
+        "day_6": {
+          "title": "Tag 6"
+        },
+        "day_7": {
+          "title": "Tag 7"
+        }
+      }
+    },
+    "leaderboard": {
+      "siege_best": {
+        "title": "Belagerung – bester Lauf"
+      },
+      "campaign_score": {
+        "title": "Kampagnenpunkte"
+      },
+      "weekly": {
+        "title": "Wochen-Bestenliste"
+      },
+      "you": "Du",
+      "empty": "Noch keine Punkte. Gewinn ein Level, um auf die Liste zu kommen."
+    },
+    "screen": {
+      "common": {
+        "close": "Fertig",
+        "back": "Zurück",
+        "ok": "OK",
+        "collect": "Abholen",
+        "count": "×{count}",
+        "offline": "Keine Verbindung. Verbinde neu..."
+      },
+      "lobby": {
+        "play": "Spielen",
+        "play_sub": "Level {n}",
+        "siege": "Belagerung",
+        "siege_locked": "Schaffe Level {n} zum Freischalten",
+        "stars": "{stars}/{max}",
+        "grant_title": "Willkommen, Tunnelgräber!",
+        "grant_body": "Deine Start-Booster",
+        "sound_on": "Sound: an",
+        "sound_off": "Sound: aus"
+      },
+      "hud": {
+        "boards": "Bestenlisten",
+        "shop": "Shop",
+        "enemies": "Rostkäfer übrig: {count}",
+        "lives": "Leben: {count}",
+        "stage": "Level {n}",
+        "wave": "Welle {n}",
+        "score": "Punkte",
+        "gun": "Kanonenstufe {n}",
+        "fire": "FEUER",
+        "pause": "Pause",
+        "key": "{key}",
+        "limit": "Booster-Limit für dieses Level erreicht"
+      },
+      "toast": {
+        "go": "Level {n}. Los!",
+        "wave": "Welle {n}",
+        "wave_clear": "Welle {n} geschafft! +{bonus}",
+        "star": "Kanone +1!",
+        "star_max": "Kanone max!",
+        "bubble": "Schild an!",
+        "rebar": "Stahlgitter!",
+        "quake": "Beben!",
+        "freeze": "Frost!",
+        "hull": "+1 Leben!",
+        "fortify": "Stahlfestung!",
+        "shockwave": "Schockwelle!"
+      },
+      "qa": {
+        "win": "QA: Sieg",
+        "lose": "QA: Niederlage"
+      },
+      "map": {
+        "title": "Kampagne",
+        "chapter": "Kapitel {n}",
+        "chapter_locked": "Schaffe Level {n} zum Öffnen",
+        "play": "Spiele Level {n}"
+      },
+      "pre": {
+        "title": "Level {n}",
+        "title_siege": "Belagerung",
+        "goal": "Zerstöre {count} Rostkäfer. Schütze den Kern!",
+        "goal_siege": "Überlebe die Wellen. Schütze den Kern!",
+        "best": "Rekord: {score}",
+        "hull": "Ersatzrumpf nehmen (+1 Leben)",
+        "hull_owned": "Du hast {count}",
+        "hull_none": "Keine Ersatzrümpfe mehr",
+        "hull_hint": "Ersatzrumpf: +1 Leben für dieses Level.",
+        "shop": "Mehr holen",
+        "start": "Start",
+        "close": "Fertig",
+        "rewards": "Belohnung fürs erste Schaffen",
+        "offline": "Verbindung nötig"
+      },
+      "pause": {
+        "title": "Pause",
+        "resume": "Weiter",
+        "restart": "Neustart",
+        "quit": "Beenden"
+      },
+      "clear": {
+        "title": "Level geschafft!",
+        "chapter_done": "Kapitel geschafft!",
+        "campaign_done": "Kampagne geschafft!",
+        "kills": "Rostkäfer",
+        "pickups": "Power-ups",
+        "bonus": "Siegbonus",
+        "lives": "Restleben ×{count}",
+        "total": "Punkte",
+        "best": "Neuer Rekord!",
+        "rewards": "Belohnungen",
+        "next": "Weiter",
+        "replay": "Nochmal",
+        "map": "Karte",
+        "save_title": "Speicherfehler",
+        "save_failed": "Ergebnis konnte nicht gespeichert werden.",
+        "retry_save": "Neu speichern",
+        "leave": "Karte",
+        "unverified_title": "Nicht gewertet",
+        "unverified": "Ergebnis nicht gewertet – versuch es nochmal.",
+        "unverified_hint": "Der Server konnte diesen Lauf nicht bestätigen, daher gibt es keine Sterne oder Belohnungen.",
+        "retry": "Nochmal"
+      },
+      "defeat": {
+        "title": "Niederlage",
+        "core": "Der Kern wurde zerstört!",
+        "lives": "Keine Leben mehr!",
+        "continue": "Weiter",
+        "continue_hint": "1 Ersatzrumpf nutzen: +2 Leben, Kern repariert",
+        "continue_used": "Schon weitergespielt",
+        "offer_title": "Mehr Rümpfe nötig?",
+        "retry": "Nochmal",
+        "map": "Karte",
+        "end_siege": "Aufgeben"
+      },
+      "siege": {
+        "title": "Belagerung vorbei",
+        "wave": "Welle {n} erreicht",
+        "score": "Punkte: {score}",
+        "best": "Wochenrekord: {score}",
+        "new_best": "Neuer Rekord!",
+        "rank": "Platz {rank}",
+        "unranked": "Ohne Platz",
+        "retry": "Nochmal",
+        "boards": "Bestenlisten",
+        "lobby": "Lobby"
+      },
+      "shop": {
+        "title": "Shop",
+        "one_time": "Einmalangebot",
+        "best_value": "Topangebot",
+        "contents": "{count} Booster",
+        "buy": "{price}",
+        "pending": "Bitte warten...",
+        "test": "Testkauf",
+        "unavailable": "Shop offline. Versuch es später."
+      },
+      "purchase": {
+        "success": "Kauf erfolgreich",
+        "failed": "Kauf fehlgeschlagen",
+        "failed_body": "Es wurde nichts abgebucht. Bitte versuch es nochmal.",
+        "cancelled": "Kauf abgebrochen"
+      },
+      "boards": {
+        "title": "Bestenlisten",
+        "siege": "Belagerung",
+        "campaign": "Kampagne",
+        "weekly": "Woche",
+        "alltime": "Allzeit",
+        "you": "Du",
+        "empty": "Noch keine Punkte. Sei der Erste!",
+        "reset": "Reset in {time}",
+        "guest": "Melde dich an, um deinen Platz zu behalten",
+        "unavailable": "Bestenlisten nicht verfügbar"
+      },
+      "settings": {
+        "title": "Optionen",
+        "music": "Musik",
+        "sfx": "Sound",
+        "motion": "Weniger Bewegung",
+        "haptics": "Vibration",
+        "on": "An",
+        "off": "Aus",
+        "version": "Version {version}"
+      },
+      "tut": {
+        "move_touch": "Zieh den Stick, um zu fahren",
+        "move_keys": "Fahr mit Pfeiltasten oder WASD",
+        "fire_touch": "Tippe auf FEUER, um zu schießen",
+        "fire_keys": "Leertaste oder J zum Feuern",
+        "brick": "Schüsse fressen sich durch Ziegel. Spreng dir den Weg frei!",
+        "core": "Schütze den Bau-Kern. Ein Treffer und er ist hin!",
+        "core_selfhit": "Sogar deine eigenen Schüsse können ihn zerstören.",
+        "enemy": "Rostkäfer im Anmarsch! Zerstöre alle {count}.",
+        "carrier": "Blinkende Rostkäfer lassen Power-ups fallen. Schnapp sie dir!",
+        "booster_hint": "Kern in Gefahr! Setz einen Booster ein.",
+        "booster_keys": "Drück 1, 2 oder 3",
+        "booster_touch": "Tippe auf einen Booster",
+        "next": "Kapiert",
+        "skip": "Skippen"
+      },
+      "booster": {
+        "owned": "Du hast {count}",
+        "more": "Mehr holen",
+        "duration": "Dauer: {seconds} s",
+        "limit": "Bis zu {count} pro Level",
+        "limit_siege": "Bis zu {count} pro Belagerung"
+      },
+      "profile": {
+        "levels": "Geschaffte Level"
+      }
+    }
+  },
+  "es": {
+    "shell": {
+      "title": "Iron Burrow",
+      "loading": {
+        "status": "Cargando el juego…",
+        "caption": "Preparando niveles y recompensas"
+      },
+      "error": {
+        "boot": "El juego no pudo iniciarse ({code}). Inténtalo más tarde."
+      },
+      "currency": {
+        "coins": "Monedas"
+      },
+      "leaderboard": {
+        "weekly": "Esta semana"
+      },
+      "daily": {
+        "day": "Día {n}"
+      },
+      "status": {
+        "loading": "Cargando…",
+        "noSdk": "El SDK del juego no está instalado en esta versión."
+      },
+      "profile": {
+        "title": "Perfil",
+        "player": "Jugador {gid}"
+      },
+      "bar": {
+        "profile": "Perfil",
+        "settings": "Ajustes"
+      },
+      "account": {
+        "signedIn": "Sesión iniciada"
+      }
+    },
+    "item": {
+      "bst_bubble": {
+        "title": "Escudo Burbuja",
+        "description": "Tu tanque es invulnerable durante 10 segundos."
+      },
+      "bst_shockwave": {
+        "title": "Onda Expansiva",
+        "description": "Destruye a todos los enemigos del campo. Las bajas siguen puntuando."
+      },
+      "bst_fortify": {
+        "title": "Fortaleza de Acero",
+        "description": "El muro del Núcleo se vuelve de acero durante 20 segundos y se reconstruyen los tramos rotos."
+      },
+      "bst_hull": {
+        "title": "Casco de repuesto",
+        "description": "+1 vida antes de un nivel, o continúa tras una derrota con 2 vidas y el Núcleo reconstruido."
+      },
+      "coins": {
+        "title": "Monedas",
+        "description": "Moneda básica. Gánala en los niveles y en las recompensas diarias."
+      }
+    },
+    "offer": {
+      "starter_crate": {
+        "title": "Caja de inicio",
+        "subtitle": "3 de cada potenciador · solo una vez"
+      },
+      "hull_pack": {
+        "title": "Pack de cascos",
+        "subtitle": "5 Cascos de repuesto"
+      },
+      "field_kit": {
+        "title": "Equipo de campo",
+        "subtitle": "6 de cada potenciador",
+        "badge": "Mejor precio"
+      },
+      "heavy_arsenal": {
+        "title": "Arsenal Pesado",
+        "subtitle": "15 de cada potenciador"
+      },
+      "commander_cache": {
+        "title": "Alijo del Comandante",
+        "subtitle": "35 de cada potenciador"
+      },
+      "start_grant": {
+        "title": "¡Bienvenido, Comandante!",
+        "subtitle": "2 de cada potenciador, gratis",
+        "cta": "Recoger"
+      },
+      "cta": {
+        "buy": "Comprar"
+      }
+    },
+    "placement": {
+      "defeat": {
+        "title": "Vuelve a la lucha"
+      },
+      "prestage": {
+        "title": "Casco de repuesto"
+      },
+      "starter_auto": {
+        "title": "Caja de inicio"
+      },
+      "start_grant": {
+        "title": "Regalo de bienvenida"
+      },
+      "shop": {
+        "title": "Tienda"
+      }
+    },
+    "levels": {
+      "main": {
+        "title": "Campaña",
+        "level_1": {
+          "title": "Nivel 1"
+        },
+        "level_2": {
+          "title": "Nivel 2"
+        },
+        "level_3": {
+          "title": "Nivel 3"
+        },
+        "level_4": {
+          "title": "Nivel 4"
+        },
+        "level_5": {
+          "title": "Nivel 5"
+        },
+        "level_6": {
+          "title": "Nivel 6"
+        },
+        "level_7": {
+          "title": "Nivel 7"
+        },
+        "level_8": {
+          "title": "Nivel 8"
+        },
+        "level_9": {
+          "title": "Nivel 9"
+        },
+        "level_10": {
+          "title": "Nivel 10"
+        },
+        "level_11": {
+          "title": "Nivel 11"
+        },
+        "level_12": {
+          "title": "Nivel 12"
+        },
+        "level_13": {
+          "title": "Nivel 13"
+        },
+        "level_14": {
+          "title": "Nivel 14"
+        },
+        "level_15": {
+          "title": "Nivel 15"
+        },
+        "level_16": {
+          "title": "Nivel 16"
+        },
+        "level_17": {
+          "title": "Nivel 17"
+        },
+        "level_18": {
+          "title": "Nivel 18"
+        },
+        "level_19": {
+          "title": "Nivel 19"
+        },
+        "level_20": {
+          "title": "Nivel 20"
+        },
+        "level_21": {
+          "title": "Nivel 21"
+        },
+        "level_22": {
+          "title": "Nivel 22"
+        },
+        "level_23": {
+          "title": "Nivel 23"
+        },
+        "level_24": {
+          "title": "Nivel 24"
+        },
+        "level_25": {
+          "title": "Nivel 25"
+        },
+        "level_26": {
+          "title": "Nivel 26"
+        },
+        "level_27": {
+          "title": "Nivel 27"
+        },
+        "level_28": {
+          "title": "Nivel 28"
+        },
+        "level_29": {
+          "title": "Nivel 29"
+        },
+        "level_30": {
+          "title": "Nivel 30"
+        }
+      },
+      "endless": {
+        "title": "Asedio",
+        "siege_pit": {
+          "title": "El Foso"
+        }
+      },
+      "chapter": {
+        "c01": {
+          "title": "Túneles de Arcilla"
+        },
+        "c02": {
+          "title": "La Fundición"
+        },
+        "c03": {
+          "title": "Profundidades de Magma"
+        }
+      }
+    },
+    "progress": {
+      "stars_main": {
+        "title": "Niveles con tres estrellas",
+        "stars3_1": {
+          "title": "Nivel 1: tres estrellas"
+        },
+        "stars3_2": {
+          "title": "Nivel 2: tres estrellas"
+        },
+        "stars3_3": {
+          "title": "Nivel 3: tres estrellas"
+        },
+        "stars3_4": {
+          "title": "Nivel 4: tres estrellas"
+        },
+        "stars3_5": {
+          "title": "Nivel 5: tres estrellas"
+        },
+        "stars3_6": {
+          "title": "Nivel 6: tres estrellas"
+        },
+        "stars3_7": {
+          "title": "Nivel 7: tres estrellas"
+        },
+        "stars3_8": {
+          "title": "Nivel 8: tres estrellas"
+        },
+        "stars3_9": {
+          "title": "Nivel 9: tres estrellas"
+        },
+        "stars3_10": {
+          "title": "Nivel 10: tres estrellas"
+        },
+        "stars3_11": {
+          "title": "Nivel 11: tres estrellas"
+        },
+        "stars3_12": {
+          "title": "Nivel 12: tres estrellas"
+        },
+        "stars3_13": {
+          "title": "Nivel 13: tres estrellas"
+        },
+        "stars3_14": {
+          "title": "Nivel 14: tres estrellas"
+        },
+        "stars3_15": {
+          "title": "Nivel 15: tres estrellas"
+        },
+        "stars3_16": {
+          "title": "Nivel 16: tres estrellas"
+        },
+        "stars3_17": {
+          "title": "Nivel 17: tres estrellas"
+        },
+        "stars3_18": {
+          "title": "Nivel 18: tres estrellas"
+        },
+        "stars3_19": {
+          "title": "Nivel 19: tres estrellas"
+        },
+        "stars3_20": {
+          "title": "Nivel 20: tres estrellas"
+        },
+        "stars3_21": {
+          "title": "Nivel 21: tres estrellas"
+        },
+        "stars3_22": {
+          "title": "Nivel 22: tres estrellas"
+        },
+        "stars3_23": {
+          "title": "Nivel 23: tres estrellas"
+        },
+        "stars3_24": {
+          "title": "Nivel 24: tres estrellas"
+        },
+        "stars3_25": {
+          "title": "Nivel 25: tres estrellas"
+        },
+        "stars3_26": {
+          "title": "Nivel 26: tres estrellas"
+        },
+        "stars3_27": {
+          "title": "Nivel 27: tres estrellas"
+        },
+        "stars3_28": {
+          "title": "Nivel 28: tres estrellas"
+        },
+        "stars3_29": {
+          "title": "Nivel 29: tres estrellas"
+        },
+        "stars3_30": {
+          "title": "Nivel 30: tres estrellas"
+        }
+      }
+    },
+    "reward": {
+      "daily": {
+        "title": "Suministro diario",
+        "day_1": {
+          "title": "Día 1"
+        },
+        "day_2": {
+          "title": "Día 2"
+        },
+        "day_3": {
+          "title": "Día 3"
+        },
+        "day_4": {
+          "title": "Día 4"
+        },
+        "day_5": {
+          "title": "Día 5"
+        },
+        "day_6": {
+          "title": "Día 6"
+        },
+        "day_7": {
+          "title": "Día 7"
+        }
+      }
+    },
+    "leaderboard": {
+      "siege_best": {
+        "title": "Asedio: mejor partida"
+      },
+      "campaign_score": {
+        "title": "Puntos de Campaña"
+      },
+      "weekly": {
+        "title": "Clasificación semanal"
+      },
+      "you": "Tú",
+      "empty": "Aún no hay puntos. Gana un nivel para entrar en la tabla."
+    },
+    "screen": {
+      "common": {
+        "close": "Cerrar",
+        "back": "Atrás",
+        "ok": "OK",
+        "collect": "Recoger",
+        "count": "×{count}",
+        "offline": "Sin conexión. Reconectando..."
+      },
+      "lobby": {
+        "play": "Jugar",
+        "play_sub": "Nivel {n}",
+        "siege": "Asedio",
+        "siege_locked": "Supera el nivel {n} para desbloquear",
+        "stars": "{stars}/{max}",
+        "grant_title": "¡Bienvenido, excavador!",
+        "grant_body": "Tus potenciadores iniciales",
+        "sound_on": "Sonido: Sí",
+        "sound_off": "Sonido: No"
+      },
+      "hud": {
+        "boards": "Clasificación",
+        "shop": "Tienda",
+        "enemies": "Oxibichos restantes: {count}",
+        "lives": "Vidas: {count}",
+        "stage": "Nivel {n}",
+        "wave": "Oleada {n}",
+        "score": "Puntos",
+        "gun": "Nivel de cañón {n}",
+        "fire": "FUEGO",
+        "pause": "Pausa",
+        "key": "{key}",
+        "limit": "Límite de potenciadores de este nivel alcanzado"
+      },
+      "toast": {
+        "go": "Nivel {n}. ¡Vamos!",
+        "wave": "Oleada {n}",
+        "wave_clear": "¡Oleada {n} superada! +{bonus}",
+        "star": "¡Cañón +1!",
+        "star_max": "¡Cañón al máximo!",
+        "bubble": "¡Escudo activo!",
+        "rebar": "¡Muro de varillas!",
+        "quake": "¡Terremoto!",
+        "freeze": "¡Congelación!",
+        "hull": "¡+1 vida!",
+        "fortify": "¡Fortaleza de Acero!",
+        "shockwave": "¡Onda Expansiva!"
+      },
+      "qa": {
+        "win": "QA: Victoria",
+        "lose": "QA: Derrota"
+      },
+      "map": {
+        "title": "Campaña",
+        "chapter": "Capítulo {n}",
+        "chapter_locked": "Supera el nivel {n} para abrirlo",
+        "play": "Jugar nivel {n}"
+      },
+      "pre": {
+        "title": "Nivel {n}",
+        "title_siege": "Asedio",
+        "goal": "Destruye {count} Oxibichos. ¡Protege el Núcleo!",
+        "goal_siege": "Sobrevive a las oleadas. ¡Protege el Núcleo!",
+        "best": "Récord: {score}",
+        "hull": "Usar un Casco de repuesto (+1 vida)",
+        "hull_owned": "Tienes {count}",
+        "hull_none": "No te quedan Cascos de repuesto",
+        "hull_hint": "Casco de repuesto: +1 vida en este nivel.",
+        "shop": "Obtener",
+        "start": "Empezar",
+        "close": "Cerrar",
+        "rewards": "Premio por primera victoria",
+        "offline": "Necesitas conexión"
+      },
+      "pause": {
+        "title": "En pausa",
+        "resume": "Seguir",
+        "restart": "Reiniciar nivel",
+        "quit": "Salir"
+      },
+      "clear": {
+        "title": "¡Nivel superado!",
+        "chapter_done": "¡Capítulo completado!",
+        "campaign_done": "¡Campaña completada!",
+        "kills": "Oxibichos",
+        "pickups": "Mejoras",
+        "bonus": "Bonus de victoria",
+        "lives": "Vidas restantes ×{count}",
+        "total": "Puntos",
+        "best": "¡Nuevo récord!",
+        "rewards": "Premios",
+        "next": "Siguiente",
+        "replay": "Repetir",
+        "map": "Mapa",
+        "save_title": "No se guardó",
+        "save_failed": "No se pudo guardar el resultado.",
+        "retry_save": "Reintentar",
+        "leave": "Mapa",
+        "unverified_title": "Sin validar",
+        "unverified": "Resultado no contabilizado: inténtalo de nuevo.",
+        "unverified_hint": "El servidor no pudo confirmar esta partida, así que no da estrellas ni premios.",
+        "retry": "Otra vez"
+      },
+      "defeat": {
+        "title": "Derrota",
+        "core": "¡El Núcleo ha sido destruido!",
+        "lives": "¡Sin vidas!",
+        "continue": "Continuar",
+        "continue_hint": "Usa 1 Casco de repuesto: +2 vidas y Núcleo reconstruido",
+        "continue_used": "Ya has continuado una vez",
+        "offer_title": "¿Necesitas más cascos?",
+        "retry": "Otra vez",
+        "map": "Mapa",
+        "end_siege": "Terminar"
+      },
+      "siege": {
+        "title": "Fin del Asedio",
+        "wave": "Llegaste a la oleada {n}",
+        "score": "Puntos: {score}",
+        "best": "Récord semanal: {score}",
+        "new_best": "¡Nuevo récord!",
+        "rank": "Puesto #{rank}",
+        "unranked": "Sin clasificar",
+        "retry": "Otra vez",
+        "boards": "Clasificación",
+        "lobby": "Inicio"
+      },
+      "shop": {
+        "title": "Tienda",
+        "one_time": "Oferta única",
+        "best_value": "Mejor precio",
+        "contents": "{count} potenciadores",
+        "buy": "{price}",
+        "pending": "Procesando...",
+        "test": "Compra de test",
+        "unavailable": "Tienda no disponible. Prueba más tarde."
+      },
+      "purchase": {
+        "success": "Compra completada",
+        "failed": "Error en la compra",
+        "failed_body": "No se ha cobrado nada. Inténtalo de nuevo.",
+        "cancelled": "Compra cancelada"
+      },
+      "boards": {
+        "title": "Clasificación",
+        "siege": "Asedio",
+        "campaign": "Campaña",
+        "weekly": "Esta semana",
+        "alltime": "Histórico",
+        "you": "Tú",
+        "empty": "Aún no hay puntos. ¡Sé el primero!",
+        "reset": "Se reinicia en {time}",
+        "guest": "Inicia sesión para guardar tu puesto",
+        "unavailable": "Clasificación no disponible"
+      },
+      "settings": {
+        "title": "Ajustes",
+        "music": "Música",
+        "sfx": "Sonido",
+        "motion": "Reducir movimiento",
+        "haptics": "Vibración",
+        "on": "Sí",
+        "off": "No",
+        "version": "Versión {version}"
+      },
+      "tut": {
+        "move_touch": "Arrastra el joystick para conducir",
+        "move_keys": "Conduce con las flechas o WASD",
+        "fire_touch": "Toca FUEGO para disparar",
+        "fire_keys": "Pulsa Espacio o J para disparar",
+        "brick": "Los disparos atraviesan el ladrillo. ¡Abre camino!",
+        "core": "Defiende el Núcleo de la Madriguera. ¡Un impacto y adiós!",
+        "core_selfhit": "Hasta tus propios disparos pueden romperlo.",
+        "enemy": "¡Llegan Oxibichos! Destruye los {count}.",
+        "carrier": "Los Oxibichos que parpadean sueltan mejoras. ¡Cógelas!",
+        "booster_hint": "¡Núcleo en peligro! Usa un potenciador.",
+        "booster_keys": "Pulsa 1, 2 o 3",
+        "booster_touch": "Toca un botón de potenciador",
+        "next": "¡Vale!",
+        "skip": "Saltar"
+      },
+      "booster": {
+        "owned": "Tienes {count}",
+        "more": "Obtener",
+        "duration": "Dura {seconds} s",
+        "limit": "Hasta {count} por nivel",
+        "limit_siege": "Hasta {count} por partida de Asedio"
+      },
+      "profile": {
+        "levels": "Niveles superados"
+      }
+    }
+  },
+  "fr": {
+    "shell": {
+      "title": "Iron Burrow",
+      "loading": {
+        "status": "Chargement du jeu…",
+        "caption": "Préparation des niveaux et récompenses"
+      },
+      "error": {
+        "boot": "Le jeu n'a pas pu démarrer ({code}). Réessaie plus tard."
+      },
+      "currency": {
+        "coins": "Pièces"
+      },
+      "leaderboard": {
+        "weekly": "Cette semaine"
+      },
+      "daily": {
+        "day": "Jour {n}"
+      },
+      "status": {
+        "loading": "Chargement…",
+        "noSdk": "Le SDK du jeu n'est pas installé dans cette version."
+      },
+      "profile": {
+        "title": "Profil",
+        "player": "Joueur {gid}"
+      },
+      "bar": {
+        "profile": "Profil",
+        "settings": "Réglages"
+      },
+      "account": {
+        "signedIn": "Connecté"
+      }
+    },
+    "item": {
+      "bst_bubble": {
+        "title": "Bouclier Bulle",
+        "description": "Ton tank est invulnérable pendant 10 secondes."
+      },
+      "bst_shockwave": {
+        "title": "Onde de choc",
+        "description": "Détruit tous les ennemis du terrain. Les éliminations rapportent des points."
+      },
+      "bst_fortify": {
+        "title": "Forteresse d'acier",
+        "description": "Le mur du Noyau devient en acier pendant 20 secondes et les quartiers détruits sont reconstruits."
+      },
+      "bst_hull": {
+        "title": "Coque de secours",
+        "description": "+1 vie avant un niveau, ou continue après une défaite avec 2 vies et un Noyau reconstruit."
+      },
+      "coins": {
+        "title": "Pièces",
+        "description": "Monnaie du jeu. Gagne-la dans les niveaux et les récompenses quotidiennes."
+      }
+    },
+    "offer": {
+      "starter_crate": {
+        "title": "Caisse de départ",
+        "subtitle": "3 de chaque boost · offre unique"
+      },
+      "hull_pack": {
+        "title": "Pack de coques",
+        "subtitle": "5 Coques de secours"
+      },
+      "field_kit": {
+        "title": "Kit de terrain",
+        "subtitle": "6 de chaque boost",
+        "badge": "Top affaire"
+      },
+      "heavy_arsenal": {
+        "title": "Arsenal lourd",
+        "subtitle": "15 de chaque boost"
+      },
+      "commander_cache": {
+        "title": "Réserve du commandant",
+        "subtitle": "35 de chaque boost"
+      },
+      "start_grant": {
+        "title": "Bienvenue, Commandant !",
+        "subtitle": "2 de chaque boost, offerts",
+        "cta": "Récupérer"
+      },
+      "cta": {
+        "buy": "Acheter"
+      }
+    },
+    "placement": {
+      "defeat": {
+        "title": "Retourne au combat"
+      },
+      "prestage": {
+        "title": "Coque de secours"
+      },
+      "starter_auto": {
+        "title": "Caisse de départ"
+      },
+      "start_grant": {
+        "title": "Cadeau de bienvenue"
+      },
+      "shop": {
+        "title": "Boutique"
+      }
+    },
+    "levels": {
+      "main": {
+        "title": "Campagne",
+        "level_1": {
+          "title": "Niveau 1"
+        },
+        "level_2": {
+          "title": "Niveau 2"
+        },
+        "level_3": {
+          "title": "Niveau 3"
+        },
+        "level_4": {
+          "title": "Niveau 4"
+        },
+        "level_5": {
+          "title": "Niveau 5"
+        },
+        "level_6": {
+          "title": "Niveau 6"
+        },
+        "level_7": {
+          "title": "Niveau 7"
+        },
+        "level_8": {
+          "title": "Niveau 8"
+        },
+        "level_9": {
+          "title": "Niveau 9"
+        },
+        "level_10": {
+          "title": "Niveau 10"
+        },
+        "level_11": {
+          "title": "Niveau 11"
+        },
+        "level_12": {
+          "title": "Niveau 12"
+        },
+        "level_13": {
+          "title": "Niveau 13"
+        },
+        "level_14": {
+          "title": "Niveau 14"
+        },
+        "level_15": {
+          "title": "Niveau 15"
+        },
+        "level_16": {
+          "title": "Niveau 16"
+        },
+        "level_17": {
+          "title": "Niveau 17"
+        },
+        "level_18": {
+          "title": "Niveau 18"
+        },
+        "level_19": {
+          "title": "Niveau 19"
+        },
+        "level_20": {
+          "title": "Niveau 20"
+        },
+        "level_21": {
+          "title": "Niveau 21"
+        },
+        "level_22": {
+          "title": "Niveau 22"
+        },
+        "level_23": {
+          "title": "Niveau 23"
+        },
+        "level_24": {
+          "title": "Niveau 24"
+        },
+        "level_25": {
+          "title": "Niveau 25"
+        },
+        "level_26": {
+          "title": "Niveau 26"
+        },
+        "level_27": {
+          "title": "Niveau 27"
+        },
+        "level_28": {
+          "title": "Niveau 28"
+        },
+        "level_29": {
+          "title": "Niveau 29"
+        },
+        "level_30": {
+          "title": "Niveau 30"
+        }
+      },
+      "endless": {
+        "title": "Siège",
+        "siege_pit": {
+          "title": "La Fosse"
+        }
+      },
+      "chapter": {
+        "c01": {
+          "title": "Tunnels d'argile"
+        },
+        "c02": {
+          "title": "Les Forges"
+        },
+        "c03": {
+          "title": "Abysses de magma"
+        }
+      }
+    },
+    "progress": {
+      "stars_main": {
+        "title": "Niveaux à trois étoiles",
+        "stars3_1": {
+          "title": "Niveau 1 : trois étoiles"
+        },
+        "stars3_2": {
+          "title": "Niveau 2 : trois étoiles"
+        },
+        "stars3_3": {
+          "title": "Niveau 3 : trois étoiles"
+        },
+        "stars3_4": {
+          "title": "Niveau 4 : trois étoiles"
+        },
+        "stars3_5": {
+          "title": "Niveau 5 : trois étoiles"
+        },
+        "stars3_6": {
+          "title": "Niveau 6 : trois étoiles"
+        },
+        "stars3_7": {
+          "title": "Niveau 7 : trois étoiles"
+        },
+        "stars3_8": {
+          "title": "Niveau 8 : trois étoiles"
+        },
+        "stars3_9": {
+          "title": "Niveau 9 : trois étoiles"
+        },
+        "stars3_10": {
+          "title": "Niveau 10 : trois étoiles"
+        },
+        "stars3_11": {
+          "title": "Niveau 11 : trois étoiles"
+        },
+        "stars3_12": {
+          "title": "Niveau 12 : trois étoiles"
+        },
+        "stars3_13": {
+          "title": "Niveau 13 : trois étoiles"
+        },
+        "stars3_14": {
+          "title": "Niveau 14 : trois étoiles"
+        },
+        "stars3_15": {
+          "title": "Niveau 15 : trois étoiles"
+        },
+        "stars3_16": {
+          "title": "Niveau 16 : trois étoiles"
+        },
+        "stars3_17": {
+          "title": "Niveau 17 : trois étoiles"
+        },
+        "stars3_18": {
+          "title": "Niveau 18 : trois étoiles"
+        },
+        "stars3_19": {
+          "title": "Niveau 19 : trois étoiles"
+        },
+        "stars3_20": {
+          "title": "Niveau 20 : trois étoiles"
+        },
+        "stars3_21": {
+          "title": "Niveau 21 : trois étoiles"
+        },
+        "stars3_22": {
+          "title": "Niveau 22 : trois étoiles"
+        },
+        "stars3_23": {
+          "title": "Niveau 23 : trois étoiles"
+        },
+        "stars3_24": {
+          "title": "Niveau 24 : trois étoiles"
+        },
+        "stars3_25": {
+          "title": "Niveau 25 : trois étoiles"
+        },
+        "stars3_26": {
+          "title": "Niveau 26 : trois étoiles"
+        },
+        "stars3_27": {
+          "title": "Niveau 27 : trois étoiles"
+        },
+        "stars3_28": {
+          "title": "Niveau 28 : trois étoiles"
+        },
+        "stars3_29": {
+          "title": "Niveau 29 : trois étoiles"
+        },
+        "stars3_30": {
+          "title": "Niveau 30 : trois étoiles"
+        }
+      }
+    },
+    "reward": {
+      "daily": {
+        "title": "Ravitaillement du jour",
+        "day_1": {
+          "title": "Jour 1"
+        },
+        "day_2": {
+          "title": "Jour 2"
+        },
+        "day_3": {
+          "title": "Jour 3"
+        },
+        "day_4": {
+          "title": "Jour 4"
+        },
+        "day_5": {
+          "title": "Jour 5"
+        },
+        "day_6": {
+          "title": "Jour 6"
+        },
+        "day_7": {
+          "title": "Jour 7"
+        }
+      }
+    },
+    "leaderboard": {
+      "siege_best": {
+        "title": "Siège — meilleure partie"
+      },
+      "campaign_score": {
+        "title": "Score de campagne"
+      },
+      "weekly": {
+        "title": "Classement de la semaine"
+      },
+      "you": "Toi",
+      "empty": "Aucun score pour l'instant. Gagne un niveau pour entrer au classement."
+    },
+    "screen": {
+      "common": {
+        "close": "Fermer",
+        "back": "Retour",
+        "ok": "OK",
+        "collect": "Récupérer",
+        "count": "×{count}",
+        "offline": "Pas de connexion. Reconnexion..."
+      },
+      "lobby": {
+        "play": "Jouer",
+        "play_sub": "Niveau {n}",
+        "siege": "Siège",
+        "siege_locked": "Termine le niveau {n} pour débloquer",
+        "stars": "{stars}/{max}",
+        "grant_title": "Bienvenue, Fouisseur !",
+        "grant_body": "Tes boosts de départ",
+        "sound_on": "Son : oui",
+        "sound_off": "Son : non"
+      },
+      "hud": {
+        "boards": "Classements",
+        "shop": "Boutique",
+        "enemies": "Rouillards restants : {count}",
+        "lives": "Vies : {count}",
+        "stage": "Niveau {n}",
+        "wave": "Vague {n}",
+        "score": "Score",
+        "gun": "Niveau du canon {n}",
+        "fire": "FEU",
+        "pause": "Pause",
+        "key": "{key}",
+        "limit": "Limite de boosts atteinte pour ce niveau"
+      },
+      "toast": {
+        "go": "Niveau {n}. En avant !",
+        "wave": "Vague {n}",
+        "wave_clear": "Vague {n} nettoyée ! +{bonus}",
+        "star": "Canon +1 !",
+        "star_max": "Canon max !",
+        "bubble": "Bouclier actif !",
+        "rebar": "Mur d'acier !",
+        "quake": "Séisme !",
+        "freeze": "Gel !",
+        "hull": "+1 vie !",
+        "fortify": "Forteresse d'acier !",
+        "shockwave": "Onde de choc !"
+      },
+      "qa": {
+        "win": "QA: Victoire",
+        "lose": "QA: Défaite"
+      },
+      "map": {
+        "title": "Campagne",
+        "chapter": "Chapitre {n}",
+        "chapter_locked": "Termine le niveau {n} pour ouvrir",
+        "play": "Jouer niveau {n}"
+      },
+      "pre": {
+        "title": "Niveau {n}",
+        "title_siege": "Siège",
+        "goal": "Détruis {count} Rouillards. Protège le Noyau !",
+        "goal_siege": "Survis aux vagues. Protège le Noyau !",
+        "best": "Record : {score}",
+        "hull": "Prendre une Coque de secours (+1 vie)",
+        "hull_owned": "Tu en as {count}",
+        "hull_none": "Plus de Coques de secours",
+        "hull_hint": "Coque de secours : +1 vie pour ce niveau.",
+        "shop": "Obtenir",
+        "start": "Lancer",
+        "close": "Fermer",
+        "rewards": "Récompense du 1er succès",
+        "offline": "Connexion requise"
+      },
+      "pause": {
+        "title": "Pause",
+        "resume": "Reprise",
+        "restart": "Recommencer",
+        "quit": "Quitter"
+      },
+      "clear": {
+        "title": "Niveau réussi !",
+        "chapter_done": "Chapitre terminé !",
+        "campaign_done": "Campagne terminée !",
+        "kills": "Rouillards",
+        "pickups": "Bonus",
+        "bonus": "Bonus de victoire",
+        "lives": "Vies restantes ×{count}",
+        "total": "Score",
+        "best": "Record !",
+        "rewards": "Récompenses",
+        "next": "Suivant",
+        "replay": "Rejouer",
+        "map": "Carte",
+        "save_title": "Échec de sauvegarde",
+        "save_failed": "Impossible d'enregistrer le résultat.",
+        "retry_save": "Réessayer",
+        "leave": "Carte",
+        "unverified_title": "Non compté",
+        "unverified": "Résultat non compté — réessaie.",
+        "unverified_hint": "Le serveur n'a pas pu valider cette partie : pas d'étoiles ni de récompenses.",
+        "retry": "Rejouer"
+      },
+      "defeat": {
+        "title": "Défaite",
+        "core": "Le Noyau a été détruit !",
+        "lives": "Plus de vies !",
+        "continue": "Continuer",
+        "continue_hint": "Utilise 1 Coque de secours : +2 vies, Noyau reconstruit",
+        "continue_used": "Continue déjà utilisé",
+        "offer_title": "Besoin de coques ?",
+        "retry": "Rejouer",
+        "map": "Carte",
+        "end_siege": "Terminer"
+      },
+      "siege": {
+        "title": "Fin du Siège",
+        "wave": "Vague {n} atteinte",
+        "score": "Score : {score}",
+        "best": "Record de la semaine : {score}",
+        "new_best": "Record !",
+        "rank": "Rang n° {rank}",
+        "unranked": "Non classé",
+        "retry": "Rejouer",
+        "boards": "Classements",
+        "lobby": "Accueil"
+      },
+      "shop": {
+        "title": "Boutique",
+        "one_time": "Offre unique",
+        "best_value": "Top affaire",
+        "contents": "{count} boosts",
+        "buy": "{price}",
+        "pending": "En cours...",
+        "test": "Achat test",
+        "unavailable": "Boutique fermée. Réessaie plus tard."
+      },
+      "purchase": {
+        "success": "Achat réussi",
+        "failed": "Échec de l'achat",
+        "failed_body": "Aucun débit effectué. Réessaie.",
+        "cancelled": "Achat annulé"
+      },
+      "boards": {
+        "title": "Classements",
+        "siege": "Siège",
+        "campaign": "Campagne",
+        "weekly": "Semaine",
+        "alltime": "Global",
+        "you": "Toi",
+        "empty": "Aucun score pour l'instant. Sois le premier !",
+        "reset": "Réinitialisation dans {time}",
+        "guest": "Connecte-toi pour garder ton rang",
+        "unavailable": "Classements indisponibles"
+      },
+      "settings": {
+        "title": "Réglages",
+        "music": "Musique",
+        "sfx": "Sons",
+        "motion": "Réduire les animations",
+        "haptics": "Vibrations",
+        "on": "Oui",
+        "off": "Non",
+        "version": "Version {version}"
+      },
+      "tut": {
+        "move_touch": "Fais glisser le stick pour rouler",
+        "move_keys": "Roule avec les flèches ou ZQSD",
+        "fire_touch": "Touche FEU pour tirer",
+        "fire_keys": "Appuie sur Espace ou J pour tirer",
+        "brick": "Tes tirs percent la brique. Fraie-toi un chemin !",
+        "core": "Protège le Noyau du Terrier. Un seul tir et c'est fini !",
+        "core_selfhit": "Même tes propres tirs peuvent le briser.",
+        "enemy": "Rouillards en approche ! Détruis-les tous ({count}).",
+        "carrier": "Les Rouillards clignotants lâchent des bonus. Attrape-les !",
+        "booster_hint": "Noyau en danger ! Utilise un boost.",
+        "booster_keys": "Appuie sur 1, 2 ou 3",
+        "booster_touch": "Touche un bouton de boost",
+        "next": "Compris",
+        "skip": "Passer"
+      },
+      "booster": {
+        "owned": "Tu en as {count}",
+        "more": "Obtenir",
+        "duration": "Dure {seconds} s",
+        "limit": "Max {count} par niveau",
+        "limit_siege": "Max {count} par partie de Siège"
+      },
+      "profile": {
+        "levels": "Niveaux terminés"
+      }
+    }
+  },
+  "ru": {
+    "shell": {
+      "title": "Iron Burrow",
+      "loading": {
+        "status": "Загружаем игру…",
+        "caption": "Готовим уровни и награды"
+      },
+      "error": {
+        "boot": "Не удалось запустить игру ({code}). Попробуй позже."
+      },
+      "currency": {
+        "coins": "Монеты"
+      },
+      "leaderboard": {
+        "weekly": "Эта неделя"
+      },
+      "daily": {
+        "day": "День {n}"
+      },
+      "status": {
+        "loading": "Загрузка…",
+        "noSdk": "В этой сборке не установлен игровой SDK."
+      },
+      "profile": {
+        "title": "Профиль",
+        "player": "Игрок {gid}"
+      },
+      "bar": {
+        "profile": "Профиль",
+        "settings": "Настройки"
+      },
+      "account": {
+        "signedIn": "Вход выполнен"
+      }
+    },
+    "item": {
+      "bst_bubble": {
+        "title": "Щит-пузырь",
+        "description": "Твой танк неуязвим 10 секунд."
+      },
+      "bst_shockwave": {
+        "title": "Ударная волна",
+        "description": "Уничтожает всех врагов на поле. Очки за них засчитываются."
+      },
+      "bst_fortify": {
+        "title": "Стальная крепость",
+        "description": "Стена Ядра становится стальной на 20 секунд, а разрушенные участки восстанавливаются."
+      },
+      "bst_hull": {
+        "title": "Запасной корпус",
+        "description": "+1 жизнь перед уровнем или продолжение после поражения с 2 жизнями и восстановленным Ядром."
+      },
+      "coins": {
+        "title": "Монеты",
+        "description": "Обычная валюта. Зарабатывай на уровнях и в ежедневных наградах."
+      }
+    },
+    "offer": {
+      "starter_crate": {
+        "title": "Стартовый ящик",
+        "subtitle": "По 3 каждого бустера · только один раз"
+      },
+      "hull_pack": {
+        "title": "Набор корпусов",
+        "subtitle": "5 запасных корпусов"
+      },
+      "field_kit": {
+        "title": "Полевой набор",
+        "subtitle": "По 6 каждого бустера",
+        "badge": "Выгодно!"
+      },
+      "heavy_arsenal": {
+        "title": "Тяжёлый арсенал",
+        "subtitle": "По 15 каждого бустера"
+      },
+      "commander_cache": {
+        "title": "Тайник командира",
+        "subtitle": "По 35 каждого бустера"
+      },
+      "start_grant": {
+        "title": "Привет, командир!",
+        "subtitle": "По 2 каждого бустера бесплатно",
+        "cta": "Забрать"
+      },
+      "cta": {
+        "buy": "Купить"
+      }
+    },
+    "placement": {
+      "defeat": {
+        "title": "Вернись в бой"
+      },
+      "prestage": {
+        "title": "Запасной корпус"
+      },
+      "starter_auto": {
+        "title": "Стартовый ящик"
+      },
+      "start_grant": {
+        "title": "Подарок новичку"
+      },
+      "shop": {
+        "title": "Магазин"
+      }
+    },
+    "levels": {
+      "main": {
+        "title": "Кампания",
+        "level_1": {
+          "title": "Уровень 1"
+        },
+        "level_2": {
+          "title": "Уровень 2"
+        },
+        "level_3": {
+          "title": "Уровень 3"
+        },
+        "level_4": {
+          "title": "Уровень 4"
+        },
+        "level_5": {
+          "title": "Уровень 5"
+        },
+        "level_6": {
+          "title": "Уровень 6"
+        },
+        "level_7": {
+          "title": "Уровень 7"
+        },
+        "level_8": {
+          "title": "Уровень 8"
+        },
+        "level_9": {
+          "title": "Уровень 9"
+        },
+        "level_10": {
+          "title": "Уровень 10"
+        },
+        "level_11": {
+          "title": "Уровень 11"
+        },
+        "level_12": {
+          "title": "Уровень 12"
+        },
+        "level_13": {
+          "title": "Уровень 13"
+        },
+        "level_14": {
+          "title": "Уровень 14"
+        },
+        "level_15": {
+          "title": "Уровень 15"
+        },
+        "level_16": {
+          "title": "Уровень 16"
+        },
+        "level_17": {
+          "title": "Уровень 17"
+        },
+        "level_18": {
+          "title": "Уровень 18"
+        },
+        "level_19": {
+          "title": "Уровень 19"
+        },
+        "level_20": {
+          "title": "Уровень 20"
+        },
+        "level_21": {
+          "title": "Уровень 21"
+        },
+        "level_22": {
+          "title": "Уровень 22"
+        },
+        "level_23": {
+          "title": "Уровень 23"
+        },
+        "level_24": {
+          "title": "Уровень 24"
+        },
+        "level_25": {
+          "title": "Уровень 25"
+        },
+        "level_26": {
+          "title": "Уровень 26"
+        },
+        "level_27": {
+          "title": "Уровень 27"
+        },
+        "level_28": {
+          "title": "Уровень 28"
+        },
+        "level_29": {
+          "title": "Уровень 29"
+        },
+        "level_30": {
+          "title": "Уровень 30"
+        }
+      },
+      "endless": {
+        "title": "Осада",
+        "siege_pit": {
+          "title": "Яма"
+        }
+      },
+      "chapter": {
+        "c01": {
+          "title": "Глиняные тоннели"
+        },
+        "c02": {
+          "title": "Железный завод"
+        },
+        "c03": {
+          "title": "Магмовые глубины"
+        }
+      }
+    },
+    "progress": {
+      "stars_main": {
+        "title": "Уровни на три звезды",
+        "stars3_1": {
+          "title": "Уровень 1: три звезды"
+        },
+        "stars3_2": {
+          "title": "Уровень 2: три звезды"
+        },
+        "stars3_3": {
+          "title": "Уровень 3: три звезды"
+        },
+        "stars3_4": {
+          "title": "Уровень 4: три звезды"
+        },
+        "stars3_5": {
+          "title": "Уровень 5: три звезды"
+        },
+        "stars3_6": {
+          "title": "Уровень 6: три звезды"
+        },
+        "stars3_7": {
+          "title": "Уровень 7: три звезды"
+        },
+        "stars3_8": {
+          "title": "Уровень 8: три звезды"
+        },
+        "stars3_9": {
+          "title": "Уровень 9: три звезды"
+        },
+        "stars3_10": {
+          "title": "Уровень 10: три звезды"
+        },
+        "stars3_11": {
+          "title": "Уровень 11: три звезды"
+        },
+        "stars3_12": {
+          "title": "Уровень 12: три звезды"
+        },
+        "stars3_13": {
+          "title": "Уровень 13: три звезды"
+        },
+        "stars3_14": {
+          "title": "Уровень 14: три звезды"
+        },
+        "stars3_15": {
+          "title": "Уровень 15: три звезды"
+        },
+        "stars3_16": {
+          "title": "Уровень 16: три звезды"
+        },
+        "stars3_17": {
+          "title": "Уровень 17: три звезды"
+        },
+        "stars3_18": {
+          "title": "Уровень 18: три звезды"
+        },
+        "stars3_19": {
+          "title": "Уровень 19: три звезды"
+        },
+        "stars3_20": {
+          "title": "Уровень 20: три звезды"
+        },
+        "stars3_21": {
+          "title": "Уровень 21: три звезды"
+        },
+        "stars3_22": {
+          "title": "Уровень 22: три звезды"
+        },
+        "stars3_23": {
+          "title": "Уровень 23: три звезды"
+        },
+        "stars3_24": {
+          "title": "Уровень 24: три звезды"
+        },
+        "stars3_25": {
+          "title": "Уровень 25: три звезды"
+        },
+        "stars3_26": {
+          "title": "Уровень 26: три звезды"
+        },
+        "stars3_27": {
+          "title": "Уровень 27: три звезды"
+        },
+        "stars3_28": {
+          "title": "Уровень 28: три звезды"
+        },
+        "stars3_29": {
+          "title": "Уровень 29: три звезды"
+        },
+        "stars3_30": {
+          "title": "Уровень 30: три звезды"
+        }
+      }
+    },
+    "reward": {
+      "daily": {
+        "title": "Ежедневная поставка",
+        "day_1": {
+          "title": "День 1"
+        },
+        "day_2": {
+          "title": "День 2"
+        },
+        "day_3": {
+          "title": "День 3"
+        },
+        "day_4": {
+          "title": "День 4"
+        },
+        "day_5": {
+          "title": "День 5"
+        },
+        "day_6": {
+          "title": "День 6"
+        },
+        "day_7": {
+          "title": "День 7"
+        }
+      }
+    },
+    "leaderboard": {
+      "siege_best": {
+        "title": "Осада — лучший забег"
+      },
+      "campaign_score": {
+        "title": "Очки кампании"
+      },
+      "weekly": {
+        "title": "Рейтинг недели"
+      },
+      "you": "Ты",
+      "empty": "Пока нет результатов. Пройди уровень, чтобы попасть в рейтинг."
+    },
+    "screen": {
+      "common": {
+        "close": "Закрыть",
+        "back": "Назад",
+        "ok": "ОК",
+        "collect": "Забрать",
+        "count": "×{count}",
+        "offline": "Нет связи. Переподключаемся..."
+      },
+      "lobby": {
+        "play": "Играть",
+        "play_sub": "Уровень {n}",
+        "siege": "Осада",
+        "siege_locked": "Пройди уровень {n}, чтобы открыть",
+        "stars": "{stars}/{max}",
+        "grant_title": "Привет, землекоп!",
+        "grant_body": "Твои стартовые бустеры",
+        "sound_on": "Звук: вкл.",
+        "sound_off": "Звук: выкл."
+      },
+      "hud": {
+        "boards": "Рейтинги",
+        "shop": "Магазин",
+        "enemies": "Осталось ржавожуков: {count}",
+        "lives": "Жизни: {count}",
+        "stage": "Уровень {n}",
+        "wave": "Волна {n}",
+        "score": "Очки",
+        "gun": "Уровень пушки {n}",
+        "fire": "ОГОНЬ",
+        "pause": "Пауза",
+        "key": "{key}",
+        "limit": "Лимит бустеров на этом уровне исчерпан"
+      },
+      "toast": {
+        "go": "Уровень {n}. Вперёд!",
+        "wave": "Волна {n}",
+        "wave_clear": "Волна {n} отбита! +{bonus}",
+        "star": "Пушка +1!",
+        "star_max": "Пушка на максимуме!",
+        "bubble": "Щит включён!",
+        "rebar": "Арматура!",
+        "quake": "Землетрясение!",
+        "freeze": "Заморозка!",
+        "hull": "+1 жизнь!",
+        "fortify": "Стальная крепость!",
+        "shockwave": "Ударная волна!"
+      },
+      "qa": {
+        "win": "QA: Победа",
+        "lose": "QA: Поражение"
+      },
+      "map": {
+        "title": "Кампания",
+        "chapter": "Глава {n}",
+        "chapter_locked": "Пройди уровень {n}, чтобы открыть",
+        "play": "Играть: ур. {n}"
+      },
+      "pre": {
+        "title": "Уровень {n}",
+        "title_siege": "Осада",
+        "goal": "Уничтожь ржавожуков: {count}. Защити Ядро!",
+        "goal_siege": "Выстои против волн. Защити Ядро!",
+        "best": "Рекорд: {score}",
+        "hull": "Взять запасной корпус (+1 жизнь)",
+        "hull_owned": "У тебя: {count}",
+        "hull_none": "Запасных корпусов нет",
+        "hull_hint": "Запасной корпус: +1 жизнь на этот уровень.",
+        "shop": "Купить ещё",
+        "start": "Начать",
+        "close": "Закрыть",
+        "rewards": "Награда за первое прохождение",
+        "offline": "Нужно подключение"
+      },
+      "pause": {
+        "title": "Пауза",
+        "resume": "Дальше",
+        "restart": "Начать заново",
+        "quit": "Выйти"
+      },
+      "clear": {
+        "title": "Уровень пройден!",
+        "chapter_done": "Глава пройдена!",
+        "campaign_done": "Кампания пройдена!",
+        "kills": "Ржавожуки",
+        "pickups": "Усиления",
+        "bonus": "Бонус за победу",
+        "lives": "Осталось жизней ×{count}",
+        "total": "Очки",
+        "best": "Новый рекорд!",
+        "rewards": "Награды",
+        "next": "Дальше",
+        "replay": "Заново",
+        "map": "Карта",
+        "save_title": "Ошибка сохранения",
+        "save_failed": "Не удалось сохранить результат.",
+        "retry_save": "Сохранить снова",
+        "leave": "Карта",
+        "unverified_title": "Не засчитано",
+        "unverified": "Результат не засчитан — попробуй ещё раз.",
+        "unverified_hint": "Сервер не смог подтвердить этот забег, поэтому звёзд и наград не будет.",
+        "retry": "Ещё раз"
+      },
+      "defeat": {
+        "title": "Поражение",
+        "core": "Ядро уничтожено!",
+        "lives": "Жизни кончились!",
+        "continue": "Продолжить",
+        "continue_hint": "Потрать 1 запасной корпус: +2 жизни, Ядро восстановлено",
+        "continue_used": "Продолжение уже использовано",
+        "offer_title": "Нужно больше корпусов?",
+        "retry": "Ещё раз",
+        "map": "Карта",
+        "end_siege": "Завершить"
+      },
+      "siege": {
+        "title": "Осада окончена",
+        "wave": "Достигнута волна {n}",
+        "score": "Очки: {score}",
+        "best": "Рекорд недели: {score}",
+        "new_best": "Новый рекорд!",
+        "rank": "Место #{rank}",
+        "unranked": "Без места",
+        "retry": "Ещё раз",
+        "boards": "Рейтинги",
+        "lobby": "Меню"
+      },
+      "shop": {
+        "title": "Магазин",
+        "one_time": "Разовая акция",
+        "best_value": "Лучшая цена",
+        "contents": "Бустеры: {count}",
+        "buy": "{price}",
+        "pending": "Обработка...",
+        "test": "Тест-покупка",
+        "unavailable": "Магазин недоступен. Попробуй позже."
+      },
+      "purchase": {
+        "success": "Покупка завершена",
+        "failed": "Покупка не удалась",
+        "failed_body": "Деньги не списаны. Попробуй ещё раз.",
+        "cancelled": "Покупка отменена"
+      },
+      "boards": {
+        "title": "Рейтинги",
+        "siege": "Осада",
+        "campaign": "Кампания",
+        "weekly": "Эта неделя",
+        "alltime": "Всё время",
+        "you": "Ты",
+        "empty": "Пока нет результатов. Будь первым!",
+        "reset": "Сброс через {time}",
+        "guest": "Войди, чтобы сохранить место",
+        "unavailable": "Рейтинги недоступны"
+      },
+      "settings": {
+        "title": "Настройки",
+        "music": "Музыка",
+        "sfx": "Звук",
+        "motion": "Меньше анимации",
+        "haptics": "Вибрация",
+        "on": "Вкл.",
+        "off": "Выкл.",
+        "version": "Версия {version}"
+      },
+      "tut": {
+        "move_touch": "Тяни стик, чтобы ехать",
+        "move_keys": "Езди на стрелках или WASD",
+        "fire_touch": "Жми ОГОНЬ, чтобы стрелять",
+        "fire_keys": "Стреляй на Пробел или J",
+        "brick": "Снаряды прогрызают кирпич. Пробей путь!",
+        "core": "Охраняй Ядро Норы. Одно попадание — и его нет!",
+        "core_selfhit": "Даже твои выстрелы могут его разрушить.",
+        "enemy": "Ржавожуки идут! Уничтожь всех: {count}.",
+        "carrier": "Мигающие ржавожуки роняют усиления. Хватай!",
+        "booster_hint": "Ядро в опасности! Используй бустер.",
+        "booster_keys": "Жми 1, 2 или 3",
+        "booster_touch": "Нажми кнопку бустера",
+        "next": "Понятно",
+        "skip": "Пропуск"
+      },
+      "booster": {
+        "owned": "У тебя: {count}",
+        "more": "Купить ещё",
+        "duration": "Действует {seconds} с",
+        "limit": "До {count} за уровень",
+        "limit_siege": "До {count} за забег в Осаде"
+      },
+      "profile": {
+        "levels": "Пройдено уровней"
+      }
+    }
   }
 }

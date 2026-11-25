@@ -18,5 +18,85 @@
       "you": "You",
       "empty": "No scores yet. Win a level to get on the board."
     }
+  },
+  "de": {
+    "item": {
+      "coins": {
+        "title": "Münzen",
+        "description": "Spielwährung. Verdien sie in Levels und mit täglichen Belohnungen."
+      }
+    },
+    "placement": {
+      "shop": {
+        "title": "Shop"
+      }
+    },
+    "leaderboard": {
+      "weekly": {
+        "title": "Wochen-Bestenliste"
+      },
+      "you": "Du",
+      "empty": "Noch keine Punkte. Gewinn ein Level, um auf die Liste zu kommen."
+    }
+  },
+  "es": {
+    "item": {
+      "coins": {
+        "title": "Monedas",
+        "description": "Moneda básica. Gánala en los niveles y en las recompensas diarias."
+      }
+    },
+    "placement": {
+      "shop": {
+        "title": "Tienda"
+      }
+    },
+    "leaderboard": {
+      "weekly": {
+        "title": "Clasificación semanal"
+      },
+      "you": "Tú",
+      "empty": "Aún no hay puntos. Gana un nivel para entrar en la tabla."
+    }
+  },
+  "fr": {
+    "item": {
+      "coins": {
+        "title": "Pièces",
+        "description": "Monnaie du jeu. Gagne-la dans les niveaux et les récompenses quotidiennes."
+      }
+    },
+    "placement": {
+      "shop": {
+        "title": "Boutique"
+      }
+    },
+    "leaderboard": {
+      "weekly": {
+        "title": "Classement de la semaine"
+      },
+      "you": "Toi",
+      "empty": "Aucun score pour l'instant. Gagne un niveau pour entrer au classement."
+    }
+  },
+  "ru": {
+    "item": {
+      "coins": {
+        "title": "Монеты",
+        "description": "Обычная валюта. Зарабатывай на уровнях и в ежедневных наградах."
+      }
+    },
+    "placement": {
+      "shop": {
+        "title": "Магазин"
+      }
+    },
+    "leaderboard": {
+      "weekly": {
+        "title": "Рейтинг недели"
+      },
+      "you": "Ты",
+      "empty": "Пока нет результатов. Пройди уровень, чтобы попасть в рейтинг."
+    }
   }
 }

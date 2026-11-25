@@ -33,5 +33,145 @@
         "signedIn": "Signed in"
       }
     }
+  },
+  "de": {
+    "shell": {
+      "loading": {
+        "status": "Spiel wird geladen…",
+        "caption": "Level und Belohnungen werden vorbereitet"
+      },
+      "error": {
+        "boot": "Das Spiel konnte nicht starten ({code}). Versuch es später nochmal."
+      },
+      "currency": {
+        "coins": "Münzen"
+      },
+      "leaderboard": {
+        "weekly": "Diese Woche"
+      },
+      "daily": {
+        "day": "Tag {n}"
+      },
+      "status": {
+        "loading": "Lädt…",
+        "noSdk": "Das Spiel-SDK ist in diesem Build nicht installiert."
+      },
+      "profile": {
+        "title": "Profil",
+        "player": "Spieler {gid}"
+      },
+      "bar": {
+        "profile": "Profil",
+        "settings": "Optionen"
+      },
+      "account": {
+        "signedIn": "Angemeldet"
+      }
+    }
+  },
+  "es": {
+    "shell": {
+      "loading": {
+        "status": "Cargando el juego…",
+        "caption": "Preparando niveles y recompensas"
+      },
+      "error": {
+        "boot": "El juego no pudo iniciarse ({code}). Inténtalo más tarde."
+      },
+      "currency": {
+        "coins": "Monedas"
+      },
+      "leaderboard": {
+        "weekly": "Esta semana"
+      },
+      "daily": {
+        "day": "Día {n}"
+      },
+      "status": {
+        "loading": "Cargando…",
+        "noSdk": "El SDK del juego no está instalado en esta versión."
+      },
+      "profile": {
+        "title": "Perfil",
+        "player": "Jugador {gid}"
+      },
+      "bar": {
+        "profile": "Perfil",
+        "settings": "Ajustes"
+      },
+      "account": {
+        "signedIn": "Sesión iniciada"
+      }
+    }
+  },
+  "fr": {
+    "shell": {
+      "loading": {
+        "status": "Chargement du jeu…",
+        "caption": "Préparation des niveaux et récompenses"
+      },
+      "error": {
+        "boot": "Le jeu n'a pas pu démarrer ({code}). Réessaie plus tard."
+      },
+      "currency": {
+        "coins": "Pièces"
+      },
+      "leaderboard": {
+        "weekly": "Cette semaine"
+      },
+      "daily": {
+        "day": "Jour {n}"
+      },
+      "status": {
+        "loading": "Chargement…",
+        "noSdk": "Le SDK du jeu n'est pas installé dans cette version."
+      },
+      "profile": {
+        "title": "Profil",
+        "player": "Joueur {gid}"
+      },
+      "bar": {
+        "profile": "Profil",
+        "settings": "Réglages"
+      },
+      "account": {
+        "signedIn": "Connecté"
+      }
+    }
+  },
+  "ru": {
+    "shell": {
+      "loading": {
+        "status": "Загружаем игру…",
+        "caption": "Готовим уровни и награды"
+      },
+      "error": {
+        "boot": "Не удалось запустить игру ({code}). Попробуй позже."
+      },
+      "currency": {
+        "coins": "Монеты"
+      },
+      "leaderboard": {
+        "weekly": "Эта неделя"
+      },
+      "daily": {
+        "day": "День {n}"
+      },
+      "status": {
+        "loading": "Загрузка…",
+        "noSdk": "В этой сборке не установлен игровой SDK."
+      },
+      "profile": {
+        "title": "Профиль",
+        "player": "Игрок {gid}"
+      },
+      "bar": {
+        "profile": "Профиль",
+        "settings": "Настройки"
+      },
+      "account": {
+        "signedIn": "Вход выполнен"
+      }
+    }
   }
 }

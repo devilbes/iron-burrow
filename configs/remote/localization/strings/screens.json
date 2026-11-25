@@ -192,5 +192,781 @@
         "levels": "Stages cleared"
       }
     }
+  },
+  "de": {
+    "screen": {
+      "common": {
+        "close": "Fertig",
+        "back": "Zurück",
+        "ok": "OK",
+        "collect": "Abholen",
+        "count": "×{count}",
+        "offline": "Keine Verbindung. Verbinde neu..."
+      },
+      "lobby": {
+        "play": "Spielen",
+        "play_sub": "Level {n}",
+        "siege": "Belagerung",
+        "siege_locked": "Schaffe Level {n} zum Freischalten",
+        "stars": "{stars}/{max}",
+        "grant_title": "Willkommen, Tunnelgräber!",
+        "grant_body": "Deine Start-Booster",
+        "sound_on": "Sound: an",
+        "sound_off": "Sound: aus"
+      },
+      "hud": {
+        "boards": "Bestenlisten",
+        "shop": "Shop",
+        "enemies": "Rostkäfer übrig: {count}",
+        "lives": "Leben: {count}",
+        "stage": "Level {n}",
+        "wave": "Welle {n}",
+        "score": "Punkte",
+        "gun": "Kanonenstufe {n}",
+        "fire": "FEUER",
+        "pause": "Pause",
+        "key": "{key}",
+        "limit": "Booster-Limit für dieses Level erreicht"
+      },
+      "toast": {
+        "go": "Level {n}. Los!",
+        "wave": "Welle {n}",
+        "wave_clear": "Welle {n} geschafft! +{bonus}",
+        "star": "Kanone +1!",
+        "star_max": "Kanone max!",
+        "bubble": "Schild an!",
+        "rebar": "Stahlgitter!",
+        "quake": "Beben!",
+        "freeze": "Frost!",
+        "hull": "+1 Leben!",
+        "fortify": "Stahlfestung!",
+        "shockwave": "Schockwelle!"
+      },
+      "qa": {
+        "win": "QA: Sieg",
+        "lose": "QA: Niederlage"
+      },
+      "map": {
+        "title": "Kampagne",
+        "chapter": "Kapitel {n}",
+        "chapter_locked": "Schaffe Level {n} zum Öffnen",
+        "play": "Spiele Level {n}"
+      },
+      "pre": {
+        "title": "Level {n}",
+        "title_siege": "Belagerung",
+        "goal": "Zerstöre {count} Rostkäfer. Schütze den Kern!",
+        "goal_siege": "Überlebe die Wellen. Schütze den Kern!",
+        "best": "Rekord: {score}",
+        "hull": "Ersatzrumpf nehmen (+1 Leben)",
+        "hull_owned": "Du hast {count}",
+        "hull_none": "Keine Ersatzrümpfe mehr",
+        "hull_hint": "Ersatzrumpf: +1 Leben für dieses Level.",
+        "shop": "Mehr holen",
+        "start": "Start",
+        "close": "Fertig",
+        "rewards": "Belohnung fürs erste Schaffen",
+        "offline": "Verbindung nötig"
+      },
+      "pause": {
+        "title": "Pause",
+        "resume": "Weiter",
+        "restart": "Neustart",
+        "quit": "Beenden"
+      },
+      "clear": {
+        "title": "Level geschafft!",
+        "chapter_done": "Kapitel geschafft!",
+        "campaign_done": "Kampagne geschafft!",
+        "kills": "Rostkäfer",
+        "pickups": "Power-ups",
+        "bonus": "Siegbonus",
+        "lives": "Restleben ×{count}",
+        "total": "Punkte",
+        "best": "Neuer Rekord!",
+        "rewards": "Belohnungen",
+        "next": "Weiter",
+        "replay": "Nochmal",
+        "map": "Karte",
+        "save_title": "Speicherfehler",
+        "save_failed": "Ergebnis konnte nicht gespeichert werden.",
+        "retry_save": "Neu speichern",
+        "leave": "Karte",
+        "unverified_title": "Nicht gewertet",
+        "unverified": "Ergebnis nicht gewertet – versuch es nochmal.",
+        "unverified_hint": "Der Server konnte diesen Lauf nicht bestätigen, daher gibt es keine Sterne oder Belohnungen.",
+        "retry": "Nochmal"
+      },
+      "defeat": {
+        "title": "Niederlage",
+        "core": "Der Kern wurde zerstört!",
+        "lives": "Keine Leben mehr!",
+        "continue": "Weiter",
+        "continue_hint": "1 Ersatzrumpf nutzen: +2 Leben, Kern repariert",
+        "continue_used": "Schon weitergespielt",
+        "offer_title": "Mehr Rümpfe nötig?",
+        "retry": "Nochmal",
+        "map": "Karte",
+        "end_siege": "Aufgeben"
+      },
+      "siege": {
+        "title": "Belagerung vorbei",
+        "wave": "Welle {n} erreicht",
+        "score": "Punkte: {score}",
+        "best": "Wochenrekord: {score}",
+        "new_best": "Neuer Rekord!",
+        "rank": "Platz {rank}",
+        "unranked": "Ohne Platz",
+        "retry": "Nochmal",
+        "boards": "Bestenlisten",
+        "lobby": "Lobby"
+      },
+      "shop": {
+        "title": "Shop",
+        "one_time": "Einmalangebot",
+        "best_value": "Topangebot",
+        "contents": "{count} Booster",
+        "buy": "{price}",
+        "pending": "Bitte warten...",
+        "test": "Testkauf",
+        "unavailable": "Shop offline. Versuch es später."
+      },
+      "purchase": {
+        "success": "Kauf erfolgreich",
+        "failed": "Kauf fehlgeschlagen",
+        "failed_body": "Es wurde nichts abgebucht. Bitte versuch es nochmal.",
+        "cancelled": "Kauf abgebrochen"
+      },
+      "boards": {
+        "title": "Bestenlisten",
+        "siege": "Belagerung",
+        "campaign": "Kampagne",
+        "weekly": "Woche",
+        "alltime": "Allzeit",
+        "you": "Du",
+        "empty": "Noch keine Punkte. Sei der Erste!",
+        "reset": "Reset in {time}",
+        "guest": "Melde dich an, um deinen Platz zu behalten",
+        "unavailable": "Bestenlisten nicht verfügbar"
+      },
+      "settings": {
+        "title": "Optionen",
+        "music": "Musik",
+        "sfx": "Sound",
+        "motion": "Weniger Bewegung",
+        "haptics": "Vibration",
+        "on": "An",
+        "off": "Aus",
+        "version": "Version {version}"
+      },
+      "tut": {
+        "move_touch": "Zieh den Stick, um zu fahren",
+        "move_keys": "Fahr mit Pfeiltasten oder WASD",
+        "fire_touch": "Tippe auf FEUER, um zu schießen",
+        "fire_keys": "Leertaste oder J zum Feuern",
+        "brick": "Schüsse fressen sich durch Ziegel. Spreng dir den Weg frei!",
+        "core": "Schütze den Bau-Kern. Ein Treffer und er ist hin!",
+        "core_selfhit": "Sogar deine eigenen Schüsse können ihn zerstören.",
+        "enemy": "Rostkäfer im Anmarsch! Zerstöre alle {count}.",
+        "carrier": "Blinkende Rostkäfer lassen Power-ups fallen. Schnapp sie dir!",
+        "booster_hint": "Kern in Gefahr! Setz einen Booster ein.",
+        "booster_keys": "Drück 1, 2 oder 3",
+        "booster_touch": "Tippe auf einen Booster",
+        "next": "Kapiert",
+        "skip": "Skippen"
+      },
+      "booster": {
+        "owned": "Du hast {count}",
+        "more": "Mehr holen",
+        "duration": "Dauer: {seconds} s",
+        "limit": "Bis zu {count} pro Level",
+        "limit_siege": "Bis zu {count} pro Belagerung"
+      },
+      "profile": {
+        "levels": "Geschaffte Level"
+      }
+    }
+  },
+  "es": {
+    "screen": {
+      "common": {
+        "close": "Cerrar",
+        "back": "Atrás",
+        "ok": "OK",
+        "collect": "Recoger",
+        "count": "×{count}",
+        "offline": "Sin conexión. Reconectando..."
+      },
+      "lobby": {
+        "play": "Jugar",
+        "play_sub": "Nivel {n}",
+        "siege": "Asedio",
+        "siege_locked": "Supera el nivel {n} para desbloquear",
+        "stars": "{stars}/{max}",
+        "grant_title": "¡Bienvenido, excavador!",
+        "grant_body": "Tus potenciadores iniciales",
+        "sound_on": "Sonido: Sí",
+        "sound_off": "Sonido: No"
+      },
+      "hud": {
+        "boards": "Clasificación",
+        "shop": "Tienda",
+        "enemies": "Oxibichos restantes: {count}",
+        "lives": "Vidas: {count}",
+        "stage": "Nivel {n}",
+        "wave": "Oleada {n}",
+        "score": "Puntos",
+        "gun": "Nivel de cañón {n}",
+        "fire": "FUEGO",
+        "pause": "Pausa",
+        "key": "{key}",
+        "limit": "Límite de potenciadores de este nivel alcanzado"
+      },
+      "toast": {
+        "go": "Nivel {n}. ¡Vamos!",
+        "wave": "Oleada {n}",
+        "wave_clear": "¡Oleada {n} superada! +{bonus}",
+        "star": "¡Cañón +1!",
+        "star_max": "¡Cañón al máximo!",
+        "bubble": "¡Escudo activo!",
+        "rebar": "¡Muro de varillas!",
+        "quake": "¡Terremoto!",
+        "freeze": "¡Congelación!",
+        "hull": "¡+1 vida!",
+        "fortify": "¡Fortaleza de Acero!",
+        "shockwave": "¡Onda Expansiva!"
+      },
+      "qa": {
+        "win": "QA: Victoria",
+        "lose": "QA: Derrota"
+      },
+      "map": {
+        "title": "Campaña",
+        "chapter": "Capítulo {n}",
+        "chapter_locked": "Supera el nivel {n} para abrirlo",
+        "play": "Jugar nivel {n}"
+      },
+      "pre": {
+        "title": "Nivel {n}",
+        "title_siege": "Asedio",
+        "goal": "Destruye {count} Oxibichos. ¡Protege el Núcleo!",
+        "goal_siege": "Sobrevive a las oleadas. ¡Protege el Núcleo!",
+        "best": "Récord: {score}",
+        "hull": "Usar un Casco de repuesto (+1 vida)",
+        "hull_owned": "Tienes {count}",
+        "hull_none": "No te quedan Cascos de repuesto",
+        "hull_hint": "Casco de repuesto: +1 vida en este nivel.",
+        "shop": "Obtener",
+        "start": "Empezar",
+        "close": "Cerrar",
+        "rewards": "Premio por primera victoria",
+        "offline": "Necesitas conexión"
+      },
+      "pause": {
+        "title": "En pausa",
+        "resume": "Seguir",
+        "restart": "Reiniciar nivel",
+        "quit": "Salir"
+      },
+      "clear": {
+        "title": "¡Nivel superado!",
+        "chapter_done": "¡Capítulo completado!",
+        "campaign_done": "¡Campaña completada!",
+        "kills": "Oxibichos",
+        "pickups": "Mejoras",
+        "bonus": "Bonus de victoria",
+        "lives": "Vidas restantes ×{count}",
+        "total": "Puntos",
+        "best": "¡Nuevo récord!",
+        "rewards": "Premios",
+        "next": "Siguiente",
+        "replay": "Repetir",
+        "map": "Mapa",
+        "save_title": "No se guardó",
+        "save_failed": "No se pudo guardar el resultado.",
+        "retry_save": "Reintentar",
+        "leave": "Mapa",
+        "unverified_title": "Sin validar",
+        "unverified": "Resultado no contabilizado: inténtalo de nuevo.",
+        "unverified_hint": "El servidor no pudo confirmar esta partida, así que no da estrellas ni premios.",
+        "retry": "Otra vez"
+      },
+      "defeat": {
+        "title": "Derrota",
+        "core": "¡El Núcleo ha sido destruido!",
+        "lives": "¡Sin vidas!",
+        "continue": "Continuar",
+        "continue_hint": "Usa 1 Casco de repuesto: +2 vidas y Núcleo reconstruido",
+        "continue_used": "Ya has continuado una vez",
+        "offer_title": "¿Necesitas más cascos?",
+        "retry": "Otra vez",
+        "map": "Mapa",
+        "end_siege": "Terminar"
+      },
+      "siege": {
+        "title": "Fin del Asedio",
+        "wave": "Llegaste a la oleada {n}",
+        "score": "Puntos: {score}",
+        "best": "Récord semanal: {score}",
+        "new_best": "¡Nuevo récord!",
+        "rank": "Puesto #{rank}",
+        "unranked": "Sin clasificar",
+        "retry": "Otra vez",
+        "boards": "Clasificación",
+        "lobby": "Inicio"
+      },
+      "shop": {
+        "title": "Tienda",
+        "one_time": "Oferta única",
+        "best_value": "Mejor precio",
+        "contents": "{count} potenciadores",
+        "buy": "{price}",
+        "pending": "Procesando...",
+        "test": "Compra de test",
+        "unavailable": "Tienda no disponible. Prueba más tarde."
+      },
+      "purchase": {
+        "success": "Compra completada",
+        "failed": "Error en la compra",
+        "failed_body": "No se ha cobrado nada. Inténtalo de nuevo.",
+        "cancelled": "Compra cancelada"
+      },
+      "boards": {
+        "title": "Clasificación",
+        "siege": "Asedio",
+        "campaign": "Campaña",
+        "weekly": "Esta semana",
+        "alltime": "Histórico",
+        "you": "Tú",
+        "empty": "Aún no hay puntos. ¡Sé el primero!",
+        "reset": "Se reinicia en {time}",
+        "guest": "Inicia sesión para guardar tu puesto",
+        "unavailable": "Clasificación no disponible"
+      },
+      "settings": {
+        "title": "Ajustes",
+        "music": "Música",
+        "sfx": "Sonido",
+        "motion": "Reducir movimiento",
+        "haptics": "Vibración",
+        "on": "Sí",
+        "off": "No",
+        "version": "Versión {version}"
+      },
+      "tut": {
+        "move_touch": "Arrastra el joystick para conducir",
+        "move_keys": "Conduce con las flechas o WASD",
+        "fire_touch": "Toca FUEGO para disparar",
+        "fire_keys": "Pulsa Espacio o J para disparar",
+        "brick": "Los disparos atraviesan el ladrillo. ¡Abre camino!",
+        "core": "Defiende el Núcleo de la Madriguera. ¡Un impacto y adiós!",
+        "core_selfhit": "Hasta tus propios disparos pueden romperlo.",
+        "enemy": "¡Llegan Oxibichos! Destruye los {count}.",
+        "carrier": "Los Oxibichos que parpadean sueltan mejoras. ¡Cógelas!",
+        "booster_hint": "¡Núcleo en peligro! Usa un potenciador.",
+        "booster_keys": "Pulsa 1, 2 o 3",
+        "booster_touch": "Toca un botón de potenciador",
+        "next": "¡Vale!",
+        "skip": "Saltar"
+      },
+      "booster": {
+        "owned": "Tienes {count}",
+        "more": "Obtener",
+        "duration": "Dura {seconds} s",
+        "limit": "Hasta {count} por nivel",
+        "limit_siege": "Hasta {count} por partida de Asedio"
+      },
+      "profile": {
+        "levels": "Niveles superados"
+      }
+    }
+  },
+  "fr": {
+    "screen": {
+      "common": {
+        "close": "Fermer",
+        "back": "Retour",
+        "ok": "OK",
+        "collect": "Récupérer",
+        "count": "×{count}",
+        "offline": "Pas de connexion. Reconnexion..."
+      },
+      "lobby": {
+        "play": "Jouer",
+        "play_sub": "Niveau {n}",
+        "siege": "Siège",
+        "siege_locked": "Termine le niveau {n} pour débloquer",
+        "stars": "{stars}/{max}",
+        "grant_title": "Bienvenue, Fouisseur !",
+        "grant_body": "Tes boosts de départ",
+        "sound_on": "Son : oui",
+        "sound_off": "Son : non"
+      },
+      "hud": {
+        "boards": "Classements",
+        "shop": "Boutique",
+        "enemies": "Rouillards restants : {count}",
+        "lives": "Vies : {count}",
+        "stage": "Niveau {n}",
+        "wave": "Vague {n}",
+        "score": "Score",
+        "gun": "Niveau du canon {n}",
+        "fire": "FEU",
+        "pause": "Pause",
+        "key": "{key}",
+        "limit": "Limite de boosts atteinte pour ce niveau"
+      },
+      "toast": {
+        "go": "Niveau {n}. En avant !",
+        "wave": "Vague {n}",
+        "wave_clear": "Vague {n} nettoyée ! +{bonus}",
+        "star": "Canon +1 !",
+        "star_max": "Canon max !",
+        "bubble": "Bouclier actif !",
+        "rebar": "Mur d'acier !",
+        "quake": "Séisme !",
+        "freeze": "Gel !",
+        "hull": "+1 vie !",
+        "fortify": "Forteresse d'acier !",
+        "shockwave": "Onde de choc !"
+      },
+      "qa": {
+        "win": "QA: Victoire",
+        "lose": "QA: Défaite"
+      },
+      "map": {
+        "title": "Campagne",
+        "chapter": "Chapitre {n}",
+        "chapter_locked": "Termine le niveau {n} pour ouvrir",
+        "play": "Jouer niveau {n}"
+      },
+      "pre": {
+        "title": "Niveau {n}",
+        "title_siege": "Siège",
+        "goal": "Détruis {count} Rouillards. Protège le Noyau !",
+        "goal_siege": "Survis aux vagues. Protège le Noyau !",
+        "best": "Record : {score}",
+        "hull": "Prendre une Coque de secours (+1 vie)",
+        "hull_owned": "Tu en as {count}",
+        "hull_none": "Plus de Coques de secours",
+        "hull_hint": "Coque de secours : +1 vie pour ce niveau.",
+        "shop": "Obtenir",
+        "start": "Lancer",
+        "close": "Fermer",
+        "rewards": "Récompense du 1er succès",
+        "offline": "Connexion requise"
+      },
+      "pause": {
+        "title": "Pause",
+        "resume": "Reprise",
+        "restart": "Recommencer",
+        "quit": "Quitter"
+      },
+      "clear": {
+        "title": "Niveau réussi !",
+        "chapter_done": "Chapitre terminé !",
+        "campaign_done": "Campagne terminée !",
+        "kills": "Rouillards",
+        "pickups": "Bonus",
+        "bonus": "Bonus de victoire",
+        "lives": "Vies restantes ×{count}",
+        "total": "Score",
+        "best": "Record !",
+        "rewards": "Récompenses",
+        "next": "Suivant",
+        "replay": "Rejouer",
+        "map": "Carte",
+        "save_title": "Échec de sauvegarde",
+        "save_failed": "Impossible d'enregistrer le résultat.",
+        "retry_save": "Réessayer",
+        "leave": "Carte",
+        "unverified_title": "Non compté",
+        "unverified": "Résultat non compté — réessaie.",
+        "unverified_hint": "Le serveur n'a pas pu valider cette partie : pas d'étoiles ni de récompenses.",
+        "retry": "Rejouer"
+      },
+      "defeat": {
+        "title": "Défaite",
+        "core": "Le Noyau a été détruit !",
+        "lives": "Plus de vies !",
+        "continue": "Continuer",
+        "continue_hint": "Utilise 1 Coque de secours : +2 vies, Noyau reconstruit",
+        "continue_used": "Continue déjà utilisé",
+        "offer_title": "Besoin de coques ?",
+        "retry": "Rejouer",
+        "map": "Carte",
+        "end_siege": "Terminer"
+      },
+      "siege": {
+        "title": "Fin du Siège",
+        "wave": "Vague {n} atteinte",
+        "score": "Score : {score}",
+        "best": "Record de la semaine : {score}",
+        "new_best": "Record !",
+        "rank": "Rang n° {rank}",
+        "unranked": "Non classé",
+        "retry": "Rejouer",
+        "boards": "Classements",
+        "lobby": "Accueil"
+      },
+      "shop": {
+        "title": "Boutique",
+        "one_time": "Offre unique",
+        "best_value": "Top affaire",
+        "contents": "{count} boosts",
+        "buy": "{price}",
+        "pending": "En cours...",
+        "test": "Achat test",
+        "unavailable": "Boutique fermée. Réessaie plus tard."
+      },
+      "purchase": {
+        "success": "Achat réussi",
+        "failed": "Échec de l'achat",
+        "failed_body": "Aucun débit effectué. Réessaie.",
+        "cancelled": "Achat annulé"
+      },
+      "boards": {
+        "title": "Classements",
+        "siege": "Siège",
+        "campaign": "Campagne",
+        "weekly": "Semaine",
+        "alltime": "Global",
+        "you": "Toi",
+        "empty": "Aucun score pour l'instant. Sois le premier !",
+        "reset": "Réinitialisation dans {time}",
+        "guest": "Connecte-toi pour garder ton rang",
+        "unavailable": "Classements indisponibles"
+      },
+      "settings": {
+        "title": "Réglages",
+        "music": "Musique",
+        "sfx": "Sons",
+        "motion": "Réduire les animations",
+        "haptics": "Vibrations",
+        "on": "Oui",
+        "off": "Non",
+        "version": "Version {version}"
+      },
+      "tut": {
+        "move_touch": "Fais glisser le stick pour rouler",
+        "move_keys": "Roule avec les flèches ou ZQSD",
+        "fire_touch": "Touche FEU pour tirer",
+        "fire_keys": "Appuie sur Espace ou J pour tirer",
+        "brick": "Tes tirs percent la brique. Fraie-toi un chemin !",
+        "core": "Protège le Noyau du Terrier. Un seul tir et c'est fini !",
+        "core_selfhit": "Même tes propres tirs peuvent le briser.",
+        "enemy": "Rouillards en approche ! Détruis-les tous ({count}).",
+        "carrier": "Les Rouillards clignotants lâchent des bonus. Attrape-les !",
+        "booster_hint": "Noyau en danger ! Utilise un boost.",
+        "booster_keys": "Appuie sur 1, 2 ou 3",
+        "booster_touch": "Touche un bouton de boost",
+        "next": "Compris",
+        "skip": "Passer"
+      },
+      "booster": {
+        "owned": "Tu en as {count}",
+        "more": "Obtenir",
+        "duration": "Dure {seconds} s",
+        "limit": "Max {count} par niveau",
+        "limit_siege": "Max {count} par partie de Siège"
+      },
+      "profile": {
+        "levels": "Niveaux terminés"
+      }
+    }
+  },
+  "ru": {
+    "screen": {
+      "common": {
+        "close": "Закрыть",
+        "back": "Назад",
+        "ok": "ОК",
+        "collect": "Забрать",
+        "count": "×{count}",
+        "offline": "Нет связи. Переподключаемся..."
+      },
+      "lobby": {
+        "play": "Играть",
+        "play_sub": "Уровень {n}",
+        "siege": "Осада",
+        "siege_locked": "Пройди уровень {n}, чтобы открыть",
+        "stars": "{stars}/{max}",
+        "grant_title": "Привет, землекоп!",
+        "grant_body": "Твои стартовые бустеры",
+        "sound_on": "Звук: вкл.",
+        "sound_off": "Звук: выкл."
+      },
+      "hud": {
+        "boards": "Рейтинги",
+        "shop": "Магазин",
+        "enemies": "Осталось ржавожуков: {count}",
+        "lives": "Жизни: {count}",
+        "stage": "Уровень {n}",
+        "wave": "Волна {n}",
+        "score": "Очки",
+        "gun": "Уровень пушки {n}",
+        "fire": "ОГОНЬ",
+        "pause": "Пауза",
+        "key": "{key}",
+        "limit": "Лимит бустеров на этом уровне исчерпан"
+      },
+      "toast": {
+        "go": "Уровень {n}. Вперёд!",
+        "wave": "Волна {n}",
+        "wave_clear": "Волна {n} отбита! +{bonus}",
+        "star": "Пушка +1!",
+        "star_max": "Пушка на максимуме!",
+        "bubble": "Щит включён!",
+        "rebar": "Арматура!",
+        "quake": "Землетрясение!",
+        "freeze": "Заморозка!",
+        "hull": "+1 жизнь!",
+        "fortify": "Стальная крепость!",
+        "shockwave": "Ударная волна!"
+      },
+      "qa": {
+        "win": "QA: Победа",
+        "lose": "QA: Поражение"
+      },
+      "map": {
+        "title": "Кампания",
+        "chapter": "Глава {n}",
+        "chapter_locked": "Пройди уровень {n}, чтобы открыть",
+        "play": "Играть: ур. {n}"
+      },
+      "pre": {
+        "title": "Уровень {n}",
+        "title_siege": "Осада",
+        "goal": "Уничтожь ржавожуков: {count}. Защити Ядро!",
+        "goal_siege": "Выстои против волн. Защити Ядро!",
+        "best": "Рекорд: {score}",
+        "hull": "Взять запасной корпус (+1 жизнь)",
+        "hull_owned": "У тебя: {count}",
+        "hull_none": "Запасных корпусов нет",
+        "hull_hint": "Запасной корпус: +1 жизнь на этот уровень.",
+        "shop": "Купить ещё",
+        "start": "Начать",
+        "close": "Закрыть",
+        "rewards": "Награда за первое прохождение",
+        "offline": "Нужно подключение"
+      },
+      "pause": {
+        "title": "Пауза",
+        "resume": "Дальше",
+        "restart": "Начать заново",
+        "quit": "Выйти"
+      },
+      "clear": {
+        "title": "Уровень пройден!",
+        "chapter_done": "Глава пройдена!",
+        "campaign_done": "Кампания пройдена!",
+        "kills": "Ржавожуки",
+        "pickups": "Усиления",
+        "bonus": "Бонус за победу",
+        "lives": "Осталось жизней ×{count}",
+        "total": "Очки",
+        "best": "Новый рекорд!",
+        "rewards": "Награды",
+        "next": "Дальше",
+        "replay": "Заново",
+        "map": "Карта",
+        "save_title": "Ошибка сохранения",
+        "save_failed": "Не удалось сохранить результат.",
+        "retry_save": "Сохранить снова",
+        "leave": "Карта",
+        "unverified_title": "Не засчитано",
+        "unverified": "Результат не засчитан — попробуй ещё раз.",
+        "unverified_hint": "Сервер не смог подтвердить этот забег, поэтому звёзд и наград не будет.",
+        "retry": "Ещё раз"
+      },
+      "defeat": {
+        "title": "Поражение",
+        "core": "Ядро уничтожено!",
+        "lives": "Жизни кончились!",
+        "continue": "Продолжить",
+        "continue_hint": "Потрать 1 запасной корпус: +2 жизни, Ядро восстановлено",
+        "continue_used": "Продолжение уже использовано",
+        "offer_title": "Нужно больше корпусов?",
+        "retry": "Ещё раз",
+        "map": "Карта",
+        "end_siege": "Завершить"
+      },
+      "siege": {
+        "title": "Осада окончена",
+        "wave": "Достигнута волна {n}",
+        "score": "Очки: {score}",
+        "best": "Рекорд недели: {score}",
+        "new_best": "Новый рекорд!",
+        "rank": "Место #{rank}",
+        "unranked": "Без места",
+        "retry": "Ещё раз",
+        "boards": "Рейтинги",
+        "lobby": "Меню"
+      },
+      "shop": {
+        "title": "Магазин",
+        "one_time": "Разовая акция",
+        "best_value": "Лучшая цена",
+        "contents": "Бустеры: {count}",
+        "buy": "{price}",
+        "pending": "Обработка...",
+        "test": "Тест-покупка",
+        "unavailable": "Магазин недоступен. Попробуй позже."
+      },
+      "purchase": {
+        "success": "Покупка завершена",
+        "failed": "Покупка не удалась",
+        "failed_body": "Деньги не списаны. Попробуй ещё раз.",
+        "cancelled": "Покупка отменена"
+      },
+      "boards": {
+        "title": "Рейтинги",
+        "siege": "Осада",
+        "campaign": "Кампания",
+        "weekly": "Эта неделя",
+        "alltime": "Всё время",
+        "you": "Ты",
+        "empty": "Пока нет результатов. Будь первым!",
+        "reset": "Сброс через {time}",
+        "guest": "Войди, чтобы сохранить место",
+        "unavailable": "Рейтинги недоступны"
+      },
+      "settings": {
+        "title": "Настройки",
+        "music": "Музыка",
+        "sfx": "Звук",
+        "motion": "Меньше анимации",
+        "haptics": "Вибрация",
+        "on": "Вкл.",
+        "off": "Выкл.",
+        "version": "Версия {version}"
+      },
+      "tut": {
+        "move_touch": "Тяни стик, чтобы ехать",
+        "move_keys": "Езди на стрелках или WASD",
+        "fire_touch": "Жми ОГОНЬ, чтобы стрелять",
+        "fire_keys": "Стреляй на Пробел или J",
+        "brick": "Снаряды прогрызают кирпич. Пробей путь!",
+        "core": "Охраняй Ядро Норы. Одно попадание — и его нет!",
+        "core_selfhit": "Даже твои выстрелы могут его разрушить.",
+        "enemy": "Ржавожуки идут! Уничтожь всех: {count}.",
+        "carrier": "Мигающие ржавожуки роняют усиления. Хватай!",
+        "booster_hint": "Ядро в опасности! Используй бустер.",
+        "booster_keys": "Жми 1, 2 или 3",
+        "booster_touch": "Нажми кнопку бустера",
+        "next": "Понятно",
+        "skip": "Пропуск"
+      },
+      "booster": {
+        "owned": "У тебя: {count}",
+        "more": "Купить ещё",
+        "duration": "Действует {seconds} с",
+        "limit": "До {count} за уровень",
+        "limit_siege": "До {count} за забег в Осаде"
+      },
+      "profile": {
+        "levels": "Пройдено уровней"
+      }
+    }
   }
 }
