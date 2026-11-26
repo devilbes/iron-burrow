@@ -17,15 +17,15 @@
   "orientation": "any",
   "sdk": {
     "package": "@manygamescorp/core",
-    "version": "1.0.0-rc.46",
+    "version": "1.0.0-rc.54",
     "adapter": {
       "package": "@manygamescorp/platform-web",
-      "version": "1.0.0-rc.46"
+      "version": "1.0.0-rc.54"
     },
     "modules": [
       {
         "id": "daily-rewards",
-        "version": "1.0.0-rc.46",
+        "version": "1.0.0-rc.54",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -45,7 +45,7 @@
       },
       {
         "id": "hud",
-        "version": "1.0.0-rc.46",
+        "version": "1.0.0-rc.54",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -56,7 +56,7 @@
       },
       {
         "id": "iap",
-        "version": "1.0.0-rc.46",
+        "version": "1.0.0-rc.54",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -67,7 +67,7 @@
       },
       {
         "id": "store-fake",
-        "version": "1.0.0-rc.46",
+        "version": "1.0.0-rc.54",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -78,7 +78,7 @@
       },
       {
         "id": "inventory",
-        "version": "1.0.0-rc.46",
+        "version": "1.0.0-rc.54",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -89,7 +89,7 @@
       },
       {
         "id": "leaderboards",
-        "version": "1.0.0-rc.46",
+        "version": "1.0.0-rc.54",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -100,7 +100,7 @@
       },
       {
         "id": "gamestate",
-        "version": "1.0.0-rc.46",
+        "version": "1.0.0-rc.54",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -111,7 +111,7 @@
       },
       {
         "id": "kv",
-        "version": "1.0.0-rc.46",
+        "version": "1.0.0-rc.54",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -122,7 +122,7 @@
       },
       {
         "id": "profile-ui",
-        "version": "1.0.0-rc.46",
+        "version": "1.0.0-rc.54",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -133,7 +133,7 @@
       },
       {
         "id": "levels",
-        "version": "1.0.0-rc.46",
+        "version": "1.0.0-rc.54",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -147,7 +147,7 @@
       },
       {
         "id": "progress",
-        "version": "1.0.0-rc.46",
+        "version": "1.0.0-rc.54",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -161,7 +161,7 @@
       },
       {
         "id": "realtime",
-        "version": "1.0.0-rc.46",
+        "version": "1.0.0-rc.54",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -172,7 +172,7 @@
       },
       {
         "id": "ui-kit",
-        "version": "1.0.0-rc.46",
+        "version": "1.0.0-rc.54",
         "source": "local",
         "load": "eager",
         "settings": {
@@ -186,17 +186,17 @@
         "package": "@manygamescorp/ui-kit"
       }
     ],
-    "modulesRevision": 4,
+    "modulesRevision": 5,
     "overrides": {
       "scope": "panel.sdk.overrides"
     }
   },
   "uiKit": {
     "package": "@manygamescorp/ui-kit",
-    "version": "1.0.0-rc.46"
+    "version": "1.0.0-rc.54"
   },
   "buildKit": {
     "package": "@manygamescorp/build-kit-web",
-    "version": "1.0.0-rc.46"
+    "version": "1.0.0-rc.54"
   }
 }
