@@ -1,4 +1,0 @@
-export const FAKE_PAYMENT_CSS = `
-.mpg-fake-store-sheet{background:rgba(0,0,0,0.6);font:16px system-ui,sans-serif}
-.mpg-fake-store-card{background:#fff;color:#111;border-radius:12px}
-`;

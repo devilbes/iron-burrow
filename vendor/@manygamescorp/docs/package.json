@@ -1,7 +1,0 @@
-{
-  "name": "@manygamescorp/docs",
-  "version": "1.0.0-rc.30",
-  "description": "Public SDK documentation",
-  "license": "UNLICENSED",
-  "type": "module"
-}
