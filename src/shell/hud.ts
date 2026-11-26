@@ -120,6 +120,8 @@ export function bindHud(deps: HudDeps): () => void {
       let value: number | undefined;
       try { value = inventory?.quantity(counter.item ?? ''); } catch { value = undefined; }
       if (value === undefined) continue;
+      // rc.54: the kit ignores a repeated add (returns false, no «taken» throw) — set the value first.
+      try { topBar.setValue(counter.id, value, GAME_OWNER); continue; } catch { /* not registered yet */ }
       const onClick = opens(counter.open);
       try {
         topBar.add({ id: counter.id, slot: 'left', icon: counter.icon ?? '', label: counter.label ?? '',
