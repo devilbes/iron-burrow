@@ -68,3 +68,7 @@
   Выход: `tools/xfer/lib/game-generation-full.yaml`, `mk_full_v2.py` → `full-v2.b64`, `FULL-V2-NOTES.md`.
 - Дальше: моя проверка → импорт `POST /api/agents/platform/builtins/import` → новое приложение →
   запуск `newGame` без `template` (стартует `game-generation`).
+
+## 27.11 ~06:1xZ — приложение для продвинутой версии
+- Каталог сверен (нет deep-core); `POST /api/platform/apps {orgId:1, appCode:"iron-burrow-deep-core", appName:"Iron Burrow: Deep Core"}` → appId 412; ждать projectStatus ready; `PUT …/apps/412/binding {writersLimit:3}`.
+- Подписка: `PATCH …/apps/412/credentials/<x20> {reservedAppId:412}` — резерв лучшей подписки за новой игрой.
