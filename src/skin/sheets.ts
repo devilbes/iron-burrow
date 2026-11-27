@@ -241,8 +241,8 @@ const REWARD_BARE = '.reward-window[data-bare] .dialog:not(#stock):not(#bare){ou
   + '.reward-window[data-bare] .reward-hero-grid .reward-art :is(img,svg):not(#stock):not(#bare){width:100%;height:100%}}'
   + '.reward-window[data-bare] .reward-hero-grid .reward-amount:not(#stock):not(#bare){color:var(--mp-gold);font-size:32px;line-height:1.1;'
   + 'text-shadow:0 2px 0 var(--mp-night),0 0 6px var(--mp-night),0 0 14px var(--mp-night)}'
-  + '.reward-window[data-bare] .reward-hero-grid .reward-name:not(#stock):not(#bare){color:white;font-size:16px;'
-  + 'text-shadow:0 1px 0 var(--mp-night),0 0 6px var(--mp-night),0 0 12px var(--mp-night)}\n';
+  + '.reward-window[data-bare] .reward-hero-grid .reward-name:not(#stock):not(#bare){position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}'
+  + '\n';
 
 export const COMMON = REWARD_BARE + WINDOW + BUTTONS + PLATE + PROGRESS + PRELOADER;
 
