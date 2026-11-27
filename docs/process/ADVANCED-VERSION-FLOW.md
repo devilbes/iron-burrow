@@ -82,3 +82,16 @@
 - Проверки: YAML грузится, зависимости целы, пересечений writeSet 0; роли и скиллы — все есть в библиотеке
   (`GET /api/agents/platform/builtins?kind=workflow`, сверка по именам).
 - Ревью: model fable, один круг, только находки → правки в генератор → импорт.
+
+## 27.11 06:35Z — импорт флоу в библиотеку
+- Передача пакета: `go.html?f=<file>.b64` на локальном `srv.py` переводит вкладку на studio с данными в `#xfer=` (fetch на localhost со studio запрещён PNA; буфер обмена в панели браузера до страницы не доходит).
+- Импорт `POST /api/agents/platform/builtins/import` → опрос `…/import/{jobId}`. Первая попытка отклонена схемой библиотеки:
+  `purpose` шага ≤140, `acceptance` ≤500 на пункт, `catalog.whenToUse` ≤400, `catalog.excludes` ≤5 (оркестратор `workflow-spec-node.ts`, `flow-catalog.ts`).
+  Урок для флоу: проверять лимиты схемы ДО импорта — `tools/xfer/check_limits_full.py`; генератор сам падает на нарушении.
+- Проверка: `GET …/builtins/workflow/game-generation` → version m36, rev 36, шаги world-bible и др. на месте.
+
+## 27.11 06:39Z — запуск продвинутой версии
+- Тело запуска — скрипт `tools/xfer/deep_core_launch.py`: идея (≤8000, сжатое ТЗ) + полное ТЗ в `kb.research` (≤20000) +
+  `reference {title, description}` с адресом QA старой игры как планкой вида + `bannedTerms` + `decideMyself`; без `template` → `game-generation`.
+- Тред `POST …/apps/412/threads {}` → сообщение с `newGame` → `202 {seq:1}`; через 10 с прогон `running`, flow game-generation, version m36.
+- Сразу после старта: лог пода `ags-app-412` — `cli auth auth=oauth-subscription` (не ключ платформы), подписка x20 в резерве за 412.
