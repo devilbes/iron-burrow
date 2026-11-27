@@ -71,8 +71,7 @@ export function dailyPresenter(run: PresenterRuntime, progress: ProgressStore,
     claiming.add(operationId); run.refresh(DAILY);
     try {
       await http.request({ method: 'POST', path: `/me/rewards/${encodeURIComponent(operationId)}/claim`,
-        body: { key: PROGRESS.daily, periodKey: state.periodKey }, idempotent: true,
-        idempotencyKey: operationId });
+        body: { key: PROGRESS.daily, periodKey: state.periodKey }, idempotent: true });
       progress.change(PROGRESS.daily, (current) => ({ ...current, rewards: current.rewards.map((reward) =>
         reward.operationId === operationId ? { ...reward, status: 'issued' as const } : reward) }));
     } catch (failure) { run.fail(failure); } finally {
