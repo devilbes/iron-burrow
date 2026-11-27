@@ -72,3 +72,13 @@
 ## 27.11 ~06:1xZ — приложение для продвинутой версии
 - Каталог сверен (нет deep-core); `POST /api/platform/apps {orgId:1, appCode:"iron-burrow-deep-core", appName:"Iron Burrow: Deep Core"}` → appId 412; ждать projectStatus ready; `PUT …/apps/412/binding {writersLimit:3}`.
 - Подписка: `PATCH …/apps/412/credentials/<x20> {reservedAppId:412}` — резерв лучшей подписки за новой игрой.
+
+## 27.11 ~07:30Z — флоу v36 собран
+- Агент (opus) собрал `tools/xfer/lib/game-generation-full.yaml`: 63 шага = 40 лайта (планка поднята) + 23 новых
+  (world-bible, coop-design, boss-design, meta-progression, balance-sim, art-directions, narrative-scenes, voice,
+  cinematic-storyboard/render/review, partner-bot, onboarding, meta-screens, vfx, render-perf, difficulty-sim,
+  liveops-config, analytics-wire, playtest, ad-creatives, ad-videos, store-fill). Генератор — `full_v2_build.py`
+  (правки — в генератор, не в YAML). Пакет импорта — `mk_full_v2.py` → `full-v2.b64` (версия 36).
+- Проверки: YAML грузится, зависимости целы, пересечений writeSet 0; роли и скиллы — все есть в библиотеке
+  (`GET /api/agents/platform/builtins?kind=workflow`, сверка по именам).
+- Ревью: model fable, один круг, только находки → правки в генератор → импорт.
