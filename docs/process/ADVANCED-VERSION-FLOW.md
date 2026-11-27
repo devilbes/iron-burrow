@@ -95,3 +95,4 @@
   `reference {title, description}` с адресом QA старой игры как планкой вида + `bannedTerms` + `decideMyself`; без `template` → `game-generation`.
 - Тред `POST …/apps/412/threads {}` → сообщение с `newGame` → `202 {seq:1}`; через 10 с прогон `running`, flow game-generation, version m36.
 - Сразу после старта: лог пода `ags-app-412` — `cli auth auth=oauth-subscription` (не ключ платформы), подписка x20 в резерве за 412.
+- **Лимит интерфейса:** название этапа флоу ≤28 символов (agents-web Stage.name), иначе экран прогона показывает «—» у всех этапов. Проверка — check_limits_full.py.
