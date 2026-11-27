@@ -233,7 +233,18 @@ const PROGRESS = `progress${OVER}{border:0;border-radius:${v('mp-radius-field')}
 // it is the ManyPlay "M". Hidden until the game's own icon sheet draws the Burrower (then drop this).
 const PRELOADER = `.mp-preloader__brand [data-icon=brand-mark]${OVER}{display:none}`;
 
-export const COMMON = WINDOW + BUTTONS + PLATE + PROGRESS + PRELOADER;
+// SDK rc.54 opens the reward as a bare window (rays, no plate). The kit's reset loses to the game frame and sizes the
+// hero pictures only on short landscape screens; these rules win over the frame (two ids) and only touch that window.
+const REWARD_BARE = '.reward-window[data-bare] .dialog:not(#stock):not(#bare){outline:0;clip-path:none;padding-top:0;border:0;background:none;box-shadow:none}'
+  + '.reward-window[data-bare] .dialog :is(.window-actions,.std-actions,.reward-actions):not(#stock):not(#bare){background:none}'
+  + '@media (orientation:portrait),(min-height:521px){.reward-window[data-bare] .reward-hero-grid .reward-art>*:not(#stock):not(#bare){width:112px;height:112px}'
+  + '.reward-window[data-bare] .reward-hero-grid .reward-art :is(img,svg):not(#stock):not(#bare){width:100%;height:100%}}'
+  + '.reward-window[data-bare] .reward-hero-grid .reward-amount:not(#stock):not(#bare){color:var(--mp-gold);font-size:32px;line-height:1.1;'
+  + 'text-shadow:0 2px 0 var(--mp-night),0 0 6px var(--mp-night),0 0 14px var(--mp-night)}'
+  + '.reward-window[data-bare] .reward-hero-grid .reward-name:not(#stock):not(#bare){color:white;font-size:16px;'
+  + 'text-shadow:0 1px 0 var(--mp-night),0 0 6px var(--mp-night),0 0 12px var(--mp-night)}\n';
+
+export const COMMON = REWARD_BARE + WINDOW + BUTTONS + PLATE + PROGRESS + PRELOADER;
 
 // ---- Kit windows, short additions (docs/game/LOOK.md):
 // Settings (Н-30): the chosen language is a steel second choice, not the window's orange main action;
